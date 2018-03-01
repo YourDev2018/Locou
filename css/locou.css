@@ -46,9 +46,9 @@
     margin-top: 50px;
     margin-bottom: 50px;
   }
-  .ultimos-card
+  .ultimos-card:hover
   {
-    height: 200px;
+
   }
   .titulo-secao3
   {
