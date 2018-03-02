@@ -10,6 +10,9 @@
 }
 @media (min-width: 767.5px)
 {
+
+  /* Landing Page */
+
   .logo-navbar
   {
     height: 50px;
@@ -46,15 +49,25 @@
     margin-top: 50px;
     margin-bottom: 50px;
   }
-  .ultimos-card:hover
-  {
-
-  }
   .titulo-secao3
   {
     font-size: 35px;
     font-weight: 400;
   }
+  .secao4
+  {
+    margin-top: 100px;
+  }
+
+
+  /* Anuncie */
+
+  .titulo-anuncie
+  {
+    font-weight: 900;
+  }
+
+
 }
 @media (max-width: 767.5px)
 {
