@@ -14,19 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
-  <style>
-  .circle
-  {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 25px;
-    color: #fff;
-    line-height: 50px;
-    text-align: center;
-    background: #FFC107
-  }
-  </style>
   <body style="font-family: 'Muli'">
 
     <nav class="navbar" style="background-color: black">
@@ -71,28 +58,32 @@
 
         <!-- CADASTRO PARTE 1-->
 
-        <div class="row">
+        <div class="row" id="dados_basicos">
           <div class="col-2">
           </div>
           <div class="col-8" style="border-style: solid; border-width: 2px; border-color: #FFC107">
-            <br>
-            <div class="row">
-              <div class="col-1">
-                <div class="circle">01</div>
+
+            <!-- TITULO PARTE 1 -->
+
+            <div class="row" style="background-color: black">
+              <div class="col-12" style="color: #FFC107">
+                <br>
+                <span class="btn btn-outline-warning"><h2>Dados Básicos</h2></span>
+                <br><br>
               </div>
             </div>
+
+            <br><br>
 
             <!-- TITULO DO ANUNCIO -->
 
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Título:
               </div>
-              <div class="col-4 text-left">
-                <input type="text" class="form-control" id="titulo" placeholder="Ex: Coworking Odontológico">
+              <div class="col-5 text-left">
+                <input type="text" class="form-control" id="titulo" placeholder="Ex: Consultório Odontológico">
                 <br>
               </div>
             </div>
@@ -104,17 +95,33 @@
               </div>
             </div>
 
+            <!-- CATEGORIA ESPAÇO-->
+
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Categoria do espaço:
+              </div>
+              <div class="col-5 text-left">
+                <select class="form-control" id="categoria">
+                  <option>Consultório</option>
+                  <option>Cowork</option>
+                  <option>Cozinha</option>
+                  <option>Estúdio</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+
 
             <!-- ESTADO -->
             <br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Estado (UF):
               </div>
-              <div class="col-2 text-left">
+              <div class="col-5 text-left">
                 <select class="form-control" id="uf">
                   <option>AC</option>
                   <option>AL</option>
@@ -151,12 +158,10 @@
             <br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Cidade:
               </div>
-              <div class="col-4 text-left">
+              <div class="col-5 text-left">
                 <input type="text" class="form-control" id="cidade" placeholder="Ex: Rio de Janeiro">
               </div>
             </div>
@@ -165,12 +170,10 @@
             <br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Bairro:
               </div>
-              <div class="col-4 text-left">
+              <div class="col-5 text-left">
                 <input type="text" class="form-control" id="bairro" placeholder="Ex: Ipanema">
               </div>
             </div>
@@ -183,30 +186,33 @@
         </div>
 
 
-        <!-- CADASTRO PARTE 2 -->
-        <br><br>
 
-        <div class="row">
+        <!-- CADASTRO PARTE 2 -->
+        <br>
+
+        <div class="row" id="descricao_geral">
           <div class="col-2">
           </div>
           <div class="col-8" style="border-style: solid; border-width: 2px; border-color: #FFC107">
-            <br>
 
-            <div class="row">
-              <div class="col-1">
-                <div class="circle">02</div>
+            <!-- TITULO PARTE 2 -->
+
+            <div class="row" style="background-color: black">
+              <div class="col-12" style="color: #FFC107">
+                <br>
+                <span class="btn btn-outline-warning"><h2>Descrição Geral</h2></span>
+                <br><br>
               </div>
             </div>
 
             <!-- Metragem -->
+            <br><br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Metragem (M² do local):
               </div>
-              <div class="col-4 text-left">
+              <div class="col-5 text-left">
                 <input type="text" class="form-control" id="metragem" placeholder="Ex: 120">
               </div>
             </div>
@@ -215,17 +221,15 @@
             <br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Tem recepção?
               </div>
-              <div class="col-2 text-left">
+              <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="recepcao" id="recepcao-sim" value="sim">
                 <label class="form-check-label" for="recepcao-sim">Sim</label>
               </div>
-              <div class="col-2 text-left">
+              <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="recepcao" id="recepcao-nao" value="nao">
                 <label class="form-check-label" for="recepcao-nao">Não</label>
@@ -236,17 +240,15 @@
             <br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Tem banheiro privativo?
               </div>
-              <div class="col-2 text-left">
+              <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="banheiro-privativo" id="banheiro-privativo-sim" value="sim">
                 <label class="form-check-label" for="banheiro-privativo-sim">Sim</label>
               </div>
-              <div class="col-2 text-left">
+              <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="banheiro-privativo" id="banheiro-privativo-nao" value="nao">
                 <label class="form-check-label" for="banheiro-privativo-nao">Não</label>
@@ -257,20 +259,113 @@
             <br>
 
             <div class="row">
-              <div class="col-2">
-              </div>
-              <div class="col-2 text-right">
+              <div class="col-4 text-right">
                 Tem banheiro comum?
               </div>
-              <div class="col-2 text-left">
+              <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="banheiro" id="banheiro-sim" value="sim">
                 <label class="form-check-label" for="banheiro-sim">Sim</label>
               </div>
-              <div class="col-2 text-left">
+              <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="banheiro" id="banheiro-nao" value="nao">
                 <label class="form-check-label" for="banheiro-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Casa/Predio -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                É casa ou prédio?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="casaOUpredio" id="casaOUpredio-casa" value="casa">
+                <label class="form-check-label" for="casaOUpredio-casa">Casa</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="casaOUpredio" id="casaOUpredio-predio" value="predio">
+                <label class="form-check-label" for="casaOUpredio-predio">Prédio</label>
+              </div>
+            </div>
+
+            <!-- Prédio tem elevador? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                O Prédio tem elevador?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="elevador" id="elevador-sim" value="sim">
+                <label class="form-check-label" for="elevador-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="elevador" id="elevador-nao" value="nao">
+                <label class="form-check-label" for="elevador-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Estacionamento -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                O local possui estacionamento?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="estacionamento" id="estacionamento-sim" value="sim">
+                <label class="form-check-label" for="estacionamento-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="estacionamento" id="estacionamento-nao" value="nao">
+                <label class="form-check-label" for="estacionamento-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Proprio ou rotativo -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                O estacionamento é próprio ou rotativo?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="proprioOUrotativo" id="proprioOUrotativo-proprio" value="proprio">
+                <label class="form-check-label" for="proprioOUrotativo-proprio">Próprio</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="proprioOUrotativo" id="proprioOUrotativo-rotativo" value="rotativo">
+                <label class="form-check-label" for="proprioOUrotativo-rotativo">Rotativo</label>
+              </div>
+            </div>
+
+            <!-- Acesso a transporte público -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Possui acesso fácil a transporte público (Metro, Ônibus e etc) em até 2 quarteirões?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="transporte" id="transporte-sim" value="sim">
+                <label class="form-check-label" for="transporte-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="transporte" id="transporte-nao" value="nao">
+                <label class="form-check-label" for="transporte-nao">Não</label>
               </div>
             </div>
 
@@ -280,6 +375,25 @@
           </div>
         </div>
 
+        <!-- CONTROLE DE MENU -->
+        <br>
+
+        <div class="row" style="background-color: black">
+          <div class="col-2">
+          </div>
+          <div class="col-4 text-right" style="color: #FFC107">
+            <br>
+            <span class="btn btn-outline-warning" id="voltar"><h4>Voltar</h4></span>
+            <br><br>
+          </div>
+          <div class="col-4 text-left" style="color: #FFC107">
+            <br>
+            <span class="btn btn-outline-warning" id="proximo"><h4>Próximo</h4></span>
+            <br><br>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>
 
       </form>
     </div>
