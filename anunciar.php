@@ -375,6 +375,168 @@
           </div>
         </div>
 
+
+        <!-- CADASTRO PARTE 3 -->
+        <br>
+
+        <div class="row" id="periodo">
+          <div class="col-2">
+          </div>
+          <div class="col-8" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+
+            <!-- TITULO PARTE 2 -->
+
+            <div class="row" style="background-color: black">
+              <div class="col-12" style="color: #FFC107">
+                <br>
+                <span class="btn btn-outline-warning"><h2>Período</h2></span>
+                <br><br>
+              </div>
+            </div>
+
+            <!-- Tempo de aluguel -->
+            <br>
+
+            <div class="row">
+              <div class="col-12 text-center">
+                Qual é o período de aluguel?
+                <br><br>
+              </div>
+
+              <!-- Labels -->
+
+              <div class="col-4 text-center">
+                <label class="form-check-label" for="tempoAluguel-unico">Aluguel Único (Para um dia específico)</label>
+              </div>
+              <div class="col-4 text-center">
+                <label class="form-check-label" for="tempoAluguel-reincidente">Aluguel Reincidente</label>
+              </div>
+              <div class="col-4 text-center">
+                <label class="form-check-label" for="tempoAluguel-direto">Aluguel Direto</label>
+              </div>
+
+              <!-- Checkbox -->
+
+              <div class="col-4 text-center">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
+              </div>
+              <div class="col-4 text-center">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
+              </div>
+              <div class="col-4 text-center">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
+              </div>
+            </div>
+
+
+            <!-- Calendario-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-12 text-center">
+              </div>
+            </div>
+
+            <!-- Preço Hora-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Preço por hora
+              </div>
+              <div class="col-5 text-left">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">R$</div>
+                  <input type="text" class="form-control" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Preço 4 horas-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Preço por turno de 4 horas
+              </div>
+              <div class="col-5 text-left">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">R$</div>
+                  <input type="text" class="form-control" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Preço 5 horas-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Preço por turno de 5 horas
+              </div>
+              <div class="col-5 text-left">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">R$</div>
+                  <input type="text" class="form-control" id="5hora" placeholder="Ex: 55 (números inteiros apenas)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Preço reincidente dia/turno-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Preço reincidente por dia/turno
+              </div>
+              <div class="col-5 text-left">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">R$</div>
+                  <input type="text" class="form-control" id="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Preço semana-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Preço por semana
+              </div>
+              <div class="col-5 text-left">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">R$</div>
+                  <input type="text" class="form-control" id="semana" placeholder="Ex: 55 (números inteiros apenas)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Preço mês-->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Preço por mês
+              </div>
+              <div class="col-5 text-left">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">R$</div>
+                  <input type="text" class="form-control" id="mes" placeholder="Ex: 55 (números inteiros apenas)">
+                </div>
+              </div>
+            </div>
+
+            <br><br>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>
+
+
         <!-- CONTROLE DE MENU -->
         <br>
 

@@ -85,12 +85,47 @@
       <!-- Cards de categorias -->
 
       <div class="row">
-        <div class="col">
+        <div class="col-2">
         </div>
-        <div class="col-10">
+        <div class="col-8">
+
+          <!-- COLUNA CARDS -->
+
+          <div class="row">
+
+            <!-- CARDS LINHA 1 -->
+
+            <div class="col" style="background: url('img/categoria.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+              <br><br>
+              <p class="text-center" style="margin-top: 65%;background-color: rgba(0,0,0,0.50);">
+                <a class="h2" style="color: white;">Consultórios</a>
+                <br><br>
+                <a class="h4" style="color: white;">Texto de descrição da categoria </a>
+              </p>
+            </div>
+            &nbsp;
+            <div class="col" style="background: url('img/categoria.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+              <br><br>
+              <p class="text-center" style="margin-top: 65%;background-color: rgba(0,0,0,0.50);">
+                <a class="h2" style="color: white;">Consultórios</a>
+                <br><br>
+                <a class="h4" style="color: white;">Texto de descrição da categoria </a>
+              </p>
+            </div>
+            &nbsp;
+            <div class="col" style="background: url('img/categoria.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+              <br><br>
+              <p class="text-center" style="margin-top: 65%;background-color: rgba(0,0,0,0.50);">
+                <a class="h2" style="color: white;">Consultórios</a>
+                <br><br>
+                <a class="h4" style="color: white;">Texto de descrição da categoria </a>
+              </p>
+            </div>
+
+          </div>
 
         </div>
-        <div class="col">
+        <div class="col-2">
         </div>
       </div>
     </div>
@@ -122,7 +157,8 @@
           <!-- Linha de cards -->
 
           <div class="row">
-            <div class="col mx-2" style="background: url('img/item.png')" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -134,7 +170,8 @@
                 <a class="h6" style="color: grey;">Nome do item<br> São Paulo, SP</a>
               </p>
             </div>
-            <div class="col mx-2" style="background: url('img/item.png')" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            &nbsp;
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -146,7 +183,8 @@
                 <a class="h6" style="color: grey;">Nome do item<br> São Paulo, SP</a>
               </p>
             </div>
-            <div class="col mx-2" style="background: url('img/item.png')" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            &nbsp;
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -158,7 +196,8 @@
                 <a class="h6" style="color: grey;">Nome do item<br> São Paulo, SP</a>
               </p>
             </div>
-            <div class="col mx-2" style="background: url('img/item.png')" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            &nbsp;
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -170,6 +209,7 @@
                 <a class="h6" style="color: grey;">Nome do item<br> São Paulo, SP</a>
               </p>
             </div>
+
           </div>
 
         </div>
@@ -192,7 +232,7 @@
         </div>
       </div>
 
-      <div class="row" style="background-color: #C69F00">
+      <div class="row" style="background-color: #FFCE00">
         <div class="col-2">
         </div>
         <div class="col-8">
@@ -209,5 +249,37 @@
       </div>
 
     </div>
+
+    <!-- Footer -->
+
+    <div class="container-fluid justify-content-center text-center" style="background-color: black">
+
+      <!-- Linha 1 -->
+
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+          <br>
+          <span class="h3" style="color: white">Texto do footer</span>
+          <br><br>
+        </div>
+        <div class="col-2">
+        </div>
+      </div>
+
+      <!-- Linha 2 -->
+
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+          <br>
+          <span class="h3" style="color: white">Texto do footer</span>
+          <br><br>
+        </div>
+        <div class="col-2">
+        </div>
+      </div>
 
   </body>
