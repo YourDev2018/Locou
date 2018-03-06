@@ -186,7 +186,6 @@
         </div>
 
 
-
         <!-- CADASTRO PARTE 2 -->
         <br>
 
@@ -535,6 +534,695 @@
           <div class="col-2">
           </div>
         </div>
+
+        <!-- CADASTRO PARTE 3.1 CONSULTORIOS  -->
+        <br>
+
+        <div class="row" id="descricao_especifica_consultorio">
+          <div class="col-2">
+          </div>
+          <div class="col-8" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+
+            <!-- TITULO PARTE 2 -->
+
+            <div class="row" style="background-color: black">
+              <div class="col-12" style="color: #FFC107">
+                <br>
+                <span class="btn btn-outline-warning"><h2>Descrição do Consultório</h2></span>
+                <br><br>
+              </div>
+            </div>
+
+            <!-- É climatizado -->
+            <br><br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                É climatizado o local? (Possui ar-condicioando)
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="climatizado-consultorio" id="climatizado-consultorio-sim" value="sim">
+                <label class="form-check-label" for="climatizado-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="climatizado-consultorio" id="climatizado-consultorio-nao" value="nao">
+                <label class="form-check-label" for="climatizado-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Split ou paerde -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                O ar-condicionado é modelo Split ou de parede?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="modelo-ar-consultorio" id="modelo-ar-consultorio-sim" value="split">
+                <label class="form-check-label" for="modelo-ar-consultorio-sim">Ar-condicioando SPLIT</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="modelo-ar-consultorio" id="modelo-ar-consultorio-nao" value="parede">
+                <label class="form-check-label" for="modelo-ar-consultorio-nao">Ar-condicioando de PAREDE</label>
+              </div>
+            </div>
+
+            <!-- Tem wifi? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Tem Wi-Fi?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="wifi-consultorio" id="wifi-consultorio-sim" value="sim">
+                <label class="form-check-label" for="wifi-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="wifi-consultorio" id="wifi-consultorio-nao" value="nao">
+                <label class="form-check-label" for="wifi-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Vigilancia -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Tem monitoramento ou vigilância com câmeras?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="vigilancia-consultorio" id="vigilancia-consultorio-sim" value="sim">
+                <label class="form-check-label" for="vigilancia-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="vigilancia-consultorio" id="vigilancia-consultorio-nao" value="nao">
+                <label class="form-check-label" for="vigilancia-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Armarios -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Armários com escaninhos para guardar pertences dos profissionais que sublocam?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="armarios-consultorio" id="armarios-consultorio-sim" value="sim">
+                <label class="form-check-label" for="armarios-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="armarios-consultorio" id="armarios-consultorio-nao" value="nao">
+                <label class="form-check-label" for="armarios-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Secretária -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Secretária compartilhada para agendamentos e assistência em geral?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="secretaria-consultorio" id="secretaria-consultorio-sim" value="sim">
+                <label class="form-check-label" for="secretaria-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="secretaria-consultorio" id="secretaria-consultorio-nao" value="nao">
+                <label class="form-check-label" for="secretaria-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Limpeza -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Serviço de limpeza e conservação?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="limpeza-consultorio" id="limpeza-consultorio-sim" value="sim">
+                <label class="form-check-label" for="limpeza-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="limpeza-consultorio" id="limpeza-consultorio-nao" value="nao">
+                <label class="form-check-label" for="limpeza-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Copa? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Serviço de copa?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="copa-consultorio" id="copa-consultorio-sim" value="sim">
+                <label class="form-check-label" for="copa-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="copa-consultorio" id="copa-consultorio-nao" value="nao">
+                <label class="form-check-label" for="copa-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Mobiliario -->
+            <br>
+
+            <div class="row">
+              <div class="col-12 text-center">
+                Qual é a quantidade do Mobiliario do local?
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-center">
+                Qtd de Mesa
+              </div>
+              <div class="col-3 text-center">
+                Qtd de Cadeira
+              </div>
+              <div class="col-3 text-center">
+                Qtd de Luminária
+              </div>
+              <div class="col-3 text-center">
+                Qtd de Cortina
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3 text-center">
+                <input type="text" class="form-control" id="mesa-consultorio" placeholder="Ex: 2">
+              </div>
+              <div class="col-3 text-center">
+                <input type="text" class="form-control" id="cadeira-consultorio" placeholder="Ex: 6">
+              </div>
+              <div class="col-3 text-center">
+                <input type="text" class="form-control" id="lum-consultorio" placeholder="Ex: 4">
+              </div>
+              <div class="col-3 text-center">
+                <input type="text" class="form-control" id="cortina-consultorio" placeholder="Ex: 1">
+              </div>
+            </div>
+
+            <!-- Macas -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Quantidade de Macas
+              </div>
+              <div class="col-5 text-center">
+                <input type="text" class="form-control" id="macas-consultorio" placeholder="Ex: 3">
+              </div>
+            </div>
+
+            <!-- Balança? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Possui balança?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="balanca-consultorio" id="balanca-consultorio-sim" value="sim">
+                <label class="form-check-label" for="copa-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="balanca-consultorio" id="balanca-consultorio-nao" value="nao">
+                <label class="form-check-label" for="balanca-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Café? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Oferece café?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="cafe-consultorio" id="cafe-consultorio-sim" value="sim">
+                <label class="form-check-label" for="cafe-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="cafe-consultorio" id="cafe-consultorio-nao" value="nao">
+                <label class="form-check-label" for="cafe-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- Água? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Oferece água filtrada?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="agua-consultorio" id="agua-consultorio-sim" value="sim">
+                <label class="form-check-label" for="agua-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="agua-consultorio" id="agua-consultorio-nao" value="nao">
+                <label class="form-check-label" for="agua-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- TV? -->
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Possui TV na recepção?
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="tv-consultorio" id="tv-consultorio-sim" value="sim">
+                <label class="form-check-label" for="tv-consultorio-sim">Sim</label>
+              </div>
+              <div class="col-4 text-left">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" type="radio" name="tv-consultorio" id="tv-consultorio-nao" value="nao">
+                <label class="form-check-label" for="tv-consultorio-nao">Não</label>
+              </div>
+            </div>
+
+            <!-- descrição aberta -->
+            <br>
+
+            <div class="row">
+              <div class="col-12 text-center">
+                Quer adicionar mais algum detalhe? Utilize esse campo aberto de descrição.
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+              </div>
+              <div class="col-10 text-center">
+                <textarea class="form-control" id="descricao-aberta-consultorio" rows="6" style="resize: none;"></textarea>
+              </div>
+              <div class="col-1">
+              </div>
+            </div>
+
+            <br><br>
+
+          </div>
+
+            <div class="col-2">
+            </div>
+
+          </div>
+
+
+          <!-- Descrição especifica workshop -->
+
+
+          <div class="row" id="descricao_especifica_workshop">
+            <div class="col-2">
+            </div>
+            <div class="col-8" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+
+              <!-- TITULO PARTE 2 -->
+
+              <div class="row" style="background-color: black">
+                <div class="col-12" style="color: #FFC107">
+                  <br>
+                  <span class="btn btn-outline-warning"><h2>Descrição da Sala de Ensaio ou Workshop</h2></span>
+                  <br><br>
+                </div>
+              </div>
+
+              <!-- É climatizado -->
+              <br><br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  É climatizado o local? (Possui ar-condicioando)
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="climatizado-workshop" id="climatizado-workshop-sim" value="sim">
+                  <label class="form-check-label" for="climatizado-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="climatizado-workshop" id="climatizado-workshop-nao" value="nao">
+                  <label class="form-check-label" for="climatizado-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Split ou paerde -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  O ar-condicionado é modelo Split ou de parede?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="modelo-ar-workshop" id="modelo-ar-workshop-sim" value="split">
+                  <label class="form-check-label" for="modelo-ar-workshop-sim">Ar-condicioando SPLIT</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="modelo-ar-workshop" id="modelo-ar-workshop-nao" value="parede">
+                  <label class="form-check-label" for="modelo-ar-workshop-nao">Ar-condicioando de PAREDE</label>
+                </div>
+              </div>
+
+              <!-- Tem wifi? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Tem Wi-Fi?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="wifi-workshop" id="wifi-workshop-sim" value="sim">
+                  <label class="form-check-label" for="wifi-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="wifi-workshop" id="wifi-workshop-nao" value="nao">
+                  <label class="form-check-label" for="wifi-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Vigilancia -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Tem monitoramento ou vigilância com câmeras?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="vigilancia-workshop" id="vigilancia-workshop-sim" value="sim">
+                  <label class="form-check-label" for="vigilancia-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="vigilancia-workshop" id="vigilancia-workshop-nao" value="nao">
+                  <label class="form-check-label" for="vigilancia-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Armarios -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Armários com escaninhos para guardar pertences dos profissionais que sublocam?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="armarios-workshop" id="armarios-workshop-sim" value="sim">
+                  <label class="form-check-label" for="armarios-consultorio-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="armarios-workshop" id="armarios-workshop-nao" value="nao">
+                  <label class="form-check-label" for="armarios-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Limpeza -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Serviço de limpeza e conservação?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="limpeza-workshop" id="limpeza-workshop-sim" value="sim">
+                  <label class="form-check-label" for="limpeza-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="limpeza-workshop" id="limpeza-workshop-nao" value="nao">
+                  <label class="form-check-label" for="limpeza-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Copa? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Serviço de copa?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="copa-workshop" id="copa-workshop-sim" value="sim">
+                  <label class="form-check-label" for="copa-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="copa-workshop" id="copa-workshop-nao" value="nao">
+                  <label class="form-check-label" for="copa-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Mobiliario -->
+              <br>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  Qual é a quantidade do Mobiliario do local?
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4 text-center">
+                  Qtd de Mesa
+                </div>
+                <div class="col-4 text-center">
+                  Qtd de Cadeira
+                </div>
+                <div class="col-4 text-center">
+                  Qtd de Quadros
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4 text-center">
+                  <input type="text" class="form-control" id="mesa-workshop" placeholder="Ex: 2">
+                </div>
+                <div class="col-4 text-center">
+                  <input type="text" class="form-control" id="cadeira-workshop" placeholder="Ex: 6">
+                </div>
+                <div class="col-4 text-center">
+                  <input type="text" class="form-control" id="quadro-workshop" placeholder="Ex: 4">
+                </div>
+              </div>
+
+              <!-- Projetor? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Possui projetor?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="projetor-workshop" id="projetor-workshop-sim" value="sim">
+                  <label class="form-check-label" for="projetor-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="projetor-workshop" id="projetor-workshop-nao" value="nao">
+                  <label class="form-check-label" for="projetor-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Telão/TV -->
+              <br>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  Qual é a quantidade de Telões ou TV`s
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 text-center">
+                  Qtd de Telões
+                </div>
+                <div class="col-6 text-center">
+                  Qtd de TV`s
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 text-center">
+                  <input type="text" class="form-control" id="telao-workshop" placeholder="Ex: 1">
+                </div>
+                <div class="col-6 text-center">
+                  <input type="text" class="form-control" id="tv-workshop" placeholder="Ex: 0">
+                </div>
+              </div>
+
+              <!-- Flipchart? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Possui Flipchart?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="flip-workshop" id="flip-workshop-sim" value="sim">
+                  <label class="form-check-label" for="flip-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="flip-workshop" id="flip-workshop-nao" value="nao">
+                  <label class="form-check-label" for="flip-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Café? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Oferece café?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="cafe-workshop" id="cafe-workshop-sim" value="sim">
+                  <label class="form-check-label" for="cafe-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="cafe-workshop" id="cafe-workshop-nao" value="nao">
+                  <label class="form-check-label" for="cafe-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Água? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Oferece água filtrada?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="agua-workshop" id="agua-workshop-sim" value="sim">
+                  <label class="form-check-label" for="agua-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="agua-workshop" id="agua-workshop-nao" value="nao">
+                  <label class="form-check-label" for="agua-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Buffet? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Oferece serviço de buffet?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="buffet-workshop" id="buffet-workshop-sim" value="sim">
+                  <label class="form-check-label" for="buffet-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="buffet-workshop" id="buffet-workshop-nao" value="nao">
+                  <label class="form-check-label" for="buffet-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- Permite Buffet? -->
+              <br>
+
+              <div class="row">
+                <div class="col-4 text-right">
+                  Permite permite a contratação desse serviço extra?
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="buffet-extra-workshop" id="buffet-extra-workshop-sim" value="sim">
+                  <label class="form-check-label" for="buffet-extra-workshop-sim">Sim</label>
+                </div>
+                <div class="col-4 text-left">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="form-check-input" type="radio" name="buffet-extra-workshop" id="buffet-extra-workshop-nao" value="nao">
+                  <label class="form-check-label" for="buffet-extra-workshop-nao">Não</label>
+                </div>
+              </div>
+
+              <!-- descrição equipamento -->
+              <br>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  Quer adicionar mais algum detalhe sobre equipamentos? Utilize esse campo aberto de descrição.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1">
+                </div>
+                <div class="col-10 text-center">
+                  <textarea class="form-control" id="descricao-equipamento-workshop" rows="3" style="resize: none;"></textarea>
+                </div>
+                <div class="col-1">
+                </div>
+              </div>
+
+              <!-- descrição aberta -->
+              <br>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  Quer adicionar mais algum detalhe em geral? Utilize esse campo aberto de descrição.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1">
+                </div>
+                <div class="col-10 text-center">
+                  <textarea class="form-control" id="descricao-aberta-workshop" rows="6" style="resize: none;"></textarea>
+                </div>
+                <div class="col-1">
+                </div>
+              </div>
+
+              <br><br>
+
+            </div>
+
+            <div class="col-2">
+            </div>
+
+          </div>
 
 
         <!-- CONTROLE DE MENU -->

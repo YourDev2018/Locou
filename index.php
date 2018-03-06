@@ -52,7 +52,7 @@
 
         <!-- Sub menu -->
 
-        <div class="row imagem-escura py-3">
+        <!-- <div class="row imagem-escura py-3">
           <div class="col-2">
           </div>
           <div class="col-8 texto-secao1-categoria">
@@ -62,7 +62,7 @@
           </div>
           <div class="col-2">
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -76,7 +76,7 @@
         <div class="col-2">
         </div>
         <div class="col-8 titulo-secao2">
-          Texto de Categorias
+          Quisque aliquam, libero ac aliquam luctus, nisl risus feugiat lorem.
         </div>
         <div class="col-2">
         </div>
@@ -100,7 +100,7 @@
               <p class="text-center" style="margin-top: 65%;background-color: rgba(0,0,0,0.50);">
                 <a class="h2" style="color: white;">Consultórios</a>
                 <br><br>
-                <a class="h4" style="color: white;">Texto de descrição da categoria </a>
+                <a class="h4" style="color: white;">Suspendisse quis odio eu sapien vulputate cursus. Cras accumsan metus.</a>
               </p>
             </div>
             &nbsp;
@@ -109,7 +109,7 @@
               <p class="text-center" style="margin-top: 65%;background-color: rgba(0,0,0,0.50);">
                 <a class="h2" style="color: white;">Consultórios</a>
                 <br><br>
-                <a class="h4" style="color: white;">Texto de descrição da categoria </a>
+                <a class="h4" style="color: white;">Proin ut tincidunt est. Vivamus rutrum convallis varius. </a>
               </p>
             </div>
             &nbsp;
@@ -118,7 +118,7 @@
               <p class="text-center" style="margin-top: 65%;background-color: rgba(0,0,0,0.50);">
                 <a class="h2" style="color: white;">Consultórios</a>
                 <br><br>
-                <a class="h4" style="color: white;">Texto de descrição da categoria </a>
+                <a class="h4" style="color: white;">Sed arcu turpis, accumsan quis tincidunt in, consectetur et libero.</a>
               </p>
             </div>
 
@@ -221,12 +221,52 @@
     <!-- Seção 4 - Sobre + Vídeo -->
 
     <div class="container-fluid justify-content-center text-center secao4">
-      <div class="row">
+
+      <div class="row" style="background-color: black; color: white;">
         <div class="col-2">
         </div>
         <div class="col-8">
-          <h1>Titulo como funciona</h1>
           <br><br>
+          <h1>Como Funciona</h1>
+          <br><br><br>
+
+          <div class="row" style="margin-bottom: 2.5vw">
+
+            <div class="col-3">
+              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <br><br>
+              <h6>Procure o espaço perfeito e agende sua locação</h6>
+            </div>
+
+            <div class="col-3">
+              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <br><br>
+              <h6>Procure o espaço perfeito e agende sua locação</h6>
+            </div>
+
+            <div class="col-3">
+              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <br><br>
+              <h6>Procure o espaço perfeito e agende sua locação</h6>
+            </div>
+
+            <div class="col-3">
+              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <br><br>
+              <h6>Procure o espaço perfeito e agende sua locação</h6>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+              <button type="button" class="btn btn-outline-warning"><h2>Procure espaços</h2></button>
+              <br><br>
+            </div>
+
+          </div>
+
         </div>
         <div class="col-2">
         </div>
@@ -237,9 +277,10 @@
         </div>
         <div class="col-8">
           <br><br>
-          <h2>
-            Texto de como funciona <br><br>Texto de como funciona Texto de como funciona Texto de como funciona <span style="color: white">Locou</span> Texto de como funciona Texto de como funciona Texto de como funciona.
-          </h2>
+          <h2>Texto de como funciona <br><br></h2>
+          <h4>
+            Texto de como funciona Texto de como funciona Texto de como funciona <span style="color: white">Locou</span> Texto de como funciona Texto de como funciona Texto de como funciona.
+          </h4>
           <br>
           <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/58VlTRFUKg4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
           <br><br>
@@ -256,29 +297,63 @@
 
       <!-- Linha 1 -->
 
-      <div class="row">
+      <!-- <div class="row" style="margin-bottom: 7vw">
         <div class="col-2">
         </div>
         <div class="col-8">
           <br>
-          <span class="h3" style="color: white">Texto do footer</span>
-          <br><br>
+          <span class="h3" style="color: white">Texto do footer Texto do footer Texto do footer Texto do footer</span>
         </div>
         <div class="col-2">
         </div>
-      </div>
+      </div> -->
 
       <!-- Linha 2 -->
 
-      <div class="row">
-        <div class="col-2">
+      <div class="row" style="color: white;">
+        <div class="col-3">
         </div>
-        <div class="col-8">
-          <br>
-          <span class="h3" style="color: white">Texto do footer</span>
-          <br><br>
+        <div class="col-6">
+          <div class="row" style="margin-top: 3.5vw; margin-bottom: 1.5vw">
+
+            <div class="col" style="border-right: 2px solid grey;">
+              <img class="logo-navbar" src="img/locou_logo.png">
+              <br><br>
+              <h6>Locou texto Locou Texto</h6>
+            </div>
+
+            <div class="col" style="border-right: 2px solid grey;">
+              <h6>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+              </h6>
+            </div>
+
+            <div class="col">
+              <h6 style="color: grey">
+                Redes sociais
+                <br><br>
+              </h6>
+              <h6>
+                <a href="#" style="color: white">Rede social</a>
+                &nbsp;
+                <a href="#" style="color: white">Rede social</a>
+                &nbsp;
+                <a href="#" style="color: white">Rede social</a>
+                <br><br>
+              </h6>
+            </div>
+
+          </div>
         </div>
-        <div class="col-2">
+        <div class="col-3">
         </div>
       </div>
 
