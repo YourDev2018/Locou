@@ -158,7 +158,7 @@
 
           <div class="row">
 
-            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'http://www.yourdev.com.br/clientes/locou/anuncio.php','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -171,7 +171,7 @@
               </p>
             </div>
             &nbsp;
-            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'http://www.yourdev.com.br/clientes/locou/anuncio.php','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -184,7 +184,7 @@
               </p>
             </div>
             &nbsp;
-            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'http://www.yourdev.com.br/clientes/locou/anuncio.php','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
@@ -197,7 +197,7 @@
               </p>
             </div>
             &nbsp;
-            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'https://www.google.com.br','_blank' ); return false;">
+            <div class="col" style="background: url('img/item.png');background-repeat: no-repeat;background-size: cover;background-position: center;" onClick="window.open( 'http://www.yourdev.com.br/clientes/locou/anuncio.php','_blank' ); return false;">
               <p style="margin-top: 65%; background-color: #FFCE00; margin-right: 40%; padding-left: 5%">
               <a class="h6" style="color: #AD8A00">A partir de:</a>
               <br>
