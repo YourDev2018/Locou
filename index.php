@@ -19,14 +19,14 @@
     <!-- Navbar -->
 
     <nav class="navbar fixed-top imagem-escura">
-      <a class="navbar-brand ml-5">
+      <a class="navbar-brand ml-5" href="http://www.yourdev.com.br/clientes/locou/" >
         <img class="logo-navbar" src="img/locou_logo.png">
       </a>
       <span class="navbar-brand menu-navbar mr-5">
         <a class="mx-3">Sobre</a>
         <a class="mx-3">Cadastre-se</a>
         <a class="mx-3">Login</a>
-        <button type="button" class="btn btn-outline-warning">Anuncie Grátis</button>
+        <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
       </span>
     </nav>
 
