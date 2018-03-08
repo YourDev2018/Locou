@@ -123,33 +123,8 @@
               </div>
               <div class="col-5 text-left">
                 <select class="form-control" id="uf">
-                  <option>AC</option>
-                  <option>AL</option>
-                  <option>AM</option>
-                  <option>AP</option>
-                  <option>BA</option>
-                  <option>CE</option>
-                  <option>DF</option>
-                  <option>ES</option>
-                  <option>GO</option>
-                  <option>MA</option>
-                  <option>MG</option>
-                  <option>MS</option>
-                  <option>MT</option>
-                  <option>PA</option>
-                  <option>PB</option>
-                  <option>PE</option>
-                  <option>PI</option>
-                  <option>PR</option>
                   <option>RJ</option>
-                  <option>RN</option>
-                  <option>RO</option>
-                  <option>RR</option>
-                  <option>RS</option>
-                  <option>SC</option>
-                  <option>SE</option>
-                  <option>SP</option>
-                  <option>TO</option>
+                  <option>Outro estado</option>
                 </select>
               </div>
             </div>
@@ -162,7 +137,10 @@
                 Cidade:
               </div>
               <div class="col-5 text-left">
-                <input type="text" class="form-control" id="cidade" placeholder="Ex: Rio de Janeiro">
+                <select class="form-control" id="cidade">
+                  <option>Rio de Janeiro</option>
+                  <option>Outra cidade</option>
+                </select>
               </div>
             </div>
 
