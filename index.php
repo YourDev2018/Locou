@@ -14,19 +14,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
-  <script>
-  $(document).ready(function(){
-$(window).on("scroll",function(){
-  var wn = $(window).scrollTop();
-  if(wn > 600){
-    $(".navbar").css("background","rgba(0,0,0,0.5)");
-  }
-  else{
-    $(".navbar").css("background","rgba(0,0,0,1)");
-  }
-});
-});
-  </script>
   <style>
   .thumbnail
   {
@@ -36,7 +23,7 @@ $(window).on("scroll",function(){
   .caption
   {
       position: absolute;
-      top: 70%;
+      top: 100%;
       left: 0;
       width: 100%;
   }
@@ -233,55 +220,79 @@ $(window).on("scroll",function(){
             <!-- CARDS LINHA 1 -->
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <a href="#">
-                <div class="thumbnail text-center">
-                  <img src="img/categoria.jpg" class="img-fluid">
-                  <div class="caption">
-                    <p style="color:white; background-color: rgba(0,0,0,0.6)">
-                      <span class="h4">Consultórios</span>
-                    </p>
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
+              <br>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <a href="#">
-                <div class="thumbnail text-center">
-                  <img src="img/categoria.jpg" class="img-fluid">
-                  <div class="caption">
-                    <p style="color:white; background-color: rgba(0,0,0,0.6)">
-                      <span class="h4">Consultórios</span>
-                    </p>
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
+              <br>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <a href="#">
-                <div class="thumbnail text-center">
-                  <img src="img/categoria.jpg" class="img-fluid">
-                  <div class="caption">
-                    <p style="color:white; background-color: rgba(0,0,0,0.6)">
-                      <span class="h4">Consultórios</span>
-                    </p>
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
+              <br>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <a href="#">
-                <div class="thumbnail text-center">
-                  <img src="img/categoria.jpg" class="img-fluid">
-                  <div class="caption">
-                    <p style="color:white; background-color: rgba(0,0,0,0.6)">
-                      <span class="h4">Consultórios</span>
-                    </p>
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
+              <br>
             </div>
 
           </div>
@@ -301,7 +312,7 @@ $(window).on("scroll",function(){
         <div class="col-2">
         </div>
         <div class="col-lg-8 col-md-10 col-sm-12 titulo-secao3 text-center">
-          Acabaram de alugar
+          Anúncios mais vistos recentemente
         </div>
         <div class="col-2">
         </div>
@@ -314,64 +325,83 @@ $(window).on("scroll",function(){
 
           <!-- Linha de cards -->
 
-          <div class="row justify-content-center">
+          <div class="row text-center justify-content-center">
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
-              <a href="#" style="text-decoration: none">
-                <div class="img-responsive img-center" style="background: url('img/categoria.jpg'); height: 20vh; width: 25vh; background-repeat: no-repeat; background-size: cover; background-position: center;">
-                </div>
-                <p style="background-color: black; max-width: 25vh; padding: 0.5vw; color: white">
-                  <span class="h5" >Coworking Odontológico</span>
-                  <br>
-                  <span class="h6" style="color: #FFCE00">Barra da Tijuca | Rio de Janeiro</span>
-                </p>
-              </a>
-
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
             </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
-              <a href="#" style="text-decoration: none">
-                <div class="img-responsive img-center" style="background: url('img/item.png'); height: 20vh; width: 25vh; background-repeat: no-repeat; background-size: cover; background-position: center;">
-                </div>
-                <p style="background-color: black; max-width: 25vh; padding: 0.5vw; color: white">
-                  <span class="h5" >Coworking Odontológico</span>
-                  <br>
-                  <span class="h6" style="color: #FFCE00">Barra da Tijuca | Rio de Janeiro</span>
-                </p>
-              </a>
-
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
             </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
-              <a href="#" style="text-decoration: none">
-                <div class="img-responsive img-center" style="background: url('img/usuario.jpg'); height: 20vh; width: 25vh; background-repeat: no-repeat; background-size: cover; background-position: center;">
-                </div>
-                <p style="background-color: black; max-width: 25vh; padding: 0.5vw; color: white">
-                  <span class="h5" >Coworking Odontológico</span>
-                  <br>
-                  <span class="h6" style="color: #FFCE00">Barra da Tijuca | Rio de Janeiro</span>
-                </p>
-              </a>
-
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
             </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
-              <a href="#" style="text-decoration: none">
-                <div class="img-responsive img-center" style="background: url('img/item.png'); height: 20vh; width: 25vh; background-repeat: no-repeat; background-size: cover; background-position: center;">
-                </div>
-                <p style="background-color: black; max-width: 25vh; padding: 0.5vw; color: white">
-                  <span class="h5" >Coworking Odontológico</span>
-                  <br>
-                  <span class="h6" style="color: #FFCE00">Barra da Tijuca | Rio de Janeiro</span>
-                </p>
-              </a>
-
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h3 style="color:white">Consultório Ipanema</h3>
+                      <h5 style="color:grey">Ipanema | RJ</h5>
+                      <br>
+                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
             </div>
-
 
           </div>
 
@@ -487,15 +517,16 @@ $(window).on("scroll",function(){
         <div class="col-3">
         </div>
         <div class="col-lg-6 col-md-10 col-sm-12">
-          <div class="row" style="margin-top: 3.5vw; margin-bottom: 1.5vw">
+          <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
 
-            <div class="col" style="border-right: 2px solid grey;">
+            <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
               <img class="logo-navbar" src="img/locou_logo.png">
               <br><br>
               <h6>Locou texto Locou Texto</h6>
+              <br><br>
             </div>
 
-            <div class="col" style="border-right: 2px solid grey;">
+            <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
               <h6>
                 <a href="#" style="color: white">Link para página</a>
                 <br><br>
@@ -507,9 +538,10 @@ $(window).on("scroll",function(){
                 <br><br>
                 <a href="#" style="color: white">Link para página</a>
               </h6>
+              <br><br>
             </div>
 
-            <div class="col">
+            <div class="col-lg-4 col-md-4 col-sm-6">
               <h6 style="color: grey">
                 Redes sociais
                 <br><br>
