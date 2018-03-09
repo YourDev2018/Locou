@@ -111,7 +111,7 @@
                   <option value="ensaio">Sala para Ensaio e aulas</option>
                   <option value="cozinha">Cozinha</option>
                   <option value="fotografico">Estúdio fotográfico</option>
-                  <option value="produtora">Produtora</option>
+                  <option value="fotografico">Produtora</option>
                   <option value="costura">Ateliês de costura</option>
                   <option value="academia">Estúdio ou Academia (RPG,Pilates e etc)</option>
                   <option value="artes">Ateliê de artes</option>
