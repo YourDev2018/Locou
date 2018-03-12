@@ -14,18 +14,69 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
+  <style>
+  @media (min-width: 768.1px)
+  {
+    .desktop
+    {
+      display: block;
+    }
+    .mobile
+    {
+      display: none;
+    }
+  }
+  @media (max-width: 768.0px)
+  {
+    .desktop
+    {
+      display: none;
+    }
+    .mobile
+    {
+      display: block;
+    }
+  }
+  </style>
   <body style="font-family: 'Muli'">
 
-    <nav class="navbar" style="background-color: black">
+    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
       <a class="navbar-brand ml-5" href="http://www.yourdev.com.br/clientes/locou/" >
-        <img class="logo-navbar" src="img/locou_logo.png">
+        <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
-      <span class="navbar-brand menu-navbar mr-5">
+      <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
         <a class="mx-3">Sobre</a>
-        <a class="mx-3">Cadastre-se</a>
-        <a class="mx-3">Login</a>
+        <a class="mx-3">Como Funciona</a>
+        <a class="mx-3">Procurar Espaços</a>
         <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
+        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
       </span>
+    </nav>
+
+    <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+      <div class="row justify-content-center text-center">
+        <div class="col-12">
+          <a href="http://www.yourdev.com.br/clientes/locou/" >
+            <img class="logo-navbar" src="img/locou_logo.png">
+            <br><br>
+          </a>
+        </div>
+        <div class="col-12">
+          <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+          <br><br>
+        </div>
+        <div class="col-12">
+          <span class="menu-navbar" style="color:white">
+            <a class="mx-2">Sobre</a>
+            <a class="mx-2">Como Funciona</a>
+            <a class="mx-2">Procurar Espaços</a>
+            <br><br>
+            <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
+            <br><br>
+          </span>
+        </div>
+      </div>
     </nav>
 
     <!-- Seção Titulo -->
@@ -35,7 +86,7 @@
         <div class="col-lg-4 col-md-2 col-sm-1">
         </div>
         <div class="col-lg-4 col-md-8 col-sm-10 titulo-anuncie">
-          <br>
+          <br><br><br><br>
           <h1>
             <b>Texto de anuncio</b>
             <br>
@@ -53,8 +104,56 @@
     <!-- Seção cadastro -->
 
     <div class="container-fluid justify-content-center text-center">
-      <form>
-        <br><br>
+
+      <br><br>
+
+      <form action="http://joaos-imac.home/Locou/anunciar.php" method="get">
+
+        <div class="row" id="fora_do_rj" style="display: none">
+
+            <div class="col-lg-2 col-md-1 col-sm-0">
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+
+              <!-- TITULO PARTE 2 -->
+
+              <div class="row" style="background-color: black">
+                <div class="col-12" style="color: #FFC107">
+                  <br>
+                  <span class="btn btn-outline-warning"><h2>Ops...</h2></span>
+                  <br><br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <br>
+                  <h3>Ainda não estamos trabalhando fora da cidade do Rio de Janeiro</h3>
+                  <br><br>
+                  <h5>Qual é a cidade que você gostaria de cadastrar?</h5>
+                  <input type="text" class="form-control" id="form-fora-cidade" placeholder="Ex: São Paulo">
+                  <br><br>
+                  <h5>Qual é o estado que você gostaria de cadastrar?</h5>
+                  <input type="text" class="form-control" id="form-fora-estado" placeholder="Ex: SP">
+                  <br><br>
+                  <h5>Quer adicionar outra informação? Utilize esse campo abaixo</h5>
+                  <textarea class="form-control" id="form-fora-descricao" rows="4" style="resize: none;"></textarea>
+                  <br>
+                  <button type="submit" class="btn btn-warning" id="formulario-envio"><h4>Enviar formulário</h4></button>
+                  <br><br>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-0">
+            </div>
+
+        </div>
+
+      </form>
+
+      <form action="http://joaos-imac.home/Locou/anunciar.php" method="get">
+
 
         <!-- CADASTRO PARTE 1-->
 
@@ -83,7 +182,7 @@
                 Título:
               </div>
               <div class="col-5 text-left">
-                <input type="text" class="form-control" id="titulo" placeholder="Ex: Consultório Odontológico">
+                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ex: Consultório Odontológico">
                 <br>
               </div>
             </div>
@@ -130,7 +229,7 @@
               <div class="col-5 text-left">
                 <select class="form-control" id="uf">
                   <option>RJ</option>
-                  <option>Outro estado</option>
+                  <option value="outro">Outro estado</option>
                 </select>
               </div>
             </div>
@@ -145,7 +244,7 @@
               <div class="col-5 text-left">
                 <select class="form-control" id="cidade">
                   <option>Rio de Janeiro</option>
-                  <option>Outra cidade</option>
+                  <option value="outro">Outra cidade</option>
                 </select>
               </div>
             </div>
@@ -266,29 +365,30 @@
               </div>
               <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="casaOUpredio" id="casaOUpredio-casa" value="casa">
+                <input class="form-check-input" onclick="casaOUpredio_f()" type="radio" name="casaOUpredio" id="casaOUpredio-casa" value="casa">
                 <label class="form-check-label" for="casaOUpredio-casa">Casa</label>
               </div>
               <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="casaOUpredio" id="casaOUpredio-predio" value="predio">
+                <input class="form-check-input" onclick="casaOUpredio_f()" type="radio" name="casaOUpredio" id="casaOUpredio-predio" value="predio">
                 <label class="form-check-label" for="casaOUpredio-predio">Prédio</label>
               </div>
             </div>
-
             <!-- Prédio tem elevador? -->
-            <br>
 
-            <div class="row">
+            <div class="row" id="elevador-geral" style="display: none">
               <div class="col-4 text-right">
+                <br>
                 O Prédio tem elevador?
               </div>
               <div class="col-4 text-left">
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="elevador" id="elevador-sim" value="sim">
                 <label class="form-check-label" for="elevador-sim">Sim</label>
               </div>
               <div class="col-4 text-left">
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="elevador" id="elevador-nao" value="nao">
                 <label class="form-check-label" for="elevador-nao">Não</label>
@@ -304,29 +404,31 @@
               </div>
               <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="estacionamento" id="estacionamento-sim" value="sim">
+                <input class="form-check-input" onclick="estacionamento_f()" type="radio" name="estacionamento" id="estacionamento-sim" value="sim">
                 <label class="form-check-label" for="estacionamento-sim">Sim</label>
               </div>
               <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="estacionamento" id="estacionamento-nao" value="nao">
+                <input class="form-check-input" onclick="estacionamento_f()" type="radio" name="estacionamento" id="estacionamento-nao" value="nao">
                 <label class="form-check-label" for="estacionamento-nao">Não</label>
               </div>
             </div>
 
             <!-- Proprio ou rotativo -->
-            <br>
 
-            <div class="row">
+            <div class="row" id="estacionamento-geral" style="display: none">
               <div class="col-4 text-right">
+                <br>
                 O estacionamento é próprio ou rotativo?
               </div>
               <div class="col-4 text-left">
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="proprioOUrotativo" id="proprioOUrotativo-proprio" value="proprio">
                 <label class="form-check-label" for="proprioOUrotativo-proprio">Próprio</label>
               </div>
               <div class="col-4 text-left">
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="proprioOUrotativo" id="proprioOUrotativo-rotativo" value="rotativo">
                 <label class="form-check-label" for="proprioOUrotativo-rotativo">Rotativo</label>
@@ -546,29 +648,32 @@
               </div>
               <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="climatizado-consultorio" id="climatizado-consultorio-sim" value="sim">
+                <input class="form-check-input" onclick="climatizado_consultorio()" type="radio" name="climatizado-consultorio" id="climatizado-consultorio-sim" value="sim">
                 <label class="form-check-label" for="climatizado-consultorio-sim">Sim</label>
               </div>
               <div class="col-4 text-left">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="climatizado-consultorio" id="climatizado-consultorio-nao" value="nao">
+                <input class="form-check-input" onclick="climatizado_consultorio()" type="radio" name="climatizado-consultorio" id="climatizado-consultorio-nao" value="nao">
                 <label class="form-check-label" for="climatizado-consultorio-nao">Não</label>
               </div>
             </div>
 
-            <!-- Split ou paerde -->
-            <br>
 
-            <div class="row">
+            <!-- Split ou paerde -->
+
+            <div class="row" id="climatizado-consultorio-modelo" style="display: none">
               <div class="col-4 text-right">
+                <br>
                 O ar-condicionado é modelo Split ou de parede?
               </div>
               <div class="col-4 text-left">
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="modelo-ar-consultorio" id="modelo-ar-consultorio-sim" value="split">
                 <label class="form-check-label" for="modelo-ar-consultorio-sim">Ar-condicioando SPLIT</label>
               </div>
               <div class="col-4 text-left">
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="modelo-ar-consultorio" id="modelo-ar-consultorio-nao" value="parede">
                 <label class="form-check-label" for="modelo-ar-consultorio-nao">Ar-condicioando de PAREDE</label>
@@ -869,29 +974,33 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="climatizado-workshop" id="climatizado-workshop-sim" value="sim">
+                  <input class="form-check-input" onclick="climatizado_workshop()" type="radio" name="climatizado-workshop" id="climatizado-workshop-sim" value="sim">
                   <label class="form-check-label" for="climatizado-workshop-sim">Sim</label>
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="climatizado-workshop" id="climatizado-workshop-nao" value="nao">
+                  <input class="form-check-input" onclick="climatizado_workshop()" type="radio" name="climatizado-workshop" id="climatizado-workshop-nao" value="nao">
                   <label class="form-check-label" for="climatizado-workshop-nao">Não</label>
                 </div>
               </div>
 
-              <!-- Split ou paerde -->
-              <br>
 
-              <div class="row">
+
+              <!-- Split ou paerde -->
+
+              <div class="row" id="climatizado-workshop-modelo" style="display: none">
                 <div class="col-4 text-right">
+                  <br>
                   O ar-condicionado é modelo Split ou de parede?
                 </div>
                 <div class="col-4 text-left">
+                  <br>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="modelo-ar-workshop" id="modelo-ar-workshop-sim" value="split">
                   <label class="form-check-label" for="modelo-ar-workshop-sim">Ar-condicioando SPLIT</label>
                 </div>
                 <div class="col-4 text-left">
+                  <br>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="modelo-ar-workshop" id="modelo-ar-workshop-nao" value="parede">
                   <label class="form-check-label" for="modelo-ar-workshop-nao">Ar-condicioando de PAREDE</label>
@@ -1290,29 +1399,98 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="climatizado-cozinha" id="climatizado-cozinha-sim" value="sim">
+                  <input class="form-check-input" onclick="climatizado_cozinha()" type="radio" name="climatizado-cozinha" id="climatizado-cozinha-sim" value="sim">
                   <label class="form-check-label" for="climatizado-consultorio-sim">Sim</label>
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="climatizado-cozinha" id="climatizado-cozinha-nao" value="nao">
+                  <input class="form-check-input" onclick="climatizado_cozinha()" type="radio" name="climatizado-cozinha" id="climatizado-cozinha-nao" value="nao">
                   <label class="form-check-label" for="climatizado-cozinha-nao">Não</label>
                 </div>
               </div>
 
-              <!-- Split ou paerde -->
-              <br>
+              <script>
+                function casaOUpredio_f()
+                {
+                  var radio = document.getElementById('casaOUpredio-predio').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('elevador-geral').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('elevador-geral').style.display = "none";
+                  }
+                }
 
-              <div class="row">
+                function estacionamento_f()
+                {
+                  var radio = document.getElementById('estacionamento-sim').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('estacionamento-geral').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('estacionamento-geral').style.display = "none";
+                  }
+                }
+
+                function climatizado_consultorio()
+                {
+                  var radio = document.getElementById('climatizado-consultorio-sim').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('climatizado-consultorio-modelo').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('climatizado-consultorio-modelo').style.display = "none";
+                  }
+                }
+
+                function climatizado_workshop()
+                {
+                  var radio = document.getElementById('climatizado-workshop-sim').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('climatizado-workshop-modelo').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('climatizado-workshop-modelo').style.display = "none";
+                  }
+                }
+                function climatizado_cozinha()
+                {
+                  var radio = document.getElementById('climatizado-cozinha-sim').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('climatizado-cozinha-modelo').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('climatizado-cozinha-modelo').style.display = "none";
+                  }
+                }
+              </script>
+
+              <!-- Split ou paerde -->
+
+
+              <div class="row" id="climatizado-cozinha-modelo" style="display: none">
                 <div class="col-4 text-right">
+                  <br>
                   O ar-condicionado é modelo Split ou de parede?
                 </div>
                 <div class="col-4 text-left">
+                  <br>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="modelo-ar-cozinha" id="modelo-ar-cozinha-sim" value="split">
                   <label class="form-check-label" for="modelo-ar-cozinha-sim">Ar-condicionado SPLIT</label>
                 </div>
                 <div class="col-4 text-left">
+                  <br>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="modelo-ar-cozinha" id="modelo-ar-cozinha-nao" value="parede">
                   <label class="form-check-label" for="modelo-ar-cozinha-nao">Ar-condicionado de PAREDE</label>
@@ -2587,39 +2765,6 @@
             </div>
 
           </div>
-
-          <div class="row" id="fora_do_rj" style="display: none">
-            <div class="col-lg-2 col-md-1 col-sm-0">
-            </div>
-            <div class="col-lg-8 col-md-10 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
-
-              <!-- TITULO PARTE 2 -->
-
-              <div class="row" style="background-color: black">
-                <div class="col-12" style="color: #FFC107">
-                  <br>
-                  <span class="btn btn-outline-warning"><h2>Ops...</h2></span>
-                  <br><br>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-12">
-                  <br>
-                  <h3>Ainda não estamos trabalhando fora da cidade do Rio de Janeiro</h3>
-                  <br>
-                </div>
-              </div>
-
-            </div>
-            <div class="col-lg-2 col-md-1 col-sm-0">
-            </div>
-
-          </div>
-
-
-
-
         <!-- CONTROLE DE MENU -->
         <br>
 
@@ -2634,7 +2779,7 @@
           <div class="col-4 text-left" style="color: #FFC107">
             <br>
             <span class="btn btn-outline-warning" onclick="proximo();" id="proximo"><h4>Próximo</h4></span>
-            <span class="btn btn-outline-warning" style="display: none" id="anunciar"><h4>Anunciar</h4></span>
+            <button type="submit" class="btn btn-outline-warning" style="display: none" id="anunciar"><h4>Anunciar</h4></button>
             <br><br>
           </div>
           <div class="col-2">
@@ -2642,6 +2787,9 @@
         </div>
 
       </form>
+
+
+
     </div>
 
 
@@ -2650,6 +2798,7 @@
     var pagina = 0;
     function proximo()
     {
+
       pagina = pagina + 1;
       var dbasicos = document.getElementById("dados_basicos");
       var dgeral = document.getElementById("descricao_geral");
@@ -2668,8 +2817,14 @@
       var Bvoltar = document.getElementById("voltar");
 
       var SelectCategoria = document.getElementById("categoria");
-
       var categoria = SelectCategoria.options[SelectCategoria.selectedIndex].value
+
+      var SelectCidade = document.getElementById("cidade");
+      var SelectEstado = document.getElementById("uf");
+      var cidade = SelectCidade.options[SelectCidade.selectedIndex].value
+      var estado = SelectEstado.options[SelectEstado.selectedIndex].value
+
+
 
       if(pagina>3)
       {
@@ -2685,16 +2840,32 @@
         document.getElementById('voltar').style.display = 'none';
       }
 
+      if(pagina == 0)
+      {
+        document.getElementById('proximo').style.display = '';
+      }
+
       if(pagina == 1)
       {
-        document.getElementById('dados_basicos').style.display = 'none';
-        document.getElementById('descricao_geral').style.display = '';
+        if(cidade == "outro" || estado == "outro")
+        {
+          document.getElementById('dados_basicos').style.display = 'none';
+          document.getElementById('fora_do_rj').style.display = '';
+          document.getElementById('proximo').style.display = 'none';
+        }
+        else
+        {
+          document.getElementById('dados_basicos').style.display = 'none';
+          document.getElementById('descricao_geral').style.display = '';
+        }
       }
 
       if(pagina == 2)
       {
         document.getElementById('descricao_geral').style.display = 'none';
         document.getElementById('periodo').style.display = '';
+        document.getElementById('proximo').style.display = '';
+        document.getElementById('anunciar').style.display = 'none';
 
         consultorio.style.display = "none";
         workshop.style.display = "none";
@@ -2710,8 +2881,9 @@
 
       if(pagina == 3)
       {
-
+        document.getElementById('proximo').style.display = 'none';
         document.getElementById('periodo').style.display = "none";
+        document.getElementById('anunciar').style.display = '';
 
         if(categoria == "consultorio")
         {
@@ -2792,6 +2964,8 @@
       {
         document.getElementById('dados_basicos').style.display = '';
         document.getElementById('descricao_geral').style.display = 'none';
+        document.getElementById('fora_do_rj').style.display = 'none';
+        document.getElementById('proximo').style.display = '';
       }
 
       if(pagina == 1)
@@ -2804,6 +2978,8 @@
       {
         document.getElementById('descricao_geral').style.display = 'none';
         document.getElementById('periodo').style.display = '';
+        document.getElementById('proximo').style.display = '';
+        document.getElementById('anunciar').style.display = 'none';
 
         consultorio.style.display = "none";
         workshop.style.display = "none";
@@ -2819,8 +2995,9 @@
 
       if(pagina == 3)
       {
-
+        document.getElementById('proximo').style.display = 'none';
         document.getElementById('periodo').style.display = "none";
+        document.getElementById('anunciar').style.display = '';
 
         if(categoria == "consultorio")
         {
