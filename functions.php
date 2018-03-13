@@ -5,7 +5,9 @@ $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
 $document = "27.908.205/0001-26";
 $hash = "Wutnb2fAfZq8vxFn6atkSspribFd+ExNqlbvt9brnYPhljJaVNh8FAaMBz0IcajyFkvmnYHwF8XXBBkUN9pF+Ftvq5DqaJyrm3UhCVNXrQ7th2nGQ1tSffKYAR9DjlXQmOSKCwEWQb6YRSszkiys13hmOiz+LtdKvP7tjIps8Nppb3qCAaIQgnYOxG9ZO+4OGZK1oDtmB+b0oTrigGdsE3Rfi/FO40gjfVFQdxPkKd7nEXb1vko974IVIasi9gLr0JhaFlcPicfarPhzy9KJkZKTQ88b3/RzJ6ua+329yisN3V+5N9IreF3D06tP3c75TcHsqYBpaE/4gzSgHvyQmg==";
 $orderID = "ORD-VQ592BQX9R2P";
-
+$orderID2 = "ORD-NX7ED4CM40FN";
+$appId = "APP-VM93MVN9XDFA";
+$custumerID = "CUS-OSFJ6B8TJO6Q";
 /*$numero = $_POST['number'];
 $cvc = $_POST['cvc'];
 $mes = $_POST['month'];
@@ -14,13 +16,110 @@ $ano = $_POST['year'];
 
 //verificarContaExists($document,$token_Acess);
 // pagamentoCartaoCredito("https://sandbox.moip.com.br/v2/orders/".$orderID."/payments",$hash,$token_Acess);
-//criarPedido("https://sandbox.moip.com.br/v2/orders",$token_Acess);
+//criarPedidoComClientMOIP("https://sandbox.moip.com.br/v2/orders",$token_Acess);
 //criarContaMoipTransparente("https://sandbox.moip.com.br/v2/accounts",$token_Acess);
 //dadosConta();
- consultarSaldo("https://sandbox.moip.com.br/v2/balances","50625d8d09b2484a8111fcc4d2a643c9_v2");
+ //consultarSaldo("https://sandbox.moip.com.br/v2/balances","50625d8d09b2484a8111fcc4d2a643c9_v2");
 //criarContaBancaria("https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623/bankaccounts","50625d8d09b2484a8111fcc4d2a643c9_v2");
 //criarTranferenciaMoipTransparentToBank("https://sandbox.moip.com.br/v2/transfers","50625d8d09b2484a8111fcc4d2a643c9_v2");
 //criarTranferenciaMoipToMoip("https://sandbox.moip.com.br/v2/transfers",$token_Acess);
+//criarPreferenciaNotificacaoApp("https://sandbox.moip.com.br/v2/preferences/".$appId."/notifications",$token_Acess);
+// criarPagamentoBoleto("https://sandbox.moip.com.br/v2/orders/".$orderID2."/payments",$token_Acess);
+// criarCliente("https://sandbox.moip.com.br/v2/customers",$token_Acess);
+   
+
+
+
+
+function criarCliente($url,$token_Acess){
+    $curl = curl_init();
+
+    curl_setopt_array($curl,array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS =>
+
+        '
+         {
+            "ownId": "17084104739",
+            "fullname": "Guilherme Morgado Fonseca",
+            "email": "morg.guilherme@gmail.com",
+            "birthDate": "1998-12-04",
+            "taxDocument": {
+              "type": "CPF",
+              "number": "17084104739"
+            },
+            "phone": {
+              "countryCode": "55",
+              "areaCode": "21",
+              "number": "21472261"
+            },
+            "shippingAddress": {
+              "city": "Rio de Janeiro",
+              "district": "Cascadura",
+              "street": "Rua Blumenau",
+              "streetNumber": "241",
+              "zipCode": "21311120",
+              "state": "RJ",
+              "country": "BRA"
+            }
+          }
+
+        '
+        ,
+        CURLOPT_HTTPHEADER => array(
+            "Authorization: OAuth ".$token_Acess,
+            "Content-Type: application/json"
+          )
+        ));
+
+        $resposta = curl_exec($curl);
+        print $resposta;
+}
+
+function criarPagamentoBoleto($url,$token_Acess){
+    $curl = curl_init();
+
+    curl_setopt_array($curl,array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS =>
+        '
+        {  
+            "statementDescriptor":"Locou.co",
+            "fundingInstrument":{  
+               "method":"BOLETO",
+               "boleto":{  
+                  "expirationDate":"2020-06-20",
+                  "instructionLines":{  
+                     "first":"Atenção,",
+                     "second":"fique atento à data de vencimento do boleto.",
+                     "third":"Pague em qualquer casa lotérica."
+                  },
+                  "logoUri":"http://www.yourdev.com.br/clientes/locou/img/locou_logo.png"
+               }
+            }
+         }
+        ',
+        CURLOPT_HTTPHEADER => array(
+            "Authorization: OAuth ".$token_Acess,
+            "Content-Type: application/json"
+          )
+        ));
+
+        $resposta = curl_exec($curl);
+        print $resposta;
+}
 
 function criarContaMoipTransparente($url,$token_Acess){
     $curl = curl_init();
@@ -84,8 +183,41 @@ function criarContaMoipTransparente($url,$token_Acess){
 
 }
 
+function criarPreferenciaNotificacaoApp($url,$token_Acess){
+    $curl = curl_init();
 
-function criarPedido($url,$token_Acess){
+    curl_setopt_array($curl,array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS =>
+        '
+          {
+            "events": [
+              "ORDER.*",
+              "PAYMENT.*"
+            ],
+            "target": "http://requestb.in/1dhjesw1",
+            "media": "WEBHOOK"
+          } 
+        ',
+        CURLOPT_HTTPHEADER => array(
+            "Authorization: OAuth ".$token_Acess,
+            "Content-Type: application/json"
+          )
+        ));
+        
+        $resposta = curl_exec($curl);
+        print $resposta;
+
+
+}
+
+function criarPedidoComClientMOIP($url,$token_Acess){
     $curl = curl_init();
 
     curl_setopt_array($curl,array(
@@ -99,7 +231,7 @@ function criarPedido($url,$token_Acess){
         CURLOPT_POSTFIELDS =>
         '
         {
-            "ownId": "Locou_Pedido_01",
+            "ownId": "Locou_Pedido_05",
             "amount": {
               "currency": "BRL",
               "subtotals": {
@@ -116,28 +248,7 @@ function criarPedido($url,$token_Acess){
               }
             ],
             "customer": {
-              "ownId": "Locou_Cliente_01",
-              "fullname": "Guilherme Morgado",
-              "email": "morg.guilherme@gmail.com",
-              "birthDate": "1998-12-04",
-              "taxDocument": {
-                "type": "CPF",
-                "number": "17084104739"
-              },
-              "phone": {
-                "countryCode": "55",
-                "areaCode": "21",
-                "number": "21472261"
-              },
-              "shippingAddress": {
-                "street": "Rua blumenau",
-                "streetNumber": 241,
-                "district": "Cascadura",
-                "city": "Rio de Janeiro",
-                "state": "RJ",
-                "country": "BRA",
-                "zipCode": "21311120    "
-              }
+              "id": "CUS-OSFJ6B8TJO6Q"              
             },
             "receivers": [
               {
@@ -152,31 +263,6 @@ function criarPedido($url,$token_Acess){
               }
             ]
           }',
-        
-        
-        
-        /*
-        
-        '
-        {  
-            "ownId":"Locou_Pedido_1",
-            "amount":{  
-               "currency":"BRL",
-               "subtotals":{  
-                  "shipping":1000
-               }
-            },
-            "items":[  
-               {  
-                  "product":"Aluguel de um espaço",
-                  "category":"HOTEL_AND_HOSPITALITY",
-                  "quantity":1,
-                  "detail":"Consultório dentário",
-                  "price":10000
-               }
-            ],
-         }',
-         */
 
         CURLOPT_HTTPHEADER => array(
             "Authorization: OAuth ".$token_Acess,
@@ -238,15 +324,6 @@ function pagamentoCartaoCredito($url,$hash,$token_Acess){
                      }
                   }
                }
-            },
-            "device":{  
-               "ip":"127.0.0.1",
-               "geolocation":{  
-                  "latitude":-33.867,
-                  "longitude":151.206
-               },
-               "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36",
-               "fingerprint":"QAZXswedCVGrtgBNHyujMKIkolpQAZXswedCVGrtgBNHyujMKIkolpQAZXswedCVGrtgBNHyujMKIkolpQAZXswedCVGrtgBNHyujMKIkolp"
             }
          }
         ',
@@ -433,94 +510,57 @@ function criarTranferenciaMoipTransparentToBank($url,$token_Acess){
 }
 
 
+// não funcional 
 
+function addCartaoCredito($url,$token_Acess){
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl,array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS =>
+
+        '
+        {
+            "method": "CREDIT_CARD",
+            "creditCard": {
+              "expirationMonth": "05",
+              "expirationYear": "22",
+              "number": "4012001037141112",
+              "cvc": "123",
+              "holder": {
+                "fullname": "Gabriel Morgado Fonseca",
+                "birthdate": "1994-01-20",
+                "taxDocument": {
+                  "type": "CPF",
+                  "number": "22288866644"
+                },
+                "phone": {
+                  "countryCode": "55",
+                  "areaCode": "21",
+                  "number": "21472261"
+                }
+              }
+        }
+        
+
+        '
+        ,
+        CURLOPT_HTTPHEADER => array(
+            "Authorization: OAuth ".$token_Acess,
+            "Content-Type: application/json"
+          )
+        ));
+
+        $resposta = curl_exec($curl);
+        print $resposta;
+
+}
 
 ?>
-<!--
-
-<<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    
-</body>
-
-    
-    <script type="text/javascript">
- $(document).ready(function() {
-     var number = "<?php echo $numero; ?>";
-     var cvc = "<?php echo $cvc; ?>";
-     var mes = "<?php echo $mes; ?>";
-     var ano = "<?php echo $ano; ?>";
-     var chave = "<?php echo $chave; ?>";
-     $("#encrypt").click(function() {
-       var cc = new Moip.CreditCard({
-         number,
-         cvc,
-         mes,
-         year,
-         chave
-       });
-       console.log(cc);
-       if( cc.isValid()){
-         $("#encrypted_value").val(cc.hash());
-         $("#card_type").val(cc.cardType());
-         var varHash = cc.hash();
-         $.ajax({
-             data: 'orderid=' + varHash,
-             url: 'http://localhost/yourdev/Locou/functions.php',
-             method: 'POST',
-             sucess: function(msg) {
-                 alert(msg);
-             }
-         }); 
-       }
-       else{
-         $("#encrypted_value").val('');
-         $("#card_type").val('');
-         alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
-       }
-     });
- });
-
--->
-
-
-<!--
-
-    "{\n \"installmentCount\": 1,\n 
-             \"statementDescriptor\": \"Locou.co\",\n
-             \"fundingInstrument\":
-              {\n  
-                  \"method\": \"CREDIT_CARD\",\n 
-                  \"creditCard\": 
-                    {\n      
-                        \"hash\": \".$hash\",\n  
-                        \"holder\": 
-                            {\n  
-                                \"fullname\": \"Guilherme Morgado \",\n  
-                                \"birthdate\": \"1998-12-04\",\n  
-                                \"taxDocument\": 
-                                    {\n    
-                                        \"type\": \"CPF\",\n   
-                                        \"number\": \"12345678910\"\n   
-                                    },\n   
-                                \"phone\": 
-                                    {\n   
-                                        \"countryCode\": \"55\",\n  
-                                        \"areaCode\": \"21\",\n      
-                                        \"number\": \"21472261\"\n    
-                                    }\n   
-                            }\n   
-                    }\n  
-                }\n
-            }",
-        -->
-</html>
