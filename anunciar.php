@@ -8,11 +8,13 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css"  href="css/locou.css">
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <title>Locou | Anuncie Grátis</title>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/bootstrap-datepicker.min.js" ></script>
   </head>
   <style>
   @media (min-width: 768.1px)
@@ -504,16 +506,40 @@
 
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
+                <input onclick="calendario_unico_f();calendario_reincidente_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
+                <br><br>
+                <div id="calendario-unico" style="display: none" class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                  <input type="text" class="form-control">
+                  <div class="input-group-addon">
+                    <h3><i class=" ml-2 far fa-calendar-alt"></i></h3>
+                  </div>
+                </div>
+                <br><br>
               </div>
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
+                <input onclick="calendario_unico_f();calendario_reincidente_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
+                <br><br>
               </div>
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
+                <input onclick="calendario_unico_f();calendario_reincidente_f()" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
+                <br><br>
               </div>
+              <div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
+                <h6 style="color: white">Selecione os dias da semana:</h6>
+                <br><br>
+                <div class="row pb-4">
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Seg</h6></span></div>
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Ter</h6></span></div>
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Qua</h6></span></div>
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Qui</h6></span></div>
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Sex</h6></span></div>
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Sab</h6></span></div>
+                  <div class="col"><span class="btn btn-outline-warning"><h6>Dom</h6></span></div>
+                </div>
+              </div>
+
             </div>
 
 
@@ -1433,6 +1459,33 @@
                   else
                   {
                     document.getElementById('estacionamento-geral').style.display = "none";
+                  }
+                }
+
+                function calendario_unico_f()
+                {
+                  var radio = document.getElementById('tempoAluguel-unico').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('calendario-unico').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('calendario-unico').style.display = "none";
+                  }
+                }
+
+                function calendario_reincidente_f()
+                {
+                  var radio = document.getElementById('tempoAluguel-reincidente').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('calendario-reincidente').style.display = "";
+                    document.getElementById('calendario-reincidente').style.backgroundColor = "black";
+                  }
+                  else
+                  {
+                    document.getElementById('calendario-reincidente').style.display = "none";
                   }
                 }
 
