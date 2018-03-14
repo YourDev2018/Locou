@@ -227,10 +227,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -246,10 +248,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -265,10 +269,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -284,10 +290,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -335,10 +343,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -354,10 +364,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -373,10 +385,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -392,10 +406,12 @@
                       <img src="img/categoria.jpg" class="img-fluid">
                     </div>
                     <div class="col-12">
-                      <h3 style="color:white">Consultório Ipanema</h3>
-                      <h5 style="color:grey">Ipanema | RJ</h5>
-                      <br>
-                      <h6 style="color: white"> A partir de <br> <span class="h1" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h5 style="color:white">
+                        Consultório Ipanema
+                        <br>
+                        <span style="color:grey">Ipanema | RJ</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -449,6 +465,16 @@
 
           </div>
 
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10 col-sm-12">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/58VlTRFUKg4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
           <div class="row">
 
             <div class="col">
@@ -478,14 +504,7 @@
               Essa é a sua nova oportunidade de fazer essa conexão com a facilidade, a diversidade e a segurança que só uma plataforma especializada pode dar.
             </b>
           </h5>
-          <br>
-          <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-10 col-sm-12">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/58VlTRFUKg4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
+
           <br><br>
         </div>
         <div class="col-lg-2 col-md-1 col-sm-0">

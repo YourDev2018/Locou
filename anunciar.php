@@ -7,14 +7,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,900" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"  href="css/locou.css">
     <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
+    <link rel="stylesheet" type="text/css"  href="css/locou.css">
+    <link rel="stylesheet" type="text/css"  href="css/clockpicker.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <title>Locou | Anuncie Grátis</title>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/bootstrap-datepicker.min.js" ></script>
+    <script src="js/clockpicker.js" ></script>
   </head>
   <style>
   @media (min-width: 768.1px)
@@ -509,7 +511,7 @@
                 <input onclick="calendario_unico_f();calendario_reincidente_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
                 <br><br>
                 <div id="calendario-unico" style="display: none" class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                  <input type="text" class="form-control">
+                  <input readonly type="text" class="form-control">
                   <div class="input-group-addon">
                     <h3><i class=" ml-2 far fa-calendar-alt"></i></h3>
                   </div>
@@ -539,6 +541,13 @@
                   <div class="col"><span class="btn btn-outline-warning"><h6>Dom</h6></span></div>
                 </div>
               </div>
+              <input readonly size="9" id="input-a" value="" data-default="12:00">
+              <script type="text/javascript">
+              var input = $('#input-a');
+                input.clockpicker({
+                  autoclose: true
+                });
+              </script>
 
             </div>
 
