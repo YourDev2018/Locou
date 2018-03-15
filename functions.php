@@ -1,13 +1,17 @@
 
 <?php
 
-$token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
-$document = "27.908.205/0001-26";
-$hash = "Wutnb2fAfZq8vxFn6atkSspribFd+ExNqlbvt9brnYPhljJaVNh8FAaMBz0IcajyFkvmnYHwF8XXBBkUN9pF+Ftvq5DqaJyrm3UhCVNXrQ7th2nGQ1tSffKYAR9DjlXQmOSKCwEWQb6YRSszkiys13hmOiz+LtdKvP7tjIps8Nppb3qCAaIQgnYOxG9ZO+4OGZK1oDtmB+b0oTrigGdsE3Rfi/FO40gjfVFQdxPkKd7nEXb1vko974IVIasi9gLr0JhaFlcPicfarPhzy9KJkZKTQ88b3/RzJ6ua+329yisN3V+5N9IreF3D06tP3c75TcHsqYBpaE/4gzSgHvyQmg==";
-$orderID = "ORD-VQ592BQX9R2P";
-$orderID2 = "ORD-NX7ED4CM40FN";
-$appId = "APP-VM93MVN9XDFA";
-$custumerID = "CUS-OSFJ6B8TJO6Q";
+
+class Functions {
+   
+    
+ private $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
+ private  $document = "27.908.205/0001-26";
+ private  $hash = "Wutnb2fAfZq8vxFn6atkSspribFd+ExNqlbvt9brnYPhljJaVNh8FAaMBz0IcajyFkvmnYHwF8XXBBkUN9pF+Ftvq5DqaJyrm3UhCVNXrQ7th2nGQ1tSffKYAR9DjlXQmOSKCwEWQb6YRSszkiys13hmOiz+LtdKvP7tjIps8Nppb3qCAaIQgnYOxG9ZO+4OGZK1oDtmB+b0oTrigGdsE3Rfi/FO40gjfVFQdxPkKd7nEXb1vko974IVIasi9gLr0JhaFlcPicfarPhzy9KJkZKTQ88b3/RzJ6ua+329yisN3V+5N9IreF3D06tP3c75TcHsqYBpaE/4gzSgHvyQmg==";
+ private  $orderID = "ORD-VQ592BQX9R2P";
+ private  $orderID2 = "ORD-NX7ED4CM40FN";
+ private  $appId = "APP-VM93MVN9XDFA";
+ private  $custumerID = "CUS-OSFJ6B8TJO6Q";
 /*$numero = $_POST['number'];
 $cvc = $_POST['cvc'];
 $mes = $_POST['month'];
@@ -19,7 +23,7 @@ $ano = $_POST['year'];
 //criarPedidoComClientMOIP("https://sandbox.moip.com.br/v2/orders",$token_Acess);
 //criarContaMoipTransparente("https://sandbox.moip.com.br/v2/accounts",$token_Acess);
 //dadosConta();
- //consultarSaldo("https://sandbox.moip.com.br/v2/balances","50625d8d09b2484a8111fcc4d2a643c9_v2");
+
 //criarContaBancaria("https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623/bankaccounts","50625d8d09b2484a8111fcc4d2a643c9_v2");
 //criarTranferenciaMoipTransparentToBank("https://sandbox.moip.com.br/v2/transfers","50625d8d09b2484a8111fcc4d2a643c9_v2");
 //criarTranferenciaMoipToMoip("https://sandbox.moip.com.br/v2/transfers",$token_Acess);
@@ -28,7 +32,9 @@ $ano = $_POST['year'];
 // criarCliente("https://sandbox.moip.com.br/v2/customers",$token_Acess);
    
 
-
+function Functions(){
+    $this->consultarSaldo("https://sandbox.moip.com.br/v2/balances","50625d8d09b2484a8111fcc4d2a643c9_v2");
+}
 
 
 function criarCliente($url,$token_Acess){
@@ -410,7 +416,7 @@ function cURLGet($url,$token_Acess){
     print $resposta;
 }
 
-function consultarSaldo($url,$token_Acess){
+public function consultarSaldo($url,$token_Acess){
 
     $curl = curl_init();
 
@@ -563,4 +569,5 @@ function addCartaoCredito($url,$token_Acess){
 
 }
 
+}
 ?>
