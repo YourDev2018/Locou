@@ -193,8 +193,30 @@
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning"><h2>Dados Básicos</h2></span>
+                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><h2>Dados Básicos</h2></span>
                 <br><br>
+              </div>
+            </div>
+            <script>
+              function dados_basicos_tip(botao)
+              {
+                if(botao.classList.contains("active") == true)
+                {
+                    botao.classList.remove("active");
+                    document.getElementById("dados-basicos-tip-div").style.display = 'none';
+                }
+                else
+                {
+                  botao.classList.add("active");
+                  document.getElementById("dados-basicos-tip-div").style.display = '';
+                }
+              }
+            </script>
+            <div id="dados-basicos-tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+              <div class="col-8" style="color: black">
+                <br>
+                  <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+                <br>
               </div>
             </div>
 
@@ -530,17 +552,17 @@
 
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input onclick="calendario_unico_f();calendario_reincidente_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
+                <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
                 <br><br>
               </div>
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input onclick="calendario_unico_f();calendario_reincidente_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
+                <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
                 <br><br>
               </div>
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input onclick="calendario_unico_f();calendario_reincidente_f()" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
+                <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
                 <br><br>
               </div>
 
@@ -580,6 +602,41 @@
                             <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
                             <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="calendario-direto" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
+                <div class="row">
+                  <div class="col-12">
+                    <h6 style="color: white">Selecione a quantidade de meses que o espaço será disponibilizado</h6>
+                    <br>
+                    <div class="row text-center justify-content-center">
+                      <div class="col-6">
+                        <select class="form-control" style="text-align: center" id="tempo-mes-direto">
+                          <option value="1">1 Mês</option>
+                          <option value="2">2 Meses</option>
+                          <option value="3">3 Meses</option>
+                          <option value="4">4 Meses</option>
+                        </select>
+                      </div>
+                    </div>
+                    <br>
+                    <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
+                    <br>
+                    <div class="row text-center justify-content-center">
+                      <div class="col-6">
+                        <select class="form-control" style="text-align: center" id="tempo-periodo-direto">
+                          <option value="inteiro">Período inteiro</option>
+                          <option value="meio">Meio Período</option>
+                        </select>
+                        <br>
+                        <select class="form-control" style="text-align: center" id="tempo-periodo-meio-tempo-direto">
+                          <option value="manha">Manhã</option>
+                          <option value="tarde">Tarde</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -1858,6 +1915,19 @@
                   else
                   {
                     document.getElementById('calendario-unico').style.display = "none";
+                  }
+                }
+
+                function calendario_direto_f()
+                {
+                  var radio = document.getElementById('tempoAluguel-direto').checked;
+                  if(radio == true)
+                  {
+                    document.getElementById('calendario-direto').style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById('calendario-direto').style.display = "none";
                   }
                 }
 
