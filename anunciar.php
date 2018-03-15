@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
     <link rel="stylesheet" type="text/css"  href="css/locou.css">
-    <link rel="stylesheet" type="text/css"  href="css/clockpicker.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <title>Locou | Anuncie Grátis</title>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
@@ -17,6 +16,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/bootstrap-datepicker.min.js" ></script>
     <script src="js/clockpicker.js" ></script>
+    <script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10)
+    {
+      dd = '0'+dd
+    }
+    if(mm<10)
+    {
+      mm = '0'+mm
+    }
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+    $.fn.datepicker.defaults.autoclose = true;
+    $.fn.datepicker.defaults.maxViewMode = 0;
+    var hoje = dd+"/"+mm+"/"+yyyy;
+    $.fn.datepicker.defaults.startDate = hoje;
+    $.fn.datepicker.defaults.todayHighlight = true;
+    </script>
   </head>
   <style>
   @media (min-width: 768.1px)
@@ -44,7 +66,7 @@
   </style>
   <body style="font-family: 'Muli'">
 
-    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
+    <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
       <a class="navbar-brand ml-5" href="http://www.yourdev.com.br/clientes/locou/" >
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
@@ -90,7 +112,7 @@
         <div class="col-lg-4 col-md-2 col-sm-1">
         </div>
         <div class="col-lg-4 col-md-8 col-sm-10 titulo-anuncie">
-          <br><br><br><br>
+          <br>
           <h1>
             <b>Texto de anuncio</b>
             <br>
@@ -510,13 +532,6 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input onclick="calendario_unico_f();calendario_reincidente_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
                 <br><br>
-                <div id="calendario-unico" style="display: none" class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                  <input readonly type="text" class="form-control">
-                  <div class="input-group-addon">
-                    <h3><i class=" ml-2 far fa-calendar-alt"></i></h3>
-                  </div>
-                </div>
-                <br><br>
               </div>
               <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -528,27 +543,389 @@
                 <input onclick="calendario_unico_f();calendario_reincidente_f()" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
                 <br><br>
               </div>
-              <div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
-                <h6 style="color: white">Selecione os dias da semana:</h6>
-                <br><br>
-                <div class="row pb-4">
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Seg</h6></span></div>
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Ter</h6></span></div>
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Qua</h6></span></div>
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Qui</h6></span></div>
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Sex</h6></span></div>
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Sab</h6></span></div>
-                  <div class="col"><span class="btn btn-outline-warning"><h6>Dom</h6></span></div>
+
+              <div id="calendario-unico" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
+                <div class="row">
+                  <div class="col-12">
+                    <h6 style="color: white">Selecione a data e o horário em que será disponibilizado</h6>
+                    <br>
+                      <input type="text" id="datepicker">
+                    <br>
+                    <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
+                    <br>
+                    <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="hora-inicio-unico" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="hora-fim-unico" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <input readonly size="9" id="input-a" value="" data-default="12:00">
-              <script type="text/javascript">
-              var input = $('#input-a');
-                input.clockpicker({
-                  autoclose: true
-                });
-              </script>
 
+              <div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
+
+                <script>
+
+                  function segunda_botao_periodo()
+                  {
+                    if(document.getElementById("segunda-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("segunda-caixa-periodo").style.display = '';
+                      document.getElementById("segunda-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("segunda-caixa-periodo").style.display = 'none';
+                      document.getElementById("segunda-bot-periodo").classList.remove("active");
+                    }
+                  }
+                  function terca_botao_periodo()
+                  {
+                    if(document.getElementById("terca-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("terca-caixa-periodo").style.display = '';
+                      document.getElementById("terca-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("terca-caixa-periodo").style.display = 'none';
+                      document.getElementById("terca-bot-periodo").classList.remove("active");
+                    }
+                  }
+                  function quarta_botao_periodo()
+                  {
+                    if(document.getElementById("quarta-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("quarta-caixa-periodo").style.display = '';
+                      document.getElementById("quarta-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("quarta-caixa-periodo").style.display = 'none';
+                      document.getElementById("quarta-bot-periodo").classList.remove("active");
+                    }
+                  }
+                  function quinta_botao_periodo()
+                  {
+                    if(document.getElementById("quinta-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("quinta-caixa-periodo").style.display = '';
+                      document.getElementById("quinta-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("quinta-caixa-periodo").style.display = 'none';
+                      document.getElementById("quinta-bot-periodo").classList.remove("active");
+                    }
+                  }
+                  function sexta_botao_periodo()
+                  {
+                    if(document.getElementById("sexta-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("sexta-caixa-periodo").style.display = '';
+                      document.getElementById("sexta-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("sexta-caixa-periodo").style.display = 'none';
+                      document.getElementById("sexta-bot-periodo").classList.remove("active");
+                    }
+                  }
+                  function sabado_botao_periodo()
+                  {
+                    if(document.getElementById("sabado-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("sabado-caixa-periodo").style.display = '';
+                      document.getElementById("sabado-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("sabado-caixa-periodo").style.display = 'none';
+                      document.getElementById("sabado-bot-periodo").classList.remove("active");
+                    }
+                  }
+                  function domingo_botao_periodo()
+                  {
+                    if(document.getElementById("domingo-bot-periodo").classList.contains("active") == false)
+                    {
+                      document.getElementById("domingo-caixa-periodo").style.display = '';
+                      document.getElementById("domingo-bot-periodo").classList.add("active");
+                    }
+                    else
+                    {
+                      document.getElementById("domingo-caixa-periodo").style.display = 'none';
+                      document.getElementById("domingo-bot-periodo").classList.remove("active");
+                    }
+                  }
+                </script>
+
+                <h6 style="color: white">Selecione os dias da semana e os horários em que serão disponibilizados para alugar:</h6>
+                <br>
+
+                <div class="row pb-4 justify-content-center p-3">
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br>
+
+                    <div id="segunda-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="seg-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="seg-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="terca_botao_periodo()" id="terca-bot-periodo" class="btn btn-outline-warning"><h6>Ter</h6></span>
+                    <br><br>
+
+                    <div id="terca-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="ter-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="ter-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quarta_botao_periodo()" id="quarta-bot-periodo" class="btn btn-outline-warning"><h6>Qua</h6></span>
+                    <br><br>
+
+                    <div id="quarta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="qua-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="qua-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quinta_botao_periodo()" id="quinta-bot-periodo" class="btn btn-outline-warning"><h6>Qui</h6></span>
+                    <br><br>
+
+                    <div id="quinta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="qui-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="qui-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sexta_botao_periodo()" id="sexta-bot-periodo" class="btn btn-outline-warning"><h6>Sex</h6></span>
+                    <br><br>
+
+                    <div id="sexta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="sex-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="sex-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sabado_botao_periodo()" id="sabado-bot-periodo" class="btn btn-outline-warning"><h6>Sab</h6></span>
+                    <br><br>
+
+                    <div id="sabado-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="sab-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="sab-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="domingo_botao_periodo()" id="domingo-bot-periodo" class="btn btn-outline-warning"><h6>Dom</h6></span>
+                    <br><br>
+
+                    <div id="domingo-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de início do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="dom-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row px-2">
+                        <div class="col-12" style="color: #FFCE00">
+                          <h6>Hora de fim do Aluguel</h6>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="dom-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <br>
+                        </div>
+                        <div class="col-12">
+                            <span class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
 
 
