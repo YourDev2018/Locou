@@ -40,6 +40,9 @@
     </script>
   </head>
   <style>
+    #map {
+       height: 100%;
+     }
     @media (min-width: 768.1px)
     {
       .desktop
@@ -164,165 +167,181 @@
               <!-- Seção caracteristicas e infos - Barra da direita -->
 
 
-                <div class="col-6 text-center justify-content-center" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+                <div class="col-6 text-center justify-content-center">
 
                   <!-- Preço -->
 
-                  <div class="row">
-                    <div class="col-12" style="background-color: black; margin-bottom: 2vw">
-                      <p style="margin-top: 1vw; margin-bottom: 1vw">
-                        <h4 style="color:white">A partir de:</h4>
-                        <h1 style="color:#FFCE00;font-weight: 600">R$ 000,00</h1>
-                        <h6 style="color:grey">E as taxas já estão inclusas!</h6>
-                      </p>
-                    </div>
-
-                  </div>
-
-                  <div class="row" style="margin-bottom: 2vw">
-
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                      <select class="form-control" name="tipo-periodo" id="tipo-periodo">
-                        <option value="unico">Aluguel Unico</option>
-                        <option value="reincidente">Aluguel Reincidente</option>
-                        <option value="direto">Aluguel direto</option>
-                      </select>
-                    </div>
-                    <div class="col-2"></div>
-
-                  </div>
-
-                  <div class="row" style="display: none" id="aluguel-unico-div">
-
-                    <div class="col-2"></div>
-                    <div class="col-8"><h4>Data para alugar:</h4></div>
-                    <div class="col-2"></div>
-
-                    <br><br>
-
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                      <h5><input type="text" size="10" readonly name="data-unico-pick" id="datepicker"><i style="padding: 5px; background-color: black; color: #FFC107" class="far fa-calendar-alt"></i></h5>
-                    </div>
-                    <div class="col-2"></div>
-
-
-                  </div>
-
-                  <div class="row text-center justify-content-center" style="text-align: center; display: none" id="aluguel-reincidente-div">
-
-
-                    <div class="col-8"><h4>Data para alugar:</h4></div>
-
-                    <br><br>
-
+                  <div class="col-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
                     <div class="row">
-                      <div class="col-4">
-                        <div class="row">
-                          <div class="col-2"></div>
-                          <div class="col-3">
-                            Seg
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-seg" type="checkbox" id="aluguel-reincidente-seg" value="seg">
-                            </div>
-                          </div>
-                          <div class="col-3">
-                            Ter
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-ter" type="checkbox" id="aluguel-reincidente-ter" value="ter">
-                            </div>
-                          </div>
-                          <div class="col-3">
-                            Qua
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-qua" type="checkbox" id="aluguel-reincidente-qua" value="qua">
-                            </div>
-                          </div>
-                          <div class="col-1"></div>
-                        </div>
+                      <div class="col-12" style="background-color: black; margin-bottom: 2vw">
+                        <p style="margin-top: 1vw; margin-bottom: 1vw">
+                          <h4 style="color:white">A partir de:</h4>
+                          <h1 style="color:#FFCE00;font-weight: 600">R$ 000,00</h1>
+                          <h6 style="color:grey">E as taxas já estão inclusas!</h6>
+                          <br>
+                          <h5 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: white; font-size: 15px"> <br> (2 avaliações)</span></h5>
+                        </p>
                       </div>
-                      <div class="col-4">
-                        <div class="row">
-                          <div class="col-2"></div>
-                          <div class="col-3">
-                            Qui
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-qui" type="checkbox" id="aluguel-reincidente-qui" value="qui">
-                            </div>
-                          </div>
-                          <div class="col-3">
-                            Sex
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-sex" type="checkbox" id="aluguel-reincidente-sex" value="sex">
-                            </div>
-                          </div>
-                          <div class="col-3">
-                            Sab
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-sab" type="checkbox" id="aluguel-reincidente-sab" value="sab">
-                            </div>
-                          </div>
-                          <div class="col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="row">
-                          <div class="col-2"></div>
-                          <div class="col-9">
-                            Dom
-                            <br>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" name="aluguel-reincidente-dom" type="checkbox" id="aluguel-reincidente-dom" value="dom">
-                            </div>
-                          </div>
-                          <div class="col-1"></div>
-                        </div>
-                      </div>
+
                     </div>
 
-                    <div class="row">
-                      <div class="col-12">
-                        <br><br>
-                        <h4>Por quantas semanas será o alguel?</h4>
-                      </div>
-                    </div>
+                    <div class="row" style="margin-bottom: 2vw">
 
-                    <div class="row" style="margin-top: 2vw; margin-botton: 2vw">
-
-                      <div class="col-3">
-                      </div>
-                      <div class="col-6">
-
-                        <select class="form-control" name="tempo-reincidente-periodo" id="tempo-reincidente-periodo">
-                          <option value="1">1 Semana</option>
-                          <option value="2">2 Semanas</option>
-                          <option value="3">3 Semanas</option>
-                          <option value="4">4 Semanas</option>
-                          <option value="5">5 Semanas</option>
-                          <option value="6">6 Semanas</option>
+                      <div class="col-2"></div>
+                      <div class="col-8">
+                        <select onclick="periodo_div()" class="form-control" name="tipo-periodo" id="tipo-periodo">
+                          <option value="unico">Aluguel Unico</option>
+                          <option value="reincidente">Aluguel Reincidente</option>
+                          <option value="direto">Aluguel direto</option>
                         </select>
-
-                        <br>
-
                       </div>
-                      <div class="col-3">
+                      <div class="col-2"></div>
+
+                      <script>
+                        function periodo_div() {
+                          var periodo = document.getElementById("tipo-periodo");
+                          var periodoT = periodo.options[periodo.selectedIndex].value;
+                          if(periodoT == "unico")
+                          {
+                            document.getElementById("aluguel-unico-div").style.display = "";
+                            document.getElementById("aluguel-reincidente-div").style.display = "none";
+                          }
+                          if(periodoT == "reincidente")
+                          {
+                            document.getElementById("aluguel-unico-div").style.display = "none";
+                            document.getElementById("aluguel-reincidente-div").style.display = "";
+                          }
+                        }
+                      </script>
+
+                    </div>
+
+                    <div class="row" style="display:" id="aluguel-unico-div">
+
+                      <div class="col-2"></div>
+                      <div class="col-8"><h4>Data para alugar:</h4></div>
+                      <div class="col-2"></div>
+
+                      <br><br>
+
+                      <div class="col-2"></div>
+                      <div class="col-8">
+                        <h5><input type="text" size="10" readonly name="data-unico-pick" id="datepicker"><i style="padding: 5px; background-color: black; color: #FFC107" class="far fa-calendar-alt"></i></h5>
+                      </div>
+                      <div class="col-2"></div>
+
+
+                    </div>
+
+                    <div class="row text-center justify-content-center" style="text-align: center; display: none" id="aluguel-reincidente-div">
+
+
+                      <div class="col-8"><h4>Data para alugar:</h4></div>
+
+                      <br><br>
+
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-3">
+                              Seg
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-seg" type="checkbox" id="aluguel-reincidente-seg" value="seg">
+                              </div>
+                            </div>
+                            <div class="col-3">
+                              Ter
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-ter" type="checkbox" id="aluguel-reincidente-ter" value="ter">
+                              </div>
+                            </div>
+                            <div class="col-3">
+                              Qua
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-qua" type="checkbox" id="aluguel-reincidente-qua" value="qua">
+                              </div>
+                            </div>
+                            <div class="col-1"></div>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-3">
+                              Qui
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-qui" type="checkbox" id="aluguel-reincidente-qui" value="qui">
+                              </div>
+                            </div>
+                            <div class="col-3">
+                              Sex
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-sex" type="checkbox" id="aluguel-reincidente-sex" value="sex">
+                              </div>
+                            </div>
+                            <div class="col-3">
+                              Sab
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-sab" type="checkbox" id="aluguel-reincidente-sab" value="sab">
+                              </div>
+                            </div>
+                            <div class="col-1"></div>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-9">
+                              Dom
+                              <br>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="aluguel-reincidente-dom" type="checkbox" id="aluguel-reincidente-dom" value="dom">
+                              </div>
+                            </div>
+                            <div class="col-1"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-12">
+                          <br><br>
+                          <h4>Por quantas semanas será o alguel?</h4>
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-top: 2vw; margin-botton: 2vw">
+
+                        <div class="px-5 col-12">
+                          <select class="form-control" name="tempo-reincidente-periodo" id="tempo-reincidente-periodo">
+                            <option value="1">1 Semana</option>
+                            <option value="2">2 Semanas</option>
+                            <option value="3">3 Semanas</option>
+                            <option value="4">4 Semanas</option>
+                            <option value="5">5 Semanas</option>
+                            <option value="6">6 Semanas</option>
+                          </select>
+
+                          <br>
+
+                        </div>
+
                       </div>
 
                     </div>
 
-                  </div>
-
-                  <br><br>
-                  <div class="row p-3" style="background-color: black">
-                    <div class="col-12">
-                      <h5 style="color: white">Preço total: <span style="color: #FFCE00" class="h4" id="preco-total">R$ 000,00</span> </h5>
+                    <br><br>
+                    <div class="row p-3" style="background-color: black">
+                      <div class="col-12">
+                        <h5 style="color: white">Preço total: <span style="color: #FFCE00" class="h4" id="preco-total">R$ 000,00</span> </h5>
+                      </div>
                     </div>
                   </div>
 
@@ -445,6 +464,44 @@
                   <div class="col-10">
                     <h2> <b>Descrição:</b> </h2>
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui ligula. Ut turpis urna, scelerisque sed accumsan eu, congue at dui. Nam justo lorem, aliquet ut efficitur et, tempus ut eros. Suspendisse maximus ante a iaculis blandit. Ut semper non quam nec volutpat. Sed ultricies mauris a mattis hendrerit. Phasellus a nisi a quam luctus facilisis. Sed facilisis interdum nulla, a sollicitudin mauris fermentum a. Aliquam erat volutpat. Donec ac lectus ac purus tincidunt facilisis sed sit amet lectus. Curabitur fermentum orci in condimentum varius. Integer vulputate eros ac nulla maximus, vel euismod ex aliquet. Vestibulum ornare vulputate leo, at commodo justo.</span>
+                  </div>
+                </div>
+                <div class="row text-center justify-content-center pt-5">
+                  <div class="col-6 text-center justify-content-center">
+                    <h2> <b>Localização:</b> </h2>
+                    <div id="map" style="height: 30vw;"></div>
+                    <script>
+                    var citymap = {
+                      marcador: {
+                        center: {lat: -22.849616, lng: -43.313692},
+                        multi: 10
+                      }
+                    };
+
+                    function initMap() {
+                      // Create the map.
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 15,
+                        center: {lat: -22.849616, lng: -43.313692},
+                        mapTypeId: 'hybrid'
+                      });
+                      for (var city in citymap) {
+                        // Add the circle for this city to the map.
+                        var cityCircle = new google.maps.Circle({
+                          strokeColor: '#FF0000',
+                          strokeOpacity: 0.8,
+                          strokeWeight: 2,
+                          fillColor: '#FF0000',
+                          fillOpacity: 0.35,
+                          map: map,
+                          center: citymap[city].center,
+                          radius: Math.sqrt(citymap[city].multi) * 100
+                        });
+                      }
+                    }
+                    </script>
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDifilitpDCI1EoqZXV8QMnv3F27ui_7S8&callback=initMap">
+                    </script>
                   </div>
                 </div>
               </div>
