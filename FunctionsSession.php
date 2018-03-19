@@ -10,7 +10,7 @@ class FunctionsSession{
     function vereficarLogin(){
         
         if(( isset($_SESSION['logado']) )){
-            return true;
+            return $_SESSION['id'];
         }else{
             return false;
         }
@@ -23,6 +23,7 @@ class FunctionsSession{
 
     function logout(){
         $_SESSION['logado'] = null;
+        $_SESSION['id'] = null;
     }
 
 }
