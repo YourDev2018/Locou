@@ -39,18 +39,65 @@
     $.fn.datepicker.defaults.todayHighlight = true;
     </script>
   </head>
+  <style>
+    @media (min-width: 768.1px)
+    {
+      .desktop
+      {
+        display: block;
+      }
+      .mobile
+      {
+        display: none;
+      }
+    }
+    @media (max-width: 768.0px)
+    {
+      .desktop
+      {
+        display: none;
+      }
+      .mobile
+      {
+        display: block;
+      }
+    }
+    </style>
   <body style="font-family: 'Muli'">
 
-    <nav class="navbar" style="background-color: black">
-      <a class="navbar-brand ml-5" href="http://www.yourdev.com.br/clientes/locou/" >
-        <img class="logo-navbar" src="img/locou_logo.png">
+    <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
+      <a class="navbar-brand" href="http://www.yourdev.com.br/clientes/locou/" >
+        <img class="pl-5 logo-navbar" src="img/locou_logo.png">
       </a>
-      <span class="navbar-brand menu-navbar mr-5">
+      <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
         <a class="mx-3">Sobre</a>
-        <a class="mx-3">Cadastre-se</a>
-        <a class="mx-3">Login</a>
+        <a class="mx-3">Como Funciona</a>
+        <a class="mx-3">Procurar Espaços</a>
         <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
       </span>
+    </nav>
+
+    <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+      <div class="row justify-content-center text-center">
+        <div class="col-12">
+          <a href="http://www.yourdev.com.br/clientes/locou/" >
+            <img class="logo-navbar" src="img/locou_logo.png">
+            <br><br>
+          </a>
+        </div>
+        <div class="col-12">
+          <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+          <br><br>
+        </div>
+        <div class="col-12">
+          <span class="menu-navbar" style="color:white">
+            <a class="mx-2">Sobre</a>
+            <a class="mx-2">Como Funciona</a>
+            <a class="mx-2">Procurar Espaços</a>
+            <br><br>
+          </span>
+        </div>
+      </div>
     </nav>
 
     <!-- Titulo Anuncio -->
@@ -75,11 +122,8 @@
 
       <div class="container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
         <br>
-        <div class="row">
-
-          <div class="col-1">
-          </div>
-          <div class="col-10">
+        <div class="row mx-5">
+          <div class="col-12">
 
             <div class="row">
 
@@ -288,8 +332,50 @@
 
             <div class="row">
 
-              <div class="col-6">
-
+              <div class="col-6 mt-4">
+                <div class="row text-left">
+                  <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+                    <h4>Consultório</h4>
+                    <h2>Nome do anúncio</h2>
+                    <h6 style="color: grey">Rio de Janeiro | RJ</h6>
+                  </div>
+                  <div class="col-12 pt-4">
+                    <div class="row text-center justify-content-center">
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300; font-size:90%">Metragem<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-home"></i> <br>120M²</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300 ;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-street-view"></i> <br> Recepção</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90% ">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-female"></i> <i class="fas fa-male"></i> <br> Banheiro comum</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-female"></i> | <i class="fas fa-male"></i> <br> Banheiro privativo</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">O local<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-building"></i> <br> É um Prédio</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-sort"></i> <br> Elevador no prédio</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-sync"></i> <br> Estacionamento rotativo</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Fácil acesso<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-bus"></i> <br> Ao transporte público</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="col-6 mt-4" style="border-style: solid; border-width: 2px; border-color: #FFC107; background-color: black">
@@ -327,7 +413,7 @@
                   <div class="row p-4">
                     <div class="col-1"></div>
                     <div class="col-10">
-                      <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato com o anunciante</button>
+                      <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato <br class="mobile"> com o anunciante</button>
                     </div>
                     <div class="col-1"></div>
                   </div>
@@ -338,8 +424,32 @@
 
             </div>
 
-          </div>
-          <div class="col-1">
+            <div class="row text-center justify-content-center">
+              <div class="col-12">
+                <div class="row text-center justify-content-center">
+                  <div class="col-12 py-3" style="border-bottom: solid; border-width: 2px; border-color: #FFC107; border-top: solid; border-width: 2px; border-color: #FFC107;">
+                    <h4 style="color: grey; font-weight: 600">Comodidades do local:</h4>
+                    <div class="row text-center justify-content-center">
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                      </div>
+                      <div class="col px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row text-center justify-content-center pt-2">
+                  <div class="col-10">
+                    <h2> <b>Descrição:</b> </h2>
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui ligula. Ut turpis urna, scelerisque sed accumsan eu, congue at dui. Nam justo lorem, aliquet ut efficitur et, tempus ut eros. Suspendisse maximus ante a iaculis blandit. Ut semper non quam nec volutpat. Sed ultricies mauris a mattis hendrerit. Phasellus a nisi a quam luctus facilisis. Sed facilisis interdum nulla, a sollicitudin mauris fermentum a. Aliquam erat volutpat. Donec ac lectus ac purus tincidunt facilisis sed sit amet lectus. Curabitur fermentum orci in condimentum varius. Integer vulputate eros ac nulla maximus, vel euismod ex aliquet. Vestibulum ornare vulputate leo, at commodo justo.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>
