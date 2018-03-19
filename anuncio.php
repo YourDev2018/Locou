@@ -13,6 +13,31 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
+    <script src="js/bootstrap-datepicker.min.js" ></script>
+    <script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10)
+    {
+      dd = '0'+dd
+    }
+    if(mm<10)
+    {
+      mm = '0'+mm
+    }
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+    $.fn.datepicker.defaults.autoclose = true;
+    $.fn.datepicker.defaults.maxViewMode = 0;
+    var hoje = dd+"/"+mm+"/"+yyyy;
+    $.fn.datepicker.defaults.startDate = hoje;
+    $.fn.datepicker.defaults.todayHighlight = true;
+    </script>
   </head>
   <body style="font-family: 'Muli'">
 
@@ -46,83 +71,267 @@
     </div>
 
     <!-- Fotos e dados básicos -->
+    <form class="" action="#" method="post">
 
-    <div class="container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
-      <br>
-      <div class="row">
+      <div class="container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
+        <br>
+        <div class="row">
 
-        <div class="col-1">
-        </div>
-        <div class="col-10">
+          <div class="col-1">
+          </div>
+          <div class="col-10">
 
-          <div class="row">
+            <div class="row">
 
-            <!-- Carousel Fotos -->
+              <!-- Carousel Fotos -->
 
-            <div class="col-6">
-              <div class="c-wrapper">
-                <div id="carousel-fotos" class="carousel" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel-fotos" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-fotos" data-slide-to="1"></li>
-                    <li data-target="#carousel-fotos" data-slide-to="2"></li>
-                  </ol>
-                  <div class="carousel-inner"style="width:100%; height: 25vw">
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="img/item.png">
+              <div class="col-6">
+                <div class="c-wrapper">
+                  <div id="carousel-fotos" class="carousel" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carousel-fotos" data-slide-to="0" class="active"></li>
+                      <li data-target="#carousel-fotos" data-slide-to="1"></li>
+                      <li data-target="#carousel-fotos" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner"style="width:100%; height: 25vw">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="img/item.png">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="img/categoria.jpg">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="img/item.png">
+                      </div>
                     </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/categoria.jpg">
+                    <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Voltar</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-fotos" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Próximo</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Seção caracteristicas e infos - Barra da direita -->
+
+
+                <div class="col-6 text-center justify-content-center" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+
+                  <!-- Preço -->
+
+                  <div class="row">
+                    <div class="col-12" style="background-color: black; margin-bottom: 2vw">
+                      <p style="margin-top: 1vw; margin-bottom: 1vw">
+                        <h4 style="color:white">A partir de:</h4>
+                        <h1 style="color:#FFCE00;font-weight: 600">R$ 000,00</h1>
+                        <h6 style="color:grey">E as taxas já estão inclusas!</h6>
+                      </p>
                     </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/item.png">
+
+                  </div>
+
+                  <div class="row" style="margin-bottom: 2vw">
+
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                      <select class="form-control" name="tipo-periodo" id="tipo-periodo">
+                        <option value="unico">Aluguel Unico</option>
+                        <option value="reincidente">Aluguel Reincidente</option>
+                        <option value="direto">Aluguel direto</option>
+                      </select>
+                    </div>
+                    <div class="col-2"></div>
+
+                  </div>
+
+                  <div class="row" style="display: none" id="aluguel-unico-div">
+
+                    <div class="col-2"></div>
+                    <div class="col-8"><h4>Data para alugar:</h4></div>
+                    <div class="col-2"></div>
+
+                    <br><br>
+
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                      <h5><input type="text" size="10" readonly name="data-unico-pick" id="datepicker"><i style="padding: 5px; background-color: black; color: #FFC107" class="far fa-calendar-alt"></i></h5>
+                    </div>
+                    <div class="col-2"></div>
+
+
+                  </div>
+
+                  <div class="row text-center justify-content-center" style="text-align: center; display: none" id="aluguel-reincidente-div">
+
+
+                    <div class="col-8"><h4>Data para alugar:</h4></div>
+
+                    <br><br>
+
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="row">
+                          <div class="col-2"></div>
+                          <div class="col-3">
+                            Seg
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-seg" type="checkbox" id="aluguel-reincidente-seg" value="seg">
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            Ter
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-ter" type="checkbox" id="aluguel-reincidente-ter" value="ter">
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            Qua
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-qua" type="checkbox" id="aluguel-reincidente-qua" value="qua">
+                            </div>
+                          </div>
+                          <div class="col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="row">
+                          <div class="col-2"></div>
+                          <div class="col-3">
+                            Qui
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-qui" type="checkbox" id="aluguel-reincidente-qui" value="qui">
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            Sex
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-sex" type="checkbox" id="aluguel-reincidente-sex" value="sex">
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            Sab
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-sab" type="checkbox" id="aluguel-reincidente-sab" value="sab">
+                            </div>
+                          </div>
+                          <div class="col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="row">
+                          <div class="col-2"></div>
+                          <div class="col-9">
+                            Dom
+                            <br>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" name="aluguel-reincidente-dom" type="checkbox" id="aluguel-reincidente-dom" value="dom">
+                            </div>
+                          </div>
+                          <div class="col-1"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <br><br>
+                        <h4>Por quantas semanas será o alguel?</h4>
+                      </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 2vw; margin-botton: 2vw">
+
+                      <div class="col-3">
+                      </div>
+                      <div class="col-6">
+
+                        <select class="form-control" name="tempo-reincidente-periodo" id="tempo-reincidente-periodo">
+                          <option value="1">1 Semana</option>
+                          <option value="2">2 Semanas</option>
+                          <option value="3">3 Semanas</option>
+                          <option value="4">4 Semanas</option>
+                          <option value="5">5 Semanas</option>
+                          <option value="6">6 Semanas</option>
+                        </select>
+
+                        <br>
+
+                      </div>
+                      <div class="col-3">
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <br><br>
+                  <div class="row p-3" style="background-color: black">
+                    <div class="col-12">
+                      <h5 style="color: white">Preço total: <span style="color: #FFCE00" class="h4" id="preco-total">R$ 000,00</span> </h5>
                     </div>
                   </div>
-                  <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Voltar</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carousel-fotos" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Próximo</span>
-                  </a>
+
                 </div>
-              </div>
 
             </div>
 
-            <!-- Seção caracteristicas e infos - Barra da direita -->
+            <div class="row">
 
-            <div class="col-6">
-
-              <!-- Preço -->
-
-              <div class="row">
-
-                <div class="col-3">
-                </div>
-                <div class="col-6" style="background-color: black; margin-bottom: 2vw">
-                  <p style="margin-top: 1vw; margin-bottom: 1vw">
-                    <h4 style="color:white">A partir de:</h4>
-                    <h1 style="color:#FFCE00;font-weight: 600">R$ 000,00</h1>
-                    <h6 style="color:grey">E as taxas já estão inclusas!</h6>
-                  </p>
-                </div>
-                <div class="col-3">
-                </div>
+              <div class="col-6">
 
               </div>
 
-              <!-- Preço dinamico e reserva -->
+              <div class="col-6 mt-4" style="border-style: solid; border-width: 2px; border-color: #FFC107; background-color: black">
+                <div style="background-color: black" class="pt-3">
 
-              <div class="row">
+                  <div class="row">
 
-                <div class="col-3">
-                </div>
-                <div class="col-6" style="margin-bottom: 2vw">
+                    <div class="col-6">
+                      <div class="row">
+                        <div class="col-12">
+                          <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 70px"></a>
+                          <br><br>
+                        </div>
+                        <div class="col-12" style="color: white">
+                          <h6 style="font-weight: 600">Nome da pessoa</h6>
+                          <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> <br> (3 avaliações)</span></h6>
+                        </div>
+                      </div>
+                    </div>
 
-                </div>
-                <div class="col-3">
+                    <div class="col-6" style="color: white">
+                      <div class="col-12 pt-5">
+                        <h6>Conquistas</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6>Conquistas</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6>Conquistas</h6>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row p-4">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                      <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato com o anunciante</button>
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+
                 </div>
 
               </div>
@@ -130,12 +339,12 @@
             </div>
 
           </div>
+          <div class="col-1">
+          </div>
 
         </div>
-        <div class="col-1">
-        </div>
-
       </div>
-    </div>
+
+    </form>
 
   </body>

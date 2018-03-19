@@ -133,7 +133,7 @@
 
       <br><br>
 
-      <form action="http://joaos-imac.home/Locou/anunciar.php" method="get">
+      <form action="#" method="get">
 
         <div class="row" id="fora_do_rj" style="display: none">
 
@@ -178,7 +178,7 @@
 
       </form>
 
-      <form action="http://joaos-imac.home/Locou/anunciar.php" method="get">
+      <form action="#" method="get">
 
 
         <!-- CADASTRO PARTE 1-->
@@ -197,21 +197,6 @@
                 <br><br>
               </div>
             </div>
-            <script>
-              function dados_basicos_tip(botao)
-              {
-                if(botao.classList.contains("active") == true)
-                {
-                    botao.classList.remove("active");
-                    document.getElementById("dados-basicos-tip-div").style.display = 'none';
-                }
-                else
-                {
-                  botao.classList.add("active");
-                  document.getElementById("dados-basicos-tip-div").style.display = '';
-                }
-              }
-            </script>
             <div id="dados-basicos-tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
               <div class="col-8" style="color: black">
                 <br>
@@ -250,15 +235,15 @@
                 Categoria do espaço:
               </div>
               <div class="col-5 text-left">
-                <select class="form-control" id="categoria">
+                <select class="form-control" name="categoria" id="categoria">
                   <option value="consultorio">Consultório</option>
                   <option value="workshop">Workshop</option>
-                  <option value="workshop">Sala para Palestras</option>
-                  <option value="workshop">Sala para Aulas</option>
+                  <option value="palestra">Sala para Palestras</option>
+                  <option value="aulas">Sala para Aulas</option>
                   <option value="ensaio">Sala para Ensaio e aulas</option>
                   <option value="cozinha">Cozinha</option>
                   <option value="fotografico">Estúdio fotográfico</option>
-                  <option value="fotografico">Produtora</option>
+                  <option value="produtora">Produtora</option>
                   <option value="costura">Ateliês de costura</option>
                   <option value="academia">Estúdio ou Academia (RPG,Pilates e etc)</option>
                   <option value="artes">Ateliê de artes</option>
@@ -275,7 +260,7 @@
                 Estado (UF):
               </div>
               <div class="col-5 text-left">
-                <select class="form-control" id="uf">
+                <select class="form-control" name="uf" id="uf">
                   <option>RJ</option>
                   <option value="outro">Outro estado</option>
                 </select>
@@ -290,7 +275,7 @@
                 Cidade:
               </div>
               <div class="col-5 text-left">
-                <select class="form-control" id="cidade">
+                <select class="form-control" name="cidade" id="cidade">
                   <option>Rio de Janeiro</option>
                   <option value="outro">Outra cidade</option>
                 </select>
@@ -305,7 +290,7 @@
                 Bairro:
               </div>
               <div class="col-5 text-left">
-                <input type="text" class="form-control" id="bairro" placeholder="Ex: Ipanema">
+                <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema">
               </div>
             </div>
 
@@ -330,8 +315,15 @@
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning"><h2>Descrição Geral</h2></span>
+                <span onclick="descricao_geral_tip(this)" class="btn btn-outline-warning"><h2>Descrição Geral</h2></span>
                 <br><br>
+              </div>
+            </div>
+            <div id="descricao_geral_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+              <div class="col-8" style="color: black">
+                <br>
+                  <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+                <br>
               </div>
             </div>
 
@@ -343,7 +335,7 @@
                 Metragem (M² do local):
               </div>
               <div class="col-5 text-left">
-                <input type="text" class="form-control" id="metragem" placeholder="Ex: 120">
+                <input type="number" class="form-control" name="metragem" id="metragem" placeholder="Ex: 120">
               </div>
             </div>
 
@@ -522,8 +514,57 @@
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning"><h2>Período</h2></span>
+                <span onclick="periodo_tip(this)" class="btn btn-outline-warning"><h2>Período</h2></span>
                 <br><br>
+              </div>
+            </div>
+            <script>
+              function dados_basicos_tip(botao)
+              {
+                if(botao.classList.contains("active") == true)
+                {
+                    botao.classList.remove("active");
+                    document.getElementById("dados-basicos-tip-div").style.display = 'none';
+                }
+                else
+                {
+                  botao.classList.add("active");
+                  document.getElementById("dados-basicos-tip-div").style.display = '';
+                }
+              }
+              function descricao_geral_tip(botao)
+              {
+                if(botao.classList.contains("active") == true)
+                {
+                    botao.classList.remove("active");
+                    document.getElementById("descricao_geral_tip-div").style.display = 'none';
+                }
+                else
+                {
+                  botao.classList.add("active");
+                  document.getElementById("descricao_geral_tip-div").style.display = '';
+                }
+              }
+
+              function periodo_tip(botao)
+              {
+                if(botao.classList.contains("active") == true)
+                {
+                    botao.classList.remove("active");
+                    document.getElementById("periodo_tip-div").style.display = 'none';
+                }
+                else
+                {
+                  botao.classList.add("active");
+                  document.getElementById("periodo_tip-div").style.display = '';
+                }
+              }
+            </script>
+            <div id="periodo_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+              <div class="col-8" style="color: black">
+                <br>
+                  <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+                <br>
               </div>
             </div>
 
@@ -571,7 +612,7 @@
                   <div class="col-12">
                     <h6 style="color: white">Selecione a data e o horário em que será disponibilizado</h6>
                     <br>
-                      <input type="text" id="datepicker">
+                      <input type="text" name="data-unico-pick" id="datepicker">
                     <br>
                     <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
                     <br>
@@ -615,14 +656,22 @@
                     <br>
                     <div class="row text-center justify-content-center">
                       <div class="col-6">
-                        <select class="form-control" style="text-align: center" id="tempo-mes-direto">
+                        <select class="form-control" onchange="atualizarTempoAluguel()" style="text-align: center" id="tempo-mes-direto">
                           <option value="1">1 Mês</option>
                           <option value="2">2 Meses</option>
                           <option value="3">3 Meses</option>
                           <option value="4">4 Meses</option>
                         </select>
+                        <br>
+                        <h6 id="tempoDeAlguel" style="color: #FFC107"></h6>
                       </div>
                     </div>
+                    <script>
+                      function atualizarTempoAluguel()
+                      {
+                        document.getElementById("tempoDeAlguel").innerHTML = "O prazo de alguel será do dia "+dd+"/"+mm+"/"+yyyy+" até ";
+                      }
+                    </script>
                     <br>
                     <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
                     <br>
@@ -1004,7 +1053,7 @@
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="text" class="form-control" name="hora" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -1019,7 +1068,7 @@
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="text" class="form-control" name="4hora" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -1034,7 +1083,7 @@
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="5hora" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="text" class="form-control" id="5hora" name="5hora" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -1049,7 +1098,7 @@
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="text" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -1064,7 +1113,7 @@
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="semana" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="text" class="form-control" id="semana" name="semana" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -1079,7 +1128,7 @@
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="mes" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="text" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -1287,16 +1336,16 @@
             </div>
             <div class="row">
               <div class="col-3 text-center">
-                <input type="text" class="form-control" id="mesa-consultorio" placeholder="Ex: 2">
+                <input type="text" class="form-control" name="mesa-consultorio" id="mesa-consultorio" placeholder="Ex: 2">
               </div>
               <div class="col-3 text-center">
-                <input type="text" class="form-control" id="cadeira-consultorio" placeholder="Ex: 6">
+                <input type="text" class="form-control" name="cadeira-consultorio" id="cadeira-consultorio" placeholder="Ex: 6">
               </div>
               <div class="col-3 text-center">
-                <input type="text" class="form-control" id="lum-consultorio" placeholder="Ex: 4">
+                <input type="text" class="form-control" name="lum-consultorio" id="lum-consultorio" placeholder="Ex: 4">
               </div>
               <div class="col-3 text-center">
-                <input type="text" class="form-control" id="cortina-consultorio" placeholder="Ex: 1">
+                <input type="text" class="form-control" name="cortina-consultorio" id="cortina-consultorio" placeholder="Ex: 1">
               </div>
             </div>
 
@@ -1308,7 +1357,7 @@
                 Quantidade de Macas
               </div>
               <div class="col-5 text-center">
-                <input type="text" class="form-control" id="macas-consultorio" placeholder="Ex: 3">
+                <input type="text" class="form-control" name="macas-consultorio" id="macas-consultorio" placeholder="Ex: 3">
               </div>
             </div>
 
@@ -1400,7 +1449,7 @@
               <div class="col-1">
               </div>
               <div class="col-10 text-center">
-                <textarea class="form-control" id="descricao-aberta-consultorio" rows="6" style="resize: none;"></textarea>
+                <textarea class="form-control" name="descricao-aberta-consultorio" id="descricao-aberta-consultorio" rows="6" style="resize: none;"></textarea>
               </div>
               <div class="col-1">
               </div>
@@ -1592,10 +1641,10 @@
 
               <div class="row">
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="mesa-workshop" placeholder="Ex: 2">
+                  <input type="text" class="form-control" name="mesa-workshop" id="mesa-workshop" placeholder="Ex: 2">
                 </div>
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="cadeira-workshop" placeholder="Ex: 6">
+                  <input type="text" class="form-control" name="cadeira-workshop" id="cadeira-workshop" placeholder="Ex: 6">
                 </div>
               </div>
 
@@ -1614,10 +1663,10 @@
 
               <div class="row">
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="quadro-workshop" placeholder="Ex: 4">
+                  <input type="text" class="form-control" name="quadro-workshop" id="quadro-workshop" placeholder="Ex: 4">
                 </div>
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="lousa-workshop" placeholder="Ex: 1">
+                  <input type="text" class="form-control" name="lousa-workshop" id="lousa-workshop" placeholder="Ex: 1">
                 </div>
               </div>
 
@@ -1639,10 +1688,10 @@
               </div>
               <div class="row">
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="telao-workshop" placeholder="Ex: 1">
+                  <input type="text" class="form-control" name="telao-workshop" id="telao-workshop" placeholder="Ex: 1">
                 </div>
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="tv-workshop" placeholder="Ex: 0">
+                  <input type="text" class="form-control" name="tv-workshop" id="tv-workshop" placeholder="Ex: 0">
                 </div>
               </div>
 
@@ -1694,7 +1743,7 @@
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="computador-office-workshop" id="computador-office-workshop-sim" value="sim">
-                  <label class="form-check-label" for="som-workshop-sim">Sim</label>
+                  <label class="form-check-label" for="computador-office-workshop-sim">Sim</label>
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1810,7 +1859,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-equipamento-workshop" rows="3" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-equipamento-workshop" id="descricao-equipamento-workshop" rows="3" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -1828,7 +1877,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-aberta-workshop" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-aberta-workshop" id="descricao-aberta-workshop" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -1869,7 +1918,7 @@
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" onclick="climatizado_cozinha()" type="radio" name="climatizado-cozinha" id="climatizado-cozinha-sim" value="sim">
-                  <label class="form-check-label" for="climatizado-consultorio-sim">Sim</label>
+                  <label class="form-check-label" for="climatizado-cozinha-sim">Sim</label>
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -2040,10 +2089,10 @@
               </div>
               <div class="row">
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="mesa-cozinha" placeholder="Ex: 1">
+                  <input type="text" class="form-control" name="mesa-cozinha" id="mesa-cozinha" placeholder="Ex: 1">
                 </div>
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="cadeira-cozinha" placeholder="Ex: 0">
+                  <input type="text" class="form-control" name="cadeira-cozinha" id="cadeira-cozinha" placeholder="Ex: 0">
                 </div>
               </div>
 
@@ -2076,7 +2125,7 @@
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="buffet-cozinha" id="buffet-cozinha-sim" value="sim">
-                  <label class="form-check-label" for="bar-cozinha-sim">Sim</label>
+                  <label class="form-check-label" for="buffet-cozinha-sim">Sim</label>
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -2095,7 +2144,7 @@
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <input class="form-check-input" type="radio" name="aula-cozinha" id="aula-cozinha-sim" value="sim">
-                  <label class="form-check-label" for="bar-cozinha-sim">Sim</label>
+                  <label class="form-check-label" for="aula-cozinha-sim">Sim</label>
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -2230,7 +2279,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="inventario-cozinha" rows="4" style="resize: none;"></textarea>
+                  <textarea class="form-control" id="inventario-cozinha" name="inventario-cozinha" rows="4" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2324,7 +2373,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="fogao-caracteristicas-cozinha" rows="4" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="fogao-caracteristicas-cozinha" id="fogao-caracteristicas-cozinha" rows="4" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2380,7 +2429,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="exaustor-cozinha" rows="4" style="resize: none;"></textarea>
+                  <textarea class="form-control" id="exaustor-cozinha" name="exaustor-cozinha" rows="4" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2398,7 +2447,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-aberta-cozinha" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-aberta-cozinha" id="descricao-aberta-cozinha" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2517,7 +2566,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-aberta-ensaio" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-aberta-ensaio" id="descricao-aberta-ensaio" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2591,7 +2640,7 @@
                   Qual é a altura do pé direito?
                 </div>
                 <div class="col-8 text-center">
-                  <input type="text" class="form-control" id="altura-fotografico" placeholder="Ex: 2">
+                  <input type="text" class="form-control" name="altura-fotografico" id="altura-fotografico" placeholder="Ex: 2">
                 </div>
               </div>
 
@@ -2646,10 +2695,10 @@
               </div>
               <div class="row">
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="banheiro-fotografico" placeholder="Ex: 3">
+                  <input type="text" class="form-control" name="banheiro-fotografico" id="banheiro-fotografico" placeholder="Ex: 3">
                 </div>
                 <div class="col-6 text-center">
-                  <input type="text" class="form-control" id="chuveiro-fotografico" placeholder="Ex: 1">
+                  <input type="text" class="form-control" name="chuveiro-fotografico" id="chuveiro-fotografico" placeholder="Ex: 1">
                 </div>
               </div>
 
@@ -2760,7 +2809,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="iluminacao-fotografico" rows="4" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="iluminacao-fotografico" id="iluminacao-fotografico" rows="4" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2778,7 +2827,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-aberta-fotografico" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-aberta-fotografico" id="descricao-aberta-fotografico" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2838,7 +2887,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="maquina-costura" rows="3" style="resize: none;"></textarea>
+                  <textarea class="form-control" id="maquina-costura" name="maquina-costura" rows="3" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2856,7 +2905,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="mobiliario-costura" rows="4" style="resize: none;"></textarea>
+                  <textarea class="form-control" id="mobiliario-costura" name="mobiliario-costura" rows="4" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -2912,7 +2961,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-geral-costura" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-geral-costura" id="descricao-geral-costura" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -3060,25 +3109,6 @@
 
               <div class="row">
                 <div class="col-4 text-right">
-                  Possui Trapézio?
-                </div>
-                <div class="col-4 text-left">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="trapezio-academia" id="trapezio-academia-sim" value="sim">
-                  <label class="form-check-label" for="trapezio-academia-sim">Sim</label>
-                </div>
-                <div class="col-4 text-left">
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="trapezio-academia" id="trapezio-academia-nao" value="nao">
-                  <label class="form-check-label" for="trapezio-academia-nao">Não</label>
-                </div>
-              </div>
-
-              <!-- É climatizado -->
-              <br>
-
-              <div class="row">
-                <div class="col-4 text-right">
                   Possui Baqueta?
                 </div>
                 <div class="col-4 text-left">
@@ -3124,7 +3154,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-geral-academia" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-geral-academia" id="descricao-geral-academia" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -3168,7 +3198,7 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="forno-academia" id="forno-artes-nao" value="nao">
+                  <input class="form-check-input" type="radio" name="forno-artes" id="forno-artes-nao" value="nao">
                   <label class="form-check-label" for="forno-artes-nao">Não</label>
                 </div>
               </div>
@@ -3187,7 +3217,7 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="macarico-academia" id="macarico-artes-nao" value="nao">
+                  <input class="form-check-input" type="radio" name="macarico-artes" id="macarico-artes-nao" value="nao">
                   <label class="form-check-label" for="macarico-artes-nao">Não</label>
                 </div>
               </div>
@@ -3206,7 +3236,7 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="moldes-academia" id="moldes-artes-nao" value="nao">
+                  <input class="form-check-input" type="radio" name="moldes-artes" id="moldes-artes-nao" value="nao">
                   <label class="form-check-label" for="moldes-artes-nao">Não</label>
                 </div>
               </div>
@@ -3225,7 +3255,7 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="bancada-academia" id="bancada-artes-nao" value="nao">
+                  <input class="form-check-input" type="radio" name="bancada-artes" id="bancada-artes-nao" value="nao">
                   <label class="form-check-label" for="bancada-artes-nao">Não</label>
                 </div>
               </div>
@@ -3244,7 +3274,7 @@
                 </div>
                 <div class="col-4 text-left">
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <input class="form-check-input" type="radio" name="armario-academia" id="armario-artes-nao" value="nao">
+                  <input class="form-check-input" type="radio" name="armario-artes" id="armario-artes-nao" value="nao">
                   <label class="form-check-label" for="armario-artes-nao">Não</label>
                 </div>
               </div>
@@ -3261,7 +3291,7 @@
                 <div class="col-1">
                 </div>
                 <div class="col-10 text-center">
-                  <textarea class="form-control" id="descricao-geral-artes" rows="6" style="resize: none;"></textarea>
+                  <textarea class="form-control" name="descricao-geral-artes" id="descricao-geral-artes" rows="6" style="resize: none;"></textarea>
                 </div>
                 <div class="col-1">
                 </div>
@@ -3512,7 +3542,7 @@
         {
             consultorio.style.display = "";
         }
-        if(categoria == "workshop")
+        if(categoria == "workshop" || categoria == "palestra" || categoria == "aulas")
         {
             workshop.style.display = "";
         }
@@ -3524,7 +3554,7 @@
         {
             ensaio.style.display = "";
         }
-        if(categoria == "fotografico")
+        if(categoria == "fotografico" || categoria == "produtora")
         {
             fotografico.style.display = "";
         }
