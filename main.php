@@ -17,7 +17,7 @@ require_once 'Seguranca.php';
 
 //dataBase();
 //DBMoip();
-Pedido();       
+Pedido();
 
 function Pedido(){
     $pedidos = new Pedidos();
