@@ -13,6 +13,42 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    $(function () {
+
+    for (i = new Date().getFullYear() ; i > 1900; i--) {
+        $('#years').append($('<option />').val(i).html(i));
+    }
+
+    for (i = 1; i < 13; i++) {
+        $('#months').append($('<option />').val(i).html(i));
+    }
+    updateNumberOfDays();
+
+    $('#years, #months').change(function () {
+
+        updateNumberOfDays();
+
+    });
+
+});
+
+function updateNumberOfDays() {
+    $('#days').html('');
+    month = $('#months').val();
+    year = $('#years').val();
+    days = daysInMonth(month, year);
+
+    for (i = 1; i < days + 1 ; i++) {
+        $('#days').append($('<option />').val(i).html(i));
+    }
+
+}
+
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+  </script>
   </head>
   <style>
   .thumbnail
@@ -103,6 +139,7 @@
         <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
         <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
         <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
       </span>
     </nav>
 
@@ -126,10 +163,87 @@
             <br><br>
             <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
             <br><br>
+            <span class="btn btn-outline-warning">Logar</span>
+            <br><br>
           </span>
         </div>
       </div>
     </nav>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content text-center justify-content-center">
+      <div class="modal-body">
+        <div class="row py-4" style="background-color: black">
+          <div class="col-12">
+            <span class="btn btn-outline-warning active" id="logar-b" onclick="logar(this);"><h3 style="font-weight: 300">Logar</h3></span>
+            <br class="mobile"><br class="mobile">
+            <span class="px-5 h4" style="color: white; font-weight: 300">ou</span>
+            <br class="mobile"><br class="mobile">
+            <span class="btn btn-outline-warning" id="cadastrar-b" onclick="cadastrar(this);"><h3 style="font-weight: 300">Cadastrar</h3></span>
+          </div>
+        </div>
+        <br>
+
+        <div class="pt-2" id="logar-div" style="background-color:white">
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
+            </div>
+            <div class="form-group">
+              <label for="senha">Senha</label>
+              <input type="password" class="form-control" id="senha-login" name="senha">
+            </div>
+            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
+          </form>
+        </div>
+        <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" id="nome" name="nome">
+            </div>
+            <div class="form-group">
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+            </div>
+            <div class="form-group">
+              <label>Data de nascimento</label>
+              <br>
+              <select id="days"></select>
+              <select id="months"></select>
+              <select id="years"></select>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
+            </div>
+            <div class="form-group">
+              <label for="senha">Senha</label>
+              <input type="password" class="form-control" id="senha" name="senha">
+            </div>
+            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function logar(botao) {
+      botao.classList.add("active");
+      document.getElementById("cadastrar-b").classList.remove("active");
+      document.getElementById("cadastrar-div").style.display = 'none';
+      document.getElementById("logar-div").style.display = '';
+    }
+    function cadastrar(botao) {
+      botao.classList.add("active");
+      document.getElementById("logar-b").classList.remove("active");
+      document.getElementById("logar-div").style.display = 'none';
+      document.getElementById("cadastrar-div").style.display = '';
+    }
+  </script>
 
     <!-- Seção 1 - Pesquisa -->
 

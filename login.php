@@ -13,42 +13,6 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    	<script>
-      $(function () {
-
-      for (i = new Date().getFullYear() ; i > 1900; i--) {
-          $('#years').append($('<option />').val(i).html(i));
-      }
-
-      for (i = 1; i < 13; i++) {
-          $('#months').append($('<option />').val(i).html(i));
-      }
-      updateNumberOfDays();
-
-      $('#years, #months').change(function () {
-
-          updateNumberOfDays();
-
-      });
-
-  });
-
-  function updateNumberOfDays() {
-      $('#days').html('');
-      month = $('#months').val();
-      year = $('#years').val();
-      days = daysInMonth(month, year);
-
-      for (i = 1; i < days + 1 ; i++) {
-          $('#days').append($('<option />').val(i).html(i));
-      }
-
-  }
-
-  function daysInMonth(month, year) {
-      return new Date(year, month, 0).getDate();
-  }
-      </script>
     </head>
 <style>
   @media (min-width: 768.1px)
