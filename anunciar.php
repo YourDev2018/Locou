@@ -518,48 +518,6 @@
                 <br><br>
               </div>
             </div>
-            <script>
-              function dados_basicos_tip(botao)
-              {
-                if(botao.classList.contains("active") == true)
-                {
-                    botao.classList.remove("active");
-                    document.getElementById("dados-basicos-tip-div").style.display = 'none';
-                }
-                else
-                {
-                  botao.classList.add("active");
-                  document.getElementById("dados-basicos-tip-div").style.display = '';
-                }
-              }
-              function descricao_geral_tip(botao)
-              {
-                if(botao.classList.contains("active") == true)
-                {
-                    botao.classList.remove("active");
-                    document.getElementById("descricao_geral_tip-div").style.display = 'none';
-                }
-                else
-                {
-                  botao.classList.add("active");
-                  document.getElementById("descricao_geral_tip-div").style.display = '';
-                }
-              }
-
-              function periodo_tip(botao)
-              {
-                if(botao.classList.contains("active") == true)
-                {
-                    botao.classList.remove("active");
-                    document.getElementById("periodo_tip-div").style.display = 'none';
-                }
-                else
-                {
-                  botao.classList.add("active");
-                  document.getElementById("periodo_tip-div").style.display = '';
-                }
-              }
-            </script>
             <div id="periodo_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
               <div class="col-8" style="color: black">
                 <br>
@@ -1152,8 +1110,15 @@
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning"><h2>Descrição do Consultório</h2></span>
+                <span onclick="consultorio_tip(this)" class="btn btn-outline-warning"><h2>Descrição do Consultório</h2></span>
                 <br><br>
+              </div>
+            </div>
+            <div id="consultorio_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+              <div class="col-8" style="color: black">
+                <br>
+                  <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+                <br>
               </div>
             </div>
 
@@ -1478,8 +1443,70 @@
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição da Sala de Ensaio ou Workshop</h2></span>
+                  <span onclick="workshop_tip(this)" class="btn btn-outline-warning"><h2>Descrição da Sala <br class="mobile"> de Ensaio ou <br class="mobile"> Workshop</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <script>
+                function dados_basicos_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("dados-basicos-tip-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("dados-basicos-tip-div").style.display = '';
+                  }
+                }
+                function descricao_geral_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("descricao_geral_tip-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("descricao_geral_tip-div").style.display = '';
+                  }
+                }
+
+                function periodo_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("periodo_tip-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("periodo_tip-div").style.display = '';
+                  }
+                }
+                function workshop_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("workshop_tip-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("workshop_tip-div").style.display = '';
+                  }
+                }
+              </script>
+              <div id="workshop_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+                  <br>
                 </div>
               </div>
 

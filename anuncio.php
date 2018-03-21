@@ -123,7 +123,7 @@
     <!-- Fotos e dados básicos -->
     <form class="" action="#" method="post">
 
-      <div class="container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
+      <div class="px-3 container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
         <br>
         <div class="row">
           <div class="col-12">
@@ -140,7 +140,7 @@
                       <li data-target="#carousel-fotos" data-slide-to="1"></li>
                       <li data-target="#carousel-fotos" data-slide-to="2"></li>
                     </ol>
-                    <div class="carousel-inner"style="width:100%; height: 30vw">
+                    <div class="carousel-inner" style="width:100%; height: 30vw">
                       <div class="carousel-item active">
                         <img class="d-block w-100" src="img/item.png">
                       </div>
@@ -163,7 +163,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-12 mt-4">
+                  <div class="col-12 mt-2">
                     <div class="row text-left">
                       <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
                         <h4>Consultório</h4>
@@ -172,35 +172,35 @@
                       </div>
                       <div class="col-12 pt-4">
                         <div class="row text-center justify-content-center">
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300; font-size:90%">Metragem<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-home"></i> <br>120M²</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300 ;font-size:90%">Possui<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-street-view"></i> <br> Recepção</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300;font-size:90% ">Possui<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-female"></i> <i class="fas fa-male"></i> <br> Banheiro comum</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-female"></i> | <i class="fas fa-male"></i> <br> Banheiro privativo</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300;font-size:90%">O local<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-building"></i> <br> É um Prédio</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-sort"></i> <br> Elevador no prédio</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-sync"></i> <br> Estacionamento rotativo</h5>
                           </div>
-                          <div class="col px-3 py-2">
+                          <div class="col-4 px-3 py-2">
                             <h6 style="color: grey; font-weight: 300;font-size:90%">Fácil acesso<br></h6>
                             <h5 style=";font-size:90%"><i class="fas fa-bus"></i> <br> Ao transporte público</h5>
                           </div>
@@ -236,7 +236,7 @@
                     <div class="row" style="margin-bottom: 2vw">
 
                       <div class="col-2"></div>
-                      <div class="col-lg-8 col-md-10 col-sm-12">
+                      <div class="col-lg-8 col-md-8 col-sm-12">
                         <select onclick="periodo_div()" class="form-control" name="tipo-periodo" id="tipo-periodo">
                           <option value="unico">Aluguel Unico</option>
                           <option value="reincidente">Aluguel Reincidente</option>
@@ -284,76 +284,36 @@
                     <div class="row text-center justify-content-center" style="text-align: center; display: none" id="aluguel-reincidente-div">
 
 
-                      <div class="col-8"><h4>Data para alugar:</h4></div>
+                      <div class="col-12"><h4>Data para alugar:</h4></div>
 
-                      <br><br>
+                      <br><br><br>
 
-                      <div class="row">
-                        <div class="col-4">
-                          <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-3">
-                              Seg
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-seg" type="checkbox" id="aluguel-reincidente-seg" value="seg">
-                              </div>
-                            </div>
-                            <div class="col-3">
-                              Ter
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-ter" type="checkbox" id="aluguel-reincidente-ter" value="ter">
-                              </div>
-                            </div>
-                            <div class="col-3">
-                              Qua
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-qua" type="checkbox" id="aluguel-reincidente-qua" value="qua">
-                              </div>
-                            </div>
-                            <div class="col-1"></div>
+                      <div class="col-12  text-center justify-content-center">
+                        <div class="row">
+                          <div class="col-4">
+                            1
+                          </div>
+                          <div class="col-4">
+                            2
+                          </div>
+                          <div class="col-4">
+                            3
                           </div>
                         </div>
-                        <div class="col-4">
-                          <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-3">
-                              Qui
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-qui" type="checkbox" id="aluguel-reincidente-qui" value="qui">
-                              </div>
-                            </div>
-                            <div class="col-3">
-                              Sex
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-sex" type="checkbox" id="aluguel-reincidente-sex" value="sex">
-                              </div>
-                            </div>
-                            <div class="col-3">
-                              Sab
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-sab" type="checkbox" id="aluguel-reincidente-sab" value="sab">
-                              </div>
-                            </div>
-                            <div class="col-1"></div>
+                        <div class="row py-5">
+                          <div class="col-4">
+                            4
+                          </div>
+                          <div class="col-4">
+                            5
+                          </div>
+                          <div class="col-4">
+                            6
                           </div>
                         </div>
-                        <div class="col-4">
-                          <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-9">
-                              Dom
-                              <br>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="aluguel-reincidente-dom" type="checkbox" id="aluguel-reincidente-dom" value="dom">
-                              </div>
-                            </div>
-                            <div class="col-1"></div>
+                        <div class="row">
+                          <div class="col-12">
+                            7
                           </div>
                         </div>
                       </div>
@@ -386,9 +346,11 @@
                     </div>
 
                     <br><br>
+                    <span class="btn btn-warning"><h5>Alugue agora</h5></span>
+                    <br><br>
                     <div class="row p-3" style="border-top: solid; border-width: 2px; border-color: #FFC107;background-color: black">
                       <div class="col-12">
-                        <h5 style="color: white">Preço total: <span style="color: #FFCE00" class="h4" id="preco-total">R$ 000,00</span> </h5>
+                        <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ 000,00</span> </h5>
                       </div>
                     </div>
 
@@ -438,6 +400,8 @@
                       </div>
                     </div>
 
+
+
                   </div>
 
                 </div>
@@ -451,11 +415,35 @@
                   <div class="col-12 py-3" style="border-bottom: solid; border-width: 2px; border-color: #FFC107; border-top: solid; border-width: 2px; border-color: #FFC107;">
                     <h4 style="color: grey; font-weight: 600">Comodidades do local:</h4>
                     <div class="row text-center justify-content-center">
-                      <div class="col px-3 py-2">
+                      <div class="col-4 px-3 py-2">
                         <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
                         <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
                       </div>
-                      <div class="col px-3 py-2">
+                      <div class="col-4 px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                      </div>
+                      <div class="col-4 px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                      </div>
+                      <div class="col-4 px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                      </div>
+                      <div class="col-4 px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                      </div>
+                      <div class="col-4 px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                      </div>
+                      <div class="col-4 px-3 py-2">
+                        <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                        <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                      </div>
+                      <div class="col-4 px-3 py-2">
                         <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
                         <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
                       </div>

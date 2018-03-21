@@ -173,7 +173,7 @@ function daysInMonth(month, year) {
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
     <div class="modal-content text-center justify-content-center">
-      <div class="modal-body">
+      <div class="modal-head">
         <div class="row py-4" style="background-color: black">
           <div class="col-12">
             <span class="btn btn-outline-warning active" id="logar-b" onclick="logar(this);"><h3 style="font-weight: 300">Logar</h3></span>
@@ -183,8 +183,9 @@ function daysInMonth(month, year) {
             <span class="btn btn-outline-warning" id="cadastrar-b" onclick="cadastrar(this);"><h3 style="font-weight: 300">Cadastrar</h3></span>
           </div>
         </div>
+      </div>
+      <div class="modal-body">
         <br>
-
         <div class="pt-2" id="logar-div" style="background-color:white">
           <form action="#" method="post">
             <div class="form-group">
