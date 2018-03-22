@@ -15,7 +15,7 @@
                 print $conn->connect_erro;
                 return $conn->connect_erro;
             }else{
-                print "sucesso conect DB \n";
+                print "conect DB  - /   ";
                 return $conn;
             }
         
@@ -36,8 +36,15 @@
             */
            
         }
+
+        function closeDB($db){
+            mysqli_close($db);
+            return;
+        }
         
         function loginEmailSenha($db, $email, $senha){
+
+           
 
             $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' /*OR usuario = '$usuario'*/ AND senha ='$senha' ") ;
             $cont = mysqli_num_rows($result);
@@ -77,7 +84,7 @@
            
         }
 
-        function cadastrarUsuarioInquilino($db,$cpf,$telDDD, $telNumero,$rua, $ruaNumero, $bairro, $cep, $cidade, $estado){
+        function cadastrarUsuarioInquilino($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $bairro, $cep, $cidade, $estado){
             $moip = new Functions();
             $session = new FunctionsSession();
             $aux = $moip->criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $bairro, $cep, $cidade, $estado);
@@ -104,6 +111,8 @@
         function cadastrarUsuarioProprietario($db, $cpf, $rgNumero, $rgOrgao, $rgData, $telDDD, $telNumero, $rua, $ruaNumero, $bairro, $cep, $cidade, $estado){
             $moip = new Functions();
             $session = new FunctionsSession();
+         //   $db = $this->conectDB();
+           
             $aux = $moip->criarContaMoipTransparenteCPF($cpf, $rgNumero, $rgOrgao, $rgData, $telDDD, $telNumero, $rua, $ruaNumero, $bairro, $cep, $cidade, $estado);
             print "\n".$aux[0];
             print "\n".$aux[1];
@@ -114,7 +123,7 @@
           
       
             $idBank = $bankId;
-        
+            
             
             if ($session->vereficarLogin()) {
                 $id = $session->vereficarLogin();
@@ -122,11 +131,14 @@
                 $token = $aux[1];
                 $sql = "INSERT INTO UsuarioProprietario(id,idMoipAccount,idBankAccount,token) VALUES ('$id','$idMoip','$idBank','$token')";
                 if ($db->query($sql)===true) {
+                    $this->closeDB($db);
                     return true;
                 }else{
+                    $this->closeDB($db);
                     return "Insert failed";
                 }
             }else {
+                $this->closeDB($db);
                 return "não logado";
             }
 
@@ -135,16 +147,20 @@
         }
 
         
-        function cadastraAnuncioBasico($idProprietario,$titulo,$categoria,$bairro,$cidade,$uf){
+        function cadastrarAnuncioBasico($db, $idProprietario,$titulo,$categoria,$bairro,$cidade,$uf){
 
-                
+                $session = new FunctionsSession(); 
             if ($session->vereficarLogin()) {
                 $id = $session->vereficarLogin();
-                $idMoip = $aux[0];
-                $token = $aux[1];
+            
+
                 $sql = "INSERT INTO AnuncioBasico(idProprietario,titulo,categoria,bairro,cidade,uf) VALUES ('$idProprietario','$titulo','$categoria','$bairro','$cidade','$uf')";
                 if ($db->query($sql)===true) {
-                    return true;
+                    $last_id = $db->insert_id;
+                    
+                   // print $last_id;
+                    return $last_id;
+
                 }else{
                     return "Insert failed";
                 }
@@ -154,6 +170,75 @@
 
 
         }
+
+        function cadastrarAnuncioDescGeral($db, $idAnuncio, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte  ){
+            
+            $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioDescricaoGeral(idAnuncio, metragem, recepcao, banheiroPrivativo, banheiro, casaOuPredio, elevador, estacionamento, proprioOuRotativo,transporte)
+                        VALUES ('$idAnuncio','$metragem','$recepcao','$banheiroPrivativo','$banheiroComum','$casaPredio','$elevador','$estacionamento','$proprioRotativo',' $transporte')";
+
+                if ($db->query($sql)===true) {
+                                        
+                    return true;
+
+                }else{
+                    return "Insert failed";
+                }
+            }else {
+                return "não logado";
+            }
+
+        }
+
+        function cadastrarConsultorio($db,$idAnuncio, $climatizado, $modeloArs ,$wifi, $monitoramento, $armarios, $secretaria, $limpeza,$copa,$numMesa, $nunCadeira, 
+                                     $numLuminaria,$numCortina, $nunMacas, $balanca,$cafe, $agua, $tv, $descricao, $modeloAr){
+            
+            $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioConsultorio(idAnuncio, climatizado, wifi, monitoramento, armarios, secretaria, limpeza,copa, numMesa, nunCadeira, numLuminaria,numCortina, nunMacas, balanca,cafe, agua, tv, descricao, modeloAr)
+                VALUES ('$idAnuncio', '$climatizado', '$wifi', '$monitoramento', '$armarios', '$secretaria', '$limpeza', '$copa', '$numMesa', '$nunCadeira', '$numLuminaria', '$numCortina', '$nunMacas', '$balanca', '$cafe', '$agua', '$tv', '$descricao', '$modeloArs')";
+
+                if ($db->query($sql)===true) {
+                                        
+                    return true;
+
+                }else{
+                    return "Insert failed";
+                }
+            }else {
+                return "não logado";
+            }
+        }
+
+         function cadastrarCozinha(){
+            $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioCozinha(idAnuncio, metragem, recepcao, banheiroPrivativo, banheiro, casaOuPredio, elevador, estacionamento, proprioOuRotativo,transporte)
+                        VALUES ('$idAnuncio','$metragem','$recepcao','$banheiroPrivativo','$banheiroComum','$casaPredio','$elevador','$estacionamento','$proprioRotativo',' $transporte')";
+
+                if ($db->query($sql)===true) {
+                                        
+                    return true;
+
+                }else{
+                    return "Insert failed";
+                }
+            }else {
+                return "não logado";
+            }
+        }
+
+
 
         private function emailExist($db, $email){
 
@@ -185,6 +270,18 @@
             }       
         }
 
+        /*
+          private function getIdAnuncio($db){
+            if ($db->query("SELECT LAST_INSERT_ID() INTO AnuncioBasico")===true){
+                $last_id = $db->insert_id;
+                print $last_id;
+                return $last_id;
+            }else{
+                return false;
+            }
+
+        }
+*/
         /*
         private function tratarDados($char){
             

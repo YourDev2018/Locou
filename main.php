@@ -23,7 +23,7 @@ function Pedido(){
     $pedidos = new Pedidos();
     $funcDB = new FunctionsDB();
     $seguranca = new Seguranca();
-    print $seguranca->filtro("HAH<>>>><< <script> S2HS30394IS.S;#$%%¨¨&&¨¨*()*&¨%$¨}[ã´sã´s[as]a[sASAS3PE0E394371''''''12´~2S//DS;.D;.,SAKSDI02304'9283278E3OZA-=2034-12381239");
+  //  print $seguranca->filtro("HAH<>>>><< <script> S2HS30394IS.S;#$%%¨¨&&¨¨*()*&¨%}[ã´sã´s[as]a[sASAS3PE0E394371''''''12´~2S//DS;.D;.,SAKSDI02304'9283278E3OZA-=2034-12381239");
 
     //$id = $_SESSION['id'];
     //$id_client = $funcDB->getIdClientMoip($id);
