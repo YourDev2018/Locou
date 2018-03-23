@@ -1,5 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<?php
+  require_once 'BuscarEspacos.php';
+  require_once 'FunctionsDB.php';
+
+$array = returnEspaco();
+
+function returnEspaco(){
+ 
+  $db = new FunctionsDB();
+  $conn = $db->conectDB();
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspaco($conn);
+  return $array;
+}
+?>
+
+
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -342,11 +360,53 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        Consultório Ipanema
+                        <?php print $array[1] ?>
                         <br>
-                        <span style="color:grey">Ipanema | RJ</span>
+                        <span style="color:grey"><?php echo $array[2] ?> | <?php echo $array[3] ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[4] ?></span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        <?php print $array[6] ?>
+                        <br>
+                        <span style="color:grey"><?php echo $array[7] ?> | <?php echo $array[8] ?> </span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[9] ?></span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+
+           <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        <?php print $array[11] ?>
+                        <br>
+                        <span style="color:grey"><?php echo $array[12] ?> | <?php echo $array[13] ?> </span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[14] ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -363,53 +423,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        Consultório Ipanema
+                        <?php print $array[16] ?>
                         <br>
-                        <span style="color:grey">Ipanema | RJ</span>
+                        <span style="color:grey"><?php echo $array[17] ?> | <?php echo $array[18] ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="#" style="text-decoration: none;">
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="img/categoria.jpg" class="img-fluid">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        Consultório Ipanema
-                        <br>
-                        <span style="color:grey">Ipanema | RJ</span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="#" style="text-decoration: none;">
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="img/categoria.jpg" class="img-fluid">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        Consultório Ipanema
-                        <br>
-                        <span style="color:grey">Ipanema | RJ</span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[19] ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -458,11 +476,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        Consultório Ipanema
+                        <?php echo $array[1] ?>
                         <br>
-                        <span style="color:grey">Ipanema | RJ</span>
+                        <span style="color:grey"><?php echo $array[2] ?> | <?php echo $array[3] ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[4] ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -479,11 +497,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        Consultório Ipanema
+                        <?php echo $array[6] ?>
                         <br>
-                        <span style="color:grey">Ipanema | RJ</span>
+                        <span style="color:grey"><?php echo $array[7] ?>| <?php echo $array[8] ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[9] ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -500,11 +518,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        Consultório Ipanema
+                        <?php echo $array[11] ?>
                         <br>
-                        <span style="color:grey">Ipanema | RJ</span>
+                        <span style="color:grey"><?php echo $array[12] ?> |<?php echo $array[13] ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[14] ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -521,11 +539,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        Consultório Ipanema
+                        <?php echo $array[16] ?>
                         <br>
-                        <span style="color:grey">Ipanema | RJ</span>
+                        <span style="color:grey"><?php echo $array[17] ?> | <?php echo $array[18] ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[19] ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>

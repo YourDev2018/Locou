@@ -51,16 +51,16 @@ $session = new FunctionsSession();
 
         if (is_numeric($aux)) {
             
-            $aux = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte  );    
+            $result = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte  );    
             
-            if ($aux === true) {
-                print "Entrou true";
-                print $categoria;
+            if ($result === true) {
+               // print "Entrou true";
+               // print $categoria;
                 if ($categoria == "consultorio") {
                       print "Entrou consultorio";
                     $climatizado = $seg->filtro3($_POST['climatizado-consultorio']);
                     if ($climatizado == "sim") {
-                        $modeloAr = $seg->filtro($_POST['modelo-ar-consultorio']);
+                        $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
                     }
                     
                     $wifi = $seg->filtro3($_POST['wifi-consultorio']);
@@ -80,12 +80,51 @@ $session = new FunctionsSession();
                     $tv  = $seg->filtro3($_POST['tv-consultorio']);
                     $descricao = $seg->filtro($_POST['descricao-aberta-consultorio']);
 
-                    print $aux = $db-> cadastrarConsultorio($conn,$idAnuncio, $climatizado,$modeloAr,
+                    print $resp = $db-> cadastrarConsultorio($conn,$aux, $climatizado,$modeloAr,
                        $wifi, $monitoramento, $armarios, $secretaria, $limpeza,$copa,
                             $numMesa, $nunCadeira, $numLuminaria,$numCortina, $nunMacas, $balanca,
                                 $cafe, $agua, $tv, $descricao, $modeloAr);
                     
-                    return $aux;
+                    return $resp;
+
+                }
+
+                if ($categoria == "cozinha") {
+                    
+                    $climatizado = $seg->filtro3($_POST['climatizado-cozinha']);
+                    if ($climatizado == "sim") {
+                        $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
+                    }
+                    $areaEvento = $seg->filtro3($_POST['area-evento-cozinha']);
+                    $numMesa= $seg->filtro2($_POST['mesa-cozinha']);
+                    $numCadeira = $seg->filtro2($_POST['cadeira-cozinha']);
+                    $bar = $seg->filtro3($_POST['bar-cozinha']);
+                    $buffet = $seg->filtro3($_POST['buffet-cozinha']);
+                    $aula= $seg->filtro3($_POST['aula-cozinha']);
+                    $wifi= $seg->filtro3($_POST['wifi-cozinha']);
+                    $monitoramento= $seg->filtro3($_POST['monitoramento-cozinha']);
+                    $armario= $seg->filtro3($_POST['armario-cozinha']);
+                    $chave= $seg->filtro3($_POST['chave-armario-cozinha']);
+                    $estante= $seg->filtro3($_POST['estante-cozinha']);
+                    $faxina= $seg->filtro3($_POST['faxina-cozinha']);
+                    $inventario=  $seg->filtro($_POST['inventario-cozinha']);
+                    $freezer=  $seg->filtro3($_POST['freezer-cozinha']);
+                    $geladeira= $seg->filtro3($_POST['geladeira-cozinha']);
+                    $fogao= $seg->filtro3($_POST['fogao-cozinha']);
+                    $tipoFogao= $seg->filtro3($_POST['tipo-fogao-cozinha']);
+                    $fogaoCaracteristica= $seg->filtro($_POST['fogao-caracteristicas-cozinha']);
+                    $forno= $seg->filtro3($_POST['forno-cozinha']);
+                    $fornoTipo= $seg->filtro3($_POST['forno-tipo-cozinha']);
+                    $descricaoExaustor= $seg->filtro($_POST['exaustor-cozinha']);
+                    $descricaoAberta=$seg->filtro($_POST['descricao-aberta-cozinha']);
+               
+                    print $resp = $db-> cadastrarCozinha($conn, $aux, $climatizado, $modeloAr, $areaEvento, $numMesa, $numCadeira, $bar, $buffet, $aula, $wifi, $monitoramento, $armario, $chave, $estante, $faxina, $inventario, $freezer, $geladeira, $fogao, $tipoFogao, $fogaoCaracteristica, $forno, $fornoTipo, $descricaoExaustor, $descricaoAberta);
+                    return $resp;
+                }
+
+                if ($categoria == "workshop") {
+                   
+
 
                 }
 

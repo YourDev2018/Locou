@@ -46,7 +46,7 @@
 
            
 
-            $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' /*OR usuario = '$usuario'*/ AND senha ='$senha' ") ;
+            $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' AND senha ='$senha' ") ;
             $cont = mysqli_num_rows($result);
             if ($cont <=0) {
                 return "Login Erro";
@@ -217,24 +217,25 @@
             }
         }
 
-         function cadastrarCozinha(){
+         function cadastrarCozinha($db, $idAnuncio, $climatizado, $modeloAr, $areaEvento, $numMesa, $numCadeira, $bar, $buffet, $aula, $wifi, $monitoramento, $armario, $chave, $estante, $faxina, $inventario, $freezer, $geladeira, $fogao, $tipoFogao, $fogaoCaracteristica, $forno, $fornoTipo, $descricaoExaustor, $descricaoAberta){
             $session = new FunctionsSession(); 
             if ($session->vereficarLogin()) {
                 $id = $session->vereficarLogin();
             
 
-                $sql = "INSERT INTO AnuncioCozinha(idAnuncio, metragem, recepcao, banheiroPrivativo, banheiro, casaOuPredio, elevador, estacionamento, proprioOuRotativo,transporte)
-                        VALUES ('$idAnuncio','$metragem','$recepcao','$banheiroPrivativo','$banheiroComum','$casaPredio','$elevador','$estacionamento','$proprioRotativo',' $transporte')";
+                $sql = "INSERT INTO AnuncioCozinha(idAnuncio, climatizado, modeloAr, areaEvento, numMesa, numCadeira, bar, buffet, aula, wifi, monitoramento, armario, chave, estante, faxina, inventario, freezer, geladeira, fogao, tipoFogao, fogaoCaracteristica, forno, fornoTipo, descricaoExaustor, descricaoAberta)
+                        VALUES ('$idAnuncio', '$climatizado', '$modeloAr', '$areaEvento', '$numMesa', '$numCadeira', '$bar', '$buffet', '$aula', '$wifi', '$monitoramento', '$armario', '$chave', '$estante', '$faxina', '$inventario', '$freezer', '$geladeira', '$fogao', '$tipoFogao', '$fogaoCaracteristica', '$forno', '$fornoTipo', '$descricaoExaustor', '$descricaoAberta')";
 
                 if ($db->query($sql)===true) {
-                                        
+                    print $db->error_log;
                     return true;
 
                 }else{
-                    return "Insert failed";
+                    
+                    return "Insert failed cozinha";
                 }
             }else {
-                return "não logado";
+                return "não logado cozinha ";
             }
         }
 

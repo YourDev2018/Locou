@@ -5,6 +5,8 @@ require_once 'FunctionsSession.php';
 require_once 'FunctionsDB.php';
 require_once 'Pedidos.php';
 require_once 'Seguranca.php';
+require_once 'Espaco.php';
+ 
 // SQL INJECTION CODES
 // utilizar a funçao addslashes(); para tratar sql injection, usar em todas as entradas de dados
 
@@ -17,7 +19,24 @@ require_once 'Seguranca.php';
 
 //dataBase();
 //DBMoip();
-Pedido();
+//Pedido();
+require_once 'BuscarEspacos.php';
+returnEspaco();
+
+function returnEspaco(){
+ 
+  $db = new FunctionsDB();
+  $conn = $db->conectDB();
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspaco($conn);
+  echo $array[1];
+
+    foreach ($array as $key => $value) { 
+                         
+         //print $value;                     
+    }
+
+}
 
 function Pedido(){
     $pedidos = new Pedidos();
