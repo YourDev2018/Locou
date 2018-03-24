@@ -21,7 +21,8 @@ require_once 'Espaco.php';
 //DBMoip();
 //Pedido();
 require_once 'BuscarEspacos.php';
-returnEspaco();
+//returnEspaco();
+//returnConsultorio();
 
 function returnEspaco(){
  
@@ -35,6 +36,16 @@ function returnEspaco(){
                          
          //print $value;                     
     }
+
+}
+
+function returnConsultorio(){
+  $db = new FunctionsDB();
+  $conn = $db->conectDB();
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspacoConsultorio($conn);
+  
+  return $array;
 
 }
 

@@ -4,16 +4,56 @@
   require_once 'BuscarEspacos.php';
   require_once 'FunctionsDB.php';
 
-$array = returnEspaco();
+$db = new FunctionsDB();
+$conn = $db->conectDB();
+$array = returnEspaco($conn);
+$arrayConsultorio = returnConsultorio($conn);
+$arrayCozinha = returnCozinha($conn);
+$arrayWork = returnWorkShop($conn);
+$arrayEnsaio = returnEnsaio($conn);
+$cont= 0;
 
-function returnEspaco(){
- 
-  $db = new FunctionsDB();
-  $conn = $db->conectDB();
+function returnEspaco($conn){
+
   $busca = new BuscarEspacos();
-  $array = $busca->retornarEspaco($conn);
+  $array = $busca->retornarEspacoMaisVistos($conn);
+  
   return $array;
 }
+
+function returnConsultorio($conn){
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspacoConsultorio($conn);
+  
+  return $array;
+
+}
+
+function returnCozinha($conn){
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspacoCozinha($conn);
+  
+  return $array;
+
+}
+
+function returnWorkShop($conn){
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspacoWorkShop($conn);
+  
+  return $array;
+
+}
+
+function returnEnsaio($conn){
+  $busca = new BuscarEspacos();
+  $array = $busca->retornarEspacoEnsaio($conn);
+  
+  return $array;
+
+}
+
+
 ?>
 
 
@@ -360,53 +400,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        <?php print $array[1] ?>
+                        <?php $cont++ ; echo $arrayConsultorio[$cont]; ?>
                         <br>
-                        <span style="color:grey"><?php echo $array[2] ?> | <?php echo $array[3] ?> </span>
+                        <span style="color:grey"><?php $cont++ ; echo $arrayConsultorio[$cont]; ?> | <?php $cont++ ; echo $arrayConsultorio[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[4] ?></span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-
-              <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="#" style="text-decoration: none;">
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="img/categoria.jpg" class="img-fluid">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        <?php print $array[6] ?>
-                        <br>
-                        <span style="color:grey"><?php echo $array[7] ?> | <?php echo $array[8] ?> </span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[9] ?></span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-
-           <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="#" style="text-decoration: none;">
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="img/categoria.jpg" class="img-fluid">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        <?php print $array[11] ?>
-                        <br>
-                        <span style="color:grey"><?php echo $array[12] ?> | <?php echo $array[13] ?> </span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[14] ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $arrayConsultorio[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -423,11 +421,53 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        <?php print $array[16] ?>
+                        <?php $cont = 0; $cont++ ; echo $arrayCozinha[$cont]; ?>
                         <br>
-                        <span style="color:grey"><?php echo $array[17] ?> | <?php echo $array[18] ?> </span>
+                        <span style="color:grey"><?php  $cont++ ; echo $arrayCozinha[$cont]; ?> | <?php  $cont++ ; echo $arrayCozinha[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[19] ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php  $cont++ ; echo $arrayCozinha[$cont];; ?></span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+
+           <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        <?php $cont = 0; $cont++ ; echo $arrayWork[$cont]; ?>
+                        <br>
+                        <span style="color:grey"><?php $cont++ ; echo $arrayWork[$cont]; ?> | <?php  $cont++ ; echo $arrayWork[$cont]; ?> </span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php  $cont++ ; echo $arrayWork[$cont]; ?></span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="#" style="text-decoration: none;">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="img/categoria.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        <?php $cont = 0; $cont++ ; echo $arrayEnsaio[$cont]; ?>
+                        <br>
+                        <span style="color:grey"><?php $cont++ ; echo $arrayEnsaio[$cont]; ?> | <?php $cont++ ; echo $arrayEnsaio[$cont]; ?> </span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $arrayEnsaio[$cont]; ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -476,11 +516,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        <?php echo $array[1] ?>
+                        <?php $cont=0; $cont++ ; echo $array[$cont]; ?>
                         <br>
-                        <span style="color:grey"><?php echo $array[2] ?> | <?php echo $array[3] ?></span>
+                        <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[4] ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -497,11 +537,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        <?php echo $array[6] ?>
+                        <?php $cont++ ; echo $array[$cont]; ?>
                         <br>
-                        <span style="color:grey"><?php echo $array[7] ?>| <?php echo $array[8] ?></span>
+                        <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[9] ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -518,11 +558,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        <?php echo $array[11] ?>
+                        <?php $cont++ ; echo $array[$cont]; ?>
                         <br>
-                        <span style="color:grey"><?php echo $array[12] ?> |<?php echo $array[13] ?></span>
+                        <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[14] ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -539,11 +579,11 @@ function daysInMonth(month, year) {
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
-                        <?php echo $array[16] ?>
+                        <?php $cont++ ; echo $array[$cont]; ?>
                         <br>
-                        <span style="color:grey"><?php echo $array[17] ?> | <?php echo $array[18] ?></span>
+                        <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php echo $array[19] ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>

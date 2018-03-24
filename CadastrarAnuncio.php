@@ -91,7 +91,8 @@ $session = new FunctionsSession();
 
                 if ($categoria == "cozinha") {
                     
-                    $climatizado = $seg->filtro3($_POST['climatizado-cozinha']);
+                   
+                     $climatizado = $seg->filtro3($_POST['climatizado-cozinha']);
                     if ($climatizado == "sim") {
                         $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
                     }
@@ -124,7 +125,43 @@ $session = new FunctionsSession();
 
                 if ($categoria == "workshop") {
                    
+                    $climatizado = $seg->filtro3($_POST['climatizado-workshop']);
+                    if ($climatizado == "sim") {
+                        $modeloAr = $seg->filtro3($_POST['modelo-ar-workshop']);
+                    }
+                    $wifi = $seg->filtro3($_POST['wifi-workshop']);
+                    $vigilancia = $seg->filtro3($_POST['vigilancia-workshop']);
+                    $armarios = $seg->filtro3($_POST['armarios-workshop']);
+                    $limpeza = $seg->filtro3($_POST['limpeza-workshop']);
+                    $copa = $seg->filtro3($_POST['copa-workshop']);
+                    $numMesa = $seg->filtro2($_POST['mesa-workshop']);
+                    $numCadeira= $seg->filtro2($_POST['cadeira-workshop']);
+                    $numQuadro = $seg->filtro2($_POST['quadro-workshop']);
+                    $numLousa = $seg->filtro2($_POST['lousa-workshop']);
+                    $numTelao = $seg->filtro2($_POST['telao-workshop']);
+                    $numTv = $seg->filtro2($_POST['tv-workshop']);
+                    $projetor = $seg->filtro3($_POST['projetor-workshop']);
+                    $som = $seg->filtro3($_POST['som-workshop']);
+                    $computador = $seg->filtro3($_POST['computador-office-workshop']);
+                    $flip = $seg->filtro3($_POST['flip-workshop']);
+                    $cafe = $seg->filtro3($_POST['cafe-workshop']);
+                    $agua= $seg->filtro3($_POST['agua-workshop']);
+                    $buffet = $seg->filtro3($_POST['buffet-workshop']);
+                    $buffetExtra = $seg->filtro3($_POST['buffet-extra-workshop']);
+                    $descricaoEquipamento = $seg->filtro($_POST['descricao-equipamento-workshop']);
+                    $descricaoAberta = $seg->filtro($_POST['descricao-aberta-workshop']);
 
+                    print $resp = $db-> cadastrarWorkShop($conn,$aux, $climatizado, $modeloAr, $wifi, $vigilancia, $armarios, $limpeza, $copa, $numMesa, $numCadeira, $numQuadro, $numLousa, $numTelao, $numTv, $projetor, $som, $computador, $flip, $cafe, $agua, $buffet, $buffetExtra, $descricaoEquipamento, $descricaoAberta);
+                    
+                }
+
+                if ($categoria == "ensaio"){
+                    $camarim = $seg->filtro3($_POST['camarim-ensaio']);
+                    $apoio = $seg->filtro3($_POST['apoio-ensaio']);
+                    $barra = $seg->filtro3($_POST['barra-ensaio']);
+                    $espelho = $seg->filtro3($_POST['espelho-ensaio']);
+                    $descricaoAberta = $seg->filtro($_POST['descricao-aberta-ensaio']);
+                    print $resp = $db-> cadastrarEnsaio($conn, $aux, $camarim, $apoio, $barra, $espelho, $descricaoAberta);
 
                 }
 
