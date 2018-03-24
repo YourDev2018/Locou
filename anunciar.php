@@ -133,7 +133,7 @@
 
       <br><br>
 
-      <form action="#" method="get">
+      <form action="#" method="post">
 
         <div class="row" id="fora_do_rj" style="display: none">
 
@@ -178,7 +178,7 @@
 
       </form>
 
-      <form action="#" method="get">
+      <form action="#" method="post">
 
 
         <!-- CADASTRO PARTE 1-->
@@ -3331,6 +3331,84 @@
             </div>
 
           </div>
+
+          <!-- Fotos -->
+
+          <div class="row" id="fotos" style="display: none">
+            <div class="col-lg-2 col-md-1 col-sm-0">
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+
+              <!-- TITULO PARTE 2 -->
+
+              <div class="row" style="background-color: black">
+                <div class="col-12" style="color: #FFC107">
+                  <br>
+                  <span class="btn btn-outline-warning"><h2>Fotos</h2></span>
+                  <br><br>
+                </div>
+              </div>
+              <br><br>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  Faça o upload de no mínimo 3 e no máximo 5 fotos para o seu anúncio
+                </div>
+              </div>
+
+              <br><br>
+
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="foto1" name="foto1">
+                <label class="custom-file-label text-left" id="foto1-label" for="foto1">Escolha uma foto</label>
+              </div>
+              <br><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="foto2" name="foto2">
+                <label class="custom-file-label text-left" id="foto2-label" for="foto2">Escolha uma foto</label>
+              </div>
+              <br><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="foto3" name="foto3">
+                <label class="custom-file-label text-left" id="foto3-label" for="foto3">Escolha uma foto</label>
+              </div>
+              <br><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="foto4" name="foto4">
+                <label class="custom-file-label text-left" id="foto4-label" for="foto4">Escolha uma foto</label>
+              </div>
+              <br><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="foto5" name="foto5">
+                <label class="custom-file-label text-left" id="foto5-label" for="foto5">Escolha uma foto</label>
+              </div>
+              <br><br>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  Caso deseje, faça o upload de 2 fotos panorâmicas abaixo (Opcional)
+                </div>
+              </div>
+
+              <br><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="pano1" name="pano1">
+                <label class="custom-file-label text-left" id="pano1-label" for="pano1">Escolha uma foto panorâmica</label>
+              </div>
+              <br><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="pano2" name="pano2">
+                <label class="custom-file-label text-left" id="pano2-label" for="pano2">Escolha uma foto panorâmica</label>
+              </div>
+
+              <br><br>
+
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-0">
+            </div>
+
+          </div>
+
         <!-- CONTROLE DE MENU -->
         <br>
 
@@ -3361,6 +3439,17 @@
 
   </body>
   <script>
+    // Upload Foto
+    $('.custom-file-input').on('change',function(){
+      var foto = $(this).val().split('\\').pop();
+      var label = document.getElementById($(this).attr('id')+"-label");
+      label.innerHTML = foto;
+      console.log($(this).attr('id'));
+      console.log($(this).attr('id')+"-label");
+      console.log(foto);
+    })
+    //
+
     var pagina = 0;
     function proximo()
     {
@@ -3377,6 +3466,7 @@
       var costura = document.getElementById("descricao_especifica_costura");
       var academia = document.getElementById("descricao_especifica_academia");
       var artes = document.getElementById("descricao_especifica_artes");
+      var fotos = document.getElementById("fotos");
       var foraRJ = document.getElementById("fora_do_rj");
 
       var Bproximo = document.getElementById("proximo");
@@ -3392,9 +3482,9 @@
 
 
 
-      if(pagina>3)
+      if(pagina>4)
       {
-        pagina = 3;
+        pagina = 4;
       }
 
       if(pagina!=0)
@@ -3447,9 +3537,10 @@
 
       if(pagina == 3)
       {
-        document.getElementById('proximo').style.display = 'none';
+        document.getElementById('proximo').style.display = '';
         document.getElementById('periodo').style.display = "none";
-        document.getElementById('anunciar').style.display = '';
+        document.getElementById('anunciar').style.display = 'none';
+        fotos.style.display = "none";
 
         if(categoria == "consultorio")
         {
@@ -3483,6 +3574,21 @@
         {
             artes.style.display = "";
         }
+      }
+
+      if(pagina == 4)
+      {
+        fotos.style.display = "";
+        consultorio.style.display = "none";
+        workshop.style.display = "none";
+        cozinha.style.display = "none";
+        ensaio.style.display = "none";
+        fotografico.style.display = "none";
+        costura.style.display = "none";
+        academia.style.display = "none";
+        artes.style.display = "none";
+        document.getElementById('anunciar').style.display = '';
+        document.getElementById('proximo').style.display = 'none';
       }
 
       window.scrollTo(0, 0);
@@ -3561,9 +3667,10 @@
 
       if(pagina == 3)
       {
-        document.getElementById('proximo').style.display = 'none';
+        document.getElementById('proximo').style.display = '';
         document.getElementById('periodo').style.display = "none";
-        document.getElementById('anunciar').style.display = '';
+        document.getElementById('anunciar').style.display = 'none';
+        fotos.style.display = "none";
 
         if(categoria == "consultorio")
         {
@@ -3597,6 +3704,21 @@
         {
             artes.style.display = "";
         }
+      }
+
+      if(pagina == 4)
+      {
+        fotos.style.display = "";
+        consultorio.style.display = "none";
+        workshop.style.display = "none";
+        cozinha.style.display = "none";
+        ensaio.style.display = "none";
+        fotografico.style.display = "none";
+        costura.style.display = "none";
+        academia.style.display = "none";
+        artes.style.display = "none";
+        document.getElementById('anunciar').style.display = '';
+        document.getElementById('proximo').style.display = 'none';
       }
 
       window.scrollTo(0, 0);
