@@ -1,4 +1,24 @@
   <!DOCTYPE html>
+
+  <?php 
+  require_once 'FunctionsSession.php';
+  require_once 'FunctionsDB.php';
+  require_once 'BuscarEspaco.php';
+  $session = new FunctionsSession();
+  $session->iniciarSession();
+  $array = $_SESSION['idAnuncio'];
+
+  $db = new FunctionsDB();
+  $conn = $db->conectDB();
+  
+  $idAnuncio = $array[0];
+
+  $busca = new BuscarEspacos();
+  $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
+ 
+  
+  ?>
+
   <html lang="en">
     <head>
       <meta charset="utf-8">
@@ -111,8 +131,8 @@
           <div class="col-2">
           </div>
           <div class="col-8">
-            <h1><b>Nome do anúncio</b></h1>
-            <h5 style="color: grey">Estado | Cidade | Bairro - Categoria</h5>
+            <h1><b><?php $cont = 2; echo $array[$cont]?></b></h1>
+            <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> |<?php $cont++; echo $array[$cont]?> | <?php $cont =6; echo $array[6]?> - <?php $cont++; echo $array[$cont]?> </h5>
           </div>
           <div class="col-2">
           </div>
@@ -167,15 +187,15 @@
                       <div class="col-12 mt-2">
                         <div class="row text-left">
                           <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
-                            <h4>Consultório</h4>
-                            <h2>Nome do anúncio</h2>
-                            <h6 style="color: grey">Rio de Janeiro | RJ</h6>
+                            <h4><?php echo $array[$cont]?></h4>
+                            <h2><?php $cont =2 ; echo $array[$cont]?> </h2>
+                            <h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?>|<?php $cont++; $cont++; echo $array[$cont]?></h6>
                           </div>
                           <div class="col-12 pt-4">
                             <div class="row text-center justify-content-center">
                               <div class="col-4 px-3 py-2">
                                 <h6 style="color: grey; font-weight: 300; font-size:90%">Metragem<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-home"></i> <br>120M²</h5>
+                                <h5 style=";font-size:90%"><i class="fas fa-home"></i> <br> <?php echo $arrayGeral[$cont++] ?></h5>
                               </div>
                               <div class="col-4 px-3 py-2">
                                 <h6 style="color: grey; font-weight: 300 ;font-size:90%">Possui<br></h6>
