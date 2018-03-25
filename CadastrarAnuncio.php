@@ -34,12 +34,6 @@ $transporte = $seg->filtro3($_POST['transporte']);
 // consutório 
 
 
-
-
-
-
-
-
 $db = new FunctionsDB();
 $conn = $db->conectDB();
 $db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
@@ -79,6 +73,8 @@ $session = new FunctionsSession();
                     $agua= $seg->filtro3($_POST['agua-consultorio']);
                     $tv  = $seg->filtro3($_POST['tv-consultorio']);
                     $descricao = $seg->filtro($_POST['descricao-aberta-consultorio']);
+                    
+                    
 
                     print $resp = $db-> cadastrarConsultorio($conn,$aux, $climatizado,$modeloAr,
                        $wifi, $monitoramento, $armarios, $secretaria, $limpeza,$copa,
@@ -188,8 +184,35 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
 
    
     $id = $_SESSION['id'];
+    //var_dump ($_FILES['foto1']);
+     $ext = strtolower(substr($_FILES['foto1']['name'],-4));
+
+    $temp = $_FILES['foto1']['tmp_name'];
+    
+    $novo_nome = md5(time()).$ext;
+    
+    //$diretorio = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+
+   // move_uploaded_file($temp,$diretorio.$novo_nome);
+    // http://www.yourdev.com.br/clientes/locou/img/anuncio/
     $db = new FunctionsDB();
-    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf);
+
+    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$novo_nome);
+
+    $servidor = 'yourdev-com-br.umbler.net'; // Endereço
+    $usuario = 'yourdev-com-br'; // Usuário
+    $senha = 'yourdev2017'; // Senha
+
+    if (!$ftp = ftp_connect($servidor)){
+        print "erro";
+    } // Retorno: true ou false
+
+     $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
+
+    $local_arquivo = $temp; // Localização (local)
+    $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
+    $ftp_arquivo = $_FILES['foto1']['name']; // Nome do arquivo (externo)
+    $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
 
     return $aux;
 

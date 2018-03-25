@@ -15,8 +15,14 @@ class BuscarEspacos
                     $array = [];
                     $cont=0;
                     while ($row=$result->fetch_assoc()) {
+
+
                         $array[$cont] = $row['idAnuncio'];
                         $cont++;
+
+                        $array[$cont] = trim($row['fotoUm']);
+                        $cont++;
+
                         $array[$cont] = $row['titulo'];
                         $cont++;
                         $array[$cont] = $row['bairro'];
@@ -45,6 +51,10 @@ class BuscarEspacos
                     while ($row=$result->fetch_assoc()) {
                         $array[$cont] = $row['idAnuncio'];
                         $cont++;
+
+                        $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
                         $array[$cont] = $row['titulo'];
                         $cont++;
                         $array[$cont] = $row['bairro'];
@@ -73,8 +83,13 @@ class BuscarEspacos
                     while ($row=$result->fetch_assoc()) {
                         $array[$cont] = $row['idAnuncio'];
                         $cont++;
+
+                         $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
                         $array[$cont] = $row['titulo'];
                         $cont++;
+                        
                         $array[$cont] = $row['bairro'];
                         $cont++;
                         $array[$cont] = $row['cidade'];
@@ -101,6 +116,10 @@ class BuscarEspacos
                     while ($row=$result->fetch_assoc()) {
                         $array[$cont] = $row['idAnuncio'];
                         $cont++;
+
+                         $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
                         $array[$cont] = $row['titulo'];
                         $cont++;
                         $array[$cont] = $row['bairro'];
@@ -130,6 +149,10 @@ class BuscarEspacos
                     while ($row=$result->fetch_assoc()) {
                         $array[$cont] = $row['idAnuncio'];
                         $cont++;
+
+                         $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
                         $array[$cont] = $row['titulo'];
                         $cont++;
                         $array[$cont] = $row['bairro'];

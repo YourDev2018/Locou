@@ -147,14 +147,14 @@
         }
 
         
-        function cadastrarAnuncioBasico($db, $idProprietario,$titulo,$categoria,$bairro,$cidade,$uf){
+        function cadastrarAnuncioBasico($db, $idProprietario,$titulo,$categoria,$bairro,$cidade,$uf,$nomeImg){
 
                 $session = new FunctionsSession(); 
             if ($session->vereficarLogin()) {
                 $id = $session->vereficarLogin();
             
 
-                $sql = "INSERT INTO AnuncioBasico(idProprietario,titulo,categoria,bairro,cidade,uf) VALUES ('$idProprietario','$titulo','$categoria','$bairro','$cidade','$uf')";
+                $sql = "INSERT INTO AnuncioBasico(idProprietario,titulo,categoria,bairro,cidade,uf,fotoUm) VALUES ('$idProprietario','$titulo','$categoria','$bairro','$cidade','$uf','$nomeImg')";
                 if ($db->query($sql)===true) {
                     $last_id = $db->insert_id;
                     

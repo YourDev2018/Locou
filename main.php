@@ -21,7 +21,7 @@ require_once 'Espaco.php';
 //DBMoip();
 //Pedido();
 require_once 'BuscarEspacos.php';
-//returnEspaco();
+returnEspaco();
 //returnConsultorio();
 
 function returnEspaco(){
