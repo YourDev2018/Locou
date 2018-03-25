@@ -63,8 +63,14 @@ class BuscarEspacos
                         $cont++;
                         $array[$cont] = $row['preco'];
                         $cont++;
+
+                        $array[$cont] = $row['uf'];
+                        $cont++;
+
+                        $array[$cont] = $row['categoria'];
+                        $cont++;
                     }
-                    print_r($array);
+                    // print_r($array);
                     return $array;
             }       
 
@@ -97,7 +103,7 @@ class BuscarEspacos
                         $array[$cont] = $row['preco'];
                         $cont++;
                     }
-                    print_r($array);
+                   
                     return $array;
             }       
 
@@ -129,7 +135,7 @@ class BuscarEspacos
                         $array[$cont] = $row['preco'];
                         $cont++;
                     }
-                    print_r($array);
+                    
                     return $array;
             }        
 
@@ -162,9 +168,52 @@ class BuscarEspacos
                         $array[$cont] = $row['preco'];
                         $cont++;
                     }
-                    print_r($array);
+                    
                     return $array;
             }       
+
+    }
+
+    public function retornarDescGeral($db,$idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioBasico WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0 || $cont >1) {
+            print "Select buscar espaço Erro";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                $array[$cont] = $row['metragem'];
+                $cont++;
+
+                $array[$cont] = $row['recepcao'];
+                $cont++;
+
+                $array[$cont] = $row['banheiroPrivativo'];
+                $cont++;
+                $array[$cont] = $row['banheiro'];
+                $cont++;
+                $array[$cont] = $row['casaOuPedio'];
+                $cont++;
+                $array[$cont] = $row['elevador'];
+                $cont++;
+
+                $array[$cont] = $row['estacionamento'];
+                $cont++;
+
+                $array[$cont] = $row['proprioOuRotativo'];
+                $cont++;
+
+                $array[$cont] = $row['transporte'];
+                
+
+            }
+                // print_r($array);
+            return $array;        
+        }
 
     }
     

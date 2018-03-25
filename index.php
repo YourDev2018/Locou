@@ -3,9 +3,12 @@
 <?php
   require_once 'BuscarEspacos.php';
   require_once 'FunctionsDB.php';
+  require_once 'FunctionsSession.php';
 
 $db = new FunctionsDB();
 $conn = $db->conectDB();
+$session = new FunctionsSession();
+$session->iniciarSession();
 $array = returnEspaco($conn);
 $arrayConsultorio = returnConsultorio($conn);
 $arrayCozinha = returnCozinha($conn);
@@ -14,6 +17,7 @@ $arrayEnsaio = returnEnsaio($conn);
 $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 $link="img/categoria.jpg";
 $cont= 0;
+$conn = $db->closeDB($conn);
 
 function returnEspaco($conn){
 
@@ -393,11 +397,11 @@ function daysInMonth(month, year) {
             <!-- CARDS LINHA 1 -->
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black;">
-                <a href="#" style="text-decoration: none;">
+              <div style="background-color: black">
+                <a href="<?php  $cont = 0; $_SESSION['idAnuncio'] = $arrayConsultorio ; echo "anuncio.php" ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayConsultorio[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+                      <img src="<?php $cont++ ; echo $prefixo.$arrayConsultorio[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
 
                     </div>
                     <div class="col-12">
@@ -511,7 +515,7 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
-                <a href="#" style="text-decoration: none;">
+                <a href="<?php echo "fb.com" ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
                       <img src="<?php $cont=0; $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
