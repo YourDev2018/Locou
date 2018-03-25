@@ -176,7 +176,7 @@ class BuscarEspacos
 
     public function retornarDescGeral($db,$idAnuncio){
 
-        $result =  $db->query("SELECT * FROM AnuncioBasico WHERE idAnuncio = '$idAnuncio' ") ;
+        $result =  $db->query("SELECT * FROM AnuncioDescricaoGeral WHERE idAnuncio = '$idAnuncio' ") ;
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0 || $cont >1) {
@@ -202,6 +202,49 @@ class BuscarEspacos
                 $cont++;
 
                 $array[$cont] = $row['estacionamento'];
+                $cont++;
+
+                $array[$cont] = $row['proprioOuRotativo'];
+                $cont++;
+
+                $array[$cont] = $row['transporte'];
+                
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
+    }
+
+    public function retornarConsultorioDetalhado($db){
+
+        $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0 || $cont >1) {
+            print "Não é um consultório";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                $array[$cont] = $row['climatizado'];
+                $cont++;
+
+                $array[$cont] = $row['wifi'];
+                $cont++;
+
+                $array[$cont] = $row['monitoramento'];
+                $cont++;
+                $array[$cont] = $row['armarios'];
+                $cont++;
+                $array[$cont] = $row['secretaria'];
+                $cont++;
+                $array[$cont] = $row['limpeza'];
+                $cont++;
+
+                $array[$cont] = $row['copa'];
                 $cont++;
 
                 $array[$cont] = $row['proprioOuRotativo'];

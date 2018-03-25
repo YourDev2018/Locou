@@ -207,7 +207,7 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
         print "erro";
     } // Retorno: true ou false
 
-     $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
+    $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
 
     $local_arquivo = $temp; // Localização (local)
     $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)

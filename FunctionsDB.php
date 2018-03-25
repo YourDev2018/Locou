@@ -15,7 +15,7 @@
                 print $conn->connect_erro;
                 return $conn->connect_erro;
             }else{
-                print "conect DB  - /   ";
+              //  print "conect DB  - /   ";
                 return $conn;
             }
         

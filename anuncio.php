@@ -3,7 +3,10 @@
   <?php 
   require_once 'FunctionsSession.php';
   require_once 'FunctionsDB.php';
-  require_once 'BuscarEspaco.php';
+  require_once 'BuscarEspacos.php';
+
+  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+
   $session = new FunctionsSession();
   $session->iniciarSession();
   $array = $_SESSION['idAnuncio'];
@@ -160,7 +163,7 @@
                       </ol>
                       <div class="carousel-inner" style="width:100%; height: 30vw">
                         <div class="carousel-item active">
-                          <img class="d-block w-100" src="img/item.png">
+                          <img class="d-block w-100" src="<?php $cont = 1; echo $prefixo.$array[$cont]?>">
                         </div>
                         <div class="carousel-item">
                           <img class="d-block w-100" src="img/categoria.jpg">
@@ -187,7 +190,7 @@
                       <div class="col-12 mt-2">
                         <div class="row text-left">
                           <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
-                            <h4><?php echo $array[$cont]?></h4>
+                            <h4><?php $cont = 6; echo $array[$cont]?></h4>
                             <h2><?php $cont =2 ; echo $array[$cont]?> </h2>
                             <h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?>|<?php $cont++; $cont++; echo $array[$cont]?></h6>
                           </div>
