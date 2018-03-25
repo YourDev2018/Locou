@@ -178,7 +178,7 @@
 
       </form>
 
-      <form action="#" method="post">
+      <form action="CadastrarAnuncio.php"  method="POST" enctype="multipart/form-data">
 
 
         <!-- CADASTRO PARTE 1-->
