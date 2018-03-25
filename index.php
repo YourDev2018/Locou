@@ -19,14 +19,14 @@ function returnEspaco($conn){
 
   $busca = new BuscarEspacos();
   $array = $busca->retornarEspacoMaisVistos($conn);
-  
+
   return $array;
 }
 
 function returnConsultorio($conn){
   $busca = new BuscarEspacos();
   $array = $busca->retornarEspacoConsultorio($conn);
-  
+
   return $array;
 
 }
@@ -34,7 +34,7 @@ function returnConsultorio($conn){
 function returnCozinha($conn){
   $busca = new BuscarEspacos();
   $array = $busca->retornarEspacoCozinha($conn);
-  
+
   return $array;
 
 }
@@ -42,7 +42,7 @@ function returnCozinha($conn){
 function returnWorkShop($conn){
   $busca = new BuscarEspacos();
   $array = $busca->retornarEspacoWorkShop($conn);
-  
+
   return $array;
 
 }
@@ -50,7 +50,7 @@ function returnWorkShop($conn){
 function returnEnsaio($conn){
   $busca = new BuscarEspacos();
   $array = $busca->retornarEspacoEnsaio($conn);
-  
+
   return $array;
 
 }
@@ -393,12 +393,12 @@ function daysInMonth(month, year) {
             <!-- CARDS LINHA 1 -->
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black;">
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayConsultorio[$cont]; ?>" class="img-fluid">
-                     
+                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayConsultorio[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -415,11 +415,11 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black;">
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayCozinha[$cont]; ?>" class="img-fluid">
+                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayCozinha[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -440,7 +440,7 @@ function daysInMonth(month, year) {
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayWork[$cont]; ?>" class="img-fluid">
+                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayWork[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -461,7 +461,7 @@ function daysInMonth(month, year) {
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayEnsaio[$cont]; ?>" class="img-fluid">
+                      <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayEnsaio[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -514,7 +514,7 @@ function daysInMonth(month, year) {
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont=0; $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid">
+                      <img src="<?php $cont=0; $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -535,7 +535,7 @@ function daysInMonth(month, year) {
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid">
+                      <img src="<?php $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -556,7 +556,7 @@ function daysInMonth(month, year) {
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                   <img src="<?php  $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid">
+                   <img src="<?php  $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
@@ -577,7 +577,7 @@ function daysInMonth(month, year) {
                 <a href="#" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
-                   <img src="<?php $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid">
+                   <img src="<?php $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-12">
                       <h5 style="color:white">
