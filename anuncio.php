@@ -222,14 +222,9 @@
           <div class="col-2">
           </div>
           <div class="col-8">
-<<<<<<< HEAD
             <h1><b><?php $cont = 4; echo $array[$cont]?></b></h1>
-            <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> |<?php $cont++; echo $array[$cont]?> | <?php $cont =6; echo $array[6]?> - <?php $cont++; echo $array[$cont]?> </h5>
-=======
-            <h1><b><?php $cont = 2; echo $array[$cont]?></b></h1>
             <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> | <?php $cont++; echo $array[$cont]?> | <?php $cont =6; echo $array[6]?> - <?php $cont++; echo $array[$cont]?> </h5>
             <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> - 5.0 <br> (2 avaliações)</span></h6>
->>>>>>> f0f5a4891946495865fa4da10e0c2bde34975a98
           </div>
           <div class="col-2">
           </div>
