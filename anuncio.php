@@ -147,7 +147,7 @@
           <div class="col-2">
           </div>
           <div class="col-8">
-            <h1><b><?php $cont = 2; echo $array[$cont]?></b></h1>
+            <h1><b><?php $cont = 4; echo $array[$cont]?></b></h1>
             <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> |<?php $cont++; echo $array[$cont]?> | <?php $cont =6; echo $array[6]?> - <?php $cont++; echo $array[$cont]?> </h5>
           </div>
           <div class="col-2">
@@ -176,13 +176,13 @@
                       </ol>
                       <div class="carousel-inner" style="width:100%; height: 30vw">
                         <div class="carousel-item active">
-                          <img class="d-block w-100" src="<?php $cont = 1; echo $prefixo.$array[$cont]?>">
+                          <img class="d-block w-100" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="img/categoria.jpg">
+                          <img class="d-block w-100" src="<?php  echo $prefixo.$array[$cont++]?>">
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="img/item.png">
+                          <img class="d-block w-100" src="<?php  echo $prefixo.$array[$cont++]?>">
                         </div>
                       </div>
                       <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">

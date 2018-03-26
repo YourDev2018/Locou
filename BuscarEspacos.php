@@ -61,6 +61,14 @@ class BuscarEspacos
                         $array[$cont] = trim($row['fotoUm']);
                         $cont++;
 
+                         $array[$cont] = trim($row['fotoDois']);
+                        $cont++;
+
+                         $array[$cont] = trim($row['fotoTres']);
+                        $cont++;
+
+
+
                         $array[$cont] = $row['titulo'];
                         $cont++;
                         $array[$cont] = $row['bairro'];

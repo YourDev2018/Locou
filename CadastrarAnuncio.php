@@ -186,10 +186,15 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
     $id = $_SESSION['id'];
     //var_dump ($_FILES['foto1']);
      $ext = strtolower(substr($_FILES['foto1']['name'],-4));
+     $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
+     $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
 
-    $temp = $_FILES['foto1']['tmp_name'];
+    $temp2 = $_FILES['foto2']['tmp_name'];
+    $temp3 = $_FILES['foto3']['tmp_name'];
     
-    $novo_nome = md5(time()).$ext;
+    $novo_nome = md5(time().$temp).$ext;
+    $novo_nome2 = md5(time().$temp2).$ext;
+    $novo_nome3 = md5(time().$temp3).$ext;
     
     //$diretorio = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
@@ -197,7 +202,7 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
     // http://www.yourdev.com.br/clientes/locou/img/anuncio/
     $db = new FunctionsDB();
 
-    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$novo_nome);
+    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$novo_nome,$novo_nome2,$novo_nome3);
 
     $servidor = 'yourdev-com-br.umbler.net'; // Endereço
     $usuario = 'yourdev-com-br'; // Usuário
@@ -210,9 +215,13 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
     $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
 
     $local_arquivo = $temp; // Localização (local)
+    $local_arquivo2 = $temp2; // Localização (local)
+    $local_arquivo3 = $temp3; // Localização (local)
     $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
     $ftp_arquivo = $_FILES['foto1']['name']; // Nome do arquivo (externo)
     $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
+    $envio2 = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo2, FTP_BINARY);
+    $envio3 = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo3, FTP_BINARY);
 
     return $aux;
 
