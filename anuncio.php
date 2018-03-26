@@ -438,9 +438,9 @@
 
               <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+                <div class="col-lg-4 col-md-4 col-sm-12 text-center justify-content-center">
                   <div class="row text-center justify-content-center py-3">
-                    <div class="col-lg-6 col-md-10 col-sm-12 text-center justify-content-center">
+                    <div class="col-lg-11 col-md-12 col-sm-12 text-center justify-content-center">
                       <h2> <b>Localização:</b> </h2>
                       <div id="map" style="height: 50vh; width: 100%"></div>
                       <script>
@@ -479,21 +479,49 @@
                   </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+                <div class="col-lg-8 col-md-8 col-sm-12 text-center justify-content-center">
                   <div class="row">
                     <div class="col-12 py-3 px-5">
                       <h3><b>Avaliações</b></h3>
                     </div>
-                    <div class="col-12 p-5">
-                      <div class="row">
+                    <div class="col-12 p-1">
+
+                      <div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
                         <div class="col-3">
-                          <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 70px"></a>
+                          <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
                           <br>
-                            <span style="font-size: 15px">Nome do usuário</span>
+                            <span style="font-size: 13px">Nome do usuário</span>
                             <br>
-                            <span style="font-size: 12px">Rio de Janeiro <br> RJ</span>
+                            <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
+                        </div>
+                        <div class="col-9 p-4 text-left">
+                          <span style="font-size: 13px">Nome do item</span>
+                          <span class="pl-2" style="font-weight: 300; font-size: 100%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                          <br>
+                          <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tristique ullamcorper. Proin libero urna.</span>
+                          <br>
+                          <span style="font-size: 12px; color: grey">26/03/2018</span>
                         </div>
                       </div>
+                      <br>
+                      <div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
+                        <div class="col-3">
+                          <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
+                          <br>
+                            <span style="font-size: 13px">Nome do usuário</span>
+                            <br>
+                            <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
+                        </div>
+                        <div class="col-9 p-4 text-left">
+                          <span style="font-size: 13px">Nome do item</span>
+                          <span class="pl-2" style="font-weight: 300; font-size: 100%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                          <br>
+                          <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tristique ullamcorper. Proin libero urna.</span>
+                          <br>
+                          <span style="font-size: 12px; color: grey">26/03/2018</span>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>
