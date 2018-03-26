@@ -67,10 +67,10 @@
 
         }
 
-        function cadastrarUsuarioBasico($db, $email,$senha,$firstName, $lastName, $dataNascimento){
+        function cadastrarUsuarioBasico($db, $email,$senha,$firstName, $lastName, $dataNascimento, $foto){
                 $aux = $this->emailExist($db, $email);
 
-                $sql = "INSERT INTO UsuarioBasico(email,senha,firstName,lastName,dataNascimento) VALUES ('$email','$senha','$firstName','$lastName', '$dataNascimento')";
+                $sql = "INSERT INTO UsuarioBasico(email,senha,firstName,lastName,dataNascimento, foto) VALUES ('$email','$senha','$firstName','$lastName', '$dataNascimento', '$foto')";
                 if ($db->query($sql)===true) {
                     $_SESSION['logado']=true;
                     $this->loginEmailSenha($db,$email,$senha);

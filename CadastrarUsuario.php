@@ -24,12 +24,16 @@
 
          $nascimento = $ano."-".$mes."-".$dia;
 
-        $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento );
+        $ext = strtolower(substr($_FILES['foto']['name'],-4));
+        $temp = $_FILES['foto']['tmp_name'];
+        $novo_nome = md5(time().$temp).$ext;
+
+        $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome);
         
         if ($aux) {
 
              $ext = strtolower(substr($_FILES['foto']['name'],-4));
-             $temp = $_FILES['foto']['tmp_name'];
+             
 
             $servidor = 'yourdev-com-br.umbler.net'; // Endereço
             $usuario = 'yourdev-com-br'; // Usuário
@@ -43,7 +47,7 @@
 
              $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
 
-             $local_arquivo = $temp; // Localização (local)
+              $local_arquivo = $temp; // Localização (local)
               $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
               $ftp_arquivo = $_FILES['foto']['name']; // Nome do arquivo (externo)
               $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
