@@ -326,13 +326,22 @@ function daysInMonth(month, year) {
             <br><br>
 
             <div class="desktop">
-              <form action="resultado.php" class="form-inline justify-content-center desktop">
-                <select class="form-control custom-select" id="categoria">
+              <form action="resultado.php" method="get" class="form-inline justify-content-center desktop">
+                <select class="form-control custom-select" id="categoria" name="t">
                   <option value="todos">Todos</option>
                   <option value="consultorio">Consultórios</option>
+                  <option value="workshop">Workshop</option>
+                  <option value="palestra">Sala para Palestras</option>
+                  <option value="aula">Sala para Aulas</option>
+                  <option value="ensaio">Sala para Ensaio</option>
+                  <option value="artes">Ateliê de Artes</option>
+                  <option value="fotografico">Estúdio Fotográfico</option>
+                  <option value="produtora">Produtora</option>
+                  <option value="costura">Ateliê de Costura</option>
+                  <option value="academia">Estúdio ou Academia</option>
                   <option value="cozinha">Cozinhas</option>
                 </select>
-                <input type="text" class="form-control" style="width:40%" id="query" placeholder="Ex: Tijuca, Ipanema, Consultório">
+                <input type="text" name="q" class="form-control" style="width:40%" id="query" placeholder="Ex: Tijuca, Ipanema, Consultório">
                 <button type="submit" class="btn btn-warning">Buscar</button>
               </form>
             </div>
