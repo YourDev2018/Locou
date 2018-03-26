@@ -68,14 +68,14 @@
     </style>
   <body style="font-family: 'Muli'">
 
-    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
+    <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
       <a class="navbar-brand ml-5" href="index.php" >
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
       <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
         <a class="mx-3">Sobre</a>
         <a class="mx-3">Como Funciona</a>
-        <a class="mx-3">Procurar Espaços</a>
+        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
         <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
         <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
         <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
@@ -99,7 +99,7 @@
           <span class="menu-navbar" style="color:white">
             <a class="mx-2">Sobre</a>
             <a class="mx-2">Como Funciona</a>
-            <a class="mx-2">Procurar Espaços</a>
+            <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
             <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
             <br><br>

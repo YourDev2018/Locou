@@ -198,7 +198,7 @@ function daysInMonth(month, year) {
       <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
         <a class="mx-3">Sobre</a>
         <a class="mx-3">Como Funciona</a>
-        <a class="mx-3">Procurar Espaços</a>
+        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
         <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
         <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
         <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
@@ -222,7 +222,7 @@ function daysInMonth(month, year) {
           <span class="menu-navbar" style="color:white">
             <a class="mx-2">Sobre</a>
             <a class="mx-2">Como Funciona</a>
-            <a class="mx-2">Procurar Espaços</a>
+            <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
             <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
             <br><br>
@@ -264,28 +264,34 @@ function daysInMonth(month, year) {
         </div>
         <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
           <form action="#" method="post">
-            <div class="form-group">
-              <label for="nome">Nome</label>
-              <input type="text" class="form-control" id="nome" name="nome">
-            </div>
-            <div class="form-group">
-              <label for="sobrenome">Sobrenome</label>
-              <input type="text" class="form-control" id="sobrenome" name="sobrenome">
-            </div>
-            <div class="form-group">
-              <label>Data de nascimento</label>
-              <br>
-              <select id="days"></select>
-              <select id="months"></select>
-              <select id="years"></select>
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
-            </div>
-            <div class="form-group">
-              <label for="senha">Senha</label>
-              <input type="password" class="form-control" id="senha" name="senha">
+            <div class="row text-center justify-content-center">
+              <div class="col-12 pb-3">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
+              </div>
+              <div class="col-12 pb-3">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+              </div>
+              <div class="col-12 pb-3">
+                <label>Data de nascimento</label>
+                <br>
+                <select id="days"></select>
+                <select id="months"></select>
+                <select id="years"></select>
+              </div>
+              <div class="col-12 pb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
+              </div>
+              <div class="col-12 pb-5">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha">
+              </div>
+              <div class="col-10 pb-3 pt-3">
+                <input type="file" class="custom-file-input" id="foto" name="foto">
+                <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
+              </div>
             </div>
             <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
           </form>
@@ -666,7 +672,7 @@ function daysInMonth(month, year) {
           <div class="row">
 
             <div class="col">
-              <button type="button" class="btn btn-outline-warning"><h2>Procure espaços</h2></button>
+              <a href="resultado.php"><button type="button" class="btn btn-outline-warning"><h2>Procure espaços</h2></button></a>
               <br><br>
             </div>
 
@@ -768,5 +774,16 @@ function daysInMonth(month, year) {
         <div class="col-3">
         </div>
       </div>
+
+      <script>
+      $('.custom-file-input').on('change',function(){
+        var foto = $(this).val().split('\\').pop();
+        var label = document.getElementById($(this).attr('id')+"-label");
+        label.innerHTML = foto;
+        console.log($(this).attr('id'));
+        console.log($(this).attr('id')+"-label");
+        console.log(foto);
+      })
+      </script>
 
   </body>
