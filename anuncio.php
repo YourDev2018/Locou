@@ -279,8 +279,8 @@
                       <div class="col-12 mt-2">
                         <div class="row text-left">
                           <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
-                            <!-- <h4><?php $cont = 6; echo $array[$cont]?></h4> -->
-                            <h2><?php $cont =2 ; echo $array[$cont]?> </h2>
+                            <!-- <h4><?php /* $cont = 5; echo $array[$cont] */ ?></h4> -->
+                            <h2><?php $cont = 4 ; echo $array[$cont]?> </h2>
                             <h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?></h6>
                           </div>
                           <div class="col-12 pt-4">
