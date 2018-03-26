@@ -436,9 +436,9 @@
 
               </div>
 
-              <div class="row">
+              <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
                   <div class="row text-center justify-content-center py-3">
                     <div class="col-lg-6 col-md-10 col-sm-12 text-center justify-content-center">
                       <h2> <b>Localização:</b> </h2>
@@ -479,7 +479,24 @@
                   </div>
                 </div>
 
-
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+                  <div class="row">
+                    <div class="col-12 py-3 px-5">
+                      <h3><b>Avaliações</b></h3>
+                    </div>
+                    <div class="col-12 p-5">
+                      <div class="row">
+                        <div class="col-3">
+                          <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 70px"></a>
+                          <br>
+                            <span style="font-size: 15px">Nome do usuário</span>
+                            <br>
+                            <span style="font-size: 12px">Rio de Janeiro <br> RJ</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
@@ -487,7 +504,7 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="background-color: black;">
                   <div class="row">
-                    <div class="col-12 pt-4" style="border-top: solid; border-width: 1px; border-color: #FFC107; background-color: black">
+                    <div class="col-12 pt-4" style="background-color: black">
                       <div style="background-color: black" class="pt-3">
 
                         <div class="row">
