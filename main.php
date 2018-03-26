@@ -23,19 +23,24 @@ require_once 'Espaco.php';
 require_once 'BuscarEspacos.php';
 returnEspaco();
 //returnConsultorio();
+//anuncioAdd();
+
+function anuncioAdd(){
+    $db = new FunctionsDB();
+    $conn = $db->conectDB();
+    $busca = new BuscarEspacos();
+    print $busca->addContador($conn,47);
+}
 
 function returnEspaco(){
  
   $db = new FunctionsDB();
   $conn = $db->conectDB();
   $busca = new BuscarEspacos();
-  $array = $busca->retornarEspaco($conn);
-  echo $array[1];
+  $array = $busca->retornarEspacoMaisVistos($conn);
+  print_r ($array);
 
-    foreach ($array as $key => $value) { 
-                         
-         //print $value;                     
-    }
+   
 
 }
 

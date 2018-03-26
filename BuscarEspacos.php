@@ -31,11 +31,54 @@ class BuscarEspacos
                         $cont++;
                         $array[$cont] = $row['preco'];
                         $cont++;
-                    }
 
+                        $array[$cont] = $row['uf'];
+                        $cont++;
+
+                        $array[$cont] = $row['categoria'];
+                        $cont++;
+                    }
+                   // print_r($array);
                     return $array;
             }       
 
+    }
+
+    public function retornarAnuncioBasicoId($db,$idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioBasico WHERE idAnuncio = '$idAnuncio' ") ;
+            $cont = mysqli_num_rows($result);
+        
+            if ($cont <=0) {
+                print "Select buscar espaço Erro";
+            }else{
+                    $array = [];
+                    $cont=0;
+                    while ($row=$result->fetch_assoc()) {
+                        $array[$cont] = $row['idAnuncio'];
+                        $cont++;
+
+                        $array[$cont] = trim($row['fotoUm']);
+                        $cont++;
+
+                        $array[$cont] = $row['titulo'];
+                        $cont++;
+                        $array[$cont] = $row['bairro'];
+                        $cont++;
+                        $array[$cont] = $row['cidade'];
+                        $cont++;
+                        $array[$cont] = $row['preco'];
+                        $cont++;
+
+                        $array[$cont] = $row['uf'];
+                        $cont++;
+
+                        $array[$cont] = $row['categoria'];
+                        $cont++;
+                    }
+                    // print_r($array);
+                    return $array;
+            }  
     }
 
     public function retornarEspacoConsultorio($db){
@@ -196,7 +239,7 @@ class BuscarEspacos
                 $cont++;
                 $array[$cont] = $row['banheiro'];
                 $cont++;
-                $array[$cont] = $row['casaOuPedio'];
+                $array[$cont] = $row['casaOuPredio'];
                 $cont++;
                 $array[$cont] = $row['elevador'];
                 $cont++;
@@ -207,8 +250,9 @@ class BuscarEspacos
                 $array[$cont] = $row['proprioOuRotativo'];
                 $cont++;
 
-                $array[$cont] = $row['transporte'];
+                $array[$cont] = trim($row['transporte']);
                 
+
 
             }
                 // print_r($array);
@@ -222,7 +266,7 @@ class BuscarEspacos
         $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE idAnuncio = '$idAnuncio' ") ;
         $cont = mysqli_num_rows($result);
     
-        if ($cont <=0 || $cont >1) {
+        if ($cont <=0) {
             print "Não é um consultório";
         }else{
             
@@ -256,6 +300,31 @@ class BuscarEspacos
             }
                 // print_r($array);
             return $array;        
+        }
+
+    }
+
+    public function addContador($db, $idAnuncio){
+        
+        $result =  $db->query("SELECT contadorVisualizacoes FROM AnuncioBasico WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0 ) {
+            print "Não é um consultório";
+        }else{
+            
+            $aux;
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                $aux = $row['contadorVisualizacoes'];
+                
+            }
+            
+            $aux = $aux  +1;
+            $result =  $db->query("UPDATE AnuncioBasico SET contadorVisualizacoes = '$aux' WHERE idAnuncio = '$idAnuncio' ") ;
+            
+
+            return $aux;        
         }
 
     }
