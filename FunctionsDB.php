@@ -44,8 +44,6 @@
         
         function loginEmailSenha($db, $email, $senha){
 
-            
-
             $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' AND senha ='$senha' ") ;
             $cont = mysqli_num_rows($result);
             if ($cont <=0) {
@@ -313,6 +311,11 @@
                     return "false";
                 }
             }       
+        }
+
+        function salvarfoto(){
+
+            // $ext = strtolower(substr($_FILES['foto1']['name'],-4));
         }
 
         /*

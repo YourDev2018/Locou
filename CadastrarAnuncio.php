@@ -185,6 +185,13 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
    
     $id = $_SESSION['id'];
     //var_dump ($_FILES['foto1']);
+/*
+     if((isset($_FILES['foto1']) || isset($_FILES['foto2']) || isset($_FILES['foto3'])){
+
+        
+
+     }
+*/
      $ext = strtolower(substr($_FILES['foto1']['name'],-4));
      $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
      $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
@@ -210,6 +217,7 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
 
     if (!$ftp = ftp_connect($servidor)){
         print "erro";
+       // exit();
     } // Retorno: true ou false
 
     $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
@@ -223,6 +231,7 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
     $envio2 = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo2, FTP_BINARY);
     $envio3 = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo3, FTP_BINARY);
 
+    ftp_close($ftp);
     return $aux;
 
 }

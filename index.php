@@ -250,7 +250,7 @@ function daysInMonth(month, year) {
       <div class="modal-body">
         <br>
         <div class="pt-2" id="logar-div" style="background-color:white">
-          <form action="#" method="post">
+          <form action="logar.php" method="post">
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
@@ -263,7 +263,7 @@ function daysInMonth(month, year) {
           </form>
         </div>
         <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
-          <form action="#" method="post">
+          <form action="CadastrarUsuario.php" method="post">
             <div class="row text-center justify-content-center">
               <div class="col-12 pb-3">
                 <label for="nome">Nome</label>
@@ -276,9 +276,9 @@ function daysInMonth(month, year) {
               <div class="col-12 pb-3">
                 <label>Data de nascimento</label>
                 <br>
-                <select id="days"></select>
-                <select id="months"></select>
-                <select id="years"></select>
+                <select id="days" name="dia"></select>
+                <select id="months" name="mes"></select>
+                <select id="years" name="ano"></select>
               </div>
               <div class="col-12 pb-3">
                 <label for="email">Email</label>
