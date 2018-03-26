@@ -69,34 +69,41 @@
   <body style="font-family: 'Muli'">
 
     <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
-      <a class="navbar-brand" href="http://www.yourdev.com.br/clientes/locou/" >
-        <img class="pl-5 logo-navbar" src="img/locou_logo.png">
+      <a class="navbar-brand ml-5" href="index.php" >
+        <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
       <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
         <a class="mx-3">Sobre</a>
         <a class="mx-3">Como Funciona</a>
-        <a class="mx-3">Procurar Espaços</a>
-        <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
+        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
+        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
       </span>
     </nav>
 
     <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
       <div class="row justify-content-center text-center">
         <div class="col-12">
-          <a href="http://www.yourdev.com.br/clientes/locou/" >
+          <a href="index.php">
             <img class="logo-navbar" src="img/locou_logo.png">
             <br><br>
           </a>
         </div>
         <div class="col-12">
-          <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+          <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
           <br><br>
         </div>
         <div class="col-12">
           <span class="menu-navbar" style="color:white">
             <a class="mx-2">Sobre</a>
             <a class="mx-2">Como Funciona</a>
-            <a class="mx-2">Procurar Espaços</a>
+            <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+            <br><br>
+            <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
+            <br><br>
+            <span class="btn btn-outline-warning">Logar</span>
             <br><br>
           </span>
         </div>
@@ -108,19 +115,19 @@
       <div class="row">
         <div class="col-3" style="background-color: #FFCE00;padding-top: 2.5vw">
           <div class="row pb-3">
-            <div class="col-4">
+            <div class="col-12">
               <h6 style="font-size: 1vw; padding: 5px; background-color: black; color: white">
                 Rio de janeiro
                 <span class="px-2" style="font-size: 1vw;background-color: #2d2d2d;" >X</span>
               </h6>
             </div>
-            <div class="col-4">
+            <div class="col-12">
               <h6 style="font-size: 1vw;padding: 5px; background-color: black; color: white">
                 Barra da Tijuca
                 <span class="px-2" style="font-size: 1vw;background-color: #2d2d2d;" >X</span>
               </h6>
             </div>
-            <div class="col-4">
+            <div class="col-12">
               <h6 style="font-size: 1vw;padding: 5px; background-color: black; color: white">
                 Ipanema Rj Rio de janeiro
                 <span class="px-2" style="font-size: 1vw;background-color: #2d2d2d;" >X</span>
@@ -171,7 +178,161 @@
           </div>
         </div>
         <div class="col-9">
+          <div class="row text-left">
+            <div class="col-12 py-4 px-4">
+              <h6 style="color: grey">Categoria 1 > Categoria 2 > Query do usuario</h6>
+            </div>
+          </div>
+          <div class="row text-left">
+            <div class="col-9 py-3 px-4">
+              <h5>Busca por Query do usuário <span class="h6" style="color: grey"> 10 resultado(s)</span> </h5>
+            </div>
+            <div class="col-3 pt-3 px-4">
+              <select class="" name="ordemPesquisa">
+                <option value="aleatorio">Aleatório</option>
+                <option value="popular">Mais Popular</option>
+                <option value="diaria">Menor valor de diária</option>
+              </select>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-12 px-4">
+              <hr>
+            </div>
+          </div>
+          <div class="row px-4 py-4 text-left text-center">
 
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+                    <div class="col-12">
+                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        Alguel de CoWork
+                        <br>
+                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+                    <div class="col-12">
+                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        Alguel de CoWork
+                        <br>
+                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+                    <div class="col-12">
+                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        Alguel de CoWork
+                        <br>
+                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+                    <div class="col-12">
+                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        Alguel de CoWork
+                        <br>
+                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center" style="color: white;background-color: black">
+        <div class="col-3">
+        </div>
+        <div class="col-lg-6 col-md-10 col-sm-12">
+          <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
+
+            <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
+              <img class="logo-navbar" src="img/locou_logo.png">
+              <br><br>
+              <h6>Locou texto Locou Texto</h6>
+              <br><br>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
+              <h6>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+                <br><br>
+                <a href="#" style="color: white">Link para página</a>
+              </h6>
+              <br><br>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <h6 style="color: grey">
+                Redes sociais
+                <br><br>
+              </h6>
+              <h6>
+                <a href="#" style="color: white">Rede social</a>
+                &nbsp;
+                <a href="#" style="color: white">Rede social</a>
+                &nbsp;
+                <a href="#" style="color: white">Rede social</a>
+                <br><br>
+              </h6>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-3">
         </div>
       </div>
 
