@@ -192,14 +192,14 @@ function daysInMonth(month, year) {
     <!-- Navbar -->
 
     <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
-      <a class="navbar-brand ml-5" href="http://www.yourdev.com.br/clientes/locou/" >
+      <a class="navbar-brand ml-5" href="index.php" >
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
       <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
         <a class="mx-3">Sobre</a>
         <a class="mx-3">Como Funciona</a>
         <a class="mx-3">Procurar Espaços</a>
-        <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
         <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
         <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
@@ -209,13 +209,13 @@ function daysInMonth(month, year) {
     <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
       <div class="row justify-content-center text-center">
         <div class="col-12">
-          <a href="http://www.yourdev.com.br/clientes/locou/" >
+          <a href="index.php">
             <img class="logo-navbar" src="img/locou_logo.png">
             <br><br>
           </a>
         </div>
         <div class="col-12">
-          <a href="http://www.yourdev.com.br/clientes/locou/anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+          <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
           <br><br>
         </div>
         <div class="col-12">
@@ -326,7 +326,7 @@ function daysInMonth(month, year) {
             <br><br>
 
             <div class="desktop">
-              <form class="form-inline justify-content-center desktop">
+              <form action="resultado.php" class="form-inline justify-content-center desktop">
                 <select class="form-control custom-select" id="categoria">
                   <option value="todos">Todos</option>
                   <option value="consultorio">Consultórios</option>

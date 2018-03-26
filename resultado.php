@@ -108,19 +108,19 @@
       <div class="row">
         <div class="col-3" style="background-color: #FFCE00;padding-top: 2.5vw">
           <div class="row pb-3">
-            <div class="col-4">
+            <div class="col-12">
               <h6 style="font-size: 1vw; padding: 5px; background-color: black; color: white">
                 Rio de janeiro
                 <span class="px-2" style="font-size: 1vw;background-color: #2d2d2d;" >X</span>
               </h6>
             </div>
-            <div class="col-4">
+            <div class="col-12">
               <h6 style="font-size: 1vw;padding: 5px; background-color: black; color: white">
                 Barra da Tijuca
                 <span class="px-2" style="font-size: 1vw;background-color: #2d2d2d;" >X</span>
               </h6>
             </div>
-            <div class="col-4">
+            <div class="col-12">
               <h6 style="font-size: 1vw;padding: 5px; background-color: black; color: white">
                 Ipanema Rj Rio de janeiro
                 <span class="px-2" style="font-size: 1vw;background-color: #2d2d2d;" >X</span>
