@@ -399,8 +399,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php  $cont = 0; $aux = $arrayConsultorio[0]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="<?php  $cont = 0; $_SESSION['idAnuncio'] = $arrayConsultorio ; echo "anuncio.php" ?>" style="text-decoration: none;">
+                  <div class="row" style="height: 480px">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                       <img src="<?php $cont++ ; echo $prefixo.$arrayConsultorio[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
 
@@ -411,7 +416,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $arrayConsultorio[$cont]; ?> | <?php $cont++ ; echo $arrayConsultorio[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $arrayConsultorio[$cont]; $cont++ ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $arrayConsultorio[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -421,8 +426,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black;">
+<<<<<<< HEAD
                 <a href="<?php  $cont = 0; $aux = $arrayCozinha[0]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="#" style="text-decoration: none;">
+                  <div class="row" style="height: 480px">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                       <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayCozinha[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
                     </div>
@@ -432,7 +442,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php  $cont++ ; echo $arrayCozinha[$cont]; ?> | <?php  $cont++ ; echo $arrayCozinha[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php  $cont++ ; echo $arrayCozinha[$cont];; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php  $cont++ ; echo $arrayCozinha[$cont];; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -442,8 +452,13 @@ function daysInMonth(month, year) {
 
            <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php  $cont = 0; $aux = $arrayWork[0]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="#" style="text-decoration: none;">
+                  <div class="row" style="height: 480px">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                       <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayWork[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
                     </div>
@@ -453,7 +468,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $arrayWork[$cont]; ?> | <?php  $cont++ ; echo $arrayWork[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php  $cont++ ; echo $arrayWork[$cont]; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php  $cont++ ; echo $arrayWork[$cont]; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -463,8 +478,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php  $cont = 0; $aux = $arrayEnsaio[0]; echo "anuncio.php?id=".$aux ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="#" style="text-decoration: none;">
+                  <div class="row" style="height: 480px">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                       <img src="<?php $cont = 0; $cont++ ; echo $prefixo.$arrayEnsaio[$cont]; ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
                     </div>
@@ -474,7 +494,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $arrayEnsaio[$cont]; ?> | <?php $cont++ ; echo $arrayEnsaio[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $arrayEnsaio[$cont]; ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $arrayEnsaio[$cont]; ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -516,8 +536,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php $aux = $array[0]; echo "anuncio.php?id=".$aux   ?> " style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="<?php echo "fb.com" ?>" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                       <img src="<?php $cont=0; $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
@@ -527,7 +552,11 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
+<<<<<<< HEAD
                       <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; ?></span> por hora </h6>
+=======
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     </div>
                   </div>
                 </a>
@@ -537,8 +566,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php $aux = $array[8]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="#" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                       <img src="<?php $cont = 8; $cont++; echo $prefixo.$array[9]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
@@ -548,7 +582,11 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
+<<<<<<< HEAD
                       <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; ; ?></span> por hora </h6>
+=======
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     </div>
                   </div>
                 </a>
@@ -558,8 +596,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php  $aux = $array[16]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="#" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                    <img src="<?php $cont = 16; $cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
@@ -569,7 +612,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -579,8 +622,13 @@ function daysInMonth(month, year) {
 
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div style="background-color: black">
+<<<<<<< HEAD
                 <a href="<?php  $aux = $array[24]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
+=======
+                <a href="#" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+>>>>>>> 6b6ecc452c4c9f7abbf85b27eef9bcf4024121e6
                     <div class="col-12">
                    <img src="<?php $cont = 24;$cont++ ; echo $prefixo.$array[$cont]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
                     </div>
@@ -590,7 +638,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
