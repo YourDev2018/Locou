@@ -479,14 +479,20 @@
                   </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center" style="background-color: black;border-left: solid; border-width: 2px; border-color: #FFC107;">
+
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="background-color: black;">
                   <div class="row">
                     <div class="col-12 pt-4" style="border-top: solid; border-width: 1px; border-color: #FFC107; background-color: black">
                       <div style="background-color: black" class="pt-3">
 
                         <div class="row">
 
-                          <div class="col-12">
+                          <div class="col-6">
                             <div class="row">
                               <div class="col-12">
                                 <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 70px"></a>
@@ -498,21 +504,18 @@
                               </div>
                             </div>
                           </div>
-
-                          <!-- <div class="col-6" style="color: white">
-                            <div class="col-12 pt-5">
-                              <h6>Conquistas</h6>
-                            </div>
-                            <div class="col-12">
-                              <h6>Conquistas</h6>
-                            </div>
-                            <div class="col-12">
-                              <h6>Conquistas</h6>
-                            </div>
-                          </div> -->
-
+                          <div class="col-6" style="color: white">
+                              <div class="col-12 pt-5">
+                                <h6>15 vendas realizadas</h6>
+                              </div>
+                              <div class="col-12">
+                                <h6>3 meses de Locou</h6>
+                              </div>
+                              <div class="col-12">
+                                <h6>2 anuncios atualmente</h6>
+                              </div>
+                          </div>
                         </div>
-
                         <div class="row p-4">
                           <div class="col-1"></div>
                           <div class="col-lg-10 col-md-12 col-sm-12">
@@ -526,10 +529,6 @@
                     </div>
                   </div>
                 </div>
-
-              </div>
-
-              <div class="row">
 
                   <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
                     <div class="row">
@@ -614,7 +613,16 @@
 
         </div>
 
-
+        <script>
+        $('.custom-file-input').on('change',function(){
+          var foto = $(this).val().split('\\').pop();
+          var label = document.getElementById($(this).attr('id')+"-label");
+          label.innerHTML = foto;
+          console.log($(this).attr('id'));
+          console.log($(this).attr('id')+"-label");
+          console.log(foto);
+        })
+        </script>
 
       </form>
 

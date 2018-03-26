@@ -426,7 +426,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $arrayConsultorio[$cont]; ?> | <?php $cont++ ; echo $arrayConsultorio[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $arrayConsultorio[$cont]; $cont++ ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $arrayConsultorio[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -447,7 +447,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php  $cont++ ; echo $arrayCozinha[$cont]; ?> | <?php  $cont++ ; echo $arrayCozinha[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php  $cont++ ; echo $arrayCozinha[$cont];; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php  $cont++ ; echo $arrayCozinha[$cont];; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -468,7 +468,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $arrayWork[$cont]; ?> | <?php  $cont++ ; echo $arrayWork[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php  $cont++ ; echo $arrayWork[$cont]; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php  $cont++ ; echo $arrayWork[$cont]; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -489,7 +489,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $arrayEnsaio[$cont]; ?> | <?php $cont++ ; echo $arrayEnsaio[$cont]; ?> </span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $arrayEnsaio[$cont]; ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $arrayEnsaio[$cont]; ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -542,7 +542,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -563,7 +563,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -584,7 +584,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>
@@ -605,7 +605,7 @@ function daysInMonth(month, year) {
                         <br>
                         <span style="color:grey"><?php $cont++ ; echo $array[$cont]; ?> | <?php $cont++ ; echo $array[$cont]; ?></span>
                       </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00"><?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ <?php $cont++ ; echo $array[$cont]; $cont++ ; ?></span> por hora </h6>
                     </div>
                   </div>
                 </a>

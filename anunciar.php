@@ -3847,3 +3847,13 @@
 
     }
   </script>
+  <script>
+  $('.custom-file-input').on('change',function(){
+    var foto = $(this).val().split('\\').pop();
+    var label = document.getElementById($(this).attr('id')+"-label");
+    label.innerHTML = foto;
+    console.log($(this).attr('id'));
+    console.log($(this).attr('id')+"-label");
+    console.log(foto);
+  })
+  </script>
