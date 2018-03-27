@@ -40,6 +40,42 @@ require_once 'BuscarEspacos.php';
     <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
     <script src="js/bootstrap-datepicker.min.js" ></script>
     <script>
+    $(function () {
+
+    for (i = new Date().getFullYear() ; i > 1900; i--) {
+        $('#years').append($('<option />').val(i).html(i));
+    }
+
+    for (i = 1; i < 13; i++) {
+        $('#months').append($('<option />').val(i).html(i));
+    }
+    updateNumberOfDays();
+
+    $('#years, #months').change(function () {
+
+        updateNumberOfDays();
+
+    });
+
+});
+
+function updateNumberOfDays() {
+    $('#days').html('');
+    month = $('#months').val();
+    year = $('#years').val();
+    days = daysInMonth(month, year);
+
+    for (i = 1; i < days + 1 ; i++) {
+        $('#days').append($('<option />').val(i).html(i));
+    }
+
+}
+
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+  </script>
+    <script>
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
@@ -134,6 +170,94 @@ require_once 'BuscarEspacos.php';
       </div>
     </nav>
 
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+      <div class="modal-content text-center justify-content-center">
+        <div class="modal-head">
+          <div class="row py-4" style="background-color: black">
+            <div class="col-12">
+              <span class="btn btn-outline-warning active" id="logar-b" onclick="logar(this);"><h3 style="font-weight: 300">Logar</h3></span>
+              <br class="mobile"><br class="mobile">
+              <span class="px-5 h4" style="color: white; font-weight: 300">ou</span>
+              <br class="mobile"><br class="mobile">
+              <span class="btn btn-outline-warning" id="cadastrar-b" onclick="cadastrar(this);"><h3 style="font-weight: 300">Cadastrar</h3></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <br>
+          <div class="pt-2" id="logar-div" style="background-color:white">
+            <form action="#" method="post">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
+              </div>
+              <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha-login" name="senha">
+              </div>
+              <br>
+              <span style="font-size: 90%; color:red; display: none">Login e/ou senha incorreto(s)</span>
+              <br>
+              <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
+            </form>
+          </div>
+          <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
+            <form action="#" method="post">
+              <div class="row text-center justify-content-center">
+                <div class="col-12 pb-3">
+                  <label for="nome">Nome</label>
+                  <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+                <div class="col-12 pb-3">
+                  <label for="sobrenome">Sobrenome</label>
+                  <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+                </div>
+                <div class="col-12 pb-3">
+                  <label>Data de nascimento</label>
+                  <br>
+                  <select id="days"></select>
+                  <select id="months"></select>
+                  <select id="years"></select>
+                </div>
+                <div class="col-12 pb-3">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
+                </div>
+                <div class="col-12 pb-5">
+                  <label for="senha">Senha</label>
+                  <input type="password" class="form-control" id="senha" name="senha">
+                </div>
+                <div class="col-10 pb-3 pt-3">
+                  <input type="file" class="custom-file-input" id="foto" name="foto">
+                  <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
+                </div>
+              </div>
+              <br>
+              <span style="font-size: 90%; color:red; display: none">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
+              <br>
+              <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
+            </form>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function logar(botao) {
+        botao.classList.add("active");
+        document.getElementById("cadastrar-b").classList.remove("active");
+        document.getElementById("cadastrar-div").style.display = 'none';
+        document.getElementById("logar-div").style.display = '';
+      }
+      function cadastrar(botao) {
+        botao.classList.add("active");
+        document.getElementById("logar-b").classList.remove("active");
+        document.getElementById("logar-div").style.display = 'none';
+        document.getElementById("cadastrar-div").style.display = '';
+      }
+    </script>
+
     <div class="container-fluid justify-content-center text-center">
 
       <div class="row">
@@ -226,7 +350,7 @@ require_once 'BuscarEspacos.php';
           </div>
 
           <div id="resultadoJS" class="row px-4 py-4 text-left text-center"></div>
-          
+
         </div>
       </div>
 

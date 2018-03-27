@@ -259,6 +259,9 @@ function daysInMonth(month, year) {
               <label for="senha">Senha</label>
               <input type="password" class="form-control" id="senha-login" name="senha">
             </div>
+            <br>
+            <span style="font-size: 90%; color:red; display: none">Login e/ou senha incorreto(s)</span>
+            <br>
             <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
           </form>
         </div>
@@ -293,6 +296,9 @@ function daysInMonth(month, year) {
                 <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
               </div>
             </div>
+            <br>
+            <span style="font-size: 90%; color:red; display: none">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
+            <br>
             <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
           </form>
         </div>
