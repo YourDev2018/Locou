@@ -298,42 +298,39 @@ function daysInMonth(month, year) {
             </div>
             <div class="col-12 py-2 px-5">
               <input type="checkbox" class="form-check-input" disabled>
-              Salas de aula
+              Salas para Palestras
             </div>
             <div class="col-12 py-2 px-5">
               <input type="checkbox" class="form-check-input" disabled>
-              Ateliê de arte
+              Salas de Aula
+            </div>
+            <div class="col-12 py-2 px-5">
+              <input type="checkbox" class="form-check-input" disabled>
+              Salas de Ensaio
+            </div>
+            <div class="col-12 py-2 px-5">
+              <input type="checkbox" class="form-check-input" disabled>
+              Ateliê de Artes
+            </div>
+            <div class="col-12 py-2 px-5">
+              <input type="checkbox" class="form-check-input" disabled>
+              Estúdio ou Academia
             </div>
             <div class="col-12 py-2 px-5">
               <input type="checkbox" class="form-check-input" disabled>
               Cozinhas Profissionais
             </div>
-          </div>
-          <!-- <div class="row">
-            <div class="col-12 py-3">
-              <h5><b>Comodidades do espaço</b></h5>
-            </div>
-          </div>
-          <div class="row text-left" style="border-bottom: solid; border-width: 2px; border-color: black;">
-            <div class="col-12 py-2 px-5">
-              <input type="checkbox" class="form-check-input" disabled>
-              Estacionamento
-            </div>
-            <div class="col-12 py-2 px-5">
-              <input type="checkbox" class="form-check-input" disabled>
-              Ar condicionado
-            </div>
-          </div> -->
+          </div>          
         </div>
         <div class="col-9">
           <div class="row text-left">
             <div class="col-12 py-4 px-4">
-              <h6 style="color: grey">Categoria 1 > Categoria 2 > Query do usuario</h6>
+              <h6 style="color: grey">Categoria 1 > Query do usuario</h6>
             </div>
           </div>
           <div class="row text-left">
             <div class="col-9 py-3 px-4">
-              <h5>Busca por Query do usuário <span class="h6" style="color: grey"> 10 resultado(s)</span> </h5>
+              <h5>Busca por Query do usuário <span class="h6" style="color: grey"> -  10 resultado(s)</span> </h5>
             </div>
             <div class="col-3 pt-3 px-4">
               <select class="" name="ordemPesquisa">
