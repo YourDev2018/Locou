@@ -338,13 +338,13 @@ class BuscarEspacos
 
     }
 
-    public function buscarEspacoBairro($busca){
+    public function buscarEspacoBairro($db, $busca){
 
-        $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' ") ;
+        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' ") ; //
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
-            print "Não é um consultório";
+             print "erro buscar espaço bairro";
         }else{
             
             $array = [];
@@ -364,15 +364,7 @@ class BuscarEspacos
                         $array[$cont] = $row['cidade'];
                         $cont++;
                         $array[$cont] = $row['preco'];
-                        $cont++;
-
-                        $array[$cont] = $row['uf'];
-                        $cont++;
-
-                        $array[$cont] = $row['categoria'];
-                        $cont++;
-                
-
+                       
             }
                 // print_r($array);
             return $array;        
@@ -381,13 +373,13 @@ class BuscarEspacos
 
     }
 
-     public function buscarEspacoBairroTipo($tipo, $busca){
+     public function buscarEspacoBairroTipo($db, $tipo, $busca){
 
-        $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' and categoria ='$tipo' ") ;
+        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' AND categoria ='$tipo' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
-            print "Não é um consultório";
+            print "erro buscar espaço Bairro Tipo";
         }else{
             
             $array = [];
@@ -407,13 +399,6 @@ class BuscarEspacos
                         $array[$cont] = $row['cidade'];
                         $cont++;
                         $array[$cont] = $row['preco'];
-                        $cont++;
-
-                        $array[$cont] = $row['uf'];
-                        $cont++;
-
-                        $array[$cont] = $row['categoria'];
-                        $cont++;
                 
 
             }
