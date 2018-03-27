@@ -185,7 +185,7 @@ require_once 'BuscarEspacos.php';
               Cozinhas Profissionais
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-12 py-3">
               <h5><b>Comodidades do espaço</b></h5>
             </div>
@@ -199,7 +199,7 @@ require_once 'BuscarEspacos.php';
               <input type="checkbox" class="form-check-input" disabled>
               Ar condicionado
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="col-9">
           <div class="row text-left">
@@ -224,90 +224,9 @@ require_once 'BuscarEspacos.php';
               <hr>
             </div>
           </div>
-          <div class="row px-4 py-4 text-left text-center">
 
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="" style="text-decoration: none;">
-                  <div class="row" style="height: 350px;">
-                    <div class="col-12">
-                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        Alguel de CoWork
-                        <br>
-                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="" style="text-decoration: none;">
-                  <div class="row" style="height: 350px;">
-                    <div class="col-12">
-                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        Alguel de CoWork
-                        <br>
-                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="" style="text-decoration: none;">
-                  <div class="row" style="height: 350px;">
-                    <div class="col-12">
-                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        Alguel de CoWork
-                        <br>
-                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="" style="text-decoration: none;">
-                  <div class="row" style="height: 350px;">
-                    <div class="col-12">
-                      <img src="img/item.png" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        Alguel de CoWork
-                        <br>
-                        <span style="color:grey">Ipanema | Rio de Janeiro</span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 1000</span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
-
-          </div>
+          <div id="resultadoJS" class="row px-4 py-4 text-left text-center"></div>
+          
         </div>
       </div>
 
@@ -371,6 +290,32 @@ require_once 'BuscarEspacos.php';
       console.log($(this).attr('id')+"-label");
       console.log(foto);
     })
+    </script>
+    <script>
+      window.onload = alimentarQuery;
+
+      function alimentarQuery()
+      {
+        var saida = "";
+        var qtdObj = 10;
+        for(i = 0; i < qtdObj; i++)
+        {
+          console.log("Rodando "+i);
+          saida = saida + "<div class=\"col-lg-4 col-md-6 col-sm-6\"><div style=\"background-color: black\"><a href=\"\" style=\"text-decoration: none;\"><div class=\"row\" style=\"height: 350px;\"><div class=\"col-12\">";
+          saida = saida + "<img src=\"";
+          saida = saida + "img/item.png"; // Link imagem
+          saida = saida + "\" class=\"img-fluid\" style=\"height: 200px; width: 100%; object-fit: cover;\">";
+          saida = saida + "</div><div class=\"col-12\"><h5 style=\"color:white\">";
+          saida = saida + "Alguel de CoWork"; // Titulo
+          saida = saida + "<br><span style=\"color:grey\">"
+          saida = saida + "Ipanema | Rio de Janeiro" // Local
+          saida = saida + "</span></h5><h6 style=\"color: white\"> A partir de : <span class=\"h4\" style=\"color: #FFCE00\">R$ "
+          saida = saida + "1000"; // Preço
+          saida = saida + "</span> por hora </h6></div></div></a></div><br></div>"
+        }
+        document.getElementById("resultadoJS").innerHTML = saida;
+      }
+
     </script>
 
   </body>
