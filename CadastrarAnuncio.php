@@ -12,6 +12,7 @@ $categoria = $seg->filtro($_POST['categoria']);
 $bairro = $seg->filtro($_POST['bairro']);
 $cidade = $seg->filtro($_POST['cidade']);
 $uf = $seg->filtro($_POST['uf']);
+$precoHora = $seg->filtro2($_POST['hora']);
 
 // descrição geral
 $metragem = $seg->filtro($_POST['metragem']);
@@ -30,7 +31,11 @@ if ($estacionamento == "sim") {
 }
 
 $transporte = $seg->filtro3($_POST['transporte']);
-
+//$preco4Hora = $seg->filtro2($_POST['4hora']);
+//$preco5Hora = $seg->filtro2($_POST['5hora']);
+//$precoTurno = $seg->filtro2($_POST['dia-turno']);
+//$precoSemana = $seg->filtro2($_POST['semana']);
+//$precoMes = $seg->filtro2($_POST['mes']);
 // consutório 
 
 
@@ -41,7 +46,7 @@ $db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
 $session = new FunctionsSession();
 
     if ($session->vereficarLogin()) {
-            $aux = basico($conn, $titulo, $categoria, $bairro, $cidade, $uf );
+            $aux = basico($conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora);
 
         if (is_numeric($aux)) {
             
@@ -160,11 +165,6 @@ $session = new FunctionsSession();
                     print $resp = $db-> cadastrarEnsaio($conn, $aux, $camarim, $apoio, $barra, $espelho, $descricaoAberta);
 
                 }
-
-
-
-
-
                 
             }else {
                 print "Não boolean";
@@ -180,7 +180,7 @@ $session = new FunctionsSession();
 
 
 
-function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
+function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
 
    
     $id = $_SESSION['id'];
@@ -196,6 +196,7 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
      $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
      $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
 
+    $temp  = $_FILES['foto1']['tmp_name'];
     $temp2 = $_FILES['foto2']['tmp_name'];
     $temp3 = $_FILES['foto3']['tmp_name'];
     
@@ -209,7 +210,7 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
     // http://www.yourdev.com.br/clientes/locou/img/anuncio/
     $db = new FunctionsDB();
 
-    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$novo_nome,$novo_nome2,$novo_nome3);
+    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$precoHora, $novo_nome,$novo_nome2,$novo_nome3);
 
     $servidor = 'yourdev-com-br.umbler.net'; // Endereço
     $usuario = 'yourdev-com-br'; // Usuário
@@ -228,8 +229,8 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf ){
     $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
     $ftp_arquivo = $_FILES['foto1']['name']; // Nome do arquivo (externo)
     $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
-    $envio2 = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo2, FTP_BINARY);
-    $envio3 = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo3, FTP_BINARY);
+    $envio2 = ftp_put($ftp, $ftp_pasta.$novo_nome2, $local_arquivo2, FTP_BINARY);
+    $envio3 = ftp_put($ftp, $ftp_pasta.$novo_nome3, $local_arquivo3, FTP_BINARY);
 
     ftp_close($ftp);
     return $aux;

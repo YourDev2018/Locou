@@ -23,7 +23,7 @@
         private function getNull($string){
             if ($string == null || $string =="") {
                 header("location:anunciar.php");
-                exit();
+               // exit();
             }else{
                 return $string;
             }
@@ -57,7 +57,7 @@
            if (strcmp($string,"sim")||strcmp($string,"nao")) {
                return $string;
            }else{
-               exit();
+             //  exit();
            }
        }
 
