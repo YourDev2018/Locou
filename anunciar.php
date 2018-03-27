@@ -144,6 +144,112 @@ function daysInMonth(month, year) {
         </div>
       </nav>
 
+
+      <div id="completarCadastro" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Completar Cadastro</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center justify-content-center">
+              <p style="font-size: 80%">Ops... precisamos de mais informações antes de você poder alugar esse espaço.
+              <br><br>
+              Complete essas informações antes de poder prosseguir
+              <br>
+              <hr>
+             </p>
+             <form action="" method="post">
+               <div class="form-group">
+                 <label for="nomeCompleto">Nome Completo</label>
+                 <input type="text" name="nomeCompleto" class="form-control" id="nomeCompleto" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="cpf">CPF (Apenas Número)</label>
+                 <input type="number" name="cpf" class="form-control" id="cpf" placeholder="12345665432">
+               </div>
+               <div class="form-group">
+                 <label for="rg">Número do RG (Apenas Número)</label>
+                 <input type="number" name="rg" class="form-control" id="rg" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="rgOrg">RG Orgão</label>
+                 <input type="text" name="rgOrg" class="form-control" id="rgOrg" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="rgData">RG Data</label>
+                 <input type="text" name="rgData" class="form-control" id="rgData" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="ddd">DDD (Apenas Número)</label>
+                 <input type="number" name="ddd" class="form-control" id="ddd" placeholder="21">
+               </div>
+               <div class="form-group">
+                 <label for="tel">Telefone (Apenas Número)</label>
+                 <input type="number" name="tel" class="form-control" id="tel" placeholder="912345678">
+               </div>
+               <div class="form-group">
+                 <label for="rua">Rua</label>
+                 <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua exemplo">
+               </div>
+               <div class="form-group">
+                 <label for="ruaN">Número da Rua (Apenas Número)</label>
+                 <input type="number" name="ruaN" class="form-control" id="ruaN" placeholder="157">
+               </div>
+               <div class="form-group">
+                 <label for="complemento">Complemento</label>
+                 <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento">
+               </div>
+               <div class="form-group">
+                 <label for="bairro">Bairro</label>
+                 <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Nome Bairro">
+               </div>
+               <div class="form-group">
+                 <label for="cep">CEP (Apenas Número)</label>
+                 <input type="number" name="cep" class="form-control" id="cep" placeholder="21000-000">
+               </div>
+               <div class="form-group">
+                 <label for="cidade">Cidade</label>
+                 <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Rio de Janeiro">
+               </div>
+               <div class="form-group">
+                 <label for="estado">Estado</label>
+                 <input type="text" name="estado" class="form-control" id="estado" placeholder="Rio de Janeiro">
+               </div>
+               <div class="form-group">
+                 <label for="exampleFormControlSelect1">Example select</label>
+                 <select name="numBanco" class="form-control" id="numBanco">
+                   <option value="001">Banco do Brasil</option>
+                 </select>
+               </div>
+               <div class="form-group">
+                 <label for="numAge">Número da Agência</label>
+                 <input type="number" name="numAge" class="form-control" id="numAge" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="numCheckAge">Número de checagaem da Agência</label>
+                 <input type="number" name="numCheckAge" class="form-control" id="numCheckAge" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="numConta">Numero da Conta</label>
+                 <input type="number" name="numConta" class="form-control" id="numConta" placeholder="">
+               </div>
+               <div class="form-group">
+                 <label for="numCheckConta">Número de checagaem da Conta</label>
+                 <input type="number" name="numCheckConta" class="form-control" id="numCheckConta" placeholder="">
+               </div>
+             <span style="color: grey;font-size: 80%">Nunca vamos divulgar nenhuma informação sua!</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ml-3 btn btn-warning">Atualizar</button>
+            </div>
+             </form>
+          </div>
+        </div>
+      </div>
+
       <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
         <div class="modal-content text-center justify-content-center">
@@ -3554,6 +3660,7 @@ function daysInMonth(month, year) {
             <span class="btn btn-outline-warning" onclick="proximo();" id="proximo"><h4>Próximo</h4></span>
             <button type="submit" class="btn btn-outline-warning" style="display: none" id="anunciar"><h4>Anunciar</h4></button>
             <br><br>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#completarCadastro">Popup completar cadastro</span>
           </div>
           <div class="col-2">
           </div>
