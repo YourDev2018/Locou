@@ -1,4 +1,28 @@
 <!DOCTYPE html>
+
+<?php
+require_once 'Seguranca.php';
+require_once 'BuscarEspacos.php';
+
+  $seg  = new Seguranca();
+  $tipo = $seg->filtro($_GET['t']);
+  $editText = $seg->filtro($_GET['q']);
+
+ 
+  $busca = new BuscarEspacos();
+  
+   if ($tipo == "todos") {
+     $array = $busca -> buscarEspacoBairro($editText);
+  }else{
+
+     $array = $busca -> buscarEspacoBairroTipo($tipo, $editText);
+  }
+  
+  
+
+?>
+
+
 <html lang="en">
   <head>
     <meta charset="utf-8">

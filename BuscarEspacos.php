@@ -100,6 +100,7 @@ class BuscarEspacos
                     $array = [];
                     $cont=0;
                     while ($row=$result->fetch_assoc()) {
+
                         $array[$cont] = $row['idAnuncio'];
                         $cont++;
 
@@ -334,6 +335,92 @@ class BuscarEspacos
 
             return $aux;        
         }
+
+    }
+
+    public function buscarEspacoBairro($busca){
+
+        $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é um consultório";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                        
+                        $array[$cont] = $row['idAnuncio'];
+                        $cont++;
+
+                        $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
+                        $array[$cont] = $row['titulo'];
+                        $cont++;
+                        $array[$cont] = $row['bairro'];
+                        $cont++;
+                        $array[$cont] = $row['cidade'];
+                        $cont++;
+                        $array[$cont] = $row['preco'];
+                        $cont++;
+
+                        $array[$cont] = $row['uf'];
+                        $cont++;
+
+                        $array[$cont] = $row['categoria'];
+                        $cont++;
+                
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
+
+    }
+
+     public function buscarEspacoBairroTipo($tipo, $busca){
+
+        $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' and categoria ='$tipo' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é um consultório";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                        
+                        $array[$cont] = $row['idAnuncio'];
+                        $cont++;
+
+                        $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
+                        $array[$cont] = $row['titulo'];
+                        $cont++;
+                        $array[$cont] = $row['bairro'];
+                        $cont++;
+                        $array[$cont] = $row['cidade'];
+                        $cont++;
+                        $array[$cont] = $row['preco'];
+                        $cont++;
+
+                        $array[$cont] = $row['uf'];
+                        $cont++;
+
+                        $array[$cont] = $row['categoria'];
+                        $cont++;
+                
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
 
     }
     
