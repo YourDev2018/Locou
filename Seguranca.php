@@ -22,7 +22,7 @@
 
         private function getNull($string){
             if ($string == null || $string =="") {
-                header("location:anunciar.php");
+              //  header("location:anunciar.php");
                // exit();
             }else{
                 return $string;
