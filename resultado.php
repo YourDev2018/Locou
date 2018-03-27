@@ -14,13 +14,13 @@ require_once 'FunctionsDB.php';
 
   $busca = new BuscarEspacos();
 
-   if ($tipo == "todos") {
+  // if ($tipo == "todos") {
      $array = $busca -> buscarEspacoBairro($conn, $editText);
 
-  }else{
-     $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
+ // }else{
+    // $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
 
-  }
+ // }
 
   $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
@@ -436,7 +436,7 @@ function daysInMonth(month, year) {
           saida = saida + "<br><span style=\"color:grey\">"
           saida = saida + "<?php echo $array[$cont++]; ?> | <?php echo $array[$cont++]; ?>" // Local
           saida = saida + "</span></h5><h6 style=\"color: white\"> A partir de : <span class=\"h4\" style=\"color: #FFCE00\">R$ "
-          saida = saida + "<?php echo $array[$cont]; ?>"; // Preço
+          saida = saida + "<?php echo $array[5]; ?>"; // Preço
           saida = saida + "</span> por hora </h6></div></div></a></div><br></div>"
         }
         document.getElementById("resultadoJS").innerHTML = saida;

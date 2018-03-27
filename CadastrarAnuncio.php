@@ -12,7 +12,7 @@ $categoria = $seg->filtro($_POST['categoria']);
 $bairro = $seg->filtro($_POST['bairro']);
 $cidade = $seg->filtro($_POST['cidade']);
 $uf = $seg->filtro($_POST['uf']);
-$precoHora = $seg->filtro2($_POST['hora']);
+$precoHora = $seg->filtro($_POST['hora']);
 
 // descrição geral
 $metragem = $seg->filtro($_POST['metragem']);

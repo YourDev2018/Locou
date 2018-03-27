@@ -221,18 +221,6 @@ $ano = $_POST['year'];
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     function consultarCliente(){
         cURLGet("https://sandbox.moip.com.br/v2/customers/","45d63a3538ff47ccb2c0f0c3c09eabd9_v2");
     }
