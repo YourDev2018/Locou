@@ -428,7 +428,7 @@ function daysInMonth(month, year) {
 
           console.log("Rodando "+i);
           saida = saida + "<div class=\"col-lg-4 col-md-6 col-sm-6\"><div style=\"background-color: black\"><a href=\"";
-          saida = saida + "link"; //Link
+          saida = saida + ""; //Link
           saida = saida + "\" style=\"text-decoration: none;\"><div class=\"row\" style=\"height: 350px;\"><div class=\"col-12\">";
           saida = saida + "<img src=\"";
           saida = saida + "<?php $cont=1; echo ($prefixo.$array[$cont++]); ?>"; // Link imagem
