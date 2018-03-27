@@ -12,10 +12,10 @@ require_once 'BuscarEspacos.php';
   $busca = new BuscarEspacos();
   
    if ($tipo == "todos") {
-     $array = $busca -> buscarEspacoBairro($editText);
+     //$array = $busca -> buscarEspacoBairro($editText);
   }else{
 
-     $array = $busca -> buscarEspacoBairroTipo($tipo, $editText);
+   //  $array = $busca -> buscarEspacoBairroTipo($tipo, $editText);
   }
   
   
