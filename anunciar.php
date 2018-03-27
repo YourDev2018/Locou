@@ -219,7 +219,7 @@ function daysInMonth(month, year) {
                  <input type="text" name="estado" class="form-control" id="estado" placeholder="Rio de Janeiro">
                </div>
                <div class="form-group">
-                 <label for="exampleFormControlSelect1">Example select</label>
+                 <label for="numBanco">Selecione o seu banco</label>
                  <select name="numBanco" class="form-control" id="numBanco">
                    <option value="001">Banco do Brasil</option>
                  </select>
