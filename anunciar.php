@@ -39,6 +39,42 @@
     $.fn.datepicker.defaults.startDate = hoje;
     $.fn.datepicker.defaults.todayHighlight = true;
     </script>
+    <script>
+    $(function () {
+
+    for (i = new Date().getFullYear() ; i > 1900; i--) {
+        $('#years').append($('<option />').val(i).html(i));
+    }
+
+    for (i = 1; i < 13; i++) {
+        $('#months').append($('<option />').val(i).html(i));
+    }
+    updateNumberOfDays();
+
+    $('#years, #months').change(function () {
+
+        updateNumberOfDays();
+
+    });
+
+});
+
+function updateNumberOfDays() {
+    $('#days').html('');
+    month = $('#months').val();
+    year = $('#years').val();
+    days = daysInMonth(month, year);
+
+    for (i = 1; i < days + 1 ; i++) {
+        $('#days').append($('<option />').val(i).html(i));
+    }
+
+}
+
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+  </script>
   </head>
   <style>
   @media (min-width: 768.1px)
@@ -134,6 +170,9 @@
                   <label for="senha">Senha</label>
                   <input type="password" class="form-control" id="senha-login" name="senha">
                 </div>
+                <br>
+                <span style="font-size: 90%; color:red; display: none">Login e/ou senha incorreto(s)</span>
+                <br>
                 <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
               </form>
             </div>
@@ -168,6 +207,9 @@
                     <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
                   </div>
                 </div>
+                <br>
+                <span style="font-size: 90%; color:red; display: none">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
+                <br>
                 <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
               </form>
             </div>
@@ -175,6 +217,20 @@
           </div>
         </div>
       </div>
+      <script>
+        function logar(botao) {
+          botao.classList.add("active");
+          document.getElementById("cadastrar-b").classList.remove("active");
+          document.getElementById("cadastrar-div").style.display = 'none';
+          document.getElementById("logar-div").style.display = '';
+        }
+        function cadastrar(botao) {
+          botao.classList.add("active");
+          document.getElementById("logar-b").classList.remove("active");
+          document.getElementById("logar-div").style.display = 'none';
+          document.getElementById("cadastrar-div").style.display = '';
+        }
+      </script>
 
 
 
