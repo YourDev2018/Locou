@@ -10,19 +10,19 @@ require_once 'FunctionsDB.php';
   $editText = $seg->filtro($_GET['q']);
 
   $db = new FunctionsDB();
-  $conn = $db->conectDB(); 
+  $conn = $db->conectDB();
 
   $busca = new BuscarEspacos();
 
    if ($tipo == "todos") {
      $array = $busca -> buscarEspacoBairro($conn, $editText);
-     
+
   }else{
      $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
 
   }
 
-  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/"; 
+  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
 ?>
 
@@ -324,7 +324,7 @@ function daysInMonth(month, year) {
               <input type="checkbox" class="form-check-input" disabled>
               Cozinhas Profissionais
             </div>
-          </div>          
+          </div>
         </div>
         <div class="col-9">
           <div class="row text-left">
@@ -425,16 +425,16 @@ function daysInMonth(month, year) {
         var qtdObj = <?php echo (count($array)/6) ?>;
         for(i = 0; i < qtdObj; i++)
         {
-          
+
           console.log("Rodando "+i);
           saida = saida + "<div class=\"col-lg-4 col-md-6 col-sm-6\"><div style=\"background-color: black\"><a href=\"\" style=\"text-decoration: none;\"><div class=\"row\" style=\"height: 350px;\"><div class=\"col-12\">";
           saida = saida + "<img src=\"";
-          saida = saida + "<?php $cont=1; echo ($prefixo.$array[$cont]); ?>"; // Link imagem
+          saida = saida + "<?php $cont=1; echo ($prefixo.$array[$cont++]); ?>"; // Link imagem
           saida = saida + "\" class=\"img-fluid\" style=\"height: 200px; width: 100%; object-fit: cover;\">";
           saida = saida + "</div><div class=\"col-12\"><h5 style=\"color:white\">";
           saida = saida + "<?php echo $array[$cont++]; ?>"; // Titulo
           saida = saida + "<br><span style=\"color:grey\">"
-          saida = saida + "<?php echo $array[$cont++]; ?> |<?php echo $array[$cont++]; ?>" // Local
+          saida = saida + "<?php echo $array[$cont++]; ?> | <?php echo $array[$cont++]; ?>" // Local
           saida = saida + "</span></h5><h6 style=\"color: white\"> A partir de : <span class=\"h4\" style=\"color: #FFCE00\">R$ "
           saida = saida + "<?php echo $array[$cont]; ?>"; // Preço
           saida = saida + "</span> por hora </h6></div></div></a></div><br></div>"
