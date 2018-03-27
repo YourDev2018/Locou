@@ -8,17 +8,17 @@ require_once 'BuscarEspacos.php';
   $tipo = $seg->filtro($_GET['t']);
   $editText = $seg->filtro($_GET['q']);
 
- 
+
   $busca = new BuscarEspacos();
-  
+
    if ($tipo == "todos") {
      $array = $busca -> buscarEspacoBairro($editText);
   }else{
 
      $array = $busca -> buscarEspacoBairroTipo($tipo, $editText);
   }
-  
-  
+
+
 
 ?>
 
