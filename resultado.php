@@ -3,22 +3,26 @@
 <?php
 require_once 'Seguranca.php';
 require_once 'BuscarEspacos.php';
+require_once 'FunctionsDB.php';
 
   $seg  = new Seguranca();
   $tipo = $seg->filtro($_GET['t']);
   $editText = $seg->filtro($_GET['q']);
 
+  $db = new FunctionsDB();
+  $conn = $db->conectDB(); 
 
   $busca = new BuscarEspacos();
 
    if ($tipo == "todos") {
-     //$array = $busca -> buscarEspacoBairro($editText);
+     $array = $busca -> buscarEspacoBairro($conn, $editText);
+     
   }else{
+     $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
 
-   //  $array = $busca -> buscarEspacoBairroTipo($tipo, $editText);
   }
 
-
+  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/"; 
 
 ?>
 
@@ -418,20 +422,21 @@ function daysInMonth(month, year) {
       function alimentarQuery()
       {
         var saida = "";
-        var qtdObj = 10;
+        var qtdObj = <?php echo (count($array)/6) ?>;
         for(i = 0; i < qtdObj; i++)
         {
+          
           console.log("Rodando "+i);
           saida = saida + "<div class=\"col-lg-4 col-md-6 col-sm-6\"><div style=\"background-color: black\"><a href=\"\" style=\"text-decoration: none;\"><div class=\"row\" style=\"height: 350px;\"><div class=\"col-12\">";
           saida = saida + "<img src=\"";
-          saida = saida + "img/item.png"; // Link imagem
+          saida = saida + "<?php $cont=1; echo ($prefixo.$array[$cont]); ?>"; // Link imagem
           saida = saida + "\" class=\"img-fluid\" style=\"height: 200px; width: 100%; object-fit: cover;\">";
           saida = saida + "</div><div class=\"col-12\"><h5 style=\"color:white\">";
-          saida = saida + "Alguel de CoWork"; // Titulo
+          saida = saida + "<?php echo $array[$cont++]; ?>"; // Titulo
           saida = saida + "<br><span style=\"color:grey\">"
-          saida = saida + "Ipanema | Rio de Janeiro" // Local
+          saida = saida + "<?php echo $array[$cont++]; ?> |<?php echo $array[$cont++]; ?>" // Local
           saida = saida + "</span></h5><h6 style=\"color: white\"> A partir de : <span class=\"h4\" style=\"color: #FFCE00\">R$ "
-          saida = saida + "1000"; // Preço
+          saida = saida + "<?php echo $array[$cont]; ?>"; // Preço
           saida = saida + "</span> por hora </h6></div></div></a></div><br></div>"
         }
         document.getElementById("resultadoJS").innerHTML = saida;
