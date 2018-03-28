@@ -10,6 +10,14 @@
             return $aux;
         }
 
+        function filtro4($string,$pag){
+            $aux = $this->getNull4($string,$pag);
+            $aux = $this->getSqlInjection($string);
+            $aux = $this->getXSS($aux);
+            return $aux;
+        }
+
+
        private function getSqlInjection($string){
             $aux = addslashes($string);
             return $aux;
@@ -46,6 +54,15 @@
              $aux = $this->simNao($aux);
              return $aux;
 
+        }
+
+         private function getNull4($string,$pag){
+            if ($string == null || $string =="") {
+                header("location:".$pag."?status=vazio");
+                exit();
+            }else{
+                return $string;
+            }
         }
 
        private function letras($string){

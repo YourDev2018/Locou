@@ -5,10 +5,15 @@
   require_once 'FunctionsDB.php';
   require_once 'FunctionsSession.php';
 
+  $session = new FunctionsSession();
+  $session->iniciarSession();
+
+ 
+
 $db = new FunctionsDB();
 $conn = $db->conectDB();
-$session = new FunctionsSession();
-$session->iniciarSession();
+
+
 $array = returnEspaco($conn);
 $arrayConsultorio = returnConsultorio($conn);
 $arrayCozinha = returnCozinha($conn);
@@ -250,7 +255,7 @@ function daysInMonth(month, year) {
       <div class="modal-body">
         <br>
         <div class="pt-2" id="logar-div" style="background-color:white">
-          <form action="logar.php" method="post">
+          <form action="logar.php?pag=index" method="post">
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
@@ -266,7 +271,7 @@ function daysInMonth(month, year) {
           </form>
         </div>
         <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
-          <form action="CadastrarUsuario.php" method="post">
+          <form action="CadastrarUsuario.php?pag=index" method="post">
             <div class="row text-center justify-content-center">
               <div class="col-12 pb-3">
                 <label for="nome">Nome</label>

@@ -10,17 +10,35 @@
     
     $session = new FunctionsSession();
 
+    $pag = $_GET['pag'].".php";
+
 
     if ($session->vereficarLogin() == false) {
 
          $seg = new Seguranca();
-         $email = $seg->filtro($_POST['email']);
-         $senha = $seg->filtro($_POST['senha']);
 
-         $db -> loginEmailSenha($conn,$email,$senha);
-        echo true;
+        if ($_POST['email'] == null || $_POST['senha'] == null || $_POST['email'] == "" || $_POST['senha'] == ""  ) {
+            header('Location: http://localhost/YourDev/locou/'.$pag);
+           // print "vazio";
+            return;
+        }
+
+         $email = $seg->filtro($_POST['email']);
+         $senha = md5($seg->filtro($_POST['senha']));
+
+         $result = $db -> loginEmailSenha($conn,$email,$senha);
+         
+         if ($result == true) {
+             header('Location: http://localhost/YourDev/locou/'.$pag.'?status=true');
+             //print "sucesso";
+        }else{
+             header("Location: http://localhost/YourDev/locou/'.$pag.?status=false&email=".$_POST['email']);
+            // print "errado";
+        }  
+         
     }else {
-        echo false;
+        return  header('Location: http://localhost/YourDev/locou/'.$pag);
+        // print "ja logado";
     }
 
    

@@ -340,7 +340,7 @@ class BuscarEspacos
 
     public function buscarEspacoBairro($db, $busca){
 
-        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' ") ; //
+        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE titulo LIKE '%{$busca}%' OR  bairro LIKE '%{$busca}%' OR cidade LIKE '%{$busca}%'  ") ; //
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {

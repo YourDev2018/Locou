@@ -47,7 +47,7 @@
             $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' AND senha ='$senha' ") ;
             $cont = mysqli_num_rows($result);
             if ($cont <=0) {
-                return "Login Erro";
+                return false;
             }else{
                 if ($cont == 1) {
                     while ($row=$result->fetch_assoc()) {
@@ -57,6 +57,7 @@
                         $_SESSION['firstName']=$row['firstName'];
                         $_SESSION['lastName']=$row['lastName'];
                         $_SESSION['dataNascimento']=$row['dataNascimento'];
+                        $_SESSION['foto']=$row['foto'];
                         return true;
                     }
                     
@@ -69,16 +70,19 @@
 
         function cadastrarUsuarioBasico($db, $email,$senha,$firstName, $lastName, $dataNascimento, $foto){
                 $aux = $this->emailExist($db, $email);
-
-                $sql = "INSERT INTO UsuarioBasico(email,senha,firstName,lastName,dataNascimento, foto) VALUES ('$email','$senha','$firstName','$lastName', '$dataNascimento', '$foto')";
-                if ($db->query($sql)===true) {
-                    $_SESSION['logado']=true;
-                    $this->loginEmailSenha($db,$email,$senha);
-                    return true;
-                }else{
-                    return "false";
-                }
-
+                if (!$aux) {
+                    $senha = md5($senha);
+                    $sql = "INSERT INTO UsuarioBasico(email,senha,firstName,lastName,dataNascimento, foto) VALUES ('$email','$senha','$firstName','$lastName', '$dataNascimento', '$foto')";
+                    if ($db->query($sql)===true) {
+                        $_SESSION['logado']=true;
+                        $this->loginEmailSenha($db,$email,$senha);
+                        return true;
+                    }else{
+                        return false;
+                    }
+                } else{
+                    return false;
+                } 
            
         }
 

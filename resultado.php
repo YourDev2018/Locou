@@ -14,8 +14,13 @@ require_once 'FunctionsDB.php';
 
   $busca = new BuscarEspacos();
 
+  
+ $cont=0;  
+
   // if ($tipo == "todos") {
      $array = $busca -> buscarEspacoBairro($conn, $editText);
+
+     print_r ($array);
 
  // }else{
     // $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
@@ -349,9 +354,33 @@ function daysInMonth(month, year) {
               <hr>
             </div>
           </div>
+          <?php $aux = count($array)/6; for ($i=0; $i < $aux ; $i++) { ?>
+            
+         
+          <div class="col-lg-4 col-md-6 col-sm-6">
+              <div style="background-color: black">
+                <a href="anuncio.php?id=<?php echo $array[$cont++] ?>" style="text-decoration: none;">
+                  <div class="row" style="height: 350px;">
+                    <div class="col-12">
+                      <img src="<?php  echo  $prefixo.$array[$cont++]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12">
+                      <h5 style="color:white">
+                        <?php echo  $array[$cont++]; ?>
+                        <br>
+                        <span style="color:grey"> <?php echo  $array[$cont++]; ?> |  <?php echo  $array[$cont++] ?> </span>
+                      </h5>
+                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo  $array[$cont++]; ?></span> por hora </h6>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br>
+            </div>
 
-          <div id="resultadoJS" class="row px-4 py-4 text-left text-center"></div>
+        <?php } ?>
 
+          </div>
         </div>
       </div>
 
@@ -422,27 +451,19 @@ function daysInMonth(month, year) {
       function alimentarQuery()
       {
         var saida = "";
-        var qtdObj = <?php echo (count($array)/6) ?>;
-        for(i = 0; i < qtdObj; i++)
-        {
-
+        var qtdObj = <?php  echo (count($array)/6) ?>;
+      for(i = 0; i < qtdObj; i++)
+       {
+         
           console.log("Rodando "+i);
-          saida = saida + "<div class=\"col-lg-4 col-md-6 col-sm-6\"><div style=\"background-color: black\"><a href=\"anuncio.php?id=<?php echo $array[0] ?>";
-          saida = saida + ""; //Link
-          saida = saida + "\" style=\"text-decoration: none;\"><div class=\"row\" style=\"height: 350px;\"><div class=\"col-12\">";
-          saida = saida + "<img src=\"";
-          saida = saida + "<?php $cont=1; echo ($prefixo.$array[$cont++]); ?>"; // Link imagem
-          saida = saida + "\" class=\"img-fluid\" style=\"height: 200px; width: 100%; object-fit: cover;\">";
-          saida = saida + "</div><div class=\"col-12\"><h5 style=\"color:white\">";
-          saida = saida + "<?php echo $array[$cont++]; ?>"; // Titulo
-          saida = saida + "<br><span style=\"color:grey\">"
-          saida = saida + "<?php echo $array[$cont++]; ?> | <?php echo $array[$cont++]; ?>" // Local
-          saida = saida + "</span></h5><h6 style=\"color: white\"> A partir de : <span class=\"h4\" style=\"color: #FFCE00\">R$ "
-          saida = saida + "<?php echo $array[5]; ?>"; // Preço
-          saida = saida + "</span> por hora </h6></div></div></a></div><br></div>"
-        }
+        
+          <?php ?>
+       }
+       
         document.getElementById("resultadoJS").innerHTML = saida;
       }
+
+    
 
     </script>
 
