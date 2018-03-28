@@ -20,7 +20,7 @@ require_once 'FunctionsDB.php';
   // if ($tipo == "todos") {
      $array = $busca -> buscarEspacoBairro($conn, $editText);
 
-     print_r ($array);
+   //  print_r ($array);
 
  // }else{
     // $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
