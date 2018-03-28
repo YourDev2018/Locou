@@ -5,16 +5,16 @@
     $func = new FunctionsDB();
     $conn = $func ->conectDB();
 
-    $cpf = filtro($_POST['']);
-    $telDDD = filtro($_POST['']);
-    $telNumero = filtro($_POST['']);
-    $rua= filtro($_POST['']);
-    $ruaNumero= filtro($_POST['']);
-    $complemento = filtro($_POST['']);
-    $bairro = filtro($_POST['']);
-    $cep = filtro($_POST['']);
-    $cidade = filtro($_POST['']); 
-    $estado = filtro($_POST['']);
+    $cpf = filtro($_POST['cpf']);
+    $telDDD = filtro($_POST['ddd']);
+    $telNumero = filtro($_POST['tel']);
+    $rua= filtro($_POST['rua']);
+    $ruaNumero= filtro($_POST['ruaN']);
+    $complemento = filtro($_POST['complemento']);
+    $bairro = filtro($_POST['bairro']);
+    $cep = filtro($_POST['cep']);
+    $cidade = filtro($_POST['cidade']); 
+    $estado = filtro($_POST['estado']);
 
     $func -> cadastrarUsuarioInquilino($conn, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado);
 

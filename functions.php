@@ -78,6 +78,7 @@ $ano = $_POST['year'];
                 \"district\": \"$bairro\",
                 \"street\": \"$rua\",
                 \"streetNumber\": \"$ruaNumero\",
+                \"complement\": \"$complemento\",
                 \"zipCode\": \"$cep\",
                 \"state\": \"$cidade\",
                 \"country\": \"BRA\"

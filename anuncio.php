@@ -42,7 +42,7 @@
            // chamar página de pagamento
     }else{
        // chamar pop-up de salvar cliente
-       // Enviar dados para CadastrarCliente  (ainda não implementado os nomes de variável POST)
+       // Enviar dados para CadastrarCliente  (Função  implementada)
        // E ir para pagamento
     }
   }else{
@@ -296,7 +296,7 @@
               <hr>
              </p>
             
-             <form action="" method="post">
+             <form action="CadastrarCliente.php" method="post">
              
                <div class="form-group">
                  <label for="cpf">CPF (Apenas Número)</label>
