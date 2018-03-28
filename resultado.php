@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'Seguranca.php';
 require_once 'BuscarEspacos.php';
 require_once 'FunctionsDB.php';

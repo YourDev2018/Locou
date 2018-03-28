@@ -58,7 +58,7 @@
 
          private function getNull4($string,$pag){
             if ($string == null || $string =="") {
-                header("location:".$pag."?status=vazio");
+                header("location:".$pag."?funcao=cadastro&status=false");
                 exit();
             }else{
                 return $string;

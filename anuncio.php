@@ -28,12 +28,35 @@
   $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
 
 
-
-
-
   $busca->addContador($conn, $idAnuncio);
 
+   
+
   ?>
+
+
+  <?php 
+   
+  if($session->vereficarLogin() != false){
+    if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
+           // chamar página de pagamento
+    }else{
+       // chamar pop-up de salvar cliente
+       // Enviar dados para CadastrarCliente  (ainda não implementado os nomes de variável POST)
+       // E ir para pagamento
+    }
+  }else{
+    // chamar campo de login
+     if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
+           // chamar página de pagamento
+    }else{
+       // chamar pop-up de salvar cliente
+       // Enviar dados para CadastrarCliente
+       // E ir para pagamento
+    }
+  }
+
+    ?>
 
   <html lang="en">
     <head>
@@ -272,7 +295,9 @@
               <br>
               <hr>
              </p>
+            
              <form action="" method="post">
+             
                <div class="form-group">
                  <label for="cpf">CPF (Apenas Número)</label>
                  <input type="number" name="cpf" class="form-control" id="cpf" placeholder="12345665432">
@@ -319,7 +344,10 @@
             <div class="modal-footer">
               <button type="button" class="ml-3 btn btn-warning">Atualizar</button>
             </div>
+         
              </form>
+
+             
           </div>
         </div>
       </div>
@@ -704,8 +732,8 @@
                     <div class="row">
                       <div class="col-12" style="background-color: black; margin-bottom: 2vw">
                         <p style="margin-top: 1vw; margin-bottom: 1vw">
-                          <h4 style="color:white">A partir de:</h4>
-                          <h1 style="color:#FFCE00;font-weight: 600">R$ 000,00</h1>
+                          <h4 style="color:white">A partir de:</h4> 
+                          <h1 style="color:#FFCE00;font-weight: 600">R$ <?php echo $array['7']?></h1>
                           <h6 style="color:grey">E as taxas já estão inclusas!</h6>
                         </p>
                       </div>
@@ -720,10 +748,13 @@
 
                     <div class="row p-3" style="border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
                       <div class="col-12">
-                        <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ 000,00</span> </h5>
+                        <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php echo $array['7']?></span> </h5>
                         <br>
+
                         <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#completarCadastro">Alugue Agora</span>
-                      </div>
+
+
+                      </div>  
                     </div>
                   </div>
 
