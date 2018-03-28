@@ -146,7 +146,7 @@ function daysInMonth(month, year) {
         <div class="row">
           <div class="col-6">
             <form class="form-inline justify-content-center desktop" action="index.html" method="post">
-              <input type="text" name="q" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
+              <input type="text" name="q" style="width: 20vw" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
               <button type="submit" class="btn btn-warning">Buscar</button>
             </form>
           </div>
@@ -400,7 +400,7 @@ function daysInMonth(month, year) {
           </div>
         </div>
 
-        <div class="row justify-content-center" style="color: white;background-color: black">
+        <div class="row justify-content-center" style="color: white;background-color: black; padding-bottom:8vw">
           <div class="col-3">
           </div>
           <div class="col-lg-6 col-md-10 col-sm-12">

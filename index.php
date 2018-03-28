@@ -8,7 +8,7 @@
   $session = new FunctionsSession();
   $session->iniciarSession();
 
- 
+
 
 $db = new FunctionsDB();
 $conn = $db->conectDB();
@@ -210,7 +210,7 @@ function daysInMonth(month, year) {
 
         <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
           <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
-          
+
           <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <?php } ?>
         <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -444,7 +444,7 @@ function daysInMonth(month, year) {
             <!-- CARDS LINHA 1 -->
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 480px">
                 <a href="<?php  $cont = 0; $aux = $arrayConsultorio[0]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -466,7 +466,7 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black;">
+              <div style="background-color: black; height: 480px">
                 <a href="<?php  $cont = 0; $aux = $arrayCozinha[0]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -487,7 +487,7 @@ function daysInMonth(month, year) {
             </div>
 
            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 480px">
                 <a href="<?php  $cont = 0; $aux = $arrayWork[0]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -508,7 +508,7 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 480px">
                 <a href="<?php  $cont = 0; $aux = $arrayEnsaio[0]; echo "anuncio.php?id=".$aux ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -561,7 +561,7 @@ function daysInMonth(month, year) {
           <div class="row text-center justify-content-center">
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 350px">
                 <a href="<?php $aux = $array[0]; echo "anuncio.php?id=".$aux   ?> " style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -582,7 +582,7 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 350px">
                 <a href="<?php $aux = $array[8]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -603,7 +603,7 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 350px">
                 <a href="<?php  $aux = $array[16]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -624,7 +624,7 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-              <div style="background-color: black">
+              <div style="background-color: black; height: 350px">
                 <a href="<?php  $aux = $array[24]; echo "anuncio.php?id=".$aux   ?>" style="text-decoration: none;">
                   <div class="row">
                     <div class="col-12">
@@ -817,14 +817,14 @@ function daysInMonth(month, year) {
       })
       </script>
 
-      <?php  
-        
+      <?php
+
         if ($status == null || $status == "") {
-            
+
             return;
         }else{
             if ($status != true && $status != false) {
-              
+
               return;
             }else{
 
@@ -853,8 +853,6 @@ function daysInMonth(month, year) {
             }
         }
 
-      
+
       ?>
   </body>
-
-
