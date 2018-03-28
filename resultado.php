@@ -142,13 +142,20 @@ function daysInMonth(month, year) {
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
       <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-        <a class="mx-3">Sobre</a>
-        <a class="mx-3">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
-        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
-        <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
-        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
+        <div class="row">
+          <div class="col-6">
+            <form class="form-inline justify-content-center desktop" action="index.html" method="post">
+              <input type="text" name="q" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
+              <button type="submit" class="btn btn-warning">Buscar</button>
+            </form>
+          </div>
+          <div class="col-6">
+            <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+            <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
+            <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
+          </div>
+        </div>
       </span>
     </nav>
 
@@ -163,6 +170,13 @@ function daysInMonth(month, year) {
         <div class="col-12">
           <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
           <br><br>
+        </div>
+        <div class="col-12">
+          <form class="form-inline justify-content-center mobile" action="index.html" method="post">
+            <input type="text" name="q" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
+            <button type="submit" class="btn btn-warning">Buscar</button>
+          </form>
+          <br>
         </div>
         <div class="col-12">
           <span class="menu-navbar" style="color:white">
@@ -384,56 +398,59 @@ function daysInMonth(month, year) {
 
           </div>
         </div>
-      </div>
 
-      <div class="row justify-content-center" style="color: white;background-color: black">
-        <div class="col-3">
-        </div>
-        <div class="col-lg-6 col-md-10 col-sm-12">
-          <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
+        <div class="row justify-content-center" style="color: white;background-color: black">
+          <div class="col-3">
+          </div>
+          <div class="col-lg-6 col-md-10 col-sm-12">
+            <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
 
-            <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
-              <img class="logo-navbar" src="img/locou_logo.png">
-              <br><br>
-              <h6>Locou texto Locou Texto</h6>
-              <br><br>
+              <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
+                <img class="logo-navbar" src="img/locou_logo.png">
+                <br><br>
+                <h6>Locou texto Locou Texto</h6>
+                <br><br>
+              </div>
+
+              <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
+                <h6>
+                  <a href="#" style="color: white">Link para página</a>
+                  <br><br>
+                  <a href="#" style="color: white">Link para página</a>
+                  <br><br>
+                  <a href="#" style="color: white">Link para página</a>
+                  <br><br>
+                  <a href="#" style="color: white">Link para página</a>
+                  <br><br>
+                  <a href="#" style="color: white">Link para página</a>
+                </h6>
+                <br><br>
+              </div>
+
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <h6 style="color: grey">
+                  Redes sociais
+                  <br><br>
+                </h6>
+                <h6>
+                  <a href="#" style="color: white">Rede social</a>
+                  &nbsp;
+                  <a href="#" style="color: white">Rede social</a>
+                  &nbsp;
+                  <a href="#" style="color: white">Rede social</a>
+                  <br><br>
+                </h6>
+              </div>
+
             </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
-              <h6>
-                <a href="#" style="color: white">Link para página</a>
-                <br><br>
-                <a href="#" style="color: white">Link para página</a>
-                <br><br>
-                <a href="#" style="color: white">Link para página</a>
-                <br><br>
-                <a href="#" style="color: white">Link para página</a>
-                <br><br>
-                <a href="#" style="color: white">Link para página</a>
-              </h6>
-              <br><br>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-6">
-              <h6 style="color: grey">
-                Redes sociais
-                <br><br>
-              </h6>
-              <h6>
-                <a href="#" style="color: white">Rede social</a>
-                &nbsp;
-                <a href="#" style="color: white">Rede social</a>
-                &nbsp;
-                <a href="#" style="color: white">Rede social</a>
-                <br><br>
-              </h6>
-            </div>
-
+          </div>
+          <div class="col-3">
           </div>
         </div>
-        <div class="col-3">
-        </div>
+
       </div>
+
+
 
     </div>
 
