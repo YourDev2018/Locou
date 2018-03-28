@@ -14,8 +14,8 @@ require_once 'FunctionsDB.php';
 
   $busca = new BuscarEspacos();
 
-  
- $cont=0;  
+
+ $cont=0;
 
   // if ($tipo == "todos") {
      $array = $busca -> buscarEspacoBairro($conn, $editText);
@@ -339,7 +339,7 @@ function daysInMonth(month, year) {
           </div>
           <div class="row text-left">
             <div class="col-9 py-3 px-4">
-              <h5>Busca por Query do usuário <span class="h6" style="color: grey"> -  10 resultado(s)</span> </h5>
+              <h5>Busca por Query do usuário <span class="h6" style="color: grey"> -  <?php echo count($array)/6; ?> resultado(s)</span> </h5>
             </div>
             <div class="col-3 pt-3 px-4">
               <select class="" name="ordemPesquisa">
@@ -354,31 +354,33 @@ function daysInMonth(month, year) {
               <hr>
             </div>
           </div>
-          <?php $aux = count($array)/6; for ($i=0; $i < $aux ; $i++) { ?>
-            
-         
-          <div class="col-lg-4 col-md-6 col-sm-6">
-              <div style="background-color: black">
-                <a href="anuncio.php?id=<?php echo $array[$cont++] ?>" style="text-decoration: none;">
-                  <div class="row" style="height: 350px;">
-                    <div class="col-12">
-                      <img src="<?php  echo  $prefixo.$array[$cont++]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
-                    </div>
-                    <div class="col-12">
-                      <h5 style="color:white">
-                        <?php echo  $array[$cont++]; ?>
-                        <br>
-                        <span style="color:grey"> <?php echo  $array[$cont++]; ?> |  <?php echo  $array[$cont++] ?> </span>
-                      </h5>
-                      <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo  $array[$cont++]; ?></span> por hora </h6>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <br>
-            </div>
 
-        <?php } ?>
+          <div class="row px-4 py-4 text-left text-center">
+            <?php $aux = count($array)/6; for ($i=0; $i < $aux ; $i++) { ?>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div style="background-color: black">
+                  <a href="anuncio.php?id=<?php echo $array[$cont++] ?>" style="text-decoration: none;">
+                    <div class="row" style="height: 350px;">
+                      <div class="col-12">
+                        <img src="<?php  echo  $prefixo.$array[$cont++]; ?>" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                      </div>
+                      <div class="col-12">
+                        <h5 style="color:white">
+                          <?php echo  $array[$cont++]; ?>
+                          <br>
+                          <span style="color:grey"> <?php echo  $array[$cont++]; ?> |  <?php echo  $array[$cont++] ?> </span>
+                        </h5>
+                        <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo  $array[$cont++]; ?></span> por hora </h6>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <br>
+              </div>
+
+          <?php } ?>
+          </div>
 
           </div>
         </div>
@@ -454,16 +456,16 @@ function daysInMonth(month, year) {
         var qtdObj = <?php  echo (count($array)/6) ?>;
       for(i = 0; i < qtdObj; i++)
        {
-         
+
           console.log("Rodando "+i);
-        
+
           <?php ?>
        }
-       
+
         document.getElementById("resultadoJS").innerHTML = saida;
       }
 
-    
+
 
     </script>
 
