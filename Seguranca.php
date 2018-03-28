@@ -10,8 +10,8 @@
             return $aux;
         }
 
-        function filtro4($string,$pag){
-            $aux = $this->getNull4($string,$pag);
+        function filtro4($string,$pag,$id){
+            $aux = $this->getNull4($string,$pag,$id);
             $aux = $this->getSqlInjection($string);
             $aux = $this->getXSS($aux);
             return $aux;
@@ -56,9 +56,9 @@
 
         }
 
-         private function getNull4($string,$pag){
+         private function getNull4($string,$pag,$id){
             if ($string == null || $string =="") {
-                header("location:".$pag."?funcao=cadastro&status=false");
+                header("location:".$pag."?funcao=cadastro&status=false&id=$id");
                 exit();
             }else{
                 return $string;
