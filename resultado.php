@@ -400,7 +400,7 @@ function daysInMonth(month, year) {
           </div>
         </div>
 
-        <div class="row justify-content-center" style="color: white;background-color: black">
+        <div class="row justify-content-center" style="color: white;background-color: black; padding-bottom:8vw">
           <div class="col-3">
           </div>
           <div class="col-lg-6 col-md-10 col-sm-12">
