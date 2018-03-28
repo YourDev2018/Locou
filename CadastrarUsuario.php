@@ -9,6 +9,7 @@
     $conn = $db->conectDB();
     
     $session = new FunctionsSession();
+    $session -> iniciarSession();
 
     $pag = $_GET['pag'].".php";
 
@@ -61,12 +62,12 @@
               return;
               
         }else {
-             header("Location: http://localhost/YourDev/locou/".$pag."?status=false");
+             header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false");
              return;
         }
 
     }else {
-        header("Location: http://localhost/YourDev/locou/".$pag."?status=false");
+        header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false");
         return;
     }
 

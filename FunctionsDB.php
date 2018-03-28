@@ -58,6 +58,7 @@
                         $_SESSION['lastName']=$row['lastName'];
                         $_SESSION['dataNascimento']=$row['dataNascimento'];
                         $_SESSION['foto']=$row['foto'];
+                        $_SESSION['foto'];
                         return true;
                     }
                     
@@ -86,10 +87,10 @@
            
         }
 
-        function cadastrarUsuarioInquilino($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $bairro, $cep, $cidade, $estado){
+        function cadastrarUsuarioInquilino($db, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
             $moip = new Functions();
             $session = new FunctionsSession();
-            $aux = $moip->criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $bairro, $cep, $cidade, $estado);
+            $aux = $moip->criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado);
 
             print "/n \n ".$aux;
 

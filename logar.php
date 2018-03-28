@@ -10,15 +10,16 @@
     
     $session = new FunctionsSession();
 
+
     $pag = $_GET['pag'].".php";
 
 
     if ($session->vereficarLogin() == false) {
 
          $seg = new Seguranca();
-
+         $session-> iniciarSession();
         if ($_POST['email'] == null || $_POST['senha'] == null || $_POST['email'] == "" || $_POST['senha'] == ""  ) {
-            header('Location: http://localhost/YourDev/locou/'.$pag);
+            header('Location: http://localhost/YourDev/locou/'.$pag."?funcao=login&status=false");
            // print "vazio";
             return;
         }
@@ -29,10 +30,11 @@
          $result = $db -> loginEmailSenha($conn,$email,$senha);
          
          if ($result == true) {
-             header('Location: http://localhost/YourDev/locou/'.$pag.'?status=true');
+             header('Location: http://localhost/YourDev/locou/'.$pag."?status=true");
              //print "sucesso";
         }else{
-             header("Location: http://localhost/YourDev/locou/'.$pag.?status=false&email=".$_POST['email']);
+         //    header("Location: http://localhost/YourDev/locou/'.$pag.?status=false&email=".$_POST['email']); setando email
+                header("Location: http://localhost/YourDev/locou/".$pag."?funcao=login&status=false");
             // print "errado";
         }  
          

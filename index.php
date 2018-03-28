@@ -13,6 +13,8 @@
 $db = new FunctionsDB();
 $conn = $db->conectDB();
 
+$status = $_GET['status'];
+$funcao= $_GET['funcao'];
 
 $array = returnEspaco($conn);
 $arrayConsultorio = returnConsultorio($conn);
@@ -205,9 +207,15 @@ function daysInMonth(month, year) {
         <a class="mx-3">Como Funciona</a>
         <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
         <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
-        <a class="ml-5"><img class="rounded-circle" src="img/usuario.jpg" style="height: 40px"></a>
-        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
+
+        <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+          <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+          
+          <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+        <?php } ?>
+        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
+         <?php } ?>
       </span>
     </nav>
 
@@ -231,7 +239,9 @@ function daysInMonth(month, year) {
             <br><br>
             <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
             <br><br>
-            <span class="btn btn-outline-warning">Logar</span>
+            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+               <span class="btn btn-outline-warning">Logar</span>
+            <?php } ?>
             <br><br>
           </span>
         </div>
@@ -265,11 +275,12 @@ function daysInMonth(month, year) {
               <input type="password" class="form-control" id="senha-login" name="senha">
             </div>
             <br>
-            <span style="font-size: 90%; color:red; display: none">Login e/ou senha incorreto(s)</span>
+            <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
             <br>
             <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
           </form>
         </div>
+
         <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
           <form action="CadastrarUsuario.php?pag=index" method="post">
             <div class="row text-center justify-content-center">
@@ -302,7 +313,7 @@ function daysInMonth(month, year) {
               </div>
             </div>
             <br>
-            <span style="font-size: 90%; color:red; display: none">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
+            <span style="font-size: 90%; color:red; display: <?php if($funcao != 'cadastro' && $status != 'false'){ echo "none";}?>">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
             <br>
             <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
           </form>
@@ -806,4 +817,44 @@ function daysInMonth(month, year) {
       })
       </script>
 
+      <?php  
+        
+        if ($status == null || $status == "") {
+            
+            return;
+        }else{
+            if ($status != true && $status != false) {
+              
+              return;
+            }else{
+
+                 if ($status == 'false') {
+
+                    if($funcao=='login'){
+                          echo ( "<script type='text/javascript'>
+                                    $(document).ready(function(){
+                                    $('#myModal').modal('show');
+                                    });
+                                </script>");
+                    }
+
+                    if($funcao=='cadastro'){
+                          echo ( "<script type='text/javascript'>
+                                    $(document).ready(function(){
+                                    $('#myModal').modal('show');
+                                    });
+                                </script>");
+                    }
+
+
+
+                 }
+
+            }
+        }
+
+      
+      ?>
   </body>
+
+

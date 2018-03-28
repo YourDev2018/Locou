@@ -38,7 +38,7 @@ $ano = $_POST['year'];
     }
 
 
-    function criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $bairro, $cep, $cidade, $estado){
+    function criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
         $curl = curl_init();
         $url = "https://sandbox.moip.com.br/v2/customers";
         $id = $_SESSION['id'];
@@ -78,6 +78,7 @@ $ano = $_POST['year'];
                 \"district\": \"$bairro\",
                 \"street\": \"$rua\",
                 \"streetNumber\": \"$ruaNumero\",
+                \"complement\": \"$complemento\",
                 \"zipCode\": \"$cep\",
                 \"state\": \"$cidade\",
                 \"country\": \"BRA\"
