@@ -8,7 +8,7 @@
   $session = new FunctionsSession();
   $session->iniciarSession();
 
- 
+
 
 $db = new FunctionsDB();
 $conn = $db->conectDB();
