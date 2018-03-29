@@ -286,6 +286,8 @@
             }
         }
 
+        
+
 
 
         private function emailExist($db, $email){

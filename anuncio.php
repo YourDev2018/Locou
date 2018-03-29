@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<?php
-require_once 'FunctionsSession.php';
-require_once 'FunctionsDB.php';
-require_once 'BuscarEspacos.php';
+  <?php
+  error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
+  require_once 'FunctionsSession.php';
+  require_once 'FunctionsDB.php';
+  require_once 'BuscarEspacos.php';
 
 $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
@@ -21,8 +22,8 @@ $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
 $status = $_GET['status'];
 
 
-//print_r ($idAnuncio) ;
-//print_r ($array) ;
+//  print_r ($session->vereficarLogin());
+  //print_r ($array) ;
 
 $busca = new BuscarEspacos();
 $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
@@ -884,12 +885,10 @@ if($session->vereficarLogin() != false){
           var cadastroCompleto = " <?php echo $session -> verificarUsuarioCliente($db,$_SESSION['id']); ?> "; //false caso nao completo, id caso completo
           if(logado == "false")
           {
-            $("#myModal").modal(); // Não logado
+            var logado = "<?php  echo ($session->vereficarLogin()); ?>"; //false caso nao logado, id caso logado
+            var cadastroCompleto = " <?php  echo false; /* echo false; $session -> verificarUsuarioCliente($db,$_SESSION['id']); */ ?> "; //false caso nao completo, id caso completo
 
-          }
-          else
-          {
-            if(cadastroCompleto == "false")
+            if(logado == "false")
             {
               $("#completarCadastro").modal(); //Cadastro não completo
             }
