@@ -839,38 +839,28 @@
         <script>
           function completarOUanunciar()
           {
-<<<<<<< HEAD
-            var cadastroCompleto = "<?php echo $session->vereficarLogin() ?>";
-            if(cadastroCompleto == "false")
-            {
-              $("#completarCadastro").modal();
-            }
-            else
-            {
-            <?php
-                  require_once 'Pedidos.php';
-                  $pedidos = new Pedidos();
-                  //$aux = $pedidos -> 
-              ?>
-
-=======
-            var logado = "";
-            var cadastroCompleto = "";
+            var logado = ""; //false caso nao logado, id caso logado
+            var cadastroCompleto = "<?php echo $session->vereficarLogin() ?>"; //false caso nao completo, id caso completo
             if(logado == "false")
             {
-              $("#myModal").modal();
+              $("#myModal").modal(); // Não logado
             }
             else
             {
               if(cadastroCompleto == "false")
               {
-                $("#completarCadastro").modal();
+                $("#completarCadastro").modal(); //Cadastro não completo
               }
               else
-              {
-                document.getElementById("form-pagamento").submit();
+              { //Tudo ok, pagamento
+
+                // document.getElementById("form-pagamento").submit();
+                <?php
+                      require_once 'Pedidos.php';
+                      $pedidos = new Pedidos();
+                      //$aux = $pedidos ->
+                  ?>
               }
->>>>>>> 461d8286fda15bbb59ea231489a81581ef139739
             }
           }
         </script>
