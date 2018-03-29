@@ -839,14 +839,22 @@
         <script>
           function completarOUanunciar()
           {
+            var logado = "";
             var cadastroCompleto = "";
-            if(cadastroCompleto == "false")
+            if(logado == "false")
             {
-              $("#completarCadastro").modal();
+              
             }
             else
             {
-              document.getElementById("form-pagamento").submit();
+              if(cadastroCompleto == "false")
+              {
+                $("#completarCadastro").modal();
+              }
+              else
+              {
+                document.getElementById("form-pagamento").submit();
+              }
             }
           }
         </script>
