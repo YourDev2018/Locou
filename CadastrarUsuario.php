@@ -12,18 +12,19 @@
     $session -> iniciarSession();
 
     $pag = $_GET['pag'].".php";
+    $id = $_GET['id'];
 
     if ($session->vereficarLogin() == false) {
 
          $seg = new Seguranca();
 
-         $email = $seg->filtro4($_POST['email'],$pag );
-         $senha = $seg->filtro4($_POST['senha'],$pag );
-         $first = $seg->filtro4($_POST['nome'],$pag );
-         $last = $seg->filtro4($_POST['sobrenome'],$pag );
-         $dia = $seg->filtro4($_POST['dia'],$pag ); 
-         $mes = $seg->filtro4($_POST['mes'],$pag ); 
-         $ano = $seg->filtro4($_POST['ano'],$pag ); 
+         $email = $seg->filtro4($_POST['email'],$pag,$id );
+         $senha = $seg->filtro4($_POST['senha'],$pag,$id );
+         $first = $seg->filtro4($_POST['nome'],$pag,$id );
+         $last = $seg->filtro4($_POST['sobrenome'],$pag,$id );
+         $dia = $seg->filtro4($_POST['dia'],$pag,$id ); 
+         $mes = $seg->filtro4($_POST['mes'],$pag,$id ); 
+         $ano = $seg->filtro4($_POST['ano'],$pag,$id ); 
 
          $nascimento = $ano."-".$mes."-".$dia;
        //  $seg->filtro4($_FILES['foto']['name'], $pag);
@@ -58,16 +59,16 @@
               $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
               ftp_close($ftp);
               
-              header("Location: http://localhost/YourDev/locou/".$pag."?status=true");
+              header("Location: http://localhost/YourDev/locou/".$pag."?status=true&id=$id");
               return;
               
         }else {
-             header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false");
+             header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false&id=$id");
              return;
         }
 
     }else {
-        header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false");
+        header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false&id=$id");
         return;
     }
 
