@@ -15,11 +15,11 @@
     $id = $_GET['id'];
 
 
-    if ($session->vereficarLogin() == false) {
+    if ($session->vereficarLogin() == 'false') {
 
          $seg = new Seguranca();
          $session-> iniciarSession();
-        if ($_POST['email'] == null || $_POST['senha'] == null || $_POST['email'] == "" || $_POST['senha'] == ""  ) {
+        if ($_POST['email'] == null || $_POST['senha'] == null || $_POST['email'] == "" || $_POST['senha'] == "" ) {
             header('Location: '.$pag."?funcao=login&status=false&id=$id");
            // print "vazio";
             return;
@@ -35,12 +35,12 @@
              //print "sucesso";
         }else{
          //    header("Location: http://localhost/YourDev/locou/'.$pag.?status=false&email=".$_POST['email']); setando email
-                header('Location:'.$pag."?funcao=login&status=false&id=$id");
+                header('Location:'.$pag."?funcao=login&status=false&id=".$id."erro=informacoeserradas");
             // print "errado";
         }  
          
     }else {
-        return  header('Location:'.$pag."&id=$id");
+         header('Location:'.$pag."?funcao=login&status=false&id=".$id."&erro=estalogado");
         // print "ja logado";
     }
 

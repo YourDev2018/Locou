@@ -20,6 +20,7 @@ $idAnuncio = $_GET['id'];
 
 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
 $status = $_GET['status'];
+$funcao= $_GET['funcao'];
 
 
 //  print_r ($session->vereficarLogin());
@@ -299,7 +300,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <div class="pt-2" id="logar-div" style="background-color:white">
-            <form action="logar.php?pag=index" method="post">
+            <form action="<?php echo "logar.php?pag=anuncio&id=".$idAnuncio ?> " method="post">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
@@ -880,30 +881,22 @@ if($session->vereficarLogin() != false){
         </script>
         <script>
         function completarOUanunciar()
+
         {
-          var logado = "<?php echo $session->vereficarLogin() ?>"; //false caso nao logado, id caso logado
-          var cadastroCompleto = " <?php echo $session -> verificarUsuarioCliente($db,$_SESSION['id']); ?> "; //false caso nao completo, id caso completo
-          if(logado == "false")
-          {
-            var logado = "<?php  echo ($session->vereficarLogin()); ?>"; //false caso nao logado, id caso logado
-            var cadastroCompleto = " <?php  echo  $session -> verificarUsuarioCliente($db,$_SESSION['id']);  ?> "; //false caso nao completo, id caso completo
+          var logado = "<?php  echo $session -> vereficarLogin(); ?>" //false caso nao logado, id caso logado
+          var clienteCadastrado = "<?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']) ?>"
+          
+          if(logado == "false"){ 
 
-            if(logado == "false")
-            {
-              $("#completarCadastro").modal(); //Cadastro não completo
-            }
-            else
-            { //Tudo ok, pagamento
+              $("#loginPop").modal(); // Não logado
 
-              document.getElementById("form-pagamento").submit();
-
-              <?php
-              require_once 'Pedidos.php';
-              $pedidos = new Pedidos();
-              //$aux = $pedidos ->
-              ?>
-            }
+          }else{
+            
+            
+            
           }
+
+
         }
         </script>
 
@@ -925,7 +918,7 @@ if($session->vereficarLogin() != false){
             if($funcao=='login'){
               echo ( "<script type='text/javascript'>
               $(document).ready(function(){
-                $('#myModal').modal('show');
+                $('#loginPop').modal('show');
               });
               </script>");
             }
@@ -933,7 +926,7 @@ if($session->vereficarLogin() != false){
             if($funcao=='cadastro'){
               echo ( "<script type='text/javascript'>
               $(document).ready(function(){
-                $('#myModal').modal('show');
+                $('#cadastroPop').modal('show');
               });
               </script>");
             }
@@ -944,8 +937,9 @@ if($session->vereficarLogin() != false){
 
         }
       }
+        ?>
 
-
-      ?>
+     <?php echo "ashas". $session->vereficarLogin() ?>
+     <?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']); ?>
 
     </body>

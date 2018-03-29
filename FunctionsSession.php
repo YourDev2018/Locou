@@ -19,7 +19,10 @@ class FunctionsSession{
 
     function verificarUsuarioCliente($db,$id){
         
-        
+            if ($id == null || $id == "") {
+                return 'false';
+            }
+
             $result =  $db->query("SELECT * FROM UsuarioClient WHERE id = '$id' ") ;
             $cont = mysqli_num_rows($result);
         
