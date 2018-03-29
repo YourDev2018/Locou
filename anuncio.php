@@ -843,7 +843,7 @@
             var cadastroCompleto = "";
             if(logado == "false")
             {
-              
+              $("#myModal").modal();
             }
             else
             {
