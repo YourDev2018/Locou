@@ -217,7 +217,7 @@ function daysInMonth(month, year) {
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Cadastro de novo usuário</h5>
+            <h5 class="modal-title">Login de usuário já existente</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -875,23 +875,43 @@ function daysInMonth(month, year) {
                     <script>
                       function atualizarTempoAluguel()
                       {
-                        document.getElementById("tempoDeAlguel").innerHTML = "O prazo de alguel será do dia "+dd+"/"+mm+"/"+yyyy+" até ";
+                        var data = today;
+                        data.setDate(data.getDate() + 31);
+                        document.getElementById("tempoDeAlguel").innerHTML = "O prazo de alguel será do dia "+dd+"/"+mm+"/"+yyyy+" até "+data.getDate()+'/'+ (data.getMonth()+1) +'/'+data.getFullYear();;
                       }
                     </script>
                     <br>
                     <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
                     <br>
                     <div class="row text-center justify-content-center">
-                      <div class="col-6">
-                        <select class="form-control" style="text-align: center" id="tempo-periodo-direto">
-                          <option value="inteiro">Período inteiro</option>
-                          <option value="meio">Meio Período</option>
-                        </select>
+                      <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
+                        <div class="row px-2">
+                          <div class="col-12" style="color: #FFCE00">
+                            <h6>Hora de início do Aluguel</h6>
+                          </div>
+                          <div class="col-12">
+                              <input type="text" name="hora-inicio-unico" class="form-control" style="text-align: center" readonly value="12:00">
+                              <br>
+                          </div>
+                          <div class="col-12">
+                              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                          </div>
+                        </div>
                         <br>
-                        <select class="form-control" style="text-align: center" id="tempo-periodo-meio-tempo-direto">
-                          <option value="manha">Manhã</option>
-                          <option value="tarde">Tarde</option>
-                        </select>
+                        <div class="row px-2">
+                          <div class="col-12" style="color: #FFCE00">
+                            <h6>Hora de fim do Aluguel</h6>
+                          </div>
+                          <div class="col-12">
+                              <input type="text" name="hora-fim-unico" class="form-control" style="text-align: center" readonly  value="18:00">
+                              <br>
+                          </div>
+                          <div class="col-12">
+                              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
