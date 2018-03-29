@@ -18,7 +18,7 @@
   $idAnuncio = $_GET['id'];
 
   $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
-
+  $status = $_GET['status'];
 
 
   //print_r ($idAnuncio) ;
@@ -839,14 +839,19 @@
         <script>
           function completarOUanunciar()
           {
-            var cadastroCompleto = "<?php echo ?>";
+            var cadastroCompleto = "<?php echo $session->vereficarLogin() ?>";
             if(cadastroCompleto == "false")
             {
-              //Sobe o popup p completar
+              $("#completarCadastro").modal();
             }
             else
             {
-              //Vai para pagamento
+            <?php
+                  require_once 'Pedidos.php';
+                  $pedidos = new Pedidos();
+                  //$aux = $pedidos -> 
+              ?>
+
             }
           }
         </script>
