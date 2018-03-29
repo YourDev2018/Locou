@@ -1,6 +1,7 @@
   <!DOCTYPE html>
 
   <?php
+  error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
   require_once 'FunctionsSession.php';
   require_once 'FunctionsDB.php';
   require_once 'BuscarEspacos.php';
@@ -21,7 +22,7 @@
   $status = $_GET['status'];
 
 
-  //print_r ($idAnuncio) ;
+//  print_r ($session->vereficarLogin());
   //print_r ($array) ;
 
   $busca = new BuscarEspacos();
@@ -839,8 +840,9 @@
         <script>
           function completarOUanunciar()
           {
-            var logado = "<?php echo $session->vereficarLogin() ?>"; //false caso nao logado, id caso logado
-            var cadastroCompleto = " <?php echo $session -> verificarUsuarioCliente($db,$_SESSION['id']); ?> "; //false caso nao completo, id caso completo
+            var logado = "<?php  echo ($session->vereficarLogin()); ?>"; //false caso nao logado, id caso logado
+            var cadastroCompleto = " <?php  echo false; /* echo false; $session -> verificarUsuarioCliente($db,$_SESSION['id']); */ ?> "; //false caso nao completo, id caso completo
+
             if(logado == false)
             {
               $("#myModal").modal(); // Não logado
