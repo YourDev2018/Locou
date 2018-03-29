@@ -203,16 +203,16 @@ function daysInMonth(month, year) {
                  <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento">
                </div>
                <div class="form-group">
-                 <label for="bairro">Bairro</label>
-                 <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Nome Bairro">
+                 <label for="bairroC">Bairro</label>
+                 <input type="text" name="bairroC" class="form-control" id="bairroC" placeholder="Nome Bairro">
                </div>
                <div class="form-group">
                  <label for="cep">CEP (Apenas Número)</label>
                  <input type="number" name="cep" class="form-control" id="cep" placeholder="21000-000">
                </div>
                <div class="form-group">
-                 <label for="cidade">Cidade</label>
-                 <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Rio de Janeiro">
+                 <label for="cidadeC">Cidade</label>
+                 <input type="text" name="cidadeC" class="form-control" id="cidadeC" placeholder="Rio de Janeiro">
                </div>
                <div class="form-group">
                  <label for="estado">Estado</label>
