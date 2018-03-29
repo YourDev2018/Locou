@@ -30,13 +30,13 @@
 
   $busca->addContador($conn, $idAnuncio);
 
-   
+
 
   ?>
 
 
-  <?php 
-   
+  <?php
+
   if($session->vereficarLogin() != false){
     if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
            // chamar página de pagamento
@@ -295,9 +295,9 @@
               <br>
               <hr>
              </p>
-            
+
              <form action="CadastrarCliente.php" method="post">
-             
+
                <div class="form-group">
                  <label for="cpf">CPF (Apenas Número)</label>
                  <input type="number" name="cpf" class="form-control" id="cpf" placeholder="12345665432">
@@ -344,10 +344,10 @@
             <div class="modal-footer">
               <button type="button" class="ml-3 btn btn-warning">Atualizar</button>
             </div>
-         
+
              </form>
 
-             
+
           </div>
         </div>
       </div>
@@ -732,7 +732,7 @@
                     <div class="row">
                       <div class="col-12" style="background-color: black; margin-bottom: 2vw">
                         <p style="margin-top: 1vw; margin-bottom: 1vw">
-                          <h4 style="color:white">A partir de:</h4> 
+                          <h4 style="color:white">A partir de:</h4>
                           <h1 style="color:#FFCE00;font-weight: 600">R$ <?php echo $array['7']?></h1>
                           <h6 style="color:grey">E as taxas já estão inclusas!</h6>
                         </p>
@@ -751,10 +751,10 @@
                         <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php echo $array['7']?></span> </h5>
                         <br>
 
-                        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#completarCadastro">Alugue Agora</span>
+                        <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Alugue Agora</span>
 
 
-                      </div>  
+                      </div>
                     </div>
                   </div>
 
@@ -825,6 +825,20 @@
           console.log($(this).attr('id')+"-label");
           console.log(foto);
         })
+        </script>
+        <script>
+          function completarOUanunciar()
+          {
+            var cadastroCompleto = "<?php echo ?>";
+            if(cadastroCompleto == "false")
+            {
+              //Sobe o popup p completar
+            }
+            else
+            {
+              //Vai para pagamento
+            }
+          }
         </script>
 
       </form>
