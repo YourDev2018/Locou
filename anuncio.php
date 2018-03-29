@@ -1,520 +1,539 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 
-  <?php
-  require_once 'FunctionsSession.php';
-  require_once 'FunctionsDB.php';
-  require_once 'BuscarEspacos.php';
+<?php
+require_once 'FunctionsSession.php';
+require_once 'FunctionsDB.php';
+require_once 'BuscarEspacos.php';
 
-  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+$prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
-  $session = new FunctionsSession();
-  $session->iniciarSession();
+$session = new FunctionsSession();
+$session->iniciarSession();
 
-  $db = new FunctionsDB();
-  $conn = $db->conectDB();
+$db = new FunctionsDB();
+$conn = $db->conectDB();
 
-  $busca = new BuscarEspacos();
+$busca = new BuscarEspacos();
 
-  $idAnuncio = $_GET['id'];
+$idAnuncio = $_GET['id'];
 
-  $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
-  $status = $_GET['status'];
-
-
-  //print_r ($idAnuncio) ;
-  //print_r ($array) ;
-
-  $busca = new BuscarEspacos();
-  $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
+$array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+$status = $_GET['status'];
 
 
-  $busca->addContador($conn, $idAnuncio);
+//print_r ($idAnuncio) ;
+//print_r ($array) ;
+
+$busca = new BuscarEspacos();
+$arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
+
+
+$busca->addContador($conn, $idAnuncio);
 
 
 
-  ?>
+?>
 
 
-  <?php
+<?php
 
-  if($session->vereficarLogin() != false){
-    if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
-           // chamar página de pagamento
-    }else{
-       // chamar pop-up de salvar cliente
-       // Enviar dados para CadastrarCliente  (Função  implementada)
-       // E ir para pagamento
-    }
+if($session->vereficarLogin() != false){
+  if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
+    // chamar página de pagamento
   }else{
-    // chamar campo de login
-     if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
-           // chamar página de pagamento
-    }else{
-       // chamar pop-up de salvar cliente
-       // Enviar dados para CadastrarCliente
-       // E ir para pagamento
-    }
+    // chamar pop-up de salvar cliente
+    // Enviar dados para CadastrarCliente  (Função  implementada)
+    // E ir para pagamento
   }
+}else{
+  // chamar campo de login
+  if ($session->verificarUsuarioCliente($conn,$_SESSION['id']) != false ) {
+    // chamar página de pagamento
+  }else{
+    // chamar pop-up de salvar cliente
+    // Enviar dados para CadastrarCliente
+    // E ir para pagamento
+  }
+}
 
-    ?>
+?>
 
-  <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,900" rel="stylesheet">
-      <link rel="stylesheet" type="text/css"  href="css/locou.css">
-      <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
-      <title>Locou | Encontre o espaço de trabalho pelo tempo que precisar</title>
-      <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
-      <script src="js/bootstrap-datepicker.min.js" ></script>
-      <script>
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth()+1; //January is 0!
-      var yyyy = today.getFullYear();
-      if(dd<10)
-      {
-        dd = '0'+dd
-      }
-      if(mm<10)
-      {
-        mm = '0'+mm
-      }
-      $( function() {
-        $( "#datepicker" ).datepicker();
-      } );
-      $.fn.datepicker.defaults.format = "dd/mm/yyyy";
-      $.fn.datepicker.defaults.autoclose = true;
-      $.fn.datepicker.defaults.maxViewMode = 0;
-      var hoje = dd+"/"+mm+"/"+yyyy;
-      $.fn.datepicker.defaults.startDate = hoje;
-      $.fn.datepicker.defaults.todayHighlight = true;
-      </script>
-      <script>
-      $(function () {
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,900" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"  href="css/locou.css">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+  <title>Locou | Encontre o espaço de trabalho pelo tempo que precisar</title>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
+  <script src="js/bootstrap-datepicker.min.js" ></script>
+  <script src="js/jquery.paver.js" ></script>
+  <script src="js/jquery.ba-throttle-debounce.min.js" ></script>
+  <link rel="stylesheet" type="text/css"  href="css/paver.scss">
+  <script>
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  if(dd<10)
+  {
+    dd = '0'+dd
+  }
+  if(mm<10)
+  {
+    mm = '0'+mm
+  }
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+  $.fn.datepicker.defaults.autoclose = true;
+  $.fn.datepicker.defaults.maxViewMode = 0;
+  var hoje = dd+"/"+mm+"/"+yyyy;
+  $.fn.datepicker.defaults.startDate = hoje;
+  $.fn.datepicker.defaults.todayHighlight = true;
+  </script>
+  <script>
+  $(function () {
 
-      for (i = new Date().getFullYear() ; i > 1900; i--) {
-          $('#years').append($('<option />').val(i).html(i));
-      }
+    for (i = new Date().getFullYear() ; i > 1900; i--) {
+      $('#years').append($('<option />').val(i).html(i));
+    }
 
-      for (i = 1; i < 13; i++) {
-          $('#months').append($('<option />').val(i).html(i));
-      }
+    for (i = 1; i < 13; i++) {
+      $('#months').append($('<option />').val(i).html(i));
+    }
+    updateNumberOfDays();
+
+    $('#years, #months').change(function () {
+
       updateNumberOfDays();
 
-      $('#years, #months').change(function () {
-
-          updateNumberOfDays();
-
-      });
+    });
 
   });
 
   function updateNumberOfDays() {
-      $('#days').html('');
-      month = $('#months').val();
-      year = $('#years').val();
-      days = daysInMonth(month, year);
+    $('#days').html('');
+    month = $('#months').val();
+    year = $('#years').val();
+    days = daysInMonth(month, year);
 
-      for (i = 1; i < days + 1 ; i++) {
-          $('#days').append($('<option />').val(i).html(i));
-      }
+    for (i = 1; i < days + 1 ; i++) {
+      $('#days').append($('<option />').val(i).html(i));
+    }
 
   }
 
   function daysInMonth(month, year) {
-      return new Date(year, month, 0).getDate();
+    return new Date(year, month, 0).getDate();
   }
-    </script>
-    </head>
-    <style>
-      #map {
-         height: 100%;
-       }
-      @media (min-width: 768.1px)
-      {
-        .desktop
-        {
-          display: block;
-        }
-        .mobile
-        {
-          display: none;
-        }
-      }
-      @media (max-width: 768.0px)
-      {
-        .desktop
-        {
-          display: none;
-        }
-        .mobile
-        {
-          display: block;
-        }
-      }
-      </style>
-    <body style="font-family: 'Muli'">
+  </script>
+</head>
+<style>
+#map {
+  height: 100%;
+}
+@media (min-width: 768.1px)
+{
+  .desktop
+  {
+    display: block;
+  }
+  .mobile
+  {
+    display: none;
+  }
+}
+@media (max-width: 768.0px)
+{
+  .desktop
+  {
+    display: none;
+  }
+  .mobile
+  {
+    display: block;
+  }
+}
+.panorama {
+	height: 400px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	img {
+		height: 100%;
+	}
+}
+</style>
+<body style="font-family: 'Muli'">
 
-      <!-- Navbar -->
+  <!-- Navbar -->
 
-    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
-      <a class="navbar-brand ml-5" href="index.php" >
-        <img  class="logo-navbar" src="img/locou_logo.png">
-      </a>
-      <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-        <a class="mx-3">Sobre</a>
-        <a class="mx-3">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
-        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+  <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
+    <a class="navbar-brand ml-5" href="index.php" >
+      <img  class="logo-navbar" src="img/locou_logo.png">
+    </a>
+    <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
+      <a class="mx-3">Sobre</a>
+      <a class="mx-3">Como Funciona</a>
+      <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
+      <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
 
-        <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-          <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+      <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+        <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-          <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <?php } ?>
-        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
-         <?php } ?>
-      </span>
-    </nav>
+        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+      <?php } ?>
+      <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+      <?php } ?>
+    </span>
+  </nav>
 
-      <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
-      <div class="row justify-content-center text-center">
-        <div class="col-12">
-          <a href="index.php">
-            <img class="logo-navbar" src="img/locou_logo.png">
-            <br><br>
-          </a>
-        </div>
-        <div class="col-12">
-          <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+  <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+    <div class="row justify-content-center text-center">
+      <div class="col-12">
+        <a href="index.php">
+          <img class="logo-navbar" src="img/locou_logo.png">
           <br><br>
-        </div>
-        <div class="col-12">
-          <span class="menu-navbar" style="color:white">
-            <a class="mx-2">Sobre</a>
-            <a class="mx-2">Como Funciona</a>
-            <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
-            <br><br>
-            <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
-            <br><br>
-            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-               <span class="btn btn-outline-warning">Logar</span>
-            <?php } ?>
-            <br><br>
-          </span>
-        </div>
+        </a>
       </div>
-    </nav>
-
-      <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-        <div class="modal-content text-center justify-content-center">
-          <div class="modal-head">
-            <div class="row py-4" style="background-color: black">
-              <div class="col-12">
-                <span class="btn btn-outline-warning active" id="logar-b" onclick="logar(this);"><h3 style="font-weight: 300">Logar</h3></span>
-                <br class="mobile"><br class="mobile">
-                <span class="px-5 h4" style="color: white; font-weight: 300">ou</span>
-                <br class="mobile"><br class="mobile">
-                <span class="btn btn-outline-warning" id="cadastrar-b" onclick="cadastrar(this);"><h3 style="font-weight: 300">Cadastrar</h3></span>
-              </div>
-            </div>
-          </div>
-          <div class="modal-body">
-            <br>
-            <div class="pt-2" id="logar-div" style="background-color:white">
-          <form action=<?php echo "logar.php?pag=anuncio&id=$idAnuncio"?> method="post">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
-            </div>
-            <div class="form-group">
-              <label for="senha">Senha</label>
-              <input type="password" class="form-control" id="senha-login" name="senha">
-            </div>
-            <br>
-            <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
-            <br>
-            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
-          </form>
-        </div>
-            <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
-          <form action="CadastrarUsuario.php?"."pag=anuncio" method="post">
-            <div class="row text-center justify-content-center">
-              <div class="col-12 pb-3">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
-              </div>
-              <div class="col-12 pb-3">
-                <label for="sobrenome">Sobrenome</label>
-                <input type="text" class="form-control" id="sobrenome" name="sobrenome">
-              </div>
-              <div class="col-12 pb-3">
-                <label>Data de nascimento</label>
-                <br>
-                <select id="days" name="dia"></select>
-                <select id="months" name="mes"></select>
-                <select id="years" name="ano"></select>
-              </div>
-              <div class="col-12 pb-3">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
-              </div>
-              <div class="col-12 pb-5">
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha">
-              </div>
-              <div class="col-10 pb-3 pt-3">
-                <input type="file" class="custom-file-input" id="foto" name="foto">
-                <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
-              </div>
-            </div>
-            <br>
-            <span style="font-size: 90%; color:red; display: <?php if($funcao != 'cadastro' && $status != 'false'){ echo "none";}?>">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
-            <br>
-            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
-          </form>
-            </div>
-          </div>
-          </div>
-        </div>
+      <div class="col-12">
+        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <br><br>
       </div>
+      <div class="col-12">
+        <span class="menu-navbar" style="color:white">
+          <a class="mx-2">Sobre</a>
+          <a class="mx-2">Como Funciona</a>
+          <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+          <br><br>
+          <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+            <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-      <div id="completarCadastro" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Completar Cadastro</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body text-center justify-content-center">
-              <p style="font-size: 80%">Ops... precisamos de mais informações antes de você poder anunciar esse espaço.
-              <br><br>
-              Complete essas informações antes de prosseguir. Precisamos de todos esses dados para poder efetuar o pagamento para você.
+            <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+          <?php } ?>
+          <br><br>
+          <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+          <?php } ?>
+          <br><br>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="modal fade" id="cadastroPop" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastro de novo usuário</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="pt-2" style="background-color:white">
+            <form action="CadastrarUsuario.php?pag=index" method="post">
+              <div class="row text-center justify-content-center">
+                <div class="col-12 pb-3">
+                  <label for="nome">Nome</label>
+                  <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+                <div class="col-12 pb-3">
+                  <label for="sobrenome">Sobrenome</label>
+                  <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+                </div>
+                <div class="col-12 pb-3">
+                  <label>Data de nascimento</label>
+                  <br>
+                  <select id="days" name="dia"></select>
+                  <select id="months" name="mes"></select>
+                  <select id="years" name="ano"></select>
+                </div>
+                <div class="col-12 pb-3">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
+                </div>
+                <div class="col-12 pb-5">
+                  <label for="senha">Senha</label>
+                  <input type="password" class="form-control" id="senha" name="senha">
+                </div>
+                <div class="col-10 pb-3 pt-3">
+                  <input type="file" class="custom-file-input" id="foto" name="foto">
+                  <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
+                </div>
+              </div>
               <br>
-              <hr>
-             </p>
-
-             <form action="CadastrarCliente.php" method="post">
-
-               <div class="form-group">
-                 <label for="cpf">CPF (Apenas Número)</label>
-                 <input type="number" name="cpf" class="form-control" id="cpf" placeholder="12345665432">
-               </div>
-               <div class="form-group">
-                 <label for="ddd">DDD (Apenas Número)</label>
-                 <input type="number" name="ddd" class="form-control" id="ddd" placeholder="21">
-               </div>
-               <div class="form-group">
-                 <label for="tel">Telefone (Apenas Número)</label>
-                 <input type="number" name="tel" class="form-control" id="tel" placeholder="912345678">
-               </div>
-               <div class="form-group">
-                 <label for="rua">Rua</label>
-                 <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua exemplo">
-               </div>
-               <div class="form-group">
-                 <label for="ruaN">Número da Rua (Apenas Número)</label>
-                 <input type="number" name="ruaN" class="form-control" id="ruaN" placeholder="157">
-               </div>
-               <div class="form-group">
-                 <label for="complemento">Complemento</label>
-                 <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento">
-               </div>
-               <div class="form-group">
-                 <label for="bairro">Bairro</label>
-                 <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Nome Bairro">
-               </div>
-               <div class="form-group">
-                 <label for="cep">CEP (Apenas Número)</label>
-                 <input type="number" name="cep" class="form-control" id="cep" placeholder="21000-000">
-               </div>
-               <div class="form-group">
-                 <label for="cidade">Cidade</label>
-                 <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Rio de Janeiro">
-               </div>
-               <div class="form-group">
-                 <label for="estado">Estado</label>
-                 <input type="text" name="estado" class="form-control" id="estado" placeholder="Rio de Janeiro">
-               </div>
-
-             <span style="color: grey;font-size: 80%">Nunca vamos divulgar nenhuma informação sua!</span>
+              <span style="font-size: 90%; color:red; display: <?php if($funcao != 'cadastro' && $status != 'false'){ echo "none";}?>">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
+              <br>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="ml-3 btn btn-warning">Atualizar</button>
-            </div>
-
-             </form>
-
-
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loginPop" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastro de novo usuário</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <div class="pt-2" id="logar-div" style="background-color:white">
+            <form action="logar.php?pag=index" method="post">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
+              </div>
+              <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha-login" name="senha">
+              </div>
+              <br>
+              <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
+              <br>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="completarCadastro" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Completar Cadastro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center justify-content-center">
+          <p style="font-size: 80%">Ops... precisamos de mais informações antes de você poder anunciar esse espaço.
+            <br><br>
+            Complete essas informações antes de prosseguir. Precisamos de todos esses dados para poder efetuar o pagamento para você.
+            <br>
+            <hr>
+          </p>
+
+          <form action="CadastrarCliente.php" method="post">
+
+            <div class="form-group">
+              <label for="cpf">CPF (Apenas Número)</label>
+              <input type="number" name="cpf" class="form-control" id="cpf" placeholder="12345665432">
+            </div>
+            <div class="form-group">
+              <label for="ddd">DDD (Apenas Número)</label>
+              <input type="number" name="ddd" class="form-control" id="ddd" placeholder="21">
+            </div>
+            <div class="form-group">
+              <label for="tel">Telefone (Apenas Número)</label>
+              <input type="number" name="tel" class="form-control" id="tel" placeholder="912345678">
+            </div>
+            <div class="form-group">
+              <label for="rua">Rua</label>
+              <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua exemplo">
+            </div>
+            <div class="form-group">
+              <label for="ruaN">Número da Rua (Apenas Número)</label>
+              <input type="number" name="ruaN" class="form-control" id="ruaN" placeholder="157">
+            </div>
+            <div class="form-group">
+              <label for="complemento">Complemento</label>
+              <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento">
+            </div>
+            <div class="form-group">
+              <label for="bairro">Bairro</label>
+              <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Nome Bairro">
+            </div>
+            <div class="form-group">
+              <label for="cep">CEP (Apenas Número)</label>
+              <input type="number" name="cep" class="form-control" id="cep" placeholder="21000-000">
+            </div>
+            <div class="form-group">
+              <label for="cidade">Cidade</label>
+              <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Rio de Janeiro">
+            </div>
+            <div class="form-group">
+              <label for="estado">Estado</label>
+              <input type="text" name="estado" class="form-control" id="estado" placeholder="Rio de Janeiro">
+            </div>
+
+            <span style="color: grey;font-size: 80%">Nunca vamos divulgar nenhuma informação sua!</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="ml-3 btn btn-warning">Atualizar</button>
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Titulo Anuncio -->
+
+  <div class="container-fluid justify-content-center text-center" style="margin-top: 1.5vw">
+    <div class="row">
+
+      <div class="col-2">
+      </div>
+      <div class="col-8">
+        <h1><b><?php $cont = 4; echo $array[$cont]?></b></h1>
+        <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> | <?php $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?> <!-- <?//php $cont++; echo $array[$cont]?> --> </h5>
+        <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> - 5.0 <br> (2 avaliações)</span></h6>
+      </div>
+      <div class="col-2">
       </div>
 
-      <script>
-        function logar(botao) {
-          botao.classList.add("active");
-          document.getElementById("cadastrar-b").classList.remove("active");
-          document.getElementById("cadastrar-div").style.display = 'none';
-          document.getElementById("logar-div").style.display = '';
-        }
-        function cadastrar(botao) {
-          botao.classList.add("active");
-          document.getElementById("logar-b").classList.remove("active");
-          document.getElementById("logar-div").style.display = 'none';
-          document.getElementById("cadastrar-div").style.display = '';
-        }
-      </script>
+    </div>
+  </div>
 
-      <!-- Titulo Anuncio -->
+  <!-- Fotos e dados básicos -->
+  <form id="form-pagamento" action="#" method="post">
 
-      <div class="container-fluid justify-content-center text-center" style="margin-top: 1.5vw">
-        <div class="row">
+    <div class="px-3 container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
+      <br>
+      <div class="row">
+        <div class="col-12">
 
-          <div class="col-2">
-          </div>
-          <div class="col-8">
-            <h1><b><?php $cont = 4; echo $array[$cont]?></b></h1>
-            <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> | <?php $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?> <!-- <?//php $cont++; echo $array[$cont]?> --> </h5>
-            <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> - 5.0 <br> (2 avaliações)</span></h6>
-          </div>
-          <div class="col-2">
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Fotos e dados básicos -->
-      <form id="form-pagamento" action="#" method="post">
-
-        <div class="px-3 container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
-          <br>
           <div class="row">
-            <div class="col-12">
 
-              <div class="row">
-
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <div class="c-wrapper">
-                    <div id="carousel-fotos" class="carousel" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                        <li data-target="#carousel-fotos" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-fotos" data-slide-to="1"></li>
-                        <li data-target="#carousel-fotos" data-slide-to="2"></li>
-                      </ol>
-                      <div class="carousel-inner" style="width:100%; height: 30vw">
-                        <div class="carousel-item active">
-                          <img class="d-block w-100" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="<?php  echo $prefixo.$array[$cont++]?>">
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="<?php  echo $prefixo.$array[$cont++]?>">
-                        </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Voltar</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carousel-fotos" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Próximo</span>
-                      </a>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="c-wrapper">
+                <div id="carousel-fotos" class="carousel" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-fotos" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-fotos" data-slide-to="1"></li>
+                    <li data-target="#carousel-fotos" data-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner" style="width:100%; height: 30vw">
+                    <div class="carousel-item active">
+                      <img class="d-block w-100" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="<?php  echo $prefixo.$array[$cont++]?>">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="<?php  echo $prefixo.$array[$cont++]?>">
                     </div>
                   </div>
+                  <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Voltar</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carousel-fotos" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Próximo</span>
+                  </a>
                 </div>
+              </div>
+            </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
-                  <div class="col-12" >
-                    <div class="row">
-                      <div class="col-12 mt-2">
-                        <div class="row text-left">
-                          <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
-                            <!-- <h4><?php /* $cont = 5; echo $array[$cont] */ ?></h4> -->
-                            <h2><?php $cont = 4 ; echo $array[$cont]?> </h2>
-                            <h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?></h6>
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center ">
+              <div class="col-12" >
+                <div class="row">
+                  <div class="col-12 mt-2">
+                    <div class="row text-left">
+                      <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+                        <!-- <h4><?php /* $cont = 5; echo $array[$cont] */ ?></h4> -->
+                        <h2><?php $cont = 4 ; echo $array[$cont]?> </h2>
+                        <h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?></h6>
+                      </div>
+                      <div class="col-12 pt-4">
+                        <div class="row text-center justify-content-center">
+                          <div class="col-4 px-3 py-2">
+                            <h6 style="color: grey; font-weight: 300; font-size:90%">Metragem<br></h6>
+                            <h5 style=";font-size:90%"><i class="fas fa-home"></i> <br> <?php $cont=0; echo $arrayGeral[$cont++] ?> M²</h5>
                           </div>
-                          <div class="col-12 pt-4">
-                            <div class="row text-center justify-content-center">
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300; font-size:90%">Metragem<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-home"></i> <br> <?php $cont=0; echo $arrayGeral[$cont++] ?> M²</h5>
-                              </div>
 
-                              <?php if ($arrayGeral[$cont++] == "sim"){ ?>
+                          <?php if ($arrayGeral[$cont++] == "sim"){ ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300 ;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-street-view"></i> <br> Recepção</h5>
-                              </div>
+                            <div class="col-4 px-3 py-2">
+                              <h6 style="color: grey; font-weight: 300 ;font-size:90%">Possui<br></h6>
+                              <h5 style=";font-size:90%"><i class="fas fa-street-view"></i> <br> Recepção</h5>
+                            </div>
 
-                            <?php } if ($arrayGeral[$cont++] == "sim"){ ?>
+                          <?php } if ($arrayGeral[$cont++] == "sim"){ ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90% ">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-female"></i> <i class="fas fa-male"></i> <br> Banheiro comum</h5>
-                              </div>
+                            <div class="col-4 px-3 py-2">
+                              <h6 style="color: grey; font-weight: 300;font-size:90% ">Possui<br></h6>
+                              <h5 style=";font-size:90%"><i class="fas fa-female"></i> <i class="fas fa-male"></i> <br> Banheiro comum</h5>
+                            </div>
 
-                             <?php } if ($arrayGeral[$cont++] == "sim"){ ?>
+                          <?php } if ($arrayGeral[$cont++] == "sim"){ ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-female"></i> | <i class="fas fa-male"></i> <br> Banheiro privativo</h5>
-                              </div>
+                            <div class="col-4 px-3 py-2">
+                              <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                              <h5 style=";font-size:90%"><i class="fas fa-female"></i> | <i class="fas fa-male"></i> <br> Banheiro privativo</h5>
+                            </div>
 
-                             <?php } if ($arrayGeral[$cont] == "predio"){ ?>
+                          <?php } if ($arrayGeral[$cont] == "predio"){ ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">O local<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-building"></i> <br> É um Prédio</h5>
-                              </div>
+                            <div class="col-4 px-3 py-2">
+                              <h6 style="color: grey; font-weight: 300;font-size:90%">O local<br></h6>
+                              <h5 style=";font-size:90%"><i class="fas fa-building"></i> <br> É um Prédio</h5>
+                            </div>
 
-                              <?php $cont++;} if ($arrayGeral[$cont] == "casa"){ ?>
+                            <?php $cont++;} if ($arrayGeral[$cont] == "casa"){ ?>
 
                               <div class="col-4 px-3 py-2">
                                 <h6 style="color: grey; font-weight: 300;font-size:90%">O local<br></h6>
                                 <h5 style=";font-size:90%"><i class="fas fa-building"></i> <br> É uma casa</h5>
                               </div>
 
-                                <?php $cont++; } if ($arrayGeral[$cont++] == "sim"){ ?>
+                              <?php $cont++; } if ($arrayGeral[$cont++] == "sim"){ ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-sort"></i> <br> Elevador no prédio</h5>
-                              </div>
+                                <div class="col-4 px-3 py-2">
+                                  <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                  <h5 style=";font-size:90%"><i class="fas fa-sort"></i> <br> Elevador no prédio</h5>
+                                </div>
 
-                                <?php } if ($arrayGeral[7] == "rotativo"){ ?>
+                              <?php } if ($arrayGeral[7] == "rotativo"){ ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-sync"></i> <br> Estacionamento rotativo</h5>
-                              </div>
+                                <div class="col-4 px-3 py-2">
+                                  <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                  <h5 style=";font-size:90%"><i class="fas fa-sync"></i> <br> Estacionamento rotativo</h5>
+                                </div>
 
                               <?php } if ($arrayGeral[7] == "proprio"){?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-sync"></i> <br> Estacionamento Proprio </h5>
-                              </div>
+                                <div class="col-4 px-3 py-2">
+                                  <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                  <h5 style=";font-size:90%"><i class="fas fa-sync"></i> <br> Estacionamento Proprio </h5>
+                                </div>
 
-                                <?php } if ($arrayGeral[8] == "sim") { ?>
+                              <?php } if ($arrayGeral[8] == "sim") { ?>
 
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Fácil acesso<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-bus"></i> <br> Ao transporte público <br> <span style="color: grey">(Até 5 min de distância)</span> </h5>
-                              </div>
+                                <div class="col-4 px-3 py-2">
+                                  <h6 style="color: grey; font-weight: 300;font-size:90%">Fácil acesso<br></h6>
+                                  <h5 style=";font-size:90%"><i class="fas fa-bus"></i> <br> Ao transporte público <br> <span style="color: grey">(Até 5 min de distância)</span> </h5>
+                                </div>
 
                               <?php } ?>
 
@@ -585,23 +604,23 @@
                         </div>
                       </div>
                     </div>
-                </div>
-              </div>
-
-              <div class="mobile col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
-                <div class="row text-center justify-content-center pt-5">
-                  <div class="col-lg-10 col-md-10 col-sm-12">
-                    <h2> <b>Descrição:</b> </h2>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui ligula. Ut turpis urna, scelerisque sed accumsan eu, congue at dui. Nam justo lorem, aliquet ut efficitur et, tempus ut eros. Suspendisse maximus ante a iaculis blandit. Ut semper non quam nec volutpat. Sed ultricies mauris a mattis hendrerit. Phasellus a nisi a quam luctus facilisis. Sed facilisis interdum nulla, a sollicitudin mauris fermentum a. Aliquam erat volutpat. Donec ac lectus ac purus tincidunt facilisis sed sit amet lectus. Curabitur fermentum orci in condimentum varius. Integer vulputate eros ac nulla maximus, vel euismod ex aliquet. Vestibulum ornare vulputate leo, at commodo justo.</span>
                   </div>
                 </div>
-              </div>
+
+                <div class="mobile col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+                  <div class="row text-center justify-content-center pt-5">
+                    <div class="col-lg-10 col-md-10 col-sm-12">
+                      <h2> <b>Descrição:</b> </h2>
+                      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui ligula. Ut turpis urna, scelerisque sed accumsan eu, congue at dui. Nam justo lorem, aliquet ut efficitur et, tempus ut eros. Suspendisse maximus ante a iaculis blandit. Ut semper non quam nec volutpat. Sed ultricies mauris a mattis hendrerit. Phasellus a nisi a quam luctus facilisis. Sed facilisis interdum nulla, a sollicitudin mauris fermentum a. Aliquam erat volutpat. Donec ac lectus ac purus tincidunt facilisis sed sit amet lectus. Curabitur fermentum orci in condimentum varius. Integer vulputate eros ac nulla maximus, vel euismod ex aliquet. Vestibulum ornare vulputate leo, at commodo justo.</span>
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
               <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
-                <div class="col-lg-4 col-md-4 col-sm-12 text-center justify-content-center">
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
                   <div class="row text-center justify-content-center py-3">
                     <div class="col-lg-11 col-md-12 col-sm-12 text-center justify-content-center">
                       <h2> <b>Localização:</b> </h2>
@@ -642,20 +661,38 @@
                   </div>
                 </div>
 
-                <div class="col-lg-8 col-md-8 col-sm-12 text-center justify-content-center">
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+                  <div class="row p-5">
+                    <div class="col-12">
+                      <div class="panorama">
+                        <img src="img/panoramico.jpg" alt="" title="" />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="panorama">
+                        <img src="img/panoramico.jpg" alt="" title="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
                   <div class="row">
                     <div class="col-12 py-3 px-5">
                       <h3><b>Avaliações</b></h3>
                     </div>
-                    <div class="col-12 p-1">
+                    <div class="col-12 p-5">
 
                       <div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
                         <div class="col-3">
                           <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
                           <br>
-                            <span style="font-size: 13px">Nome do usuário</span>
-                            <br>
-                            <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
+                          <span style="font-size: 13px">Nome do usuário</span>
+                          <br>
+                          <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
                         </div>
                         <div class="col-9 p-4 text-left">
                           <span style="font-size: 13px">Nome do item</span>
@@ -671,9 +708,9 @@
                         <div class="col-3">
                           <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
                           <br>
-                            <span style="font-size: 13px">Nome do usuário</span>
-                            <br>
-                            <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
+                          <span style="font-size: 13px">Nome do usuário</span>
+                          <br>
+                          <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
                         </div>
                         <div class="col-9 p-4 text-left">
                           <span style="font-size: 13px">Nome do item</span>
@@ -688,7 +725,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
 
               <div class="row">
@@ -713,15 +749,15 @@
                             </div>
                           </div>
                           <div class="col-6" style="color: white">
-                              <div class="col-12 pt-5">
-                                <h6>15 vendas realizadas</h6>
-                              </div>
-                              <div class="col-12">
-                                <h6>3 meses de Locou</h6>
-                              </div>
-                              <div class="col-12">
-                                <h6>2 anuncios atualmente</h6>
-                              </div>
+                            <div class="col-12 pt-5">
+                              <h6>15 vendas realizadas</h6>
+                            </div>
+                            <div class="col-12">
+                              <h6>3 meses de Locou</h6>
+                            </div>
+                            <div class="col-12">
+                              <h6>2 anuncios atualmente</h6>
+                            </div>
                           </div>
                         </div>
                         <div class="row p-4">
@@ -738,35 +774,35 @@
                   </div>
                 </div>
 
-                  <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
-                    <div class="row">
-                      <div class="col-12" style="background-color: black; margin-bottom: 2vw">
-                        <p style="margin-top: 1vw; margin-bottom: 1vw">
-                          <h4 style="color:white">A partir de:</h4>
-                          <h1 style="color:#FFCE00;font-weight: 600">R$ <?php echo $array['7']?></h1>
-                          <h6 style="color:grey">E as taxas já estão inclusas!</h6>
-                        </p>
-                      </div>
-
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
+                  <div class="row">
+                    <div class="col-12" style="background-color: black; margin-bottom: 2vw">
+                      <p style="margin-top: 1vw; margin-bottom: 1vw">
+                        <h4 style="color:white">A partir de:</h4>
+                        <h1 style="color:#FFCE00;font-weight: 600">R$ <?php echo $array['7']?></h1>
+                        <h6 style="color:grey">E as taxas já estão inclusas!</h6>
+                      </p>
                     </div>
 
-                    <div class="row" style="margin-bottom: 2vw">
+                  </div>
+
+                  <div class="row" style="margin-bottom: 2vw">
 
 
 
-                    </div>
+                  </div>
 
-                    <div class="row p-3" style="border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
-                      <div class="col-12">
-                        <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php echo $array['7']?></span> </h5>
-                        <br>
+                  <div class="row p-3" style="border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
+                    <div class="col-12">
+                      <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php echo $array['7']?></span> </h5>
+                      <br>
 
-                        <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Alugue Agora</span>
+                      <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Alugue Agora</span>
 
 
-                      </div>
                     </div>
                   </div>
+                </div>
 
               </div>
 
@@ -827,6 +863,11 @@
         </div>
 
         <script>
+        $( document ).ready(function() {
+          $(function() {
+            $('div.panorama').paver();
+          });
+        });
         $('.custom-file-input').on('change',function(){
           var foto = $(this).val().split('\\').pop();
           var label = document.getElementById($(this).attr('id')+"-label");
@@ -837,73 +878,73 @@
         })
         </script>
         <script>
-          function completarOUanunciar()
+        function completarOUanunciar()
+        {
+          var logado = "<?php echo $session->vereficarLogin() ?>"; //false caso nao logado, id caso logado
+          var cadastroCompleto = " <?php echo $session -> verificarUsuarioCliente($db,$_SESSION['id']); ?> "; //false caso nao completo, id caso completo
+          if(logado == "false")
           {
-            var logado = "<?php echo $session->vereficarLogin() ?>"; //false caso nao logado, id caso logado
-            var cadastroCompleto = " <?php echo $session -> verificarUsuarioCliente($db,$_SESSION['id']); ?> "; //false caso nao completo, id caso completo
-            if(logado == false)
+            $("#myModal").modal(); // Não logado
+
+          }
+          else
+          {
+            if(cadastroCompleto == "false")
             {
-              $("#myModal").modal(); // Não logado
-           
+              $("#completarCadastro").modal(); //Cadastro não completo
             }
             else
-            {
-              if(cadastroCompleto == false)
-              {
-                $("#completarCadastro").modal(); //Cadastro não completo
-              }
-              else
-              { //Tudo ok, pagamento
+            { //Tudo ok, pagamento
 
-                 document.getElementById("form-pagamento").submit();
-                 
-                <?php
-                      require_once 'Pedidos.php';
-                      $pedidos = new Pedidos();
-                      //$aux = $pedidos ->
-                  ?>
-              }
+              document.getElementById("form-pagamento").submit();
+
+              <?php
+              require_once 'Pedidos.php';
+              $pedidos = new Pedidos();
+              //$aux = $pedidos ->
+              ?>
             }
           }
+        }
         </script>
 
       </form>
 
       <?php
 
-        if ($status == null || $status == "") {
+      if ($status == null || $status == "") {
 
-            return;
+        return;
+      }else{
+        if ($status != true && $status != false) {
+
+          return;
         }else{
-            if ($status != true && $status != false) {
 
-              return;
-            }else{
+          if ($status == 'false') {
 
-                 if ($status == 'false') {
-
-                    if($funcao=='login'){
-                          echo ( "<script type='text/javascript'>
-                                    $(document).ready(function(){
-                                    $('#myModal').modal('show');
-                                    });
-                                </script>");
-                    }
-
-                    if($funcao=='cadastro'){
-                          echo ( "<script type='text/javascript'>
-                                    $(document).ready(function(){
-                                    $('#myModal').modal('show');
-                                    });
-                                </script>");
-                    }
-
-
-
-                 }
-
+            if($funcao=='login'){
+              echo ( "<script type='text/javascript'>
+              $(document).ready(function(){
+                $('#myModal').modal('show');
+              });
+              </script>");
             }
+
+            if($funcao=='cadastro'){
+              echo ( "<script type='text/javascript'>
+              $(document).ready(function(){
+                $('#myModal').modal('show');
+              });
+              </script>");
+            }
+
+
+
+          }
+
         }
+      }
 
 
       ?>

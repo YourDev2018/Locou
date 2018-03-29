@@ -214,7 +214,8 @@ function daysInMonth(month, year) {
           <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <?php } ?>
         <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Logar</span>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
          <?php } ?>
       </span>
     </nav>
@@ -237,10 +238,15 @@ function daysInMonth(month, year) {
             <a class="mx-2">Como Funciona</a>
             <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
-            <a class="mx-2"><img class="rounded-circle" src="img/usuario.jpg" style="height: 60px"></a>
+            <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+              <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+
+              <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+            <?php } ?>
             <br><br>
             <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-               <span class="btn btn-outline-warning">Logar</span>
+              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
             <?php } ?>
             <br><br>
           </span>
@@ -248,94 +254,93 @@ function daysInMonth(month, year) {
       </div>
     </nav>
 
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-    <div class="modal-content text-center justify-content-center">
-      <div class="modal-head">
-        <div class="row py-4" style="background-color: black">
-          <div class="col-12">
-            <span class="btn btn-outline-warning active" id="logar-b" onclick="logar(this);"><h3 style="font-weight: 300">Logar</h3></span>
-            <br class="mobile"><br class="mobile">
-            <span class="px-5 h4" style="color: white; font-weight: 300">ou</span>
-            <br class="mobile"><br class="mobile">
-            <span class="btn btn-outline-warning" id="cadastrar-b" onclick="cadastrar(this);"><h3 style="font-weight: 300">Cadastrar</h3></span>
-          </div>
-        </div>
-      </div>
-      <div class="modal-body">
-        <br>
-        <div class="pt-2" id="logar-div" style="background-color:white">
-          <form action="logar.php?pag=index" method="post">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
-            </div>
-            <div class="form-group">
-              <label for="senha">Senha</label>
-              <input type="password" class="form-control" id="senha-login" name="senha">
-            </div>
-            <br>
-            <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
-            <br>
-            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
-          </form>
-        </div>
 
-        <div class="pt-2" id="cadastrar-div" style="display: none; background-color:white">
-          <form action="CadastrarUsuario.php?pag=index" method="post">
-            <div class="row text-center justify-content-center">
-              <div class="col-12 pb-3">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
-              </div>
-              <div class="col-12 pb-3">
-                <label for="sobrenome">Sobrenome</label>
-                <input type="text" class="form-control" id="sobrenome" name="sobrenome">
-              </div>
-              <div class="col-12 pb-3">
-                <label>Data de nascimento</label>
+    <div class="modal fade" id="cadastroPop" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cadastro de novo usuário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="pt-2" style="background-color:white">
+              <form action="CadastrarUsuario.php?pag=index" method="post">
+                <div class="row text-center justify-content-center">
+                  <div class="col-12 pb-3">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome">
+                  </div>
+                  <div class="col-12 pb-3">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+                  </div>
+                  <div class="col-12 pb-3">
+                    <label>Data de nascimento</label>
+                    <br>
+                    <select id="days" name="dia"></select>
+                    <select id="months" name="mes"></select>
+                    <select id="years" name="ano"></select>
+                  </div>
+                  <div class="col-12 pb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
+                  </div>
+                  <div class="col-12 pb-5">
+                    <label for="senha">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha">
+                  </div>
+                  <div class="col-10 pb-3 pt-3">
+                    <input type="file" class="custom-file-input" id="foto" name="foto">
+                    <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
+                  </div>
+                </div>
                 <br>
-                <select id="days" name="dia"></select>
-                <select id="months" name="mes"></select>
-                <select id="years" name="ano"></select>
-              </div>
-              <div class="col-12 pb-3">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@exemplo.com">
-              </div>
-              <div class="col-12 pb-5">
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha">
-              </div>
-              <div class="col-10 pb-3 pt-3">
-                <input type="file" class="custom-file-input" id="foto" name="foto">
-                <label class="custom-file-label text-left" id="foto-label" for="foto">Escolha uma foto de perfil</label>
+                <span style="font-size: 90%; color:red; display: <?php if($funcao != 'cadastro' && $status != 'false'){ echo "none";}?>">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
+                <br>
               </div>
             </div>
-            <br>
-            <span style="font-size: 90%; color:red; display: <?php if($funcao != 'cadastro' && $status != 'false'){ echo "none";}?>">Um ou mais dados estão incorretos/faltando. Verifique novamente se os dados estão corretos</span>
-            <br>
-            <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Cadastrar</h4></button>
+            </div>
           </form>
         </div>
-      </div>
       </div>
     </div>
-  </div>
-  <script>
-    function logar(botao) {
-      botao.classList.add("active");
-      document.getElementById("cadastrar-b").classList.remove("active");
-      document.getElementById("cadastrar-div").style.display = 'none';
-      document.getElementById("logar-div").style.display = '';
-    }
-    function cadastrar(botao) {
-      botao.classList.add("active");
-      document.getElementById("logar-b").classList.remove("active");
-      document.getElementById("logar-div").style.display = 'none';
-      document.getElementById("cadastrar-div").style.display = '';
-    }
-  </script>
+
+    <div class="modal fade" id="loginPop" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cadastro de novo usuário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="pt-2" id="logar-div" style="background-color:white">
+              <form action="logar.php?pag=index" method="post">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
+                </div>
+                <div class="form-group">
+                  <label for="senha">Senha</label>
+                  <input type="password" class="form-control" id="senha-login" name="senha">
+                </div>
+                <br>
+                <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
+                <br>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Login</h4></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- Seção 1 - Pesquisa -->
 
@@ -806,6 +811,8 @@ function daysInMonth(month, year) {
         </div>
       </div>
 
+    </div>
+
       <script>
       $('.custom-file-input').on('change',function(){
         var foto = $(this).val().split('\\').pop();
@@ -833,7 +840,7 @@ function daysInMonth(month, year) {
                     if($funcao=='login'){
                           echo ( "<script type='text/javascript'>
                                     $(document).ready(function(){
-                                    $('#myModal').modal('show');
+                                    $('#loginPop').modal('show');
                                     });
                                 </script>");
                     }
@@ -841,7 +848,7 @@ function daysInMonth(month, year) {
                     if($funcao=='cadastro'){
                           echo ( "<script type='text/javascript'>
                                     $(document).ready(function(){
-                                    $('#myModal').modal('show');
+                                    $('#cadastroPop').modal('show');
                                     });
                                 </script>");
                     }
