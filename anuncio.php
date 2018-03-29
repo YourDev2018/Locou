@@ -177,7 +177,7 @@
 
         <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
           <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
-          
+
           <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <?php } ?>
         <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -396,7 +396,7 @@
       </div>
 
       <!-- Fotos e dados básicos -->
-      <form class="" action="#" method="post">
+      <form id="form-pagamento" action="#" method="post">
 
         <div class="px-3 container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
           <br>
@@ -839,6 +839,7 @@
         <script>
           function completarOUanunciar()
           {
+<<<<<<< HEAD
             var cadastroCompleto = "<?php echo $session->vereficarLogin() ?>";
             if(cadastroCompleto == "false")
             {
@@ -852,20 +853,38 @@
                   //$aux = $pedidos -> 
               ?>
 
+=======
+            var logado = "";
+            var cadastroCompleto = "";
+            if(logado == "false")
+            {
+              $("#myModal").modal();
+            }
+            else
+            {
+              if(cadastroCompleto == "false")
+              {
+                $("#completarCadastro").modal();
+              }
+              else
+              {
+                document.getElementById("form-pagamento").submit();
+              }
+>>>>>>> 461d8286fda15bbb59ea231489a81581ef139739
             }
           }
         </script>
 
       </form>
 
-      <?php  
-        
+      <?php
+
         if ($status == null || $status == "") {
-            
+
             return;
         }else{
             if ($status != true && $status != false) {
-              
+
               return;
             }else{
 
@@ -894,7 +913,7 @@
             }
         }
 
-      
+
       ?>
 
     </body>
