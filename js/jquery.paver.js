@@ -23,7 +23,7 @@
 				startPosition: 0.5,
 
 				// Minimum overflow before panorama gets converted into a Paver instance
-				minimumOverflow: 100,
+				minimumOverflow: 0,
 
 				// Performance
 				grain: 3,

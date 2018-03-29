@@ -890,26 +890,6 @@ if($session->vereficarLogin() != false){
 
             if(logado == "false")
             {
-<<<<<<< HEAD
-              $("#myModal").modal(); // Não logado
-            }
-            else
-            {
-              if(cadastroCompleto == "false")
-              {
-                $("#completarCadastro").modal(); //Cadastro não completo
-              }
-              else
-              { //Tudo ok, pagamento
-
-                // document.getElementById("form-pagamento").submit();
-                <?php
-                      require_once 'Pedidos.php';
-                      $pedidos = new Pedidos();
-                      //$aux = $pedidos ->
-                  ?>
-              }
-=======
               $("#completarCadastro").modal(); //Cadastro não completo
             }
             else
@@ -922,7 +902,6 @@ if($session->vereficarLogin() != false){
               $pedidos = new Pedidos();
               //$aux = $pedidos ->
               ?>
->>>>>>> e8050bc01a1c93a736d117c3b498dfb04781d5cc
             }
           }
         }
