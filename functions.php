@@ -93,6 +93,7 @@ $ano = $_POST['year'];
             )
             ));
 
+            
             $resposta = curl_exec($curl);
             print $resposta;
             $obj = json_decode($resposta);

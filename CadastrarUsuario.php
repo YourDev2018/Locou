@@ -59,16 +59,16 @@
               $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
               ftp_close($ftp);
               
-              header("Location: http://localhost/YourDev/locou/".$pag."?status=true&id=$id");
+              header("Location: ".$pag."?status=true&id=$id");
               return;
               
         }else {
-             header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false&id=$id");
+            header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
              return;
         }
 
     }else {
-        header("Location: http://localhost/YourDev/locou/".$pag."?funcao=cadastro&status=false&id=$id");
+       header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
         return;
     }
 

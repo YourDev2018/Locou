@@ -64,9 +64,9 @@ class Pedidos
     }
 
     
-    function criarPedidoComClientMOIP($id,$idMoipClient,$idProprietario){
+    function criarPedidoComClientMOIP($id,$idMoipClient,$idProprietario, $nomeEspaço, $numeroHoras, $preco){
         $curl = curl_init();
-        $func = new Functions();
+        $func = new functions();
         $url = "https://sandbox.moip.com.br/v2/orders";
         
 
@@ -90,11 +90,11 @@ class Pedidos
                 },
                 \"items\": [
                 {
-                    \"product\": \"Descrição do pedido\",
+                    \"product\": \"Aluguel do espaço $nomeEspaço \",
                     \"category\": \"BUSINESS_AND_INDUSTRIAL\",
-                    \"quantity\": 1,
-                    \"detail\": \"Aluguel de consultório dentário\",
-                    \"price\": 10000
+                    \"quantity\": $numeroHoras,
+                    \"detail\": \"Aluguel do espaço $nomeEspaço\",
+                    \"price\": $preco
                 }
                 ],
                 \"customer\": {
@@ -121,8 +121,10 @@ class Pedidos
             ));
 
             $resposta = curl_exec($curl);
-            print $resposta;
-
+            $obj = json_decode($resposta);
+            $id = $obj->{'id'};
+            return $id;
+            
     }
 
     
