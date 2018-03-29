@@ -31,16 +31,16 @@
          $result = $db -> loginEmailSenha($conn,$email,$senha);
          
          if ($result == true) {
-             header('Location: http://localhost/YourDev/locou/'.$pag."?status=true&id=$id");
+             header('Location:'.$pag."?status=true&id=$id");
              //print "sucesso";
         }else{
          //    header("Location: http://localhost/YourDev/locou/'.$pag.?status=false&email=".$_POST['email']); setando email
-                header("Location: http://localhost/YourDev/locou/".$pag."?funcao=login&status=false&id=$id");
+                header('Location:'.$pag."?funcao=login&status=false&id=$id");
             // print "errado";
         }  
          
     }else {
-        return  header('Location: http://localhost/YourDev/locou/'.$pag."&id=$id");
+        return  header('Location:'.$pag."&id=$id");
         // print "ja logado";
     }
 
