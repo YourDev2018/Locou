@@ -12,7 +12,7 @@ class FunctionsSession{
         if(( isset($_SESSION['logado']) )){
             return $_SESSION['id'];
         }else{
-            return false;
+            return 'false';
         }
         
     }
@@ -24,7 +24,7 @@ class FunctionsSession{
             $cont = mysqli_num_rows($result);
         
             if ($cont <=0) {
-                return false;
+                return 'false';
             }else{
                     
                    while ($row=$result->fetch_assoc()) {

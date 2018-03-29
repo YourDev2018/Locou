@@ -20,7 +20,7 @@
          $seg = new Seguranca();
          $session-> iniciarSession();
         if ($_POST['email'] == null || $_POST['senha'] == null || $_POST['email'] == "" || $_POST['senha'] == ""  ) {
-            header('Location: http://localhost/YourDev/locou/'.$pag."?funcao=login&status=false&id=$id");
+            header('Location: '.$pag."?funcao=login&status=false&id=$id");
            // print "vazio";
             return;
         }

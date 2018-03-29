@@ -841,24 +841,22 @@
           function completarOUanunciar()
           {
             var logado = "<?php  echo ($session->vereficarLogin()); ?>"; //false caso nao logado, id caso logado
-            var cadastroCompleto = " <?php  echo false; /* echo false; $session -> verificarUsuarioCliente($db,$_SESSION['id']); */ ?> "; //false caso nao completo, id caso completo
+            var cadastroCompleto = " <?php  echo  $session -> verificarUsuarioCliente($db,$_SESSION['id']);  ?> "; //false caso nao completo, id caso completo
 
-            if(logado == false)
+            if(logado == "false")
             {
               $("#myModal").modal(); // Não logado
-           
             }
             else
             {
-              if(cadastroCompleto == false)
+              if(cadastroCompleto == "false")
               {
                 $("#completarCadastro").modal(); //Cadastro não completo
               }
               else
               { //Tudo ok, pagamento
 
-                 document.getElementById("form-pagamento").submit();
-                 
+                // document.getElementById("form-pagamento").submit();
                 <?php
                       require_once 'Pedidos.php';
                       $pedidos = new Pedidos();
