@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);?>
 <html lang="en">
   <head>
     <meta charset="utf-8">

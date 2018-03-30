@@ -417,7 +417,7 @@ if($session->vereficarLogin() != false){
   </div>
 
   <!-- Fotos e dados básicos -->
-  <form id="form-pagamento" action="#" method="post">
+  <form id="form-pagamento" action="pagamento.php" method="post">
 
     <div class="px-3 container-fluid justify-content-center text-center" style="margin-top: 1vw; border-top: 2.5px solid #FFCE00;">
       <br>
@@ -1487,11 +1487,12 @@ if($session->vereficarLogin() != false){
         })
         </script>
         <script>
-        function completarOUanunciar()
+        function completarOUanunciar(){
 
-        {
+
           var logado = "<?php  echo $session -> vereficarLogin(); ?>" //false caso nao logado, id caso logado
-          var clienteCadastrado = "<?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']) ?>"
+          var clienteCadastrado = "<?php $sessionAux = new FunctionsSession();
+              echo $sessionAux->verificarUsuarioCliente($conn,5); ?>"
           
           if(logado == "false"){ 
 
@@ -1499,7 +1500,15 @@ if($session->vereficarLogin() != false){
 
           }else{
             
-            
+            if (clienteCadastrado == "false") {
+              
+              $("#completarCadastro").modal(); // Não logado
+
+            }else{
+
+              document.getElementById("form-pagamento").submit();
+
+            }
             
           }
 
