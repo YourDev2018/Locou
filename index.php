@@ -431,7 +431,7 @@ function daysInMonth(month, year) {
         <div class="col-2">
         </div>
         <div class="col-lg-8 col-md-10 col-sm-12 titulo-secao2">
-          Encontre pertinho de você seu espaço de trabalho
+          Sugestões de espaços incríveis para você trabalhar
         </div>
         <div class="col-2">
         </div>
@@ -660,43 +660,72 @@ function daysInMonth(month, year) {
     <div class="container-fluid justify-content-center text-center secao4">
 
       <div class="row" style="background-color: black; color: white;">
-        <div class="col-lg-2 col-md-1 col-sm-0">
-        </div>
-        <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="px-5 col-lg-12 col-md-12 col-sm-12">
           <br><br>
           <h1>Como Funciona</h1>
           <br><br><br>
 
-          <div class="row" style="margin-bottom: 2.5vw">
+          <div class="row" style="margin-bottom: 1.5vw">
 
-            <div class="col-lg-3 col-md-6 my-4">
+            <div class="col-lg-4 col-md-6 mt-4">
               <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
               <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
+              <h4>Anuncie o seu espaço</h4>
+              <br>
+              <p class="h6" style="color:grey">Clique em <a href="#" style="color: #FFCE00"><b>Anuncie Aqui</b></a> e preencha os campos para que os interessados conheçam os detalhes sobre mobiliários, equipamentos e o jeito que você organizou o seu espaço.
+                <br><br>
+                A cada pedido de aluguel, você será consultado antes e assim, você poderá aceitar ou recusar o pedido.
+              </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 my-4">
+            <div class="col-lg-4 col-md-6 my-4">
               <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
               <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
+              <h4> Procure o espaço perfeito e agende sua locação</h4>
+              <br>
+              <p class="h6" style="color:grey">Faça uma busca para encontrar o seu espaço ideal de trabalho. Digite o seu ramo de atividade e a localização.
+                <br><br>
+                Escolha o espaço e clique em cima do anúncio para ver os detalhes, escolher o dia e horário que pretende alugar.
+              </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 my-4">
+            <div class="col-lg-4 col-md-6 my-4">
               <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
               <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
+              <h4>Realize o pagamento</h4>
+              <br>
+              <p class="h6" style="color:grey">Seu pedido será encaminhado ao proprietário. Se o pedido for aprovado, você deverá confirmar a reserva efetuando o pagamento no botão “confirmar reserva”.
+              </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
-              <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
-            </div>
+
 
           </div>
 
           <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 my-4">
+              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <br><br>
+              <h4>Use o espaço e aproveite!</h4>
+              <br>
+              <p class="h6" style="color:grey">Que tal deixar o espaço ainda melhor do que quando você o encontrou? É com carinho que as melhores coisas são feitas!
+              </p>
+            </div>
+            <div class="col-lg-4 col-md-6 my-4">
+              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <br><br>
+              <h4>Conte para a gente o que achou</h4>
+              <br>
+              <p class="h6" style="color:grey">Depois do aluguel realizado, é hora de avaliar a experiência! Não deixe de contar o que achou do espaço e do responsável pelo aluguel, pois sua opinião será fundamental para os próximos que forem alugar :)
+              </p>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10 col-sm-12">
+              <br><br>
+              <h4><b>Veja como funciona nosso serviço:</b></h4>
+              <br>
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/58VlTRFUKg4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
               </div>
@@ -715,27 +744,34 @@ function daysInMonth(month, year) {
           </div>
 
         </div>
-        <div class="col-lg-2 col-md-1 col-sm-0">
-        </div>
       </div>
 
-      <div class="row" style="background-color: #FFCE00">
+      <div class="row text-justify" style="background-color: #FFCE00">
         <div class="col-lg-2 col-md-1 col-sm-0">
         </div>
         <div class="col-lg-8 col-md-10 col-sm-12">
-          <br>
-          <h1><b>O que é?</b><br><br></h1>
-          <h5>
-            <b>
-              Imagine poder potencializar sua produção sem a obrigação de investir em uma estrutura própria? E, de quebra, trocar experiências com gente nova e ganhar mais visibilidade?
+          <div class="row text-center">
+            <div class="col-12">
+              <br>
+              <h1><b>Sobre</b><br><br></h1>
+            </div>
+          </div>
+          <div class="row">
+            <h5>
+              <b>
+                Conectamos espaços produtivos com os profissionais que precisam alugar por hora, turno, ou dia. São espaços totalmente equipados e montados que garantem flexibilidade aos profissionais para que se dediquem mais ao serviço prestado e não se preocupem com questões administrativas e burocráticas É um novo jeito de aluguel sem o comprometimento de um contrato de longo-prazo.
+                <br>
+                Trazemos a solução de aluguel sob demanda com facilidade e segurança que só uma plataforma especializada pode dar.
+              </b>
+            </h5>
+            <br><br>
+          </div>
+          <div class="row text-center">
+            <div class="col-12">
+              <a href="anunciar.php"><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. É grátis</h2></button></a>
               <br><br>
-              Cozinhas, consultórios, estúdios fotográficos e produtoras: independente do negócio, o Locou te conecta a quem já tem um espaço produtivo e possibilita um novo formato de aluguel sob demanda.
-              <br><br>
-              Essa é a sua nova oportunidade de fazer essa conexão com a facilidade, a diversidade e a segurança que só uma plataforma especializada pode dar.
-            </b>
-          </h5>
-
-          <br><br>
+            </div>
+          </div>
         </div>
         <div class="col-lg-2 col-md-1 col-sm-0">
         </div>
@@ -771,21 +807,21 @@ function daysInMonth(month, year) {
             <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
               <img class="logo-navbar" src="img/locou_logo.png">
               <br><br>
-              <h6>Locou texto Locou Texto</h6>
+              <h6>Conectando pessoas produtivas a espaços ociosos</h6>
               <br><br>
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
               <h6>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">Termo de Uso</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">Política de Privacidade</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">Anuncie Aqui</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">Procure um espaço</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">contato@locou.co</a>
               </h6>
               <br><br>
             </div>

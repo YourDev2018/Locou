@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -362,11 +363,11 @@ function daysInMonth(month, year) {
         <div class="col-lg-4 col-md-8 col-sm-10 titulo-anuncie">
           <br>
           <h1>
-            <b>Texto de anuncio</b>
+            <b>Anuncie o seu espaço.</b>
             <br>
           </h1>
           <h3>
-            Texto de anúncio Texto de anúncio Texto de anúncio Texto de anúncio Texto de anúncio
+            Com o Locou você ganha dinheiro alugando naqueles intervalos que você não estiver usando.
           </h3>
           <br>
         </div>
@@ -460,7 +461,7 @@ function daysInMonth(month, year) {
 
             <div class="row">
               <div class="col-4 text-right">
-                Título:
+                Título do anúncio:
               </div>
               <div class="col-5 text-left">
                 <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ex: Consultório Odontológico">
@@ -468,9 +469,9 @@ function daysInMonth(month, year) {
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-12">
-                <span style="color: grey">Não especifique aqui o endereço, nomes ou derivados, <b>APENAS</b> um nome genérico de seu espaço. <br> O anúncio que não seguir esta regra está sujeito a ser apagado. </span>
+            <div class="row justify-content-center">
+              <div class="col-8">
+                <span style="color: grey">Não especifique aqui o endereço, nomes ou marcas, <b>APENAS</b> uma descrição genérica de seu espaço. O anúncio que não seguir esta regra está sujeito a ser desconsiderado</span>
                 <br><br>
               </div>
             </div>
@@ -536,6 +537,17 @@ function daysInMonth(month, year) {
             <div class="row">
               <div class="col-4 text-right">
                 Bairro:
+              </div>
+              <div class="col-5 text-left">
+                <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema">
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Aluguel direto? <span title="We ask for your age only for statistical purposes." class="btn btn-warning" style="border-radius: 25px; font-size: 0.7vw"><b>?</b></span>
               </div>
               <div class="col-5 text-left">
                 <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema">

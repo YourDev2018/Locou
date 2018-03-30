@@ -622,6 +622,24 @@ if($session->vereficarLogin() != false){
 
               <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
+
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
+                  <br>
+                  <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
+                  <div class="row p-5">
+                    <div class="col-6">
+                      <div class="panorama">
+                        <img src="img/panoramico.jpg" alt="" title="" />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="panorama">
+                        <img src="img/panoramico.jpg" alt="" title="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
                   <div class="row text-center justify-content-center py-3">
                     <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">
@@ -659,23 +677,6 @@ if($session->vereficarLogin() != false){
                       </script>
                       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDifilitpDCI1EoqZXV8QMnv3F27ui_7S8&callback=initMap">
                       </script>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
-                  <br>
-                  <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
-                  <div class="row p-5">
-                    <div class="col-6">
-                      <div class="panorama">
-                        <img src="img/panoramico.jpg" alt="" title="" />
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="panorama">
-                        <img src="img/panoramico.jpg" alt="" title="" />
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1492,15 +1493,15 @@ if($session->vereficarLogin() != false){
         {
           var logado = "<?php  echo $session -> vereficarLogin(); ?>" //false caso nao logado, id caso logado
           var clienteCadastrado = "<?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']) ?>"
-          
-          if(logado == "false"){ 
+
+          if(logado == "false"){
 
               $("#loginPop").modal(); // Não logado
 
           }else{
-            
-            
-            
+
+
+
           }
 
 
