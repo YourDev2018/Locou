@@ -17,6 +17,9 @@ $conn = $db->conectDB();
 $busca = new BuscarEspacos();
 
 $idAnuncio = $_GET['id'];
+if ($idAnuncio == null || $idAnuncio == "") {
+     header('Location: index.php');
+}
 
 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
 $status = $_GET['status'];
@@ -28,6 +31,40 @@ $funcao= $_GET['funcao'];
 
 $busca = new BuscarEspacos();
 $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
+
+
+if($array[9] == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array[9] == 'cozinha'){
+    $arrayEspecifico = $busca -> retornarCozinhaDetalhado($conn,$idAnuncio);
+}
+/*
+if($array == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'consultorio'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+*/
 
 
 $busca->addContador($conn, $idAnuncio);
@@ -555,7 +592,7 @@ if($session->vereficarLogin() != false){
                   <div class="row text-center justify-content-center pt-5">
                     <div class="col-lg-10 col-md-10 col-sm-12">
                       <h2> <b>Descrição:</b> </h2>
-                      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui ligula. Ut turpis urna, scelerisque sed accumsan eu, congue at dui. Nam justo lorem, aliquet ut efficitur et, tempus ut eros. Suspendisse maximus ante a iaculis blandit. Ut semper non quam nec volutpat. Sed ultricies mauris a mattis hendrerit. Phasellus a nisi a quam luctus facilisis. Sed facilisis interdum nulla, a sollicitudin mauris fermentum a. Aliquam erat volutpat. Donec ac lectus ac purus tincidunt facilisis sed sit amet lectus. Curabitur fermentum orci in condimentum varius. Integer vulputate eros ac nulla maximus, vel euismod ex aliquet. Vestibulum ornare vulputate leo, at commodo justo.</span>
+                      <span><?php $aux = count($arrayEspecifico) -1; echo  $arrayEspecifico[$aux]; ?></span>
                     </div>
                   </div>
                 </div>
@@ -569,38 +606,182 @@ if($session->vereficarLogin() != false){
                           <div class="col-12 py-3">
                             <h4 style="color: grey; font-weight: 600">Comodidades do local:</h4>
                             <div class="row text-center justify-content-center">
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                              </div>
-                              <div class="col-4 px-3 py-2">
-                                <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
-                                <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                              </div>
+                              <?php $cont = 0; ?>
+
+                                  
+
+                                <!-- vou pensar um Modo melhor de printar os números --> 
+                            
+                            <?php if($arrayEspecifico[$cont++] == "sim"){ ?>
+                                <div class="col-4 px-3 py-2">
+                                  <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                  <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> </h5>
+                                </div>
+
+                            <?php } ?>
+
+                              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                              <?php } ?>
+
+                              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                                  </div>
+                              <?php } ?> 
+
+
+                              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+
+                              <?php } ?>
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                                  </div>
+                              <?php } ?>
+
+                              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                              <?php } ?>
+
+
+                              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+                                  </div>
+                              <?php } ?>
+
+
+                              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+
+                               <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                                  <div class="col-4 px-3 py-2">
+                                    <h6 style="color: grey; font-weight: 300;font-size:90%">Possui<br></h6>
+                                    <h5 style=";font-size:90%"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                                  </div>
+                            
+                              <?php } ?>    
+                            
                             </div>
                           </div>
                         </div>
@@ -613,7 +794,7 @@ if($session->vereficarLogin() != false){
                   <div class="row text-center justify-content-center pt-5">
                     <div class="col-lg-10 col-md-10 col-sm-12">
                       <h2> <b>Descrição:</b> </h2>
-                      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet dui ligula. Ut turpis urna, scelerisque sed accumsan eu, congue at dui. Nam justo lorem, aliquet ut efficitur et, tempus ut eros. Suspendisse maximus ante a iaculis blandit. Ut semper non quam nec volutpat. Sed ultricies mauris a mattis hendrerit. Phasellus a nisi a quam luctus facilisis. Sed facilisis interdum nulla, a sollicitudin mauris fermentum a. Aliquam erat volutpat. Donec ac lectus ac purus tincidunt facilisis sed sit amet lectus. Curabitur fermentum orci in condimentum varius. Integer vulputate eros ac nulla maximus, vel euismod ex aliquet. Vestibulum ornare vulputate leo, at commodo justo.</span>
+                         <span><?php $aux = count($arrayEspecifico) -1; echo  $arrayEspecifico[$aux]; ?></span>      
                     </div>
                   </div>
                 </div>
@@ -630,7 +811,7 @@ if($session->vereficarLogin() != false){
                       <script>
                       var citymap = {
                         marcador: {
-                          center: {lat: -22.849616, lng: -43.313692},
+                          center: {lat: -22.91270, lng: -43.22616},
                           multi: 10
                         }
                       };
@@ -639,7 +820,7 @@ if($session->vereficarLogin() != false){
                         // Create the map.
                         var map = new google.maps.Map(document.getElementById('map'), {
                           zoom: 15,
-                          center: {lat: -22.849616, lng: -43.313692},
+                           center: {lat: -22.91270, lng: -43.22616},
                           mapTypeId: 'hybrid'
                         });
                         for (var city in citymap) {

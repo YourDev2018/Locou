@@ -282,7 +282,22 @@ class BuscarEspacos
             $array = [];
             $cont=0;
             while ($row=$result->fetch_assoc()) {
+
+
+                
+                $array[$cont] = $row['numMesa'];
+                $cont++;
+
+                $array[$cont] = $row['numCadeira'];
+                $cont++;
+
+                $array[$cont] = $row['numLuminaria'];
+                $cont++;
+
                 $array[$cont] = $row['climatizado'];
+                $cont++;
+
+                $array[$cont] = $row['modeloAr'];
                 $cont++;
 
                 $array[$cont] = $row['wifi'];
@@ -300,14 +315,6 @@ class BuscarEspacos
                 $array[$cont] = $row['copa'];
                 $cont++;
 
-                $array[$cont] = $row['numMesa'];
-                $cont++;
-
-                $array[$cont] = $row['numCadeira'];
-                $cont++;
-
-                $array[$cont] = $row['numLuminaria'];
-                $cont++;
 
                 $array[$cont] = $row['nunMacas'];
                 $cont++;
@@ -327,8 +334,212 @@ class BuscarEspacos
                 $array[$cont] = $row['descricao'];
                 $cont++;
 
+             
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
+    }
+
+     public function retornarCozinhaDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioCozinha WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma cozinha";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+
+                $array[$cont] = $row['numMesa'];
+                $cont++;
+                $array[$cont] = $row['numCadeira'];
+                $cont++;
+
+                $array[$cont] = $row['climatizado'];
+                $cont++;
+
                 $array[$cont] = $row['modeloAr'];
                 $cont++;
+
+                $array[$cont] = $row['areaEvento'];
+                $cont++;
+
+                
+
+                $array[$cont] = $row['bar'];
+                $cont++;
+                $array[$cont] = $row['buffet'];
+                $cont++;
+
+                $array[$cont] = $row['aula'];
+                $cont++;
+
+                $array[$cont] = $row['wifi'];
+                $cont++;
+
+                $array[$cont] = $row['monitoramento'];
+                $cont++;
+
+                $array[$cont] = $row['armario'];
+                $cont++;
+
+                $array[$cont] = $row['chave'];
+                $cont++;
+
+                $array[$cont] = $row['estante'];
+                $cont++;
+
+                $array[$cont] = $row['faxina'];
+                $cont++;
+                
+                $array[$cont] = $row['inventario'];
+                $cont++;
+
+                $array[$cont] = $row['freezer'];
+                $cont++;
+
+                 $array[$cont] = $row['geladeira'];
+                $cont++;
+
+                 $array[$cont] = $row['fogao'];
+                $cont++;
+
+                 $array[$cont] = $row['forno'];
+                $cont++;
+
+                 $array[$cont] = $row['fornoTipo'];
+                $cont++;
+                 $array[$cont] = $row['tipoFogao'];
+                $cont++;
+                 $array[$cont] = $row['descricaoExaustor'];
+                $cont++;
+
+                $array[$cont] = $row['descricaoAberta'];
+                $cont++;
+
+
+
+             
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
+    }
+
+    public function retornarWorkShopDetalhado($db, $idAnuncio){
+        $result =  $db->query("SELECT * FROM AnuncioCozinha WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma cozinha";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+
+                $array[$cont] = $row['numMesa'];
+                $cont++;
+                $array[$cont] = $row['numCadeira'];
+                $cont++;
+
+                 $array[$cont] = $row['numQuadro'];
+                $cont++;
+
+                 $array[$cont] = $row['numLousa'];
+                $cont++;
+
+                 $array[$cont] = $row['numTelao'];
+                $cont++;
+
+                $array[$cont] = $row['numTv'];
+                $cont++;
+
+               
+                $array[$cont] = $row['climatizado'];
+                $cont++;
+
+                $array[$cont] = $row['modeloAr'];
+                $cont++;
+
+
+                $array[$cont] = $row['wifi'];
+                $cont++;
+
+                $array[$cont] = $row['vigilancia'];
+                $cont++;
+
+                $array[$cont] = $row['armarios'];
+                $cont++;
+
+                $array[$cont] = $row['limpeza'];
+                $cont++;
+
+                
+                $array[$cont] = $row['copa'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['projetor'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['som'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['computador'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['flip'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['cafe'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['agua'];
+                $cont++;
+
+
+                
+                $array[$cont] = $row['buffet'];
+                $cont++;
+
+                 $array[$cont] = $row['buffetExtra'];
+                $cont++;
+
+                 $array[$cont] = $row['descricaoEquipamento'];
+                $cont++;
+
+                 $array[$cont] = $row['descricaoAberta'];
+                $cont++;
+
+
+
+
+
+
+
+             
 
             }
                 // print_r($array);
