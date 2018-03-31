@@ -139,68 +139,63 @@ $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 <body style="font-family: 'Muli'">
 
   <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
-    <span class="navbar-brand ml-5">
-      <div class="row">
-        <div class="col-12">
-          <a href="index.php"><img class="logo-navbar" src="img/locou_logo.png"></a>
-        </div>
-      </div>
-    </span>
-    <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-      <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
-      <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-        <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+    <a class="navbar-brand ml-5" href="index.php" >
+      <img  class="logo-navbar" src="img/locou_logo.png">
+    </a>
+    <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
+      <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+      <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+      <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
 
-        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-      <?php } ?>
       <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-      <?php } ?>
-    </div>
-  </span>
-</nav>
+          <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+          <span class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+       <?php } ?>
 
-<nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
-  <div class="row justify-content-center text-center">
-    <div class="col-12">
-      <a href="index.php">
-        <img class="logo-navbar" src="img/locou_logo.png">
-        <br><br>
-      </a>
-    </div>
-    <div class="col-12">
       <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
-      <br><br>
-    </div>
-    <div class="col-12">
-      <form class="form-inline justify-content-center mobile" action="index.html" method="post">
-        <input type="text" name="q" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
-        <button type="submit" class="btn btn-warning">Buscar</button>
-      </form>
-      <br>
-    </div>
-    <div class="col-12">
-      <span class="menu-navbar" style="color:white">
-        <a class="mx-2">Sobre</a>
-        <a class="mx-2">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
-        <br><br>
-        <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-          <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-          <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <?php } ?>
+      <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+        <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+
+        <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
+      <?php } ?>
+    </span>
+  </nav>
+
+  <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+    <div class="row justify-content-center text-center">
+      <div class="col-12">
+        <a href="index.php">
+          <img class="logo-navbar" src="img/locou_logo.png">
+          <br><br>
+        </a>
+      </div>
+      <div class="col-12">
+        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
         <br><br>
-        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-          <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-          <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-        <?php } ?>
-        <br><br>
-      </span>
+      </div>
+      <div class="col-12">
+        <span class="menu-navbar" style="color:white">
+          <a href="index.php/#sobre" style="color: white;" class="mx-3">Sobre</a>
+          <a href="index.php/#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
+          <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+          <br><br>
+          <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+          <?php } ?>
+          <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+            <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+
+            <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+          <?php } ?>
+          <br><br>
+
+          <br><br>
+        </span>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 <div class="modal fade" id="cadastroPop" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -479,27 +474,6 @@ $('.custom-file-input').on('change',function(){
   console.log($(this).attr('id')+"-label");
   console.log(foto);
 })
-</script>
-<script>
-window.onload = alimentarQuery;
-
-function alimentarQuery()
-{
-  var saida = "";
-  var qtdObj = <?php  echo (count($array)/6) ?>;
-  for(i = 0; i < qtdObj; i++)
-  {
-
-    console.log("Rodando "+i);
-
-    <?php ?>
-  }
-
-  document.getElementById("resultadoJS").innerHTML = saida;
-}
-
-
-
 </script>
 <?php
 

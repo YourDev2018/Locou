@@ -107,21 +107,23 @@ function daysInMonth(month, year) {
       <a class="navbar-brand ml-5" href="index.php" >
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
-      <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-        <a class="mx-3">Sobre</a>
-        <a class="mx-3">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
+      <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
+        <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+        <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+        <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+
+        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+         <?php } ?>
+
         <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
 
         <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-          <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+          <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-          <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+          <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <?php } ?>
-        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-         <?php } ?>
       </span>
     </nav>
 
@@ -139,20 +141,21 @@ function daysInMonth(month, year) {
         </div>
         <div class="col-12">
           <span class="menu-navbar" style="color:white">
-            <a class="mx-2">Sobre</a>
-            <a class="mx-2">Como Funciona</a>
+            <a href="index.php/#sobre" style="color: white;" class="mx-3">Sobre</a>
+            <a href="index.php/#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
             <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
+            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+              <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+              <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+            <?php } ?>
             <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
               <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
               <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
             <?php } ?>
             <br><br>
-            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-            <?php } ?>
+
             <br><br>
           </span>
         </div>
@@ -307,7 +310,7 @@ function daysInMonth(month, year) {
                </div>
                <div class="form-group">
                  <label for="bairroC">Bairro</label>
-                 <input type="text" name="bairroC" class="form-control" id="bairroC" placeholder="Nome Bairro">
+                 <input type="text" name="bairro" class="form-control" id="bairroC" placeholder="Nome Bairro">
                </div>
                <div class="form-group">
                  <label for="cep">CEP (Apenas Número)</label>
@@ -315,7 +318,7 @@ function daysInMonth(month, year) {
                </div>
                <div class="form-group">
                  <label for="cidadeC">Cidade</label>
-                 <input type="text" name="cidadeC" class="form-control" id="cidadeC" placeholder="Rio de Janeiro">
+                 <input type="text" name="cidade" class="form-control" id="cidadeC" placeholder="Rio de Janeiro">
                </div>
                <div class="form-group">
                  <label for="estado">Estado</label>
@@ -403,13 +406,37 @@ function daysInMonth(month, year) {
               <div class="row">
                 <div class="col-12">
                   <br>
-                  <h3>Ainda não estamos trabalhando fora da cidade do Rio de Janeiro</h3>
+                  <h3>Desculpe mas, por enquanto, ainda não estamos atuando na sua cidade. Mas se você nos contar o que está buscando, podemos começar a selecionar as melhores opções para te oferecer, assim que lançarmos o Locou na sua cidade!</h3>
                   <br><br>
-                  <h5>Qual é a cidade que você gostaria de cadastrar?</h5>
-                  <input type="text" class="form-control" id="form-fora-cidade" placeholder="Ex: São Paulo">
+                  <h5>Qual é o seu Nome?</h5>
+                  <input type="text" class="form-control" id="form-fora-nome" name="fora-nome" placeholder="">
                   <br><br>
-                  <h5>Qual é o estado que você gostaria de cadastrar?</h5>
-                  <input type="text" class="form-control" id="form-fora-estado" placeholder="Ex: SP">
+                  <h5>Qual é a Cidade que você gostaria de cadastrar?</h5>
+                  <input type="text" class="form-control" id="form-fora-cidade" name="fora-cidade" placeholder="Ex: São Paulo">
+                  <br><br>
+                  <h5>Qual é o Estado que você gostaria de cadastrar?</h5>
+                  <input type="text" class="form-control" id="form-fora-estado" name="fora-estado" placeholder="Ex: SP">
+                  <br><br>
+                  <h5>Qual é o seu Email?</h5>
+                  <input type="text" class="form-control" id="form-fora-email" name="fora-email" placeholder="Ex: email@gmail.com">
+                  <br><br>
+                  <h5>Qual é o seu celular (com DDD e apenas números)?</h5>
+                  <input type="text" class="form-control" id="form-fora-celular" name="fora-celular" placeholder="Ex: 21 912345678">
+                  <br><br>
+                  <h5>Qual seria o tipo do espaço?</h5>
+                  <select class="form-control" name="fora-categoria" id="form-fora-categoria">
+                    <option value="consultorio">Consultório</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="palestra">Sala para Palestras</option>
+                    <option value="aulas">Sala para Aulas</option>
+                    <option value="ensaio">Sala para Ensaio e aulas</option>
+                    <option value="cozinha">Cozinha</option>
+                    <option value="fotografico">Estúdio fotográfico</option>
+                    <option value="produtora">Produtora</option>
+                    <option value="costura">Ateliês de costura</option>
+                    <option value="academia">Estúdio ou Academia (RPG,Pilates e etc)</option>
+                    <option value="artes">Ateliê de artes</option>
+                  </select>
                   <br><br>
                   <h5>Quer adicionar outra informação? Utilize esse campo abaixo</h5>
                   <textarea class="form-control" id="form-fora-descricao" rows="4" style="resize: none;"></textarea>
@@ -550,7 +577,7 @@ function daysInMonth(month, year) {
                 Aluguel direto? <span title="We ask for your age only for statistical purposes." class="btn btn-warning" style="border-radius: 25px; font-size: 0.7vw"><b>?</b></span>
               </div>
               <div class="col-5 text-left">
-                <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema">
+                <!-- <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema"> -->
               </div>
             </div>
 
@@ -1576,7 +1603,7 @@ function daysInMonth(month, year) {
                 Qtd de Luminária
               </div>
               <div class="col-3 text-center">
-                Qtd de Cortina
+                Quantidade de Macas
               </div>
             </div>
             <div class="row">
@@ -1590,18 +1617,6 @@ function daysInMonth(month, year) {
                 <input type="text" class="form-control" name="lum-consultorio" id="lum-consultorio" placeholder="Ex: 4">
               </div>
               <div class="col-3 text-center">
-                <input type="text" class="form-control" name="cortina-consultorio" id="cortina-consultorio" placeholder="Ex: 1">
-              </div>
-            </div>
-
-            <!-- Macas -->
-            <br>
-
-            <div class="row">
-              <div class="col-4 text-right">
-                Quantidade de Macas
-              </div>
-              <div class="col-5 text-center">
                 <input type="text" class="form-control" name="macas-consultorio" id="macas-consultorio" placeholder="Ex: 3">
               </div>
             </div>
@@ -3704,8 +3719,8 @@ function daysInMonth(month, year) {
             <br>
             <span class="btn btn-outline-warning" onclick="proximo();" id="proximo"><h4>Próximo</h4></span>
             <button type="submit" class="btn btn-outline-warning" style="display: none" id="anunciar"><h4>Anunciar</h4></button>
-            <br><br>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#completarCadastro">Popup completar cadastro</span>
+            <!-- <br><br>
+            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#completarCadastro">Popup completar cadastro</span> -->
           </div>
           <div class="col-2">
           </div>

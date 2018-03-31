@@ -77,6 +77,7 @@ function returnEnsaio($conn){
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/locou.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <title>Locou | Encontre o espaço de trabalho pelo tempo que precisar</title>
@@ -198,25 +199,27 @@ function daysInMonth(month, year) {
 
     <!-- Navbar -->
 
-    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
+    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1);">
       <a class="navbar-brand ml-5" href="index.php" >
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
-      <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-        <a class="mx-3">Sobre</a>
-        <a class="mx-3">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
+      <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
+        <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+        <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+        <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+
+        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+         <?php } ?>
+
         <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
 
         <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-          <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+          <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-          <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+          <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <?php } ?>
-        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-         <?php } ?>
       </span>
     </nav>
 
@@ -234,20 +237,21 @@ function daysInMonth(month, year) {
         </div>
         <div class="col-12">
           <span class="menu-navbar" style="color:white">
-            <a class="mx-2">Sobre</a>
-            <a class="mx-2">Como Funciona</a>
+            <a href="#sobre" style="color: white;" class="mx-3">Sobre</a>
+            <a href="#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
             <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
+            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+              <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+              <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+            <?php } ?>
             <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
               <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
               <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
             <?php } ?>
             <br><br>
-            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-            <?php } ?>
+
             <br><br>
           </span>
         </div>
@@ -381,7 +385,7 @@ function daysInMonth(month, year) {
 
             <div class="mobile">
               <form action="resultado.php" method="get" class="form-inline justify-content-center">
-                <select class="form-control custom-select" name="t" style="width:30%" id="categoria">
+                <select class="form-control custom-select" name="t" style="width:30%" id="categoriaM">
                   <option value="todos">Todos</option>
                   <option value="consultorio">Consultórios</option>
                   <option value="workshop">Workshop</option>
@@ -395,7 +399,7 @@ function daysInMonth(month, year) {
                   <option value="academia">Estúdio ou Academia</option>
                   <option value="cozinha">Cozinhas</option>
                 </select>
-                <input type="text" name="q" class="form-control" style="width:60%" id="query" placeholder="Ex: Tijuca, Ipanema, Consultório">
+                <input type="text" name="q" class="form-control" style="width:60%" id="queryM" placeholder="Ex: Tijuca, Ipanema, Consultório">
                 <button type="submit" class="btn btn-warning" style="width:25%">Buscar</button>
               </form>
             </div>
@@ -662,17 +666,17 @@ function daysInMonth(month, year) {
       <div class="row" style="background-color: black; color: white;">
         <div class="px-5 col-lg-12 col-md-12 col-sm-12">
           <br><br>
-          <h1>Como Funciona</h1>
+          <h1 id="comoFunciona">Como Funciona</h1>
           <br><br><br>
 
           <div class="row" style="margin-bottom: 1.5vw">
 
             <div class="col-lg-4 col-md-6 mt-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <img class="img-responsive img-center" src="img/alugar.png" height="100px">
               <br><br>
               <h4>Anuncie o seu espaço</h4>
               <br>
-              <p class="h6" style="color:grey">Clique em <a href="#" style="color: #FFCE00"><b>Anuncie Aqui</b></a> e preencha os campos para que os interessados conheçam os detalhes sobre mobiliários, equipamentos e o jeito que você organizou o seu espaço.
+              <p class="h6" style="color:grey">Clique em <a href="anunciar.php" style="color: #FFCE00"><b>Anuncie Aqui</b></a> e preencha os campos para que os interessados conheçam os detalhes sobre mobiliários, equipamentos e o jeito que você organizou o seu espaço.
                 <br><br>
                 A cada pedido de aluguel, você será consultado antes e assim, você poderá aceitar ou recusar o pedido.
               </p>
@@ -690,7 +694,7 @@ function daysInMonth(month, year) {
             </div>
 
             <div class="col-lg-4 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <img class="img-responsive img-center" src="img/pagamento.svg" height="100px">
               <br><br>
               <h4>Realize o pagamento</h4>
               <br>
@@ -704,7 +708,7 @@ function daysInMonth(month, year) {
 
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <img class="img-responsive img-center" src="img/espaco.png" height="100px">
               <br><br>
               <h4>Use o espaço e aproveite!</h4>
               <br>
@@ -712,7 +716,7 @@ function daysInMonth(month, year) {
               </p>
             </div>
             <div class="col-lg-4 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+              <img class="img-responsive img-center" src="img/shape.svg" height="100px">
               <br><br>
               <h4>Conte para a gente o que achou</h4>
               <br>
@@ -753,7 +757,7 @@ function daysInMonth(month, year) {
           <div class="row text-center">
             <div class="col-12">
               <br>
-              <h1><b>Sobre</b><br><br></h1>
+              <h1 id="sobre"><b>Sobre</b><br><br></h1>
             </div>
           </div>
           <div class="row">
@@ -817,26 +821,24 @@ function daysInMonth(month, year) {
                 <br><br>
                 <a href="#" style="color: white">Política de Privacidade</a>
                 <br><br>
-                <a href="#" style="color: white">Anuncie Aqui</a>
+                <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
                 <br><br>
-                <a href="#" style="color: white">Procure um espaço</a>
+                <a href="resultado.php" style="color: white">Procure um espaço</a>
                 <br><br>
-                <a href="#" style="color: white">contato@locou.co</a>
+                <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co</a>
               </h6>
               <br><br>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-6">
-              <h6 style="color: grey">
-                Redes sociais
+            <div class="col-lg-4 col-md-4 col-sm-6 text-left">
+              <h6 class="text-center" style="color: grey">
+                Nossas Redes sociais
                 <br><br>
               </h6>
-              <h6>
-                <a href="#" style="color: white">Rede social</a>
-                &nbsp;
-                <a href="#" style="color: white">Rede social</a>
-                &nbsp;
-                <a href="#" style="color: white">Rede social</a>
+              <h6 class="pl-5 text-center">
+                <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
+                <br><br>
+                <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
                 <br><br>
               </h6>
             </div>

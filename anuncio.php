@@ -182,20 +182,22 @@ if($session->vereficarLogin() != false){
     <a class="navbar-brand ml-5" href="index.php" >
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
-    <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-      <a class="mx-3">Sobre</a>
-      <a class="mx-3">Como Funciona</a>
-      <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
+    <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
+      <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+      <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+      <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+
+      <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+          <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+          <span class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+       <?php } ?>
+
       <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
 
       <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-        <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+        <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-        <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-      <?php } ?>
-      <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-        <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+        <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
       <?php } ?>
     </span>
   </nav>
@@ -214,20 +216,21 @@ if($session->vereficarLogin() != false){
       </div>
       <div class="col-12">
         <span class="menu-navbar" style="color:white">
-          <a class="mx-2">Sobre</a>
-          <a class="mx-2">Como Funciona</a>
+          <a href="index.php/#sobre" style="color: white;" class="mx-3">Sobre</a>
+          <a href="index.php/#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
           <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
+          <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+          <?php } ?>
           <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
             <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
           <?php } ?>
           <br><br>
-          <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-          <?php } ?>
+
           <br><br>
         </span>
       </div>
@@ -627,12 +630,12 @@ if($session->vereficarLogin() != false){
                   <br>
                   <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
                   <div class="row p-5">
-                    <div class="col-6">
+                    <div class="col-lg-6 col-md-12">
                       <div class="panorama">
                         <img src="img/panoramico.jpg" alt="" title="" />
                       </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-lg-6 col-md-12">
                       <div class="panorama">
                         <img src="img/panoramico.jpg" alt="" title="" />
                       </div>
