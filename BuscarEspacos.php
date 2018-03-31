@@ -270,7 +270,7 @@ class BuscarEspacos
 
     }
 
-    public function retornarConsultorioDetalhado($db){
+    public function retornarConsultorioDetalhado($db, $idAnuncio){
 
         $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE idAnuncio = '$idAnuncio' ") ;
         $cont = mysqli_num_rows($result);
@@ -300,11 +300,35 @@ class BuscarEspacos
                 $array[$cont] = $row['copa'];
                 $cont++;
 
-                $array[$cont] = $row['proprioOuRotativo'];
+                $array[$cont] = $row['numMesa'];
                 $cont++;
 
-                $array[$cont] = $row['transporte'];
+                $array[$cont] = $row['numCadeira'];
+                $cont++;
+
+                $array[$cont] = $row['numLuminaria'];
+                $cont++;
+
+                $array[$cont] = $row['nunMacas'];
+                $cont++;
+
+                $array[$cont] = $row['balanca'];
+                $cont++;
+
+                $array[$cont] = $row['cafe'];
+                $cont++;
                 
+                $array[$cont] = $row['agua'];
+                $cont++;
+
+                $array[$cont] = $row['tv'];
+                $cont++;
+
+                $array[$cont] = $row['descricao'];
+                $cont++;
+
+                $array[$cont] = $row['modeloAr'];
+                $cont++;
 
             }
                 // print_r($array);
