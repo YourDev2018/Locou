@@ -77,6 +77,7 @@ function returnEnsaio($conn){
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/locou.css">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <title>Locou | Encontre o espaço de trabalho pelo tempo que precisar</title>
@@ -198,25 +199,27 @@ function daysInMonth(month, year) {
 
     <!-- Navbar -->
 
-    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1)">
+    <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1);">
       <a class="navbar-brand ml-5" href="index.php" >
         <img  class="logo-navbar" src="img/locou_logo.png">
       </a>
-      <span style="float:right;" class="navbar-brand menu-navbar mr-5 ml-auto">
-        <a class="mx-3">Sobre</a>
-        <a class="mx-3">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-3">Procurar Espaços</a>
+      <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
+        <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+        <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+        <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+
+        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+            <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+         <?php } ?>
+
         <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
 
         <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
-          <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
+          <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-          <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+          <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <?php } ?>
-        <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-            <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-         <?php } ?>
       </span>
     </nav>
 
@@ -234,20 +237,21 @@ function daysInMonth(month, year) {
         </div>
         <div class="col-12">
           <span class="menu-navbar" style="color:white">
-            <a class="mx-2">Sobre</a>
-            <a class="mx-2">Como Funciona</a>
+            <a href="#sobre" style="color: white;" class="mx-3">Sobre</a>
+            <a href="#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
             <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
+            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
+              <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+              <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+            <?php } ?>
             <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
               <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
               <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
             <?php } ?>
             <br><br>
-            <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-              <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-            <?php } ?>
+
             <br><br>
           </span>
         </div>
@@ -381,7 +385,7 @@ function daysInMonth(month, year) {
 
             <div class="mobile">
               <form action="resultado.php" method="get" class="form-inline justify-content-center">
-                <select class="form-control custom-select" name="t" style="width:30%" id="categoria">
+                <select class="form-control custom-select" name="t" style="width:30%" id="categoriaM">
                   <option value="todos">Todos</option>
                   <option value="consultorio">Consultórios</option>
                   <option value="workshop">Workshop</option>
@@ -395,7 +399,7 @@ function daysInMonth(month, year) {
                   <option value="academia">Estúdio ou Academia</option>
                   <option value="cozinha">Cozinhas</option>
                 </select>
-                <input type="text" name="q" class="form-control" style="width:60%" id="query" placeholder="Ex: Tijuca, Ipanema, Consultório">
+                <input type="text" name="q" class="form-control" style="width:60%" id="queryM" placeholder="Ex: Tijuca, Ipanema, Consultório">
                 <button type="submit" class="btn btn-warning" style="width:25%">Buscar</button>
               </form>
             </div>
@@ -431,7 +435,7 @@ function daysInMonth(month, year) {
         <div class="col-2">
         </div>
         <div class="col-lg-8 col-md-10 col-sm-12 titulo-secao2">
-          Encontre pertinho de você seu espaço de trabalho
+          Sugestões de espaços incríveis para você trabalhar
         </div>
         <div class="col-2">
         </div>
@@ -660,43 +664,72 @@ function daysInMonth(month, year) {
     <div class="container-fluid justify-content-center text-center secao4">
 
       <div class="row" style="background-color: black; color: white;">
-        <div class="col-lg-2 col-md-1 col-sm-0">
-        </div>
-        <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="px-5 col-lg-12 col-md-12 col-sm-12">
           <br><br>
-          <h1>Como Funciona</h1>
+          <h1 id="comoFunciona">Como Funciona</h1>
           <br><br><br>
 
-          <div class="row" style="margin-bottom: 2.5vw">
+          <div class="row" style="margin-bottom: 1.5vw">
 
-            <div class="col-lg-3 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+            <div class="col-lg-4 col-md-6 mt-4">
+              <img class="img-responsive img-center" src="img/alugar.png" height="100px">
               <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
+              <h4>Anuncie o seu espaço</h4>
+              <br>
+              <p class="h6" style="color:grey">Clique em <a href="anunciar.php" style="color: #FFCE00"><b>Anuncie Aqui</b></a> e preencha os campos para que os interessados conheçam os detalhes sobre mobiliários, equipamentos e o jeito que você organizou o seu espaço.
+                <br><br>
+                A cada pedido de aluguel, você será consultado antes e assim, você poderá aceitar ou recusar o pedido.
+              </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 my-4">
+            <div class="col-lg-4 col-md-6 my-4">
               <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
               <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
+              <h4> Procure o espaço perfeito e agende sua locação</h4>
+              <br>
+              <p class="h6" style="color:grey">Faça uma busca para encontrar o seu espaço ideal de trabalho. Digite o seu ramo de atividade e a localização.
+                <br><br>
+                Escolha o espaço e clique em cima do anúncio para ver os detalhes, escolher o dia e horário que pretende alugar.
+              </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+            <div class="col-lg-4 col-md-6 my-4">
+              <img class="img-responsive img-center" src="img/pagamento.svg" height="100px">
               <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
+              <h4>Realize o pagamento</h4>
+              <br>
+              <p class="h6" style="color:grey">Seu pedido será encaminhado ao proprietário. Se o pedido for aprovado, você deverá confirmar a reserva efetuando o pagamento no botão “confirmar reserva”.
+              </p>
             </div>
 
-            <div class="col-lg-3 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
-              <br><br>
-              <h6>Procure o espaço perfeito e agende sua locação</h6>
-            </div>
+
 
           </div>
 
           <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 my-4">
+              <img class="img-responsive img-center" src="img/espaco.png" height="100px">
+              <br><br>
+              <h4>Use o espaço e aproveite!</h4>
+              <br>
+              <p class="h6" style="color:grey">Que tal deixar o espaço ainda melhor do que quando você o encontrou? É com carinho que as melhores coisas são feitas!
+              </p>
+            </div>
+            <div class="col-lg-4 col-md-6 my-4">
+              <img class="img-responsive img-center" src="img/shape.svg" height="100px">
+              <br><br>
+              <h4>Conte para a gente o que achou</h4>
+              <br>
+              <p class="h6" style="color:grey">Depois do aluguel realizado, é hora de avaliar a experiência! Não deixe de contar o que achou do espaço e do responsável pelo aluguel, pois sua opinião será fundamental para os próximos que forem alugar :)
+              </p>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10 col-sm-12">
+              <br><br>
+              <h4><b>Veja como funciona nosso serviço:</b></h4>
+              <br>
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/58VlTRFUKg4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
               </div>
@@ -715,27 +748,34 @@ function daysInMonth(month, year) {
           </div>
 
         </div>
-        <div class="col-lg-2 col-md-1 col-sm-0">
-        </div>
       </div>
 
-      <div class="row" style="background-color: #FFCE00">
+      <div class="row text-justify" style="background-color: #FFCE00">
         <div class="col-lg-2 col-md-1 col-sm-0">
         </div>
         <div class="col-lg-8 col-md-10 col-sm-12">
-          <br>
-          <h1><b>O que é?</b><br><br></h1>
-          <h5>
-            <b>
-              Imagine poder potencializar sua produção sem a obrigação de investir em uma estrutura própria? E, de quebra, trocar experiências com gente nova e ganhar mais visibilidade?
+          <div class="row text-center">
+            <div class="col-12">
+              <br>
+              <h1 id="sobre"><b>Sobre</b><br><br></h1>
+            </div>
+          </div>
+          <div class="row">
+            <h5>
+              <b>
+                Conectamos espaços produtivos com os profissionais que precisam alugar por hora, turno, ou dia. São espaços totalmente equipados e montados que garantem flexibilidade aos profissionais para que se dediquem mais ao serviço prestado e não se preocupem com questões administrativas e burocráticas É um novo jeito de aluguel sem o comprometimento de um contrato de longo-prazo.
+                <br>
+                Trazemos a solução de aluguel sob demanda com facilidade e segurança que só uma plataforma especializada pode dar.
+              </b>
+            </h5>
+            <br><br>
+          </div>
+          <div class="row text-center">
+            <div class="col-12">
+              <a href="anunciar.php"><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. É grátis</h2></button></a>
               <br><br>
-              Cozinhas, consultórios, estúdios fotográficos e produtoras: independente do negócio, o Locou te conecta a quem já tem um espaço produtivo e possibilita um novo formato de aluguel sob demanda.
-              <br><br>
-              Essa é a sua nova oportunidade de fazer essa conexão com a facilidade, a diversidade e a segurança que só uma plataforma especializada pode dar.
-            </b>
-          </h5>
-
-          <br><br>
+            </div>
+          </div>
         </div>
         <div class="col-lg-2 col-md-1 col-sm-0">
         </div>
@@ -771,36 +811,34 @@ function daysInMonth(month, year) {
             <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
               <img class="logo-navbar" src="img/locou_logo.png">
               <br><br>
-              <h6>Locou texto Locou Texto</h6>
+              <h6>Conectando pessoas produtivas a espaços ociosos</h6>
               <br><br>
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
               <h6>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">Termo de Uso</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="#" style="color: white">Política de Privacidade</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="resultado.php" style="color: white">Procure um espaço</a>
                 <br><br>
-                <a href="#" style="color: white">Link para página</a>
+                <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co</a>
               </h6>
               <br><br>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-6">
-              <h6 style="color: grey">
-                Redes sociais
+            <div class="col-lg-4 col-md-4 col-sm-6 text-left">
+              <h6 class="text-center" style="color: grey">
+                Nossas Redes sociais
                 <br><br>
               </h6>
-              <h6>
-                <a href="#" style="color: white">Rede social</a>
-                &nbsp;
-                <a href="#" style="color: white">Rede social</a>
-                &nbsp;
-                <a href="#" style="color: white">Rede social</a>
+              <h6 class="pl-5 text-center">
+                <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
+                <br><br>
+                <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
                 <br><br>
               </h6>
             </div>
