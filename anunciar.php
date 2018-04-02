@@ -385,7 +385,7 @@ function daysInMonth(month, year) {
 
       <br><br>
 
-      <form action="#" method="post">
+      <form action="CadastrarOutrosEstados.php" method="post">
 
         <div class="row" id="fora_do_rj" style="display: none">
 
@@ -439,7 +439,7 @@ function daysInMonth(month, year) {
                   </select>
                   <br><br>
                   <h5>Quer adicionar outra informação? Utilize esse campo abaixo</h5>
-                  <textarea class="form-control" id="form-fora-descricao" rows="4" style="resize: none;"></textarea>
+                  <textarea class="form-control"  name="fora-descricao" id="form-fora-descricao" rows="4" style="resize: none;"></textarea>
                   <br>
                   <button type="submit" class="btn btn-warning" id="formulario-envio"><h4>Enviar formulário</h4></button>
                   <br><br>
