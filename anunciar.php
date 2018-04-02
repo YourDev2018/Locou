@@ -3891,7 +3891,7 @@ function daysInMonth(month, year) {
         {
             consultorio.style.display = "";
         }
-        if(categoria == "workshop")
+        if(categoria == "workshop" || categoria == "palestra")
         {
             workshop.style.display = "";
         }
@@ -3899,11 +3899,11 @@ function daysInMonth(month, year) {
         {
             cozinha.style.display = "";
         }
-        if(categoria == "ensaio")
+        if(categoria == "ensaio" || categoria == "aulas")
         {
             ensaio.style.display = "";
         }
-        if(categoria == "fotografico")
+        if(categoria == "fotografico" || categoria == "produtora")
         {
             fotografico.style.display = "";
         }
@@ -4021,7 +4021,7 @@ function daysInMonth(month, year) {
         {
             consultorio.style.display = "";
         }
-        if(categoria == "workshop" || categoria == "palestra" || categoria == "aulas")
+        if(categoria == "workshop" || categoria == "palestra")
         {
             workshop.style.display = "";
         }
@@ -4029,7 +4029,7 @@ function daysInMonth(month, year) {
         {
             cozinha.style.display = "";
         }
-        if(categoria == "ensaio")
+        if(categoria == "ensaio" || categoria == "aulas")
         {
             ensaio.style.display = "";
         }
