@@ -16,7 +16,7 @@
         $_SESSION['dataNascimento']= null;
         $_SESSION['foto']= null;
 
-      session_destroy();
+         session_destroy();
     
         header('location:'.$pag.'.php?id='.$id);
 

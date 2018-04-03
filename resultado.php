@@ -5,10 +5,15 @@ error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'Seguranca.php';
 require_once 'BuscarEspacos.php';
 require_once 'FunctionsDB.php';
+ require_once 'FunctionsSession.php';
+
+$session = new FunctionsSession();
+$session->iniciarSession();
 
 $seg  = new Seguranca();
 $tipo = $seg->filtro($_GET['t']);
 $editText = $seg->filtro($_GET['q']);
+
 
 if (!($tipo == "" || $tipo == null) ) {
    $db = new FunctionsDB();
@@ -164,7 +169,7 @@ if (!($tipo == "" || $tipo == null) ) {
         <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
         <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <a href="<?php echo "logout.php?pag=resultado"?>" style="color:white" class="mx-2">Logout</a>
+        <a href="<?php echo "logout.php?pag=resultado"?>" style="color:white" class="mx-2">Logout</a> 
       <?php } ?>
     </span>
   </nav>
@@ -270,7 +275,7 @@ if (!($tipo == "" || $tipo == null) ) {
       </div>
       <div class="modal-body">
         <div class="pt-2" id="logar-div" style="background-color:white">
-          <form action="logar.php?pag=index" method="post">
+          <form action="logar.php?pag=resultado" method="post">
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
