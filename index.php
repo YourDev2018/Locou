@@ -828,7 +828,7 @@ function daysInMonth(month, year) {
                 Nossas Redes sociais
                 <br><br>
               </h6>
-              <h6 class="pl-5 text-center">
+              <h6 class="text-center">
                 <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
                 <br><br>
                 <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>

@@ -357,6 +357,29 @@ function daysInMonth(month, year) {
         </div>
       </div>
 
+      <div class="modal" id="saibaMaisDireto" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                É um modo em que os Inquilinos interessados no seu espaço (dentro do que você especificar e descrever) podem reservar instantâneamente, sem que você precise aprovar antes.
+                <br>
+                A opção mais comum (e recomendada) é o modo em que os inquilinos interessados precisarão enviar um pedido de reserva. Se você aprovar, a reserva será confirmada mas o pedido pode <b>Não ser autorizado</b>, sem qualquer penalidade caso você não se sinte confortável com uma reserva.
+             </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     <!-- Seção Titulo -->
 
@@ -470,7 +493,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><h2>Vamos preparar o anúncio do seu espaço</h2></span>
+                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><h2>Vamos preparar o anúncio <br> do seu espaço</h2></span>
                 <br><br>
               </div>
             </div>
@@ -574,11 +597,11 @@ function daysInMonth(month, year) {
             <br>
 
             <div class="row">
-              <div class="col-4 text-right">
-                Aluguel direto? <span title="We ask for your age only for statistical purposes." class="btn btn-warning" style="border-radius: 25px; font-size: 0.7vw"><b>?</b></span>
+              <div class="col-8 text-right">
+                Clique aqui para ativar a opção de "reserva instantânea".<a><span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span></a>
               </div>
-              <div class="col-5 text-left">
-                <!-- <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema"> -->
+              <div class="col-4 text-left pl-5">
+                <input type="checkbox" name="reservaInsta" class="form-check-input" id="reservaInsta">
               </div>
             </div>
 
@@ -1296,6 +1319,26 @@ function daysInMonth(month, year) {
                     </div>
 
                   </div>
+                  <div class="col-12 py-4">
+                    <h6 style="color: white">Selecione quantas semanas seguidas o espaço será alugado</h6>
+                    <br>
+                    <div class="row text-center justify-content-center">
+                      <div class="col-6">
+                        <div class="row justify-content-center px-2">
+                          <div class="col-10">
+                              <input type="text" maxlength="2"name="hora-inicio-unico" class="form-control" style="text-align: center" readonly value="2">
+                              <br>
+                          </div>
+                          <div class="col-12">
+                              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                          </div>
+                        </div>
+                        <br>
+                        <h6 id="tempoDeAlguel" style="color: #FFC107"></h6>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1739,7 +1782,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span onclick="workshop_tip(this)" class="btn btn-outline-warning"><h2>Descrição da Sala <br class="mobile"> de Ensaio ou <br class="mobile"> Workshop</h2></span>
+                  <span onclick="workshop_tip(this)" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -2226,7 +2269,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição de cozinhas</h2></span>
+                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -2796,7 +2839,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição de salas de ensaio e aulas</h2></span>
+                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -2912,7 +2955,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição de estúdio fotográfico</h2></span>
+                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -3174,7 +3217,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição de ateliê de costura</h2></span>
+                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -3308,7 +3351,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição da academia</h2></span>
+                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -3502,7 +3545,7 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>Descrição do ateliê de artes</h2></span>
+                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
                 </div>
               </div>
@@ -3762,7 +3805,7 @@ function daysInMonth(month, year) {
                       Nossas Redes sociais
                       <br><br>
                     </h6>
-                    <h6 class="pl-5 text-center">
+                    <h6 class="text-center">
                       <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
                       <br><br>
                       <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>

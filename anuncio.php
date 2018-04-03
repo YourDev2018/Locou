@@ -458,8 +458,12 @@ if($session->vereficarLogin() != false){
       </div>
       <div class="col-8">
         <h1><b><?php $cont = 4; echo $array[$cont]?></b></h1>
-        <h5 style="color: grey"><?php $cont++; echo $array[$cont]?> | <?php $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?> <!-- <?//php $cont++; echo $array[$cont]?> --> </h5>
-        <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> - 5.0 <br> (2 avaliações)</span></h6>
+        <h5 style="color: grey">
+          <?php $cont++; echo $array[$cont]?> | <?php $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?> <!-- <?//php $cont++; echo $array[$cont]?> -->
+          <!-- <span class="pl-4" style="font-weight: 300; font-size: 110%; color: #FFCE00">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> - 5.0 <br> (2 avaliações)</span>
+          </span> Retirado até segunda parte -->
+        </h5>
       </div>
       <div class="col-2">
       </div>
@@ -880,7 +884,7 @@ if($session->vereficarLogin() != false){
 
               </div>
 
-              <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+              <!-- <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
                   <div class="row">
                     <div class="col-12 py-3 px-5">
@@ -927,7 +931,7 @@ if($session->vereficarLogin() != false){
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>      Retirado até segunda parte -->
 
               <div class="row">
 
@@ -993,13 +997,13 @@ if($session->vereficarLogin() != false){
                     <div class="col-12 px-5">
                       <div class="row px-5 pb-5">
                         <div class="col-4">
-                          <button onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Único</button>
+                          <button onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-warning">Aluguel Único</button>
                         </div>
                         <div class="col-4">
-                          <button onclick="calReincidente()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
+                          <button onclick="calReincidente()" style="font-weight: 300" type="button" name="button" class="btn btn-warning">Aluguel Reincidente</button>
                         </div>
                         <div class="col-4">
-                          <button onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
+                          <button onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-warning">Aluguel Direto</button>
                         </div>
                       </div>
                     </div>
@@ -1653,7 +1657,7 @@ if($session->vereficarLogin() != false){
                         Nossas Redes sociais
                         <br><br>
                       </h6>
-                      <h6 class="pl-5 text-center">
+                      <h6 class="text-center">
                         <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
                         <br><br>
                         <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
