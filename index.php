@@ -206,7 +206,7 @@ function daysInMonth(month, year) {
       <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
         <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
         <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+        <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
         <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
             <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
@@ -222,7 +222,7 @@ function daysInMonth(month, year) {
           <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
           <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
-          <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a> 
+          <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
 
         <?php } ?>
 
@@ -245,7 +245,7 @@ function daysInMonth(month, year) {
           <span class="menu-navbar" style="color:white">
             <a href="#sobre" style="color: white;" class="mx-3">Sobre</a>
             <a href="#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
-            <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+            <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
             <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
               <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
@@ -256,12 +256,12 @@ function daysInMonth(month, year) {
 
               <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
 
-                
 
-                <a href="logout.php" style="color:white" class="mx-2">Logout</a> 
 
-                
-            
+                <a href="logout.php" style="color:white" class="mx-2">Logout</a>
+
+
+
             <?php } ?>
             <br><br>
 
@@ -904,7 +904,7 @@ function daysInMonth(month, year) {
             }
         }
 
-       
+
       ?>
-  
+
   </body>

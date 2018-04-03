@@ -111,7 +111,7 @@ function daysInMonth(month, year) {
       <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
         <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
         <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-        <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+        <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
         <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
             <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
@@ -145,7 +145,7 @@ function daysInMonth(month, year) {
           <span class="menu-navbar" style="color:white">
             <a href="index.php/#sobre" style="color: white;" class="mx-3">Sobre</a>
             <a href="index.php/#comoFunciona" style="color: white;" class="mx-3">Como Funciona</a>
-            <a href="resultado.php" style="color:white" class="mx-2">Procurar Espaços</a>
+            <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
             <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
               <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
