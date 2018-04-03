@@ -76,10 +76,21 @@ $session = new FunctionsSession();
                 if($tipoAluguel == 'direto'){
 
                     $data = $_POST['data-unico-pick'];
+                    $aux = str_split($data);
+                    $dia = $aux[0].$aux[1];
+                    $mes =  $aux[3].$aux[4];
+                    $ano =  $aux[6].$aux[7].$aux[8].$aux[9];
+                   
+                    
+
                     $horaInicio = $_POST['hora-inicio-unico'];
                     $horaFim = $_POST['hora-fim-unico'];
+                    $nunMes = 2;
+                    $mes = $mes +$nunMes;
+                    $dataFim = $ano.$mes.$dia;
+                    //aqui tem um bug
 
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$horaInicio,$horaFim);
+                    $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$dataFim,$horaInicio,$horaFim);
 
                     if ($result == true) {
 
@@ -92,9 +103,28 @@ $session = new FunctionsSession();
 
                 if($tipoAluguel == 'reincidente'){
 
-                    $data = $_POST['data-unico-pick'];
-                    $horaInicio = $_POST['hora-inicio-unico'];
-                    $horaFim = $_POST['hora-fim-unico'];
+                    $segI = $_POST['seg-inicio-periodo'];
+                    $segF = $_POST['seg-fim-periodo'];
+
+                    $terI = $_POST['ter-inicio-periodo'];
+                    $terF = $_POST['ter-fim-periodo'];
+
+                    $quaI = $_POST['qua-inicio-periodo'];
+                    $quaF = $_POST['qua-fim-periodo'];
+
+                    $quiI = $_POST['qui-inicio-periodo'];
+                    $quiF = $_POST['qui-fim-periodo'];
+
+                    $sexI = $_POST['sex-inicio-periodo'];
+                    $sexF = $_POST['sex-fim-periodo'];
+
+                    $sabI = $_POST['sab-inicio-periodo'];
+                    $sabF = $_POST['sab-fim-periodo'];
+
+                    $domI = $_POST['dom-inicio-periodo'];
+                    $domF = $_POST['dom-fim-periodo'];
+
+                    $sem = $_POST['semana-direto'];
 
                     $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$horaInicio,$horaFim);
 
