@@ -3821,20 +3821,19 @@ function daysInMonth(month, year) {
           </div>
 
         <!-- CONTROLE DE MENU -->
-        <br>
 
-        <div class="row" style="background-color: black">
+        <div class="row pb-4" style="background-color: white;">
           <div class="col-2">
           </div>
           <div class="col-4 text-right" style="color: #FFC107">
             <br>
-            <span class="btn btn-outline-warning" onclick="voltar();" style="display: none" id="voltar"><h4>Voltar</h4></span>
+            <span class="btn btn-warning" onclick="voltar();" style="display: none" id="voltar"><h4>Voltar</h4></span>
             <br><br>
           </div>
           <div class="col-4 text-left" style="color: #FFC107">
             <br>
-            <span class="btn btn-outline-warning" onclick="proximo();" id="proximo"><h4>Próximo</h4></span>
-            <button type="submit" class="btn btn-outline-warning" style="display: none" id="anunciar"><h4>Anunciar</h4></button>
+            <span class="btn btn-warning" onclick="proximo();" id="proximo"><h4>Próximo</h4></span>
+            <button type="submit" class="btn btn-warning" style="display: none" id="anunciar"><h4>Anunciar</h4></button>
             <!-- <br><br>
             <span class="ml-3 btn btn-outline-warning" data-toggle="modal" data-target="#completarCadastro">Popup completar cadastro</span> -->
           </div>
