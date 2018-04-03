@@ -258,7 +258,7 @@ function daysInMonth(month, year) {
 
 
 
-                <a href="logout.php" style="color:white" class="mx-2">Logout</a>
+                <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
 
 
 
