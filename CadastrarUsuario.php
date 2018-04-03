@@ -16,18 +16,18 @@
 
     if ($session->vereficarLogin() == false) {
 
-         $seg = new Seguranca();
+        $seg = new Seguranca();
 
-         $email = $seg->filtro4($_POST['email'],$pag,$id );
-         $senha = $seg->filtro4($_POST['senha'],$pag,$id );
-         $first = $seg->filtro4($_POST['nome'],$pag,$id );
-         $last = $seg->filtro4($_POST['sobrenome'],$pag,$id );
-         $dia = $seg->filtro4($_POST['dia'],$pag,$id ); 
-         $mes = $seg->filtro4($_POST['mes'],$pag,$id ); 
-         $ano = $seg->filtro4($_POST['ano'],$pag,$id ); 
+        $email = $seg->filtro4($_POST['email'],$pag,$id );
+        $senha = $seg->filtro4($_POST['senha'],$pag,$id );
+        $first = $seg->filtro4($_POST['nome'],$pag,$id );
+        $last = $seg->filtro4($_POST['sobrenome'],$pag,$id );
+        $dia = $seg->filtro($_POST['dia'],$pag,$id ); 
+        $mes = $seg->filtro($_POST['mes'],$pag,$id ); 
+        $ano = $seg->filtro($_POST['ano'],$pag,$id ); 
 
-         $nascimento = $ano."-".$mes."-".$dia;
-       //  $seg->filtro4($_FILES['foto']['name'], $pag);
+        $nascimento = $ano."-".$mes."-".$dia;
+        $seg->filtro4($_FILES['foto']['name'], $pag);
 
 
         $ext = strtolower(substr($_FILES['foto']['name'],-4));
