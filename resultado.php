@@ -30,10 +30,10 @@ if (!($tipo == "" || $tipo == null) ) {
     // }
 
     $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
-  
+
 }
 
-   
+
 
 ?>
 
@@ -54,7 +54,7 @@ if (!($tipo == "" || $tipo == null) ) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
   <script src="js/bootstrap-datepicker.min.js" ></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
   $(function () {
 
@@ -449,7 +449,7 @@ if (!($tipo == "" || $tipo == null) ) {
             Nossas Redes sociais
             <br><br>
           </h6>
-          <h6 class="pl-5 text-center">
+          <h6 class="text-center">
             <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
             <br><br>
             <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
