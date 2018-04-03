@@ -462,20 +462,31 @@
 
         }
 
+        function cadastrarHorariosDisponiveis($db, $idAnuncio, $dataInicio, $dataFim, $horaInicio, $horaFim ){
+            
+                $sql = "INSERT INTO RegistroAnunciosDisponiveis(idAnuncio, dataEntrada, horaEntrada, dataSaida, horaSaida)
+                                    VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim')";
 
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
 
+                }else{
+                    
+                    return "Insert failed cadastrar horário disponível";
+                }
 
-
-
+        }
+      
         private function emailExist($db, $email){
 
-            $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' ") ;
-            $cont = mysqli_num_rows($result);
-            if ($cont <=0) {
-                return  false;
-            }else{
-                return true;
-            }
+        $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' ") ;
+        $cont = mysqli_num_rows($result);
+        if ($cont <=0) {
+            return  false;
+        }else{
+            return true;
+        }
 
         }
 
