@@ -1005,6 +1005,7 @@ if($session->vereficarLogin() != false){
                         <div class="col-4">
                           <button onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-warning">Aluguel Direto</button>
                         </div>
+                        <input type="text" name="tipoAluguel" value="" id="tipoAluguel">
                       </div>
                     </div>
                     <div class="col-12 px-5" style="background-color: black">
@@ -1017,18 +1018,21 @@ if($session->vereficarLogin() != false){
                               document.getElementById("calendario-unico").style.display = "";
                               document.getElementById("calendario-direto").style.display = "none";
                               document.getElementById("calendario-reincidente").style.display = "none";
+                              document.getElementById("tipoAluguel").value = "unico";
                             }
                             function calDireto()
                             {
                               document.getElementById("calendario-unico").style.display = "none";
                               document.getElementById("calendario-direto").style.display = "";
                               document.getElementById("calendario-reincidente").style.display = "none";
+                              document.getElementById("tipoAluguel").value = "direto";
                             }
                             function calReincidente()
                             {
                               document.getElementById("calendario-unico").style.display = "none";
                               document.getElementById("calendario-direto").style.display = "none";
                               document.getElementById("calendario-reincidente").style.display = "";
+                              document.getElementById("tipoAluguel").value = "reincidente";
                             }
                           </script>
 
@@ -1083,7 +1087,7 @@ if($session->vereficarLogin() != false){
                                   <div class="col-6">
                                     <div class="row px-2">
                                       <div class="col-12">
-                                          <input type="text" maxlength="2"name="hora-inicio-unico" class="form-control" style="text-align: center" readonly value="2">
+                                          <input type="number" maxlength="2"name="semanas-direto" class="form-control" style="text-align: center" readonly value="2">
                                           <br>
                                       </div>
                                       <div class="col-12">
@@ -1113,7 +1117,7 @@ if($session->vereficarLogin() != false){
                                         <h6>Hora de início do Aluguel</h6>
                                       </div>
                                       <div class="col-12">
-                                          <input type="text" name="hora-inicio-unico" class="form-control" style="text-align: center" readonly value="12:00">
+                                          <input type="text" name="hora-inicio-direto" class="form-control" style="text-align: center" readonly value="12:00">
                                           <br>
                                       </div>
                                       <div class="col-12">
@@ -1127,7 +1131,7 @@ if($session->vereficarLogin() != false){
                                         <h6>Hora de fim do Aluguel</h6>
                                       </div>
                                       <div class="col-12">
-                                          <input type="text" name="hora-fim-unico" class="form-control" style="text-align: center" readonly  value="18:00">
+                                          <input type="text" name="hora-fim-direto" class="form-control" style="text-align: center" readonly  value="18:00">
                                           <br>
                                       </div>
                                       <div class="col-12">
