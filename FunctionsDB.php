@@ -58,7 +58,7 @@
                         $_SESSION['lastName']=$row['lastName'];
                         $_SESSION['dataNascimento']=$row['dataNascimento'];
                         $_SESSION['foto']=$row['foto'];
-                        $_SESSION['foto'];
+                        
                         return true;
                     }
                     
