@@ -17,6 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/bootstrap-datepicker.min.js" ></script>
     <script src="js/clockpicker.js" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
     var today = new Date();
     var dd = today.getDate();
@@ -469,7 +470,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><h2>Dados Básicos</h2></span>
+                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><h2>Vamos preparar o anúncio do seu espaço</h2></span>
                 <br><br>
               </div>
             </div>
@@ -508,7 +509,7 @@ function daysInMonth(month, year) {
 
             <div class="row">
               <div class="col-4 text-right">
-                Categoria do espaço:
+                Tipo do espaço:
               </div>
               <div class="col-5 text-left">
                 <select class="form-control" name="categoria" id="categoria">
@@ -602,7 +603,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span onclick="descricao_geral_tip(this)" class="btn btn-outline-warning"><h2>Descrição Geral</h2></span>
+                <span onclick="descricao_geral_tip(this)" class="btn btn-outline-warning"><h2>Comece pelo básico</h2></span>
                 <br><br>
               </div>
             </div>
@@ -1417,7 +1418,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span onclick="consultorio_tip(this)" class="btn btn-outline-warning"><h2>Descrição do Consultório</h2></span>
+                <span onclick="consultorio_tip(this)" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                 <br><br>
               </div>
             </div>
@@ -3727,51 +3728,54 @@ function daysInMonth(month, year) {
         </div>
 
         <div class="row justify-content-center" style="color: white;background-color: black">
-          <div class="col-3">
-          </div>
-          <div class="col-lg-6 col-md-10 col-sm-12">
-            <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
-
-              <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
-                <img class="logo-navbar" src="img/locou_logo.png">
-                <br><br>
-                <h6>Locou texto Locou Texto</h6>
-                <br><br>
+          <div class="container-fluid justify-content-center text-center" style="background-color: black">
+            <div class="row justify-content-center" style="color: white;">
+              <div class="col-3">
               </div>
+              <div class="col-lg-6 col-md-10 col-sm-12">
+                <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
 
-              <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
-                <h6>
-                  <a href="#" style="color: white">Link para página</a>
-                  <br><br>
-                  <a href="#" style="color: white">Link para página</a>
-                  <br><br>
-                  <a href="#" style="color: white">Link para página</a>
-                  <br><br>
-                  <a href="#" style="color: white">Link para página</a>
-                  <br><br>
-                  <a href="#" style="color: white">Link para página</a>
-                </h6>
-                <br><br>
+                  <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
+                    <img class="logo-navbar" src="img/locou_logo.png">
+                    <br><br>
+                    <h6>Conectando pessoas produtivas a espaços ociosos</h6>
+                    <br><br>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
+                    <h6>
+                      <a href="#" style="color: white">Termo de Uso</a>
+                      <br><br>
+                      <a href="#" style="color: white">Política de Privacidade</a>
+                      <br><br>
+                      <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
+                      <br><br>
+                      <a href="resultado.php" style="color: white">Procure um espaço</a>
+                      <br><br>
+                      <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co</a>
+                    </h6>
+                    <br><br>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 text-left">
+                    <h6 class="text-center" style="color: grey">
+                      Nossas Redes sociais
+                      <br><br>
+                    </h6>
+                    <h6 class="pl-5 text-center">
+                      <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
+                      <br><br>
+                      <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
+                      <br><br>
+                    </h6>
+                  </div>
+
+                </div>
               </div>
-
-              <div class="col-lg-4 col-md-4 col-sm-6">
-                <h6 style="color: grey">
-                  Redes sociais
-                  <br><br>
-                </h6>
-                <h6>
-                  <a href="#" style="color: white">Rede social</a>
-                  &nbsp;
-                  <a href="#" style="color: white">Rede social</a>
-                  &nbsp;
-                  <a href="#" style="color: white">Rede social</a>
-                  <br><br>
-                </h6>
+              <div class="col-3">
               </div>
-
             </div>
-          </div>
-          <div class="col-3">
+
           </div>
         </div>
 
