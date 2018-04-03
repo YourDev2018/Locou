@@ -382,14 +382,79 @@ function daysInMonth(month, year) {
         </div>
       </div>
 
+      <div class="modal" id="saibaMaisPeriodoDireto" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">O que é o Aluguel Direto ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Se o seu interesse for alugar todos os dias da semana,  de 9h as 18h por um período igual ou menor do que 3 meses.
+                <br>
+                Pode ser o espaço inteiro ou somente alguma área específica que pode ser reservada para uso exclusivo de quem for alugar para trabalhar diariamente.
+             </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="saibaMaisPeriodoReincidente" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">O que é o Aluguel Reincidente ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Você irá alugar dias das semanas específicos e horarios únicos para cada dia. Ex: Terças-Feiras e Quintas-Feiras das 8h as 13h. Sextas-Feiras das 10h as 15h.
+             </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="saibaMaisPeriodoUnico" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">O que é o Aluguel Único ?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Texto de ajuda
+             </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     <!-- Seção Titulo -->
 
     <div class="container-fluid justify-content-center text-center" style="background-color: #FFC107;">
       <div class="row">
-        <div class="col-lg-4 col-md-2 col-sm-1">
+        <div class="col-lg-1 col-md-1 col-sm-1">
         </div>
-        <div class="col-lg-4 col-md-8 col-sm-10 titulo-anuncie">
+        <div class="col-lg-10 col-md-10 col-sm-10 titulo-anuncie">
           <br>
           <h1>
             <b>Anuncie o seu espaço.</b>
@@ -400,7 +465,7 @@ function daysInMonth(month, year) {
           </h3>
           <br>
         </div>
-        <div class="col-lg-4 col-md-2 col-sm-1">
+        <div class="col-lg-1 col-md-1 col-sm-1">
         </div>
       </div>
     </div>
@@ -495,7 +560,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><h2>Vamos preparar o anúncio <br> do seu espaço</h2></span>
+                <span class="btn btn-outline-warning" onclick="dados_basicos_tip(this)"><span style="font-size: 1.5em">Vamos preparar o anúncio <br class="mobile"> do seu espaço</span></span>
                 <br><br>
               </div>
             </div>
@@ -628,7 +693,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span onclick="descricao_geral_tip(this)" class="btn btn-outline-warning"><h2>Comece pelo básico</h2></span>
+                <span onclick="descricao_geral_tip(this)" class="btn btn-outline-warning"><span style="font-size: 1.5em">Comece pelo básico</span></span>
                 <br><br>
               </div>
             </div>
@@ -827,7 +892,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span onclick="periodo_tip(this)" class="btn btn-outline-warning"><h2>Período</h2></span>
+                <span onclick="periodo_tip(this)" class="btn btn-outline-warning"><span style="font-size: 1.5em">Período</span></span>
                 <br><br>
               </div>
             </div>
@@ -851,13 +916,19 @@ function daysInMonth(month, year) {
               <!-- Labels -->
 
               <div class="col-4 text-center">
-                <label class="form-check-label" for="tempoAluguel-unico">Aluguel Único (Para um dia específico)</label>
+                <label class="form-check-label" for="tempoAluguel-unico">Aluguel Único (Para um dia específico)
+                  <br> <span style="color: grey" data-toggle="modal" data-target="#saibaMaisPeriodoUnico">Saiba Mais</span>
+                </label>
               </div>
               <div class="col-4 text-center">
-                <label class="form-check-label" for="tempoAluguel-reincidente">Aluguel Reincidente</label>
+                <label class="form-check-label" for="tempoAluguel-reincidente">Aluguel Reincidente
+                  <br> <span style="color: grey" data-toggle="modal" data-target="#saibaMaisPeriodoReincidente">Saiba Mais</span>
+                </label>
               </div>
               <div class="col-4 text-center">
-                <label class="form-check-label" for="tempoAluguel-direto">Aluguel Direto</label>
+                <label class="form-check-label" for="tempoAluguel-direto">Aluguel Direto
+                  <br> <span style="color: grey" data-toggle="modal" data-target="#saibaMaisPeriodoDireto">Saiba Mais</span>
+                </label>
               </div>
 
               <!-- Checkbox -->
@@ -931,7 +1002,6 @@ function daysInMonth(month, year) {
                           <option value="1">1 Mês</option>
                           <option value="2">2 Meses</option>
                           <option value="3">3 Meses</option>
-                          <option value="4">4 Meses</option>
                         </select>
                         <br>
                         <h6 id="tempoDeAlguel" style="color: #FFC107"></h6>
@@ -946,7 +1016,7 @@ function daysInMonth(month, year) {
                       }
                     </script>
                     <br>
-                    <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
+                    <!-- <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
                     <br>
                     <div class="row text-center justify-content-center">
                       <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
@@ -978,7 +1048,7 @@ function daysInMonth(month, year) {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -1463,7 +1533,7 @@ function daysInMonth(month, year) {
             <div class="row" style="background-color: black">
               <div class="col-12" style="color: #FFC107">
                 <br>
-                <span onclick="consultorio_tip(this)" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                <span onclick="consultorio_tip(this)" class="btn btn-outline-warning"><span style="font-size: 1.5em">O que o seu espaço oferece?</span></span>
                 <br><br>
               </div>
             </div>
