@@ -54,6 +54,7 @@ if (!($tipo == "" || $tipo == null) ) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
   <script src="js/bootstrap-datepicker.min.js" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
   <script>
   $(function () {
 
@@ -415,7 +416,7 @@ if (!($tipo == "" || $tipo == null) ) {
     </div>
   </div>
 
-  <div class="row justify-content-center" style="color: white;background-color: black; padding-bottom:8vw">
+  <div class="row justify-content-center" style="color: white; background-color: black">
     <div class="col-3">
     </div>
     <div class="col-lg-6 col-md-10 col-sm-12">
@@ -424,36 +425,34 @@ if (!($tipo == "" || $tipo == null) ) {
         <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
           <img class="logo-navbar" src="img/locou_logo.png">
           <br><br>
-          <h6>Locou texto Locou Texto</h6>
+          <h6>Conectando pessoas produtivas a espaços ociosos</h6>
           <br><br>
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
           <h6>
-            <a href="#" style="color: white">Link para página</a>
+            <a href="#" style="color: white">Termo de Uso</a>
             <br><br>
-            <a href="#" style="color: white">Link para página</a>
+            <a href="#" style="color: white">Política de Privacidade</a>
             <br><br>
-            <a href="#" style="color: white">Link para página</a>
+            <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
             <br><br>
-            <a href="#" style="color: white">Link para página</a>
+            <a href="resultado.php" style="color: white">Procure um espaço</a>
             <br><br>
-            <a href="#" style="color: white">Link para página</a>
+            <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co</a>
           </h6>
           <br><br>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-6">
-          <h6 style="color: grey">
-            Redes sociais
+        <div class="col-lg-4 col-md-4 col-sm-6 text-left">
+          <h6 class="text-center" style="color: grey">
+            Nossas Redes sociais
             <br><br>
           </h6>
-          <h6>
-            <a href="#" style="color: white">Rede social</a>
-            &nbsp;
-            <a href="#" style="color: white">Rede social</a>
-            &nbsp;
-            <a href="#" style="color: white">Rede social</a>
+          <h6 class="pl-5 text-center">
+            <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
+            <br><br>
+            <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
             <br><br>
           </h6>
         </div>
@@ -463,6 +462,7 @@ if (!($tipo == "" || $tipo == null) ) {
     <div class="col-3">
     </div>
   </div>
+
 
 </div>
 

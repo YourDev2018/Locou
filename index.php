@@ -667,38 +667,47 @@ function daysInMonth(month, year) {
         <div class="px-5 col-lg-12 col-md-12 col-sm-12">
           <br><br>
           <h1 id="comoFunciona">Como Funciona</h1>
-          <br><br><br>
+          <br>
 
           <div class="row" style="margin-bottom: 1.5vw">
 
             <div class="col-lg-4 col-md-6 mt-4">
-              <img class="img-responsive img-center" src="img/alugar.png" height="100px">
-              <br><br>
-              <h4>Anuncie o seu espaço</h4>
-              <br>
-              <p class="h6" style="color:grey">Clique em <a href="anunciar.php" style="color: #FFCE00"><b>Anuncie Aqui</b></a> e preencha os campos para que os interessados conheçam os detalhes sobre mobiliários, equipamentos e o jeito que você organizou o seu espaço.
+              <div class="row">
+                <div class="col-12" style="height: 200px">
+                  <img class="img-responsive img-center" src="img/alugar.png" height="100px">
+                  <br><br>
+                  <h4>Anuncie o seu espaço</h4>
+                </div>
+              </div>
+              <p class="h6 text-justify" style="color:grey">Clique em <a href="anunciar.php" style="color: #FFCE00"><b>Anuncie Aqui</b></a> e preencha os campos para que os interessados conheçam os detalhes sobre mobiliários, equipamentos e o jeito que você organizou o seu espaço.
                 <br><br>
                 A cada pedido de aluguel, você será consultado antes e assim, você poderá aceitar ou recusar o pedido.
               </p>
             </div>
 
             <div class="col-lg-4 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
-              <br><br>
-              <h4> Procure o espaço perfeito e agende sua locação</h4>
-              <br>
-              <p class="h6" style="color:grey">Faça uma busca para encontrar o seu espaço ideal de trabalho. Digite o seu ramo de atividade e a localização.
+              <div class="row">
+                <div class="col-12" style="height: 200px">
+                  <img class="img-responsive img-center" src="img/icone-como.png" height="100px">
+                  <br><br>
+                  <h4> Procure o espaço perfeito e agende sua locação</h4>
+                </div>
+              </div>
+              <p class="h6 text-justify" style="color:grey">Faça uma busca para encontrar o seu espaço ideal de trabalho. Digite o seu ramo de atividade e a localização.
                 <br><br>
                 Escolha o espaço e clique em cima do anúncio para ver os detalhes, escolher o dia e horário que pretende alugar.
               </p>
             </div>
 
             <div class="col-lg-4 col-md-6 my-4">
-              <img class="img-responsive img-center" src="img/pagamento.svg" height="100px">
-              <br><br>
-              <h4>Realize o pagamento</h4>
-              <br>
-              <p class="h6" style="color:grey">Seu pedido será encaminhado ao proprietário. Se o pedido for aprovado, você deverá confirmar a reserva efetuando o pagamento no botão “confirmar reserva”.
+              <div class="row">
+                <div class="col-12" style="height: 200px">
+                  <img class="img-responsive img-center" src="img/pagamento.svg" height="100px">
+                  <br><br>
+                  <h4>Realize o pagamento</h4>
+                </div>
+              </div>
+              <p class="h6 text-justify" style="color:grey">Seu pedido será encaminhado ao proprietário. Se o pedido for aprovado, você deverá confirmar a reserva efetuando o pagamento no botão “confirmar reserva”.
               </p>
             </div>
 
@@ -712,7 +721,7 @@ function daysInMonth(month, year) {
               <br><br>
               <h4>Use o espaço e aproveite!</h4>
               <br>
-              <p class="h6" style="color:grey">Que tal deixar o espaço ainda melhor do que quando você o encontrou? É com carinho que as melhores coisas são feitas!
+              <p class="h6 text-justify" style="color:grey">Que tal deixar o espaço ainda melhor do que quando você o encontrou? É com carinho que as melhores coisas são feitas!
               </p>
             </div>
             <div class="col-lg-4 col-md-6 my-4">
@@ -720,7 +729,7 @@ function daysInMonth(month, year) {
               <br><br>
               <h4>Conte para a gente o que achou</h4>
               <br>
-              <p class="h6" style="color:grey">Depois do aluguel realizado, é hora de avaliar a experiência! Não deixe de contar o que achou do espaço e do responsável pelo aluguel, pois sua opinião será fundamental para os próximos que forem alugar :)
+              <p class="h6 text-justify" style="color:grey">Depois do aluguel realizado, é hora de avaliar a experiência! Não deixe de contar o que achou do espaço e do responsável pelo aluguel, pois sua opinião será fundamental para os próximos que forem alugar :)
               </p>
             </div>
           </div>
@@ -786,22 +795,6 @@ function daysInMonth(month, year) {
     <!-- Footer -->
 
     <div class="container-fluid justify-content-center text-center" style="background-color: black">
-
-      <!-- Linha 1 -->
-
-      <!-- <div class="row" style="margin-bottom: 7vw">
-        <div class="col-2">
-        </div>
-        <div class="col-8">
-          <br>
-          <span class="h3" style="color: white">Texto do footer Texto do footer Texto do footer Texto do footer</span>
-        </div>
-        <div class="col-2">
-        </div>
-      </div> -->
-
-      <!-- Linha 2 -->
-
       <div class="row justify-content-center" style="color: white;">
         <div class="col-3">
         </div>
