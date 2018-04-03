@@ -40,32 +40,42 @@ if($array[9] == 'consultorio'){
 if($array[9] == 'cozinha'){
     $arrayEspecifico = $busca -> retornarCozinhaDetalhado($conn,$idAnuncio);
 }
-/*
-if($array == 'consultorio'){
+
+if($array == 'academia'){
     $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
 }
 
-if($array == 'consultorio'){
+if($array == 'artes'){
     $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
 }
 
-if($array == 'consultorio'){
+if($array == 'aulas'){
     $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
 }
 
-if($array == 'consultorio'){
+if($array == 'costura'){
     $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
 }
 
-if($array == 'consultorio'){
+if($array == 'ensaio'){
     $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
 }
 
-if($array == 'consultorio'){
+if($array == 'fotografico'){
     $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
 }
-*/
 
+if($array == 'palestra'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'produtora'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
+
+if($array == 'workshop'){
+    $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+}
 
 $busca->addContador($conn, $idAnuncio);
 
@@ -596,7 +606,9 @@ if($session->vereficarLogin() != false){
                   <div class="row text-center justify-content-center pt-5">
                     <div class="col-lg-10 col-md-10 col-sm-12">
                       <h2> <b>Descrição:</b> </h2>
-                      <span><?php $aux = count($arrayEspecifico) -1; echo  $arrayEspecifico[$aux]; ?></span>
+                      <span><?php if ($arrayEspecifico != null || $arrayEspecifico != "") {
+                                     $aux = count($arrayEspecifico) -1; echo  $arrayEspecifico[$aux];
+                                   } ?></span>
                     </div>
                   </div>
                 </div>

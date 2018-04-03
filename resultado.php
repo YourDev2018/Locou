@@ -10,25 +10,30 @@ $seg  = new Seguranca();
 $tipo = $seg->filtro($_GET['t']);
 $editText = $seg->filtro($_GET['q']);
 
-$db = new FunctionsDB();
-$conn = $db->conectDB();
+if (!($tipo == "" || $tipo == null) ) {
+   $db = new FunctionsDB();
+    $conn = $db->conectDB();
 
-$busca = new BuscarEspacos();
+    $busca = new BuscarEspacos();
 
 
-$cont=0;
+    $cont=0;
 
-// if ($tipo == "todos") {
-$array = $busca -> buscarEspacoBairro($conn, $editText);
+    // if ($tipo == "todos") {
+    $array = $busca -> buscarEspacoBairro($conn, $editText);
 
-//  print_r ($array);
+    //  print_r ($array);
 
-// }else{
-// $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
+    // }else{
+    // $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, $editText);
 
-// }
+    // }
 
-$prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+    $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+  
+}
+
+   
 
 ?>
 
@@ -365,7 +370,7 @@ $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
       </div>
       <div class="row text-left">
         <div class="col-12 py-3 px-4">
-          <h5>Busca por Query do usuário <span class="h6" style="color: grey"> -  <?php echo count($array)/6; ?> resultado(s)</span> </h5>
+          <h5>Busca por Query do usuário <span class="h6" style="color: grey"> -  <?php  if($array!= "" || $array !=null ){ echo count($array)/6;} ?> resultado(s)</span> </h5>
         </div>
         <div class="col-12 pt-3 px-4">
           <select class="" name="ordemPesquisa">
@@ -382,7 +387,7 @@ $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
       </div>
 
       <div class="row px-4 py-4 text-left text-center">
-        <?php $aux = count($array)/6; for ($i=0; $i < $aux ; $i++) { ?>
+        <?php if($array!= "" || $array !=null ){ $aux = count($array)/6;} for ($i=0; $i < $aux ; $i++) { ?>
 
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div style="background-color: black">

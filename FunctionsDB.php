@@ -263,6 +263,28 @@
                 return "não logado workshop ";
             }
         }
+
+         function cadastrarPalestras($db, $idAnuncio, $climatizado, $modeloAr, $wifi, $vigilancia, $armarios, $limpeza, $copa, $numMesa, $numCadeira, $numQuadro, $numLousa, $numTelao, $numTv, $projetor, $som, $computador, $flip, $cafe, $agua, $buffet, $buffetExtra, $descricaoEquipamento, $descricaoAberta){
+             $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioPalestra(idAnuncio, climatizado, modeloAr, wifi, vigilancia, armarios, limpeza, copa, numMesa, numCadeira, numQuadro, numLousa, numTelao, numTv, projetor, som, computador, flip, cafe, agua, buffet, buffetExtra, descricaoEquipamento, descricaoAberta)
+                                    VALUES ('$idAnuncio', '$climatizado', '$modeloAr', '$wifi', '$vigilancia', '$armarios', '$limpeza', '$copa', '$numMesa', '$numCadeira', '$numQuadro', '$numLousa', '$numTelao', '$numTv', '$projetor', '$som', '$computador', '$flip', '$cafe', '$agua', '$buffet', '$buffetExtra', '$descricaoEquipamento', '$descricaoAberta')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed Palestra";
+                }
+            }else {
+                return "não logado Palestra ";
+            }
+        }
         
         function cadastrarEnsaio($db,  $idAnuncio, $camarim, $apoio, $barra, $espelho, $descricaoAberta){
             $session = new FunctionsSession(); 
@@ -286,7 +308,162 @@
             }
         }
 
-        
+        function cadastrarAulas($db,  $idAnuncio, $camarim, $apoio, $barra, $espelho, $descricaoAberta){
+            $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioAulas(idAnuncio, camarim, apoio, barra, espelho, descricaoAberta)
+                                    VALUES ('$idAnuncio', '$camarim', '$apoio', '$barra', '$espelho', '$descricaoAberta')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed ensaio";
+                }
+            }else {
+                    return "não logado ensaio ";
+            }
+        }
+
+        function cadastrarArtes($db,$idAnuncio, $forno, $macarico, $moldes, $bancada, $armario, $descricao){  
+            
+            
+             $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioArtes(idAnuncio, forno, macarico, moldes, bancada, armario, descricao)
+                                    VALUES ('$idAnuncio', '$forno', '$macarico', '$moldes', '$bancada', '$armario', '$descricao')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed ARTES";
+                }
+            }else {
+                    return "não logado ARTES ";
+            }
+
+        }
+
+        function cadastrarCostura($db,$idAnuncio, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao){
+            
+            
+            $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO (idAnuncio, recepcao, maquina, mobiliario, provador, armario, descricao)
+                                    VALUES ('$idAnuncio', '$recepcao', '$maquina', '$mobiliario', '$provador', '$armario', '$descricao')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed Costura";
+                }
+            }else {
+                    
+                return "não logado Costura ";
+            
+            }
+        }
+
+        function cadastrarAcademia($idAnuncio, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao){
+
+            
+
+             $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioAcademia(idAnuncio, tatame, armarios, bosu, rolo, maca, trapezio, baqueta, pilates, descricao)
+                                    VALUES ('$idAnuncio', '$tatame', '$armarios', '$bosu', '$rolo', '$maca', '$trapezio', '$baqueta', '$pilates', '$descricao')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed Academia";
+                }
+            }else {
+                    
+                return "não logado Academia ";
+            
+            }
+
+        }
+
+        function AnuncioFotografico($idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim, $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta){
+
+             $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioFotografico(idAnuncio, climatizado, modeloAr, altura, wifi, cozinha, banheiro, chuveiro, camarim, frigobar, agua, fundo, chroma, iluminacao, descricaoAberta)
+                                    VALUES ('$idAnuncio', '$climatizado', '$modeloAr', '$altura', '$wifi', '$cozinha', '$banheiro', '$chuveiro', '$camarim', '$frigobar', '$agua', '$fundo', '$chroma', '$iluminacao', '$descricaoAberta')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed fotografico";
+                }
+            }else {
+                    
+                return "Não logado Fotografico";
+            
+            }
+
+        }
+
+
+        function AnuncioProdutora($db, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim, $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta){
+
+             $session = new FunctionsSession(); 
+            if ($session->vereficarLogin()) {
+                $id = $session->vereficarLogin();
+            
+
+                $sql = "INSERT INTO AnuncioProdutora(idAnuncio, climatizado, modeloAr, altura, wifi, cozinha, banheiro, chuveiro, camarim, frigobar, agua, fundo, chroma, iluminacao, descricaoAberta)
+                                    VALUES ('$idAnuncio', '$climatizado', '$modeloAr', '$altura', '$wifi', '$cozinha', '$banheiro', '$chuveiro', '$camarim', '$frigobar', '$agua', '$fundo', '$chroma', '$iluminacao', '$descricaoAberta')";
+
+                if ($db->query($sql)===true) {
+                    print $db->error_log;
+                    return true;
+
+                }else{
+                    
+                    return "Insert failed produtora";
+                }
+            }else {
+                    
+                return "Não logado produtora";
+            
+            }
+
+        }
+
+
+
 
 
 

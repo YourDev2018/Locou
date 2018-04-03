@@ -157,6 +157,7 @@ $session = new FunctionsSession();
                 }
 
                 if ($categoria == "ensaio"){
+
                     $camarim = $seg->filtro3($_POST['camarim-ensaio']);
                     $apoio = $seg->filtro3($_POST['apoio-ensaio']);
                     $barra = $seg->filtro3($_POST['barra-ensaio']);
@@ -165,6 +166,138 @@ $session = new FunctionsSession();
                     print $resp = $db-> cadastrarEnsaio($conn, $aux, $camarim, $apoio, $barra, $espelho, $descricaoAberta);
 
                 }
+
+                if($categoria == "artes"){
+
+                    $forno = $seg->filtro3($_POST['forno-artes']);
+                    $macarico = $seg->filtro3($_POST['macarico-artes']);
+                    $moldes = $seg->filtro3($_POST['moldes-artes']);
+                    $bancada = $seg->filtro3($_POST['bancada-artes']);
+                    $armario = $seg->filtro3($_POST['armario-artes']);
+                    $descricao = $seg->filtro($_POST['descricao-geral-artes']);
+
+                    print $resp = $db-> cadastrarArtes($conn,$idAnuncio, $forno, $macarico, $moldes, $bancada, $armario, $descricao);
+                    
+                }
+
+                if($categoria == "costura"){
+                    
+                    $recepcao = $seg->filtro3($_POST['recepcao']);
+                    $maquina = $seg->filtro3($_POST['maquina']);
+                    $mobiliario = $seg->filtro3($_POST['mobiliario']);
+                    $provador = $seg->filtro3($_POST['provador']);
+                    $armario = $seg->filtro3($_POST['armario']);
+                    $descricao = $seg->filtro3($_POST['descricao']);
+
+                    print $resp = $db-> cadastrarCostura($db,$idAnuncio, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao);
+
+
+                }
+
+                if($categoria == "fotografico"){
+                    
+                    $climatizado = $seg->filtro3($_POST['climatizado-fotografico']);
+                    if ($climatizado == "sim") {
+                        $modeloAr = $seg->filtro3($_POST['modelo-ar-fotograficoaltura-fotografic']);
+                    }
+                    $altura = $seg->filtro3($_POST['altura-fotografico']);
+                    $wifi = $seg->filtro3($_POST['wifi-fotografico']);
+                    $cozinha = $seg->filtro3($_POST['cozinha-fotografico']);
+                    $banheiro = $seg->filtro3($_POST['banheiro-fotografico']);
+                    $chuveiro = $seg->filtro3($_POST['chuveiro-fotografico']);
+                    $camarim = $seg->filtro3($_POST['camarim-fotografico']);
+                    $frigobar = $seg->filtro3($_POST['frigobar-fotografico']);
+                    $agua = $seg->filtro3($_POST['agua-fotografico']);
+                    $agua = $seg->filtro3($_POST['fundo-fotografico']);
+                    $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
+                    $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
+                  //  $ = $seg->filtro3($_POST['']);
+                    
+                     print $resp = $db-> AnuncioFotografico($conn, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
+                      $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
+                }
+
+                if($categoria == "academia"){
+                    
+                    $tatame = $seg->filtro3($_POST['tatame-academia']);
+                    $armario = $seg->filtro3($_POST['armarios-academia']);
+                    $bosu = $seg->filtro3($_POST['bosu-academiarolo-academia']);
+                    $rolo = $seg->filtro3($_POST['rolo-academia']);
+                    $maca = $seg->filtro3($_POST['maca-academia']);
+                    $trapezio = $seg->filtro3($_POST['trapezio-academia']);
+                    $baqueta = $seg->filtro3($_POST['baqueta-academia']);
+                    $pilates = $seg->filtro3($_POST['pilates-academia']);
+                    $descricaoAberta = $seg->filtro3($_POST['descricao-geral-academia']);
+                    
+                    print $resp = $db-> cadastrarAcademia($idAnuncio, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao);
+
+                }
+
+                if($categoria == "palestra"){
+                    // workshop
+                     $climatizado = $seg->filtro3($_POST['climatizado-workshop']);
+                    if ($climatizado == "sim") {
+                        $modeloAr = $seg->filtro3($_POST['modelo-ar-workshop']);
+                    }
+                    $wifi = $seg->filtro3($_POST['wifi-workshop']);
+                    $vigilancia = $seg->filtro3($_POST['vigilancia-workshop']);
+                    $armarios = $seg->filtro3($_POST['armarios-workshop']);
+                    $limpeza = $seg->filtro3($_POST['limpeza-workshop']);
+                    $copa = $seg->filtro3($_POST['copa-workshop']);
+                    $numMesa = $seg->filtro2($_POST['mesa-workshop']);
+                    $numCadeira= $seg->filtro2($_POST['cadeira-workshop']);
+                    $numQuadro = $seg->filtro2($_POST['quadro-workshop']);
+                    $numLousa = $seg->filtro2($_POST['lousa-workshop']);
+                    $numTelao = $seg->filtro2($_POST['telao-workshop']);
+                    $numTv = $seg->filtro2($_POST['tv-workshop']);
+                    $projetor = $seg->filtro3($_POST['projetor-workshop']);
+                    $som = $seg->filtro3($_POST['som-workshop']);
+                    $computador = $seg->filtro3($_POST['computador-office-workshop']);
+                    $flip = $seg->filtro3($_POST['flip-workshop']);
+                    $cafe = $seg->filtro3($_POST['cafe-workshop']);
+                    $agua= $seg->filtro3($_POST['agua-workshop']);
+                    $buffet = $seg->filtro3($_POST['buffet-workshop']);
+                    $buffetExtra = $seg->filtro3($_POST['buffet-extra-workshop']);
+                    $descricaoEquipamento = $seg->filtro($_POST['descricao-equipamento-workshop']);
+                    $descricaoAberta = $seg->filtro($_POST['descricao-aberta-workshop']);
+
+                    print $resp = $db-> cadastrarPalestras($conn,$aux, $climatizado, $modeloAr, $wifi, $vigilancia, $armarios, $limpeza, $copa, $numMesa, $numCadeira, $numQuadro, $numLousa, $numTelao, $numTv, $projetor, $som, $computador, $flip, $cafe, $agua, $buffet, $buffetExtra, $descricaoEquipamento, $descricaoAberta);
+                }
+
+                if($categoria == "aulas"){
+                    // ensaio
+                    $camarim = $seg->filtro3($_POST['camarim-ensaio']);
+                    $apoio = $seg->filtro3($_POST['apoio-ensaio']);
+                    $barra = $seg->filtro3($_POST['barra-ensaio']);
+                    $espelho = $seg->filtro3($_POST['espelho-ensaio']);
+                    $descricaoAberta = $seg->filtro($_POST['descricao-aberta-ensaio']);
+                    print $resp = $db-> cadastrarAulas($conn, $aux, $camarim, $apoio, $barra, $espelho, $descricaoAberta);
+
+                }
+
+                if($categoria == "produtora"){
+
+                    $climatizado = $seg->filtro3($_POST['climatizado-fotografico']);
+                    $modeloAr = $seg->filtro3($_POST['modelo-ar-fotograficoaltura-fotografic']);
+                    $altura = $seg->filtro3($_POST['altura-fotografico']);
+                    $wifi = $seg->filtro3($_POST['wifi-fotografico']);
+                    $cozinha = $seg->filtro3($_POST['cozinha-fotografico']);
+                    $banheiro = $seg->filtro3($_POST['banheiro-fotografico']);
+                    $chuveiro = $seg->filtro3($_POST['chuveiro-fotografico']);
+                    $camarim = $seg->filtro3($_POST['camarim-fotografico']);
+                    $frigobar = $seg->filtro3($_POST['frigobar-fotografico']);
+                    $agua = $seg->filtro3($_POST['agua-fotografico']);
+                    $agua = $seg->filtro3($_POST['fundo-fotografico']);
+                    $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
+                    $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
+
+                     print $resp = $db-> AnuncioProdutora($conn, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
+                      $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
+
+                }
+
+
+
                 
             }else {
                 print "Não boolean";
