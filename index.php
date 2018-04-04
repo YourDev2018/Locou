@@ -220,8 +220,8 @@ function daysInMonth(month, year) {
           <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
           <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
-            
 
+          <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
         <?php } ?>
 
       </span>
@@ -760,8 +760,8 @@ function daysInMonth(month, year) {
 
           <div class="row">
 
-            <div class="col">
-              <a href="resultado.php"><button type="button" class="btn btn-outline-warning"><h2>Procure espaços</h2></button></a>
+            <div class="col-12">
+              <a href="resultado.php"><button type="button" class="btn btn-outline-warning"><h2>Procure <br class="mobile"> espaços</h2></button></a>
               <br><br>
             </div>
 
@@ -780,19 +780,21 @@ function daysInMonth(month, year) {
               <h1 id="sobre"><b>Sobre</b><br><br></h1>
             </div>
           </div>
-          <div class="row">
-            <h5>
-              <b>
-                Conectamos espaços produtivos com os profissionais que precisam alugar por hora, turno, ou dia. São espaços totalmente equipados e montados que garantem flexibilidade aos profissionais para que se dediquem mais ao serviço prestado e não se preocupem com questões administrativas e burocráticas É um novo jeito de aluguel sem o comprometimento de um contrato de longo-prazo.
-                <br>
-                Trazemos a solução de aluguel sob demanda com facilidade e segurança que só uma plataforma especializada pode dar.
-              </b>
-            </h5>
-            <br><br>
+          <div class="row" justify-content-center>
+            <div class="col-12 px-2">
+              <h5>
+                <b>
+                  Conectamos espaços produtivos com os profissionais que precisam alugar por hora, turno, ou dia. São espaços totalmente equipados e montados que garantem flexibilidade aos profissionais para que se dediquem mais ao serviço prestado e não se preocupem com questões administrativas e burocráticas É um novo jeito de aluguel sem o comprometimento de um contrato de longo-prazo.
+                  <br>
+                  Trazemos a solução de aluguel sob demanda com facilidade e segurança que só uma plataforma especializada pode dar.
+                </b>
+              </h5>
+              <br><br>
+            </div>
           </div>
           <div class="row text-center">
             <div class="col-12">
-              <a href="anunciar.php"><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. É grátis</h2></button></a>
+              <a href="anunciar.php"><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. <br class="mobile"> É grátis</h2></button></a>
               <br><br>
             </div>
           </div>
@@ -815,7 +817,7 @@ function daysInMonth(month, year) {
             <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
               <img class="logo-navbar" src="img/locou_logo.png">
               <br><br>
-              <h6>Conectando pessoas produtivas a espaços ociosos</h6>
+              <h6 style="color: grey">Conectando pessoas produtivas a espaços ociosos</h6>
               <br><br>
             </div>
 
@@ -840,10 +842,8 @@ function daysInMonth(month, year) {
                 <br><br>
               </h6>
               <h6 class="text-center">
-                <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
-                <br><br>
-                <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
-                <br><br>
+                <a class="px-2" href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i></a>
+                <a class="px-2" href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i></a>
               </h6>
             </div>
 
