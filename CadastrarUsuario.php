@@ -42,8 +42,8 @@
              $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, 'imagespadraopersona.jpg');
              header("Location: ".$pag."?status=true&id=$id");
              return; 
-
-        }else{
+            
+        }else{  
 
             $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome);
 

@@ -163,9 +163,9 @@ function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
 
      }
 */
-     $ext = strtolower(substr($_FILES['foto1']['name'],-4));
-     $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
-     $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
+    $ext = strtolower(substr($_FILES['foto1']['name'],-4));
+    $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
+    $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
 
     $temp  = $_FILES['foto1']['tmp_name'];
     $temp2 = $_FILES['foto2']['tmp_name'];
