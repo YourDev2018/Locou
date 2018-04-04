@@ -21,10 +21,39 @@ require_once 'Espaco.php';
 //DBMoip();
 //Pedido();
 require_once 'BuscarEspacos.php';
+returnEspaco();
 //returnEspaco();
 //returnConsultorio();
 //anuncioAdd();
-usuarioCliente();
+// usuarioCliente();
+
+
+
+  //  print  $data = date('Y-m-d')."\n  ";
+/*
+    $data = date('Ymd', strtotime("next Wednesday"));
+
+    $sem = 2;
+  for( $i=0;$i<$sem;$i++){
+                        
+        if(($segI == null || $segF == null || $segI == '' || $segF == '' )){
+
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+           // echo strftime('%A, %d de %B de %Y', strtotime('today'));
+
+            $data = (string)$data;
+            $date = new DateTime($data);
+            $dias = $i*7;
+            $date->add(new DateInterval('P'.$dias.'D'));
+            print " ".$data = $date->format('Ymd');
+           // $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$segI,$segF);
+
+           
+        
+        }
+    }
+*/
 
 
 function usuarioCliente(){
@@ -46,8 +75,8 @@ function returnEspaco(){
   $db = new FunctionsDB();
   $conn = $db->conectDB();
   $busca = new BuscarEspacos();
-  $array = $busca->retornarEspacoMaisVistos($conn);
-  print_r ($array);
+  $array = $busca->buscarEspacoBairroTipo($conn, 'cozinha', '');
+  //print_r ($array);
 
    
 

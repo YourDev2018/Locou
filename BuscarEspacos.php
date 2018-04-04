@@ -609,9 +609,12 @@ class BuscarEspacos
 
     }
 
-     public function buscarEspacoBairroTipo($db, $tipo, $busca){
+    public function buscarEspacoBairroTipo($db, $tipo, $busca){
 
-        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE categoria ='$tipo' AND bairro = '$busca' OR titulo = '$busca' OR cidade = '$busca' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+        $result =  $db->query(" SELECT *
+                                FROM AnuncioBasico 
+                                WHERE ( titulo LIKE '%{$busca}%' OR  bairro LIKE '%{$busca}%' OR cidade LIKE '%{$busca}%' ) 
+                                AND categoria LIKE '$tipo' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
@@ -623,6 +626,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
                         
                         $array[$cont] = $row['idAnuncio'];
+                        print " ".$array[$cont];
                         $cont++;
 
                         $array[$cont] = $row['fotoUm'];
@@ -635,6 +639,7 @@ class BuscarEspacos
                         $array[$cont] = $row['cidade'];
                         $cont++;
                         $array[$cont] = $row['preco'];
+                        $cont++;
                 
 
             }
@@ -642,6 +647,10 @@ class BuscarEspacos
             return $array;        
         }
 
+
+    }
+
+    public function retornarDiasNaoDisponiveis($db, $id){
 
     }
     
