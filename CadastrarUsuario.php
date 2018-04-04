@@ -30,16 +30,20 @@
        // $seg->filtro4($_FILES['foto']['name'], $pag);
 
      //  $_FILES
-       var_dump ( $_FILES['foto']) ;
-       print $ext = strtolower(substr($_FILES['foto']['name'],-4)) . " ext* ";
-       print $temp = $_FILES['foto']['tmp_name'] . " temp * ";
-       print  $novo_nome = md5(time().$temp).$ext . " novo *  ";
+       $temp  = $_FILES['foto1']['tmp_name'];
+       //var_dump ( $_FILES['foto']) ;
+       print $ext = strtolower(substr($_FILES['foto']['name'],-4));
+       print $temp = $_FILES['foto']['tmp_name'] ;
+       print  $novo_nome = md5(time().$temp).$ext ;
 
-     //   if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == "") {
-         //    $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, '');
-        //      header("Location: ".$pag."?status=true&id=$id");
-       //       return;                                                                               
-   //     }else{
+        if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == "")
+        {
+
+             $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, 'imagespadraopersona.jpg');
+             header("Location: ".$pag."?status=true&id=$id");
+             return; 
+
+        }else{
 
             $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome);
 
@@ -65,18 +69,18 @@
                 $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
                 ftp_close($ftp);
              
-         //       header("Location: ".$pag."?status=true&id=$id");
+                header("Location: ".$pag."?status=true&id=$id");
                 return;
                 
             }else {
-              //      print "erro ao cadastrar  ";
-       //        header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
+                //      print "erro ao cadastrar  ";
+                header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
                 return;
             }
-        //}
+        }
     }else {
    //      print "erro email ja existente ";
-     //  header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
+      header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
         return;
     }
 
