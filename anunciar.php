@@ -1398,7 +1398,7 @@ function daysInMonth(month, year) {
                       <div class="col-6">
                         <div class="row justify-content-center px-2">
                           <div class="col-10">
-                              <input type="text" maxlength="2"name="hora-inicio-unico" class="form-control" style="text-align: center" readonly value="2">
+                              <input type="text" maxlength="2"name="semanas-unico" class="form-control" style="text-align: center" readonly value="2">
                               <br>
                           </div>
                           <div class="col-12">
@@ -3841,8 +3841,7 @@ function daysInMonth(month, year) {
           </div>
         </div>
 
-        <div class="container-fluid justify-content-center text-center" style="background-color: black">
-          <div class="row justify-content-center" style="color: white;">
+          <div class="row justify-content-center" style="color: white;background-color: black">
             <div class="col-3">
             </div>
             <div class="col-lg-6 col-md-10 col-sm-12">
@@ -3887,7 +3886,6 @@ function daysInMonth(month, year) {
             </div>
           </div>
 
-        </div>
 
       </form>
 

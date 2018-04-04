@@ -1012,7 +1012,7 @@ if($session->vereficarLogin() != false){
                         <div class="col-4">
                           <button onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-warning">Aluguel Direto</button>
                         </div>
-                        <input type="text" name="tipoAluguel" value="" id="tipoAluguel">
+                        <input style="display: none" type="text" name="tipoAluguel" value="" id="tipoAluguel">
                       </div>
                     </div>
                     <div class="col-12 px-5" style="background-color: black">
@@ -1633,8 +1633,7 @@ if($session->vereficarLogin() != false){
 
           </div>
 
-          <div class="container-fluid justify-content-center text-center" style="background-color: black">
-            <div class="row justify-content-center" style="color: white;">
+            <div class="row justify-content-center" style="color: white;background-color: black">
               <div class="col-3">
               </div>
               <div class="col-lg-6 col-md-10 col-sm-12">
@@ -1678,8 +1677,6 @@ if($session->vereficarLogin() != false){
               <div class="col-3">
               </div>
             </div>
-
-          </div>
 
         </div>
 
