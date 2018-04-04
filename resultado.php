@@ -169,7 +169,7 @@ if (!($tipo == "" || $tipo == null) ) {
         <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
         <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <a href="<?php echo "logout.php?pag=resultado"?>" style="color:white" class="mx-2">Logout</a> 
+        <a href="<?php echo "logout.php?pag=resultado"?>" style="color:white" class="mx-2">Logout</a>
       <?php } ?>
     </span>
   </nav>
@@ -200,7 +200,7 @@ if (!($tipo == "" || $tipo == null) ) {
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
             <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-            <a href="#" style="color:white" class="mx-2">Logout</a>
+            <a href="<?php echo "logout.php?pag=resultado"?>" style="color:white" class="mx-2">Logout</a>
           <?php } ?>
           <br><br>
 
@@ -221,7 +221,7 @@ if (!($tipo == "" || $tipo == null) ) {
       </div>
       <div class="modal-body">
         <div class="pt-2" style="background-color:white">
-          <form action="CadastrarUsuario.php?pag=index" method="post">
+          <form action="CadastrarUsuario.php?pag=index" enctype="multipart/form-data" method="post">
             <div class="row text-center justify-content-center">
               <div class="col-12 pb-3">
                 <label for="nome">Nome</label>
