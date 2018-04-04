@@ -3841,56 +3841,52 @@ function daysInMonth(month, year) {
           </div>
         </div>
 
-        <div class="row justify-content-center" style="color: white;background-color: black">
-          <div class="container-fluid justify-content-center text-center" style="background-color: black">
-            <div class="row justify-content-center" style="color: white;">
-              <div class="col-3">
-              </div>
-              <div class="col-lg-6 col-md-10 col-sm-12">
-                <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
+        <div class="container-fluid justify-content-center text-center" style="background-color: black">
+          <div class="row justify-content-center" style="color: white;">
+            <div class="col-3">
+            </div>
+            <div class="col-lg-6 col-md-10 col-sm-12">
+              <div class="row" style="margin-top: 2vw; margin-bottom: 1.5vw">
 
-                  <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
-                    <img class="logo-navbar" src="img/locou_logo.png">
-                    <br><br>
-                    <h6>Conectando pessoas produtivas a espaços ociosos</h6>
-                    <br><br>
-                  </div>
-
-                  <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
-                    <h6>
-                      <a href="#" style="color: white">Termo de Uso</a>
-                      <br><br>
-                      <a href="#" style="color: white">Política de Privacidade</a>
-                      <br><br>
-                      <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
-                      <br><br>
-                      <a href="resultado.php" style="color: white">Procure um espaço</a>
-                      <br><br>
-                      <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co</a>
-                    </h6>
-                    <br><br>
-                  </div>
-
-                  <div class="col-lg-4 col-md-4 col-sm-6 text-left">
-                    <h6 class="text-center" style="color: grey">
-                      Nossas Redes sociais
-                      <br><br>
-                    </h6>
-                    <h6 class="text-center">
-                      <a href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i> <br><br> locou.com</a>
-                      <br><br>
-                      <a href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i> <br><br> locou</a>
-                      <br><br>
-                    </h6>
-                  </div>
-
+                <div class="col-lg-4 col-md-4 col-sm-12" style="border-right: 2px solid grey;">
+                  <img class="logo-navbar" src="img/locou_logo.png">
+                  <br><br>
+                  <h6 style="color: grey">Conectando pessoas produtivas a espaços ociosos</h6>
+                  <br><br>
                 </div>
-              </div>
-              <div class="col-3">
+
+                <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
+                  <h6>
+                    <a href="#" style="color: white">Termo de Uso</a>
+                    <br><br>
+                    <a href="#" style="color: white">Política de Privacidade</a>
+                    <br><br>
+                    <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
+                    <br><br>
+                    <a href="resultado.php" style="color: white">Procure um espaço</a>
+                    <br><br>
+                    <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co  </a>
+                  </h6>
+                  <br><br>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 text-left">
+                  <h6 class="text-center" style="color: grey">
+                    Nossas Redes sociais
+                    <br><br>
+                  </h6>
+                  <h6 class="text-center">
+                    <a class="px-2" href="https://www.facebook.com/locou.co/" style="color: white;text-decoration: none"><i class="fa fa-facebook-square" style="color: #6092F7; font-size: 200%"></i></a>
+                    <a class="px-2" href="https://www.linkedin.com/company/locou/" style="color: white;text-decoration: none"><i class="fa fa-linkedin" style="color: #0077B5; font-size: 200%"></i></a>
+                  </h6>
+                </div>
+
               </div>
             </div>
-
+            <div class="col-3">
+            </div>
           </div>
+
         </div>
 
       </form>
