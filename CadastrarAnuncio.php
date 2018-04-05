@@ -5,6 +5,13 @@ require_once 'Seguranca.php';
 require_once 'FunctionsSession.php';
 require_once 'FunctionsDB.php';
 
+$servidor = 'yourdev-com-br.umbler.net'; // Endereço
+$usuario = 'yourdev-com-br'; // Usuário
+$senha = 'yourdev2017'; // Senha
+
+$ftp = ftp_connect($servidor);
+$login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
+
 // descrição básica 
 $seg = new Seguranca();
 $titulo = $seg->filtro($_POST['titulo']);
@@ -12,7 +19,7 @@ $categoria = $seg->filtro($_POST['categoria']);
 $bairro = $seg->filtro($_POST['bairro']);
 $cidade = $seg->filtro($_POST['cidade']);
 $uf = $seg->filtro($_POST['uf']);
-$precoHora = $seg->filtro($_POST['hora']);
+print $precoHora = $seg->filtro($_POST['hora']);
 
 // descrição geral
 $metragem = $seg->filtro($_POST['metragem']);
@@ -31,13 +38,24 @@ if ($estacionamento == "sim") {
 }
 
 $transporte = $seg->filtro3($_POST['transporte']);
-//$preco4Hora = $seg->filtro2($_POST['4hora']);
-//$preco5Hora = $seg->filtro2($_POST['5hora']);
-//$precoTurno = $seg->filtro2($_POST['dia-turno']);
-//$precoSemana = $seg->filtro2($_POST['semana']);
-//$precoMes = $seg->filtro2($_POST['mes']);
-// consutório 
 
+$fotoPanoramica1 = $_FILES['pano1']['tmp_name'];
+$fotoPanoramica2 = $_FILES['pano2']['tmp_name'];
+
+
+print ' '.$preco4Hora = $seg->filtro($_POST['4hora']);
+print ' '. $preco5Hora = $seg->filtro($_POST['5hora']);
+print ' '.$precoTurno = $seg->filtro($_POST['dia-turno']);
+print ' '.$precoSemana = $seg->filtro($_POST['semana']);
+print ' '.$precoMes = $seg->filtro($_POST['mes']);
+print ' '.$reservaInsta = $seg->filtro($_POST['reservaInsta']);// consutório //Perguntar ao proprietario ou direto
+
+
+if($reservaInsta=='on'){
+    $reservaInsta = 'sim';
+}else{
+    $reservaInsta = 'nao';
+}
 
 $db = new FunctionsDB();
 $conn = $db->conectDB();
@@ -46,11 +64,34 @@ $db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
 $session = new FunctionsSession();
 
     if ($session->vereficarLogin()) {
-            $aux = basico($conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora);
+            $aux = basico($ftp, $conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora);
 
         if (is_numeric($aux)) {
+
+            $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
             
-            $result = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte  );    
+            if($fotoPanoramica1 == '' || $fotoPanoramica1 == NULL){
+                $novo_nome_pan = '';
+            }else{
+                $temp_pan1  = $_FILES['pano1']['tmp_name'];
+                $ext = strtolower(substr($_FILES['pano1']['name'],-4));
+                $novo_nome_pan = md5(time().$temp_pan1).$ext;
+                $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan, $temp, FTP_BINARY);
+            }
+
+             if($fotoPanoramica2 == '' || $fotoPanoramica2 == NULL){
+                $novo_nome_pan = '';
+            }else{
+                $temp_pan2  = $_FILES['pano2']['tmp_name'];
+                $ext = strtolower(substr($_FILES['pano2']['name'],-4));
+                $novo_nome_pan2 = md5(time().$temp_pan2).$ext;
+                $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan2, $temp, FTP_BINARY);
+            }
+
+            $result = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $quatroHora, $cincoHora, $turno, $semana, $mes);    
+            
+            
+            
             
             if ($result === true) {
 
@@ -66,7 +107,7 @@ $session = new FunctionsSession();
 
                     if ($result == true) {
 
-                        cadastrarEspacoEspecifico($categoria);
+                        cadastrarEspacoEspecifico($conn, $categoria);
 
                     }else{
 
@@ -241,64 +282,75 @@ $session = new FunctionsSession();
 
 
 
-function basico($conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
+function basico($ftp, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
 
    
     $id = $_SESSION['id'];
-    //var_dump ($_FILES['foto1']);
-/*
-     if((isset($_FILES['foto1']) || isset($_FILES['foto2']) || isset($_FILES['foto3'])){
-
-        
-
-     }
-*/
+ 
     $ext = strtolower(substr($_FILES['foto1']['name'],-4));
     $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
     $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
+    $ext4 = strtolower(substr($_FILES['foto4']['name'],-4));
+    $ext5 = strtolower(substr($_FILES['foto5']['name'],-4));
+
+    $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
 
     $temp  = $_FILES['foto1']['tmp_name'];
+    if($temp == null || $temp == ''){
+        $novo_nome = '';
+    }else{
+        $novo_nome = md5(time().$temp).$ext;
+        $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $temp, FTP_BINARY);
+    }
+
     $temp2 = $_FILES['foto2']['tmp_name'];
+     if($temp2 == null || $temp2 == ''){
+        $novo_nome2 = '';
+    }else{
+        $novo_nome2 = md5(time().$temp2).$ext;
+        $envio = ftp_put($ftp, $ftp_pasta.$novo_nome2, $temp2, FTP_BINARY);
+    }
+
     $temp3 = $_FILES['foto3']['tmp_name'];
-    
-    $novo_nome = md5(time().$temp).$ext;
-    $novo_nome2 = md5(time().$temp2).$ext;
-    $novo_nome3 = md5(time().$temp3).$ext;
+      if($temp3 == null || $temp3 == ''){
+        $novo_nome3 = '';
+    }else{
+        $novo_nome3 = md5(time().$temp3).$ext;
+        $envio = ftp_put($ftp, $ftp_pasta.$novo_nome3, $temp3, FTP_BINARY);
+    }
+
+    $temp4  = $_FILES['foto4']['tmp_name'];
+    if($temp4 == null || $temp4 == ''){
+        $novo_nome4 = '';
+    }else{
+        $novo_nome4 = md5(time().$temp4).$ext;
+        $envio = ftp_put($ftp, $ftp_pasta.$novo_nome4, $temp4, FTP_BINARY);
+    }
+
+    $temp5  = $_FILES['foto5']['tmp_name'];
+    if($temp5 == null || $temp5 == ''){
+        $novo_nome5 = '';
+    }else{
+        $novo_nome5 = md5(time().$temp5).$ext;
+        $envio = ftp_put($ftp, $ftp_pasta.$novo_nome5, $temp5, FTP_BINARY);
+    }
+
+    $db = new FunctionsDB();
+
+    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$precoHora, $novo_nome,$novo_nome2,$novo_nome3,$novo_nome4,$novo_nome5);
+
+  //  ftp_close($ftp);
+    return $aux;
+
     
     //$diretorio = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
    // move_uploaded_file($temp,$diretorio.$novo_nome);
     // http://www.yourdev.com.br/clientes/locou/img/anuncio/
-    $db = new FunctionsDB();
-
-    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$precoHora, $novo_nome,$novo_nome2,$novo_nome3);
-
-    $servidor = 'yourdev-com-br.umbler.net'; // Endereço
-    $usuario = 'yourdev-com-br'; // Usuário
-    $senha = 'yourdev2017'; // Senha
-
-    if (!$ftp = ftp_connect($servidor)){
-        print "erro";
-       // exit();
-    } // Retorno: true ou false
-
-    $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
-
-    $local_arquivo = $temp; // Localização (local)
-    $local_arquivo2 = $temp2; // Localização (local)
-    $local_arquivo3 = $temp3; // Localização (local)
-    $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
-    $ftp_arquivo = $_FILES['foto1']['name']; // Nome do arquivo (externo)
-    $envio = ftp_put($ftp, $ftp_pasta.$novo_nome, $local_arquivo, FTP_BINARY);
-    $envio2 = ftp_put($ftp, $ftp_pasta.$novo_nome2, $local_arquivo2, FTP_BINARY);
-    $envio3 = ftp_put($ftp, $ftp_pasta.$novo_nome3, $local_arquivo3, FTP_BINARY);
-
-    ftp_close($ftp);
-    return $aux;
 
 }
 
-function cadastrarEspacoEspecifico($categoria){
+function cadastrarEspacoEspecifico($conn,$categoria){
     if ($categoria == "consultorio") {
                             print "Entrou consultorio";
                             $climatizado = $seg->filtro3($_POST['climatizado-consultorio']);
