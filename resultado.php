@@ -24,9 +24,11 @@ if (!($tipo == "" || $tipo == null) ) {
 
     $cont=0;
 
-    // if ($tipo == "todos") {
-    $array = $busca -> buscarEspacoBairro($conn, $editText);
-
+     if ($tipo == "todos") {
+        $array = $busca -> buscarEspacoBairro($conn, $editText);
+     }else{
+        $array = $busca -> buscarEspacoBairroTipo($conn, $tipo, $editText);
+     }
     //  print_r ($array);
 
     // }else{

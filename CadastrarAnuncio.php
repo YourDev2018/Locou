@@ -69,10 +69,13 @@ $session = new FunctionsSession();
                         cadastrarEspacoEspecifico($categoria);
 
                     }else{
+
                         print "Erro ao cadastrar horário único";
+
                     }        
                 }
                 
+                /*
                 if($tipoAluguel == 'direto'){
 
                     $data = $_POST['data-unico-pick'];
@@ -81,8 +84,7 @@ $session = new FunctionsSession();
                     $mes =  $aux[3].$aux[4];
                     $ano =  $aux[6].$aux[7].$aux[8].$aux[9];
                    
-                    
-
+                
                     $horaInicio = $_POST['hora-inicio-unico'];
                     $horaFim = $_POST['hora-fim-unico'];
                     $nunMes = 2;
@@ -100,8 +102,25 @@ $session = new FunctionsSession();
                         print "Erro ao cadastrar horário único";
                     }        
                 }
+                */
 
+                
                 if($tipoAluguel == 'reincidente'){
+                    
+
+                    $sem = $_POST['semana-unico'];
+                   // $data = date('Ymd');
+
+                    $nextSunday = date('Ymd', strtotime("next Sunday"));
+                    $nextMonday = date('Ymd', strtotime("next Monday"));
+                    $nextTuesday = date('Ymd', strtotime("next Tuesday"));
+                    $nextWednesday = date('Ymd', strtotime("next Wednesday"));
+                    $nextThursday = date('Ymd', strtotime("next Thursday"));
+                    $nextFriday = date('Ymd', strtotime("next Friday"));
+                    $nextSaturday= date('Ymd', strtotime("next Saturday"));
+                    
+                    $domI = $_POST['dom-inicio-periodo'];
+                    $domF = $_POST['dom-fim-periodo'];
 
                     $segI = $_POST['seg-inicio-periodo'];
                     $segF = $_POST['seg-fim-periodo'];
@@ -121,22 +140,93 @@ $session = new FunctionsSession();
                     $sabI = $_POST['sab-inicio-periodo'];
                     $sabF = $_POST['sab-fim-periodo'];
 
-                    $domI = $_POST['dom-inicio-periodo'];
-                    $domF = $_POST['dom-fim-periodo'];
 
-                    $sem = $_POST['semana-direto'];
+                    for( $i=0;$i<$sem;$i++){
 
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$horaInicio,$horaFim);
+                         if(!($domI == null || $domF == null || $domI == '' || $domF == '' )){
 
-                    if ($result == true) {
+                            $data = (string)$nextSunday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$domI,$domF);
+                        }
+                        
+                        if(!($segI == null || $segF == null || $segI == '' || $segF == '' )){
 
-                        cadastrarEspacoEspecifico($categoria);
+                            
+                            $data = (string)$nextMonday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$segI,$segF);
+                        }
 
-                    }else{
-                        print "Erro ao cadastrar horário único";
-                    }        
+                        
+
+                        if(!($terI == null || $terF == null || $terI == '' || $terF == '' )){
+
+                            $data = (string)$nextTuesday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$terI,$terF);
+                        }
+
+                        if(!($quaI == null || $quaI == null || $quaI == '' || $quaF == '' )){
+
+                            $data = (string)$nextWednesday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$quaI,$quaF);
+                        }
+
+
+                        if(!($quiI == null || $quiI == null || $quiI == '' || $quiF == '' )){
+
+                            $data = (string)$nextThursday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$quiI,$quiF);
+                        }
+                        
+                        if(!($sexI == null || $sexI == null || $sexI == '' || $sexF == '' )){
+
+                            $data = (string)$nextFriday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$sexI,$sexF);
+                        }
+
+                        if(!($sabI == null || $sabI == null || $sabI == '' || $sabF == '' )){
+
+                            $data = (string)$nextSaturday;
+                            $date = new DateTime($data);
+                            $dias = $i*7;
+                            $date->add(new DateInterval('P'.$dias.'D'));
+                            $data = $date->format('Ymd');
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$sabI,$sabF);
+                        }
+                    }
+
+                     if ($result == true) {
+
+                            cadastrarEspacoEspecifico($categoria);
+
+                        }else{
+                            print "Erro ao cadastrar horário único";
+                    } 
                 }
-
+            
             }else {
                 print "Não boolean";
             }
