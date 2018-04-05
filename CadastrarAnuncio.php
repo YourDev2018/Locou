@@ -43,12 +43,12 @@ $fotoPanoramica1 = $_FILES['pano1']['tmp_name'];
 $fotoPanoramica2 = $_FILES['pano2']['tmp_name'];
 
 
-print ' '.$preco4Hora = $seg->filtro($_POST['4hora']);
-print ' '. $preco5Hora = $seg->filtro($_POST['5hora']);
-print ' '.$precoTurno = $seg->filtro($_POST['dia-turno']);
-print ' '.$precoSemana = $seg->filtro($_POST['semana']);
-print ' '.$precoMes = $seg->filtro($_POST['mes']);
-print ' '.$reservaInsta = $seg->filtro($_POST['reservaInsta']);// consutório //Perguntar ao proprietario ou direto
+$preco4Hora = $seg->filtro($_POST['4hora']);
+$preco5Hora = $seg->filtro($_POST['5hora']);
+$precoTurno = $seg->filtro($_POST['dia-turno']);
+$precoSemana = $seg->filtro($_POST['semana']);
+$precoMes = $seg->filtro($_POST['mes']);
+$reservaInsta = $seg->filtro($_POST['reservaInsta']);// consutório //Perguntar ao proprietario ou direto
 
 
 if($reservaInsta=='on'){
@@ -76,7 +76,7 @@ $session = new FunctionsSession();
                 $temp_pan1  = $_FILES['pano1']['tmp_name'];
                 $ext = strtolower(substr($_FILES['pano1']['name'],-4));
                 $novo_nome_pan = md5(time().$temp_pan1).$ext;
-                $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan, $temp, FTP_BINARY);
+                $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan, $temp_pan1 , FTP_BINARY);
             }
 
              if($fotoPanoramica2 == '' || $fotoPanoramica2 == NULL){
@@ -85,14 +85,11 @@ $session = new FunctionsSession();
                 $temp_pan2  = $_FILES['pano2']['tmp_name'];
                 $ext = strtolower(substr($_FILES['pano2']['name'],-4));
                 $novo_nome_pan2 = md5(time().$temp_pan2).$ext;
-                $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan2, $temp, FTP_BINARY);
+                $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan2, $temp_pan2, FTP_BINARY);
             }
 
-            $result = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $quatroHora, $cincoHora, $turno, $semana, $mes);    
-            
-            
-            
-            
+            $result = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $preco4Hora, $preco5Hora, $precoTurno, $precoSemana, $precoMes);    
+                        
             if ($result === true) {
 
                 $tipoAluguel = $_POST['tipoAluguel'];
@@ -351,9 +348,12 @@ function basico($ftp, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHo
 }
 
 function cadastrarEspacoEspecifico($conn,$categoria){
-    if ($categoria == "consultorio") {
-                            print "Entrou consultorio";
-                            $climatizado = $seg->filtro3($_POST['climatizado-consultorio']);
+
+                            $seg = new Seguranca();
+
+                            if ($categoria == "consultorio") {
+                                print "Entrou consultorio";
+                                $climatizado = $seg->filtro3($_POST['climatizado-consultorio']);
                             if ($climatizado == "sim") {
                                 $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
                             }

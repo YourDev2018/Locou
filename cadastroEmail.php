@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+
+
+<?php
+ require_once 'FunctionsSession.php';
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
+$status = $_GET['status'];
+$funcao= $_GET['funcao'];
+
+$session = new FunctionsSession();
+$session -> iniciarSession();
+
+if($status == 'true' && ($_SESSION['id'] != null || $_SESSION['id'] != '' )){
+
+  header('location: anunciarEmail.php');
+
+}
+
+?>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -131,7 +150,7 @@
           </div>
           <div class="col-12">
             <div class="pt-4" style="background-color:white; color: black">
-              <form action="CadastrarUsuario.php?pag=index" enctype="multipart/form-data" method="post">
+              <form action="CadastrarUsuario.php?pag=cadastroEmail" enctype="multipart/form-data" method="post">
                 <div class="col-12 pb-3">
                   <label for="nome">Nome</label>
                   <input type="text" class="form-control" id="nome" name="nome">
