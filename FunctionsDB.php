@@ -463,12 +463,12 @@
                                     VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim')";
 
                 if ($db->query($sql)===true) {  
-                    print $db->error_log;
+                   // print $db->error_log;
                     return true;
 
                 }else{
-                    print 'Insert failed cadastrar horário disponível';
-                    return "Insert failed cadastrar horário disponível";
+                  //  print 'failed';
+                    return "Insert failed";
                 }
 
         }
