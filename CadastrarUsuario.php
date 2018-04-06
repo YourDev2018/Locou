@@ -14,17 +14,21 @@
     $pag = $_GET['pag'].".php";
     $id = $_GET['id'];
 
+    $session->logout();
+
     if ($session->vereficarLogin() == 'false') {
 
         $seg = new Seguranca();
 
-        $email = $seg->filtro4($_POST['email'],$pag,$id );
-        $senha = $seg->filtro4($_POST['senha'],$pag,$id );
-        $first = $seg->filtro4($_POST['nome'],$pag,$id );
-        $last = $seg->filtro4($_POST['sobrenome'],$pag,$id );
-        $dia = $seg->filtro4($_POST['dia'],$pag,$id ); 
-        $mes = $seg->filtro4($_POST['mes'],$pag,$id ); 
-        $ano = $seg->filtro4($_POST['ano'],$pag,$id ); 
+        print $email = $seg->filtro4($_POST['email'],$pag,$id );
+        print $senha = $seg->filtro4($_POST['senha'],$pag,$id );
+        print $first = $seg->filtro4($_POST['nome'],$pag,$id );
+        print $last = $seg->filtro4($_POST['sobrenome'],$pag,$id );
+        print  $tel = $seg->filtro4($_POST['telefone'],$pag,$id );
+
+        $dia = $seg->filtro($_POST['dia'],$pag,$id ); 
+        $mes = $seg->filtro($_POST['mes'],$pag,$id ); 
+        $ano = $seg->filtro($_POST['ano'],$pag,$id ); 
 
         $nascimento = $ano."-".$mes."-".$dia;
        // $seg->filtro4($_FILES['foto']['name'], $pag);
@@ -39,7 +43,7 @@
         if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == "")
         {
 
-             $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, 'imagespadraopersona.jpg');
+             $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, 'imagespadraopersona.jpg',$tel);
              header("Location: ".$pag."?status=true&id=$id");
              return; 
             
@@ -73,14 +77,14 @@
                 return;
                 
             }else {
-                //      print "erro ao cadastrar  ";
+                      print "erro ao cadastrar  ";
                 header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
                 return;
             }
         }
     }else {
-   //      print "erro email ja existente ";
-      header('Location:'.$pag."?funcao=cadastro&status=false&id=$id");
+         print "erro email ja existente ";
+      header('Location:'.$pag."?funcao=cadastro&status=false&id=".$id."&erro=usuariologado");
         return;
     }
 

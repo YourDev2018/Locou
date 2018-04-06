@@ -32,6 +32,7 @@
             if ($string == null || $string =="") {
               //  header("location:anunciar.php");
                // exit();
+               return '';
             }else{
                 return $string;
             }

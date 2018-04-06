@@ -69,12 +69,12 @@
 
         }
 
-        function cadastrarUsuarioBasico($db, $email,$senha,$firstName, $lastName, $dataNascimento, $foto){
+        function cadastrarUsuarioBasico($db, $email,$senha,$firstName, $lastName, $dataNascimento, $foto, $tel){
             
                 $aux = $this->emailExist($db, $email);
                 if (!$aux) {
                     $senha = md5($senha);
-                    $sql = "INSERT INTO UsuarioBasico(email,senha,firstName,lastName,dataNascimento, foto) VALUES ('$email','$senha','$firstName','$lastName', '$dataNascimento', '$foto')";
+                    $sql = "INSERT INTO UsuarioBasico(email,senha,firstName,lastName,dataNascimento, foto, telefone) VALUES ('$email','$senha','$firstName','$lastName', '$dataNascimento', '$foto', '$tel')";
                     if ($db->query($sql)===true) {
                         $_SESSION['logado']=true;
                         $this->loginEmailSenha($db,$email,$senha);
@@ -175,13 +175,8 @@
 
         }
 
-        function cadastrarAnuncioDescGeral($db, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $quatroHora, $cincoHora, $turno, $semana, $mes ){
-            
-            $session = new FunctionsSession(); 
-            if ($session->vereficarLogin()) {
-                $id = $session->vereficarLogin();
-            
-
+        function cadastrarAnuncioDescGeral($db, $idAnuncio, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $quatroHora, $cincoHora, $turno, $semana, $mes ){
+          
                 $sql = "INSERT INTO AnuncioDescricaoGeral(idAnuncio, metragem, recepcao, banheiroPrivativo, banheiro, casaOuPredio, elevador, estacionamento, proprioOuRotativo,transporte, fotoPanoramicaUm, fotoPanoramicaDois, quatroHora, cincoHora, turno, semana, mes, reservaInsta, lat, lng )
                         VALUES ('$idAnuncio','$metragem','$recepcao','$banheiroPrivativo','$banheiroComum','$casaPredio','$elevador','$estacionamento','$proprioRotativo',' $transporte', '$novo_nome_pan', '$novo_nome_pan2','$quatroHora','$cincoHora','$turno','$semana','$mes', '$reservaInsta', '0.0','0.0')";
 
@@ -190,11 +185,10 @@
                     return true;
 
                 }else{
+                  //  print "Insert failed";
                     return "Insert failed";
                 }
-            }else {
-                return "não logado";
-            }
+           
 
         }
 
@@ -468,12 +462,12 @@
                 $sql = "INSERT INTO RegistroAnunciosDisponiveis(idAnuncio, dataEntrada, horaEntrada, dataSaida, horaSaida)
                                     VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim')";
 
-                if ($db->query($sql)===true) {
+                if ($db->query($sql)===true) {  
                     print $db->error_log;
                     return true;
 
                 }else{
-                    
+                    print 'Insert failed cadastrar horário disponível';
                     return "Insert failed cadastrar horário disponível";
                 }
 
