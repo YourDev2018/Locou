@@ -451,21 +451,17 @@ function daysInMonth(month, year) {
     <!-- Seção Titulo -->
 
     <div class="container-fluid justify-content-center text-center" style="background-color: #FFC107;">
-      <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1">
-        </div>
-        <div class="col-lg-10 col-md-10 col-sm-10 titulo-anuncie">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-11 col-md-11 col-sm-11 titulo-anuncie">
           <br>
-          <h1>
+          <h2>
             <b>Anuncie o seu espaço.</b>
             <br>
-          </h1>
-          <h3>
+          </h2>
+          <h4>
             Com o Locou você ganha dinheiro alugando naqueles intervalos que você não estiver usando.
-          </h3>
+          </h4>
           <br>
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1">
         </div>
       </div>
     </div>

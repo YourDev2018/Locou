@@ -407,21 +407,17 @@ function daysInMonth(month, year) {
     <!-- Seção Titulo -->
 
     <div class="container-fluid justify-content-center text-center" style="background-color: #FFC107;">
-      <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1">
-        </div>
-        <div class="col-lg-10 col-md-10 col-sm-10 titulo-anuncie">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-11 col-md-11 col-sm-11 titulo-anuncie">
           <br>
-          <h1>
+          <h2>
             <b>Anuncie o seu espaço.</b>
             <br>
-          </h1>
-          <h3>
-            Com o Locou você ganha dinheiro alugando naqueles intervalos que não estiver usando
-          </h3>
+          </h2>
+          <h4>
+            Com o Locou você ganha dinheiro alugando naqueles intervalos que você não estiver usando.
+          </h4>
           <br>
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1">
         </div>
       </div>
     </div>
@@ -617,18 +613,6 @@ function daysInMonth(month, year) {
               </div>
             </div>
 
-            <br>
-
-            <div class="row justify-content-center">
-              <div class="col-12 text-center">
-                Clique aqui para ativar a opção de "reserva instantânea". <input type="checkbox" name="reservaInsta" class="ml-3 form-check-input" id="reservaInsta">
-              </div>
-              <div class="col-12 text-center">
-                <a><span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span></a>
-              </div>
-            </div>
-
-
             <br><br>
           </div>
           <div class="col-lg-2 col-md-1 col-sm-0">
@@ -656,7 +640,7 @@ function daysInMonth(month, year) {
             <div id="descricao_geral_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
               <div class="col-8" style="color: black">
                 <br>
-                  <h5>Marque a opção que melhor descreve o seu espaço</h5>
+                  <h5>Marque a opção que melhor descreva o seu espaço</h5>
                 <br>
               </div>
             </div>
@@ -855,7 +839,7 @@ function daysInMonth(month, year) {
             <div id="periodo_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
               <div class="col-8" style="color: black">
                 <br>
-                  <h5>Qual é o período que você está disponibilizando o espaço para o aluguel</h5>
+                  <h5>Quais são os dias e horários que você está disponibilizando o espaço para o aluguel</h5>
                 <br>
               </div>
             </div>
@@ -865,7 +849,7 @@ function daysInMonth(month, year) {
 
             <div class="row">
               <div class="col-12 text-center">
-                Qual é o período de aluguel?
+                Qual é o período que você está disponibilizando o espaço para o aluguel
                 <br><br>
               </div>
 
@@ -1720,26 +1704,310 @@ function daysInMonth(month, year) {
                           <h6>Hora de início do Aluguel</h6>
                         </div>
                         <div class="col-12">
-                            <input type="text" name="ter-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <input id="ter-hora-inicio" type="text" name="ter-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
                             <br>
                         </div>
                         <div class="col-12">
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                            <span onclick="ter_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span onclick="ter_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
+                      <script>
+                      var ter_hora_inicio_unico = 12;
+                      var ter_hora_fim_unico = 18;
+                      var ter_min_inicio_unico = 00;
+                      var ter_min_fim_unico = 00;
+                      var ter_hora_inicio_unico_id = document.getElementById("ter-hora-inicio");
+                      var ter_hora_fim_unico_id = document.getElementById("ter-hora-fim");
+                      function ter_hora_fim_aluguel_menos()
+                      {
+                        ter_min_fim_unico = ter_min_fim_unico - 30;
+                        if(ter_min_fim_unico < 0)
+                        {
+                          ter_min_fim_unico = 30;
+                          ter_hora_fim_unico = ter_hora_fim_unico - 1;
+                          if(ter_hora_fim_unico<=0)
+                          {
+                            ter_hora_fim_unico = 23;
+                            ter_min_fim_unico = 30;
+                          }
+                        }
+                        if(ter_hora_inicio_unico<=0)
+                        {
+                          ter_hora_inicio_unico = 23;
+                          ter_min_fim_unico = 30;
+                        }
+                        if((ter_hora_inicio_unico == ter_hora_fim_unico))
+                        {
+                          ter_hora_inicio_unico = ter_hora_inicio_unico - 1;
+                          if(ter_hora_fim_unico<=0)
+                          {
+                            ter_hora_inicio_unico = 23;
+                            ter_min_fim_unico = 00;
+                          }
+                        }
+                        if(ter_hora_inicio_unico <= 9)
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        if(ter_hora_fim_unico <= 9)
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                      }
+                      function ter_hora_fim_aluguel_mais()
+                      {
+                        ter_min_fim_unico = ter_min_fim_unico + 30;
+                        if(ter_min_fim_unico >= 60)
+                        {
+                          ter_min_fim_unico = 00;
+                          ter_hora_fim_unico = ter_hora_fim_unico + 1;
+                          if(ter_hora_fim_unico>=24)
+                          {
+                            ter_hora_fim_unico = 00;
+                          }
+                        }
+                        if(ter_hora_inicio_unico>=24)
+                        {
+                          ter_hora_inicio_unico = 00;
+                        }
+                        if((ter_hora_fim_unico == ter_hora_inicio_unico))
+                        {
+                          ter_hora_inicio_unico = ter_hora_inicio_unico + 1;
+                        }
+                        if(ter_hora_inicio_unico <= 9)
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        if(ter_hora_fim_unico <= 9)
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                      }
+                      function ter_hora_inicio_aluguel_menos()
+                      {
+                        ter_min_inicio_unico = ter_min_inicio_unico - 30;
+                        if(ter_min_inicio_unico < 0)
+                        {
+                          ter_min_inicio_unico = 30;
+                          ter_hora_inicio_unico = ter_hora_inicio_unico - 1;
+                          if(ter_hora_inicio_unico<=0)
+                          {
+                            ter_hora_inicio_unico = 23;
+                            ter_min_inicio_unico = 30;
+                          }
+                        }
+                        if(ter_hora_fim_unico<=0)
+                        {
+                          ter_hora_fim_unico = 23;
+                          ter_min_inicio_unico = 30;
+                        }
+                        if((ter_hora_inicio_unico == ter_hora_fim_unico))
+                        {
+                          ter_hora_fim_unico = ter_hora_fim_unico - 1;
+                          if(ter_hora_fim_unico<=0)
+                          {
+                            ter_hora_fim_unico = 23;
+                            ter_min_inicio_unico = 00;
+                          }
+                        }
+                        if(ter_hora_inicio_unico <= 9)
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        if(ter_hora_fim_unico <= 9)
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                      }
+                      function ter_hora_inicio_aluguel_mais()
+                      {
+                        ter_min_inicio_unico = ter_min_inicio_unico + 30;
+                        if(ter_min_inicio_unico >= 60)
+                        {
+                          ter_min_inicio_unico = 00;
+                          ter_hora_inicio_unico = ter_hora_inicio_unico + 1;
+                          if(ter_hora_inicio_unico>=24)
+                          {
+                            ter_hora_inicio_unico = 00;
+                          }
+                        }
+                        if(ter_hora_fim_unico>=24)
+                        {
+                          ter_hora_fim_unico = 00;
+                        }
+                        if((ter_hora_inicio_unico == ter_hora_fim_unico))
+                        {
+                          ter_hora_fim_unico = ter_hora_fim_unico + 1;
+                        }
+                        if(ter_hora_inicio_unico <= 9)
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_inicio_unico == 0)
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+                          }
+                        }
+                        if(ter_hora_fim_unico <= 9)
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(ter_min_fim_unico == 0)
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+                          }
+                        }
+                        console.log(ter_hora_inicio_unico+":"+ter_min_inicio_unico);
+                        console.log(ter_hora_fim_unico+":"+ter_min_fim_unico);
+                      }
+                      </script>
                       <br>
                       <div class="row px-2">
                         <div class="col-12" style="color: #FFCE00">
                           <h6>Hora de fim do Aluguel</h6>
                         </div>
                         <div class="col-12">
-                            <input type="text" name="ter-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <input id="ter-hora-fim" type="text" name="ter-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
                             <br>
                         </div>
                         <div class="col-12">
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                            <span onclick="ter_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span onclick="ter_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
                     </div>
@@ -1754,26 +2022,310 @@ function daysInMonth(month, year) {
                           <h6>Hora de início do Aluguel</h6>
                         </div>
                         <div class="col-12">
-                            <input type="text" name="qua-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+                            <input id="qua-hora-inicio" type="text" name="qua-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
                             <br>
                         </div>
                         <div class="col-12">
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                            <span onclick="qua_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span onclick="qua_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
+                      <script>
+                      var qua_hora_inicio_unico = 12;
+                      var qua_hora_fim_unico = 18;
+                      var qua_min_inicio_unico = 00;
+                      var qua_min_fim_unico = 00;
+                      var qua_hora_inicio_unico_id = document.getElementById("qua-hora-inicio");
+                      var qua_hora_fim_unico_id = document.getElementById("qua-hora-fim");
+                      function qua_hora_fim_aluguel_menos()
+                      {
+                        qua_min_fim_unico = qua_min_fim_unico - 30;
+                        if(qua_min_fim_unico < 0)
+                        {
+                          qua_min_fim_unico = 30;
+                          qua_hora_fim_unico = qua_hora_fim_unico - 1;
+                          if(qua_hora_fim_unico<=0)
+                          {
+                            qua_hora_fim_unico = 23;
+                            qua_min_fim_unico = 30;
+                          }
+                        }
+                        if(qua_hora_inicio_unico<=0)
+                        {
+                          qua_hora_inicio_unico = 23;
+                          qua_min_fim_unico = 30;
+                        }
+                        if((qua_hora_inicio_unico == qua_hora_fim_unico))
+                        {
+                          qua_hora_inicio_unico = qua_hora_inicio_unico - 1;
+                          if(qua_hora_fim_unico<=0)
+                          {
+                            qua_hora_inicio_unico = 23;
+                            qua_min_fim_unico = 00;
+                          }
+                        }
+                        if(qua_hora_inicio_unico <= 9)
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        if(qua_hora_fim_unico <= 9)
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                      }
+                      function qua_hora_fim_aluguel_mais()
+                      {
+                        qua_min_fim_unico = qua_min_fim_unico + 30;
+                        if(qua_min_fim_unico >= 60)
+                        {
+                          qua_min_fim_unico = 00;
+                          qua_hora_fim_unico = qua_hora_fim_unico + 1;
+                          if(qua_hora_fim_unico>=24)
+                          {
+                            qua_hora_fim_unico = 00;
+                          }
+                        }
+                        if(qua_hora_inicio_unico>=24)
+                        {
+                          qua_hora_inicio_unico = 00;
+                        }
+                        if((qua_hora_fim_unico == qua_hora_inicio_unico))
+                        {
+                          qua_hora_inicio_unico = qua_hora_inicio_unico + 1;
+                        }
+                        if(qua_hora_inicio_unico <= 9)
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        if(qua_hora_fim_unico <= 9)
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                      }
+                      function qua_hora_inicio_aluguel_menos()
+                      {
+                        qua_min_inicio_unico = qua_min_inicio_unico - 30;
+                        if(qua_min_inicio_unico < 0)
+                        {
+                          qua_min_inicio_unico = 30;
+                          qua_hora_inicio_unico = qua_hora_inicio_unico - 1;
+                          if(qua_hora_inicio_unico<=0)
+                          {
+                            qua_hora_inicio_unico = 23;
+                            qua_min_inicio_unico = 30;
+                          }
+                        }
+                        if(qua_hora_fim_unico<=0)
+                        {
+                          qua_hora_fim_unico = 23;
+                          qua_min_inicio_unico = 30;
+                        }
+                        if((qua_hora_inicio_unico == qua_hora_fim_unico))
+                        {
+                          qua_hora_fim_unico = qua_hora_fim_unico - 1;
+                          if(qua_hora_fim_unico<=0)
+                          {
+                            qua_hora_fim_unico = 23;
+                            qua_min_inicio_unico = 00;
+                          }
+                        }
+                        if(qua_hora_inicio_unico <= 9)
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        if(qua_hora_fim_unico <= 9)
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                      }
+                      function qua_hora_inicio_aluguel_mais()
+                      {
+                        qua_min_inicio_unico = qua_min_inicio_unico + 30;
+                        if(qua_min_inicio_unico >= 60)
+                        {
+                          qua_min_inicio_unico = 00;
+                          qua_hora_inicio_unico = qua_hora_inicio_unico + 1;
+                          if(qua_hora_inicio_unico>=24)
+                          {
+                            qua_hora_inicio_unico = 00;
+                          }
+                        }
+                        if(qua_hora_fim_unico>=24)
+                        {
+                          qua_hora_fim_unico = 00;
+                        }
+                        if((qua_hora_inicio_unico == qua_hora_fim_unico))
+                        {
+                          qua_hora_fim_unico = qua_hora_fim_unico + 1;
+                        }
+                        if(qua_hora_inicio_unico <= 9)
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_inicio_unico == 0)
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+                          }
+                          else
+                          {
+                            qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+                          }
+                        }
+                        if(qua_hora_fim_unico <= 9)
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                        else
+                        {
+                          if(qua_min_fim_unico == 0)
+                          {
+                            document.getElementById("quar-hora-fim").value = qua_hora_fim_unico+":"+"00";
+                          }
+                          else
+                          {
+                            document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+                          }
+                        }
+                        console.log(qua_hora_inicio_unico+":"+qua_min_inicio_unico);
+                        console.log(qua_hora_fim_unico+":"+qua_min_fim_unico);
+                      }
+                      </script>
                       <br>
                       <div class="row px-2">
                         <div class="col-12" style="color: #FFCE00">
                           <h6>Hora de fim do Aluguel</h6>
                         </div>
                         <div class="col-12">
-                            <input type="text" name="qua-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+                            <input id="qua-hora-fim" type="text" name="qua-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
                             <br>
                         </div>
                         <div class="col-12">
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                            <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                            <span onclick="qua_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                            <span onclick="qua_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
                     </div>
@@ -2035,6 +2587,17 @@ function daysInMonth(month, year) {
                   <div class="input-group-text">R$</div>
                   <input type="text" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
+              </div>
+            </div>
+
+            <br><br>
+
+            <div class="row justify-content-center">
+              <div class="col-12 text-center">
+                Clique aqui para ativar a opção de "reserva instantânea". <input type="checkbox" name="reservaInsta" class="ml-3 form-check-input" id="reservaInsta">
+              </div>
+              <div class="col-12 text-center">
+                <a><span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span></a>
               </div>
             </div>
 
