@@ -1310,13 +1310,13 @@ function daysInMonth(month, year) {
                 </div>
               </div>
 
-              <input id="seg-periodo-sel" type="text" name="seg-periodo-sel" value="nao" readonly style="display: ">
-              <input id="ter-periodo-sel" type="text" name="ter-periodo-sel" value="nao" readonly style="display: ">
-              <input id="qua-periodo-sel" type="text" name="qua-periodo-sel" value="nao" readonly style="display: ">
-              <input id="qui-periodo-sel" type="text" name="qui-periodo-sel" value="nao" readonly style="display: ">
-              <input id="sex-periodo-sel" type="text" name="sex-periodo-sel" value="nao" readonly style="display: ">
-              <input id="sab-periodo-sel" type="text" name="sab-periodo-sel" value="nao" readonly style="display: ">
-              <input id="dom-periodo-sel" type="text" name="dom-periodo-sel" value="nao" readonly style="display: ">
+              <input id="seg-periodo-sel" type="text" name="seg-periodo-sel" value="nao" readonly style="display: none">
+              <input id="ter-periodo-sel" type="text" name="ter-periodo-sel" value="nao" readonly style="display: none">
+              <input id="qua-periodo-sel" type="text" name="qua-periodo-sel" value="nao" readonly style="display: none">
+              <input id="qui-periodo-sel" type="text" name="qui-periodo-sel" value="nao" readonly style="display: none">
+              <input id="sex-periodo-sel" type="text" name="sex-periodo-sel" value="nao" readonly style="display: none">
+              <input id="sab-periodo-sel" type="text" name="sab-periodo-sel" value="nao" readonly style="display: none">
+              <input id="dom-periodo-sel" type="text" name="dom-periodo-sel" value="nao" readonly style="display: none">
               <div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
 
                 <script>
