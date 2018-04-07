@@ -620,7 +620,7 @@ function daysInMonth(month, year) {
                 Rua/Avenida:
               </div>
               <div class="col-5 text-left">
-                <input type="text" name="rua" class="form-control" id="rua" placeholder="Ex: Rua Passos">
+                <input type="text" name="rua" class="form-control" id="rua-a" placeholder="Ex: Rua Passos">
               </div>
             </div>
 
@@ -642,7 +642,7 @@ function daysInMonth(month, year) {
                 Complemento:
               </div>
               <div class="col-5 text-left">
-                <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Ex: Ap 220 Bloco 3">
+                <input type="text" name="complemento" class="form-control" id="complemento-a" placeholder="Ex: Ap 220 Bloco 3">
               </div>
             </div>
 
@@ -888,17 +888,17 @@ function daysInMonth(month, year) {
 
               <!-- Labels -->
 
-              <div class="col-4 text-center">
+              <!-- <div class="col-4 text-center">
                 <label class="form-check-label" for="tempoAluguel-unico">Aluguel Único (Para um dia específico)
                   <br> <span style="color: grey" data-toggle="modal" data-target="#saibaMaisPeriodoUnico">Saiba Mais</span>
                 </label>
-              </div>
-              <div class="col-4 text-center">
+              </div> -->
+              <div class="col-6 text-center">
                 <label class="form-check-label" for="tempoAluguel-reincidente">Aluguel Reincidente
                   <br> <span style="color: grey" data-toggle="modal" data-target="#saibaMaisPeriodoReincidente">Saiba Mais</span>
                 </label>
               </div>
-              <div class="col-4 text-center">
+              <div class="col-6 text-center">
                 <label class="form-check-label" for="tempoAluguel-direto">Aluguel Exclusivo
                   <br> <span style="color: grey" data-toggle="modal" data-target="#saibaMaisPeriodoDireto">Saiba Mais</span>
                 </label>
@@ -913,12 +913,12 @@ function daysInMonth(month, year) {
               </div> -->
               <div class="col-6 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
+                <input onclick="calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
                 <br><br>
               </div>
               <div class="col-6 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
+                <input onclick="calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
                 <br><br>
               </div>
 
@@ -1310,6 +1310,13 @@ function daysInMonth(month, year) {
                 </div>
               </div>
 
+              <input id="seg-periodo-sel" type="text" name="seg-periodo-sel" value="nao" readonly style="display: ">
+              <input id="ter-periodo-sel" type="text" name="ter-periodo-sel" value="nao" readonly style="display: ">
+              <input id="qua-periodo-sel" type="text" name="qua-periodo-sel" value="nao" readonly style="display: ">
+              <input id="qui-periodo-sel" type="text" name="qui-periodo-sel" value="nao" readonly style="display: ">
+              <input id="sex-periodo-sel" type="text" name="sex-periodo-sel" value="nao" readonly style="display: ">
+              <input id="sab-periodo-sel" type="text" name="sab-periodo-sel" value="nao" readonly style="display: ">
+              <input id="dom-periodo-sel" type="text" name="dom-periodo-sel" value="nao" readonly style="display: ">
               <div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
 
                 <script>
@@ -1320,11 +1327,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("segunda-caixa-periodo").style.display = '';
                       document.getElementById("segunda-bot-periodo").classList.add("active");
+                      document.getElementById("seg-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("segunda-caixa-periodo").style.display = 'none';
                       document.getElementById("segunda-bot-periodo").classList.remove("active");
+                      document.getElementById("seg-periodo-sel").value = "nao";
                     }
                   }
                   function terca_botao_periodo()
@@ -1333,11 +1342,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("terca-caixa-periodo").style.display = '';
                       document.getElementById("terca-bot-periodo").classList.add("active");
+                      document.getElementById("ter-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("terca-caixa-periodo").style.display = 'none';
                       document.getElementById("terca-bot-periodo").classList.remove("active");
+                      document.getElementById("ter-periodo-sel").value = "nao";
                     }
                   }
                   function quarta_botao_periodo()
@@ -1346,11 +1357,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("quarta-caixa-periodo").style.display = '';
                       document.getElementById("quarta-bot-periodo").classList.add("active");
+                      document.getElementById("qua-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("quarta-caixa-periodo").style.display = 'none';
                       document.getElementById("quarta-bot-periodo").classList.remove("active");
+                      document.getElementById("qua-periodo-sel").value = "nao";
                     }
                   }
                   function quinta_botao_periodo()
@@ -1359,11 +1372,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("quinta-caixa-periodo").style.display = '';
                       document.getElementById("quinta-bot-periodo").classList.add("active");
+                      document.getElementById("qui-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("quinta-caixa-periodo").style.display = 'none';
                       document.getElementById("quinta-bot-periodo").classList.remove("active");
+                      document.getElementById("qui-periodo-sel").value = "nao";
                     }
                   }
                   function sexta_botao_periodo()
@@ -1372,11 +1387,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("sexta-caixa-periodo").style.display = '';
                       document.getElementById("sexta-bot-periodo").classList.add("active");
+                      document.getElementById("sex-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("sexta-caixa-periodo").style.display = 'none';
                       document.getElementById("sexta-bot-periodo").classList.remove("active");
+                      document.getElementById("sex-periodo-sel").value = "nao";
                     }
                   }
                   function sabado_botao_periodo()
@@ -1385,11 +1402,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("sabado-caixa-periodo").style.display = '';
                       document.getElementById("sabado-bot-periodo").classList.add("active");
+                      document.getElementById("sab-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("sabado-caixa-periodo").style.display = 'none';
                       document.getElementById("sabado-bot-periodo").classList.remove("active");
+                      document.getElementById("sab-periodo-sel").value = "nao";
                     }
                   }
                   function domingo_botao_periodo()
@@ -1398,11 +1417,13 @@ function daysInMonth(month, year) {
                     {
                       document.getElementById("domingo-caixa-periodo").style.display = '';
                       document.getElementById("domingo-bot-periodo").classList.add("active");
+                      document.getElementById("dom-periodo-sel").value = "sim";
                     }
                     else
                     {
                       document.getElementById("domingo-caixa-periodo").style.display = 'none';
                       document.getElementById("domingo-bot-periodo").classList.remove("active");
+                      document.getElementById("dom-periodo-sel").value = "nao";
                     }
                   }
                 </script>
