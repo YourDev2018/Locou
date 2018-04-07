@@ -285,16 +285,14 @@ $session = new FunctionsSession();
                         }
                     }
 
-                   
+                    $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
+                    print (" ( $aux ) ");
 
-                     if ($result == true) {
+                    $db->closeDB($conn);
+                    $session ->logout();
+                    header('location: fimEmail.php');
 
-                           $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
-                           print (" ( $aux ) ");
-
-                        }else{
-                            print "Erro ao cadastrar horário único";
-                    }
+                      
                 }
 
             }else {
