@@ -18,6 +18,9 @@ $titulo = $seg->filtro($_POST['titulo']);
 $categoria = $seg->filtro($_POST['categoria']);
 $bairro = $seg->filtro($_POST['bairro']);
 $cidade = $seg->filtro($_POST['cidade']);
+$rua = $seg->filtro($_POST['rua']);
+$num = $seg->filtro($_POST['numero']);
+$complemento = $seg->filtro($_POST['complemento']);
 $uf = $seg->filtro($_POST['uf']);
 print $precoHora = $seg->filtro($_POST['hora']);
 
@@ -64,7 +67,7 @@ $db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
 $session = new FunctionsSession();
 
     if ($session->vereficarLogin()) {
-            $aux = basico($ftp, $db, $conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora);
+            $aux = basico($ftp, $db, $conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua, $num, $complemento );
             print (" ( $aux ) ");
             $idAnuncioAux = $aux;
         if (is_numeric($aux)) {
@@ -308,7 +311,7 @@ $session = new FunctionsSession();
 
 
 
-function basico($ftp,$db, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
+function basico($ftp,$db, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua,$num,$complemento ){
 
 
     $id = $_SESSION['id'];
@@ -363,7 +366,7 @@ function basico($ftp,$db, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $pre
 
     
 
-    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$precoHora, $novo_nome,$novo_nome2,$novo_nome3,$novo_nome4,$novo_nome5);
+    $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$precoHora, $novo_nome,$novo_nome2,$novo_nome3,$novo_nome4,$novo_nome5, $rua,$num,$complemento);
     print " Cadastrar anuncio basico :".$aux ;
   //  ftp_close($ftp);
     return $aux;

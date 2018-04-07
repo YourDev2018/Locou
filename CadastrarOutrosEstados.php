@@ -6,6 +6,8 @@
 
     $seg = new Seguranca();
     $db = new FunctionsDB();
+    $session = new FunctionsSession();
+    $session -> iniciarSession();
 
 
     $nome = $seg->filtro($_POST['fora-nome']);
@@ -20,12 +22,15 @@
 
     $sql = "INSERT INTO OutrosEstados(nome, cidade, estado, email, celular, tipo, outraInformacao) VALUES ('$nome','$cidade','$estado','$email','$celular','$categoria','$descricao')";
 
-    if ($db->query($sql)===true) {
-        $this->closeDB($db);
+    if ($conn->query($sql)===true) {
+        $db->closeDB($conn);
+        $session -> logout();
+        header('location: cadastroEmail.php');
         return true;
     }else{
-        $this->closeDB($db);
-        return "Insert failed outros estados";
+        $db->closeDB($db);
+        header('location: anunciarEmail.php');
+        return false;
     }
 
 ?>
