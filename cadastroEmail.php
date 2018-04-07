@@ -124,23 +124,21 @@ if($status == 'true' && ($_SESSION['id'] != null || $_SESSION['id'] != '' )){
       </div>
     </div>
 
-    <div class="row" style="background-color: #FFC107">
-      <div class="col-lg-1 col-md-1 col-sm-1">
-      </div>
-      <div class="col-lg-10 col-md-10 col-sm-10 titulo-anuncie">
-        <br>
-        <h1>
-          <b>Anuncie o seu espaço.</b>
+
+      <div class="row justify-content-center text-center" style="background-color: #FFC107;">
+        <div class="col-lg-11 col-md-11 col-sm-11 titulo-anuncie">
           <br>
-        </h1>
-        <h3>
-          Com o Locou você ganha dinheiro alugando naqueles intervalos que não estiver usando
-        </h3>
-        <br>
+          <h2>
+            <b>Anuncie o seu espaço.</b>
+            <br>
+          </h2>
+          <h4>
+            Com o Locou você ganha dinheiro alugando naqueles intervalos que você não estiver usando.
+          </h4>
+          <br>
+        </div>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-1">
-      </div>
-    </div>
+    
 
     <div class="row justify-content-center text-center py-5" id="dados_basicos">
       <div class="col-lg-8 col-md-10 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">

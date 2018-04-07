@@ -12,7 +12,7 @@ $senha = 'yourdev2017'; // Senha
 $ftp = ftp_connect($servidor);
 $login = ftp_login($ftp, $usuario, $senha); // Retorno: true ou fals
 
-// descrição básica 
+// descrição básica
 $seg = new Seguranca();
 $titulo = $seg->filtro($_POST['titulo']);
 $categoria = $seg->filtro($_POST['categoria']);
@@ -39,8 +39,8 @@ if ($estacionamento == "sim") {
 
 $transporte = $seg->filtro3($_POST['transporte']);
 
-$fotoPanoramica1 = $_FILES['pano1']['tmp_name'];
-$fotoPanoramica2 = $_FILES['pano2']['tmp_name'];
+print_r($fotoPanoramica1 = $_FILES['pano1']['tmp_name']);
+print_r($fotoPanoramica2 = $_FILES['pano2']['tmp_name']);
 
 
 $preco4Hora = $seg->filtro($_POST['4hora']);
@@ -51,7 +51,7 @@ $precoMes = $seg->filtro($_POST['mes']);
 $reservaInsta = $seg->filtro($_POST['reservaInsta']);// consutório //Perguntar ao proprietario ou direto
 
 
-if($reservaInsta=='on'){
+if($reservaInsta=='on'){    
     $reservaInsta = 'sim';
 }else{
     $reservaInsta = 'nao';
@@ -64,12 +64,13 @@ $db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
 $session = new FunctionsSession();
 
     if ($session->vereficarLogin()) {
-            $aux = basico($ftp, $conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora);
-
+            $aux = basico($ftp, $db, $conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora);
+            print (" ( $aux ) ");
+            $idAnuncioAux = $aux;
         if (is_numeric($aux)) {
 
             $ftp_pasta = '/public/clientes/locou/img/anuncio/'; // Pasta (externa)
-            
+
             if($fotoPanoramica1 == '' || $fotoPanoramica1 == NULL){
                 $novo_nome_pan = '';
             }else{
@@ -80,7 +81,7 @@ $session = new FunctionsSession();
             }
 
              if($fotoPanoramica2 == '' || $fotoPanoramica2 == NULL){
-                $novo_nome_pan = '';
+                $novo_nome_pan2 = '';
             }else{
                 $temp_pan2  = $_FILES['pano2']['tmp_name'];
                 $ext = strtolower(substr($_FILES['pano2']['name'],-4));
@@ -88,11 +89,15 @@ $session = new FunctionsSession();
                 $envio = ftp_put($ftp, $ftp_pasta.$novo_nome_pan2, $temp_pan2, FTP_BINARY);
             }
 
-            $result = $db->cadastrarAnuncioDescGeral($conn, $aux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $preco4Hora, $preco5Hora, $precoTurno, $precoSemana, $precoMes);    
-                        
-            if ($result === true) {
+            $aux = $db->cadastrarAnuncioDescGeral($conn, $idAnuncioAux, $metragem, $recepcao, $banheiroPrivativo, $banheiroComum, $casaPredio, $elevador, $estacionamento, $proprioRotativo, $transporte, $reservaInsta, $novo_nome_pan,$novo_nome_pan2, $preco4Hora, $preco5Hora, $precoTurno, $precoSemana, $precoMes);
+             //print $_POST['tempoAluguel'];
+             print (" ( $aux ) ");
+            if ($aux == true) {
+                // print  $_POST['tempoAluguel'];
 
-                $tipoAluguel = $_POST['tipoAluguel'];
+                $tipoAluguel = $_POST['tempoAluguel'];
+
+                /*
 
                 if($tipoAluguel == 'unico'){
 
@@ -100,19 +105,19 @@ $session = new FunctionsSession();
                     $horaInicio = $_POST['hora-inicio-unico'];
                     $horaFim = $_POST['hora-fim-unico'];
 
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$horaInicio,$horaFim);
+                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$horaInicio,$horaFim);
 
                     if ($result == true) {
 
-                        cadastrarEspacoEspecifico($conn, $categoria);
+                        cadastrarEspacoEspecifico($db,$conn,$categoria);
 
                     }else{
 
                         print "Erro ao cadastrar horário único";
 
-                    }        
+                    }
                 }
-                
+
                 /*
                 if($tipoAluguel == 'direto'){
 
@@ -121,8 +126,8 @@ $session = new FunctionsSession();
                     $dia = $aux[0].$aux[1];
                     $mes =  $aux[3].$aux[4];
                     $ano =  $aux[6].$aux[7].$aux[8].$aux[9];
-                   
-                
+
+
                     $horaInicio = $_POST['hora-inicio-unico'];
                     $horaFim = $_POST['hora-fim-unico'];
                     $nunMes = 2;
@@ -130,23 +135,24 @@ $session = new FunctionsSession();
                     $dataFim = $ano.$mes.$dia;
                     //aqui tem um bug
 
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$dataFim,$horaInicio,$horaFim);
+                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$dataFim,$horaInicio,$horaFim);
 
                     if ($result == true) {
 
-                        cadastrarEspacoEspecifico($categoria);
+                       cadastrarEspacoEspecifico($db,$conn,$categoria);
 
                     }else{
                         print "Erro ao cadastrar horário único";
-                    }        
+                    }
                 }
                 */
 
-                
-                if($tipoAluguel == 'reincidente'){
-                    
 
-                    $sem = $_POST['semana-unico'];
+                if($tipoAluguel == 'reincidente'){
+
+
+                    $sem = $_POST['semanas-unico'];
+                   
                    // $data = date('Ymd');
 
                     $nextSunday = date('Ymd', strtotime("next Sunday"));
@@ -156,7 +162,7 @@ $session = new FunctionsSession();
                     $nextThursday = date('Ymd', strtotime("next Thursday"));
                     $nextFriday = date('Ymd', strtotime("next Friday"));
                     $nextSaturday= date('Ymd', strtotime("next Saturday"));
-                    
+
                     $domI = $_POST['dom-inicio-periodo'];
                     $domF = $_POST['dom-fim-periodo'];
 
@@ -182,89 +188,112 @@ $session = new FunctionsSession();
                     for( $i=0;$i<$sem;$i++){
 
                          if(!($domI == null || $domF == null || $domI == '' || $domF == '' )){
-
+                            print " Domingo";
                             $data = (string)$nextSunday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$domI,$domF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$domI,$domF);
+                            print (" ( $result ) ");
                         }
-                        
+
                         if(!($segI == null || $segF == null || $segI == '' || $segF == '' )){
 
-                            
+                            print " segunda ";
+
                             $data = (string)$nextMonday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$segI,$segF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$segI,$segF);
+                            print (" ( $result ) ");
                         }
 
-                        
+
 
                         if(!($terI == null || $terF == null || $terI == '' || $terF == '' )){
+
+                            print " terca ";
 
                             $data = (string)$nextTuesday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$terI,$terF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$terI,$terF);
+                            print (" ( $result ) ");
                         }
 
                         if(!($quaI == null || $quaI == null || $quaI == '' || $quaF == '' )){
+
+                            print " quarta ";
 
                             $data = (string)$nextWednesday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$quaI,$quaF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quaI,$quaF);
+                            print (" ( $result ) ");
                         }
 
 
                         if(!($quiI == null || $quiI == null || $quiI == '' || $quiF == '' )){
+
+
+                            print " quinta "; 
 
                             $data = (string)$nextThursday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$quiI,$quiF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quiI,$quiF);
+                            print (" ( $result ) ");
                         }
-                        
+
                         if(!($sexI == null || $sexI == null || $sexI == '' || $sexF == '' )){
+
+
+                            print " sexta ";
 
                             $data = (string)$nextFriday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$sexI,$sexF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sexI,$sexF);
+                            print (" ( $result ) ");
                         }
 
                         if(!($sabI == null || $sabI == null || $sabI == '' || $sabF == '' )){
+
+                            print " sabado ";
 
                             $data = (string)$nextSaturday;
                             $date = new DateTime($data);
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$aux,$data,$data,$sabI,$sabF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sabI,$sabF);
+                            print (" ( $result ) ");
                         }
                     }
 
+                   
+
                      if ($result == true) {
 
-                            cadastrarEspacoEspecifico($categoria);
+                           $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
+                           print (" ( $aux ) ");
 
                         }else{
                             print "Erro ao cadastrar horário único";
-                    } 
+                    }
                 }
-            
+
             }else {
                 print "Não boolean";
             }
@@ -279,11 +308,11 @@ $session = new FunctionsSession();
 
 
 
-function basico($ftp, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
+function basico($ftp,$db, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora ){
 
-   
+
     $id = $_SESSION['id'];
- 
+
     $ext = strtolower(substr($_FILES['foto1']['name'],-4));
     $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));
     $ext3 = strtolower(substr($_FILES['foto3']['name'],-4));
@@ -332,24 +361,24 @@ function basico($ftp, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHo
         $envio = ftp_put($ftp, $ftp_pasta.$novo_nome5, $temp5, FTP_BINARY);
     }
 
-    $db = new FunctionsDB();
+    
 
     $aux = $db->cadastrarAnuncioBasico($conn,$id,$titulo,$categoria,$bairro,$cidade,$uf,$precoHora, $novo_nome,$novo_nome2,$novo_nome3,$novo_nome4,$novo_nome5);
-
+    print " Cadastrar anuncio basico :".$aux ;
   //  ftp_close($ftp);
     return $aux;
 
-    
+
     //$diretorio = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
    // move_uploaded_file($temp,$diretorio.$novo_nome);
     // http://www.yourdev.com.br/clientes/locou/img/anuncio/
-
 }
 
-function cadastrarEspacoEspecifico($conn,$categoria){
+function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
 
                             $seg = new Seguranca();
+                            
 
                             if ($categoria == "consultorio") {
                                 print "Entrou consultorio";
@@ -357,45 +386,44 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             if ($climatizado == "sim") {
                                 $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
                             }
-                            
+
                             $wifi = $seg->filtro3($_POST['wifi-consultorio']);
                             $monitoramento = $seg->filtro3($_POST['vigilancia-consultorio']);
                             $armarios = $seg->filtro3($_POST['armarios-consultorio']);
                             $secretaria = $seg->filtro3($_POST['secretaria-consultorio']);
                             $limpeza =  $seg->filtro3($_POST['limpeza-consultorio']);
-                            $copa =   $seg->filtro3($_POST['copa-consultorio']);
-                            $numMesa = $seg->filtro3($_POST['mesa-consultorio']);
-                            $nunCadeira = $seg->filtro3($_POST['cadeira-consultorio']);
-                            $numLuminaria = $seg->filtro3($_POST['lum-consultorio']);
-                            $numCortina = $seg->filtro3($_POST['cortina-consultorio']);
-                            $numMacas = $seg->filtro3($_POST['macas-consultorio']);
+                          print  $copa =   $seg->filtro3($_POST['copa-consultorio']);
+                           print $numMesa = $seg->filtro($_POST['mesa-consultorio']);
+                         print   $nunCadeira = $seg->filtro($_POST['cadeira-consultorio']);
+                         print   $numLuminaria = $seg->filtro($_POST['lum-consultorio']);
+                          print  $numCortina = $seg->filtro($_POST['cortina-consultorio']);
+                           print $numMacas = $seg->filtro($_POST['macas-consultorio']);
                             $balanca = $seg->filtro3($_POST['balanca-consultorio']);
                             $cafe = $seg->filtro3($_POST['cafe-consultorio']);
                             $agua= $seg->filtro3($_POST['agua-consultorio']);
                             $tv  = $seg->filtro3($_POST['tv-consultorio']);
                             $descricao = $seg->filtro($_POST['descricao-aberta-consultorio']);
-                            
-                            
 
-                            print $resp = $db-> cadastrarConsultorio($conn,$aux, $climatizado,$modeloAr,
+
+                            $resp = $db-> cadastrarConsultorio($conn,$aux, $climatizado,$modeloAr,
                             $wifi, $monitoramento, $armarios, $secretaria, $limpeza,$copa,
                                     $numMesa, $nunCadeira, $numLuminaria,$numCortina, $nunMacas, $balanca,
                                         $cafe, $agua, $tv, $descricao, $modeloAr);
-                            
+
                             return $resp;
 
                         }
 
                         if ($categoria == "cozinha") {
-                            
-                        
+
+
                             $climatizado = $seg->filtro3($_POST['climatizado-cozinha']);
                             if ($climatizado == "sim") {
                                 $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
                             }
                             $areaEvento = $seg->filtro3($_POST['area-evento-cozinha']);
-                            $numMesa= $seg->filtro2($_POST['mesa-cozinha']);
-                            $numCadeira = $seg->filtro2($_POST['cadeira-cozinha']);
+                            $numMesa= $seg->filtro($_POST['mesa-cozinha']);
+                            $numCadeira = $seg->filtro($_POST['cadeira-cozinha']);
                             $bar = $seg->filtro3($_POST['bar-cozinha']);
                             $buffet = $seg->filtro3($_POST['buffet-cozinha']);
                             $aula= $seg->filtro3($_POST['aula-cozinha']);
@@ -415,13 +443,13 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $fornoTipo= $seg->filtro3($_POST['forno-tipo-cozinha']);
                             $descricaoExaustor= $seg->filtro($_POST['exaustor-cozinha']);
                             $descricaoAberta=$seg->filtro($_POST['descricao-aberta-cozinha']);
-                    
+
                             print $resp = $db-> cadastrarCozinha($conn, $aux, $climatizado, $modeloAr, $areaEvento, $numMesa, $numCadeira, $bar, $buffet, $aula, $wifi, $monitoramento, $armario, $chave, $estante, $faxina, $inventario, $freezer, $geladeira, $fogao, $tipoFogao, $fogaoCaracteristica, $forno, $fornoTipo, $descricaoExaustor, $descricaoAberta);
                             return $resp;
                         }
 
                         if ($categoria == "workshop") {
-                        
+
                             $climatizado = $seg->filtro3($_POST['climatizado-workshop']);
                             if ($climatizado == "sim") {
                                 $modeloAr = $seg->filtro3($_POST['modelo-ar-workshop']);
@@ -431,12 +459,12 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $armarios = $seg->filtro3($_POST['armarios-workshop']);
                             $limpeza = $seg->filtro3($_POST['limpeza-workshop']);
                             $copa = $seg->filtro3($_POST['copa-workshop']);
-                            $numMesa = $seg->filtro2($_POST['mesa-workshop']);
-                            $numCadeira= $seg->filtro2($_POST['cadeira-workshop']);
-                            $numQuadro = $seg->filtro2($_POST['quadro-workshop']);
-                            $numLousa = $seg->filtro2($_POST['lousa-workshop']);
-                            $numTelao = $seg->filtro2($_POST['telao-workshop']);
-                            $numTv = $seg->filtro2($_POST['tv-workshop']);
+                            $numMesa = $seg->filtro($_POST['mesa-workshop']);
+                            $numCadeira= $seg->filtro($_POST['cadeira-workshop']);
+                            $numQuadro = $seg->filtro($_POST['quadro-workshop']);
+                            $numLousa = $seg->filtro($_POST['lousa-workshop']);
+                            $numTelao = $seg->filtro($_POST['telao-workshop']);
+                            $numTv = $seg->filtro($_POST['tv-workshop']);
                             $projetor = $seg->filtro3($_POST['projetor-workshop']);
                             $som = $seg->filtro3($_POST['som-workshop']);
                             $computador = $seg->filtro3($_POST['computador-office-workshop']);
@@ -448,8 +476,8 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $descricaoEquipamento = $seg->filtro($_POST['descricao-equipamento-workshop']);
                             $descricaoAberta = $seg->filtro($_POST['descricao-aberta-workshop']);
 
-                            print $resp = $db-> cadastrarWorkShop($conn,$aux, $climatizado, $modeloAr, $wifi, $vigilancia, $armarios, $limpeza, $copa, $numMesa, $numCadeira, $numQuadro, $numLousa, $numTelao, $numTv, $projetor, $som, $computador, $flip, $cafe, $agua, $buffet, $buffetExtra, $descricaoEquipamento, $descricaoAberta);
-                            
+                             $resp = $db-> cadastrarWorkShop($conn,$aux, $climatizado, $modeloAr, $wifi, $vigilancia, $armarios, $limpeza, $copa, $numMesa, $numCadeira, $numQuadro, $numLousa, $numTelao, $numTv, $projetor, $som, $computador, $flip, $cafe, $agua, $buffet, $buffetExtra, $descricaoEquipamento, $descricaoAberta);
+
                         }
 
                         if ($categoria == "ensaio"){
@@ -472,12 +500,12 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $armario = $seg->filtro3($_POST['armario-artes']);
                             $descricao = $seg->filtro($_POST['descricao-geral-artes']);
 
-                            print $resp = $db-> cadastrarArtes($conn,$idAnuncio, $forno, $macarico, $moldes, $bancada, $armario, $descricao);
-                            
+                            print $resp = $db-> cadastrarArtes($conn,$aux, $forno, $macarico, $moldes, $bancada, $armario, $descricao);
+
                         }
 
                         if($categoria == "costura"){
-                            
+
                             $recepcao = $seg->filtro3($_POST['recepcao']);
                             $maquina = $seg->filtro3($_POST['maquina']);
                             $mobiliario = $seg->filtro3($_POST['mobiliario']);
@@ -485,13 +513,13 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $armario = $seg->filtro3($_POST['armario']);
                             $descricao = $seg->filtro3($_POST['descricao']);
 
-                            print $resp = $db-> cadastrarCostura($db,$idAnuncio, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao);
+                            print $resp = $db-> cadastrarCostura($conn,$aux, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao);
 
 
                         }
 
                         if($categoria == "fotografico"){
-                            
+
                             $climatizado = $seg->filtro3($_POST['climatizado-fotografico']);
                             if ($climatizado == "sim") {
                                 $modeloAr = $seg->filtro3($_POST['modelo-ar-fotograficoaltura-fotografic']);
@@ -508,13 +536,13 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
                             $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
                             //  $ = $seg->filtro3($_POST['']);
-                                
-                            print $resp = $db-> AnuncioFotografico($conn, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
+
+                            print $resp = $db-> AnuncioFotografico($conn, $aux, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
                             $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
                         }
 
                         if($categoria == "academia"){
-                            
+
                             $tatame = $seg->filtro3($_POST['tatame-academia']);
                             $armario = $seg->filtro3($_POST['armarios-academia']);
                             $bosu = $seg->filtro3($_POST['bosu-academiarolo-academia']);
@@ -524,8 +552,8 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $baqueta = $seg->filtro3($_POST['baqueta-academia']);
                             $pilates = $seg->filtro3($_POST['pilates-academia']);
                             $descricaoAberta = $seg->filtro3($_POST['descricao-geral-academia']);
-                            
-                            print $resp = $db-> cadastrarAcademia($idAnuncio, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao);
+
+                            print $resp = $db-> cadastrarAcademia($conn, $aux, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao);
 
                         }
 
@@ -540,12 +568,12 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $armarios = $seg->filtro3($_POST['armarios-workshop']);
                             $limpeza = $seg->filtro3($_POST['limpeza-workshop']);
                             $copa = $seg->filtro3($_POST['copa-workshop']);
-                            $numMesa = $seg->filtro2($_POST['mesa-workshop']);
-                            $numCadeira= $seg->filtro2($_POST['cadeira-workshop']);
-                            $numQuadro = $seg->filtro2($_POST['quadro-workshop']);
-                            $numLousa = $seg->filtro2($_POST['lousa-workshop']);
-                            $numTelao = $seg->filtro2($_POST['telao-workshop']);
-                            $numTv = $seg->filtro2($_POST['tv-workshop']);
+                            $numMesa = $seg->filtro($_POST['mesa-workshop']);
+                            $numCadeira= $seg->filtro($_POST['cadeira-workshop']);
+                            $numQuadro = $seg->filtro($_POST['quadro-workshop']);
+                            $numLousa = $seg->filtro($_POST['lousa-workshop']);
+                            $numTelao = $seg->filtro($_POST['telao-workshop']);
+                            $numTv = $seg->filtro($_POST['tv-workshop']);
                             $projetor = $seg->filtro3($_POST['projetor-workshop']);
                             $som = $seg->filtro3($_POST['som-workshop']);
                             $computador = $seg->filtro3($_POST['computador-office-workshop']);
@@ -587,7 +615,7 @@ function cadastrarEspacoEspecifico($conn,$categoria){
                             $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
                             $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
 
-                            print $resp = $db-> AnuncioProdutora($conn, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
+                            print $resp = $db-> AnuncioProdutora($conn, $aux, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
                             $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
 
                         }

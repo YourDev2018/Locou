@@ -404,7 +404,7 @@
 
         }
 
-        function AnuncioFotografico($idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim, $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta){
+        function AnuncioFotografico($db, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim, $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta){
 
              $session = new FunctionsSession(); 
             if ($session->vereficarLogin()) {
@@ -415,7 +415,7 @@
                                     VALUES ('$idAnuncio', '$climatizado', '$modeloAr', '$altura', '$wifi', '$cozinha', '$banheiro', '$chuveiro', '$camarim', '$frigobar', '$agua', '$fundo', '$chroma', '$iluminacao', '$descricaoAberta')";
 
                 if ($db->query($sql)===true) {
-                    print $db->error_log;
+                    print $db->error_log;  
                     return true;
 
                 }else{
@@ -463,12 +463,12 @@
                                     VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim')";
 
                 if ($db->query($sql)===true) {  
-                    print $db->error_log;
+                   // print $db->error_log;
                     return true;
 
                 }else{
-                    print 'Insert failed cadastrar horário disponível';
-                    return "Insert failed cadastrar horário disponível";
+                  //  print 'failed';
+                    return "Insert failed";
                 }
 
         }
