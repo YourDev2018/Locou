@@ -422,8 +422,8 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                                 $modeloAr = $seg->filtro3($_POST['modelo-ar-consultorio']);
                             }
                             $areaEvento = $seg->filtro3($_POST['area-evento-cozinha']);
-                            $numMesa= $seg->filtro2($_POST['mesa-cozinha']);
-                            $numCadeira = $seg->filtro2($_POST['cadeira-cozinha']);
+                            $numMesa= $seg->filtro($_POST['mesa-cozinha']);
+                            $numCadeira = $seg->filtro($_POST['cadeira-cozinha']);
                             $bar = $seg->filtro3($_POST['bar-cozinha']);
                             $buffet = $seg->filtro3($_POST['buffet-cozinha']);
                             $aula= $seg->filtro3($_POST['aula-cozinha']);
@@ -500,7 +500,7 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                             $armario = $seg->filtro3($_POST['armario-artes']);
                             $descricao = $seg->filtro($_POST['descricao-geral-artes']);
 
-                            print $resp = $db-> cadastrarArtes($conn,$idAnuncio, $forno, $macarico, $moldes, $bancada, $armario, $descricao);
+                            print $resp = $db-> cadastrarArtes($conn,$aux, $forno, $macarico, $moldes, $bancada, $armario, $descricao);
 
                         }
 
@@ -513,7 +513,7 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                             $armario = $seg->filtro3($_POST['armario']);
                             $descricao = $seg->filtro3($_POST['descricao']);
 
-                            print $resp = $db-> cadastrarCostura($db,$idAnuncio, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao);
+                            print $resp = $db-> cadastrarCostura($conn,$aux, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao);
 
 
                         }
@@ -537,7 +537,7 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                             $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
                             //  $ = $seg->filtro3($_POST['']);
 
-                            print $resp = $db-> AnuncioFotografico($conn, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
+                            print $resp = $db-> AnuncioFotografico($conn, $aux, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
                             $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
                         }
 
@@ -553,7 +553,7 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                             $pilates = $seg->filtro3($_POST['pilates-academia']);
                             $descricaoAberta = $seg->filtro3($_POST['descricao-geral-academia']);
 
-                            print $resp = $db-> cadastrarAcademia($idAnuncio, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao);
+                            print $resp = $db-> cadastrarAcademia($conn, $aux, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao);
 
                         }
 
@@ -568,12 +568,12 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                             $armarios = $seg->filtro3($_POST['armarios-workshop']);
                             $limpeza = $seg->filtro3($_POST['limpeza-workshop']);
                             $copa = $seg->filtro3($_POST['copa-workshop']);
-                            $numMesa = $seg->filtro2($_POST['mesa-workshop']);
-                            $numCadeira= $seg->filtro2($_POST['cadeira-workshop']);
-                            $numQuadro = $seg->filtro2($_POST['quadro-workshop']);
-                            $numLousa = $seg->filtro2($_POST['lousa-workshop']);
-                            $numTelao = $seg->filtro2($_POST['telao-workshop']);
-                            $numTv = $seg->filtro2($_POST['tv-workshop']);
+                            $numMesa = $seg->filtro($_POST['mesa-workshop']);
+                            $numCadeira= $seg->filtro($_POST['cadeira-workshop']);
+                            $numQuadro = $seg->filtro($_POST['quadro-workshop']);
+                            $numLousa = $seg->filtro($_POST['lousa-workshop']);
+                            $numTelao = $seg->filtro($_POST['telao-workshop']);
+                            $numTv = $seg->filtro($_POST['tv-workshop']);
                             $projetor = $seg->filtro3($_POST['projetor-workshop']);
                             $som = $seg->filtro3($_POST['som-workshop']);
                             $computador = $seg->filtro3($_POST['computador-office-workshop']);
@@ -615,7 +615,7 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
                             $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
                             $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
 
-                            print $resp = $db-> AnuncioProdutora($conn, $idAnuncio, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
+                            print $resp = $db-> AnuncioProdutora($conn, $aux, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
                             $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
 
                         }
