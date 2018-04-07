@@ -358,7 +358,7 @@
                 $id = $session->vereficarLogin();
             
 
-                $sql = "INSERT INTO (idAnuncio, recepcao, maquina, mobiliario, provador, armario, descricao)
+                $sql = "INSERT INTO AnuncioCostura(idAnuncio, recepcao, maquina, mobiliario, provador, armario, descricao)
                                     VALUES ('$idAnuncio', '$recepcao', '$maquina', '$mobiliario', '$provador', '$armario', '$descricao')";
 
                 if ($db->query($sql)===true) {
@@ -376,7 +376,7 @@
             }
         }
 
-        function cadastrarAcademia($idAnuncio, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao){
+        function cadastrarAcademia($db, $idAnuncio, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao){
 
             
 
@@ -436,7 +436,8 @@
              $session = new FunctionsSession(); 
             if ($session->vereficarLogin()) {
                 $id = $session->vereficarLogin();
-            
+                
+                print $banheiro;
 
                 $sql = "INSERT INTO AnuncioProdutora(idAnuncio, climatizado, modeloAr, altura, wifi, cozinha, banheiro, chuveiro, camarim, frigobar, agua, fundo, chroma, iluminacao, descricaoAberta)
                                     VALUES ('$idAnuncio', '$climatizado', '$modeloAr', '$altura', '$wifi', '$cozinha', '$banheiro', '$chuveiro', '$camarim', '$frigobar', '$agua', '$fundo', '$chroma', '$iluminacao', '$descricaoAberta')";

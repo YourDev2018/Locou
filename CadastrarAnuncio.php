@@ -509,12 +509,12 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
 
                         if($categoria == "costura"){
 
-                            $recepcao = $seg->filtro3($_POST['recepcao']);
-                            $maquina = $seg->filtro3($_POST['maquina']);
-                            $mobiliario = $seg->filtro3($_POST['mobiliario']);
-                            $provador = $seg->filtro3($_POST['provador']);
-                            $armario = $seg->filtro3($_POST['armario']);
-                            $descricao = $seg->filtro3($_POST['descricao']);
+                            $recepcao = $seg->filtro3($_POST['recepcao-costura']);
+                            $maquina = $seg->filtro3($_POST['maquina-costura']);
+                            $mobiliario = $seg->filtro3($_POST['mobiliario-costura']);
+                            $provador = $seg->filtro3($_POST['provador-costura']);
+                            $armario = $seg->filtro3($_POST['armario-costura']);
+                            $descricao = $seg->filtro3($_POST['descricao-geral-costura']);
 
                             print $resp = $db-> cadastrarCostura($conn,$aux, $recepcao, $maquina, $mobiliario, $provador, $armario, $descricao);
 
@@ -525,19 +525,21 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
 
                             $climatizado = $seg->filtro3($_POST['climatizado-fotografico']);
                             if ($climatizado == "sim") {
-                                $modeloAr = $seg->filtro3($_POST['modelo-ar-fotograficoaltura-fotografic']);
+                                $modeloAr = $seg->filtro3($_POST['modelo-ar-fotografico']);
                             }
                             $altura = $seg->filtro3($_POST['altura-fotografico']);
                             $wifi = $seg->filtro3($_POST['wifi-fotografico']);
                             $cozinha = $seg->filtro3($_POST['cozinha-fotografico']);
-                            $banheiro = $seg->filtro3($_POST['banheiro-fotografico']);
-                            $chuveiro = $seg->filtro3($_POST['chuveiro-fotografico']);
+                            $banheiro = $seg->filtro($_POST['banheiro-fotografico']);
+                            $chuveiro = $seg->filtro($_POST['chuveiro-fotografico']);
                             $camarim = $seg->filtro3($_POST['camarim-fotografico']);
                             $frigobar = $seg->filtro3($_POST['frigobar-fotografico']);
                             $agua = $seg->filtro3($_POST['agua-fotografico']);
-                            $agua = $seg->filtro3($_POST['fundo-fotografico']);
-                            $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
-                            $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
+                            
+                            $fundo = $seg->filtro3($_POST['fundo-fotografico']);
+                            $chroma  = $seg->filtro($_POST['chroma-fotografico']);
+                            $iluminacao= $seg->filtro($_POST['iluminacao-fotografico']);
+                            $descricaoAberta = $seg->filtro($_POST['descricao-aberta-fotografico']);
                             //  $ = $seg->filtro3($_POST['']);
 
                             print $resp = $db-> AnuncioFotografico($conn, $aux, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
@@ -548,15 +550,15 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
 
                             $tatame = $seg->filtro3($_POST['tatame-academia']);
                             $armario = $seg->filtro3($_POST['armarios-academia']);
-                            $bosu = $seg->filtro3($_POST['bosu-academiarolo-academia']);
+                            $bosu = $seg->filtro3($_POST['bosu-academia']);
                             $rolo = $seg->filtro3($_POST['rolo-academia']);
                             $maca = $seg->filtro3($_POST['maca-academia']);
                             $trapezio = $seg->filtro3($_POST['trapezio-academia']);
                             $baqueta = $seg->filtro3($_POST['baqueta-academia']);
                             $pilates = $seg->filtro3($_POST['pilates-academia']);
-                            $descricaoAberta = $seg->filtro3($_POST['descricao-geral-academia']);
+                            $descricaoAberta = $seg->filtro($_POST['descricao-geral-academia']);
 
-                            print $resp = $db-> cadastrarAcademia($conn, $aux, $tatame, $armarios, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricao);
+                            print $resp = $db-> cadastrarAcademia($conn, $aux, $tatame, $armario, $bosu, $rolo, $maca, $trapezio, $baqueta, $pilates, $descricaoAberta);
 
                         }
 
@@ -604,19 +606,23 @@ function cadastrarEspacoEspecifico($db,$conn,$categoria,$aux){
 
                         if($categoria == "produtora"){
 
-                            $climatizado = $seg->filtro3($_POST['climatizado-fotografico']);
-                            $modeloAr = $seg->filtro3($_POST['modelo-ar-fotograficoaltura-fotografic']);
+                             $climatizado = $seg->filtro3($_POST['climatizado-fotografico']);
+                            if ($climatizado == "sim") {
+                                $modeloAr = $seg->filtro3($_POST['modelo-ar-fotografico']);
+                            }
                             $altura = $seg->filtro3($_POST['altura-fotografico']);
                             $wifi = $seg->filtro3($_POST['wifi-fotografico']);
                             $cozinha = $seg->filtro3($_POST['cozinha-fotografico']);
-                            $banheiro = $seg->filtro3($_POST['banheiro-fotografico']);
-                            $chuveiro = $seg->filtro3($_POST['chuveiro-fotografico']);
+                            $banheiro = $seg->filtro($_POST['banheiro-fotografico']);
+                            $chuveiro = $seg->filtro($_POST['chuveiro-fotografico']);
                             $camarim = $seg->filtro3($_POST['camarim-fotografico']);
                             $frigobar = $seg->filtro3($_POST['frigobar-fotografico']);
                             $agua = $seg->filtro3($_POST['agua-fotografico']);
-                            $agua = $seg->filtro3($_POST['fundo-fotografico']);
-                            $iluminacao = $seg->filtro3($_POST['chroma-fotografico']);
-                            $descricaoAberta = $seg->filtro3($_POST['iluminacao-fotografico']);
+                            
+                            $fundo = $seg->filtro3($_POST['fundo-fotografico']);
+                            $chroma  = $seg->filtro($_POST['chroma-fotografico']);
+                            $iluminacao= $seg->filtro($_POST['iluminacao-fotografico']);
+                            $descricaoAberta = $seg->filtro($_POST['descricao-aberta-fotografico']);
 
                             print $resp = $db-> AnuncioProdutora($conn, $aux, $climatizado, $modeloAr, $altura, $wifi, $cozinha, $banheiro, $chuveiro, $camarim,
                             $frigobar, $agua, $fundo, $chroma, $iluminacao, $descricaoAberta);
