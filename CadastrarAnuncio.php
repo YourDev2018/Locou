@@ -120,25 +120,21 @@ $session = new FunctionsSession();
 
                     }
                 }
-
-                /*
+                */
+                
                 if($tipoAluguel == 'direto'){
+                    
+                    
+                    $mes = $_POST['total-mes-direto'];
+                    
+                    $data = date('Ymd');
+                    $dataString = (string)$data;
+                    $date = new DateTime($dataString);
+                    $dias = $mes*30;
+                    $date->add(new DateInterval('P'.$dias.'D'));
+                    $dataFinal = $date->format('Ymd');
 
-                    $data = $_POST['data-unico-pick'];
-                    $aux = str_split($data);
-                    $dia = $aux[0].$aux[1];
-                    $mes =  $aux[3].$aux[4];
-                    $ano =  $aux[6].$aux[7].$aux[8].$aux[9];
-
-
-                    $horaInicio = $_POST['hora-inicio-unico'];
-                    $horaFim = $_POST['hora-fim-unico'];
-                    $nunMes = 2;
-                    $mes = $mes +$nunMes;
-                    $dataFim = $ano.$mes.$dia;
-                    //aqui tem um bug
-
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$dataFim,$horaInicio,$horaFim);
+                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$dataFinal,'9','18');
 
                     if ($result == true) {
 
@@ -148,7 +144,7 @@ $session = new FunctionsSession();
                         print "Erro ao cadastrar horário único";
                     }
                 }
-                */
+                
 
 
                 if($tipoAluguel == 'reincidente'){
