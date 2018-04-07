@@ -1255,7 +1255,7 @@ function daysInMonth(month, year) {
                     <br>
                     <div class="row text-center justify-content-center">
                       <div class="col-6">
-                        <select class="form-control" onchange="atualizarTempoAluguel()" style="text-align: center" id="tempo-mes-direto">
+                        <select class="form-control" name="total-mes-direto" onchange="atualizarTempoAluguel()" style="text-align: center" id="tempo-mes-direto">
                           <option value="1">1 Mês</option>
                           <option value="2">2 Meses</option>
                           <option value="3">3 Meses</option>
