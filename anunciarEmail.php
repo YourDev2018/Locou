@@ -613,6 +613,39 @@ function daysInMonth(month, year) {
               </div>
             </div>
 
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Rua/Avenida:
+              </div>
+              <div class="col-5 text-left">
+                <input type="text" name="rua" class="form-control" id="rua" placeholder="Ex: Rua Passos">
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Número:
+              </div>
+              <div class="col-5 text-left">
+                <input type="number" name="numero" class="form-control" id="numero" placeholder="Ex: 645">
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-4 text-right">
+                Complemento:
+              </div>
+              <div class="col-5 text-left">
+                <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Ex: Ap 220 Bloco 3">
+              </div>
+            </div>
+
             <br><br>
           </div>
           <div class="col-lg-2 col-md-1 col-sm-0">
@@ -873,17 +906,17 @@ function daysInMonth(month, year) {
 
               <!-- Checkbox -->
 
-              <div class="col-4 text-center">
+              <!-- <div class="col-4 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-unico" value="unico">
                 <br><br>
-              </div>
-              <div class="col-4 text-center">
+              </div> -->
+              <div class="col-6 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-reincidente" value="reincidente">
                 <br><br>
               </div>
-              <div class="col-4 text-center">
+              <div class="col-6 text-center">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input onclick="calendario_unico_f();calendario_reincidente_f();calendario_direto_f();" class="form-check-input" type="radio" name="tempoAluguel" id="tempoAluguel-direto" value="direto">
                 <br><br>
