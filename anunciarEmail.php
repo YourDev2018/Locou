@@ -4205,6 +4205,19 @@ function daysInMonth(month, year) {
                     document.getElementById("periodo_tip-div").style.display = '';
                   }
                 }
+                function consultorio_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("consultorio_tip-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("consultorio_tip-div").style.display = '';
+                  }
+                }
                 function workshop_tip(botao)
                 {
                   if(botao.classList.contains("active") == true)
@@ -4218,11 +4231,89 @@ function daysInMonth(month, year) {
                     document.getElementById("workshop_tip-div").style.display = '';
                   }
                 }
+                function cozinha_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("cozinha_tip-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("cozinha_tip-div").style.display = '';
+                  }
+                }
+                function ensaio_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("ensaio-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("ensaio-div").style.display = '';
+                  }
+                }
+                function fotografico_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("fotografico-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("fotografico-div").style.display = '';
+                  }
+                }
+                function costura_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("costura-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("costura-div").style.display = '';
+                  }
+                }
+                function academia_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("academia-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("academia-div").style.display = '';
+                  }
+                }
+                function artes_tip(botao)
+                {
+                  if(botao.classList.contains("active") == true)
+                  {
+                      botao.classList.remove("active");
+                      document.getElementById("artes-div").style.display = 'none';
+                  }
+                  else
+                  {
+                    botao.classList.add("active");
+                    document.getElementById("artes-div").style.display = '';
+                  }
+                }
               </script>
               <div id="workshop_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
                 <div class="col-8" style="color: black">
                   <br>
-                    <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+                    <h5>Que comodidades seu espaço oferece?</h5>
                   <br>
                 </div>
               </div>
@@ -4647,8 +4738,15 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                  <span onclick="cozinha_tip(this)" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <div id="cozinha_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Que comodidades seu espaço oferece?</h5>
+                  <br>
                 </div>
               </div>
 
@@ -5217,8 +5315,15 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                  <span onclick="ensaio_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <div id="ensaio-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Que comodidades seu espaço oferece?</h5>
+                  <br>
                 </div>
               </div>
 
@@ -5333,8 +5438,15 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                  <span onclick="fotografico_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <div id="fotografico-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Que comodidades seu espaço oferece?</h5>
+                  <br>
                 </div>
               </div>
 
@@ -5595,8 +5707,15 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                  <span onclick="costura_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <div id="costura-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Que comodidades seu espaço oferece?</h5>
+                  <br>
                 </div>
               </div>
 
@@ -5729,8 +5848,15 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                  <span onclick="academia_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <div id="academia-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Que comodidades seu espaço oferece?</h5>
+                  <br>
                 </div>
               </div>
 
@@ -5923,8 +6049,15 @@ function daysInMonth(month, year) {
               <div class="row" style="background-color: black">
                 <div class="col-12" style="color: #FFC107">
                   <br>
-                  <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+                  <span onclick="artes_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
                   <br><br>
+                </div>
+              </div>
+              <div id="artes-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+                <div class="col-8" style="color: black">
+                  <br>
+                    <h5>Que comodidades seu espaço oferece?</h5>
+                  <br>
                 </div>
               </div>
 
