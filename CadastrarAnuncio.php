@@ -121,6 +121,17 @@ $session = new FunctionsSession();
                     }
                 }
                 */
+
+                if($tipoAluguel != 'direto' && $tipoAluguel != 'reincidente'){
+
+                     $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
+                    print (" ( $aux ) ");
+
+                    $db->closeDB($conn);
+                    $session ->logout();
+                    header('location: fimEmail.php');
+
+                }
                 
                 if($tipoAluguel == 'direto'){
                     
@@ -289,6 +300,8 @@ $session = new FunctionsSession();
 
                       
                 }
+
+
 
             }else {
                 print "Não boolean";
