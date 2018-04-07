@@ -136,13 +136,12 @@ $session = new FunctionsSession();
 
                     $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$dataFinal,'9','18');
 
-                    if ($result == true) {
+                    $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
+                    print (" ( $aux ) ");
 
-                       cadastrarEspacoEspecifico($db,$conn,$categoria);
-
-                    }else{
-                        print "Erro ao cadastrar horário único";
-                    }
+                    $db->closeDB($conn);
+                    $session ->logout();
+                    header('location: fimEmail.php');
                 }
                 
 

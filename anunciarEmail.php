@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+
+<?php 
+require_once 'FunctionsSession.php';
+
+$session = new FunctionsSession();
+$session ->  iniciarSession();
+if ($session->vereficarLogin()=='false') {
+
+    header('location: cadastroEmail.php');
+
+}
+
+?>
+
 <?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);?>
 <html lang="en">
   <head>
