@@ -3729,7 +3729,7 @@ function daysInMonth(month, year) {
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" name="hora" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="number" class="form-control" name="hora" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -3744,7 +3744,7 @@ function daysInMonth(month, year) {
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" name="4hora" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="number" class="form-control" name="4hora" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -3759,7 +3759,7 @@ function daysInMonth(month, year) {
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="5hora" name="5hora" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="number" class="form-control" id="5hora" name="5hora" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -3774,7 +3774,7 @@ function daysInMonth(month, year) {
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="number" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -3789,7 +3789,7 @@ function daysInMonth(month, year) {
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="semana" name="semana" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="number" class="form-control" id="semana" name="semana" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
@@ -3804,7 +3804,7 @@ function daysInMonth(month, year) {
               <div class="col-5 text-left">
                 <div class="input-group-prepend">
                   <div class="input-group-text">R$</div>
-                  <input type="text" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
+                  <input type="number" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
                 </div>
               </div>
             </div>
