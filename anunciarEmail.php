@@ -6208,6 +6208,22 @@ function daysInMonth(month, year) {
 
               <br><br>
 
+              <script>
+                function fotosTeste()
+                {
+                  if(document.getElementById("foto1-label").innerHTML != "Escolha uma foto" && document.getElementById("foto2-label").innerHTML != "Escolha uma foto" && document.getElementById("foto3-label").innerHTML != "Escolha uma foto")
+                  {
+                    document.getElementById("foto4-div").style.display = "";
+                    document.getElementById("foto5-div").style.display = "";
+                  }
+                  else
+                  {
+                    document.getElementById("foto4-div").style.display = "none";
+                    document.getElementById("foto5-div").style.display = "none";
+                  }
+                }
+              </script>
+
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="foto1" name="foto1">
                 <label class="custom-file-label text-left" id="foto1-label" for="foto1">Escolha uma foto</label>
@@ -6223,12 +6239,12 @@ function daysInMonth(month, year) {
                 <label class="custom-file-label text-left" id="foto3-label" for="foto3">Escolha uma foto</label>
               </div>
               <br><br>
-              <div class="custom-file">
+              <div id="foto4-div" class="custom-file" style="display: none">
                 <input type="file" class="custom-file-input" id="foto4" name="foto4">
                 <label class="custom-file-label text-left" id="foto4-label" for="foto4">Escolha uma foto</label>
               </div>
               <br><br>
-              <div class="custom-file">
+              <div id="foto5-div" class="custom-file" style="display: none">
                 <input type="file" class="custom-file-input" id="foto5" name="foto5">
                 <label class="custom-file-label text-left" id="foto5-label" for="foto5">Escolha uma foto</label>
               </div>
@@ -6596,6 +6612,7 @@ function daysInMonth(month, year) {
     console.log($(this).attr('id'));
     console.log($(this).attr('id')+"-label");
     console.log(foto);
+    fotosTeste();
   })
   </script>
 
