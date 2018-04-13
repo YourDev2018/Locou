@@ -849,7 +849,8 @@ if($session->vereficarLogin() != false){
                 </div>
                 <div class="col-12 pb-2" style="color: white">
                   <h6 style="font-weight: 600">Nome da pessoa</h6>
-                  <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> -4.7 <br>(3 avaliações)</span></h6>
+                  <br>
+                  <!-- <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> -4.7 <br>(3 avaliações)</span></h6> -->
                 </div>
 
               </div>
@@ -4131,6 +4132,7 @@ $( document ).ready(function() {
   $(function() {
     $('div.panorama').paver();
   });
+  calcularPreco();
 });
 $('.custom-file-input').on('change',function(){
   var foto = $(this).val().split('\\').pop();
