@@ -149,6 +149,8 @@ if($session->vereficarLogin() != false){
   var hoje = dd+"/"+mm+"/"+yyyy;
   $.fn.datepicker.defaults.startDate = hoje;
   $.fn.datepicker.defaults.todayHighlight = true;
+  $.fn.datepicker.defaults.daysOfWeekDisabled = [0,2,4,5,6];
+  $.fn.datepicker.defaults.daysOfWeekHighlighted = [1,3];
   </script>
   <script>
   $(function () {
@@ -622,7 +624,7 @@ if($session->vereficarLogin() != false){
                     </div>
                   </div>
                   <div class="col-12" style="border-top: solid; border-width: 2px; border-color: white;">
-                    <div class="row text-center justify-content-center py-2">
+                    <div class="row text-center justify-content-center">
                       <div class="col-6">
                         <h6 style="color: black; font-weight: 600">Comodidades do local:</h6>
                       </div>
@@ -894,17 +896,13 @@ if($session->vereficarLogin() != false){
                   }
 
                   function geocodeAddress(geocoder, resultsMap) {
-                    geocoder.geocode({'address': "Rio de janeiro,RJ,Vila da penha,Rua volta"}, function(results, status) {
+                    geocoder.geocode({'address': "Rio de janeiro,RJ,Avenida frei caneca, 461, estácio"}, function(results, status) {
                       if (status === 'OK') {
                         resultsMap.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                          map: resultsMap,
-                          position: results[0].geometry.location
-                        });
                         citymap = {
                           marcador: {
                             // center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
-                            center: {lat: -22.8474786, lng: -43.31116959999997},
+                            center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
                             multi: 10
                           }
                         };
@@ -1049,7 +1047,7 @@ if($session->vereficarLogin() != false){
                 <div class="col-12">
                   <h6 style="color: white">Selecione a data e o horário em que será disponibilizado</h6>
                   <br>
-                  <input type="text" name="data-unico-pick" id="datepicker">
+                  <input type="text" readonly name="data-unico-pick" id="datepicker">
                   <br>
                   <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
                   <br>
@@ -1063,129 +1061,134 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="hora_inicio_aluguel_mais();calcularPreco();horaUnicoMax()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="hora_inicio_aluguel_menos();calcularPreco();horaUnicoMax()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <script>
-                      function calcularPreco()
+                    function calcularPreco()
+                    {
+                      var ph = 90;
+                      var ph4 = 80;
+                      var ph5 = 76;
+                      var pr = 70;
+                      var ps = 60;
+                      var pm = 50;
+                      var precoTotal = 0;
+                      if(document.getElementById('tipoAluguel').value == "unico")
                       {
-                          var ph = 90;
-                          var ph4 = 80;
-                          var ph5 = 76;
-                          var pr = 70;
-                          var ps = 60;
-                          var pm = 50;
-                          var precoTotal = 0;
-                          if(document.getElementById('tipoAluguel').value == "unico")
-                          {
-                            var hora_inicio = document.getElementById('hora-inicio-unico').value;
-                            var hora_inicio_s = hora_inicio.split(":");
-                            var hora_inicio_h = hora_inicio_s[0];
-                            var hora_inicio_m = hora_inicio_s[1];
+                        var hora_inicio = document.getElementById('hora-inicio-unico').value;
+                        var hora_inicio_s = hora_inicio.split(":");
+                        var hora_inicio_h = hora_inicio_s[0];
+                        var hora_inicio_m = hora_inicio_s[1];
 
-                            var hora_fim = document.getElementById('hora-fim-unico').value;
-                            var hora_fim_s = hora_fim.split(":");
-                            var hora_fim_h = hora_fim_s[0];
-                            var hora_fim_m = hora_fim_s[1];
+                        var hora_fim = document.getElementById('hora-fim-unico').value;
+                        var hora_fim_s = hora_fim.split(":");
+                        var hora_fim_h = hora_fim_s[0];
+                        var hora_fim_m = hora_fim_s[1];
 
-                            var hora_aluguel_h = hora_fim_h-hora_inicio_h;
-                            var hora_aluguel_m = hora_fim_m-hora_inicio_m;
-                            if(hora_aluguel_m == -30)
-                            {
-                              hora_aluguel_h = hora_aluguel_h - 1;
-                              hora_aluguel_m = 30;
-                            }
-                            if(hora_aluguel_m == 0)
-                            {
-                              hora_aluguel_m = "00";
-                            }
-                            console.log(hora_aluguel_h+":"+hora_aluguel_m);
-                            if(hora_aluguel_h < 4)
-                            {
-                              console.log("Menor que 4 horas");
-                              precoTotal = hora_aluguel_h * ph;
-                              if(hora_aluguel_m == 30)
-                              {
-                                precoTotal = precoTotal + ph/2;
-                              }
-                            }
-                            if(hora_aluguel_h < 5 && hora_aluguel_h >= 4)
-                            {
-                              console.log("4 horas");
-                              precoTotal = hora_aluguel_h * ph4;
-                              if(hora_aluguel_m == 30)
-                              {
-                                precoTotal = precoTotal + ph4/2;
-                              }
-                            }
-                            if(hora_aluguel_h < 6 && hora_aluguel_h >= 5)
-                            {
-                              console.log("5 horas");
-                              precoTotal = hora_aluguel_h * ph5;
-                              if(hora_aluguel_m == 30)
-                              {
-                                precoTotal = precoTotal + ph5/2;
-                              }
-                            }
-                            if(hora_aluguel_h >= 6)
-                            {
-                              console.log("Dia inteiro");
-                              precoTotal = hora_aluguel_h * pr;
-                              if(hora_aluguel_m == 30)
-                              {
-                                precoTotal = precoTotal + pr/2;
-                              }
-                            }
-                            console.log("Preço Total: R$"+precoTotal);
-                            document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
-                          }
-                          if(document.getElementById('tipoAluguel').value == "reincidente")
+                        var hora_aluguel_h = hora_fim_h-hora_inicio_h;
+                        var hora_aluguel_m = hora_fim_m-hora_inicio_m;
+                        if(hora_aluguel_m == -30)
+                        {
+                          hora_aluguel_h = hora_aluguel_h - 1;
+                          hora_aluguel_m = 30;
+                        }
+                        if(hora_aluguel_m == 0)
+                        {
+                          hora_aluguel_m = "00";
+                        }
+                        console.log(hora_aluguel_h+":"+hora_aluguel_m);
+                        if(hora_aluguel_h < 4)
+                        {
+                          console.log("Menor que 4 horas");
+                          precoTotal = hora_aluguel_h * ph;
+                          if(hora_aluguel_m == 30)
                           {
+                            precoTotal = precoTotal + ph/2;
                           }
+                        }
+                        if(hora_aluguel_h < 5 && hora_aluguel_h >= 4)
+                        {
+                          console.log("4 horas");
+                          precoTotal = hora_aluguel_h * ph4;
+                          if(hora_aluguel_m == 30)
+                          {
+                            precoTotal = precoTotal + ph4/2;
+                          }
+                        }
+                        if(hora_aluguel_h < 6 && hora_aluguel_h >= 5)
+                        {
+                          console.log("5 horas");
+                          precoTotal = hora_aluguel_h * ph5;
+                          if(hora_aluguel_m == 30)
+                          {
+                            precoTotal = precoTotal + ph5/2;
+                          }
+                        }
+                        if(hora_aluguel_h >= 6)
+                        {
+                          console.log("Dia inteiro");
+                          precoTotal = hora_aluguel_h * pr;
+                          if(hora_aluguel_m == 30)
+                          {
+                            precoTotal = precoTotal + pr/2;
+                          }
+                        }
+                        console.log("Preço Total: R$"+precoTotal);
+                        document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
                       }
+                      if(document.getElementById('tipoAluguel').value == "reincidente")
+                      {
+                      }
+                    }
                     </script>
                     <script>
-                      function horaMax()
-                      {
-                        var seg_max_h = 0;
-                        var seg_max_m = 0;
-                        var seg_min_h = 0;
-                        var seg_min_m = 0;
-                        var ter_max_h = 0;
-                        var ter_max_m = 0;
-                        var ter_min_h = 0;
-                        var ter_min_m = 0;
-                        var qua_max_h = 0;
-                        var qua_max_m = 0;
-                        var qua_min_h = 0;
-                        var qua_min_m = 0;
-                        var qui_max_h = 0;
-                        var qui_max_m = 0;
-                        var qui_min_h = 0;
-                        var qui_min_m = 0;
-                        var sex_max_h = 0;
-                        var sex_max_m = 0;
-                        var sex_min_h = 0;
-                        var sex_min_m = 0;
-                        var sab_max_h = 0;
-                        var sab_max_m = 0;
-                        var sab_min_h = 0;
-                        var sab_min_m = 0;
-                        var dom_max_h = 0;
-                        var dom_max_m = 0;
-                        var dom_min_h = 0;
-                        var dom_min_m = 0;
+                    function horaUnicoMax()
+                    {
+                      var unico_max_h = 20;
+                      var unico_max_m = 30;
+                      var unico_min_h = 10;
+                      var unico_min_m = 00;
 
-                        if(seg_ativo == true)
-                        {
-                          var inicio_hora = document.getElementById('seg-hora-inicio').value.split(":")[0];
-                          var inicio_min = document.getElementById('seg-hora-inicio').value.split(":")[1];
-                          var fim_hora = document.getElementById('seg-hora-fim').value.split(":")[0];
-                          var fim_min = document.getElementById('seg-hora-fim').value.split(":")[1];
-                          if()
-                        }
-                      }
+                      var inicio_hora = document.getElementById('hora-inicio-unico').value.split(":")[0];
+                      var inicio_min = document.getElementById('hora-inicio-unico').value.split(":")[1];
+                      var fim_hora = document.getElementById('hora-fim-unico').value.split(":")[0];
+                      var fim_min = document.getElementById('hora-fim-unico').value.split(":")[1];
+
+                    }
+                    function horaMax()
+                    {
+                      var seg_max_h = 20;
+                      var seg_max_m = 30;
+                      var seg_min_h = 0;
+                      var seg_min_m = 0;
+                      var ter_max_h = 0;
+                      var ter_max_m = 0;
+                      var ter_min_h = 0;
+                      var ter_min_m = 0;
+                      var qua_max_h = 0;
+                      var qua_max_m = 0;
+                      var qua_min_h = 0;
+                      var qua_min_m = 0;
+                      var qui_max_h = 0;
+                      var qui_max_m = 0;
+                      var qui_min_h = 0;
+                      var qui_min_m = 0;
+                      var sex_max_h = 0;
+                      var sex_max_m = 0;
+                      var sex_min_h = 0;
+                      var sex_min_m = 0;
+                      var sab_max_h = 0;
+                      var sab_max_m = 0;
+                      var sab_min_h = 0;
+                      var sab_min_m = 0;
+                      var dom_max_h = 0;
+                      var dom_max_m = 0;
+                      var dom_min_h = 0;
+                      var dom_min_m = 0;
+
+                    }
                     </script>
                     <script>
                     var hora_inicio_unico = 12;
@@ -1481,8 +1484,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="hora_fim_aluguel_mais();calcularPreco();horaUnicoMax()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="hora_fim_aluguel_menos();calcularPreco();horaUnicoMax()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
