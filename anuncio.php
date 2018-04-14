@@ -128,6 +128,51 @@ if($session->vereficarLogin() != false){
   <link rel="stylesheet" type="text/css"  href="css/paver.scss">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
+  //set de variaveis
+  var seg_ativo = false;
+  var ter_ativo = false;
+  var qua_ativo = false;
+  var qui_ativo = true;
+  var sex_ativo = false;
+  var sab_ativo = false;
+  var dom_ativo = false;
+
+  var ph = 90;
+  var ph4 = 80;
+  var ph5 = 76;
+  var pr = 70;
+  var ps = 60;
+  var pm = 50;
+
+  var seg_max_h = 20;
+  var seg_max_m = 30;
+  var seg_min_h = 10;
+  var seg_min_m = 0;
+  var ter_max_h = 0;
+  var ter_max_m = 0;
+  var ter_min_h = 0;
+  var ter_min_m = 0;
+  var qua_max_h = 0;
+  var qua_max_m = 0;
+  var qua_min_h = 0;
+  var qua_min_m = 0;
+  var qui_max_h = 0;
+  var qui_max_m = 0;
+  var qui_min_h = 0;
+  var qui_min_m = 0;
+  var sex_max_h = 0;
+  var sex_max_m = 0;
+  var sex_min_h = 0;
+  var sex_min_m = 0;
+  var sab_max_h = 0;
+  var sab_max_m = 0;
+  var sab_min_h = 0;
+  var sab_min_m = 0;
+  var dom_max_h = 20;
+  var dom_max_m = 00;
+  var dom_min_h = 0;
+  var dom_min_m = 0;
+
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
@@ -151,6 +196,7 @@ if($session->vereficarLogin() != false){
   $.fn.datepicker.defaults.todayHighlight = true;
   $.fn.datepicker.defaults.daysOfWeekDisabled = [0,2,4,5,6];
   $.fn.datepicker.defaults.daysOfWeekHighlighted = [1,3];
+  $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
   </script>
   <script>
   $(function () {
@@ -1048,10 +1094,156 @@ if($session->vereficarLogin() != false){
                 <div class="col-12">
                   <h6 style="color: white">Selecione a data e o horário em que será disponibilizado</h6>
                   <br>
-                  <input type="text" readonly name="data-unico-pick" id="datepicker">
+                  <script>
+                    function horaDisp()
+                    {
+                      if (document.getElementById('datepicker').value != "")
+                      {
+                        var from = document.getElementById('datepicker').value.split("/");
+                        var d = new Date(from[2], from[1] - 1, from[0]);
+                        document.getElementById('horas-disponiveis').style.display = "";
+                        document.getElementById('data-escolhida').innerHTML = document.getElementById('datepicker').value;
+                        if(d.getDay() == "0") //domingo
+                        {
+                          if(dom_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":"+dom_min_m;
+                          }
+                          if(dom_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":"+dom_max_m;
+                          }
+                        }
+                        if(d.getDay() == "1") //seg
+                        {
+                          if(seg_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = seg_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = seg_min_h+":"+seg_min_m;
+                          }
+                          if(seg_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = seg_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = seg_max_h+":"+seg_max_m;
+                          }
+                        }
+                        if(d.getDay() == "2") //ter
+                        {
+                          if(ter_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = ter_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = ter_min_h+":"+ter_min_m;
+                          }
+                          if(ter_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = ter_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = ter_max_h+":"+ter_max_m;
+                          }
+                        }
+                        if(d.getDay() == "3") //qua
+                        {
+                          if(qua_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = qua_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = qua_min_h+":"+qua_min_m;
+                          }
+                          if(qua_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = qua_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = qua_max_h+":"+qua_max_m;
+                          }
+                        }
+                        if(d.getDay() == "4") //qui
+                        {
+                          if(qui_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = qui_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = qui_min_h+":"+qui_min_m;
+                          }
+                          if(qui_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = qui_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = qui_max_h+":"+qui_max_m;
+                          }
+                        }
+                        if(d.getDay() == "5") //sex
+                        {
+                          if(sex_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = sex_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = sex_min_h+":"+sex_min_m;
+                          }
+                          if(sex_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = sex_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = sex_max_h+":"+sex_max_m;
+                          }
+                        }
+                        if(d.getDay() == "6") //sab
+                        {
+                          if(sab_min_m == 0)
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = sab_min_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-inicio-texto').innerHTML = sab_min_h+":"+sab_min_m;
+                          }
+                          if(sab_max_m == 0)
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = sab_max_h+":00";
+                          }
+                          else
+                          {
+                              document.getElementById('hora-fim-texto').innerHTML = sab_max_h+":"+sab_max_m;
+                          }
+                        }
+                      }
+                    }
+                  </script>
+                  <input type="text" readonly name="data-unico-pick" id="datepicker" onchange="horaDisp()" >
                   <br>
                   <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
-                  <br>
+                  <span id="horas-disponiveis" style="color: white; display: none">No dia <span id="data-escolhida" style="color: #FFCE00">00/00/2018</span> o horário disponível é de <span id="hora-inicio-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-texto" style="color: #FFCE00">00:00</span>. <br> Sendo que o horário entre <span style="color: #FFCE00">00:00</span> e <span style="color: #FFCE00">00:00</span>, <span style="color: #FFCE00">00:00</span> e <span style="color: #FFCE00">00:00</span> já está alugado.</span>
+                  <br><br>
                   <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
@@ -1069,12 +1261,6 @@ if($session->vereficarLogin() != false){
                     <script>
                     function calcularPreco()
                     {
-                      var ph = 90;
-                      var ph4 = 80;
-                      var ph5 = 76;
-                      var pr = 70;
-                      var ps = 60;
-                      var pm = 50;
                       var precoTotal = 0;
                       if(document.getElementById('tipoAluguel').value == "unico")
                       {
@@ -1142,53 +1328,6 @@ if($session->vereficarLogin() != false){
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
                       }
-                    }
-                    </script>
-                    <script>
-                    function horaUnicoMax()
-                    {
-                      var unico_max_h = 20;
-                      var unico_max_m = 30;
-                      var unico_min_h = 10;
-                      var unico_min_m = 00;
-
-                      var inicio_hora = document.getElementById('hora-inicio-unico').value.split(":")[0];
-                      var inicio_min = document.getElementById('hora-inicio-unico').value.split(":")[1];
-                      var fim_hora = document.getElementById('hora-fim-unico').value.split(":")[0];
-                      var fim_min = document.getElementById('hora-fim-unico').value.split(":")[1];
-
-                    }
-                    function horaMax()
-                    {
-                      var seg_max_h = 20;
-                      var seg_max_m = 30;
-                      var seg_min_h = 0;
-                      var seg_min_m = 0;
-                      var ter_max_h = 0;
-                      var ter_max_m = 0;
-                      var ter_min_h = 0;
-                      var ter_min_m = 0;
-                      var qua_max_h = 0;
-                      var qua_max_m = 0;
-                      var qua_min_h = 0;
-                      var qua_min_m = 0;
-                      var qui_max_h = 0;
-                      var qui_max_m = 0;
-                      var qui_min_h = 0;
-                      var qui_min_m = 0;
-                      var sex_max_h = 0;
-                      var sex_max_m = 0;
-                      var sex_min_h = 0;
-                      var sex_min_m = 0;
-                      var sab_max_h = 0;
-                      var sab_max_m = 0;
-                      var sab_min_h = 0;
-                      var sab_min_m = 0;
-                      var dom_max_h = 0;
-                      var dom_max_m = 0;
-                      var dom_min_h = 0;
-                      var dom_min_m = 0;
-
                     }
                     </script>
                     <script>
@@ -1565,13 +1704,65 @@ if($session->vereficarLogin() != false){
 
               <script>
 
-              var seg_ativo = false;
-              var ter_ativo = false;
-              var qua_ativo = false;
-              var qui_ativo = false;
-              var sex_ativo = false;
-              var sab_ativo = false;
-              var dom_ativo = false;
+              function dias_bloqueados()
+              {
+                if(seg_ativo == false)
+                {
+                  document.getElementById("segunda-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("segunda-aviso").style.display = 'none';
+                }
+                if(ter_ativo == false)
+                {
+                  document.getElementById("terca-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("terca-aviso").style.display = 'none';
+                }
+                if(qua_ativo == false)
+                {
+                  document.getElementById("quarta-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("quarta-aviso").style.display = 'none';
+                }
+                if(qui_ativo == false)
+                {
+                  document.getElementById("quinta-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("quinta-aviso").style.display = 'none';
+                }
+                if(sex_ativo == false)
+                {
+                  document.getElementById("sexta-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("sexta-aviso").style.display = 'none';
+                }
+                if(sab_ativo == false)
+                {
+                  document.getElementById("sabado-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("sabado-aviso").style.display = 'none';
+                }
+                if(dom_ativo == false)
+                {
+                  document.getElementById("domingo-aviso").style.display = '';
+                }
+                else
+                {
+                  document.getElementById("domingo-aviso").style.display = 'none';
+                }
+              }
 
               function segunda_botao_periodo()
               {
@@ -1683,8 +1874,16 @@ if($session->vereficarLogin() != false){
               <h6 style="color: white">Selecione os dias da semana e os horários em que serão disponibilizados para alugar:</h6>
               <br>
 
+              <input type="text" id="seg-periodo-sel" name="seg-periodo-sel" value="nao" readonly style="display: none">
+              <input type="text" id="ter-periodo-sel" name="ter-periodo-sel" value="nao" readonly style="display: none">
+              <input type="text" id="qua-periodo-sel" name="qua-periodo-sel" value="nao" readonly style="display: none">
+              <input type="text" id="qui-periodo-sel" name="qui-periodo-sel" value="nao" readonly style="display: none">
+              <input type="text" id="sex-periodo-sel" name="sex-periodo-sel" value="nao" readonly style="display: none">
+              <input type="text" id="sab-periodo-sel" name="sab-periodo-sel" value="nao" readonly style="display: none">
+              <input type="text" id="dom-periodo-sel" name="dom-periodo-sel" value="nao" readonly style="display: none">
+
               <div class="row pb-4 justify-content-center p-3">
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br><span style="color: white" id="segunda-aviso">Dia bloqueado</span><br><br>
 
                   <div id="segunda-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -2002,7 +2201,7 @@ if($session->vereficarLogin() != false){
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="terca_botao_periodo()" id="terca-bot-periodo" class="btn btn-outline-warning"><h6>Ter</h6></span>
-                  <br><br>
+                  <br><br><span style="color: white" id="terca-aviso">Dia bloqueado</span><br><br>
 
                   <div id="terca-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -2320,7 +2519,7 @@ if($session->vereficarLogin() != false){
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quarta_botao_periodo()" id="quarta-bot-periodo" class="btn btn-outline-warning"><h6>Qua</h6></span>
-                  <br><br>
+                  <br><br><span style="color: white" id="quarta-aviso">Dia bloqueado</span><br><br>
 
                   <div id="quarta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -2638,7 +2837,7 @@ if($session->vereficarLogin() != false){
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quinta_botao_periodo()" id="quinta-bot-periodo" class="btn btn-outline-warning"><h6>Qui</h6></span>
-                  <br><br>
+                  <br><br><span style="color: white" id="quinta-aviso">Dia bloqueado</span><br><br>
 
                   <div id="quinta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -2956,7 +3155,7 @@ if($session->vereficarLogin() != false){
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sexta_botao_periodo()" id="sexta-bot-periodo" class="btn btn-outline-warning"><h6>Sex</h6></span>
-                  <br><br>
+                  <br><br><span style="color: white" id="sexta-aviso">Dia bloqueado</span><br><br>
 
                   <div id="sexta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -3274,7 +3473,7 @@ if($session->vereficarLogin() != false){
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sabado_botao_periodo()" id="sabado-bot-periodo" class="btn btn-outline-warning"><h6>Sab</h6></span>
-                  <br><br>
+                  <br><br><span style="color: white" id="sabado-aviso">Dia bloqueado</span><br><br>
 
                   <div id="sabado-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -3592,7 +3791,7 @@ if($session->vereficarLogin() != false){
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="domingo_botao_periodo()" id="domingo-bot-periodo" class="btn btn-outline-warning"><h6>Dom</h6></span>
-                  <br><br>
+                  <br><br><span style="color: white" id="domingo-aviso">Dia bloqueado</span><br><br>
 
                   <div id="domingo-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -4133,6 +4332,7 @@ $( document ).ready(function() {
     $('div.panorama').paver();
   });
   calcularPreco();
+  dias_bloqueados();
 });
 $('.custom-file-input').on('change',function(){
   var foto = $(this).val().split('\\').pop();

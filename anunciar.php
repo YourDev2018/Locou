@@ -563,7 +563,7 @@
           <div id="dados-basicos-tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
             <div class="col-8" style="color: black">
               <br>
-              <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+              <h5>Descreva de forma genérica o seu espaço</h5>
               <br>
             </div>
           </div>
@@ -660,14 +660,35 @@
           <br>
 
           <div class="row">
-            <div class="col-8 text-right">
-              Clique aqui para ativar a opção de "reserva instantânea".<a><span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span></a>
+            <div class="col-4 text-right">
+              Rua/Avenida:
             </div>
-            <div class="col-4 text-left pl-5">
-              <input type="checkbox" name="reservaInsta" class="form-check-input" id="reservaInsta">
+            <div class="col-5 text-left">
+              <input type="text" name="rua" class="form-control" id="rua-a" placeholder="Ex: Rua Passos">
             </div>
           </div>
 
+          <br>
+
+          <div class="row">
+            <div class="col-4 text-right">
+              Número:
+            </div>
+            <div class="col-5 text-left">
+              <input type="number" name="numero" class="form-control" id="numero" placeholder="Ex: 645">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col-4 text-right">
+              Complemento:
+            </div>
+            <div class="col-5 text-left">
+              <input type="text" name="complemento" class="form-control" id="complemento-a" placeholder="Ex: Ap 220 Bloco 3">
+            </div>
+          </div>
 
           <br><br>
         </div>
@@ -696,7 +717,7 @@
           <div id="descricao_geral_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
             <div class="col-8" style="color: black">
               <br>
-              <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+              <h5>Marque a opção que melhor descreva o seu espaço</h5>
               <br>
             </div>
           </div>
@@ -895,7 +916,7 @@
           <div id="periodo_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
             <div class="col-8" style="color: black">
               <br>
-              <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+              <h5>Quais são os dias e horários que você está disponibilizando o espaço para o aluguel</h5>
               <br>
             </div>
           </div>
@@ -1274,7 +1295,7 @@
       <div id="calendario-direto" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
         <div class="row">
           <div class="col-12">
-            <h6 style="color: white">Selecione a quantidade de meses que o espaço será disponibilizado</h6>
+            <h6 style="color: white">Selecione a quantidade de meses seguidos em que o espaço pode ser disponibilizado</h6>
             <br>
             <div class="row text-center justify-content-center">
               <div class="col-6">
@@ -3681,7 +3702,7 @@
 
     </div>
     <div class="col-12 py-4">
-      <h6 style="color: white">Selecione quantas semanas seguidas o espaço será alugado</h6>
+      <h6 style="color: white">Selecione por quantas semanas seguidas o espaço será alugado</h6>
       <br>
       <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -3752,7 +3773,7 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="text" class="form-control" name="hora" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" name="hora" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3767,7 +3788,7 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="text" class="form-control" name="4hora" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" name="4hora" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3782,7 +3803,7 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="text" class="form-control" id="5hora" name="5hora" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="5hora" name="5hora" placeholder="Ex: 55 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3797,7 +3818,7 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="text" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3812,7 +3833,7 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="text" class="form-control" id="semana" name="semana" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="semana" name="semana" placeholder="Ex: 55 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3827,8 +3848,19 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="text" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
     </div>
+  </div>
+</div>
+
+<br><br>
+
+<div class="row justify-content-center">
+  <div class="col-12 text-center">
+    Clique aqui para ativar a opção de "reserva instantânea". <input type="checkbox" name="reservaInsta" class="ml-3 form-check-input" id="reservaInsta">
+  </div>
+  <div class="col-12 text-center">
+    <a><span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span></a>
   </div>
 </div>
 
@@ -3858,7 +3890,7 @@
     <div id="consultorio_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
       <div class="col-8" style="color: black">
         <br>
-        <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+        <h5>Que comodidades seu espaço oferece?</h5>
         <br>
       </div>
     </div>
@@ -4217,6 +4249,19 @@
         document.getElementById("periodo_tip-div").style.display = '';
       }
     }
+    function consultorio_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("consultorio_tip-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("consultorio_tip-div").style.display = '';
+      }
+    }
     function workshop_tip(botao)
     {
       if(botao.classList.contains("active") == true)
@@ -4230,11 +4275,89 @@
         document.getElementById("workshop_tip-div").style.display = '';
       }
     }
+    function cozinha_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("cozinha_tip-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("cozinha_tip-div").style.display = '';
+      }
+    }
+    function ensaio_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("ensaio-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("ensaio-div").style.display = '';
+      }
+    }
+    function fotografico_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("fotografico-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("fotografico-div").style.display = '';
+      }
+    }
+    function costura_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("costura-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("costura-div").style.display = '';
+      }
+    }
+    function academia_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("academia-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("academia-div").style.display = '';
+      }
+    }
+    function artes_tip(botao)
+    {
+      if(botao.classList.contains("active") == true)
+      {
+        botao.classList.remove("active");
+        document.getElementById("artes-div").style.display = 'none';
+      }
+      else
+      {
+        botao.classList.add("active");
+        document.getElementById("artes-div").style.display = '';
+      }
+    }
     </script>
     <div id="workshop_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
       <div class="col-8" style="color: black">
         <br>
-        <h5>Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio Texto de auxilio </h5>
+        <h5>Que comodidades seu espaço oferece?</h5>
         <br>
       </div>
     </div>
@@ -4659,8 +4782,15 @@
     <div class="row" style="background-color: black">
       <div class="col-12" style="color: #FFC107">
         <br>
-        <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+        <span onclick="cozinha_tip(this)" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
         <br><br>
+      </div>
+    </div>
+    <div id="cozinha_tip-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+      <div class="col-8" style="color: black">
+        <br>
+        <h5>Que comodidades seu espaço oferece?</h5>
+        <br>
       </div>
     </div>
 
@@ -5229,8 +5359,15 @@
     <div class="row" style="background-color: black">
       <div class="col-12" style="color: #FFC107">
         <br>
-        <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+        <span onclick="ensaio_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
         <br><br>
+      </div>
+    </div>
+    <div id="ensaio-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+      <div class="col-8" style="color: black">
+        <br>
+        <h5>Que comodidades seu espaço oferece?</h5>
+        <br>
       </div>
     </div>
 
@@ -5345,8 +5482,15 @@
     <div class="row" style="background-color: black">
       <div class="col-12" style="color: #FFC107">
         <br>
-        <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+        <span onclick="fotografico_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
         <br><br>
+      </div>
+    </div>
+    <div id="fotografico-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+      <div class="col-8" style="color: black">
+        <br>
+        <h5>Que comodidades seu espaço oferece?</h5>
+        <br>
       </div>
     </div>
 
@@ -5607,8 +5751,15 @@
     <div class="row" style="background-color: black">
       <div class="col-12" style="color: #FFC107">
         <br>
-        <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+        <span onclick="costura_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
         <br><br>
+      </div>
+    </div>
+    <div id="costura-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+      <div class="col-8" style="color: black">
+        <br>
+        <h5>Que comodidades seu espaço oferece?</h5>
+        <br>
       </div>
     </div>
 
@@ -5741,8 +5892,15 @@
     <div class="row" style="background-color: black">
       <div class="col-12" style="color: #FFC107">
         <br>
-        <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+        <span onclick="academia_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
         <br><br>
+      </div>
+    </div>
+    <div id="academia-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+      <div class="col-8" style="color: black">
+        <br>
+        <h5>Que comodidades seu espaço oferece?</h5>
+        <br>
       </div>
     </div>
 
@@ -5935,8 +6093,15 @@
     <div class="row" style="background-color: black">
       <div class="col-12" style="color: #FFC107">
         <br>
-        <span class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
+        <span onclick="artes_tip(this);" class="btn btn-outline-warning"><h2>O que o seu espaço oferece?</h2></span>
         <br><br>
+      </div>
+    </div>
+    <div id="artes-div" class="row text-center justify-content-center" style="background-color: #FFC107; display: none">
+      <div class="col-8" style="color: black">
+        <br>
+        <h5>Que comodidades seu espaço oferece?</h5>
+        <br>
       </div>
     </div>
 
@@ -6087,6 +6252,22 @@
 
     <br><br>
 
+    <script>
+    function fotosTeste()
+    {
+      if(document.getElementById("foto1-label").innerHTML != "Escolha uma foto" && document.getElementById("foto2-label").innerHTML != "Escolha uma foto" && document.getElementById("foto3-label").innerHTML != "Escolha uma foto")
+      {
+        document.getElementById("foto4-div").style.display = "";
+        document.getElementById("foto5-div").style.display = "";
+      }
+      else
+      {
+        document.getElementById("foto4-div").style.display = "none";
+        document.getElementById("foto5-div").style.display = "none";
+      }
+    }
+    </script>
+
     <div class="custom-file">
       <input type="file" class="custom-file-input" id="foto1" name="foto1">
       <label class="custom-file-label text-left" id="foto1-label" for="foto1">Escolha uma foto</label>
@@ -6102,12 +6283,12 @@
       <label class="custom-file-label text-left" id="foto3-label" for="foto3">Escolha uma foto</label>
     </div>
     <br><br>
-    <div class="custom-file">
+    <div id="foto4-div" class="custom-file" style="display: none">
       <input type="file" class="custom-file-input" id="foto4" name="foto4">
       <label class="custom-file-label text-left" id="foto4-label" for="foto4">Escolha uma foto</label>
     </div>
     <br><br>
-    <div class="custom-file">
+    <div id="foto5-div" class="custom-file" style="display: none">
       <input type="file" class="custom-file-input" id="foto5" name="foto5">
       <label class="custom-file-label text-left" id="foto5-label" for="foto5">Escolha uma foto</label>
     </div>
@@ -6202,7 +6383,6 @@
   </div>
   <div class="col-3">
   </div>
-</div>
 
 
 </form>
