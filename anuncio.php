@@ -915,6 +915,8 @@ if($session->vereficarLogin() != false){
 
           <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
+<?php if($arrayGeral[9] != '' && $arrayGeral[10] != '' ){ ?>
+
             <!-- //Printar divisão inteira-->
             <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
               <br>
@@ -922,17 +924,17 @@ if($session->vereficarLogin() != false){
               <div class="row p-5">
                 <div class="col-lg-6 col-md-12">
                   <div class="panorama">
-                    <img src="img/panoramico.jpg" alt="" title="" />
+                    <img src="<?php echo $prefixo.$arrayGeral[9] ?>" alt="" title="" />
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
                   <div class="panorama">
-                    <img src="img/panoramico.jpg" alt="" title="" />
+                    <img src="<?php echo $prefixo.$arrayGeral[10] ?>" alt="" title="" />
                   </div>
                 </div>
               </div>
             </div>
-
+<?php } ?>
             <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
               <div class="row text-center justify-content-center py-3">
                 <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">
@@ -952,12 +954,8 @@ if($session->vereficarLogin() != false){
                   }
 
                   function geocodeAddress(geocoder, resultsMap) {
-<<<<<<< HEAD
                     // Rio de janeiro,RJ,Avenida frei caneca, 461, estácio
                     geocoder.geocode({'address': "<?php echo ( $array[6].",".$array[8].",".$array[10].",".$array[11].",".$array[5]);?>"}, function(results, status) {
-=======
-                      geocoder.geocode({'address': "Rio de janeiro,RJ,Avenida frei caneca, 461, estácio"}, function(results, status) {
->>>>>>> 72d253c79a9d379f8cf716a44add4211df86a0fc
                       if (status === 'OK') {
                         resultsMap.setCenter(results[0].geometry.location);
                         citymap = {

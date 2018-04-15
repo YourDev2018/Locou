@@ -247,29 +247,35 @@ class BuscarEspacos
             $array = [];
             $cont=0;
             while ($row=$result->fetch_assoc()) {
-                $array[$cont] = $row['metragem'];
+                $array[$cont] = $row['metragem']; //0
                 $cont++;
 
-                $array[$cont] = $row['recepcao'];
+                $array[$cont] = $row['recepcao'];//1
                 $cont++;
 
-                $array[$cont] = $row['banheiroPrivativo'];
+                $array[$cont] = $row['banheiroPrivativo'];//2
                 $cont++;
-                $array[$cont] = $row['banheiro'];
+                $array[$cont] = $row['banheiro'];//3
                 $cont++;
-                $array[$cont] = $row['casaOuPredio'];
+                $array[$cont] = $row['casaOuPredio'];//4
                 $cont++;
-                $array[$cont] = $row['elevador'];
-                $cont++;
-
-                $array[$cont] = $row['estacionamento'];
+                $array[$cont] = $row['elevador'];//5
                 $cont++;
 
-                $array[$cont] = $row['proprioOuRotativo'];
+                $array[$cont] = $row['estacionamento'];//6
                 $cont++;
 
-                $array[$cont] = trim($row['transporte']);
-                
+                $array[$cont] = $row['proprioOuRotativo'];//7
+                $cont++;
+
+                $array[$cont] = trim($row['transporte']);//8
+                $cont++;
+
+                $array[$cont] = trim($row['fotoPanoramicaUm']);//9
+                $cont++;
+
+                $array[$cont] = trim($row['fotoPanoramicaDois']);//10
+                $cont++;
 
 
             }
