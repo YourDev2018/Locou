@@ -918,7 +918,7 @@ if($session->vereficarLogin() != false){
 <?php if($arrayGeral[9] != '' && $arrayGeral[10] != '' ){ ?>
 
             <!-- //Printar divisão inteira-->
-            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display: ">
               <br>
               <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
               <div class="row p-5">
