@@ -62,7 +62,7 @@ if($reservaInsta=='on'){
 
 $db = new FunctionsDB();
 $conn = $db->conectDB();
-$db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
+//$db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
 
 $session = new FunctionsSession();
 
@@ -129,7 +129,15 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                    header('location: fimEmail.php');
+                    $URL_ATUAL= "$_SERVER[REQUEST_URI]";
+                    print $URL_ATUAL;
+                    if (strpos($URL_ATUAL, '') !== false) {
+                        
+                      //  header('location: fimEmail.php');
+                       
+              
+                    }
+
 
                 }
                 
@@ -152,7 +160,14 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                    header('location: fimEmail.php');
+                        print $URL_ATUAL;
+                    if (strpos($URL_ATUAL, '') !== false) {
+                        
+                      //  header('location: fimEmail.php');
+                       
+              
+                    }
+
                 }
                 
 
@@ -296,7 +311,14 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                    header('location: fimEmail.php');
+                      print $URL_ATUAL;
+                    if (strpos($URL_ATUAL, '') !== false) {
+                        
+                      //  header('location: fimEmail.php');
+                       
+              
+                    }
+
 
                       
                 }
@@ -320,7 +342,9 @@ $session = new FunctionsSession();
 function basico($ftp,$db, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua,$num,$complemento ){
 
 
-    $id = $_SESSION['id'];
+   // $id = $_SESSION['id'];
+    
+    print "ID em básico é: ".$id ;
 
     $ext = strtolower(substr($_FILES['foto1']['name'],-4));
     $ext2 = strtolower(substr($_FILES['foto2']['name'],-4));

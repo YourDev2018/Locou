@@ -55,34 +55,43 @@ class BuscarEspacos
                     $array = [];
                     $cont=0;
                     while ($row=$result->fetch_assoc()) {
-                        $array[$cont] = $row['idAnuncio'];
+                        $array[$cont] = $row['idAnuncio'];  // 0
                         $cont++;
 
-                        $array[$cont] = trim($row['fotoUm']);
+                        $array[$cont] = trim($row['fotoUm']); // 1
                         $cont++;
 
-                         $array[$cont] = trim($row['fotoDois']);
+                         $array[$cont] = trim($row['fotoDois']); // 2
+                        $cont++; 
+
+                         $array[$cont] = trim($row['fotoTres']); // 3
                         $cont++;
 
-                         $array[$cont] = trim($row['fotoTres']);
+
+
+                        $array[$cont] = $row['titulo']; // 4
+                        $cont++;
+                        $array[$cont] = $row['bairro']; // 5
+                        $cont++;
+                        $array[$cont] = $row['cidade']; // 6
+                        $cont++;
+                        $array[$cont] = $row['preco']; // 7
+                        $cont++;
+
+                        $array[$cont] = $row['uf'];  // 8
+                        $cont++;
+
+                        $array[$cont] = $row['categoria']; // 9
+                        $cont++; 
+                        
+                        $array[$cont] = $row['rua']; // 10
+                        $cont++;
+
+                        $array[$cont] = $row['numero']; // 11
                         $cont++;
 
 
 
-                        $array[$cont] = $row['titulo'];
-                        $cont++;
-                        $array[$cont] = $row['bairro'];
-                        $cont++;
-                        $array[$cont] = $row['cidade'];
-                        $cont++;
-                        $array[$cont] = $row['preco'];
-                        $cont++;
-
-                        $array[$cont] = $row['uf'];
-                        $cont++;
-
-                        $array[$cont] = $row['categoria'];
-                        $cont++;
                     }
                     // print_r($array);
                     return $array;

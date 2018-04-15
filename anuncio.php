@@ -915,7 +915,7 @@ if($session->vereficarLogin() != false){
 
           <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
-
+    
             <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
               <br>
               <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
@@ -952,7 +952,8 @@ if($session->vereficarLogin() != false){
                   }
 
                   function geocodeAddress(geocoder, resultsMap) {
-                    geocoder.geocode({'address': "Rio de janeiro,RJ,Avenida frei caneca, 461, estácio"}, function(results, status) {
+                    // Rio de janeiro,RJ,Avenida frei caneca, 461, estácio
+                    geocoder.geocode({'address': "<?php echo ( $array[6].",".$array[8].",".$array[10].",".$array[11].",".$array[5]);?>"}, function(results, status) {
                       if (status === 'OK') {
                         resultsMap.setCenter(results[0].geometry.location);
                         citymap = {
