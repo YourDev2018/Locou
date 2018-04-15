@@ -129,6 +129,10 @@ if (!($tipo == "" || $tipo == null) ) {
   var q = url.searchParams.get("q");
   console.log(t);
   console.log(q);
+  if(t == "")
+  {
+    window.location.href = "resultado.php?t="+"todos"+"&q="+q;
+  }
   var p = "resultado.php?t=";
   function atualizarHref()
   {
@@ -285,8 +289,22 @@ if (!($tipo == "" || $tipo == null) ) {
       {
         if(tipo == "nova-query")
         {
-          window.location.href = "resultado.php?t="+temp+"&q="+q;
+          if(temp == "" || temp == null)
+          {
+            console.log(q);
+            console.log(temp + "-teste");
+            window.location.href = "resultado.php?t="+"todos"+"&q="+q;
+          }
+          else
+          {
+            console.log(q);
+            console.log(temp);
+            window.location.href = "resultado.php?t="+temp+"&q="+q;
+          }
         }
+      }
+      if(tipo != "nova-query" && tipo != "query")
+      {
         console.log(temp);
         window.location.href = "resultado.php?t="+temp+"&q="+q;
       }
@@ -295,8 +313,8 @@ if (!($tipo == "" || $tipo == null) ) {
   }
   function queryInterna()
   {
-      q = document.getElementById('query-interna').value;
-      deletarQuery("nova-query")
+    q = document.getElementById('query-interna').value;
+    deletarQuery("nova-query");
   }
   </script>
   <script type='text/javascript'>
@@ -533,9 +551,9 @@ if (!($tipo == "" || $tipo == null) ) {
       <div class="col-9">
         <div class="row text-center justify-content-center">
           <div class="col-12 py-3 px-5">
-            <form class="form-inline justify-content-center desktop" action="resultado.php" method="get">
+            <form class="form-inline justify-content-center desktop" method="get">
               <input id="query-interna" type="text" name="q" style="width: 35%" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
-              <button type="submit" class="btn btn-warning" onclick="queryInterna();">Buscar</button>
+              <span class="btn btn-warning" onclick="queryInterna();">Buscar</span>
             </form>
           </div>
         </div>
