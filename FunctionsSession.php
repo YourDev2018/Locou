@@ -47,7 +47,7 @@ class FunctionsSession{
 
     function logout(){
         $_SESSION['logado'] = null;
-        $_SESSION['id'] = null;
+        $_SESSION['id'] = "";
         $_SESSION['email']= null;
         $_SESSION['firstName']= null;
         $_SESSION['lastName']= null;

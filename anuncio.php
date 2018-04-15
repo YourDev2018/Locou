@@ -952,7 +952,12 @@ if($session->vereficarLogin() != false){
                   }
 
                   function geocodeAddress(geocoder, resultsMap) {
+<<<<<<< HEAD
+                    // Rio de janeiro,RJ,Avenida frei caneca, 461, estácio
+                    geocoder.geocode({'address': "<?php echo ( $array[6].",".$array[8].",".$array[10].",".$array[11].",".$array[5]);?>"}, function(results, status) {
+=======
                       geocoder.geocode({'address': "Rio de janeiro,RJ,Avenida frei caneca, 461, estácio"}, function(results, status) {
+>>>>>>> 72d253c79a9d379f8cf716a44add4211df86a0fc
                       if (status === 'OK') {
                         resultsMap.setCenter(results[0].geometry.location);
                         citymap = {
