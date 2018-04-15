@@ -129,11 +129,11 @@ if($session->vereficarLogin() != false){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
   //set de variaveis
-  var seg_ativo = false;
-  var ter_ativo = false;
-  var qua_ativo = false;
+  var seg_ativo = true;
+  var ter_ativo = true;
+  var qua_ativo = true;
   var qui_ativo = true;
-  var sex_ativo = false;
+  var sex_ativo = true;
   var sab_ativo = false;
   var dom_ativo = false;
 
@@ -148,28 +148,28 @@ if($session->vereficarLogin() != false){
   var seg_max_m = 30;
   var seg_min_h = 10;
   var seg_min_m = 0;
-  var ter_max_h = 0;
+  var ter_max_h = 12;
   var ter_max_m = 0;
-  var ter_min_h = 0;
+  var ter_min_h = 15;
   var ter_min_m = 0;
-  var qua_max_h = 0;
+  var qua_max_h = 20;
   var qua_max_m = 0;
-  var qua_min_h = 0;
-  var qua_min_m = 0;
-  var qui_max_h = 0;
+  var qua_min_h = 8;
+  var qua_min_m = 30;
+  var qui_max_h = 18;
   var qui_max_m = 0;
-  var qui_min_h = 0;
-  var qui_min_m = 0;
-  var sex_max_h = 0;
+  var qui_min_h = 12;
+  var qui_min_m = 30;
+  var sex_max_h = 12;
   var sex_max_m = 0;
-  var sex_min_h = 0;
+  var sex_min_h = 10;
   var sex_min_m = 0;
-  var sab_max_h = 0;
+  var sab_max_h = 22;
   var sab_max_m = 0;
-  var sab_min_h = 0;
+  var sab_min_h = 10;
   var sab_min_m = 0;
   var dom_max_h = 20;
-  var dom_max_m = 00;
+  var dom_max_m = 0;
   var dom_min_h = 0;
   var dom_min_m = 0;
 
@@ -197,6 +197,15 @@ if($session->vereficarLogin() != false){
   $.fn.datepicker.defaults.daysOfWeekDisabled = [0,2,4,5,6];
   $.fn.datepicker.defaults.daysOfWeekHighlighted = [1,3];
   $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
+
+  $( function() {
+    $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] });
+  } );
+
+  $( function() {
+    $( "#datepicker-direto" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] });
+  } );
+
   </script>
   <script>
   $(function () {
@@ -1092,157 +1101,221 @@ if($session->vereficarLogin() != false){
             <div id="calendario-unico" style="display: ; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
               <div class="row">
                 <div class="col-12">
-                  <h6 style="color: white">Selecione a data e o horário em que será disponibilizado</h6>
+                  <h6 style="color: white">Selecione a data e o horário em que será alugado</h6>
                   <br>
                   <script>
-                    function horaDisp()
+                  function horaDisp()
+                  {
+                    if (document.getElementById('datepicker').value != "")
                     {
-                      if (document.getElementById('datepicker').value != "")
+                      var from = document.getElementById('datepicker').value.split("/");
+                      var d = new Date(from[2], from[1] - 1, from[0]);
+                      document.getElementById('horas-disponiveis').style.display = "";
+                      document.getElementById('data-escolhida').innerHTML = document.getElementById('datepicker').value;
+                      if(d.getDay() == "0") //domingo
                       {
-                        var from = document.getElementById('datepicker').value.split("/");
-                        var d = new Date(from[2], from[1] - 1, from[0]);
-                        document.getElementById('horas-disponiveis').style.display = "";
-                        document.getElementById('data-escolhida').innerHTML = document.getElementById('datepicker').value;
-                        if(d.getDay() == "0") //domingo
+                        if(dom_min_m == 0)
                         {
-                          if(dom_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":"+dom_min_m;
-                          }
-                          if(dom_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":"+dom_max_m;
-                          }
+                          document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":00";
                         }
-                        if(d.getDay() == "1") //seg
+                        else
                         {
-                          if(seg_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = seg_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = seg_min_h+":"+seg_min_m;
-                          }
-                          if(seg_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = seg_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = seg_max_h+":"+seg_max_m;
-                          }
+                          document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":"+dom_min_m;
                         }
-                        if(d.getDay() == "2") //ter
+                        if(dom_max_m == 0)
                         {
-                          if(ter_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = ter_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = ter_min_h+":"+ter_min_m;
-                          }
-                          if(ter_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = ter_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = ter_max_h+":"+ter_max_m;
-                          }
+                          document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":00";
                         }
-                        if(d.getDay() == "3") //qua
+                        else
                         {
-                          if(qua_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = qua_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = qua_min_h+":"+qua_min_m;
-                          }
-                          if(qua_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = qua_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = qua_max_h+":"+qua_max_m;
-                          }
+                          document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":"+dom_max_m;
                         }
-                        if(d.getDay() == "4") //qui
+                        var temAlugado = false;
+                        if(temAlugado == true)
                         {
-                          if(qui_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = qui_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = qui_min_h+":"+qui_min_m;
-                          }
-                          if(qui_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = qui_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = qui_max_h+":"+qui_max_m;
-                          }
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">00:00</span> e <span style=\"color: #FFCE00\">00:00</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "já está alugado.";
+
                         }
-                        if(d.getDay() == "5") //sex
+                      }
+                      if(d.getDay() == "1") //seg
+                      {
+                        if(seg_min_m == 0)
                         {
-                          if(sex_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = sex_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = sex_min_h+":"+sex_min_m;
-                          }
-                          if(sex_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = sex_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = sex_max_h+":"+sex_max_m;
-                          }
+                          document.getElementById('hora-inicio-texto').innerHTML = seg_min_h+":00";
                         }
-                        if(d.getDay() == "6") //sab
+                        else
                         {
-                          if(sab_min_m == 0)
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = sab_min_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-inicio-texto').innerHTML = sab_min_h+":"+sab_min_m;
-                          }
-                          if(sab_max_m == 0)
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = sab_max_h+":00";
-                          }
-                          else
-                          {
-                              document.getElementById('hora-fim-texto').innerHTML = sab_max_h+":"+sab_max_m;
-                          }
+                          document.getElementById('hora-inicio-texto').innerHTML = seg_min_h+":"+seg_min_m;
+                        }
+                        if(seg_max_m == 0)
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = seg_max_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = seg_max_h+":"+seg_max_m;
+                        }
+                        var temAlugado = false;
+                        if(temAlugado == true)
+                        {
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre ";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">(00:00</span> e <span style=\"color: #FFCE00\">00:00)</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + " já está alugado.";
+
+                        }
+                      }
+                      if(d.getDay() == "2") //ter
+                      {
+                        if(ter_min_m == 0)
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = ter_min_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = ter_min_h+":"+ter_min_m;
+                        }
+                        if(ter_max_m == 0)
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = ter_max_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = ter_max_h+":"+ter_max_m;
+                        }
+                        var temAlugado = false;
+                        if(temAlugado == true)
+                        {
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre ";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">(00:00</span> e <span style=\"color: #FFCE00\">00:00)</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + " já está alugado.";
+
+                        }
+                      }
+                      if(d.getDay() == "3") //qua
+                      {
+                        if(qua_min_m == 0)
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = qua_min_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = qua_min_h+":"+qua_min_m;
+                        }
+                        if(qua_max_m == 0)
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = qua_max_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = qua_max_h+":"+qua_max_m;
+                        }
+                        var temAlugado = false;
+                        if(temAlugado == true)
+                        {
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre ";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">(00:00</span> e <span style=\"color: #FFCE00\">00:00)</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + " já está alugado.";
+
+                        }
+                      }
+                      if(d.getDay() == "4") //qui
+                      {
+                        if(qui_min_m == 0)
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = qui_min_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = qui_min_h+":"+qui_min_m;
+                        }
+                        if(qui_max_m == 0)
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = qui_max_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = qui_max_h+":"+qui_max_m;
+                        }
+                        var temAlugado = false;
+                        if(temAlugado == true)
+                        {
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre ";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">(00:00</span> e <span style=\"color: #FFCE00\">00:00)</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + " já está alugado.";
+
+                        }
+                      }
+                      if(d.getDay() == "5") //sex
+                      {
+                        if(sex_min_m == 0)
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = sex_min_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = sex_min_h+":"+sex_min_m;
+                        }
+                        if(sex_max_m == 0)
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = sex_max_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = sex_max_h+":"+sex_max_m;
+                        }
+                        var temAlugado = false;
+                        if(temAlugado == true)
+                        {
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre ";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">(00:00</span> e <span style=\"color: #FFCE00\">00:00)</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + " já está alugado.";
+
+                        }
+                      }
+                      if(d.getDay() == "6") //sab
+                      {
+                        if(sab_min_m == 0)
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = sab_min_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-inicio-texto').innerHTML = sab_min_h+":"+sab_min_m;
+                        }
+                        if(sab_max_m == 0)
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = sab_max_h+":00";
+                        }
+                        else
+                        {
+                          document.getElementById('hora-fim-texto').innerHTML = sab_max_h+":"+sab_max_m;
+                        }
+                        var temAlugado = false;
+                        if(temAlugado == true)
+                        {
+                          document.getElementById('horas-alugadas').style.display = "";
+                          document.getElementById('horas-alugadas').innerHTML = "Sendo que o horário entre ";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + "<span style=\"color: #FFCE00\">(00:00</span> e <span style=\"color: #FFCE00\">00:00)</span>";
+                          document.getElementById('horas-alugadas').innerHTML = document.getElementById('horas-alugadas').innerHTML + " já está alugado.";
+
                         }
                       }
                     }
+                  }
                   </script>
                   <input type="text" readonly name="data-unico-pick" id="datepicker" onchange="horaDisp()" >
                   <br>
                   <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
-                  <span id="horas-disponiveis" style="color: white; display: none">No dia <span id="data-escolhida" style="color: #FFCE00">00/00/2018</span> o horário disponível é de <span id="hora-inicio-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-texto" style="color: #FFCE00">00:00</span>. <br> Sendo que o horário entre <span style="color: #FFCE00">00:00</span> e <span style="color: #FFCE00">00:00</span>, <span style="color: #FFCE00">00:00</span> e <span style="color: #FFCE00">00:00</span> já está alugado.</span>
+                  <span id="horas-disponiveis" style="color: white; display: none">No dia <span id="data-escolhida" style="color: #FFCE00">00/00/2018</span> o horário disponível é de <span id="hora-inicio-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                  <span id="horas-alugadas" style="color: white; display: none">Sendo que o horário entre <span style="color: #FFCE00">00:00</span> e <span style="color: #FFCE00">00:00</span>, <span style="color: #FFCE00">00:00</span> e <span style="color: #FFCE00">00:00</span> já está alugado.</span>
                   <br><br>
                   <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
                     <div class="row px-2">
@@ -1636,14 +1709,49 @@ if($session->vereficarLogin() != false){
             <div id="calendario-direto" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
               <div class="row">
                 <div class="col-12">
-                  <h6 style="color: white">Selecione a quantidade de meses que será Alugado:</h6>
+                  <h6 style="color: white">Selecione a data do primeiro dia do aluguel:</h6>
+                  <br>
+                  <input type="text" readonly name="data-direto-pick" id="datepicker-direto">
+                  <br>
+                  <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
+                  <br>
+                  <h6 style="color: white">Selecione a quantidade de semanas seguidas em que será Alugado:</h6>
                   <br>
                   <div class="row text-center justify-content-center">
                     <div class="col-6">
                       <div class="row px-2">
                         <div class="col-12">
-                          <input type="number" maxlength="2"name="semanas-direto" class="form-control" style="text-align: center" readonly value="2">
+                          <input type="text" id="semanas-seguidas-direto" maxlength="2"name="semanas-unico-direto" class="form-control" style="text-align: center" readonly value="1">
                           <br>
+                          <script>
+                          var semanasSeguidas = 1;
+                          function semana_reincidente_mais()
+                          {
+                            semanasSeguidas = semanasSeguidas + 1;
+                            if(semanasSeguidas >= 12)
+                            {
+                              semanasSeguidas = 12;
+                            }
+                            if(semanasSeguidas <= 0)
+                            {
+                              semanasSeguidas = 1;
+                            }
+                            document.getElementById("semanas-seguidas-direto").value = semanasSeguidas;
+                          }
+                          function semana_reincidente_menos()
+                          {
+                            semanasSeguidas = semanasSeguidas - 1;
+                            if(semanasSeguidas >= 12)
+                            {
+                              semanasSeguidas = 12;
+                            }
+                            if(semanasSeguidas <= 0)
+                            {
+                              semanasSeguidas = 1;
+                            }
+                            document.getElementById("semanas-seguidas-direto").value = semanasSeguidas;
+                          }
+                          </script>
                         </div>
                         <div class="col-12">
                           <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
@@ -1662,7 +1770,6 @@ if($session->vereficarLogin() != false){
                     document.getElementById("tempoDeAlguel").innerHTML = "O prazo de alguel será do dia "+dd+"/"+mm+"/"+yyyy+" até "+data.getDate()+'/'+ (data.getMonth()+1) +'/'+data.getFullYear();;
                   }
                   </script>
-                  <br>
                   <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
                   <br>
                   <div class="row text-center justify-content-center">
@@ -1870,7 +1977,12 @@ if($session->vereficarLogin() != false){
                 }
               }
               </script>
-
+              <h6 style="color: white">Selecione a data do primeiro dia do aluguel:</h6>
+              <br>
+              <input type="text" readonly name="data-reincidente-pick" id="datepicker-reincidente">
+              <br>
+              <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
+              <br>
               <h6 style="color: white">Selecione os dias da semana e os horários em que serão disponibilizados para alugar:</h6>
               <br>
 
@@ -1888,6 +2000,167 @@ if($session->vereficarLogin() != false){
                   <div id="segunda-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-seg-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-seg-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
+                        <script>
+                        function horaDispReincidente()
+                        {
+                          if(seg_ativo == true)
+                          {
+                            document.getElementById('hora-inicio-seg-texto').innerHTML = seg_min_h+":";
+                            if(seg_min_m != 30)
+                            {
+                              document.getElementById('hora-inicio-seg-texto').innerHTML = document.getElementById('hora-inicio-seg-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-inicio-seg-texto').innerHTML = document.getElementById('hora-inicio-seg-texto').innerHTML + "30";
+                            }
+                            document.getElementById('hora-fim-seg-texto').innerHTML = seg_max_h+":";
+                            if(seg_max_m != 30)
+                            {
+                              document.getElementById('hora-fim-seg-texto').innerHTML = document.getElementById('hora-fim-seg-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-fim-seg-texto').innerHTML = document.getElementById('hora-fim-seg-texto').innerHTML + "30";
+                            }
+                          }
+
+                          if(ter_ativo == true)
+                          {
+                            document.getElementById('hora-inicio-ter-texto').innerHTML = ter_min_h+":";
+                            if(ter_min_m != 30)
+                            {
+                              document.getElementById('hora-inicio-ter-texto').innerHTML = document.getElementById('hora-inicio-ter-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-inicio-ter-texto').innerHTML = document.getElementById('hora-inicio-ter-texto').innerHTML + "30";
+                            }
+                            document.getElementById('hora-fim-ter-texto').innerHTML = ter_max_h+":";
+                            if(ter_max_m != 30)
+                            {
+                              document.getElementById('hora-fim-ter-texto').innerHTML = document.getElementById('hora-fim-ter-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-fim-ter-texto').innerHTML = document.getElementById('hora-fim-ter-texto').innerHTML + "30";
+                            }
+                          }
+
+                          if(qua_ativo == true)
+                          {
+                            document.getElementById('hora-inicio-qua-texto').innerHTML = qua_min_h+":";
+                            if(qua_min_m != 30)
+                            {
+                              document.getElementById('hora-inicio-qua-texto').innerHTML = document.getElementById('hora-inicio-qua-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-inicio-qua-texto').innerHTML = document.getElementById('hora-inicio-qua-texto').innerHTML + "30";
+                            }
+                            document.getElementById('hora-fim-qua-texto').innerHTML = qua_max_h+":";
+                            if(qua_max_m != 30)
+                            {
+                              document.getElementById('hora-fim-qua-texto').innerHTML = document.getElementById('hora-fim-qua-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-fim-qua-texto').innerHTML = document.getElementById('hora-fim-qua-texto').innerHTML + "30";
+                            }
+                          }
+
+                          if(qui_ativo == true)
+                          {
+                            document.getElementById('hora-inicio-qui-texto').innerHTML = qui_min_h+":";
+                            if(qui_min_m != 30)
+                            {
+                              document.getElementById('hora-inicio-qui-texto').innerHTML = document.getElementById('hora-inicio-qui-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-inicio-qui-texto').innerHTML = document.getElementById('hora-inicio-qui-texto').innerHTML + "30";
+                            }
+                            document.getElementById('hora-fim-qui-texto').innerHTML = qui_max_h+":";
+                            if(qui_max_m != 30)
+                            {
+                              document.getElementById('hora-fim-qui-texto').innerHTML = document.getElementById('hora-fim-qui-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-fim-qui-texto').innerHTML = document.getElementById('hora-fim-qui-texto').innerHTML + "30";
+                            }
+                          }
+
+                          if(sex_ativo == true)
+                          {
+                            document.getElementById('hora-inicio-sex-texto').innerHTML = sex_min_h+":";
+                            if(sex_min_m != 30)
+                            {
+                              document.getElementById('hora-inicio-sex-texto').innerHTML = document.getElementById('hora-inicio-sex-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-inicio-sex-texto').innerHTML = document.getElementById('hora-inicio-sex-texto').innerHTML + "30";
+                            }
+                            document.getElementById('hora-fim-sex-texto').innerHTML = sex_max_h+":";
+                            if(sex_max_m != 30)
+                            {
+                              document.getElementById('hora-fim-sex-texto').innerHTML = document.getElementById('hora-fim-sex-texto').innerHTML + "00";
+                            }
+                            else
+                            {
+                              document.getElementById('hora-fim-sex-texto').innerHTML = document.getElementById('hora-fim-sex-texto').innerHTML + "30";
+                            }
+
+                            if(sab_ativo == true)
+                            {
+                              document.getElementById('hora-inicio-sab-texto').innerHTML = sab_min_h+":";
+                              if(sab_min_m != 30)
+                              {
+                                document.getElementById('hora-inicio-sab-texto').innerHTML = document.getElementById('hora-inicio-sab-texto').innerHTML + "00";
+                              }
+                              else
+                              {
+                                document.getElementById('hora-inicio-sab-texto').innerHTML = document.getElementById('hora-inicio-sab-texto').innerHTML + "30";
+                              }
+                              document.getElementById('hora-fim-sab-texto').innerHTML = sab_max_h+":";
+                              if(sab_max_m != 30)
+                              {
+                                document.getElementById('hora-fim-sab-texto').innerHTML = document.getElementById('hora-fim-sab-texto').innerHTML + "00";
+                              }
+                              else
+                              {
+                                document.getElementById('hora-fim-sab-texto').innerHTML = document.getElementById('hora-fim-sab-texto').innerHTML + "30";
+                              }
+                            }
+
+                            if(dom_ativo == true)
+                            {
+                              document.getElementById('hora-inicio-dom-texto').innerHTML = dom_min_h+":";
+                              if(dom_min_m != 30)
+                              {
+                                document.getElementById('hora-inicio-dom-texto').innerHTML = document.getElementById('hora-inicio-dom-texto').innerHTML + "00";
+                              }
+                              else
+                              {
+                                document.getElementById('hora-inicio-dom-texto').innerHTML = document.getElementById('hora-inicio-dom-texto').innerHTML + "30";
+                              }
+                              document.getElementById('hora-fim-dom-texto').innerHTML = dom_max_h+":";
+                              if(dom_max_m != 30)
+                              {
+                                document.getElementById('hora-fim-dom-texto').innerHTML = document.getElementById('hora-fim-dom-texto').innerHTML + "00";
+                              }
+                              else
+                              {
+                                document.getElementById('hora-fim-dom-texto').innerHTML = document.getElementById('hora-fim-dom-texto').innerHTML + "30";
+                              }
+                            }
+                          }
+                        }
+                        </script>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -2206,6 +2479,9 @@ if($session->vereficarLogin() != false){
                   <div id="terca-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-ter-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-ter-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -2524,6 +2800,9 @@ if($session->vereficarLogin() != false){
                   <div id="quarta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-qua-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-qua-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -2842,6 +3121,9 @@ if($session->vereficarLogin() != false){
                   <div id="quinta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-qui-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-qui-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -3160,6 +3442,9 @@ if($session->vereficarLogin() != false){
                   <div id="sexta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-sex-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-sex-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -3478,6 +3763,9 @@ if($session->vereficarLogin() != false){
                   <div id="sabado-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-sab-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-sab-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -3796,6 +4084,9 @@ if($session->vereficarLogin() != false){
                   <div id="domingo-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
                       <div class="col-12" style="color: #FFCE00">
+                        <br>
+                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-dom-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-dom-texto" style="color: #FFCE00">00:00</span>.<br></span>
+                        <br>
                         <h6>Hora de início do Aluguel</h6>
                       </div>
                       <div class="col-12">
@@ -4333,6 +4624,7 @@ $( document ).ready(function() {
   });
   calcularPreco();
   dias_bloqueados();
+  horaDispReincidente();
 });
 $('.custom-file-input').on('change',function(){
   var foto = $(this).val().split('\\').pop();
