@@ -665,6 +665,46 @@ class BuscarEspacos
 
     }
 
+       public function buscarEspacoParecido($db, $tipo ){
+
+        $result =  $db->query(" SELECT *
+                                FROM AnuncioBasico 
+                                WHERE categoria LIKE '$tipo' ORDER BY idAnuncio DESC LIMIT 4  ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "erro buscar espaço Bairro Tipo";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                        
+                        $array[$cont] = $row['idAnuncio'];
+                      //  print " ".$array[$cont];
+                        $cont++;
+
+                        $array[$cont] = $row['fotoUm'];
+                        $cont++;
+
+                        $array[$cont] = $row['titulo'];
+                        $cont++;
+                        $array[$cont] = $row['bairro'];
+                        $cont++;
+                        $array[$cont] = $row['cidade'];
+                        $cont++;
+                        $array[$cont] = $row['preco'];
+                        $cont++;
+                
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
+
+    }
+
     public function retornarDiasNaoDisponiveis($db, $id){
 
     }

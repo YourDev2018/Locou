@@ -4475,22 +4475,23 @@ if($session->vereficarLogin() != false){
   <div class="col-12">
     <h2 class="mb-5"><b>Anúncios Similares:</b></h2>
     <div class="row">
+        <?php $arrayParecido=$busca->buscarEspacoParecido($conn,$array[9]); $contParecido = 0; ?>
 
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
-                <img src="img/item.png" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+                <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
 
               </div>
               <div class="col-12">
                 <h5 style="color:white">
-                  Consultório ABC
+                  <?php echo $arrayParecido[$contParecido++] ?>
                   <br>
-                  <span style="color:grey">Ipanema | Rio de Janeiro </span>
+                  <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
@@ -4498,21 +4499,21 @@ if($session->vereficarLogin() != false){
         <br>
       </div>
 
-      <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
-                <img src="img/item.png" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+                <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
 
               </div>
               <div class="col-12">
                 <h5 style="color:white">
-                  Consultório ABC
+                  <?php echo $arrayParecido[$contParecido++] ?>
                   <br>
-                  <span style="color:grey">Ipanema | Rio de Janeiro </span>
+                  <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
@@ -4520,21 +4521,22 @@ if($session->vereficarLogin() != false){
         <br>
       </div>
 
-      <div class="col-lg-3 col-md-6 col-sm-6">
+
+       <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
-                <img src="img/item.png" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+                <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
 
               </div>
               <div class="col-12">
                 <h5 style="color:white">
-                  Consultório ABC
+                  <?php echo $arrayParecido[$contParecido++] ?>
                   <br>
-                  <span style="color:grey">Ipanema | Rio de Janeiro </span>
+                  <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
@@ -4542,21 +4544,21 @@ if($session->vereficarLogin() != false){
         <br>
       </div>
 
-      <div class="col-lg-3 col-md-6 col-sm-6">
+       <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
-                <img src="img/item.png" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
+                <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
 
               </div>
               <div class="col-12">
                 <h5 style="color:white">
-                  Consultório ABC
+                  <?php echo $arrayParecido[$contParecido++] ?>
                   <br>
-                  <span style="color:grey">Ipanema | Rio de Janeiro </span>
+                  <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$ 500</span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
