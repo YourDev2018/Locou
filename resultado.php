@@ -283,11 +283,20 @@ if (!($tipo == "" || $tipo == null) ) {
       }
       else
       {
+        if(tipo == "nova-query")
+        {
+          window.location.href = "resultado.php?t="+temp+"&q="+q;
+        }
         console.log(temp);
         window.location.href = "resultado.php?t="+temp+"&q="+q;
       }
     }
     console.log(t);
+  }
+  function queryInterna()
+  {
+      q = document.getElementById('query-interna').value;
+      deletarQuery("nova-query")
   }
   </script>
   <script type='text/javascript'>
@@ -487,37 +496,37 @@ if (!($tipo == "" || $tipo == null) ) {
         </div>
         <div class="row text-left" style="border-bottom: solid; border-width: 2px; border-color: black;">
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-consultorio">Consultórios</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-consultorio">Consultórios</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-workshop">Workshop</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-workshop">Workshop</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-palestras">Salas para Palestras</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-palestras">Salas para Palestras</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-aula">Salas de Aula</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-aula">Salas de Aula</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-ensaio">Salas de Ensaio</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-ensaio">Salas de Ensaio</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-artes">Ateliê de Artes</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-artes">Ateliê de Artes</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-fotografico">Estúdio Fotografico</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-fotografico">Estúdio Fotografico</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-produtora">Produtora</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-produtora">Produtora</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-costura">Ateliê de Costura</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-costura">Ateliê de Costura</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-academia">Estúdio ou Academia</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-academia">Estúdio ou Academia</a>
           </div>
           <div class="col-12 py-2 px-5">
-            <a href="#" id="href-cozinhas">Cozinhas Profissionais</a>
+            <a style="text-decoration: none;color: black" href="#" id="href-cozinhas">Cozinhas Profissionais</a>
           </div>
         </div>
       </div>
@@ -525,8 +534,8 @@ if (!($tipo == "" || $tipo == null) ) {
         <div class="row text-center justify-content-center">
           <div class="col-12 py-3 px-5">
             <form class="form-inline justify-content-center desktop" action="resultado.php" method="get">
-              <input type="text" name="q" style="width: 35%" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
-              <button type="submit" class="btn btn-warning">Buscar</button>
+              <input id="query-interna" type="text" name="q" style="width: 35%" class="form-control" placeholder="Ex: Tijuca, Ipanema, Consultório">
+              <button type="submit" class="btn btn-warning" onclick="queryInterna();">Buscar</button>
             </form>
           </div>
         </div>
