@@ -299,6 +299,9 @@ class BuscarEspacos
 
     }
 
+
+
+
     public function retornarConsultorioDetalhado($db, $idAnuncio){
 
         $result =  $db->query("SELECT * FROM AnuncioConsultorio WHERE idAnuncio = '$idAnuncio' ") ;
@@ -577,6 +580,9 @@ class BuscarEspacos
 
     }
 
+    
+
+
     public function addContador($db, $idAnuncio){
         
         $result =  $db->query("SELECT contadorVisualizacoes FROM AnuncioBasico WHERE idAnuncio = '$idAnuncio' ") ;
@@ -679,7 +685,7 @@ class BuscarEspacos
 
     }
 
-       public function buscarEspacoParecido($db, $tipo ){
+    public function buscarEspacoParecido($db, $tipo ){
 
         $result =  $db->query(" SELECT *
                                 FROM AnuncioBasico 
@@ -728,7 +734,7 @@ class BuscarEspacos
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
-            print "erro buscar espaço Bairro Tipo";
+          //  print "erro buscar espaço Bairro Tipo";
         }else{
             
             $array = [];
