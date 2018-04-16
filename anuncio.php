@@ -141,13 +141,13 @@ if($session->vereficarLogin() != false){
  //   print $newDate. " / " ;
 
     $day = date('N',strtotime($newDate));
-    
+
     if($day == 1)
       $seg =  json_encode(true);
-    
+
     if($day == 2)
       $ter=  json_encode(true);
-    
+
     if($day == 3)
       $qua =  json_encode(true);
 
@@ -233,8 +233,8 @@ if($session->vereficarLogin() != false){
   var hoje = dd+"/"+mm+"/"+yyyy;
   $.fn.datepicker.defaults.startDate = hoje;
   $.fn.datepicker.defaults.todayHighlight = true;
-  $.fn.datepicker.defaults.daysOfWeekDisabled = [0,2,4,5,6];
-  $.fn.datepicker.defaults.daysOfWeekHighlighted = [1,3];
+  $.fn.datepicker.defaults.daysOfWeekDisabled = [<?php if($seg == true){echo 1} ?>,<?php if($ter == true){echo 2} ?>,<?php if($qua == true){echo 3} ?>,<?php if($qui == true){echo 4} ?>,<?php if($sex == true){echo 5} ?>,<?php if($sab == true){echo 6} ?>,<?php if($dom == true){echo 0} ?>];
+  $.fn.datepicker.defaults.daysOfWeekHighlighted = [<?php if($seg == false){echo 1} ?>,<?php if($ter == false){echo 2} ?>,<?php if($qua == false){echo 3} ?>,<?php if($qui == false){echo 4} ?>,<?php if($sex == false){echo 5} ?>,<?php if($sab == false){echo 6} ?>,<?php if($dom == false){echo 0} ?>];
   $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
 
   $( function() {
