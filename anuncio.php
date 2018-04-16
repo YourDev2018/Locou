@@ -726,27 +726,246 @@ if($session->vereficarLogin() != false){
                     <script>
                       function comodidadesLocal()
                       {
-                        var str = document.getElementById('comodidades-local');
-                        if( == true) //climatizado
+                        var str = document.getElementById('comodidades-local').innerHTML;
+                        if( == true) //climatizado - aula - ensaio
                         {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Ar-Condicionado</h5></div>";
                         }
-                        if( == true) //wifi
+                        if( == true) //wifi - aula - ensaio
                         {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Tem<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Wi-Fi</h5></div>";
                         }
-                        if( == true) //monitoramento
+                        if( == true) //monitoramento - aula - ensaio
                         {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Monitoramento ou vigilância por câmera</h5></div>";
                         }
-                        if( == true) //monitoramento
+                        if( == true) //armarios - consultorio / workshop / palestra / cozinha / costura / academia
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Monitoramento ou vigilância por câmera</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Armários para pertences</h5></div>";
                         }
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
-                        </div>
+                        if( == true) //secretaria - consultorio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Secretária compartilhada</h5></div>";
+                        }
+                        if( == true) //limpeza  - consultorio / workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Serviço de limpeza e conservação</h5></div>";
+                        }
+                        if( == true) //copa  - consultorio/ workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Serviço de copa</h5></div>";
+                        }
+                        if( == true) //mobilia  - consultorio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Luminária(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Maca(s)</h5></div>";
+                        }
+                        if( == true) //balanca  - consultorio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Balança</h5></div>";
+                        }
+                        if( == true) //cafe  - consultorio/ workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> café</h5></div>";
+                        }
+                        if( == true) //água  - consultorio/ workshop / palestra / cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> água filtrada</h5></div>";
+                        }
+                        if( == true) //tv  - consultorio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> TV na recepção</h5></div>";
+                        }
+                        if( == true) //mobilia  - workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Quadro(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Lousa de vidro jateada(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Telões</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> TV(s)</h5></div>";
+                        }
+                        if( == true) //datashow  - workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Data Show</h5></div>";
+                        }
+                        if( == true) //Caixa de som  - workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Caixa de som</h5></div>";
+                        }
+                        if( == true) //computador  - workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Computador com Windows e pacote Microsoft Office</h5></div>";
+                        }
+                        if( == true) //flipchart  - workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Flipchart</h5></div>";
+                        }
+                        if( == true) //buffet  - workshop / palestra
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Serviço de buffet</h5></div>";
+                        }
+                        if( == true) //camarim  - aula / ensaio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Camarim</h5></div>";
+                        }
+                        if( == true) //produção  - aula / ensaio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Sala de apoio para produção</h5></div>";
+                        }
+                        if( == true) //barra   - aula / ensaio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Barra (para alongamento)</h5></div>";
+                        }
+                        if( == true) //espelho   - aula / ensaio
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Espelho</h5></div>";
+                        }
+                        if( == true) //evento   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Área para realização de evento</h5></div>";
+                        }
+                        if( == true) //mobilia  - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s) de jantar</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
+                        }
+                        if( == true) //bar   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Espaço de Bar</h5></div>";
+                        }
+                        if( == true) //buffet   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Espaço de buffet</h5></div>";
+                        }
+                        if( == true) //chefe    - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Espaço para um chefe dar uma aula de culinária</h5></div>";
+                        }
+                        if( == true) //faxina   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Faxina incluida</h5></div>";
+                        }
+                        if( == true) //seco   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Estante para estoque seco</h5></div>";
+                        }
+                        if( == true) //freezer   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Freezer com espaço disponível para compartilhamento</h5></div>";
+                        }
+                        if( == true) //fogão   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Fogão</h5></div>";
+                        }
+                        if( == true) //forno   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Forno (printar tipo)</h5></div>";
+                        }
+                        if( == true) //forno   - cozinha
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Forno (printar tipo)</h5></div>";
+                        }
+                        if( == true) //pe   - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Altura de<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> m do pé direito</h5></div>";
+                        }
+                        if( == true) //cozinha - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Cozinha</h5></div>";
+                        }
+                        if( == true) //cozinha - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Cozinha</h5></div>";
+                        }
+                        if( == true) //mobilia  - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Banheiro(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Chuveiro(s)</h5></div>";
+                        }
+                        if( == true) //Camarim - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Camarim</h5></div>";
+                        }
+                        if( == true) //Frigobar - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Frigobar</h5></div>";
+                        }
+                        if( == true) //fundo  - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Fundo Infinito</h5></div>";
+                        }
+                        if( == true) //Chroma   - fotografico \ produtora
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Chroma key</h5></div>";
+                        }
+                        if( == true) //recepção    - costura
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Recepção e atendimento</h5></div>";
+                        }
+                        if( == true) //provador    - costura
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Provador</h5></div>";
+                        }
+                        if( == true) //tatame - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Tatame</h5></div>";
+                        }
+                        if( == true) //Bosu - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Bosu</h5></div>";
+                        }
+                        if( == true) //Rolo - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Rolo</h5></div>";
+                        }
+                        if( == true) //Maca - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Maca</h5></div>";
+                        }
+                        if( == true) //Trapézio - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Trapézio</h5></div>";
+                        }
+                        if( == true) //Baqueta - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Baqueta</h5></div>";
+                        }
+                        if( == true) //bola de pilates - academia
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Bola de pilates</h5></div>";
+                        }
+                        if( == true) //forno - artes
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Forno para cerâmica</h5></div>";
+                        }
+                        if( == true) //maçarico  - artes
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Maçarico  para cerâmica</h5></div>";
+                        }
+                        if( == true) //formas   - artes
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Formas e moldes para cerâmica</h5></div>";
+                        }
+                        if( == true) //bancada   - artes
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Bancada</h5></div>";
+                        }
+                        if( == true) //bancada   - artes
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Bancada</h5></div>";
+                        }
+                        if( == true) //armario   - artes
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Armário para armazenagem de equipamentos</h5></div>";
+                        }
+                        // <div class="col py-1">
+                        //   <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+                        //   <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
+                        // </div>
+                        document.getElementById('comodidades-local').innerHTML = str;
                       }
                     </script>
                     <div id="comodidades-local" class="row text-center justify-content-center" style="font-size: 14px">
@@ -4721,6 +4940,7 @@ $( document ).ready(function() {
   calcularPreco();
   dias_bloqueados();
   horaDispReincidente();
+  comodidadesLocal();
 });
 $('.custom-file-input').on('change',function(){
   var foto = $(this).val().split('\\').pop();
