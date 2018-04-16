@@ -142,7 +142,7 @@ if($session->vereficarLogin() != false){
  
     $day = date('N',strtotime($newDate));
     
-    if($day == '1'){
+    if($day == 1){
       $seg = true;
     }  
       if($day == 2){
@@ -162,9 +162,6 @@ if($session->vereficarLogin() != false){
 
       if($day == 7)
         $dom = true;
-
-  
-
   }
 
 
@@ -965,10 +962,10 @@ if($session->vereficarLogin() != false){
 
           <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
-<?php if($arrayGeral[9] != '' && $arrayGeral[10] != '' ){ ?>
+<?php if($arrayGeral[9] == '' || $arrayGeral[10] == '' || $arrayGeral[9] == null || $arrayGeral[10] == null ){ ?>
 
             <!-- //Printar divisão inteira-->
-            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display: ">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display:NONE">
               <br>
               <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
               <div class="row p-5">
@@ -986,7 +983,7 @@ if($session->vereficarLogin() != false){
             </div>
 <?php }else{  ?>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display: <?php echo "none" ?> ">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display:">
               <br>
               <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
               <div class="row p-5">
