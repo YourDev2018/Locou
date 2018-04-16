@@ -233,9 +233,9 @@ if($session->vereficarLogin() != false){
   var hoje = dd+"/"+mm+"/"+yyyy;
   $.fn.datepicker.defaults.startDate = hoje;
   $.fn.datepicker.defaults.todayHighlight = true;
-  $.fn.datepicker.defaults.daysOfWeekDisabled = [<?php if($seg == true){echo 1;} ?>,<?php if($ter == true){echo 2;} ?>,<?php if($qua == true){echo 3;} ?>,<?php if($qui == true){echo 4;} ?>,<?php if($sex == true){echo 5;} ?>,<?php if($sab == true){echo 6;} ?>,<?php if($dom == true){echo 0;} ?>];
-  $.fn.datepicker.defaults.daysOfWeekHighlighted = [<?php if($seg == false){echo 1;} ?>,<?php if($ter == false){echo 2;} ?>,<?php if($qua == false){echo 3;} ?>,<?php if($qui == false){echo 4;} ?>,<?php if($sex == false){echo 5;} ?>,<?php if($sab == false){echo 6;} ?>,<?php if($dom == false){echo 0;} ?>];
-  $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
+  $.fn.datepicker.defaults.daysOfWeekDisabled = [<?php if($seg == false){echo 1;} ?>,<?php if($ter == false){echo 2;} ?>,<?php if($qua == false){echo 3;} ?>,<?php if($qui == false){echo 4;} ?>,<?php if($sex == false){echo 5;} ?>,<?php if($sab == false){echo 6;} ?>,<?php if($dom == false){echo 0;} ?>];
+  $.fn.datepicker.defaults.daysOfWeekHighlighted = [<?php if($seg == true){echo 1;} ?>,<?php if($ter == true){echo 2;} ?>,<?php if($qua == true){echo 3;} ?>,<?php if($qui == true){echo 4;} ?>,<?php if($sex == true){echo 5;} ?>,<?php if($sab == true){echo 6;} ?>,<?php if($dom == true){echo 0;} ?>];
+  // $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
 
   $( function() {
     $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] });
@@ -1469,6 +1469,7 @@ if($session->vereficarLogin() != false){
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
+                        
                       }
                     }
                     </script>

@@ -6310,6 +6310,7 @@
     <div class="row">
       <div class="col-12 text-center">
         Caso deseje, faça o upload de 2 fotos panorâmicas abaixo (Opcional)
+        <br>
         OBS: A foto deve ter a proporção de pelo menos 21x7,ou seja, uma foto de pelo menos 180° para ser considerada panorâmica, caso o contrário a foto no anuncio ficará incorretamente posicionada.
       </div>
     </div>
