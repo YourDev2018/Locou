@@ -131,12 +131,8 @@ $session = new FunctionsSession();
                     $session ->logout();
                     $URL_ATUAL= "$_SERVER[REQUEST_URI]";
                     print $URL_ATUAL;
-                    if (strpos($URL_ATUAL, '') !== false) {
-                        
-                      //  header('location: fimEmail.php');
-                       
-              
-                    }
+                    
+                    header('location:'.$_POST['header']);
 
 
                 }
@@ -160,13 +156,8 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                        print $URL_ATUAL;
-                    if (strpos($URL_ATUAL, '') !== false) {
-                        
-                      //  header('location: fimEmail.php');
-                       
-              
-                    }
+                      //  print $URL_ATUAL;
+                    header('location:'.$_POST['header']);
 
                 }
                 
@@ -324,21 +315,9 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-/*
-                   //   print $URL_ATUAL;
-
-                    if (strpos($URL_ATUAL, '') !== false) {
                         
-                      //  header('location: fimEmail.php');
-                       
-              
-                    }
-
-*/
-                      
+                    header('location:'.$_POST['header']);
                 }
-
-
 
             }else {
                 print "Não boolean";
