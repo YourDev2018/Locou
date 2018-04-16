@@ -209,9 +209,23 @@ $session = new FunctionsSession();
                     $sabF = $_POST['sab-fim-periodo'];
 
 
+// ----------------------------------------------------------------------------------
+
+                    $domS = $_POST['dom-periodo-sel'];
+                    $segS = $_POST['seg-periodo-sel'];
+
+                    $terS = $_POST['ter-periodo-sel'];
+                    $quaS = $_POST['qua-periodo-sel'];
+
+                    $quiS = $_POST['qui-periodo-sel'];
+                    $sexS = $_POST['sex-periodo-sel'];
+
+                    $sabS = $_POST['qua-inicio-periodo'];
+                 
+
                     for( $i=0;$i<$sem;$i++){
 
-                         if(!($domI == null || $domF == null || $domI == '' || $domF == '' )){
+                         if($domS == 'sim'){
                             print " Domingo";
                             $data = (string)$nextSunday;
                             $date = new DateTime($data);
@@ -222,7 +236,7 @@ $session = new FunctionsSession();
                             print (" ( $result ) ");
                         }
 
-                        if(!($segI == null || $segF == null || $segI == '' || $segF == '' )){
+                        if($segS == 'sim'){
 
                             print " segunda ";
 
@@ -237,7 +251,7 @@ $session = new FunctionsSession();
 
 
 
-                        if(!($terI == null || $terF == null || $terI == '' || $terF == '' )){
+                       if($terS == 'sim'){
 
                             print " terca ";
 
@@ -250,7 +264,7 @@ $session = new FunctionsSession();
                             print (" ( $result ) ");
                         }
 
-                        if(!($quaI == null || $quaI == null || $quaI == '' || $quaF == '' )){
+                         if($quaS == 'sim'){
 
                             print " quarta ";
 
@@ -264,7 +278,7 @@ $session = new FunctionsSession();
                         }
 
 
-                        if(!($quiI == null || $quiI == null || $quiI == '' || $quiF == '' )){
+                      if($quiS == 'sim'){
 
 
                             print " quinta "; 
@@ -278,8 +292,7 @@ $session = new FunctionsSession();
                             print (" ( $result ) ");
                         }
 
-                        if(!($sexI == null || $sexI == null || $sexI == '' || $sexF == '' )){
-
+                      if($sexS == 'sim'){
 
                             print " sexta ";
 
@@ -292,7 +305,7 @@ $session = new FunctionsSession();
                             print (" ( $result ) ");
                         }
 
-                        if(!($sabI == null || $sabI == null || $sabI == '' || $sabF == '' )){
+                        if($sabS == 'sim'){
 
                             print " sabado ";
 

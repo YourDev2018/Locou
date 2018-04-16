@@ -145,23 +145,23 @@ if($session->vereficarLogin() != false){
     if($day == 1)
       $seg =  json_encode(true);
     
-      if($day == 2)
+    if($day == 2)
       $ter=  json_encode(true);
     
-      if($day == 3)
+    if($day == 3)
       $qua =  json_encode(true);
 
-     if($day == 4)
+    if($day == 4)
       $qui = json_encode(true);
 
-      if($day == 5)
+    if($day == 5)
       $sex =  json_encode(true);
 
-      if($day == 6)
-        $sab =  json_encode(true);
+    if($day == 6)
+      $sab =  json_encode(true);
 
-      if($day == 7)
-        $dom = json_encode(true);
+    if($day == 7)
+      $dom = json_encode(true);
   }
 
   ?>
