@@ -1469,6 +1469,7 @@ if($session->vereficarLogin() != false){
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
+                        
                       }
                     }
                     </script>
