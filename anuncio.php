@@ -723,14 +723,38 @@ if($session->vereficarLogin() != false){
                         <h6 style="color: black; font-weight: 600">Comodidades do local:</h6>
                       </div>
                     </div>
-                    <div class="row text-center justify-content-center" style="font-size: 14px">
+                    <script>
+                      function comodidadesLocal()
+                      {
+                        var str = document.getElementById('comodidades-local');
+                        if( == true) //climatizado
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Ar-Condicionado</h5></div>";
+                        }
+                        if( == true) //wifi
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Tem<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Wi-Fi</h5></div>";
+                        }
+                        if( == true) //monitoramento
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Monitoramento ou vigilância por câmera</h5></div>";
+                        }
+                        if( == true) //monitoramento
+                        {
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Monitoramento ou vigilância por câmera</h5></div>";
+                        }
+                        <div class="col py-1">
+                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
+                        </div>
+                      }
+                    </script>
+                    <div id="comodidades-local" class="row text-center justify-content-center" style="font-size: 14px">
                       <?php $cont = 0; ?>
-
-
 
                       <!-- vou pensar um Modo melhor de printar os números -->
 
-                      <?php if($arrayEspecifico[$cont++] == "sim"){ ?>
+                      <!-- <?php if($arrayEspecifico[$cont++] == "sim"){ ?>
                         <div class="col py-1">
                           <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
                           <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
@@ -898,7 +922,7 @@ if($session->vereficarLogin() != false){
                           <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
                         </div>
 
-                      <?php } ?>
+                      <?php } ?> -->
 
                     </div>
                   </div>
@@ -1469,7 +1493,7 @@ if($session->vereficarLogin() != false){
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
-                        
+
                       }
                     }
                     </script>
