@@ -516,43 +516,28 @@ class BuscarEspacos
 
                 $array[$cont] = $row['limpeza'];
                 $cont++;
-
                 
                 $array[$cont] = $row['copa'];
                 $cont++;
-
-
-                
+               
                 $array[$cont] = $row['projetor'];
                 $cont++;
-
-
-                
+           
                 $array[$cont] = $row['som'];
                 $cont++;
-
-
-                
+           
                 $array[$cont] = $row['computador'];
                 $cont++;
-
-
-                
+             
                 $array[$cont] = $row['flip'];
                 $cont++;
-
-
-                
+          
                 $array[$cont] = $row['cafe'];
                 $cont++;
-
-
-                
+         
                 $array[$cont] = $row['agua'];
                 $cont++;
 
-
-                
                 $array[$cont] = $row['buffet'];
                 $cont++;
 
@@ -565,14 +550,6 @@ class BuscarEspacos
                  $array[$cont] = $row['descricaoAberta'];
                 $cont++;
 
-
-
-
-
-
-
-             
-
             }
                 // print_r($array);
             return $array;        
@@ -580,8 +557,398 @@ class BuscarEspacos
 
     }
 
-    
+    public function retornarAnuncioAcademiaDetalhado($db, $idAnuncio){
 
+        $result =  $db->query("SELECT * FROM AnuncioAcademia WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Academia";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                
+                $array[$cont] = $row['tatame'];
+                $cont++;
+                
+                $array[$cont] = $row['armarios'];
+                $cont++;
+                
+                $array[$cont] = $row['bosu'];
+                $cont++;
+                
+                $array[$cont] = $row['rolo'];
+                $cont++;
+
+                $array[$cont] = $row['maca'];
+                $cont++;
+
+                $array[$cont] = $row['trapezio'];
+                $cont++;
+
+                $array[$cont] = $row['baqueta'];
+                $cont++;
+
+                $array[$cont] = $row['pilates'];
+                $cont++;
+                
+                $array[$cont] = $row['descricao'];
+            }
+           
+        }
+
+        return $array;
+
+    }
+
+     public function retornarAnuncioArtesDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioArtes WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Academia";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+                $array[$cont] = $row['forno'];
+                $cont++;
+                
+                $array[$cont] = $row['macarico'];
+                $cont++;
+                
+                $array[$cont] = $row['moldes'];
+                $cont++;
+                
+                $array[$cont] = $row['bancada'];
+                $cont++;
+
+                $array[$cont] = $row['armario'];
+                $cont++;
+
+                $array[$cont] = $row['descricao'];
+            }
+        }
+
+        return $array;
+
+    }
+
+     public function retornarAnuncioAulasDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioCostura WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Aula";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                
+                $array[$cont] = $row['camarim'];
+                $cont++;
+                
+                $array[$cont] = $row['apoio'];
+                $cont++;
+                
+                $array[$cont] = $row['barra'];
+                $cont++;
+                
+                $array[$cont] = $row['espelho'];
+                $cont++;
+
+                $array[$cont] = $row['descricaoAberta'];
+            }
+         
+        }
+
+        return $array;
+
+    }
+
+    public function retornarAnuncioCosturaDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioAulas WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Aula";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+                $array[$cont] = $row['recepcao'];
+                $cont++;
+                
+                $array[$cont] = $row['maquina'];
+                $cont++;
+                
+                $array[$cont] = $row['mobiliario'];
+                $cont++;
+                
+                $array[$cont] = $row['provador'];
+                $cont++;
+
+                $array[$cont] = $row['armario'];
+                $cont++;
+
+                $array[$cont] = $row['descricao'];
+            }
+         
+        }
+
+        return $array;
+
+    }
+
+    public function retornarAnuncioEnsaioDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioEnsaio WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Aula";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+                $array[$cont] = $row['camarim'];
+                $cont++;
+                
+                $array[$cont] = $row['apoio'];
+                $cont++;
+                
+                $array[$cont] = $row['barra'];
+                $cont++;
+                
+                $array[$cont] = $row['espelho'];
+                $cont++;
+
+                $array[$cont] = $row['descricaoAberta'];
+            }
+            
+         
+        }
+
+        return $array;
+
+    }
+
+    public function retornarAnuncioFotograficoDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioEnsaio WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Aula";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+                $array[$cont] = $row['climatizado'];
+                $cont++;
+                
+                $array[$cont] = $row['modeloAr'];
+                $cont++;
+                
+                $array[$cont] = $row['altura'];
+                $cont++;
+                
+                $array[$cont] = $row['wifi'];
+                $cont++;
+
+                $array[$cont] = $row['cozinha'];
+                $cont++;
+
+                $array[$cont] = $row['banheiro'];
+                $cont++;
+                
+                $array[$cont] = $row['chuveiro'];
+                $cont++;
+                
+                $array[$cont] = $row['camarim'];
+                $cont++;
+
+                $array[$cont] = $row['frigobar'];
+                $cont++;
+
+                $array[$cont] = $row['agua'];
+                $cont++;
+
+                $array[$cont] = $row['fundo'];
+                $cont++;
+
+                $array[$cont] = $row['chroma'];
+                $cont++;
+
+
+                $array[$cont] = $row['iluminacao'];
+                $cont++;
+
+                $array[$cont] = $row['descricaoAberta'];
+            }      
+        }
+
+        return $array;  
+
+    }
+
+    public function retornarAnuncioPalestraDetalhado($db, $idAnuncio){
+
+        $result =  $db->query("SELECT * FROM AnuncioPalestra WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Aula";
+        }else{
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+            
+                $array[$cont] = $row['numMesa'];
+                $cont++;
+                $array[$cont] = $row['numCadeira'];
+                $cont++;
+
+                 $array[$cont] = $row['numQuadro'];
+                $cont++;
+
+                 $array[$cont] = $row['numLousa'];
+                $cont++;
+
+                 $array[$cont] = $row['numTelao'];
+                $cont++;
+
+                $array[$cont] = $row['numTv'];
+                $cont++;
+
+               
+                $array[$cont] = $row['climatizado'];
+                $cont++;
+
+                $array[$cont] = $row['modeloAr'];
+                $cont++;
+
+
+                $array[$cont] = $row['wifi'];
+                $cont++;
+
+                $array[$cont] = $row['vigilancia'];
+                $cont++;
+
+                $array[$cont] = $row['armarios'];
+                $cont++;
+
+                $array[$cont] = $row['limpeza'];
+                $cont++;
+                
+                $array[$cont] = $row['copa'];
+                $cont++;
+               
+                $array[$cont] = $row['projetor'];
+                $cont++;
+           
+                $array[$cont] = $row['som'];
+                $cont++;
+           
+                $array[$cont] = $row['computador'];
+                $cont++;
+             
+                $array[$cont] = $row['flip'];
+                $cont++;
+          
+                $array[$cont] = $row['cafe'];
+                $cont++;
+         
+                $array[$cont] = $row['agua'];
+                $cont++;
+
+                $array[$cont] = $row['buffet'];
+                $cont++;
+
+                 $array[$cont] = $row['buffetExtra'];
+                $cont++;
+
+                 $array[$cont] = $row['descricaoEquipamento'];
+                $cont++;
+
+                 $array[$cont] = $row['descricaoAberta'];
+                $cont++;
+            
+            }   
+        }
+
+          return $array;  
+
+    }
+
+    public function retornarAnuncioProdutoraDetalhado($db, $idAnuncio){
+
+         $result =  $db->query("SELECT * FROM AnuncioProdutora WHERE idAnuncio = '$idAnuncio' ") ;
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "Não é uma Aula";
+        }else{
+
+             while ($row=$result->fetch_assoc()) {
+
+                $array[$cont] = $row['climatizado'];
+                $cont++;
+
+                $array[$cont] = $row['modeloAr'];
+                $cont++;
+
+                $array[$cont] = $row['altura'];
+                $cont++;
+
+                $array[$cont] = $row['wifi'];
+                $cont++;
+
+                
+
+                  $array[$cont] = $row['cozinha'];
+                $cont++;
+
+                  $array[$cont] = $row['banheiro'];
+                $cont++;
+
+                  $array[$cont] = $row['chuveiro'];
+                $cont++;
+
+                  $array[$cont] = $row['camarim'];
+                $cont++;
+
+                  $array[$cont] = $row['frigobar'];
+                $cont++;
+
+                  $array[$cont] = $row['agua'];
+                $cont++;
+
+                  $array[$cont] = $row['fundo'];
+                $cont++;
+
+                  $array[$cont] = $row['chroma'];
+                $cont++;
+
+                  $array[$cont] = $row['iluminacao'];
+                $cont++;
+
+                  $array[$cont] = $row['descricaoAberta'];
+               
+
+             }
+
+        }
+        
+    }
 
     public function addContador($db, $idAnuncio){
         
@@ -725,7 +1092,6 @@ class BuscarEspacos
 
     }
 
-    
     public function retornarDiasCadastrados($db, $id){
 
       $result =  $db->query(" SELECT dataEntrada
@@ -754,7 +1120,6 @@ class BuscarEspacos
     public function retornarDiasNaoDisponiveis($db, $id){
 
 
-  
 
     }
     

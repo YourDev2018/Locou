@@ -42,39 +42,39 @@ if($array[9] == 'cozinha'){
 }
 
 if($array == 'academia'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioAcademiaDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'artes'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioArtesDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'aulas'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioAulasDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'costura'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioCosturaDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'ensaio'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioEnsaioDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'fotografico'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioFotograficoDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'palestra'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioPalestraDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'produtora'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarAnuncioProdutoraDetalhado($conn,$idAnuncio);
 }
 
 if($array == 'workshop'){
-  $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);
+  $arrayEspecifico = $busca -> retornarWorkShopDetalhado($conn,$idAnuncio);
 }
 
 $busca->addContador($conn, $idAnuncio);
