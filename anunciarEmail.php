@@ -545,7 +545,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Título do anúncio:
+              Título do anúncio:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ex: Consultório Odontológico">
@@ -565,7 +565,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Tipo do espaço:
+              Tipo do espaço:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <select class="form-control" name="categoria" id="categoria">
@@ -590,7 +590,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Estado (UF):
+              Estado (UF):<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <select class="form-control" name="uf" id="uf">
@@ -605,7 +605,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Cidade:
+              Cidade:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <select class="form-control" name="cidade" id="cidade">
@@ -620,7 +620,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Bairro:
+              Bairro:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Ex: Ipanema">
@@ -631,7 +631,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Rua/Avenida:
+              Rua/Avenida:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <input type="text" name="rua" class="form-control" id="rua-a" placeholder="Ex: Rua Passos">
@@ -642,7 +642,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Número:
+              Número:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <input type="number" name="numero" class="form-control" id="numero" placeholder="Ex: 645">
@@ -653,7 +653,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Complemento:
+              Complemento:<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <input type="text" name="complemento" class="form-control" id="complemento-a" placeholder="Ex: Ap 220 Bloco 3">
@@ -697,7 +697,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-4 text-right">
-              Metragem (M² do local):
+              Metragem (M² do local):<span style="color: red"> *</span>
             </div>
             <div class="col-5 text-left">
               <input type="number" class="form-control" name="metragem" id="metragem" placeholder="Ex: 120">
@@ -896,7 +896,7 @@ if ($session->vereficarLogin()=='false') {
 
           <div class="row">
             <div class="col-12 text-center">
-              Qual é o período que você está disponibilizando o espaço para o aluguel
+              Qual é o período que você está disponibilizando o espaço para o aluguel<span style="color: red"> *</span>
               <br><br>
             </div>
 
@@ -1265,7 +1265,7 @@ if ($session->vereficarLogin()=='false') {
       <div id="calendario-direto" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
         <div class="row">
           <div class="col-12">
-            <h6 style="color: white">Selecione a quantidade de meses que o espaço será disponibilizado</h6>
+            <h6 style="color: white">Selecione a quantidade de meses seguidos em que o espaço pode ser disponibilizado</h6>
             <br>
             <div class="row text-center justify-content-center">
               <div class="col-6">
@@ -3672,7 +3672,7 @@ if ($session->vereficarLogin()=='false') {
 
     </div>
     <div class="col-12 py-4">
-      <h6 style="color: white">Selecione quantas semanas seguidas o espaço será alugado</h6>
+      <h6 style="color: white">Selecione por quantas semanas seguidas o espaço será alugado</h6>
       <br>
       <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -3738,7 +3738,7 @@ if ($session->vereficarLogin()=='false') {
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por hora
+    Preço por hora<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
@@ -3753,7 +3753,7 @@ if ($session->vereficarLogin()=='false') {
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por turno de 4 horas
+    Preço por turno de 4 horas<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
@@ -3768,7 +3768,7 @@ if ($session->vereficarLogin()=='false') {
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por turno de 5 horas
+    Preço por turno de 5 horas<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
@@ -3783,7 +3783,7 @@ if ($session->vereficarLogin()=='false') {
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço reincidente por dia/turno
+    Preço reincidente por dia/turno<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
@@ -3798,7 +3798,7 @@ if ($session->vereficarLogin()=='false') {
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por semana
+    Preço por semana<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
@@ -3813,7 +3813,7 @@ if ($session->vereficarLogin()=='false') {
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por mês
+    Preço por mês<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
@@ -6216,7 +6216,9 @@ if ($session->vereficarLogin()=='false') {
 
     <div class="row">
       <div class="col-12 text-center">
-        Faça o upload de no mínimo 3 e no máximo 5 fotos para o seu anúncio
+        Faça o upload de no mínimo 3 e no máximo 5 fotos para o seu anúncio<span style="color: red"> *</span>
+        <br>
+        Use apenas fotos na posição paisagem (na horizontal).
       </div>
     </div>
 
@@ -6225,7 +6227,7 @@ if ($session->vereficarLogin()=='false') {
     <script>
     function fotosTeste()
     {
-      if(document.getElementById("foto1-label").innerHTML != "Escolha uma foto" && document.getElementById("foto2-label").innerHTML != "Escolha uma foto" && document.getElementById("foto3-label").innerHTML != "Escolha uma foto")
+      if(document.getElementById('foto1').value.trim() != "" && document.getElementById('foto2').value.trim() != "" && document.getElementById('foto3').value.trim() != "")
       {
         document.getElementById("foto4-div").style.display = "";
         document.getElementById("foto5-div").style.display = "";
@@ -6236,20 +6238,31 @@ if ($session->vereficarLogin()=='false') {
         document.getElementById("foto5-div").style.display = "none";
       }
     }
+    function verificar3fotos()
+    {
+      if(document.getElementById('foto1').value.trim() != "" && document.getElementById('foto2').value.trim() != "" && document.getElementById('foto3').value.trim() != "")
+      {
+        document.getElementById('anunciar').style.display = "";
+      }
+      else
+      {
+        document.getElementById('anunciar').style.display = "none";
+      }
+    }
     </script>
 
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="foto1" name="foto1">
+      <input onchange="verificar3fotos();fotosTeste()" type="file" class="custom-file-input" id="foto1" name="foto1">
       <label class="custom-file-label text-left" id="foto1-label" for="foto1">Escolha uma foto</label>
     </div>
     <br><br>
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="foto2" name="foto2">
+      <input onchange="verificar3fotos();fotosTeste()" type="file" class="custom-file-input" id="foto2" name="foto2">
       <label class="custom-file-label text-left" id="foto2-label" for="foto2">Escolha uma foto</label>
     </div>
     <br><br>
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="foto3" name="foto3">
+      <input onchange="verificar3fotos();fotosTeste()" type="file" class="custom-file-input" id="foto3" name="foto3">
       <label class="custom-file-label text-left" id="foto3-label" for="foto3">Escolha uma foto</label>
     </div>
     <br><br>
@@ -6267,6 +6280,8 @@ if ($session->vereficarLogin()=='false') {
     <div class="row">
       <div class="col-12 text-center">
         Caso deseje, faça o upload de 2 fotos panorâmicas abaixo (Opcional)
+        <br>
+        OBS: A foto deve ter a proporção de pelo menos 21x7,ou seja, uma foto de pelo menos 180° para ser considerada panorâmica, caso o contrário a foto no anuncio ficará incorretamente posicionada.
       </div>
     </div>
 
@@ -6292,6 +6307,9 @@ if ($session->vereficarLogin()=='false') {
 <!-- CONTROLE DE MENU -->
 
 <div class="row pb-4" style="background-color: white;">
+  <div class="col-12">
+    <span style="color: red">* - informações obrigatórias</span>
+  </div>
   <div class="col-2">
   </div>
   <div class="col-4 text-right" style="color: #FFC107">
@@ -6396,77 +6414,97 @@ function proximo()
 
   if(pagina == 1)
   {
-    if(cidade == "outro" || estado == "outro")
+    if(document.getElementById("titulo").value.trim() != "" && document.getElementById("bairro").value.trim() != "" && document.getElementById("rua-a").value.trim() != "" && document.getElementById("numero").value.trim() != "" && document.getElementById("complemento-a").value.trim() != "")
     {
-      document.getElementById('dados_basicos').style.display = 'none';
-      document.getElementById('fora_do_rj').style.display = '';
-      document.getElementById('proximo').style.display = 'none';
+      if(cidade == "outro" || estado == "outro")
+      {
+        document.getElementById('dados_basicos').style.display = 'none';
+        document.getElementById('fora_do_rj').style.display = '';
+        document.getElementById('proximo').style.display = 'none';
+      }
+      else
+      {
+        document.getElementById('dados_basicos').style.display = 'none';
+        document.getElementById('descricao_geral').style.display = '';
+      }
     }
     else
     {
-      document.getElementById('dados_basicos').style.display = 'none';
-      document.getElementById('descricao_geral').style.display = '';
+      pagina = pagina - 1;
     }
   }
 
   if(pagina == 2)
   {
-    document.getElementById('descricao_geral').style.display = 'none';
-    document.getElementById('periodo').style.display = '';
-    document.getElementById('proximo').style.display = '';
-    document.getElementById('anunciar').style.display = 'none';
+    if(document.getElementById("metragem").value.trim() != "")
+    {
+      document.getElementById('descricao_geral').style.display = 'none';
+      document.getElementById('periodo').style.display = '';
+      document.getElementById('proximo').style.display = '';
+      document.getElementById('anunciar').style.display = 'none';
 
-    consultorio.style.display = "none";
-    workshop.style.display = "none";
-    cozinha.style.display = "none";
-    ensaio.style.display = "none";
-    fotografico.style.display = "none";
-    costura.style.display = "none";
-    academia.style.display = "none";
-    artes.style.display = "none";
-
-
+      consultorio.style.display = "none";
+      workshop.style.display = "none";
+      cozinha.style.display = "none";
+      ensaio.style.display = "none";
+      fotografico.style.display = "none";
+      costura.style.display = "none";
+      academia.style.display = "none";
+      artes.style.display = "none";
+    }
+    else
+    {
+      pagina = pagina - 1;
+    }
   }
 
   if(pagina == 3)
   {
-    document.getElementById('proximo').style.display = '';
-    document.getElementById('periodo').style.display = "none";
-    document.getElementById('anunciar').style.display = 'none';
-    fotos.style.display = "none";
+    if((document.getElementById("tempoAluguel-direto").checked == true || document.getElementById("tempoAluguel-reincidente").checked == true) && document.getElementById("hora").value.trim() != "" && document.getElementById("4hora").value.trim() != "" && document.getElementById("5hora").value.trim() != "" && document.getElementById("dia-turno").value.trim() != "" && document.getElementById("semana").value.trim() != "" && document.getElementById("mes").value.trim() != "" && document.getElementById("mes").value.trim() != "")
+    {
+      document.getElementById('proximo').style.display = '';
+      document.getElementById('periodo').style.display = "none";
+      document.getElementById('anunciar').style.display = 'none';
+      fotos.style.display = "none";
 
-    if(categoria == "consultorio")
-    {
-      consultorio.style.display = "";
+      if(categoria == "consultorio")
+      {
+        consultorio.style.display = "";
+      }
+      if(categoria == "workshop" || categoria == "palestra")
+      {
+        workshop.style.display = "";
+      }
+      if(categoria == "cozinha")
+      {
+        cozinha.style.display = "";
+      }
+      if(categoria == "ensaio" || categoria == "aulas")
+      {
+        ensaio.style.display = "";
+      }
+      if(categoria == "fotografico" || categoria == "produtora")
+      {
+        fotografico.style.display = "";
+      }
+      if(categoria == "costura")
+      {
+        costura.style.display = "";
+      }
+      if(categoria == "academia")
+      {
+        academia.style.display = "";
+      }
+      if(categoria == "artes")
+      {
+        artes.style.display = "";
+      }
     }
-    if(categoria == "workshop" || categoria == "palestra")
+    else
     {
-      workshop.style.display = "";
+      pagina = pagina - 1;
     }
-    if(categoria == "cozinha")
-    {
-      cozinha.style.display = "";
-    }
-    if(categoria == "ensaio" || categoria == "aulas")
-    {
-      ensaio.style.display = "";
-    }
-    if(categoria == "fotografico" || categoria == "produtora")
-    {
-      fotografico.style.display = "";
-    }
-    if(categoria == "costura")
-    {
-      costura.style.display = "";
-    }
-    if(categoria == "academia")
-    {
-      academia.style.display = "";
-    }
-    if(categoria == "artes")
-    {
-      artes.style.display = "";
-    }
+
   }
 
   if(pagina == 4)
@@ -6480,7 +6518,7 @@ function proximo()
     costura.style.display = "none";
     academia.style.display = "none";
     artes.style.display = "none";
-    document.getElementById('anunciar').style.display = '';
+    document.getElementById('anunciar').style.display = 'none';
     document.getElementById('proximo').style.display = 'none';
   }
 
@@ -6626,7 +6664,6 @@ $('.custom-file-input').on('change',function(){
   console.log($(this).attr('id'));
   console.log($(this).attr('id')+"-label");
   console.log(foto);
-  fotosTeste();
 })
 </script>
 
