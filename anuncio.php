@@ -982,7 +982,29 @@ if($session->vereficarLogin() != false){
                 </div>
               </div>
             </div>
+<?php }else{  ?>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display: <?php echo "none" ?> ">
+              <br>
+              <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
+              <div class="row p-5">
+                <div class="col-lg-6 col-md-12">
+                  <div class="panorama">
+                    <img src="<?php echo $prefixo.$arrayGeral[9] ?>" alt="" title="" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <div class="panorama">
+                    <img src="<?php echo $prefixo.$arrayGeral[10] ?>" alt="" title="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
 <?php } ?>
+
+
+
             <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
               <div class="row text-center justify-content-center py-3">
                 <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">

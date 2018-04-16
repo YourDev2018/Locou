@@ -543,7 +543,7 @@
             $cont = mysqli_num_rows($result);
         
             if ($cont <=0) {
-                print "erro buscar proprietario";
+           //     print "erro buscar proprietario";
             }else{
                 
                 while ($row=$result->fetch_assoc()) {
@@ -551,7 +551,7 @@
                     $idProprietario = $row['idProprietario'];   
                 }  
 
-                print $idProprietario;
+              //  print $idProprietario;
                 return $this->getUsuarioBasico($db,$idProprietario);
             
             }
@@ -570,7 +570,7 @@
                 $cont=0;
 
             if ($aux <=0) {
-                print "erro getUsarioBasico";
+              //  print "erro getUsarioBasico";
             }else{
                 
                 while ($row=$result->fetch_assoc()) {
