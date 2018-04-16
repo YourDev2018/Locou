@@ -977,11 +977,11 @@ class BuscarEspacos
 
     public function buscarEspacoBairro($db, $busca){
 
-        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE titulo LIKE '%{$busca}%' OR  bairro LIKE '%{$busca}%' OR cidade LIKE '%{$busca}%'  ") ; //
+        $result =  $db->query("SELECT idAnuncio,titulo,bairro,cidade,preco,fotoUm FROM AnuncioBasico WHERE titulo LIKE '%{$busca}%' OR  bairro LIKE '%{$busca}%' OR cidade LIKE '%{$busca}%' ORDER BY idAnuncio DESC ") ; //
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
-             print "erro buscar espaço bairro";
+         //    print "erro buscar espaço bairro";
         }else{
             
             $array = [];
@@ -996,10 +996,13 @@ class BuscarEspacos
 
                         $array[$cont] = $row['titulo'];
                         $cont++;
+
                         $array[$cont] = $row['bairro'];
                         $cont++;
+
                         $array[$cont] = $row['cidade'];
                         $cont++;
+
                         $array[$cont] = $row['preco'];
                         $cont++;
                        
@@ -1016,11 +1019,12 @@ class BuscarEspacos
         $result =  $db->query(" SELECT *
                                 FROM AnuncioBasico 
                                 WHERE ( titulo LIKE '%{$busca}%' OR  bairro LIKE '%{$busca}%' OR cidade LIKE '%{$busca}%' ) 
-                                AND categoria LIKE '$tipo' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+                                AND categoria LIKE '$tipo' ORDER BY idAnuncio DESC ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
-            print "erro buscar espaço Bairro Tipo";
+        //    print "erro buscar espaço Bairro Tipo";
         }else{
             
             $array = [];
@@ -1028,7 +1032,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
                         
                         $array[$cont] = $row['idAnuncio'];
-                        print " ".$array[$cont];
+                       // print " ".$array[$cont];
                         $cont++;
 
                         $array[$cont] = $row['fotoUm'];

@@ -129,10 +129,8 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                   
-                    
+                                    
                     header('location:'.$_POST['header']);
-
 
                 }
                 
