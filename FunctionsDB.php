@@ -531,7 +531,61 @@
         }
     
         */
-    }
     
 
+        function getInfoUserProprietario($db,$idAnuncio){
+
+                // print $idProprietario;
+               
+            $result =  $db->query(" SELECT idProprietario
+                                    FROM AnuncioBasico
+                                    WHERE idAnuncio = '$idAnuncio' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+            $cont = mysqli_num_rows($result);
+        
+            if ($cont <=0) {
+                print "erro buscar proprietario";
+            }else{
+                
+                while ($row=$result->fetch_assoc()) {
+                    
+                    $idProprietario = $row['idProprietario'];   
+                }  
+
+                print $idProprietario;
+                return $this->getUsuarioBasico($db,$idProprietario);
+            
+            }
+           
+        }
+   
+        function getUsuarioBasico($db,$id){
+
+                $result =  $db->query(" SELECT *
+                                        FROM UsuarioBasico
+                                        WHERE id = '$id' ") ;
+
+                $aux = mysqli_num_rows($result);
+                
+                $array = [];
+                $cont=0;
+
+            if ($aux <=0) {
+                print "erro getUsarioBasico";
+            }else{
+                
+                while ($row=$result->fetch_assoc()) {
+                    
+                    $array[$cont] = $row['firstName']." ".$row['lastName'];   
+                    $cont++;
+
+                    $array[$cont] = $row['foto'];
+                }
+
+                return $array;
+            
+            }
+                
+        }
+
+    }
 ?>

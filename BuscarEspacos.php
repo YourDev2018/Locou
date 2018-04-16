@@ -277,6 +277,20 @@ class BuscarEspacos
                 $array[$cont] = trim($row['fotoPanoramicaDois']);//10
                 $cont++;
 
+                 $array[$cont] = trim($row['quatroHora']);//11
+                $cont++;
+
+                 $array[$cont] = trim($row['cincoHora']);//12
+                $cont++;
+
+                 $array[$cont] = trim($row['turno']);//13
+                $cont++;
+
+                 $array[$cont] = trim($row['semana']);//14
+                $cont++;
+
+                 $array[$cont] = trim($row['mes']);//15
+                $cont++;
 
             }
                 // print_r($array);
@@ -705,7 +719,36 @@ class BuscarEspacos
 
     }
 
+    
+    public function retornarDiasCadastrados($db, $id){
+
+      $result =  $db->query(" SELECT dataEntrada
+                                FROM RegistroAnunciosDisponiveis 
+                                WHERE idAnuncio = '$id' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+            print "erro buscar espaço Bairro Tipo";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            while ($row=$result->fetch_assoc()) {
+                        
+                        $array[$cont] = $row['dataEntrada'];
+                        $cont++;         
+
+            }
+                // print_r($array);
+            return $array;        
+        }
+
+    }
+
     public function retornarDiasNaoDisponiveis($db, $id){
+
+
+  
 
     }
     

@@ -21,7 +21,7 @@ require_once 'Espaco.php';
 //DBMoip();
 //Pedido();
 require_once 'BuscarEspacos.php';
-returnEspaco();
+//returnEspaco();
 //returnEspaco();
 //returnConsultorio();
 //anuncioAdd();
@@ -53,8 +53,24 @@ returnEspaco();
         
         }
     }
-*/
 
+ $db = new FunctionsDB();
+  $conn = $db->conectDB();
+  $busca = new BuscarEspacos();
+    $arrayHorarios = $busca->retornarDiasCadastrados($conn,160);
+  
+for ($i =0; $i<count($arrayHorarios); $i++) { 
+
+    $originalDate = $arrayHorarios[$i];
+    $newDate = date("d-m-Y", strtotime($originalDate));
+ //   print $newDate. " / " ;
+ 
+    print $day = date('N',strtotime($originalDate));
+ */
+$db = new FunctionsDB();
+$conn = $db->conectDB();
+$arrayUser = $db->getInfoUserProprietario($conn,160);
+var_dump($arrayUser);
 
 function usuarioCliente(){
     $db = new FunctionsDB();

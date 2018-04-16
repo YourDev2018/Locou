@@ -127,27 +127,68 @@ if($session->vereficarLogin() != false){
   <script src="js/jquery.ba-throttle-debounce.min.js" ></script>
   <link rel="stylesheet" type="text/css"  href="css/paver.scss">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <script>
   //set de variaveis
-  var seg_ativo = true;
-  var ter_ativo = true;
-  var qua_ativo = true;
-  var qui_ativo = true;
-  var sex_ativo = true;
-  var sab_ativo = false;
-  var dom_ativo = false;
+  <?php 
 
-  var ph = 90;
-  var ph4 = 80;
-  var ph5 = 76;
-  var pr = 70;
-  var ps = 60;
-  var pm = 50;
+  $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio);
+  
+  for ($i =0; $i<count($arrayHorarios); $i ++) { 
+
+    $originalDate = $arrayHorarios[$i];
+    $newDate = date("d-m-Y", strtotime($originalDate));
+ //   print $newDate. " / " ;
+ 
+    $day = date('N',strtotime($newDate));
+    
+    if($day == '1'){
+      $seg = true;
+    }  
+      if($day == 2){
+      $ter= true;
+    }
+      if($day == 3)
+      $qua = true;
+
+     if($day == 4)
+      $qui = true;
+      
+      if($day == 5)
+      $sex = true;
+
+      if($day == 6)
+        $sab = true;
+
+      if($day == 7)
+        $dom = true;
+
+  
+
+  }
+
+
+  ?>
+  var seg_ativo = <?php echo true; ?>
+  var ter_ativo = <?php if($ter != true){echo false;} else{echo true;} ?>;
+  var qua_ativo = <?php if($qua != true){echo false;} else{echo true;} ?>;
+  var qui_ativo = <?php if($qui != true){echo false;} else{echo true;} ?>;
+  var sex_ativo = <?php if($sex != true){echo false;} else{echo true;} ?>;
+  var sab_ativo = <?php if($sab != true){echo false;} else{echo true;} ?>;
+  var dom_ativo = <?php if($dom != true){echo false;} else{echo true;} ?>;
+
+  var ph = <?php echo $array[7] ?>;
+  var ph4 = <?php echo $arrayGeral[11] ?>;
+  var ph5 =  <?php echo $arrayGeral[12] ?>;
+  var pr =  <?php echo $arrayGeral[13] ?>;
+  var ps =  <?php echo $arrayGeral[14] ?>;
+  var pm =  <?php echo $arrayGeral[15] ?>;
 
   var seg_max_h = 20;
   var seg_max_m = 30;
   var seg_min_h = 10;
   var seg_min_m = 0;
+
   var ter_max_h = 12;
   var ter_max_m = 0;
   var ter_min_h = 15;
@@ -177,6 +218,8 @@ if($session->vereficarLogin() != false){
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
+
+
   if(dd<10)
   {
     dd = '0'+dd
@@ -885,6 +928,13 @@ if($session->vereficarLogin() != false){
                 </div>
               </div>
             </div>
+
+           
+            <?php 
+            
+       
+            $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
+
             <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
               <div class="row">
                 <div class="col-12" style="padding-bottom: 2vw">
@@ -899,11 +949,11 @@ if($session->vereficarLogin() != false){
                   </p>
                 </div>
                 <div class="col-12 pt-2">
-                  <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 70px"></a>
+                  <a class="align-middle m-3"><img class="rounded-circle" src="<?php echo $prefixo.$arrayUser[1] ?>" style="height: 70px"></a>
                   <br><br>
                 </div>
                 <div class="col-12 pb-2" style="color: white">
-                  <h6 style="font-weight: 600">Nome da pessoa</h6>
+                  <h6 style="font-weight: 600"><?php echo $arrayUser[0] ?></h6>
                   <br>
                   <!-- <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> -4.7 <br>(3 avaliações)</span></h6> -->
                 </div>
