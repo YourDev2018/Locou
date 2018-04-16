@@ -6247,6 +6247,8 @@
     <div class="row">
       <div class="col-12 text-center">
         Faça o upload de no mínimo 3 e no máximo 5 fotos para o seu anúncio<span style="color: red"> *</span>
+        <br>
+        Use apenas fotos na posição paisagem (na horizontal).
       </div>
     </div>
 
@@ -6280,17 +6282,17 @@
     </script>
 
     <div class="custom-file">
-      <input onchange="verificar3fotos()" type="file" class="custom-file-input" id="foto1" name="foto1">
+      <input onchange="verificar3fotos();fotosTeste()" type="file" class="custom-file-input" id="foto1" name="foto1">
       <label class="custom-file-label text-left" id="foto1-label" for="foto1">Escolha uma foto</label>
     </div>
     <br><br>
     <div class="custom-file">
-      <input onchange="verificar3fotos()" type="file" class="custom-file-input" id="foto2" name="foto2">
+      <input onchange="verificar3fotos();fotosTeste()" type="file" class="custom-file-input" id="foto2" name="foto2">
       <label class="custom-file-label text-left" id="foto2-label" for="foto2">Escolha uma foto</label>
     </div>
     <br><br>
     <div class="custom-file">
-      <input onchange="verificar3fotos()" type="file" class="custom-file-input" id="foto3" name="foto3">
+      <input onchange="verificar3fotos();fotosTeste()" type="file" class="custom-file-input" id="foto3" name="foto3">
       <label class="custom-file-label text-left" id="foto3-label" for="foto3">Escolha uma foto</label>
     </div>
     <br><br>
@@ -6308,6 +6310,7 @@
     <div class="row">
       <div class="col-12 text-center">
         Caso deseje, faça o upload de 2 fotos panorâmicas abaixo (Opcional)
+        OBS: A foto deve ter a proporção de pelo menos 21x7,ou seja, uma foto de pelo menos 180° para ser considerada panorâmica, caso o contrário a foto no anuncio ficará incorretamente posicionada.
       </div>
     </div>
 
