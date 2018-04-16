@@ -129,8 +129,7 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                    $URL_ATUAL= "$_SERVER[REQUEST_URI]";
-                    print $URL_ATUAL;
+                   
                     
                     header('location:'.$_POST['header']);
 
