@@ -130,21 +130,21 @@ if($session->vereficarLogin() != false){
 
   <script>
   //set de variaveis
-  <?php 
+  <?php
 
   $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio);
-  
-  for ($i =0; $i<count($arrayHorarios); $i ++) { 
+
+  for ($i =0; $i<count($arrayHorarios); $i ++) {
 
     $originalDate = $arrayHorarios[$i];
     $newDate = date("d-m-Y", strtotime($originalDate));
  //   print $newDate. " / " ;
- 
+
     $day = date('N',strtotime($newDate));
     
     if($day == 1){
       $seg = true;
-    }  
+    }
       if($day == 2){
       $ter= true;
     }
@@ -153,7 +153,7 @@ if($session->vereficarLogin() != false){
 
      if($day == 4)
       $qui = true;
-      
+
       if($day == 5)
       $sex = true;
 
@@ -911,8 +911,13 @@ if($session->vereficarLogin() != false){
             </div>
           </div>
 
+          <?php
+
+
+          $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
+
           <div class="row" style="background-color: black; border-bottom: solid; border-width: 2px; border-color: #FFC107; border-top: solid; border-width: 2px; border-color: #FFC107;">
-            <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center" >
               <div class="col-12">
 
                 <div class="row">
@@ -925,13 +930,6 @@ if($session->vereficarLogin() != false){
                 </div>
               </div>
             </div>
-
-           
-            <?php 
-            
-       
-            $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
-
             <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
               <div class="row">
                 <div class="col-12" style="padding-bottom: 2vw">
