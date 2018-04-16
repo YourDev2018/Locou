@@ -65,13 +65,15 @@ for ($i =0; $i<count($arrayHorarios); $i++) {
     $newDate = date("d-m-Y", strtotime($originalDate));
  //   print $newDate. " / " ;
  
-    print $day = date('N',strtotime($originalDate));
- */
+    //print $day = date('N',strtotime($originalDate));
+}*/
+//((bool)true. "".(bool)false);
+/*
 $db = new FunctionsDB();
 $conn = $db->conectDB();
 $arrayUser = $db->getInfoUserProprietario($conn,160);
 var_dump($arrayUser);
-
+ */
 function usuarioCliente(){
     $db = new FunctionsDB();
     $conn = $db->conectDB();

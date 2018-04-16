@@ -142,37 +142,36 @@ if($session->vereficarLogin() != false){
 
     $day = date('N',strtotime($newDate));
     
-    if($day == 1){
-      $seg = true;
-    }
-      if($day == 2){
-      $ter= true;
-    }
+    if($day == 1)
+      $seg =  json_encode(true);
+    
+      if($day == 2)
+      $ter=  json_encode(true);
+    
       if($day == 3)
-      $qua = true;
+      $qua =  json_encode(true);
 
      if($day == 4)
-      $qui = true;
+      $qui = json_encode(true);
 
       if($day == 5)
-      $sex = true;
+      $sex =  json_encode(true);
 
       if($day == 6)
-        $sab = true;
+        $sab =  json_encode(true);
 
       if($day == 7)
-        $dom = true;
+        $dom = json_encode(true);
   }
 
-
   ?>
-  var seg_ativo = <?php echo true; ?>
-  var ter_ativo = <?php if($ter != true){echo false;} else{echo true;} ?>;
-  var qua_ativo = <?php if($qua != true){echo false;} else{echo true;} ?>;
-  var qui_ativo = <?php if($qui != true){echo false;} else{echo true;} ?>;
-  var sex_ativo = <?php if($sex != true){echo false;} else{echo true;} ?>;
-  var sab_ativo = <?php if($sab != true){echo false;} else{echo true;} ?>;
-  var dom_ativo = <?php if($dom != true){echo false;} else{echo true;} ?>;
+  var seg_ativo = <?php if($ter != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var ter_ativo = <?php if($ter != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var qua_ativo = <?php if($qua != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var qui_ativo = <?php if($qui != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var sex_ativo = <?php if($sex != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var sab_ativo = <?php if($sab != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var dom_ativo = <?php if($dom != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
 
   var ph = <?php echo $array[7] ?>;
   var ph4 = <?php echo $arrayGeral[11] ?>;
