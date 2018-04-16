@@ -67,7 +67,7 @@ $conn = $db->conectDB();
 $session = new FunctionsSession();
 
     if ($session->vereficarLogin()) {
-            $aux = basico($ftp, $db, $conn, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua, $num, $complemento );
+            $aux = basico($ftp, $db, $conn, $_SESSION['id'], $titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua, $num, $complemento );
             print (" ( $aux ) ");
             $idAnuncioAux = $aux;
         if (is_numeric($aux)) {
@@ -324,7 +324,9 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                      print $URL_ATUAL;
+/*
+                   //   print $URL_ATUAL;
+
                     if (strpos($URL_ATUAL, '') !== false) {
                         
                       //  header('location: fimEmail.php');
@@ -332,7 +334,7 @@ $session = new FunctionsSession();
               
                     }
 
-
+*/
                       
                 }
 
@@ -352,7 +354,7 @@ $session = new FunctionsSession();
 
 
 
-function basico($ftp,$db, $conn,$titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua,$num,$complemento ){
+function basico($ftp,$db, $conn, $id, $titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua,$num,$complemento ){
 
 
    // $id = $_SESSION['id'];
