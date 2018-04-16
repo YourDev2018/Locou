@@ -444,6 +444,8 @@ if ($session->vereficarLogin()=='false') {
 
     <form action="CadastrarOutrosEstados.php" method="post">
 
+    <input style="display: none" value="anunciarEmail.php" name="header" readonly></input>
+
       <div class="row" id="fora_do_rj" style="display: none">
 
         <div class="col-lg-2 col-md-1 col-sm-0">

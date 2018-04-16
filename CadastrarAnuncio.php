@@ -133,7 +133,7 @@ $session = new FunctionsSession();
                     print $URL_ATUAL;
                     if (strpos($URL_ATUAL, '') !== false) {
                         
-                      //  header('location: fimEmail.php');
+                       header('location: fimEmail.php');
                        
               
                     }
@@ -163,7 +163,7 @@ $session = new FunctionsSession();
                         print $URL_ATUAL;
                     if (strpos($URL_ATUAL, '') !== false) {
                         
-                      //  header('location: fimEmail.php');
+                       header('location: fimEmail.php');
                        
               
                     }
@@ -324,6 +324,7 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
+                    header('location: fimEmail.php');
 /*
                    //   print $URL_ATUAL;
 
