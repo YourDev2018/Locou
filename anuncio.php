@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <?php
 error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'FunctionsSession.php';
@@ -180,34 +181,36 @@ if($session->vereficarLogin() != false){
   var ps =  <?php echo $arrayGeral[14] ?>;
   var pm =  <?php echo $arrayGeral[15] ?>;
 
-  var seg_max_h = 20;
+  <?php $arrayHorarios = $busca-> retornarHorário($conn,$idAnuncio) ?>
+
+  var seg_max_h = <?php echo $arrayHorarios[8] ?>;
   var seg_max_m = 30;
-  var seg_min_h = 10;
+  var seg_min_h = <?php echo $arrayHorarios[1] ?>;
   var seg_min_m = 0;
 
-  var ter_max_h = 12;
+  var ter_max_h = <?php echo $arrayHorarios[9] ?>;
   var ter_max_m = 0;
-  var ter_min_h = 15;
+  var ter_min_h = <?php echo $arrayHorarios[2] ?>;
   var ter_min_m = 0;
-  var qua_max_h = 20;
+  var qua_max_h = <?php echo $arrayHorarios[10] ?>;
   var qua_max_m = 0;
-  var qua_min_h = 8;
-  var qua_min_m = 30;
-  var qui_max_h = 18;
+  var qua_min_h = <?php echo $arrayHorarios[3] ?>;
+  var qua_min_m = 0;
+  var qui_max_h = <?php echo $arrayHorarios[11] ?>;
   var qui_max_m = 0;
-  var qui_min_h = 12;
-  var qui_min_m = 30;
-  var sex_max_h = 12;
+  var qui_min_h = <?php echo $arrayHorarios[4] ?>;
+  var qui_min_m = 0;
+  var sex_max_h = <?php echo $arrayHorarios[12] ?>;
   var sex_max_m = 0;
-  var sex_min_h = 10;
+  var sex_min_h = <?php echo $arrayHorarios[5] ?>;
   var sex_min_m = 0;
-  var sab_max_h = 22;
+  var sab_max_h = <?php echo $arrayHorarios[13] ?>;
   var sab_max_m = 0;
-  var sab_min_h = 10;
+  var sab_min_h = <?php echo $arrayHorarios[6] ?>;
   var sab_min_m = 0;
-  var dom_max_h = 20;
+  var dom_max_h = <?php echo $arrayHorarios[14] ?>;
   var dom_max_m = 0;
-  var dom_min_h = 0;
+  var dom_min_h = <?php echo $arrayHorarios[7] ?>;
   var dom_min_m = 0;
 
   var today = new Date();
@@ -1707,7 +1710,7 @@ if($session->vereficarLogin() != false){
                             precoTotal = precoTotal + pr/2;
                           }
                         }
-                        console.log("Preço Total: R$"+precoTotal);
+                        console.log("Preço Total: R$" precoTotal + precoTotal*10);
                         document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")

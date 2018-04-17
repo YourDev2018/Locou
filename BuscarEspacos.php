@@ -1032,7 +1032,8 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
                         
                         $array[$cont] = $row['idAnuncio'];
-                       // print " ".$array[$cont];
+                        
+                        // print " ".$array[$cont];  
                         $cont++;
 
                         $array[$cont] = $row['fotoUm'];
@@ -1047,7 +1048,6 @@ class BuscarEspacos
                         $array[$cont] = $row['preco'];
                         $cont++;
                 
-
             }
                 // print_r($array);
             return $array;        
@@ -1098,7 +1098,7 @@ class BuscarEspacos
 
     public function retornarDiasCadastrados($db, $id){
 
-      $result =  $db->query(" SELECT dataEntrada
+       $result =  $db->query(" SELECT dataEntrada
                                 FROM RegistroAnunciosDisponiveis 
                                 WHERE idAnuncio = '$id' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
         $cont = mysqli_num_rows($result);
@@ -1121,9 +1121,186 @@ class BuscarEspacos
 
     }
 
+
+    public function retornarHorário($db, $idAnuncio){
+
+         $result =  $db->query("SELECT *
+                                FROM RegistroAnunciosDisponiveis 
+                                WHERE idAnuncio = '$idAnuncio' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+
+                               
+                                
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+          //  print "erro buscar espaço Bairro Tipo";
+        }else{
+            
+            $array = [];
+            $cont=0;
+            $menorEntradaSegunda = 100;
+            $menorEntradaTerca = 100;
+            $menorEntradaQuarta = 100;
+            $menorEntradaQuinta = 100;
+            $menorEntradaSexta = 100;
+            $menorEntradaSabado = 100;
+            $menorEntradaDomingo= 100;
+
+            $maiorEntradaSegunda = 0;
+            $maiorEntradaTerca = 0;
+            $maiorEntradaQuarta = 0;
+            $maiorEntradaQuinta = 0;
+            $maiorEntradaSexta = 0;
+            $maiorEntradaSabado = 0;
+            $maiorEntradaDomingo= 0;
+
+            while ($row=$result->fetch_assoc()) {
+                        
+                $dateEntrada = $row['dataEntrada'];
+                $newDate = date("d-m-Y", strtotime($dateEntrada));
+                $day = date('N',strtotime($newDate));
+              //  print $day;
+                if($day == 1){
+
+                    if ($row['horaEntrada'] < $menorEntradaDomingo){
+
+                        $menorEntradaSegunda = $row['horaEntrada'];
+
+                    } 
+
+                    
+                    if ($row['horaSaida'] > $maiorEntradaDomingo){
+
+                        $maiorEntradaSegunda = $row['horaSaida'];
+
+                    } 
+
+                }   
+                
+                if($day == 2){
+
+                    if ($row['horaEntrada'] < $menorEntradaTerca){
+
+                        $menorEntradaTerca = $row['horaEntrada'];
+
+                    } 
+
+                     if ($row['horaSaida'] > $maiorEntradaTerca){
+
+                        $maiorEntradaTerca = $row['horaSaida'];
+
+                    } 
+
+                }   
+
+                if($day == 3){
+
+                    if ($row['horaEntrada'] < $menorEntradaQuarta){
+
+                        $menorEntradaTerca = $row['horaEntrada'];
+
+                    } 
+
+                     if ($row['horaSaida'] >  $maiorEntradaQuarta){
+
+                        $maiorEntradaQuarta = $row['horaSaida'];
+
+                    } 
+
+                }   
+
+                  if($day == 4){
+
+                    if ($row['horaEntrada'] < $menorEntradaQuinta){
+
+                        $menorEntradaQuinta = $row['horaEntrada'];
+
+                    }
+                    
+                     if ($row['horaSaida'] > $maiorEntradaQuinta){
+
+                        $maiorEntradaQuinta = $row['horaSaida'];
+
+                    } 
+
+                }   
+
+                  if($day == 5){
+
+                    if ($row['horaEntrada'] < $menorEntradaSexta){
+
+                        $menorEntradaSexta = $row['horaEntrada'];
+
+                    }
+                    
+                     if ($row['horaSaida'] > $maiorEntradaSexta){
+
+                        $maiorEntradaSexta= $row['horaSaida'];
+
+                    } 
+
+                }   
+
+                   if($day == 6){
+
+                    if ($row['horaEntrada'] < $menorEntradaSabado){
+
+                        $menorEntradaSabado = $row['horaEntrada'];
+
+                    }
+                    
+                     if ($row['horaSaida'] > $maiorEntradaDomingo){
+
+                        $maiorEntradaSabado = $row['horaSaida'];
+
+                    } 
+
+                }   
+
+
+                   if($day == 7){
+
+                    if ($row['horaEntrada'] < $menorEntradaDomingo){
+
+                        $menorEntradaDomingo = $row['horaEntrada'];
+
+                    }
+                    
+                     if ($row['horaSaida'] > $maiorEntradaDomingo){
+
+                        $maiorEntradaDomingo = $row['horaSaida'];
+
+                    } 
+
+                }   
+
+
+            }
+                // print_r($array);     
+        }
+
+        $array[1]= $menorEntradaSegunda; 
+        $array[2]= $menorEntradaTerca; 
+        $array[3]= $menorEntradaQuarta; 
+        $array[4]= $menorEntradaQuinta; 
+        $array[5]= $menorEntradaSexta; 
+        $array[6]= $menorEntradaSabado; 
+        $array[7]= $menorEntradaDomingo; 
+
+        $array[8]= $maiorEntradaSegunda;
+        $array[9]= $maiorEntradaTerca; 
+        $array[10]= $maiorEntradaQuarta;  
+        $array[11]= $maiorEntradaQuinta; 
+        $array[12]= $maiorEntradaSexta; 
+        $array[13]= $maiorEntradaSabado;
+        $array[14]= $maiorEntradaDomingo;      
+
+        return $array;
+
+    }
+
+
     public function retornarDiasNaoDisponiveis($db, $id){
-
-
 
     }
     

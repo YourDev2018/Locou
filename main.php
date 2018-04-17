@@ -74,6 +74,15 @@ $conn = $db->conectDB();
 $arrayUser = $db->getInfoUserProprietario($conn,160);
 var_dump($arrayUser);
  */
+
+    $db = new FunctionsDB();
+  $conn = $db->conectDB();
+
+  $busca = new BuscarEspacos();
+  $array = $busca -> retornarMenorHorário($conn,174);
+  print $array[1];
+ 
+
 function usuarioCliente(){
     $db = new FunctionsDB();
     $conn = $db->conectDB();
