@@ -2086,7 +2086,7 @@ if($session->vereficarLogin() != false){
                     document.getElementById("tempoDeAlguel").innerHTML = "O prazo de alguel será do dia "+dd+"/"+mm+"/"+yyyy+" até "+data.getDate()+'/'+ (data.getMonth()+1) +'/'+data.getFullYear();;
                   }
                   </script>
-                  <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
+                  <!-- <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
                   <br>
                   <div class="row text-center justify-content-center">
                     <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
@@ -2118,7 +2118,7 @@ if($session->vereficarLogin() != false){
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
