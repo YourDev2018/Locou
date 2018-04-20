@@ -938,8 +938,17 @@ if($session->vereficarLogin() != false){
                         if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobiliario";}?>" == "sim") //mobilia  - consultorio
                         {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
+                        }
+                        if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobiliario";}?>" == "sim") //mobilia  - consultorio
+                        {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
+                        }
+                        if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobiliario";}?>" == "sim") //mobilia  - consultorio
+                        {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/lamp.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Luminária(s)</h5></div>";
+                        }
+                        if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobiliario";}?>" == "sim") //mobilia  - consultorio
+                        {
                           str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Maca(s)</h5></div>";
                         }
                         if("<?php if($anuncio->balanca !='sim'){echo 'nao';}else{echo "$anuncio->balanca";}?>" == "sim") //balanca  - consultorio
