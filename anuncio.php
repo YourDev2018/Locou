@@ -827,70 +827,70 @@ if($session->vereficarLogin() != false){
                 <div class="row text-center justify-content-center" style="font-size: 14px">
                   <div class="col py-1">
                     <h6 style="color: black; font-weight: 600; font-size:90%">Metragem<br></h6>
-                    <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-home"></i> <br> <?php $cont=0; echo $arrayGeral[$cont++] ?> M²</h5>
+                    <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/house-outline.svg"> <br> <?php $cont=0; echo $arrayGeral[$cont++] ?> M²</h5>
                   </div>
 
                   <?php if ($arrayGeral[$cont++] == "sim"){ ?>
 
                     <div class="col py-1">
                       <h6 style="color: black; font-weight: 600 ;font-size:90%">Possui<br></h6>
-                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-street-view"></i> <br> Recepção</h5>
+                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/recepcao.svg"> <br> Recepção</h5>
                     </div>
 
                   <?php } if ($arrayGeral[$cont++] == "sim"){ ?>
 
                     <div class="col py-1">
                       <h6 style="color: black; font-weight: 600;font-size:90% ">Possui<br></h6>
-                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-female"></i> <i class="fas fa-male"></i> <br> Banheiro comum</h5>
+                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/toilet.svg"> <br> Banheiro comum</h5>
                     </div>
 
                   <?php } if ($arrayGeral[$cont++] == "sim"){ ?>
 
                     <div class="col py-1">
                       <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-female"></i> | <i class="fas fa-male"></i> <br> Banheiro privativo</h5>
+                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/wc.svg"> <br> Banheiro privativo</h5>
                     </div>
 
                   <?php } if ($arrayGeral[$cont] == "predio"){ ?>
 
                     <div class="col py-1">
                       <h6 style="color: black; font-weight: 600;font-size:90%">O local<br></h6>
-                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-building"></i> <br> É um Prédio</h5>
+                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/apartment.svg"> <br> É um Prédio</h5>
                     </div>
 
                     <?php $cont++;} if ($arrayGeral[$cont] == "casa"){ ?>
 
                       <div class="col py-1">
                         <h6 style="color: black; font-weight: 600;font-size:90%">O local<br></h6>
-                        <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-building"></i> <br> É uma casa</h5>
+                        <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/home.svg"> <br> É uma casa</h5>
                       </div>
 
                       <?php $cont++; } if ($arrayGeral[$cont++] == "sim"){ ?>
 
                         <div class="col py-1">
                           <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-sort"></i> <br> Elevador no prédio</h5>
+                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/elevator.svg"> <br> Elevador no prédio</h5>
                         </div>
 
                       <?php } if ($arrayGeral[7] == "rotativo"){ ?>
 
                         <div class="col py-1">
                           <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-sync"></i> <br> Estacionamento rotativo</h5>
+                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/refresh-button.svg"> <br> Estacionamento rotativo</h5>
                         </div>
 
                       <?php } if ($arrayGeral[7] == "proprio"){?>
 
                         <div class="col py-1">
                           <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-sync"></i> <br> Estacionamento Proprio </h5>
+                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/parking.svg"> <br> Estacionamento Proprio </h5>
                         </div>
 
                       <?php } if ($arrayGeral[8] == "sim") { ?>
 
                         <div class="col py-1">
                           <h6 style="color: black; font-weight: 600;font-size:90%">Fácil acesso<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-bus"></i> <br> Ao transporte público <br> <span style="color: white">(Até 5 min de distância)</span> </h5>
+                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><img height="23px" src="img/icones/bus-stop.svg"> <br> Ao transporte público <br> <span style="color: white">(Até 5 min de distância)</span> </h5>
                         </div>
 
                       <?php } ?>
