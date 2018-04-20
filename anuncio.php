@@ -57,9 +57,9 @@ if($array[9] == 'consultorio'){
   $anuncio->balanca = $arrayEspecifico[$con++];
   $anuncio->cafe = $arrayEspecifico[$con++];
   $anuncio->agua = $arrayEspecifico[$con++];
-  $anuncio->tv = $arrayEspecifico[$con++]; 
+  $anuncio->tv = $arrayEspecifico[$con++];
   $anuncio->descricao = $arrayEspecifico[$con++];
- 
+
 }
 
 if($array[9] == 'cozinha'){
@@ -74,7 +74,7 @@ if($array[9] == 'cozinha'){
   $anuncio->buffet = $arrayEspecifico[$con++];
   $anuncio->aula = $arrayEspecifico[$con++];
   $anuncio->wifi = $arrayEspecifico[$con++];
-  $anuncio->monitoramento = $arrayEspecifico[$con++]; 
+  $anuncio->monitoramento = $arrayEspecifico[$con++];
   $anuncio->armario = $arrayEspecifico[$con++];
   $anuncio->chave = $arrayEspecifico[$con++];
   $anuncio->estante = $arrayEspecifico[$con++];
@@ -110,12 +110,12 @@ if($array == 'artes'){
   $arrayEspecifico = $busca -> retornarAnuncioArtesDetalhado($conn,$idAnuncio);
   $con = 0;
   $anuncio->forno = $arrayEspecifico[$con++];
-  $anuncio->macarico = $arrayEspecifico[$con++]; 
+  $anuncio->macarico = $arrayEspecifico[$con++];
   $anuncio->moldes = $arrayEspecifico[$con++];
   $anuncio->bancada = $arrayEspecifico[$con++];
   $anuncio->armario = $arrayEspecifico[$con++];
   $anuncio->descricao= $arrayEspecifico[$con++];
- 
+
  // $anuncio-> = $arrayEspecifico[$con++];
 
 
@@ -138,10 +138,10 @@ if($array == 'costura'){
   $anuncio->recepcao = $arrayEspecifico[$con++];
   $anuncio->maquina = $arrayEspecifico[$con++];
   $anuncio->mobiliario = $arrayEspecifico[$con++];
-  $anuncio->provador = $arrayEspecifico[$con++]; 
+  $anuncio->provador = $arrayEspecifico[$con++];
   $anuncio->armario = $arrayEspecifico[$con++];
   $anuncio->descricao = $arrayEspecifico[$con++];
-  
+
 }
 
 if($array == 'ensaio'){
@@ -205,7 +205,7 @@ if($array == 'palestra'){
 
 
 
-  
+
 }
 
 if($array == 'produtora'){
@@ -252,7 +252,7 @@ if($array == 'workshop'){
   $anuncio->buffetExtra = $arrayEspecifico[$con++];
   $anuncio->descricaoEquipamento = $arrayEspecifico[$con++];
   $anuncio->descricao = $arrayEspecifico[$con++];
-  
+
 }
 
 $busca->addContador($conn, $idAnuncio);
@@ -909,104 +909,104 @@ if($session->vereficarLogin() != false){
                         var str = document.getElementById('comodidades-local').innerHTML;
                         if( "<?php if($anuncio->climatizado!='sim'){echo 'nao';}else{echo "$anuncio->climatizado";} ?>" == "sim") //climatizado - aula - ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Ar-Condicionado</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/air-conditioner.svg\"><br> Ar-Condicionado</h5></div>";
                         }
                         if(  "<?php if($anuncio->wifi !='sim'){echo 'nao';}else{echo "$anuncio->wifi";}?>" == "sim") //wifi - aula - ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Tem<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Wi-Fi</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Tem<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/wifi.svg\"> <br> Wi-Fi</h5></div>";
                         }
                         if("<?php if($anuncio->monitoramento !='sim'){echo 'nao';}else{echo "$anuncio->monitoramento";}?>" == "sim") //monitoramento - aula - ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Monitoramento ou vigilância por câmera</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/cctv.svg\"> <br> Monitoramento ou vigilância por câmera</h5></div>";
                         }
                         if("<?php if($anuncio->armario !='sim'){echo 'nao';}else{echo "$anuncio->armario";}?>" == "sim") //armarios - consultorio / workshop / palestra / cozinha / costura / academia
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Armários para pertences</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/locker.svg\"> <br> Armários para pertences</h5></div>";
                         }
                         if("<?php if($anuncio->secretaria !='sim'){echo 'nao';}else{echo "$anuncio->secretaria";}?>" == "sim") //secretaria - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Secretária compartilhada</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/secretaria.svg\"> <br> Secretária compartilhada</h5></div>";
                         }
                         if("<?php if($anuncio->limpeza !='sim'){echo 'nao';}else{echo "$anuncio->limpeza";}?>" == "sim") //limpeza  - consultorio / workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Serviço de limpeza e conservação</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/spray.svg\"> <br> Serviço de limpeza e conservação</h5></div>";
                         }
                         if("<?php if($anuncio->copa !='sim'){echo 'nao';}else{echo "$anuncio->copa";}?>" == "sim") //copa  - consultorio/ workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Serviço de copa</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/restaurant.svg\"> <br> Serviço de copa</h5></div>";
                         }
                         if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobiliario";}?>" == "sim") //mobilia  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Luminária(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Maca(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/lamp.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Luminária(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Maca(s)</h5></div>";
                         }
                         if("<?php if($anuncio->balanca !='sim'){echo 'nao';}else{echo "$anuncio->balanca";}?>" == "sim") //balanca  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Balança</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/scale.svg\"> <br> Balança</h5></div>";
                         }
                         if("<?php if($anuncio->cafe !='sim'){echo 'nao';}else{echo "$anuncio->cafe";}?>" == "sim") //cafe  - consultorio/ workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> café</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/coffee.svg\"> <br> café</h5></div>";
                         }
                         if("<?php if($anuncio->agua !='sim'){echo 'nao';}else{echo "$anuncio->agua";}?>" == "sim") //água  - consultorio/ workshop / palestra / cozinha
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> água filtrada</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/water-tank.svg\"> <br> água filtrada</h5></div>";
                         }
                         if("<?php if($anuncio->tv !='sim'){echo 'nao';}else{echo "$anuncio->tv";}?>" == "sim") //tv  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> TV na recepção</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> TV na recepção</h5></div>";
                         }
                         if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobiliario";}?>" == "sim") //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Quadro(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Lousa de vidro jateada(s)</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> Telões</h5></div>";
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> <span style=\"color: #FFCE00\">x</span> TV(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Mesa(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Cadeira(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/quadro.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Quadro(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/vidrojateado.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Lousa de vidro jateada(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/telao.svg\"> <br> <span style=\"color: #FFCE00\">x</span> Telões</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> <span style=\"color: #FFCE00\">x</span> TV(s)</h5></div>";
                         }
                         if("<?php if($anuncio->projetor !='sim'){echo 'nao';}else{echo "$anuncio->projetor";}?>" == "sim") //datashow  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Data Show</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/projetor.svg\"> <br> Data Show</h5></div>";
                         }
                         if("<?php if($anuncio->som !='sim'){echo 'nao';}else{echo "$anuncio->som";}?>" == "sim") //Caixa de som  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Caixa de som</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/sound-system.svg\"> <br> Caixa de som</h5></div>";
                         }
                         if("<?php if($anuncio->computador !='sim'){echo 'nao';}else{echo "$anuncio->computador";}?>" == "sim") //computador  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Computador com Windows e pacote Microsoft Office</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Computador com Windows e pacote Microsoft Office</h5></div>";
                         }
                         if("<?php if($anuncio->flip !='sim'){echo 'nao';}else{echo "$anuncio->flip";}?>" == "sim") //flipchart  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Flipchart</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Flipchart</h5></div>";
                         }
                         if("<?php if($anuncio->buffet !='sim'){echo 'nao';}else{echo "$anuncio->buffet";}?>" == "sim") //buffet  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Serviço de buffet</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Serviço de buffet</h5></div>";
                         }
                         if("<?php if($anuncio->camarim !='sim'){echo 'nao';}else{echo "$anuncio->camarim";}?>" == "sim") //camarim  - aula / ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Camarim</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Camarim</h5></div>";
                         }
                         if("<?php if($anuncio->apoio !='sim'){echo 'nao';}else{echo "$anuncio->apoio";}?>" == "sim") //produção  - aula / ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Sala de apoio para produção</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Sala de apoio para produção</h5></div>";
                         }
                         if("<?php if($anuncio->barra !='sim'){echo 'nao';}else{echo "$anuncio->barra";}?>" == "sim") //barra   - aula / ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Barra (para alongamento)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Barra (para alongamento)</h5></div>";
                         }
                         // ---
                         if("<?php if($anuncio->espelho !='sim'){echo 'nao';}else{echo "$anuncio->espelho";}?>" == "sim") //espelho   - aula / ensaio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Espelho</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Espelho</h5></div>";
                         }
                         if("<?php if($anuncio->areaEvento !='sim'){echo 'nao';}else{echo "$anuncio->areaEvento";}?>" == "sim") //evento   - cozinha
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><i class=\"fas fa-video\"></i> <br> Área para realização de evento</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> Área para realização de evento</h5></div>";
                         }
                         if("<?php if($anuncio->mobiliario !='sim'){echo 'nao';}else{echo "$anuncio->mobilirario";}?>" == "sim") //mobilia  - cozinha
                         {
