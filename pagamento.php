@@ -2,9 +2,12 @@
 
 
 
-<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);?>
-<html lang="en">
+<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED); 
 
+
+
+?>
+<html lang="en">
   <head>
   
     <meta charset="utf-8">
@@ -71,7 +74,7 @@ function daysInMonth(month, year) {
       .mobile
       {
         display: none;
-      }
+      } 
     }
     @media (max-width: 768.0px)
     {
