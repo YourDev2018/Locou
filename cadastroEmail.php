@@ -12,7 +12,7 @@ $session -> iniciarSession();
 
 if($status == 'true' && ($_SESSION['id'] != null || $_SESSION['id'] != '' )){
 
-   header('location: anunciarEmail.php');
+  header('location: anunciarEmail.php');
 
 }
 
