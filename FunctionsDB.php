@@ -9,9 +9,10 @@
 
         function conectDB(){
             
-             //  $conn = new  mysqli("mysql762.umbler.com:41890","knivet","knivet2017","knivet");
              $conn = new  mysqli("mysql472.umbler.com:41890","yourdevlocou","YourDev2018","locou");
-            if ($conn->connect_erro){
+             //$conn = new  mysqli("mysql472.umbler.com:41890","yourdevlocou","YourDev2018","locou_h");
+           
+             if ($conn->connect_erro){
                 print $conn->connect_erro;
                 return $conn->connect_erro;
             }else{
