@@ -2,11 +2,72 @@
 
 
 
-<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED); 
+<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED); ?>
+
+<?php 
+
+  if($_POST['tipoAluguel']=='unico'){
+
+    //$_POST['data-unico-pick'];
+    $dataUnico = str_replace('/','-',$_POST['data-unico-pick']);
+    $date = new DateTime($dataUnico);
+    $dataUnico = $date->format('Y-m-d ');
+    print $dataUnico = str_replace('-','',$dataUnico);
+         
+    $horaInicioUnico = $_POST['hora-inicio-unico'];
+    $horaFimUnico = $_POST['hora-fim-unico'];
 
 
+  }else{
+
+    if($_POST['tipoAluguel']=='direto'){
+
+    // 
+    $dataInicioDireto = $_POST['data-direto-pick'];
+    $semanasDireto = $_POST['semanas-unico-direto'];
+      
+    }else{
+     
+      if($_POST['tipoAluguel']=='reincidente'){
+
+        //
+        $dataInicioReincidente = $_POST['data-reincidente-pick'];
+        $segSel = $_POST['seg-periodo-sel'];
+        $terSel = $_POST['ter-periodo-sel'];
+        $quaSel = $_POST['sex-periodo-sel'];
+        $quiSel = $_POST['qui-periodo-sel'];
+        $sexSel = $_POST['qua-periodo-sel'];
+        $sabSel = $_POST['ter-periodo-sel'];
+        $domSel = $_POST['dom-periodo-sel'];
+
+        $segInicioPeriodo = $_POST['seg-inicio-periodo'];
+        $segFimPeriodo = $_POST['seg-fim-periodo'];
+        
+        $terInicioPeriodo = $_POST['ter-inicio-periodo'];
+        $terFimPeriodo =    $_POST['ter-fim-periodo'];   
+
+        $quaInicioPeriodo= $_POST['qua-inicio-periodo'];
+        $quaFimPeriodo =    $_POST['qua-fim-periodo'];      
+
+        $quiInicioPeriodo= $_POST['qui-inicio-periodo'];
+        $quiFimPeriodo  =    $_POST['qui-fim-periodo'];     
+
+        $sexInicioPeriodo= $_POST['sex-inicio-periodo'];
+        $sexFimPeriodo  =    $_POST['sex-fim-periodo'];     
+
+        $sabInicioPeriodo= $_POST['sab-inicio-periodo'];
+        $sabFimPeriodo  =    $_POST['sab-fim-periodo'];     
+
+        $domInicioPeriodo= $_POST['dom-inicio-periodo'];
+        $domFimPeriodo =    $_POST['dom-fim-periodo'];      
+
+      }
+    }
+
+  }
 
 ?>
+<!--
 <html lang="en">
   <head>
   
@@ -329,3 +390,4 @@ function daysInMonth(month, year) {
     </div>
 
   </body>
+-->

@@ -509,30 +509,7 @@
 
             // $ext = strtolower(substr($_FILES['foto1']['name'],-4));
         }
-
-        /*
-          private function getIdAnuncio($db){
-            if ($db->query("SELECT LAST_INSERT_ID() INTO AnuncioBasico")===true){
-                $last_id = $db->insert_id;
-                print $last_id;
-                return $last_id;
-            }else{
-                return false;
-            }
-
-        }
-*/
-        /*
-        private function tratarDados($char){
-            
-            if(strpos($char, '/') || strpos($char, '*') || strpos ($char, "|"  ) || strpos($char, "\ ") || strpos($char, "*") ){
-                return true;
-            }
-
-        }
-    
-        */
-    
+  
 
         function getInfoUserProprietario($db,$idAnuncio){
 

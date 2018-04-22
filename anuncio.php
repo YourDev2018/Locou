@@ -1393,7 +1393,7 @@ if($session->vereficarLogin() != false){
                 <div class="col-12" style="padding-bottom: 2vw">
                   <p style="margin-top: 1vw; margin-bottom: 1vw">
                     <h4 style="color:white">A partir de:</h4>
-                    <h1 style="color:#FFCE00;font-weight: 600">R$ <?php echo( $array['7'] + $array['7']*0.10 ) ?></h1>
+                    <h1 style="color:#FFCE00;font-weight: 600">R$ <?php  echo $array[7] ;  ?></h1>
                     <h6 style="color:grey">E as taxas já estão inclusas!</h6>
                     <br>
                     <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato <br class="mobile"> com o anunciante</button>
@@ -1923,7 +1923,7 @@ if($session->vereficarLogin() != false){
                             precoTotal = precoTotal + pr/2;
                           }
                         }
-                        console.log("Preço Total: R$" + precoTotal + precoTotal*10);
+                        console.log("Preço Total: R$" + precoTotal);
                         document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
@@ -5017,7 +5017,7 @@ if($session->vereficarLogin() != false){
                   <br>
                   <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php  echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
@@ -5039,7 +5039,7 @@ if($session->vereficarLogin() != false){
                   <br>
                   <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$   <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
@@ -5062,7 +5062,7 @@ if($session->vereficarLogin() != false){
                   <br>
                   <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$   <?php  echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
@@ -5084,7 +5084,7 @@ if($session->vereficarLogin() != false){
                   <br>
                   <span style="color:grey"> <?php echo$arrayParecido[$contParecido++] ?> | <?php echo $arrayParecido[$contParecido++] ?> </span>
                 </h5>
-                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$  <?php echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
+                <h6 style="color: white"> A partir de : <span class="h4" style="color: #FFCE00">R$   <?php  echo $arrayParecido[$contParecido++] ?></span> por hora </h6>
               </div>
             </div>
           </a>
