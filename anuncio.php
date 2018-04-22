@@ -764,7 +764,7 @@ if($session->vereficarLogin() != false){
 
 <!-- Fotos e dados básicos -->
 <form id="form-pagamento" action="pagamento.php" method="post">
-
+  <input type="text" name="idAnuncio" value="<?php echo $idAnuncio; ?>" style="display: none;" readonly>
   <div class="px-3 container-fluid justify-content-center text-center" style="border-top: 2.5px solid #FFCE00;">
     <div class="row">
       <div class="col-12">
