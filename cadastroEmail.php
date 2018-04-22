@@ -12,7 +12,7 @@ $session -> iniciarSession();
 
 if($status == 'true' && ($_SESSION['id'] != null || $_SESSION['id'] != '' )){
 
-  header('location: anunciarEmail.php');
+   header('location: anunciarEmail.php');
 
 }
 
@@ -36,6 +36,7 @@ if($status == 'true' && ($_SESSION['id'] != null || $_SESSION['id'] != '' )){
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
+
 #map {
   height: 100%;
 }

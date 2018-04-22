@@ -9,9 +9,10 @@
 
         function conectDB(){
             
-             //  $conn = new  mysqli("mysql762.umbler.com:41890","knivet","knivet2017","knivet");
              $conn = new  mysqli("mysql472.umbler.com:41890","yourdevlocou","YourDev2018","locou");
-            if ($conn->connect_erro){
+             //$conn = new  mysqli("mysql472.umbler.com:41890","yourdevlocou","YourDev2018","locou_h");
+           
+             if ($conn->connect_erro){
                 print $conn->connect_erro;
                 return $conn->connect_erro;
             }else{
@@ -508,30 +509,7 @@
 
             // $ext = strtolower(substr($_FILES['foto1']['name'],-4));
         }
-
-        /*
-          private function getIdAnuncio($db){
-            if ($db->query("SELECT LAST_INSERT_ID() INTO AnuncioBasico")===true){
-                $last_id = $db->insert_id;
-                print $last_id;
-                return $last_id;
-            }else{
-                return false;
-            }
-
-        }
-*/
-        /*
-        private function tratarDados($char){
-            
-            if(strpos($char, '/') || strpos($char, '*') || strpos ($char, "|"  ) || strpos($char, "\ ") || strpos($char, "*") ){
-                return true;
-            }
-
-        }
-    
-        */
-    
+  
 
         function getInfoUserProprietario($db,$idAnuncio){
 

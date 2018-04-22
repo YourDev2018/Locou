@@ -22,7 +22,8 @@ $rua = $seg->filtro($_POST['rua']);
 $num = $seg->filtro($_POST['numero']);
 $complemento = $seg->filtro($_POST['complemento']);
 $uf = $seg->filtro($_POST['uf']);
-print $precoHora = $seg->filtro($_POST['hora']);
+$precoHora =  $seg->filtro($_POST['hora']);
+$precoHora = number_format($precoHora + $precoHora*0.10,2,'.','' );
 
 // descrição geral
 $metragem = $seg->filtro($_POST['metragem']);
