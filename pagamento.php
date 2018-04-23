@@ -52,7 +52,7 @@ require_once 'FunctionsSession.php';?>
       $preco = $db->retornarPreco($conn,$idAnuncio);
       $resultado = $preco *$calculoHora;
 
-      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+      print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
        
 
 

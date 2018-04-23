@@ -161,7 +161,9 @@ class Pedidos
                 return $idOrder;
 
             }else{
-                print ' enviar email autorizando o aluguel';
+                //print ' enviar email autorizando o aluguel';
+                $enviarEmail = new EnviarEmail();
+                $enviarEmail->enviar();
             }
 
             
