@@ -26,7 +26,7 @@ require_once 'BuscarEspacos.php';
 //returnConsultorio();
 //anuncioAdd();
 // usuarioCliente();
-
+testarLogin();
 
 
   //  print  $data = date('Y-m-d')."\n  ";
@@ -79,9 +79,15 @@ var_dump($arrayUser);
   $conn = $db->conectDB();
 
   $busca = new BuscarEspacos();
-  $array = $busca -> retornarMenorHorário($conn,174);
-  print $array[1];
+// $array = $busca -> retornarMenorHorário($conn,174);
+ // print $array[1];
  
+function testarLogin(){
+    
+    $db = new FunctionsDB();
+    $conn = $db->conectDB();
+    print $result = $db -> loginEmailSenha($conn,'morgado@yourdev.com.br',md5('123'));
+}
 
 function usuarioCliente(){
     $db = new FunctionsDB();

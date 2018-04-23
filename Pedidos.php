@@ -1,5 +1,8 @@
 <?php
 require_once 'Functions.php';
+require_once 'FunctionsDB.php';
+require_once 'BuscarEspacos.php';
+require_once 'EnviarEmail.php';
 
 class Pedidos
 {
@@ -64,7 +67,8 @@ class Pedidos
     }
 
     
-    function criarPedidoComClientMOIP($id,$idMoipClient,$idProprietario, $nomeEspaço, $numeroHoras, $preco){
+    function criarPedidoComClientMOIP($id,$idMoipClient,$idMoipProprietario, $nomeEspaço, $preco){
+
         $curl = curl_init();
         $func = new functions();
         $url = "https://sandbox.moip.com.br/v2/orders";
@@ -92,7 +96,7 @@ class Pedidos
                 {
                     \"product\": \"Aluguel do espaço $nomeEspaço \",
                     \"category\": \"BUSINESS_AND_INDUSTRIAL\",
-                    \"quantity\": $numeroHoras,
+                    \"quantity\": 1,
                     \"detail\": \"Aluguel do espaço $nomeEspaço\",
                     \"price\": $preco
                 }
@@ -105,7 +109,7 @@ class Pedidos
                     \"type\": \"SECONDARY\",
                     \"feePayor\": true,
                     \"moipAccount\": {
-                    \"id\": \"$idProprietario\"
+                    \"id\": \"$idMoipProprietario\"
                     },
                     \"amount\": {
                     \"percentual\": 90
@@ -119,17 +123,52 @@ class Pedidos
                 "Content-Type: application/json"
             )
             ));
-
             $resposta = curl_exec($curl);
             $obj = json_decode($resposta);
             $id = $obj->{'id'};
             return $id;
             
-    }
+    
+        }
 
     
+
+
+    function criarPedido($conn,$idUsuario,$idAnuncio,$preco){
+
+        $db = new FunctionsDB();
+
+        $busca= new BuscarEspacos();
+        $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+        $idClient = $db->getIdClientMoip($conn,$idUsuario);
+
+        $id= $db->getUltimoIDPedidos($conn);
+        $id = $id+1;
+
+        $idMoipProprietario = $db->getUsuarioProprietario($conn,$idUsuario);
+        if ($idMoipProprietario == null || $idMoipProprietario == '') {
+            print "erro, idMoipProprietario é nullo";
+            print ' Enviar email para o proprietário ';
+            // "Alguem quer alugar seu anuncio, termine de preencher seus dados para receber o valor"
+            
+            
+        }else{
+            if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
+                
+
+                $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
+                $db->salvarPedido($conn,$idAnuncio,$idUsuario,$idOrder);
+                return $idOrder;
+
+            }else{
+                print ' enviar email autorizando o aluguel';
+            }
+
+            
+
+            
+        }
+    }
 }
-
-
 ?>
 
