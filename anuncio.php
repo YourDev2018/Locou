@@ -762,6 +762,25 @@ if($session->vereficarLogin() != false){
   </div>
 </div>
 
+<div class="modal" id="emailEnviado" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Email enviado!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>O seu pedido foi enviado ao proprietário, em breve lhe daremos uma resposta.</p>
+      </div>      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Entendi!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Fotos e dados básicos -->
 <form id="form-pagamento" action="pagamento.php" method="post">
   <input type="text" name="idAnuncio" value="<?php echo $idAnuncio; ?>" style="display: none;" readonly>
