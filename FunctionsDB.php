@@ -576,6 +576,9 @@
                     $cont++;
 
                     $array[$cont] = $row['foto'];
+                    $cont++;
+
+                    $array[$cont] = $row['email'];
                 }
 
                 return $array;

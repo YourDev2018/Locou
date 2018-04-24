@@ -1,5 +1,5 @@
 <?php
-require_once 'Functions.php';
+require_once 'functions.php';
 require_once 'FunctionsDB.php';
 require_once 'BuscarEspacos.php';
 require_once 'EnviarEmail.php';
@@ -134,7 +134,7 @@ class Pedidos
     
 
 
-    function criarPedido($conn,$idUsuario,$idAnuncio,$preco){
+    function criarPedido($conn,$idUsuario,$idAnuncio,$preco,$arrayDadosPedido){
 
         $db = new FunctionsDB();
 
@@ -148,7 +148,7 @@ class Pedidos
         $idMoipProprietario = $db->getUsuarioProprietario($conn,$idUsuario);
         if ($idMoipProprietario == null || $idMoipProprietario == '') {
             print "erro, idMoipProprietario é nullo";
-            print ' Enviar email para o proprietário ';
+            print 'Enviar email para o proprietário';
             // "Alguem quer alugar seu anuncio, termine de preencher seus dados para receber o valor"
             
             
@@ -157,13 +157,22 @@ class Pedidos
                 
 
                 $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
+                
                 $db->salvarPedido($conn,$idAnuncio,$idUsuario,$idOrder);
                 return $idOrder;
 
             }else{
                 //print ' enviar email autorizando o aluguel';
                 $enviarEmail = new EnviarEmail();
-                $enviarEmail->enviar();
+                $arrayUser = $db->getUsuarioBasico($conn,$idUsuario);
+
+                $link = ''; // o Link, ao clicado, será redimenciado para um .php , criando um novo email e o enviando para o usuário inquilino.
+                            // Este email, deverá conter um link, que ao clicado, irá redimensinar para a página de pagamento, com o ID do pedido MOIP criado
+                $link = "http://localhost/yourdev/Locou/redirecionamento.php?b=$idClient&c=$idMoipProprietario&d=".$array[4]."&e=$preco";         
+                
+                $enviarEmail->enviar($arrayUser[2],$array[4],$link);
+                
+
             }
 
             

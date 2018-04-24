@@ -17,12 +17,12 @@ require_once 'FunctionsSession.php';?>
     exit();
   }
    $db = new FunctionsDB();
+
    $conn = $db->conectDB();
    $pedido = new Pedidos();
+
   if($_POST['tipoAluguel']=='unico'){
 
-    
-    
     $dataUnico = str_replace('/','-',$_POST['data-unico-pick']);
     $date = new DateTime($dataUnico);
     $dataUnico = $date->format('Y-m-d ');
@@ -52,7 +52,12 @@ require_once 'FunctionsSession.php';?>
       $preco = $db->retornarPreco($conn,$idAnuncio);
       $resultado = $preco *$calculoHora;
 
-      print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+      $arrayDados['tipo'] = $_POST['tipoAluguel'];
+      $arrayDados['g'] = $horaInicioUnico;
+      $arrayDados['h'] = $horaFimUnico;
+
+
+      print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
        
 
 
@@ -96,9 +101,15 @@ require_once 'FunctionsSession.php';?>
      $date->add(new DateInterval('P'.$dias.'D'));
      $dataFinalDireto = $date->format('Ymd');
       
+      // -> -> ERRO AQUI, PREÇO PRECISA SER O DE MÊS, PERIODO OU AFIM  <- <-
+
      $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
+
+     $arrayDados['ga'] = $dataInicioDireto;
+     $arrayDados['ha'] = $dataFinalDireto;
+
      $resultado = $preco * $semanasDireto;
-     $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+     $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
     
     }else{   
       
