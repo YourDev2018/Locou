@@ -2,70 +2,226 @@
 
 
 
-<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED); ?>
+<?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
+require_once 'FunctionsDB.php'; 
+require_once 'Pedidos.php';
+require_once 'FunctionsSession.php';?>
 
 <?php 
+  $idAnuncio = $_POST['idAnuncio'];
+   $session = new FunctionsSession();
+    $session -> iniciarSession();
 
+  if ($idAnuncio == null || $idAnuncio == '') {
+    header('location: index.php');
+    exit();
+  }
+   $db = new FunctionsDB();
+   $conn = $db->conectDB();
+   $pedido = new Pedidos();
   if($_POST['tipoAluguel']=='unico'){
 
-    //$_POST['data-unico-pick'];
+    
+    
     $dataUnico = str_replace('/','-',$_POST['data-unico-pick']);
     $date = new DateTime($dataUnico);
     $dataUnico = $date->format('Y-m-d ');
-    print $dataUnico = str_replace('-','',$dataUnico);
+    $dataUnico = str_replace('-','',$dataUnico);
          
-    $horaInicioUnico = $_POST['hora-inicio-unico'];
-    $horaFimUnico = $_POST['hora-fim-unico'];
+    $horaInicioUnico = floatval( str_replace (':','.',$_POST['hora-inicio-unico']));
+    $horaFimUnico =  " ".floatval( str_replace (':','.',$_POST['hora-fim-unico']));
 
+    $inteiro = floor($horaInicioUnico);
+       $decimal = $horaInicioUnico - $inteiro;
+
+    if (version_compare($decimal,'0.3') == 0) {
+        $horaInicioUnico = ($horaInicioUnico - 0.3)+0.5;
+    }
+
+    $inteiro = floor($horaFimUnico);
+    $decimal = $horaFimUnico - $inteiro;
+
+    if (version_compare($decimal,'0.3') == 0) {
+        $horaFimUnico = ($horaFimUnico - 0.3)+0.5;
+    }
+
+    print $calculoHora =  $horaFimUnico - $horaInicioUnico;
+
+    if($calculoHora / 4 < 1){
+       //retornar preço de hora comum
+      $preco = $db->retornarPreco($conn,$idAnuncio);
+      $resultado = $preco *$calculoHora;
+
+      print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+       
+
+
+
+    }else{
+      if($calculoHora / 4 == 1){
+         // retornar preço na descrição geral de 4 horas
+         $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
+         $resultado = $preco ;
+         $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+        // print $idPedido;
+        
+      }else{
+        if($calculoHora / 5 >= 1){
+
+          //retornar 5 hora;
+          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincoHora');
+          $resultado = $preco *$calculoHora;
+         // print $preco;
+
+          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+         // print $idPedido;
+          
+        }
+      }
+    }
 
   }else{
 
     if($_POST['tipoAluguel']=='direto'){
 
-    // 
-    $dataInicioDireto = $_POST['data-direto-pick'];
-    $semanasDireto = $_POST['semanas-unico-direto'];
-      
-    }else{
+    
+     $dataInicioDireto = $_POST['data-direto-pick'].' ';
+
+     $dataUnico = str_replace('/','-',$dataInicioDireto);
+     $date = new DateTime($dataUnico);
+ 
+     $semanasDireto = $_POST['semanas-unico-direto'];
+     $dias = $semanasDireto * 7;
      
+     $date->add(new DateInterval('P'.$dias.'D'));
+     $dataFinalDireto = $date->format('Ymd');
+      
+     $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
+     $resultado = $preco * $semanasDireto;
+     $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
+    
+    }else{   
+      
       if($_POST['tipoAluguel']=='reincidente'){
 
-        //
+        $semanasDireto = $_POST['semanas-unico'];
         $dataInicioReincidente = $_POST['data-reincidente-pick'];
-        $segSel = $_POST['seg-periodo-sel'];
-        $terSel = $_POST['ter-periodo-sel'];
-        $quaSel = $_POST['sex-periodo-sel'];
-        $quiSel = $_POST['qui-periodo-sel'];
-        $sexSel = $_POST['qua-periodo-sel'];
-        $sabSel = $_POST['ter-periodo-sel'];
-        $domSel = $_POST['dom-periodo-sel'];
-
-        $segInicioPeriodo = $_POST['seg-inicio-periodo'];
-        $segFimPeriodo = $_POST['seg-fim-periodo'];
+        $periodo  = $_POST['periodo-sel'];
         
-        $terInicioPeriodo = $_POST['ter-inicio-periodo'];
-        $terFimPeriodo =    $_POST['ter-fim-periodo'];   
+        $segSel = $_POST['seg-periodo-sel'];
+        if($segSel=='sim'){
 
-        $quaInicioPeriodo= $_POST['qua-inicio-periodo'];
-        $quaFimPeriodo =    $_POST['qua-fim-periodo'];      
+          $segInicioPeriodo = str_replace(':','',$_POST['seg-inicio-periodo']);
+          $segFimPeriodo = str_replace(':','',$_POST['seg-fim-periodo']);
 
-        $quiInicioPeriodo= $_POST['qui-inicio-periodo'];
-        $quiFimPeriodo  =    $_POST['qui-fim-periodo'];     
+         
 
-        $sexInicioPeriodo= $_POST['sex-inicio-periodo'];
-        $sexFimPeriodo  =    $_POST['sex-fim-periodo'];     
+          if (version_compare($decimal,'0.3') == 0) {
+              $segInicioPeriodo = ($segInicioPeriodo - 0.3)+0.5;
+          }
+          
+          $inteiro = floor($segFimPeriodo);
+          $decimal = $segFimPeriodo - $inteiro;
 
-        $sabInicioPeriodo= $_POST['sab-inicio-periodo'];
-        $sabFimPeriodo  =    $_POST['sab-fim-periodo'];     
+          if (version_compare($decimal,'0.3') == 0) {
+              $segFimPeriodo = ($segFimPeriodo - 0.3)+0.5;
+          }
 
-        $domInicioPeriodo= $_POST['dom-inicio-periodo'];
-        $domFimPeriodo =    $_POST['dom-fim-periodo'];      
+
+          $periodoSeg = ($segFimPeriodo - $segInicioPeriodo) / 100;
+
+        }
+        
+        $terSel = $_POST['ter-periodo-sel'];
+        if($terSel == 'sim'){
+          
+          $terInicioPeriodo = str_replace(':','',$_POST['ter-inicio-periodo']);
+          $terFimPeriodo = str_replace(':','',$_POST['ter-fim-periodo']);
+          
+          $terInicioPeriodo = verificarDecimal($terInicioPeriodo);
+          $terFimPeriodo = verificarDecimal($terFimPeriodo);
+
+          $periodoTer = ($terFimPeriodo - $terInicioPeriodo) /100;
+
+        }
+
+        $quaSel = $_POST['sex-periodo-sel'];
+        if ($quaSel=='sim') {
+
+          $quaInicioPeriodo=  str_replace(':','',$_POST['qua-inicio-periodo']);
+          $quaFimPeriodo =    str_replace(':','', $_POST['qua-fim-periodo']);
+
+          $quaInicioPeriodo = verificarDecimal($quaInicioPeriodo);
+          $quaFimPeriodo = verificarDecimal($quaFimPeriodo);
+
+          $periodoQua = ($quaFimPeriodo - $quaInicioPeriodo)/100;
+
+        }
+
+        $quiSel = $_POST['qui-periodo-sel'];
+        if ($quiSel=='sim') {
+
+          $quiInicioPeriodo=  str_replace(':','',$_POST['qui-inicio-periodo']);
+          $quiFimPeriodo  =   str_replace(':','', $_POST['qui-fim-periodo']);
+
+          $quiInicioPeriodo = verificarDecimal($quiInicioPeriodo);
+          $quiFimPeriodo = verificarDecimal($quiFimPeriodo);
+
+          $periodoQui = ($quiFimPeriodo - $quiInicioPeriodo)/100;
+          
+        }
+
+        $sexSel = $_POST['qua-periodo-sel'];
+        if ($sexSel=='sim') {
+
+          $sexInicioPeriodo=  str_replace(':','',$_POST['sex-inicio-periodo']);
+          $sexFimPeriodo  =    str_replace(':','', $_POST['sex-fim-periodo']);
+
+          $segInicioPeriodo = verificarDecimal($segInicioPeriodo);
+          $segFimPeriodo = verificarDecimal($segFimPeriodo);
+
+          $periodoSex = ($segFimPeriodo - $segInicioPeriodo)/100;
+          
+
+        }
+
+        $sabSel = $_POST['ter-periodo-sel'];
+        if ($sabSel =='sim') {
+          
+          $sabInicioPeriodo= verificarDecimal( str_replace(':','',$_POST['sab-inicio-periodo']));
+          $sabFimPeriodo  =  verificarDecimal( str_replace(':','',  $_POST['sab-fim-periodo']));  
+
+          $periodoSab = ($sabFimPeriodo - $sabInicioPeriodo)/100;
+        
+        }
+        
+        $domSel = $_POST['dom-periodo-sel'];
+        if ($domSel=='sim') {
+
+          $domInicioPeriodo= verificarDecimal( str_replace(':','',$_POST['dom-inicio-periodo']));
+          $domFimPeriodo =  verificarDecimal( str_replace(':','',  $_POST['dom-fim-periodo']));
+
+          $periodoDom = ($domFimPeriodo - $domInicioPeriodo)/100;
+          
+        }
+
+
 
       }
     }
 
   }
 
+  function verificarDecimal($dia){
+       $inteiro = floor($dia);
+       $decimal = $segInicioPeriodo - $inteiro;
+       if (version_compare($decimal,'0.3') == 0) {
+          $dia = ($dia - 0.3)+0.5;
+          return $dia;
+       }else{
+          return $dia;
+       }
+  }
 ?>
 <!--
 <html lang="en">

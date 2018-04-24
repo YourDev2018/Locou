@@ -1303,6 +1303,24 @@ class BuscarEspacos
     public function retornarDiasNaoDisponiveis($db, $id){
 
     }
+
+    public function retornarIdUserAnuncio($db, $idAnuncio){
+         $result =  $db->query("SELECT idProprietario
+                                FROM AnuncioBasico
+                                WHERE idAnuncio = '$idAnuncio' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+                          
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+          //  print "erro buscar espaço Bairro Tipo";
+        }else{
+              while ($row=$result->fetch_assoc()) {
+
+                return $row['idProprietario'];
+
+              }
+        }
+    }
     
 }
 

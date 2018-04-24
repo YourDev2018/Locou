@@ -19,22 +19,6 @@
               //  print "conect DB  - /   ";
                 return $conn;
             }
-        
-
-
-            // Testar PDO quando subir para o servidor, não funcional em localhost
-
-            /*
-            $host = 'mysql427.umbler.com:41890;dbname=knivet';
-            $user = 'knivet';
-            $senha = 'knivet2017';
-            try {
-                $pdo = new PDO($host,$user,$senha);
-                return $pdo;
-            }catch(PDOException $e){
-                return $e;
-            }
-            */
            
         }
 
@@ -474,21 +458,35 @@
                 }
 
         }
+
+        function cadastrarHorariosOcupados($db, $idAnuncio,$dataInicio, $dataFim, $horaInicio, $horaFim ){
+            $sql = "INSERT INTO RegistroAnunciosOcupados(idAnuncio, dataEntrada, horaEntrada, dataSaida, horaSaida)
+                                    VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim')";
+
+                if ($db->query($sql)===true) {  
+                   // print $db->error_log;
+                    return true;
+
+                }else{
+                  //  print 'failed';
+                    return "Insert failed";
+                }
+        }
       
         private function emailExist($db, $email){
 
-        $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' ") ;
-        $cont = mysqli_num_rows($result);
-        if ($cont <=0) {
-            return  false;
-        }else{
-            return true;
-        }
+            $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' ") ;
+            $cont = mysqli_num_rows($result);
+            if ($cont <=0) {
+                return  false;
+            }else{
+                return true;
+            }
 
         }
 
-        function getIdClientMoip($id){
-            $db = $this->conectDB();
+        function getIdClientMoip($db, $id){
+            //$db = $this->conectDB();
             $result =  $db->query("SELECT idClient FROM UsuarioClient WHERE id = '$id'") ;
             $cont = mysqli_num_rows($result);
             if ($cont <=0) {
@@ -505,9 +503,30 @@
             }       
         }
 
-        function salvarfoto(){
+        function retornarPreco($db,$idAnuncio){
 
-            // $ext = strtolower(substr($_FILES['foto1']['name'],-4));
+            $result =  $db->query("SELECT preco FROM AnuncioBasico WHERE idAnuncio = '$idAnuncio' ") ;
+            $cont = mysqli_num_rows($result); 
+            if ($cont <=0) {
+                print "erro retornar Preço";
+            }else{
+                 while ($row=$result->fetch_assoc()) {
+                     return $row['preco'];
+                 }
+            }
+
+        }
+
+        function retornarPrecoHoraGeral($db,$idAnuncio,$qtdHora){
+            $result =  $db->query("SELECT $qtdHora FROM AnuncioDescricaoGeral WHERE idAnuncio = '$idAnuncio' ") ;  
+            $cont = mysqli_num_rows($result); 
+            if ($cont <=0) {
+                print "Erro buscar $qtdHora";
+            }else{
+                 while ($row=$result->fetch_assoc()) {
+                     return $row[$qtdHora];
+                 }
+            }
         }
   
 
@@ -563,6 +582,56 @@
             
             }
                 
+        }
+
+        function getUltimoIDPedidos($db){
+            $result = "SELECT id FROM Pedidos ORDER BY id DESC LIMIT 1";
+            $result = $db->query($result);
+
+            $aux = mysqli_num_rows($result);
+            while ($row=$result->fetch_assoc()) {
+                    
+                return $row['id'];
+            }
+        }
+
+        function getUsuarioProprietario($db, $idUsuario){
+
+            $result = "SELECT idMoipAccount FROM UsuarioProprietario WHERE id = '$idUsuario'";
+            $result = $db->query($result);
+
+            $aux = mysqli_num_rows($result);
+            while ($row=$result->fetch_assoc()) {
+              //  print $row['idMoipAccount'];    
+                return $row['idMoipAccount'];
+            }
+
+        }
+
+        function getAnuncioInstantaneo($db, $idAnuncio)
+        {
+            $result = "SELECT reservaInsta FROM AnuncioDescricaoGeral WHERE idAnuncio = '$idAnuncio'";
+            $result = $db->query($result);
+
+            $aux = mysqli_num_rows($result);
+            while ($row=$result->fetch_assoc()) {
+                    
+                return $row['reservaInsta'];
+            }  
+        }
+
+        function salvarPedido($db,$idAnuncio,$idUsuario,$idOrder){
+                $sql = "INSERT INTO Pedidos(idAnuncio, idUsuario, idOrder)
+                                    VALUES ('$idAnuncio', '$idUsuario', '$idOrder')";
+
+                if ($db->query($sql)===true) {  
+                   // print $db->error_log;
+                    return true;
+
+                }else{
+                  //  print 'failed';
+                    return "Insert failed";
+                }
         }
 
     }
