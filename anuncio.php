@@ -773,7 +773,7 @@ if($session->vereficarLogin() != false){
       </div>
       <div class="modal-body">
         <p>O seu pedido foi enviado ao proprietário, em breve lhe daremos uma resposta.</p>
-      </div>      
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Entendi!</button>
       </div>
@@ -2272,38 +2272,38 @@ if($session->vereficarLogin() != false){
                           <input type="text" id="semanas-seguidas-direto" maxlength="2"name="semanas-unico-direto" class="form-control" style="text-align: center" readonly value="1">
                           <br>
                           <script>
-                          var semanasSeguidas = 1;
-                          function semana_reincidente_mais()
+                          var semanasSeguidasD = 1;
+                          function semana_direto_mais()
                           {
-                            semanasSeguidas = semanasSeguidas + 1;
-                            if(semanasSeguidas >= 12)
+                            semanasSeguidasD = semanasSeguidasD + 1;
+                            if(semanasSeguidasD >= 12)
                             {
-                              semanasSeguidas = 12;
+                              semanasSeguidasD = 12;
                             }
-                            if(semanasSeguidas <= 0)
+                            if(semanasSeguidasD <= 0)
                             {
-                              semanasSeguidas = 1;
+                              semanasSeguidasD = 1;
                             }
-                            document.getElementById("semanas-seguidas-direto").value = semanasSeguidas;
+                            document.getElementById("semanas-seguidas-direto").value = semanasSeguidasD;
                           }
-                          function semana_reincidente_menos()
+                          function semana_direto_menos()
                           {
-                            semanasSeguidas = semanasSeguidas - 1;
-                            if(semanasSeguidas >= 12)
+                            semanasSeguidasD = semanasSeguidasD - 1;
+                            if(semanasSeguidasD >= 12)
                             {
-                              semanasSeguidas = 12;
+                              semanasSeguidasD = 12;
                             }
-                            if(semanasSeguidas <= 0)
+                            if(semanasSeguidasD <= 0)
                             {
-                              semanasSeguidas = 1;
+                              semanasSeguidasD = 1;
                             }
-                            document.getElementById("semanas-seguidas-direto").value = semanasSeguidas;
+                            document.getElementById("semanas-seguidas-direto").value = semanasSeguidasD;
                           }
                           </script>
                         </div>
                         <div class="col-12">
-                          <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                          <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                          <span class="my-1 btn btn-warning" onclick="semana_direto_mais()"><i class="fas fa-arrow-up"></i></span>
+                          <span class="my-1 btn btn-warning" onclick="semana_direto_menos()"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
                       <br>
