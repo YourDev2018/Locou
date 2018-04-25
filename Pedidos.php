@@ -134,28 +134,29 @@ class Pedidos
     
 
 
-    function criarPedido($conn,$idUsuario,$idAnuncio,$preco,$arrayDadosPedido){
+    
+    
+    function criarPedido($conn,$idUsuario,$idAnuncio,$tipo,$preco,$arrayDadosPedido){
 
         $db = new FunctionsDB();
 
         $busca= new BuscarEspacos();
-        $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
-        $idClient = $db->getIdClientMoip($conn,$idUsuario);
-
-        $id= $db->getUltimoIDPedidos($conn);
-        $id = $id+1;
-
+        
         $idMoipProprietario = $db->getUsuarioProprietario($conn,$idUsuario);
         if ($idMoipProprietario == null || $idMoipProprietario == '') {
             print "erro, idMoipProprietario é nullo";
             print 'Enviar email para o proprietário';
             // "Alguem quer alugar seu anuncio, termine de preencher seus dados para receber o valor"
-            
-            
+
         }else{
             if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
-                
 
+                $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+                $idClient = $db->getIdClientMoip($conn,$idUsuario);
+
+                $id= $db->getUltimoIDs($conn,'Pedidos');
+                $id = $id+1;
+                
                 $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
                 
                 $db->salvarPedido($conn,$idAnuncio,$idUsuario,$idOrder);
@@ -163,14 +164,27 @@ class Pedidos
 
             }else{
                 //print ' enviar email autorizando o aluguel';
-                $enviarEmail = new EnviarEmail();
-                $arrayUser = $db->getUsuarioBasico($conn,$idUsuario);
 
-                $link = ''; // o Link, ao clicado, será redimenciado para um .php , criando um novo email e o enviando para o usuário inquilino.
-                            // Este email, deverá conter um link, que ao clicado, irá redimensinar para a página de pagamento, com o ID do pedido MOIP criado
-                $link = "http://localhost/yourdev/Locou/redirecionamento.php?b=$idClient&c=$idMoipProprietario&d=".$array[4]."&e=$preco";         
-                
-                $enviarEmail->enviar($arrayUser[2],$array[4],$link);
+                $enviarEmail = new EnviarEmail();
+                $arrayUser = $db->getUsuarioBasico($conn,$idUsuario); 
+
+                $id = $db->getUltimoIDs($conn,'PedidosTemporarios');
+                $id = $id  +1;
+                $id = md5($id);
+
+                $db->cadastrarPedidosTemporarios($conn,$id,$idClient,$idMoipProprietario,$idAnuncio,$array[4],$preco);
+
+                $emailProprietario = $arrayUser[2];
+                $tituloEspaco = $array[4];
+
+                $arrayProprietario = $db->getInfoUserProprietario($conn,$idAnuncio);
+                $arrayInquilino = $db->getUsuarioBasico($conn,$idUsuario);
+
+                $nameProprietario = $arrayProprietario[0];
+                $nameInquilino = $arrayInquilino[0];
+                $titulo = $array[4];
+
+                $enviarEmail->enviarConfirmacao($tipo,$emailProprietario,$titulo,$nameProprietario,$nameInquilino,$arrayDadosPedido,$md5);
                 
 
             }

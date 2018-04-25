@@ -45,30 +45,28 @@ require_once 'FunctionsSession.php';?>
         $horaFimUnico = ($horaFimUnico - 0.3)+0.5;
     }
 
-    print $calculoHora =  $horaFimUnico - $horaInicioUnico;
+    //print $calculoHora =  $horaFimUnico - $horaInicioUnico;
+    $arrayDados['data'] = $_POST['data-unico-pick'];
+    $arrayDados['inicioUnico'] = $_POST['hora-inicio-unico'];
+    $arrayDados['fimUnico'] = $_POST['hora-fim-unico'];
+  
 
     if($calculoHora / 4 < 1){
        //retornar preço de hora comum
       $preco = $db->retornarPreco($conn,$idAnuncio);
       $resultado = $preco *$calculoHora;
 
-      $arrayDados['tipo'] = $_POST['tipoAluguel'];
-      $arrayDados['g'] = $horaInicioUnico;
-      $arrayDados['h'] = $horaFimUnico;
-
-
-      print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
+      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados);
        
-
-
-
     }else{
       if($calculoHora / 4 == 1){
          // retornar preço na descrição geral de 4 horas
          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
          $resultado = $preco ;
          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
-        // print $idPedido;
+      
+        $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados);
+       
         
       }else{
         if($calculoHora / 5 >= 1){
@@ -76,11 +74,9 @@ require_once 'FunctionsSession.php';?>
           //retornar 5 hora;
           $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincoHora');
           $resultado = $preco *$calculoHora;
-         // print $preco;
-
-          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
-         // print $idPedido;
           
+          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados);
+                 
         }
       }
     }
@@ -112,7 +108,7 @@ require_once 'FunctionsSession.php';?>
      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
     
     }else{   
-      
+      // falta fazer a multiplicação das semanas em reincidente 
       if($_POST['tipoAluguel']=='reincidente'){
 
         $semanasDireto = $_POST['semanas-unico'];

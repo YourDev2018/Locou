@@ -587,8 +587,8 @@
                 
         }
 
-        function getUltimoIDPedidos($db){
-            $result = "SELECT id FROM Pedidos ORDER BY id DESC LIMIT 1";
+        function getUltimoIDs($db,$tabela){
+            $result = "SELECT id FROM $tabela ORDER BY id DESC LIMIT 1";
             $result = $db->query($result);
 
             $aux = mysqli_num_rows($result);
@@ -637,5 +637,21 @@
                 }
         }
 
+
+        function cadastrarPedidosTemporarios($db,$hashId,$idMoipCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco){
+
+             $sql = "INSERT INTO PedidosTemporarios(hashId, idMoipCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco)
+                                    VALUES ('$idMoipCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco')";
+
+                if ($db->query($sql)===true) {  
+                   // print $db->error_log;
+                    return true;
+
+                }else{
+                  //  print 'failed';
+                    return "Insert failed";
+                }
+
+        }
     }
 ?>
