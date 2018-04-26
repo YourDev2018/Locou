@@ -10,6 +10,15 @@ require_once 'AnuncioClass.php';
 
 $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
+//if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true'){
+
+  echo ("<script type='text/javascript'>
+$(document).ready(function(){
+$('#emailEnviado').modal('show');
+});
+</script>");
+//}
+
 $session = new FunctionsSession();
 $session->iniciarSession();
 
@@ -35,8 +44,6 @@ $busca = new BuscarEspacos();
 $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
 
 $anuncio = new AnuncioClass();
-
-
 
 if($array[9] == 'consultorio'){
   $arrayEspecifico = $busca -> retornarConsultorioDetalhado($conn,$idAnuncio);

@@ -143,6 +143,9 @@ class Pedidos
         $busca= new BuscarEspacos();
         
         $idMoipProprietario = $db->getUsuarioProprietario($conn,$idUsuario);
+
+        
+
         if ($idMoipProprietario == null || $idMoipProprietario == '') {
             print "erro, idMoipProprietario é nullo";
             print 'Enviar email para o proprietário';
@@ -159,20 +162,20 @@ class Pedidos
                 
                 $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
                 
-                $db->salvarPedido($conn,$idAnuncio,$idUsuario,$idOrder);
+                $db->salvarPedido($conn,md5($id),$idAnuncio,$idUsuario,$idOrder);
                 return $idOrder;
 
             }else{
-                //print ' enviar email autorizando o aluguel';
+                //print ' enviar email autorizando o aluguel ';
 
                 $enviarEmail = new EnviarEmail();
                 $arrayUser = $db->getUsuarioBasico($conn,$idUsuario); 
-
+                $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
                 $id = $db->getUltimoIDs($conn,'PedidosTemporarios');
                 $id = $id  +1;
                 $id = md5($id);
 
-                $db->cadastrarPedidosTemporarios($conn,$id,$idClient,$idMoipProprietario,$idAnuncio,$array[4],$preco);
+                 $db->cadastrarPedidosTemporarios($conn,$id,$idClient,$idMoipProprietario,$idAnuncio,$array[4],$preco);
 
                 $emailProprietario = $arrayUser[2];
                 $tituloEspaco = $array[4];
@@ -181,10 +184,10 @@ class Pedidos
                 $arrayInquilino = $db->getUsuarioBasico($conn,$idUsuario);
 
                 $nameProprietario = $arrayProprietario[0];
-                $nameInquilino = $arrayInquilino[0];
+                $nameInquilino = $arrayInquilino[0];    
                 $titulo = $array[4];
 
-                $enviarEmail->enviarConfirmacao($tipo,$emailProprietario,$titulo,$nameProprietario,$nameInquilino,$arrayDadosPedido,$md5);
+                $enviarEmail->enviarConfirmacao($tipo,$emailProprietario,$titulo,$nameProprietario,$nameInquilino,$arrayDadosPedido,$id,$idAnuncio);
                 
 
             }
@@ -193,6 +196,7 @@ class Pedidos
 
             
         }
+       
     }
 }
 ?>

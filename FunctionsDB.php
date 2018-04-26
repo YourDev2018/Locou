@@ -623,9 +623,9 @@
             }  
         }
 
-        function salvarPedido($db,$idAnuncio,$idUsuario,$idOrder){
-                $sql = "INSERT INTO Pedidos(idAnuncio, idUsuario, idOrder)
-                                    VALUES ('$idAnuncio', '$idUsuario', '$idOrder')";
+        function salvarPedido($db,$idAnuncio,$idHash,$idUsuario,$idOrder){
+                $sql = "INSERT INTO Pedidos(idHash, idAnuncio, idUsuario, idOrder)
+                                    VALUES ('$idHash','$idAnuncio', '$idUsuario', '$idOrder')";
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;
@@ -641,7 +641,7 @@
         function cadastrarPedidosTemporarios($db,$hashId,$idMoipCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco){
 
              $sql = "INSERT INTO PedidosTemporarios(hashId, idMoipCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco)
-                                    VALUES ('$idMoipCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco')";
+                                    VALUES ('$hashId','$idMoipCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco')";
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;

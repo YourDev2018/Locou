@@ -1321,6 +1321,36 @@ class BuscarEspacos
               }
         }
     }
+
+    public function getHashId($db,$hashId){
+
+        $result =  $db->query("SELECT * FROM PedidosTemporarios WHERE hashId = '$hashId' ") ; //
+        $cont = mysqli_num_rows($result);
+    
+        $array = [];
+        $cont=0;
+
+        if ($cont <=0) {
+
+            return false;
+
+        }else{
+            
+            while ($row=$result->fetch_assoc()) {
+                
+               // $array['idHash'] =  $row['hashId'];
+                $array['idAnuncio'] = $row['idAnuncio'];
+                $array['idUsuario'] = $row['idCliente'];
+                $array['idMoipProprietario'] = $row['idMoipProprietario'];
+                $array['titulo'] = $row['tituloAnuncio'];
+                $array['preco'] = $row['preco'];
+
+                return $array;
+
+            }
+        }
+
+    }
     
 }
 
