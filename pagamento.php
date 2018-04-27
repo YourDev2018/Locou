@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-
-
 <?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'FunctionsDB.php'; 
 require_once 'Pedidos.php';
@@ -9,13 +7,16 @@ require_once 'FunctionsSession.php';?>
 
 <?php 
   $idAnuncio = $_POST['idAnuncio'];
-   $session = new FunctionsSession();
-    $session -> iniciarSession();
+  $session = new FunctionsSession();
+  $session -> iniciarSession();
 
   if ($idAnuncio == null || $idAnuncio == '') {
+   
     header('location: index.php');
     exit();
+
   }
+
    $db = new FunctionsDB();
 
    $conn = $db->conectDB();
@@ -45,12 +46,11 @@ require_once 'FunctionsSession.php';?>
         $horaFimUnico = ($horaFimUnico - 0.3)+0.5;
     }
 
-    //print $calculoHora =  $horaFimUnico - $horaInicioUnico;
+    $calculoHora =  $horaFimUnico - $horaInicioUnico;
     $arrayDados['data'] = $_POST['data-unico-pick'];
     $arrayDados['inicioUnico'] = $_POST['hora-inicio-unico'];
     $arrayDados['fimUnico'] = $_POST['hora-fim-unico'];
   
-
     if($calculoHora / 4 < 1){
        //retornar preço de hora comum
       $preco = $db->retornarPreco($conn,$idAnuncio);

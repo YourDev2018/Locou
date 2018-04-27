@@ -123,7 +123,7 @@ class Pedidos
                 "Content-Type: application/json"
             )
             ));
-            $resposta = curl_exec($curl);
+            print $resposta = curl_exec($curl);
             $obj = json_decode($resposta);
             $id = $obj->{'id'};
             return $id;
@@ -171,6 +171,7 @@ class Pedidos
                 $enviarEmail = new EnviarEmail();
                 $arrayUser = $db->getUsuarioBasico($conn,$idUsuario); 
                 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+                $idClient = $db->getIdClientMoip($conn,$idUsuario);
                 $id = $db->getUltimoIDs($conn,'PedidosTemporarios');
                 $id = $id  +1;
                 $id = md5($id);
@@ -188,7 +189,7 @@ class Pedidos
                 $titulo = $array[4];
 
                 $enviarEmail->enviarConfirmacao($tipo,$emailProprietario,$titulo,$nameProprietario,$nameInquilino,$arrayDadosPedido,$id,$idAnuncio);
-                
+                return ''
 
             }
 

@@ -37,7 +37,10 @@ class EnviarEmail
             Clique <a href=$link> Aqui para aprovar </a> ";
             $corpo .= "</body></html>";
 
-            $this->enviar($destino,$assunto,$corpo);
+            if($this->enviar($destino,$assunto,$corpo)){
+                 header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+            }
+
 
         }else{
             if ($tipo == "direto") {
@@ -60,6 +63,9 @@ class EnviarEmail
         $corpo .= "Tenho uma ótima o pedido de aluguel de $titulo foi aprovado pelo proprietário <br> ";
         $corpo .= "Clique $link aqui para para efetuar o pagamento e finalizar o aluguel";
 
+        $link = "http://www.yourdev.com.br/clientes/locou/pagamento.php?id=$md5";
+
+        $this->enviar($destino,$assunto,$corpo);
 
     }
 
@@ -96,11 +102,11 @@ class EnviarEmail
 
             if($enviaremail){
                 
-              header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+              return true;
                 
             } else {
                 
-                header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+              //  header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
                 echo "Erro ao enviar email";
             }
 

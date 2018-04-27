@@ -1324,13 +1324,13 @@ class BuscarEspacos
 
     public function getHashId($db,$hashId){
 
-        $result =  $db->query("SELECT * FROM PedidosTemporarios WHERE hashId = '$hashId' ") ; //
-        $cont = mysqli_num_rows($result);
+        $result =  $db->query("SELECT * FROM PedidosTemporarios WHERE hashId = '$hashId' ") ; // 
+        $aux = mysqli_num_rows($result);
     
         $array = [];
-        $cont=0;
+        $cont = 0;
 
-        if ($cont <=0) {
+        if ($aux <=0) {
 
             return false;
 
@@ -1338,12 +1338,12 @@ class BuscarEspacos
             
             while ($row=$result->fetch_assoc()) {
                 
-               // $array['idHash'] =  $row['hashId'];
-                $array['idAnuncio'] = $row['idAnuncio'];
-                $array['idUsuario'] = $row['idCliente'];
-                $array['idMoipProprietario'] = $row['idMoipProprietario'];
-                $array['titulo'] = $row['tituloAnuncio'];
-                $array['preco'] = $row['preco'];
+                $array[$cont++] = $row['idAnuncio'];  // 0
+                $array[$cont++] = $row['idCliente']; // 1
+                $array[$cont++] = $row['idMoipProprietario']; // 2
+                $array[$cont++] = $row['tituloAnuncio']; // 3
+                $array[$cont++] = $row['preco']; // 4
+                
 
                 return $array;
 
