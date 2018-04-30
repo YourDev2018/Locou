@@ -689,7 +689,7 @@ function daysInMonth(month, year) {
             </div>
             <div class="row justify-content-center text-center">
               <div class="col-12 py-2">
-                <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
+                <button onclick="encriptJSCartao()" type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
               </div>
             </div>
           </form>
@@ -709,26 +709,25 @@ function daysInMonth(month, year) {
       7wIDAQAB
       -----END PUBLIC KEY-----
     </textarea>
+    <textarea name="hash" id="encrypted_value" style="display: none"></textarea>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $("#encrypt").click(function() {
-          var cc = new Moip.CreditCard({
-            number  : $("#number").val(),
-            cvc     : $("#cvc").val(),
-            expMonth: $("#month").val(),
-            expYear : $("#year").val(),
-            pubKey  : $("#public_key").val()
-          });
-          console.log(cc);
-          if( cc.isValid()){
-            $("#encrypted_value").val(cc.hash());
-          }
-          else{
-            $("#encrypted_value").val('');
-            alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
-          }
-        });
-    });
+    function encriptJSCartao() {
+      var cc = new Moip.CreditCard({
+        number  : $("#number").val(),
+        cvc     : $("#cvc").val(),
+        expMonth: $("#month").val(),
+        expYear : $("#year").val(),
+        pubKey  : $("#public_key").val()
+      });
+      console.log(cc);
+      if( cc.isValid()){
+        $("#encrypted_value").val(cc.hash());
+      }
+      else{
+        $("#encrypted_value").val('');
+        alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+      }
+    }
   </script>
 
   </body>
