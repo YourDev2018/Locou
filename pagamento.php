@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 <?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
-require_once 'FunctionsDB.php'; 
+require_once 'FunctionsDB.php';
 require_once 'Pedidos.php';
 require_once 'Functions.php';
 require_once 'BuscarEspacos.php';
 require_once 'FunctionsSession.php';?>
 
-<?php 
+<?php
 
   $nome = "Morg";
-  
+
   $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
   $idAnuncio = $_POST['idAnuncio'];
@@ -22,7 +22,7 @@ require_once 'FunctionsSession.php';?>
 
   if ($idAnuncio == null || $idAnuncio == '') {
     if ($idGetHash != null || $idGetHash != '') {
-      
+
       // resgatar dados de anuncio autorizado
        $db = new FunctionsDB();
 
@@ -33,7 +33,7 @@ require_once 'FunctionsSession.php';?>
       $array = $busca->getPedidosDB($conn,$idGetHash); // verificado
 
       $idUsuario = $array[2]; // verificado
-      
+
       $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
 
       $func = new Functions();
@@ -50,10 +50,10 @@ require_once 'FunctionsSession.php';?>
       $phone = $obj->{'phone'};
       $ddd = $phone->{'areaCode'};
       $number = $phone->{'number'};
-      
+
       $taxDocument = $obj->{'taxDocument'};
       $cpf = $taxDocument->{'number'};
-      
+
       $address = $obj->{'shippingAddress'};
       $rua = $address->{'street'};
       $cep = $address->{'zipCode'};
@@ -65,7 +65,7 @@ require_once 'FunctionsSession.php';?>
       $pais = $address->{'country'};
 
     }else{
-      header('location: index.php');     
+      header('location: index.php');
     }
   }
 
@@ -80,7 +80,7 @@ require_once 'FunctionsSession.php';?>
     $date = new DateTime($dataUnico);
     $dataUnico = $date->format('Y-m-d ');
     $dataUnico = str_replace('-','',$dataUnico);
-         
+
     $horaInicioUnico = floatval( str_replace (':','.',$_POST['hora-inicio-unico']));
     $horaFimUnico =  " ".floatval( str_replace (':','.',$_POST['hora-fim-unico']));
 
@@ -102,14 +102,14 @@ require_once 'FunctionsSession.php';?>
     $arrayDados['data'] = $_POST['data-unico-pick'];
     $arrayDados['inicioUnico'] = $_POST['hora-inicio-unico'];
     $arrayDados['fimUnico'] = $_POST['hora-fim-unico'];
-  
+
     if($calculoHora / 4 < 1){
        //retornar preço de hora comum
       $preco = $db->retornarPreco($conn,$idAnuncio);
       $resultado = $preco *$calculoHora;
 
       $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
-       
+
         $explode = explode('/',$idPedido);
         $resposta = $explode[0];
 
@@ -125,10 +125,10 @@ require_once 'FunctionsSession.php';?>
         $phone = $obj->{'phone'};
         $ddd = $phone->{'areaCode'};
         $number = $phone->{'number'};
-        
+
         $taxDocument = $obj->{'taxDocument'};
         $cpf = $taxDocument->{'number'};
-        
+
         $address = $obj->{'shippingAddress'};
         $rua = $address->{'street'};
         $cep = $address->{'zipCode'};
@@ -144,9 +144,9 @@ require_once 'FunctionsSession.php';?>
          // retornar preço na descrição geral de 4 horas
          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
          $resultado = $preco ;
-      
+
          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado,$getAutorizado);
-            
+
             $explode = explode('/',$idPedido);
             $resposta = $explode[0];
 
@@ -162,10 +162,10 @@ require_once 'FunctionsSession.php';?>
             $phone = $obj->{'phone'};
             $ddd = $phone->{'areaCode'};
             $number = $phone->{'number'};
-            
+
             $taxDocument = $obj->{'taxDocument'};
             $cpf = $taxDocument->{'number'};
-            
+
             $address = $obj->{'shippingAddress'};
             $rua = $address->{'street'};
             $cep = $address->{'zipCode'};
@@ -176,14 +176,14 @@ require_once 'FunctionsSession.php';?>
             $estado = $address->{'state'};
             $pais = $address->{'country'};
 
-        
+
       }else{
         if($calculoHora / 5 >= 1){
 
           //retornar 5 hora;
           $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincoHora');
           $resultado = $preco *$calculoHora;
-          
+
           // criando pedido e retornando dados do usuário
           $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
 
@@ -202,10 +202,10 @@ require_once 'FunctionsSession.php';?>
             $phone = $obj->{'phone'};
             $ddd = $phone->{'areaCode'};
             $number = $phone->{'number'};
-            
+
             $taxDocument = $obj->{'taxDocument'};
             $cpf = $taxDocument->{'number'};
-            
+
             $address = $obj->{'shippingAddress'};
             $rua = $address->{'street'};
             $cep = $address->{'zipCode'};
@@ -224,18 +224,18 @@ require_once 'FunctionsSession.php';?>
 
   if($_POST['tipoAluguel']=='direto'){
 
-    
+
      $dataInicioDireto = $_POST['data-direto-pick'].' ';
 
      $dataUnico = str_replace('/','-',$dataInicioDireto);
      $date = new DateTime($dataUnico);
- 
+
      $semanasDireto = $_POST['semanas-unico-direto'];
      $dias = $semanasDireto * 7;
-     
+
      $date->add(new DateInterval('P'.$dias.'D'));
      $dataFinalDireto = $date->format('Ymd');
-      
+
       // -> -> ERRO AQUI, PREÇO PRECISA SER O DE MÊS, PERIODO OU AFIM  <- <-
 
      $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
@@ -245,27 +245,27 @@ require_once 'FunctionsSession.php';?>
 
      $resultado = $preco * $semanasDireto;
      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
-    
-  }  
-      // falta fazer a multiplicação das semanas em reincidente 
+
+  }
+      // falta fazer a multiplicação das semanas em reincidente
   if($_POST['tipoAluguel']=='reincidente'){
 
         $semanasDireto = $_POST['semanas-unico'];
         $dataInicioReincidente = $_POST['data-reincidente-pick'];
         $periodo  = $_POST['periodo-sel'];
-        
+
         $segSel = $_POST['seg-periodo-sel'];
         if($segSel=='sim'){
 
           $segInicioPeriodo = str_replace(':','',$_POST['seg-inicio-periodo']);
           $segFimPeriodo = str_replace(':','',$_POST['seg-fim-periodo']);
 
-         
+
 
           if (version_compare($decimal,'0.3') == 0) {
               $segInicioPeriodo = ($segInicioPeriodo - 0.3)+0.5;
           }
-          
+
           $inteiro = floor($segFimPeriodo);
           $decimal = $segFimPeriodo - $inteiro;
 
@@ -277,13 +277,13 @@ require_once 'FunctionsSession.php';?>
           $periodoSeg = ($segFimPeriodo - $segInicioPeriodo) / 100;
 
         }
-        
+
         $terSel = $_POST['ter-periodo-sel'];
         if($terSel == 'sim'){
-          
+
           $terInicioPeriodo = str_replace(':','',$_POST['ter-inicio-periodo']);
           $terFimPeriodo = str_replace(':','',$_POST['ter-fim-periodo']);
-          
+
           $terInicioPeriodo = verificarDecimal($terInicioPeriodo);
           $terFimPeriodo = verificarDecimal($terFimPeriodo);
 
@@ -314,7 +314,7 @@ require_once 'FunctionsSession.php';?>
           $quiFimPeriodo = verificarDecimal($quiFimPeriodo);
 
           $periodoQui = ($quiFimPeriodo - $quiInicioPeriodo)/100;
-          
+
         }
 
         $sexSel = $_POST['qua-periodo-sel'];
@@ -327,20 +327,20 @@ require_once 'FunctionsSession.php';?>
           $segFimPeriodo = verificarDecimal($segFimPeriodo);
 
           $periodoSex = ($segFimPeriodo - $segInicioPeriodo)/100;
-          
+
 
         }
 
         $sabSel = $_POST['ter-periodo-sel'];
         if ($sabSel =='sim') {
-          
+
           $sabInicioPeriodo= verificarDecimal( str_replace(':','',$_POST['sab-inicio-periodo']));
-          $sabFimPeriodo  =  verificarDecimal( str_replace(':','',  $_POST['sab-fim-periodo']));  
+          $sabFimPeriodo  =  verificarDecimal( str_replace(':','',  $_POST['sab-fim-periodo']));
 
           $periodoSab = ($sabFimPeriodo - $sabInicioPeriodo)/100;
-        
+
         }
-        
+
         $domSel = $_POST['dom-periodo-sel'];
         if ($domSel=='sim') {
 
@@ -348,19 +348,19 @@ require_once 'FunctionsSession.php';?>
           $domFimPeriodo =  verificarDecimal( str_replace(':','',  $_POST['dom-fim-periodo']));
 
           $periodoDom = ($domFimPeriodo - $domInicioPeriodo)/100;
-          
+
         }
 
 
 
       }
 
-    
 
-  
 
-  
-  
+
+
+
+
       function verificarDecimal($dia){
        $inteiro = floor($dia);
        $decimal = $segInicioPeriodo - $inteiro;
@@ -372,12 +372,12 @@ require_once 'FunctionsSession.php';?>
        }
   }
 
- 
+
 
   ?>
 <html lang="en">
   <head>
-  
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -392,6 +392,7 @@ require_once 'FunctionsSession.php';?>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
     <script src="js/bootstrap-datepicker.min.js" ></script>
+    <script type="text/javascript" src="//assets.moip.com.br/v2/moip.min.js"></script>
     <script>
     $(function () {
 
@@ -442,7 +443,7 @@ function daysInMonth(month, year) {
       .mobile
       {
         display: none;
-      } 
+      }
     }
     @media (max-width: 768.0px)
     {
@@ -634,7 +635,7 @@ function daysInMonth(month, year) {
               <div class="col-lg-4 col-md-12 col-sm-12 px-3 py-1">
                 <div class="form-group">
                     <label for="cartaoNum">Número do Cartão</label>
-                    <input type="number" class="form-control" id="cartaoNum" name="cartaoNum">
+                    <input type="number" class="form-control" id="number" >
                 </div>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-6 px-3 py-1">
@@ -645,7 +646,7 @@ function daysInMonth(month, year) {
                   <div class="col-12">
                     <div class="row">
                       <div class="col-6 px-3 py-1">
-                        <select class="form-control"  name='expiraMes' id='expiraMes'>
+                        <select class="form-control"  id='month'>
                           <option value=''>MM</option>
                           <option value='01'>01</option>
                           <option value='02'>02</option>
@@ -662,7 +663,7 @@ function daysInMonth(month, year) {
                         </select>
                       </div>
                       <div class="col-6 px-3 py-1">
-                        <select class="form-control"  name='expiraAno' id='expiraAno'>
+                        <select class="form-control"   id='year'>
                           <option value=''>YYYY</option>
                           <option value='18'>2018</option>
                           <option value='19'>2019</option>
@@ -682,13 +683,13 @@ function daysInMonth(month, year) {
               <div class="col-lg-4 col-md-6 col-sm-6 px-3 py-1">
                 <div class="form-group">
                     <label for="cartaoVer">Código Verificador</label>
-                    <input type="number" class="form-control" id="cartaoVer" name="cartaoVer">
+                    <input type="number" class="form-control" id="cvc">
                 </div>
               </div>
             </div>
             <div class="row justify-content-center text-center">
               <div class="col-12 py-2">
-                <button type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
+                <button onclick="encriptJSCartao()" type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
               </div>
             </div>
           </form>
@@ -696,5 +697,37 @@ function daysInMonth(month, year) {
       </div>
 
     </div>
+
+    <textarea id="public_key" style="display:none;">
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh1v8sntcpO3B884rSbHC
+      CLLXW9TYOZeyI8Y23AYfYdyzahN41ej17bqpm8aEa8314lRiFJHvRHu5v+5BHzhX
+      941Xu20mtDEneGI9l277kRSQfKKM7ELR7AYh45XNNzT3fHQTXc8FjGoS2D/b+Dly
+      EowCMhopItX5Wi0LtAeOdfKk7sy5Yy9invq/z0v1qAdB7+JBGQJADBsBxbUNVyT7
+      Ptorqfl5Nafs8ZuWw0Mq63Ya5/lFKa3mwPgod6/ZZoNDfbeaIardR4U35N5BkLhQ
+      Ad/zJrd9QFOBt2HS7/3s03/CDR7utkrRjsWP87rJ0okZhdqr4E7ZTNIPZHEsaClT
+      7wIDAQAB
+      -----END PUBLIC KEY-----
+    </textarea>
+    <textarea name="hash" id="encrypted_value" style="display: none"></textarea>
+    <script type="text/javascript">
+    function encriptJSCartao() {
+      var cc = new Moip.CreditCard({
+        number  : $("#number").val(),
+        cvc     : $("#cvc").val(),
+        expMonth: $("#month").val(),
+        expYear : $("#year").val(),
+        pubKey  : $("#public_key").val()
+      });
+      console.log(cc);
+      if( cc.isValid()){
+        $("#encrypted_value").val(cc.hash());
+      }
+      else{
+        $("#encrypted_value").val('');
+        alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+      }
+    }
+  </script>
 
   </body>
