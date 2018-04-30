@@ -10,14 +10,7 @@ require_once 'AnuncioClass.php';
 
 $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
-//if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true'){
 
-  echo ("<script type='text/javascript'>
-$(document).ready(function(){
-$('#emailEnviado').modal('show');
-});
-</script>");
-//}
 
 $session = new FunctionsSession();
 $session->iniciarSession();
@@ -5175,6 +5168,10 @@ if($session->vereficarLogin() != false){
 </div>
 
 <script>
+if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true')
+{
+  echo ("<script type='text/javascript'>$(document).ready(function(){$('#emailEnviado').modal('show');});</script>");
+}
 $( document ).ready(function() {
   $(function() {
     $('div.panorama').paver();
