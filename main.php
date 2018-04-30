@@ -1,6 +1,6 @@
 <?php
 error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
-require_once 'Functions.php';
+require_once 'functions.php';
 require_once 'FunctionsSession.php';
 require_once 'FunctionsDB.php';
 require_once 'Pedidos.php';
@@ -25,8 +25,8 @@ require_once 'BuscarEspacos.php';
 //returnEspaco();
 //returnConsultorio();
 //anuncioAdd();
-// usuarioCliente();
-testarLogin();
+ usuarioCliente();
+//testarLogin();
 
 
   //  print  $data = date('Y-m-d')."\n  ";
@@ -92,7 +92,10 @@ function testarLogin(){
 function usuarioCliente(){
     $db = new FunctionsDB();
     $conn = $db->conectDB();
-    
+    $func = new functions();
+    $func->cURLGet();
+    // print $db->cadastrarUsuarioInquilino($conn,"17084104739","21","21472261","Rua blumenau","241",'',"cascadura","21411-120","Rio de Janerio","RJ");
+
    
 }
 
@@ -151,7 +154,6 @@ function DBMoip(){
    // $func->criarPreferenciaNotificacaoApp();
     
     print $db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5($senha));
-   // print $db->cadastrarUsuarioInquilino($conn,"17084104739","21","21472261","Rua blumenau","241","cascadura","21411-120","Rio de Janerio","RJ");
     print $func->criarCliente("17084104739","21","21472261","Rua blumenau","241","cascadura","21411-120","Rio de Janerio","RJ");
   //  $func->criarCliente("45d63a3538ff47ccb2c0f0c3c09eabd9_v2");
     // print $db->cadastrarUsuarioProprietario($conn,"170.841.047-39","302403266","Detran","2017-05-25","21","21472261","Rua blumenau","241","cascadura","21411-120","Rio de Janerio","RJ");

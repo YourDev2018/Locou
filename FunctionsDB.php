@@ -1,5 +1,5 @@
 <?php
-
+require_once 'functions.php';
     class FunctionsDB {
 /*
         mysql472.umbler.com:41890
@@ -74,7 +74,7 @@
         }
 
         function cadastrarUsuarioInquilino($db, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
-            $moip = new Functions();
+            $moip = new functions();
             $session = new FunctionsSession();
             $aux = $moip->criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado);
 
@@ -638,10 +638,10 @@
         }
 
 
-        function cadastrarPedidosTemporarios($db,$hashId,$idMoipCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco){
+        function cadastrarPedidosTemporarios($db,$hashId,$idCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco){
 
-             $sql = "INSERT INTO PedidosTemporarios(hashId, idMoipCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco)
-                                    VALUES ('$hashId','$idMoipCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco')";
+             $sql = "INSERT INTO PedidosTemporarios(hashId, idCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco)
+                                    VALUES ('$hashId','$idCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco')";
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;

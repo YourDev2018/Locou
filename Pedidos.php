@@ -130,28 +130,36 @@ class Pedidos
             
     
         }
-
     
-
-
-    
-    
-    function criarPedido($conn,$idUsuario,$idAnuncio,$tipo,$preco,$arrayDadosPedido){
+    function criarPedido($conn,$idUsuario,$idAnuncio,$tipo,$preco,$arrayDadosPedido,$autorizado){
 
         $db = new FunctionsDB();
 
         $busca= new BuscarEspacos();
         
-        $idMoipProprietario = $db->getUsuarioProprietario($conn,$idUsuario);
+        // pode ser mais otimizado, recendo por parametro, na classe pagamento o id do dono do anuncio
+        $idProprietario = $busca->retornarIdUserAnuncio($conn,$idAnuncio); // conferido
+        $idMoipProprietario = $db->getUsuarioProprietario($conn,$idProprietario); // conferido
 
-        
-
+      
         if ($idMoipProprietario == null || $idMoipProprietario == '') {
             print "erro, idMoipProprietario é nullo";
             print 'Enviar email para o proprietário';
             // "Alguem quer alugar seu anuncio, termine de preencher seus dados para receber o valor"
 
         }else{
+            if ($autorizado == 'sim') {
+               $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+                $idClient = $db->getIdClientMoip($conn,$idUsuario);
+
+                $id= $db->getUltimoIDs($conn,'Pedidos');
+                $id = $id+1;
+                
+                $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
+                
+                $db->salvarPedido($conn,md5($id),$idAnuncio,$idUsuario,$idOrder);
+                return "$idClient / $idOrder";
+            }
             if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
 
                 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
@@ -165,6 +173,8 @@ class Pedidos
                 $db->salvarPedido($conn,md5($id),$idAnuncio,$idUsuario,$idOrder);
                 return $idOrder;
 
+                // retorna 
+
             }else{
                 //print ' enviar email autorizando o aluguel ';
 
@@ -176,7 +186,7 @@ class Pedidos
                 $id = $id  +1;
                 $id = md5($id);
 
-                 $db->cadastrarPedidosTemporarios($conn,$id,$idClient,$idMoipProprietario,$idAnuncio,$array[4],$preco);
+                $db->cadastrarPedidosTemporarios($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$preco);
 
                 $emailProprietario = $arrayUser[2];
                 $tituloEspaco = $array[4];
@@ -189,7 +199,7 @@ class Pedidos
                 $titulo = $array[4];
 
                 $enviarEmail->enviarConfirmacao($tipo,$emailProprietario,$titulo,$nameProprietario,$nameInquilino,$arrayDadosPedido,$id,$idAnuncio);
-                return ''
+                
 
             }
 
