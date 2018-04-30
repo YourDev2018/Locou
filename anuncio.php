@@ -305,6 +305,7 @@ if($session->vereficarLogin() != false){
   <script src="js/jquery.ba-throttle-debounce.min.js" ></script>
   <link rel="stylesheet" type="text/css"  href="css/paver.scss">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="//assets.moip.com.br/v2/moip.min.js"></script>
 
   <script>
   //set de variaveis
@@ -535,7 +536,7 @@ if($session->vereficarLogin() != false){
     </span>
   </nav>
 
-  <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+  <nav class="navbar mobile" style="background-color: rgba(0,0,0,1)">
     <div class="row justify-content-center text-center">
       <div class="col-12">
         <a href="index.php">
@@ -798,14 +799,14 @@ if($session->vereficarLogin() != false){
                   <li data-target="#carousel-fotos" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" style="width:100%;">
-                  <div class="carousel-item active">
-                    <img class="d-block img-fluid" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
+                  <div class="carousel-item active" style="background-size: cover; background-image: url(<?php $cont = 1; echo $prefixo.$array[$cont++]?>);">
+                    <img style="display: none" class="d-block img-fluid" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
                   </div>
-                  <div class="carousel-item">
-                    <img class="d-block img-fluid" src="<?php  echo $prefixo.$array[$cont++]?>">
+                  <div class="carousel-item" style="width:100%;" style="background-size: cover; background-image: url(<?php $cont = 2;  echo $prefixo.$array[$cont++]?>);">
+                    <img style="display: none" class="d-block img-fluid" src="<?php $cont = 2;  echo $prefixo.$array[$cont++]?>">
                   </div>
-                  <div class="carousel-item">
-                    <img class="d-block img-fluid" src="<?php  echo $prefixo.$array[$cont++]?>">
+                  <div class="carousel-item" style="width:100%;" style="background-size: cover; background-image: url(<?php $cont = 3;  echo $prefixo.$array[$cont++]?>);">
+                    <img style="display: none" class="d-block img-fluid" src="<?php $cont = 3;  echo $prefixo.$array[$cont++]?>">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">
@@ -5167,6 +5168,7 @@ if($session->vereficarLogin() != false){
 
 </div>
 
+
 <script>
 <?php if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true')
 {
@@ -5175,6 +5177,23 @@ if($session->vereficarLogin() != false){
 $( document ).ready(function() {
   $(function() {
     $('div.panorama').paver();
+    $("#encrypt").click(function() {
+          var cc = new Moip.CreditCard({
+            number  : $("#number").val(),
+            cvc     : $("#cvc").val(),
+            expMonth: $("#month").val(),
+            expYear : $("#year").val(),
+            pubKey  : $("#public_key").val()
+          });
+          console.log(cc);
+          if( cc.isValid()){
+            $("#encrypted_value").val(cc.hash());
+          }
+          else{
+            $("#encrypted_value").val('');
+            alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+          }
+        });
   });
   calcularPreco();
   dias_bloqueados();
