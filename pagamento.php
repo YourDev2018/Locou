@@ -3,18 +3,70 @@
 <?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'FunctionsDB.php'; 
 require_once 'Pedidos.php';
+require_once 'Functions.php';
+require_once 'BuscarEspacos.php';
 require_once 'FunctionsSession.php';?>
 
 <?php 
+
+  $nome = "Morg";
+  
+  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+
   $idAnuncio = $_POST['idAnuncio'];
   $session = new FunctionsSession();
   $session -> iniciarSession();
 
-  if ($idAnuncio == null || $idAnuncio == '') {
-   
-    header('location: index.php');
-    exit();
+  $idGetHash = $_GET['id'];
 
+
+  if ($idAnuncio == null || $idAnuncio == '') {
+    if ($idGetHash != null || $idGetHash != '') {
+      
+      // resgatar dados de anuncio autorizado
+       $db = new FunctionsDB();
+
+      $conn = $db->conectDB();
+      $pedido = new Pedidos();
+
+      $busca = new BuscarEspacos();
+      $array = $busca->getPedidosDB($conn,$idGetHash); // verificado
+
+      $idUsuario = $array[2]; // verificado
+      
+      $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
+
+      $func = new Functions();
+      print $resposta = $func->getClienteMoip($idClientMoip);
+      $obj = json_decode($resposta);
+      $nomeCompleto = $obj->{'fullname'};
+
+      $nascimento = $obj->{'birthDate'};
+      $data = explode('-',$nascimento);
+      $dia = $data[2];
+      $mes = $data[1];
+      $ano = $data[0];
+
+      $phone = $obj->{'phone'};
+      $ddd = $phone->{'areaCode'};
+      $number = $phone->{'number'};
+      
+      $taxDocument = $obj->{'taxDocument'};
+      $cpf = $taxDocument->{'number'};
+      
+      $address = $obj->{'shippingAddress'};
+      $rua = $address->{'street'};
+      $cep = $address->{'zipCode'};
+      $ruaNumber = $address->{'streetNumber'};
+      $complemento = $address->{'complement'};
+      $cidade = $address->{'city'};
+      $bairro = $address->{'district'};
+      $estado = $address->{'state'};
+      $pais = $address->{'country'};
+
+    }else{
+      header('location: index.php');     
+    }
   }
 
    $db = new FunctionsDB();
@@ -56,17 +108,74 @@ require_once 'FunctionsSession.php';?>
       $preco = $db->retornarPreco($conn,$idAnuncio);
       $resultado = $preco *$calculoHora;
 
-      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados);
+      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
        
+        $explode = explode('/',$idPedido);
+        $resposta = $explode[0];
+
+        $obj = json_decode($resposta);
+        $nomeCompleto = $obj->{'fullname'};
+
+        $nascimento = $obj->{'birthDate'};
+        $data = explode('-',$nascimento);
+        $dia = $data[2];
+        $mes = $data[1];
+        $ano = $data[0];
+
+        $phone = $obj->{'phone'};
+        $ddd = $phone->{'areaCode'};
+        $number = $phone->{'number'};
+        
+        $taxDocument = $obj->{'taxDocument'};
+        $cpf = $taxDocument->{'number'};
+        
+        $address = $obj->{'shippingAddress'};
+        $rua = $address->{'street'};
+        $cep = $address->{'zipCode'};
+        $ruaNumber = $address->{'streetNumber'};
+        $complemento = $address->{'complement'};
+        $cidade = $address->{'city'};
+        $bairro = $address->{'district'};
+        $estado = $address->{'state'};
+        $pais = $address->{'country'};
+
     }else{
       if($calculoHora / 4 == 1){
          // retornar preço na descrição geral de 4 horas
          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
          $resultado = $preco ;
-         $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado);
       
-        $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados);
-       
+         $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado,$getAutorizado);
+            
+            $explode = explode('/',$idPedido);
+            $resposta = $explode[0];
+
+            $obj = json_decode($resposta);
+            $nomeCompleto = $obj->{'fullname'};
+
+            $nascimento = $obj->{'birthDate'};
+            $data = explode('-',$nascimento);
+            $dia = $data[2];
+            $mes = $data[1];
+            $ano = $data[0];
+
+            $phone = $obj->{'phone'};
+            $ddd = $phone->{'areaCode'};
+            $number = $phone->{'number'};
+            
+            $taxDocument = $obj->{'taxDocument'};
+            $cpf = $taxDocument->{'number'};
+            
+            $address = $obj->{'shippingAddress'};
+            $rua = $address->{'street'};
+            $cep = $address->{'zipCode'};
+            $ruaNumber = $address->{'streetNumber'};
+            $complemento = $address->{'complement'};
+            $cidade = $address->{'city'};
+            $bairro = $address->{'district'};
+            $estado = $address->{'state'};
+            $pais = $address->{'country'};
+
         
       }else{
         if($calculoHora / 5 >= 1){
@@ -75,15 +184,45 @@ require_once 'FunctionsSession.php';?>
           $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincoHora');
           $resultado = $preco *$calculoHora;
           
-          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados);
-                 
+          // criando pedido e retornando dados do usuário
+          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
+
+            $explode = explode('/',$idPedido);
+            $resposta = $explode[0];
+
+            $obj = json_decode($resposta);
+            $nomeCompleto = $obj->{'fullname'};
+
+            $nascimento = $obj->{'birthDate'};
+            $data = explode('-',$nascimento);
+            $dia = $data[2];
+            $mes = $data[1];
+            $ano = $data[0];
+
+            $phone = $obj->{'phone'};
+            $ddd = $phone->{'areaCode'};
+            $number = $phone->{'number'};
+            
+            $taxDocument = $obj->{'taxDocument'};
+            $cpf = $taxDocument->{'number'};
+            
+            $address = $obj->{'shippingAddress'};
+            $rua = $address->{'street'};
+            $cep = $address->{'zipCode'};
+            $ruaNumber = $address->{'streetNumber'};
+            $complemento = $address->{'complement'};
+            $cidade = $address->{'city'};
+            $bairro = $address->{'district'};
+            $estado = $address->{'state'};
+            $pais = $address->{'country'};
+
         }
       }
     }
 
-  }else{
+  }
 
-    if($_POST['tipoAluguel']=='direto'){
+  if($_POST['tipoAluguel']=='direto'){
 
     
      $dataInicioDireto = $_POST['data-direto-pick'].' ';
@@ -107,9 +246,9 @@ require_once 'FunctionsSession.php';?>
      $resultado = $preco * $semanasDireto;
      $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
     
-    }else{   
+  }  
       // falta fazer a multiplicação das semanas em reincidente 
-      if($_POST['tipoAluguel']=='reincidente'){
+  if($_POST['tipoAluguel']=='reincidente'){
 
         $semanasDireto = $_POST['semanas-unico'];
         $dataInicioReincidente = $_POST['data-reincidente-pick'];
@@ -215,11 +354,14 @@ require_once 'FunctionsSession.php';?>
 
 
       }
-    }
 
-  }
+    
 
-  function verificarDecimal($dia){
+  
+
+  
+  
+      function verificarDecimal($dia){
        $inteiro = floor($dia);
        $decimal = $segInicioPeriodo - $inteiro;
        if (version_compare($decimal,'0.3') == 0) {
@@ -229,8 +371,10 @@ require_once 'FunctionsSession.php';?>
           return $dia;
        }
   }
-?>
-<!--
+
+ 
+
+  ?>
 <html lang="en">
   <head>
   
@@ -387,18 +531,19 @@ function daysInMonth(month, year) {
               <div class="col-12 px-3 py-3">
                 <div class="form-group">
                     <label for="nomeC">Nome Completo</label>
-                    <input type="text" class="form-control" id="nomeC" name="nomeC">
+                    <input type="text" value="<?php echo $nomeCompleto ?>" class="form-control" id="nomeC" name="nomeC">
                 </div>
                 <br>
                 <label>Data de nascimento</label>
                 <br>
-                <select id="days" name="dia"></select>
-                <select id="months" name="mes"></select>
-                <select id="years" name="ano"></select>
+                <!-- fazer funcionar o value -->
+                <select id="days" value="<?php echo $data[2]?>" name="dia"></select>
+                <select id="months" value="<?php echo $data[1]?>" name="mes"></select>
+                <select id="years" value="<?php echo $data[0]?>" name="ano"></select>
                 <br><br><br>
                 <div class="form-group">
                   <label for="cpf">CPF (Somente Números)</label>
-                  <input type="text" class="form-control" id="cpf" name="cpf">
+                  <input type="text" value="<?php echo $cpf ?>" class="form-control" id="cpf" name="cpf">
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-sm-6 px-3 py-2">
@@ -428,27 +573,27 @@ function daysInMonth(month, year) {
               <div class="col-12 px-3 py-3">
                 <div class="form-group">
                     <label for="cidade">Cidade</label>
-                    <input type="text" class="form-control" id="cidade" name="cidade">
+                    <input type="text" value="<?php echo $cidade?>" class="form-control" id="cidade" name="cidade">
                 </div>
                 <div class="form-group">
                     <label for="bairro">Bairro</label>
-                    <input type="text" class="form-control" id="bairro" name="bairro">
+                    <input type="text" value="<?php echo $bairro?>" class="form-control" id="bairro" name="bairro">
                 </div>
                 <div class="form-group">
                     <label for="rua">Rua</label>
-                    <input type="text" class="form-control" id="rua" name="rua">
+                    <input type="text" value="<?php echo $rua?>" class="form-control" id="rua" name="rua">
                 </div>
                 <div class="form-group">
                     <label for="nRua">Número da Rua</label>
-                    <input type="number" class="form-control" id="nRua" name="nRua">
+                    <input type="number" value="<?php echo $ruaNumber?>" class="form-control" id="nRua" name="nRua">
                 </div>
                 <div class="form-group">
                     <label for="complemento">Complemento</label>
-                    <input type="text" class="form-control" id="complemento" name="complemento">
+                    <input type="text" value="<?php echo $complemento?>" class="form-control" id="complemento" name="complemento">
                 </div>
                 <div class="form-group">
                     <label for="cep">CEP (Somente Números)</label>
-                    <input type="number" class="form-control" id="cep" name="cep">
+                    <input type="number" value="<?php echo $cep?>" class="form-control" id="cep" name="cep">
                 </div>
                 <label for="estado">Estado</label>
                 <select class="form-control" name="estado">
@@ -553,4 +698,3 @@ function daysInMonth(month, year) {
     </div>
 
   </body>
--->

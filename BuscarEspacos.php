@@ -1352,6 +1352,34 @@ class BuscarEspacos
 
     }
     
+    public function getPedidosDB($db, $hashId){
+
+        $result =  $db->query("SELECT * FROM Pedidos WHERE idHash = '$hashId' ") ; // 
+        $aux = mysqli_num_rows($result);
+    
+        $array = [];
+        $cont = 0;
+
+        if ($aux <=0) {
+
+            return false;
+
+        }else{
+            
+            while ($row=$result->fetch_assoc()) {
+                
+                $array[$cont++] = $row['idHash'];  // 0
+                $array[$cont++] = $row['idAnuncio']; // 1
+                $array[$cont++] = $row['idUsuario']; // 2
+                $array[$cont++] = $row['idOrder']; // 3
+             
+                return $array;
+            
+
+            }
+        }
+
+    }
 }
 
 

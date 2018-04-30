@@ -1,6 +1,6 @@
 
 <?php
-
+require_once 'FunctionsSession.php';
 
 class Functions {
    
@@ -39,15 +39,18 @@ $ano = $_POST['year'];
 
 
     function criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
+        
+        $session = new FunctionsSession();
+        $session->iniciarSession();
+        
         $curl = curl_init();
         $url = "https://sandbox.moip.com.br/v2/customers";
         $id = $_SESSION['id'];
         $name = $_SESSION['firstName']." ".$_SESSION['lastName'];
         $email = $_SESSION['email'];
-        $niver= $_SESSION['dataNascimento'];
-        print $niver;
+      //  $niver= $_SESSION['dataNascimento'];
+        $niver = '1998-12-04';
         
-
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -99,6 +102,9 @@ $ano = $_POST['year'];
             $obj = json_decode($resposta);
             $id = $obj->{'id'};
             return $id;
+
+
+            
     }
 
     function criarContaMoipTransparenteCPF($cpf, $rgNumero, $rgOrgao, $rgData, $telDDD, $telNumero, $rua, $ruaNumero, $bairro, $cep, $cidade, $estado){
@@ -315,7 +321,10 @@ $ano = $_POST['year'];
         $this->cURLGet("https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623","50625d8d09b2484a8111fcc4d2a643c9_v2");
     }
 
-    function pagamentoCartaoCredito($url,$hash,$token_Acess){
+    function pagamentoCartaoCredito($hash,$orderID,$nomePortador,$nascimentoPortador, $cpfPortador,$ddd,$numero,$cidade,$bairro,
+     $rua,$estado,$cep){
+
+        $url = "https://sandbox.moip.com.br/v2/orders/".$orderID."/payments";
 
         $curl = curl_init();
 
@@ -328,41 +337,41 @@ $ano = $_POST['year'];
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => 
-            '
+            "
             {  
-                "installmentCount":1,
-                "statementDescriptor":"Locou.co",
-                "fundingInstrument":{  
-                "method":"CREDIT_CARD", 
-                "creditCard":{  
-                    "hash": "Wutnb2fAfZq8vxFn6atkSspribFd+ExNqlbvt9brnYPhljJaVNh8FAaMBz0IcajyFkvmnYHwF8XXBBkUN9pF+Ftvq5DqaJyrm3UhCVNXrQ7th2nGQ1tSffKYAR9DjlXQmOSKCwEWQb6YRSszkiys13hmOiz+LtdKvP7tjIps8Nppb3qCAaIQgnYOxG9ZO+4OGZK1oDtmB+b0oTrigGdsE3Rfi/FO40gjfVFQdxPkKd7nEXb1vko974IVIasi9gLr0JhaFlcPicfarPhzy9KJkZKTQ88b3/RzJ6ua+329yisN3V+5N9IreF3D06tP3c75TcHsqYBpaE/4gzSgHvyQmg==",
-                    "store":true,
-                    "holder":{  
-                        "fullname":"Roberto Oliveira",
-                        "birthdate":"1988-12-30",
-                        "taxDocument":{  
-                            "type":"CPF",
-                            "number":"78994193600"
+                \"installmentCount\":1,
+                \"statementDescriptor\":\"Locou.co\",
+                \"fundingInstrument\":{  
+                \"method\":\"CREDIT_CARD\", 
+                \"creditCard\":{  
+                    \"hash\": \"$hash\",
+                    \"store\":true,
+                    \"holder\":{  
+                        \"fullname\":\"$nomePortador\",
+                        \"birthdate\":\"$nascimentoPortador\",
+                        \"taxDocument\":{  
+                            \"type\":\"CPF\",
+                            \"number\":\"$cpfPortador\"
                         },
-                        "phone":{  
-                            "countryCode":"55",
-                            "areaCode":"11",
-                            "number":"22849560"
+                        \"phone\":{  
+                            \"countryCode\":\"55\",
+                            \"areaCode\":\"$ddd\",
+                            \"number\":\"$numero\"
                         },
-                        "billingAddress":{  
-                            "city":"Belo Horizonte",
-                            "district":"Savassi",
-                            "street":"Avenida Contorno",
-                            "streetNumber":"400",
-                            "zipCode":"76932800",
-                            "state":"MG",
-                            "country":"BRA"
+                        \"billingAddress\":{  
+                            \"city\":\"$cidade\",
+                            \"district\":\"$bairro\",
+                            \"street\":\"$rua\",
+                            \"streetNumber\":\"$numero\",
+                            \"zipCode\":\"$cep\",
+                            \"state\":\"$estado\",
+                            \"country\":\"BRA\"
                         }
                     }
                 }
                 }
             }
-            ',
+            ",
             
 
             CURLOPT_HTTPHEADER => array(
@@ -388,8 +397,8 @@ $ano = $_POST['year'];
     function cURLGet(){
 
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623";
-        $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
+        $url = "https://sandbox.moip.com.br/v2/customers/";
+       // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
@@ -400,7 +409,7 @@ $ano = $_POST['year'];
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "Authorization: OAuth ".$token_Acess,
+                "Authorization: OAuth 45d63a3538ff47ccb2c0f0c3c09eabd9_v2",
                 
             ),
             ));
@@ -568,6 +577,31 @@ $ano = $_POST['year'];
 
     }
 
+    function getClienteMoip($idCliente){
+
+         $curl = curl_init();
+         $url = "https://sandbox.moip.com.br/v2/customers/$idCliente";
+         
+        curl_setopt_array($curl,array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: OAuth ".$this->token_Acess
+                
+            ),
+        ));
+
+        $resposta = curl_exec($curl);
+        return $resposta;
+
+    }
+
+   
 
     /*
            */
