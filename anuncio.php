@@ -5024,7 +5024,7 @@ if($session->vereficarLogin() != false){
 
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5046,7 +5046,7 @@ if($session->vereficarLogin() != false){
 
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5069,7 +5069,7 @@ if($session->vereficarLogin() != false){
 
        <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5091,7 +5091,7 @@ if($session->vereficarLogin() != false){
 
        <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
