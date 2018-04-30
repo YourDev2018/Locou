@@ -1588,7 +1588,7 @@ if($session->vereficarLogin() != false){
   <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
     <div class="row justify-content-center">
 
-      <div class="col-12 px-2 mt-4">
+      <div class="col-12 mt-4">
         <div class="row px-5 pb-5 text-center justify-content-center">
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-unico" onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
@@ -5168,10 +5168,10 @@ if($session->vereficarLogin() != false){
 </div>
 
 <script>
-if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true')
+<?php if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true')
 {
-  echo ("<script type='text/javascript'>$(document).ready(function(){$('#emailEnviado').modal('show');});</script>");
-}
+  echo ('<script type=\'text/javascript\'>$(document).ready(function(){$(\'#emailEnviado\').modal(\'show\');});</script>');
+} ?>
 $( document ).ready(function() {
   $(function() {
     $('div.panorama').paver();
