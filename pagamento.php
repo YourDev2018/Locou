@@ -526,7 +526,7 @@ function daysInMonth(month, year) {
               <span class="h5">Adicione os dados para o método de pagamento</span>
             </div>
           </div>
-          <form class="" action="" method="post">
+          <form class="" action="TratarDadosPagamento.php" method="post">
             <div class="row px-2 py-4">
               <div class="col-12 px-3 py-3">
                 <div class="form-group">

@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);?>
+<?php 
+
+  require_once 'FunctionsSession.php';
+
+  $session = new FunctionsSession();
+  $session->iniciarSession();
+  
+ 
+  if ($_SESSION['id'] == null || $_SESSION['' == '']) { 
+
+      header('location: index.php');
+
+  }
+
+
+?>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">

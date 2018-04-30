@@ -20,10 +20,11 @@ $estado = $seg->filtro($_POST['estado']);
 $pais = $seg->filtro($_POST['pais']);
 $orderId = $seg->filtro($_POST['orderID']);
 
+
 $hash;
 
 $func = new Functions();
-//$func->pagamentoCartaoCredito($hash,$orderId);
+//$func->pagamentoCartaoCredito($hash,$orderId,);
 
 
 ?>
