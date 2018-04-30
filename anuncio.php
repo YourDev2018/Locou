@@ -527,8 +527,8 @@ if($session->vereficarLogin() != false){
       <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
       <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-        <span class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-        <span class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+        <span style="cursor: pointer;" class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+        <span style="cursor: pointer;" class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
       <?php } ?>
 
       <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
