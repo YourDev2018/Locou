@@ -1482,7 +1482,7 @@ if($session->vereficarLogin() != false){
             <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
               <div class="row text-center justify-content-center py-3">
                 <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">
-                  <!-- <div id="map" style="height: 50vh; width: 100%"></div>                     -->
+                  <!-- <div id="map" style="height: 50vh; width: 100%"></div>                     -->z
                   <script>
                   var citymap;
                   var geocoder;
@@ -5259,7 +5259,7 @@ if ($status == null || $status == "") {
 }
 ?>
 
-<?php echo "ashas". $session->vereficarLogin() ?>
-<?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']); ?>
+<?php //echo "ashas". $session->vereficarLogin() ?>
+<?php// echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']); ?>
 
 </body>
