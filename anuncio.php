@@ -799,14 +799,14 @@ if($session->vereficarLogin() != false){
                   <li data-target="#carousel-fotos" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" style="width:100%;">
-                  <div class="carousel-item active" style="background-size: cover; background-image: url(<?php $cont = 1; echo $prefixo.$array[$cont++]?>);">
-                    <img style="display: none" class="d-block img-fluid" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
+                  <div class="carousel-item active">
+                    <img style="width:100%" class="d-block img-fluid" src="<?php $cont = 1; echo $prefixo.$array[$cont++]?>">
                   </div>
-                  <div class="carousel-item" style="width:100%;" style="background-size: cover; background-image: url(<?php $cont = 2;  echo $prefixo.$array[$cont++]?>);">
-                    <img style="display: none" class="d-block img-fluid" src="<?php $cont = 2;  echo $prefixo.$array[$cont++]?>">
+                  <div class="carousel-item">
+                    <img style="width:100%" class="d-block img-fluid" src="<?php  echo $prefixo.$array[$cont++]?>">
                   </div>
-                  <div class="carousel-item" style="width:100%;" style="background-size: cover; background-image: url(<?php $cont = 3;  echo $prefixo.$array[$cont++]?>);">
-                    <img style="display: none" class="d-block img-fluid" src="<?php $cont = 3;  echo $prefixo.$array[$cont++]?>">
+                  <div class="carousel-item">
+                    <img style="width:100%" class="d-block img-fluid" src="<?php  echo $prefixo.$array[$cont++]?>">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel-fotos" role="button" data-slide="prev">
@@ -1483,7 +1483,7 @@ if($session->vereficarLogin() != false){
             <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
               <div class="row text-center justify-content-center py-3">
                 <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">
-                  <!-- <div id="map" style="height: 50vh; width: 100%"></div>                     -->z
+                  <!-- <div id="map" style="height: 50vh; width: 100%"></div>                     -->
                   <script>
                   var citymap;
                   var geocoder;
@@ -5025,7 +5025,7 @@ if($session->vereficarLogin() != false){
 
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5047,7 +5047,7 @@ if($session->vereficarLogin() != false){
 
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5070,7 +5070,7 @@ if($session->vereficarLogin() != false){
 
        <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5092,7 +5092,7 @@ if($session->vereficarLogin() != false){
 
        <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
-          <a href="<?php echo "$prefixo".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
+          <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
               <div class="col-12">
                 <img src="<?php echo $prefixo.$arrayParecido[$contParecido++] ?>" class="img-fluid" style="height: 350px; width: 100%; object-fit: cover;">
@@ -5278,7 +5278,7 @@ if ($status == null || $status == "") {
 }
 ?>
 
-<?php //echo "ashas". $session->vereficarLogin() ?>
-<?php// echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']); ?>
+<?php echo "ashas". $session->vereficarLogin() ?>
+<?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']); ?>
 
 </body>
