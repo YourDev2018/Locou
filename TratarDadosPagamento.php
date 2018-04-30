@@ -18,10 +18,10 @@ $complemento = $seg->filtro($_POST['complemento']);
 $cep = $seg->filtro($_POST['cep']);
 $estado = $seg->filtro($_POST['estado']);
 $pais = $seg->filtro($_POST['pais']);
-$orderId = $seg->filtro($_POST['orderID']);
+//$orderId = $seg->filtro($_POST['orderID']);
 
 
-$hash;
+print $hash = $_POST['hash'];
 
 $func = new Functions();
 //$func->pagamentoCartaoCredito($hash,$orderId,);
