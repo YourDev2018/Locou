@@ -148,6 +148,9 @@ class Pedidos
             // "Alguem quer alugar seu anuncio, termine de preencher seus dados para receber o valor"
 
         }else{
+
+            // teoricamente, não está entrando aqui dentro, quando se repete o ciclo de pagamento
+
             if ($autorizado == 'sim') {
                $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
                 $idClient = $db->getIdClientMoip($conn,$idUsuario);
@@ -157,9 +160,11 @@ class Pedidos
                 
                 $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
                 
-                $db->salvarPedido($conn,md5($id),$idAnuncio,$idUsuario,$idOrder);
+                $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
                 return "$idClient / $idOrder";
             }
+
+
             if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
 
                 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
@@ -170,7 +175,7 @@ class Pedidos
                 
                 $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
                 
-                $db->salvarPedido($conn,md5($id),$idAnuncio,$idUsuario,$idOrder);
+                $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
                 return $idOrder;
 
                 // retorna 

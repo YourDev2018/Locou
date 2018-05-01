@@ -24,45 +24,45 @@ require_once 'FunctionsSession.php';?>
     if ($idGetHash != null || $idGetHash != '') {
 
       // resgatar dados de anuncio autorizado
-       $db = new FunctionsDB();
+        $db = new FunctionsDB();
 
-      $conn = $db->conectDB();
-      $pedido = new Pedidos();
+        $conn = $db->conectDB();
+        $pedido = new Pedidos();
 
-      $busca = new BuscarEspacos();
-      $array = $busca->getPedidosDB($conn,$idGetHash); // verificado
+        $busca = new BuscarEspacos();
+        $array = $busca->getPedidosDB($conn,$idGetHash); // verificado
 
-      $idUsuario = $array[2]; // verificado
+        $idUsuario = $array[2]; // verificado
 
-      $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
+        $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
 
-      $func = new Functions();
-      print $resposta = $func->getClienteMoip($idClientMoip);
-      $obj = json_decode($resposta);
-      $nomeCompleto = $obj->{'fullname'};
+        $func = new Functions();
+        print $resposta = $func->getClienteMoip($idClientMoip);
+        $obj = json_decode($resposta);
+        $nomeCompleto = $obj->{'fullname'};
 
-      $nascimento = $obj->{'birthDate'};
-      $data = explode('-',$nascimento);
-      $dia = $data[2];
-      $mes = $data[1];
-      $ano = $data[0];
+        $nascimento = $obj->{'birthDate'};
+        $data = explode('-',$nascimento);
+        $dia = $data[2];
+        $mes = $data[1];
+        $ano = $data[0];
 
-      $phone = $obj->{'phone'};
-      $ddd = $phone->{'areaCode'};
-      $number = $phone->{'number'};
+        $phone = $obj->{'phone'};
+        $ddd = $phone->{'areaCode'};
+        $number = $phone->{'number'};
 
-      $taxDocument = $obj->{'taxDocument'};
-      $cpf = $taxDocument->{'number'};
+        $taxDocument = $obj->{'taxDocument'};
+        $cpf = $taxDocument->{'number'};
 
-      $address = $obj->{'shippingAddress'};
-      $rua = $address->{'street'};
-      $cep = $address->{'zipCode'};
-      $ruaNumber = $address->{'streetNumber'};
-      $complemento = $address->{'complement'};
-      $cidade = $address->{'city'};
-      $bairro = $address->{'district'};
-      $estado = $address->{'state'};
-      $pais = $address->{'country'};
+        $address = $obj->{'shippingAddress'};
+        $rua = $address->{'street'};
+        $cep = $address->{'zipCode'};
+        $ruaNumber = $address->{'streetNumber'};
+        $complemento = $address->{'complement'};
+        $cidade = $address->{'city'};
+        $bairro = $address->{'district'};
+        $estado = $address->{'state'};
+        $pais = $address->{'country'};
 
     }else{
       header('location: index.php');
@@ -73,6 +73,12 @@ require_once 'FunctionsSession.php';?>
 
    $conn = $db->conectDB();
    $pedido = new Pedidos();
+
+   
+
+  //  $getAutorizado = $db->getAnuncioInstantaneo($conn,$idAnuncio);
+  $getAutorizado = '';
+  // essa variável, é, setada 
 
   if($_POST['tipoAluguel']=='unico'){
 
@@ -145,7 +151,7 @@ require_once 'FunctionsSession.php';?>
          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
          $resultado = $preco ;
 
-         $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado,$getAutorizado);
+         $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
 
             $explode = explode('/',$idPedido);
             $resposta = $explode[0];
@@ -185,7 +191,7 @@ require_once 'FunctionsSession.php';?>
           $resultado = $preco *$calculoHora;
 
           // criando pedido e retornando dados do usuário
-          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
+            $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
 
             $explode = explode('/',$idPedido);
             $resposta = $explode[0];
@@ -236,15 +242,55 @@ require_once 'FunctionsSession.php';?>
      $date->add(new DateInterval('P'.$dias.'D'));
      $dataFinalDireto = $date->format('Ymd');
 
-      // -> -> ERRO AQUI, PREÇO PRECISA SER O DE MÊS, PERIODO OU AFIM  <- <-
+     if ($semanasDireto < 4) {
+        $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
+        $preco = $preco * $semanasDireto;
 
-     $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
+        $arrayDados[0] = $dataInicioDireto;
+        $arrayDados[1] = $dataFinalDireto;
+        $arrayDados[2] = $semanasDireto;
 
-     $arrayDados['ga'] = $dataInicioDireto;
-     $arrayDados['ha'] = $dataFinalDireto;
+        print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
 
-     $resultado = $preco * $semanasDireto;
-     $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$resultado,$arrayDados);
+
+     }else{
+       if ($semanasDireto % 4 == 0) {
+
+          $numMes = $semanasDireto / 4 ;
+          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'mes');
+          $preco = $preco * $numMes;
+
+          $arrayDados[0] = $dataInicioDireto;
+          $arrayDados[1] = $dataFinalDireto;
+             $arrayDados[2] = $semanasDireto;
+
+        print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
+          
+       }else{
+
+         $precoMes = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'mes');
+         $precoSemana =  $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
+
+         $numMes = (int) $semanasDireto / 4 ;
+         $numSemanas = $semanasDireto % 4;
+
+         $preco = ($numMes * $precoMes)+($numSemanas * $precoSemana);
+
+         $arrayDados[0] = $dataInicioDireto;
+         $arrayDados[1] = $dataFinalDireto;
+         $arrayDados[2] = $semanasDireto;
+
+        print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
+
+
+       }
+     }
+     
+
+     
+
+     
+
 
   }
       // falta fazer a multiplicação das semanas em reincidente
@@ -375,6 +421,7 @@ require_once 'FunctionsSession.php';?>
 
 
   ?>
+
 <html lang="en">
   <head>
 
@@ -537,7 +584,7 @@ function daysInMonth(month, year) {
                 <br>
                 <label>Data de nascimento</label>
                 <br>
-                <!-- fazer funcionar o value -->
+               
                 <select id="days" value="<?php echo $data[2]?>" name="dia"></select>
                 <select id="months" value="<?php echo $data[1]?>" name="mes"></select>
                 <select id="years" value="<?php echo $data[0]?>" name="ano"></select>
