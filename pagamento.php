@@ -689,6 +689,7 @@ function daysInMonth(month, year) {
             </div>
             <div class="row justify-content-center text-center">
               <div class="col-12 py-2">
+                <textarea name="hash" id="encrypted_value" style="display: none"></textarea>
                 <button onclick="encriptJSCartao()" type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
               </div>
             </div>
@@ -709,7 +710,6 @@ function daysInMonth(month, year) {
       7wIDAQAB
       -----END PUBLIC KEY-----
     </textarea>
-    <textarea name="hash" id="encrypted_value" style="display: none"></textarea>
     <script type="text/javascript">
     function encriptJSCartao() {
       var cc = new Moip.CreditCard({
