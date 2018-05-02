@@ -739,6 +739,71 @@ if($session->vereficarLogin() != false){
     </div>
   </div>
 
+  <div class="modal" id="saibaMaisDireto" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Você irá alugar todos os dias da semana de 9 as 18hrs um período igual ou menor que 3 meses.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="saibaMaisReincidente" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+             Você irá alugar dias da semana específicos e horários únicos para cada dia  Ex: Terças e Quintas das 13 as 18 hrs.
+            <br>
+            E isso se repete semanalmente por um período  de até 3 meses.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="saibaMaisUnico" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Você precisa de um horário pontual e único, que não tem a previsão de se repetir nas próximas semanas.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <!-- Titulo Anuncio -->
@@ -1594,17 +1659,17 @@ if($session->vereficarLogin() != false){
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-unico" onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisUnico">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoUnico">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-reincidente" onclick="calReincidente()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisReincidente">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoReincidente">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-direto" onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoDireto">Clique aqui e saiba mais</span>
           </div>
           <input style="display: none" type="text" name="tipoAluguel" value="unico" id="tipoAluguel">
         </div>
