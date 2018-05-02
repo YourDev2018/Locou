@@ -18,7 +18,11 @@
         $db->closeDB($conn);
     }
  
-    /*
+   
+    
+    print 'teste';
+
+     /*
     $json2  = $_POST['ORDER.CREATED'];
     $obj2 = json_decode($json2, true);
     $tipoEventoDois = $obj2->{'event'};
@@ -49,7 +53,5 @@
 
     }
     */
-    
-    print 'teste';
 
 ?>

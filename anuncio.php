@@ -361,14 +361,14 @@ if($session->vereficarLogin() != false){
 
   <?php $arrayHorarios = $busca-> retornarHorário($conn,$idAnuncio) ?>
 
-  var seg_max_h = <?php echo $arrayHorarios[8]; $auxExp = explode(':',$arrayHorarios[8]);  ?>;
+  var seg_max_h = <?php $auxExp = explode(':',$arrayHorarios[8]); echo $arrayExp[0];  ?>;
   var seg_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var seg_min_h = <?php echo $arrayHorarios[1]; $auxExp = explode(':',$arrayHorarios[1]);  ?>;
+  var seg_min_h = <?php  $auxExp = explode(':',$arrayHorarios[1]); echo $arrayExp[0];  ?>;
   var seg_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
 
-  var ter_max_h = <?php echo $arrayHorarios[9]; $auxExp = explode(':',$arrayHorarios[9]);  ?>;
+  var ter_max_h = <?php $auxExp = explode(':',$arrayHorarios[9]); echo $arrayExp[0]; ?>;
   var ter_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
   var ter_min_h = <?php echo $arrayHorarios[2]; $auxExp = explode(':',$arrayHorarios[2]);  ?>;
