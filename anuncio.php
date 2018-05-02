@@ -743,7 +743,7 @@ if($session->vereficarLogin() != false){
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <h5 class="modal-title">O que é Modo Direto?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -764,7 +764,7 @@ if($session->vereficarLogin() != false){
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <h5 class="modal-title">O que é Modo Reincidente?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -787,7 +787,7 @@ if($session->vereficarLogin() != false){
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <h5 class="modal-title">O que é Modo Único?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -1659,17 +1659,17 @@ if($session->vereficarLogin() != false){
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-unico" onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoUnico">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisUnico">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-reincidente" onclick="calReincidente()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoReincidente">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisReincidente">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-direto" onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoDireto">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span>
           </div>
           <input style="display: none" type="text" name="tipoAluguel" value="unico" id="tipoAluguel">
         </div>
