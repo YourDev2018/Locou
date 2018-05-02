@@ -1138,13 +1138,13 @@ class BuscarEspacos
             
             $array = [];
             $cont=0;
-            $menorEntradaSegunda = 100;
-            $menorEntradaTerca = 100;
-            $menorEntradaQuarta = 100;
-            $menorEntradaQuinta = 100;
-            $menorEntradaSexta = 100;
-            $menorEntradaSabado = 100;
-            $menorEntradaDomingo= 100;
+            $menorEntradaSegunda = 0;
+            $menorEntradaTerca = 0;
+            $menorEntradaQuarta = 0;
+            $menorEntradaQuinta = 0;
+            $menorEntradaSexta = 0;
+            $menorEntradaSabado = 0;
+            $menorEntradaDomingo= 0;
 
             $maiorEntradaSegunda = 0;
             $maiorEntradaTerca = 0;
@@ -1162,9 +1162,14 @@ class BuscarEspacos
               //  print $day;
                 if($day == 1){
 
-                    if ($row['horaEntrada'] < $menorEntradaDomingo){
+                    if ($menorEntradaSegunda == 0){
 
                         $menorEntradaSegunda = $row['horaEntrada'];
+
+                    }else{
+                        if ($menorEntradaSegunda < $row['horaEntrada'] ) {
+                            $menorEntradaSegunda = $row['horaEntrada'] ;
+                        }
 
                     } 
 
@@ -1178,14 +1183,20 @@ class BuscarEspacos
                 }   
                 
                 if($day == 2){
+                    
 
-                    if ($row['horaEntrada'] < $menorEntradaTerca){
+                     if ($$menorEntradaTerca == 0){
 
-                        $menorEntradaTerca = $row['horaEntrada'];
+                        $$menorEntradaTerca = $row['horaEntrada'];
+
+                    }else{
+                        if ($$menorEntradaTerca < $row['horaEntrada'] ) {
+                            $$menorEntradaTerca = $row['horaEntrada'] ;
+                        }
 
                     } 
 
-                     if ($row['horaSaida'] > $maiorEntradaTerca){
+                    if ($row['horaSaida'] > $maiorEntradaTerca){
 
                         $maiorEntradaTerca = $row['horaSaida'];
 
@@ -1195,9 +1206,15 @@ class BuscarEspacos
 
                 if($day == 3){
 
-                    if ($row['horaEntrada'] < $menorEntradaQuarta){
 
-                        $menorEntradaTerca = $row['horaEntrada'];
+                    if ($menorEntradaQuarta == 0){
+
+                        $menorEntradaQuarta  = $row['horaEntrada'];
+
+                    }else{
+                        if ($menorEntradaQuarta  < $row['horaEntrada'] ) {
+                            $menorEntradaQuarta  = $row['horaEntrada'] ;
+                        }
 
                     } 
 
@@ -1209,15 +1226,22 @@ class BuscarEspacos
 
                 }   
 
-                  if($day == 4){
+                if($day == 4){
 
-                    if ($row['horaEntrada'] < $menorEntradaQuinta){
+                    
+
+                    if ($menorEntradaQuinta == 0){
 
                         $menorEntradaQuinta = $row['horaEntrada'];
 
-                    }
+                    }else{
+                        if ($menorEntradaQuinta  < $row['horaEntrada'] ) {
+                            $menorEntradaQuinta  = $row['horaEntrada'] ;
+                        }
+
+                    } 
                     
-                     if ($row['horaSaida'] > $maiorEntradaQuinta){
+                    if ($row['horaSaida'] > $maiorEntradaQuinta){
 
                         $maiorEntradaQuinta = $row['horaSaida'];
 
@@ -1225,29 +1249,42 @@ class BuscarEspacos
 
                 }   
 
-                  if($day == 5){
+                if($day == 5){
 
-                    if ($row['horaEntrada'] < $menorEntradaSexta){
+                    if ($menorEntradaSexta == 0){
 
                         $menorEntradaSexta = $row['horaEntrada'];
 
-                    }
-                    
+                    }else{
+                        if ($menorEntradaSexta  < $row['horaEntrada'] ) {
+                            $menorEntradaSexta  = $row['horaEntrada'] ;
+                        }
+
+                    } 
+
+
                      if ($row['horaSaida'] > $maiorEntradaSexta){
 
                         $maiorEntradaSexta= $row['horaSaida'];
 
                     } 
-
+                    
                 }   
 
-                   if($day == 6){
+                if($day == 6){
 
-                    if ($row['horaEntrada'] < $menorEntradaSabado){
+                    
+
+                    if ($menorEntradaSabado == 0){
 
                         $menorEntradaSabado = $row['horaEntrada'];
 
-                    }
+                    }else{
+                        if ($menorEntradaSabado  < $row['horaEntrada'] ) {
+                            $menorEntradaSabado  = $row['horaEntrada'] ;
+                        }
+
+                    } 
                     
                      if ($row['horaSaida'] > $maiorEntradaDomingo){
 
@@ -1258,13 +1295,18 @@ class BuscarEspacos
                 }   
 
 
-                   if($day == 7){
+                if($day == 7){
 
-                    if ($row['horaEntrada'] < $menorEntradaDomingo){
+                     if ($menorEntradaDomingo == 0){
 
                         $menorEntradaDomingo = $row['horaEntrada'];
 
-                    }
+                    }else{
+                        if ($menorEntradaDomingo  < $row['horaEntrada'] ) {
+                            $menorEntradaDomingo  = $row['horaEntrada'] ;
+                        }
+
+                    } 
                     
                      if ($row['horaSaida'] > $maiorEntradaDomingo){
 

@@ -380,7 +380,6 @@ if($session->vereficarLogin() != false){
 
   var qua_min_h = <?php $auxExp = explode(':',$arrayHorarios[3]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
   var qua_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
-;
 
   var qui_max_h = <?php $auxExp = explode(':',$arrayHorarios[11]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
   var qui_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
@@ -405,7 +404,7 @@ if($session->vereficarLogin() != false){
 
   var dom_min_h = <?php $auxExp = explode(':',$arrayHorarios[7]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;  
   var dom_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
-
+  
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
