@@ -6,6 +6,7 @@
 
   $session = new FunctionsSession();
   $session->iniciarSession();
+  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
   
  
   if ($_SESSION['id'] == null || $_SESSION['' == '']) { 

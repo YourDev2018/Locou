@@ -31,9 +31,9 @@ require_once 'FunctionsSession.php';?>
 
         $busca = new BuscarEspacos();
         $array = $busca->getPedidosDB($conn,$idGetHash); // verificado
-
+        
         $idUsuario = $array[2]; // verificado
-
+        $idPedido = $array[3];
         $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
 
         $func = new Functions();
@@ -574,7 +574,7 @@ function daysInMonth(month, year) {
               <span class="h5">Adicione os dados para o método de pagamento</span>
             </div>
           </div>
-          <form class="" action="TratarDadosPagamento.php" method="post">
+          <form class="" action="TratarDadosPagamento.php?orderID=<?php echo $idPedido?>" method="post">
             <div class="row px-2 py-4">
               <div class="col-12 px-3 py-3">
                 <div class="form-group">
