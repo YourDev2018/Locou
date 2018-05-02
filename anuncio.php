@@ -371,39 +371,39 @@ if($session->vereficarLogin() != false){
   var ter_max_h = <?php $auxExp = explode(':',$arrayHorarios[9]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var ter_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var ter_min_h = <?php echo $arrayHorarios[2]; $auxExp = explode(':',$arrayHorarios[2]);  ?>;
+  var ter_min_h = <?php $auxExp = explode(':',$arrayHorarios[2]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var ter_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
 
-  var qua_max_h = <?php echo $arrayHorarios[10]; $auxExp = explode(':',$arrayHorarios[10]);  ?>;
+  var qua_max_h = <?php $auxExp = explode(':',$arrayHorarios[10]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;  
   var qua_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qua_min_h = <?php echo $arrayHorarios[3]; $auxExp = explode(':',$arrayHorarios[3]);  ?>;
+  var qua_min_h = <?php $auxExp = explode(':',$arrayHorarios[3]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
   var qua_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 ;
 
-  var qui_max_h = <?php echo $arrayHorarios[11]; $auxExp = explode(':',$arrayHorarios[11]);  ?>;
+  var qui_max_h = <?php $auxExp = explode(':',$arrayHorarios[11]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
   var qui_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qui_min_h = <?php echo $arrayHorarios[4]; $auxExp = explode(':',$arrayHorarios[4]);  ?>;
+  var qui_min_h = <?php $auxExp = explode(':',$arrayHorarios[4]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; ?>;
   var qui_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sex_max_h = <?php echo $arrayHorarios[12]; $auxExp = explode(':',$arrayHorarios[12]);  ?>;
+  var sex_max_h = <?php $auxExp = explode(':',$arrayHorarios[12]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; ?>;
   var sex_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sex_min_h = <?php echo $arrayHorarios[5]; $auxExp = explode(':',$arrayHorarios[5]);  ?>;
+  var sex_min_h = <?php $auxExp = explode(':',$arrayHorarios[5]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; ?>;
   var sex_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sab_max_h = <?php echo $arrayHorarios[13]; $auxExp = explode(':',$arrayHorarios[13]);  ?>;
+  var sab_max_h = <?php $auxExp = explode(':',$arrayHorarios[13]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; ?>;
   var sab_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sab_min_h = <?php echo $arrayHorarios[6]; $auxExp = explode(':',$arrayHorarios[6]);  ?>;
+  var sab_min_h = <?php $auxExp = explode(':',$arrayHorarios[6]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; ?>;
   var sab_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var dom_max_h = <?php echo $arrayHorarios[14]; $auxExp = explode(':',$arrayHorarios[14]);  ?>;
+  var dom_max_h = <?php $auxExp = explode(':',$arrayHorarios[14]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; ?>;
   var dom_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var dom_min_h = <?php echo $arrayHorarios[7]; $auxExp = explode(':',$arrayHorarios[7]);  ?>;
+  var dom_min_h = <?php $auxExp = explode(':',$arrayHorarios[7]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;  ?>;
   var dom_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
   var today = new Date();
