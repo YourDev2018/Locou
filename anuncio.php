@@ -2019,10 +2019,71 @@ if($session->vereficarLogin() != false){
                         {
                           precoTotal = semanas * pm
                         }
+                        document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
                       }
-                      if(document.getElementById('tipoAluguel').value == "direto")
+                      if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
-                        if(document.getElementById('qua-periodo-sel'))
+                        if(document.getElementById('seg-periodo-sel').value == "sim")
+                        {
+                          var seg_hora_inicio = document.getElementById('seg-hora-inicio').value;
+                          var seg_hora_inicio_s = seg_hora_inicio.split(":");
+                          var seg_hora_inicio_h = seg_hora_inicio_s[0];
+                          var seg_hora_inicio_m = seg_hora_inicio_s[1];
+
+                          var seg_hora_fim = document.getElementById('seg-hora-fim').value;
+                          var seg_hora_fim_s = seg_hora_fim.split(":");
+                          var seg_hora_fim_h = seg_hora_fim_s[0];
+                          var seg_hora_fim_m = seg_hora_fim_s[1];
+
+                          var seg_hora_aluguel_h = seg_hora_fim_h-hora_inicio_h;
+                          var seg_hora_aluguel_m = seg_hora_fim_m-hora_inicio_m;
+
+                          if(seg_hora_aluguel_m == -30)
+                          {
+                            seg_hora_aluguel_h = seg_hora_aluguel_h - 1;
+                            seg_hora_aluguel_m = 30;
+                          }
+                          if(seg_hora_aluguel_m == 0)
+                          {
+                            seg_hora_aluguel_m = "00";
+                          }
+                          if(seg_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = seg_hora_aluguel_h * ph;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              seg_precoTotal = seg_precoTotal + ph/2;
+                            }
+                          }
+                          if(seg_hora_aluguel_h < 5 && seg_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = seg_hora_aluguel_h * ph4;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(seg_hora_aluguel_h < 6 && seg_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = seg_hora_aluguel_h * ph5;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(seg_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = seg_hora_aluguel_h * pr;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+                        }
                       }
                     }
                     </script>
