@@ -2011,9 +2011,18 @@ if($session->vereficarLogin() != false){
                         console.log("Preço Total: R$" + precoTotal);
                         document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
                       }
-                      if(document.getElementById('tipoAluguel').value == "reincidente")
+                      if(document.getElementById('tipoAluguel').value == "direto")
                       {
-
+                        var semanas = document.getElementById('semanas-seguidas-direto').value;
+                        precoTotal = semanas * ps
+                        if(semanas>=4)
+                        {
+                          precoTotal = semanas * pm
+                        }
+                      }
+                      if(document.getElementById('tipoAluguel').value == "direto")
+                      {
+                        if(document.getElementById('qua-periodo-sel'))
                       }
                     }
                     </script>
@@ -2368,8 +2377,8 @@ if($session->vereficarLogin() != false){
                           </script>
                         </div>
                         <div class="col-12">
-                          <span class="my-1 btn btn-warning" onclick="semana_direto_mais()"><i class="fas fa-arrow-up"></i></span>
-                          <span class="my-1 btn btn-warning" onclick="semana_direto_menos()"><i class="fas fa-arrow-down"></i></span>
+                          <span class="my-1 btn btn-warning" onclick="semana_direto_mais();calcularPreco()"><i class="fas fa-arrow-up"></i></span>
+                          <span class="my-1 btn btn-warning" onclick="semana_direto_menos();calcularPreco()"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
                       <br>
