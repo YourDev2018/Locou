@@ -295,7 +295,7 @@ $ano = $_POST['year'];
                 \"PAYMENT.*\",
                 \"ORDER.*\"
             ],
-            \"target\": \"http://www.yourdev.com.br/clientes/locou/ReceberNotificacoes.php\",
+            \"target\": \"http://requestbin.fullcontact.com/11a8c8x1\",
             \"media\": \"WEBHOOK\"
             } 
             
