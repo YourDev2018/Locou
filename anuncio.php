@@ -758,7 +758,7 @@ if($session->vereficarLogin() != false){
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <h5 class="modal-title">O que é Modo Direto?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -779,7 +779,7 @@ if($session->vereficarLogin() != false){
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <h5 class="modal-title">O que é Modo Reincidente?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -802,7 +802,7 @@ if($session->vereficarLogin() != false){
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">O que é o modo "Reserva Instantânea" ?</h5>
+          <h5 class="modal-title">O que é Modo Único?</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -1674,17 +1674,17 @@ if($session->vereficarLogin() != false){
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-unico" onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoUnico">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisUnico">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-reincidente" onclick="calReincidente()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoReincidente">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisReincidente">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-direto" onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
             <br><br>
-            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisPeriodoDireto">Clique aqui e saiba mais</span>
+            <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span>
           </div>
           <input style="display: none" type="text" name="tipoAluguel" value="unico" id="tipoAluguel">
         </div>
@@ -2026,9 +2026,79 @@ if($session->vereficarLogin() != false){
                         console.log("Preço Total: R$" + precoTotal);
                         document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
                       }
+                      if(document.getElementById('tipoAluguel').value == "direto")
+                      {
+                        var semanas = document.getElementById('semanas-seguidas-direto').value;
+                        precoTotal = semanas * ps
+                        if(semanas>=4)
+                        {
+                          precoTotal = semanas * pm
+                        }
+                        document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
+                      }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
+                        if(document.getElementById('seg-periodo-sel').value == "sim")
+                        {
+                          var seg_hora_inicio = document.getElementById('seg-hora-inicio').value;
+                          var seg_hora_inicio_s = seg_hora_inicio.split(":");
+                          var seg_hora_inicio_h = seg_hora_inicio_s[0];
+                          var seg_hora_inicio_m = seg_hora_inicio_s[1];
 
+                          var seg_hora_fim = document.getElementById('seg-hora-fim').value;
+                          var seg_hora_fim_s = seg_hora_fim.split(":");
+                          var seg_hora_fim_h = seg_hora_fim_s[0];
+                          var seg_hora_fim_m = seg_hora_fim_s[1];
+
+                          var seg_hora_aluguel_h = seg_hora_fim_h-hora_inicio_h;
+                          var seg_hora_aluguel_m = seg_hora_fim_m-hora_inicio_m;
+
+                          if(seg_hora_aluguel_m == -30)
+                          {
+                            seg_hora_aluguel_h = seg_hora_aluguel_h - 1;
+                            seg_hora_aluguel_m = 30;
+                          }
+                          if(seg_hora_aluguel_m == 0)
+                          {
+                            seg_hora_aluguel_m = "00";
+                          }
+                          if(seg_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = seg_hora_aluguel_h * ph;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              seg_precoTotal = seg_precoTotal + ph/2;
+                            }
+                          }
+                          if(seg_hora_aluguel_h < 5 && seg_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = seg_hora_aluguel_h * ph4;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(seg_hora_aluguel_h < 6 && seg_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = seg_hora_aluguel_h * ph5;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(seg_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = seg_hora_aluguel_h * pr;
+                            if(seg_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+                        }
                       }
                     }
                     </script>
@@ -2383,8 +2453,8 @@ if($session->vereficarLogin() != false){
                           </script>
                         </div>
                         <div class="col-12">
-                          <span class="my-1 btn btn-warning" onclick="semana_direto_mais()"><i class="fas fa-arrow-up"></i></span>
-                          <span class="my-1 btn btn-warning" onclick="semana_direto_menos()"><i class="fas fa-arrow-down"></i></span>
+                          <span class="my-1 btn btn-warning" onclick="semana_direto_mais();calcularPreco()"><i class="fas fa-arrow-up"></i></span>
+                          <span class="my-1 btn btn-warning" onclick="semana_direto_menos();calcularPreco()"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
                       <br>
