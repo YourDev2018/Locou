@@ -25,9 +25,9 @@ require_once 'BuscarEspacos.php';
 //returnEspaco();
 //returnConsultorio();
 //anuncioAdd();
- usuarioCliente();
+// usuarioCliente();
 //testarLogin();
-
+criarNotificacao();
 
   //  print  $data = date('Y-m-d')."\n  ";
 /*
@@ -82,6 +82,14 @@ var_dump($arrayUser);
 // $array = $busca -> retornarMenorHorário($conn,174);
  // print $array[1];
  
+function criarNotificacao(){
+
+    $func = new functions();
+  //  $func->criarPreferenciaNotificacaoApp();
+  $func->listarPreferenciaNotificacao();
+
+}
+
 function testarLogin(){
     
     $db = new FunctionsDB();
