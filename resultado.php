@@ -183,67 +183,67 @@ if (!($tipo == "" || $tipo == null) ) {
           {
             document.getElementById('href-costura').removeAttribute("href");
             document.getElementById('href-costura').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-costura\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Cosutra<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"costura\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-costura\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Cosutra<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"costura\") >X</span></h6></div>";
           }
           if(t[i] == "fotografico")
           {
             document.getElementById('href-fotografico').removeAttribute("href");
             document.getElementById('href-fotografico').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-fotografico\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Estúdio Fotografico<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"fotografico\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-fotografico\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Estúdio Fotografico<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"fotografico\") >X</span></h6></div>";
           }
           if(t[i] == "produtora")
           {
             document.getElementById('href-produtora').removeAttribute("href");
             document.getElementById('href-produtora').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-produtora\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Produtora<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"produtora\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-produtora\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Produtora<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"produtora\") >X</span></h6></div>";
           }
           if(t[i] == "consultorio")
           {
             document.getElementById('href-consultorio').removeAttribute("href");
             document.getElementById('href-consultorio').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-consultorio\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Consultórios<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"consultorio\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-consultorio\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Consultórios<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"consultorio\") >X</span></h6></div>";
           }
           if(t[i] == "palestra")
           {
             document.getElementById('href-palestras').removeAttribute("href");
             document.getElementById('href-palestras').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-palestra\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Salas para Palestras<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"palestra\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-palestra\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Salas para Palestras<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"palestra\") >X</span></h6></div>";
           }
           if(t[i] == "workshop")
           {
             document.getElementById('href-workshop').removeAttribute("href");
             document.getElementById('href-workshop').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-workshop\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Workshop<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"workshop\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-workshop\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Workshop<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"workshop\") >X</span></h6></div>";
           }
           if(t[i] == "cozinha")
           {
             document.getElementById('href-cozinhas').removeAttribute("href");
             document.getElementById('href-cozinhas').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-cozinha\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Cozinhas Profissionais<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"cozinha\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-cozinha\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Cozinhas Profissionais<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"cozinha\") >X</span></h6></div>";
           }
           if(t[i] == "academia")
           {
             document.getElementById('href-academia').removeAttribute("href");
             document.getElementById('href-academia').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-academia\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Estúdio ou Academia<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"academia\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-academia\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Estúdio ou Academia<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"academia\") >X</span></h6></div>";
           }
           if(t[i] == "ensaio")
           {
             document.getElementById('href-ensaio').removeAttribute("href");
             document.getElementById('href-ensaio').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-ensaio\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Salas de Ensaio<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"ensaio\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-ensaio\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Salas de Ensaio<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"ensaio\") >X</span></h6></div>";
           }
           if(t[i] == "aula")
           {
             document.getElementById('href-aula').removeAttribute("href");
             document.getElementById('href-aula').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-aula\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Salas de Aula<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"aula\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-aula\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Salas de Aula<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"aula\") >X</span></h6></div>";
           }
           if(t[i] == "artes")
           {
             document.getElementById('href-artes').removeAttribute("href");
             document.getElementById('href-artes').style.color = "white";
-            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-artes\" style=\"font-size: 1vw; padding: 5px; background-color: black; color: white\">Ateilê de Artes<span class=\"px-2\" style=\"font-size: 1vw;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"artes\") >X</span></h6></div>";
+            document.getElementById('querys-ativas').innerHTML = document.getElementById('querys-ativas').innerHTML + "<div class=\"col-12\"><h6 id=\"query-artes\" style=\"font-size: 3vh; padding: 5px; background-color: black; color: white\">Ateilê de Artes<span class=\"px-2\" style=\"font-size: 2vh;background-color: #2d2d2d;\" \" onclick=deletarQuery(\"artes\") >X</span></h6></div>";
           }
         }
       }
@@ -358,8 +358,8 @@ if (!($tipo == "" || $tipo == null) ) {
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
     <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
-      <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-      <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+      <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+      <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
       <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
       <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -392,8 +392,8 @@ if (!($tipo == "" || $tipo == null) ) {
       </div>
       <div class="col-12">
         <span class="menu-navbar" style="color:white">
-          <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-          <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+          <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+          <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
           <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -504,7 +504,7 @@ if (!($tipo == "" || $tipo == null) ) {
   <div class="container-fluid justify-content-center text-center">
 
     <div class="row">
-      <div class="col-3" style="background-color: #FFCE00;padding-top: 2.5vw">
+      <div class="col-lg-3 col-sm-12" style="background-color: #FFCE00;padding-top: 2.5vw">
         <div class="row pb-3" id="querys-ativas">
         </div>
         <div class="row" style="border-top: solid; border-width: 2px; border-color: black;">
@@ -548,7 +548,7 @@ if (!($tipo == "" || $tipo == null) ) {
           </div>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-lg-9 col-sm-12">
         <div class="row text-center justify-content-center">
           <div class="col-12 py-3 px-5">
             <form class="form-inline justify-content-center desktop" method="get">

@@ -531,8 +531,8 @@ if($session->vereficarLogin() != false){
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
     <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
-      <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-      <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+      <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+      <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
       <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
       <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -565,8 +565,8 @@ if($session->vereficarLogin() != false){
       </div>
       <div class="col-12">
         <span class="menu-navbar" style="color:white">
-          <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-          <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+          <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+          <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
           <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
