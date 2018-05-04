@@ -53,7 +53,7 @@ if ($buscaPedidoTemporario == false) {
 
     $emailCliente = $arrayUsuario[2];
     $nomeCliente = $arrayUsuario[0];
-
+    
     $enviarEmail = new EnviarEmail();
     $enviarEmail->enviarEmailPagamento($emailCliente,$nomeCliente,$titulo,$hashId); 
        
