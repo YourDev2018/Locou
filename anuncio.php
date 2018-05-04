@@ -359,6 +359,7 @@ if($session->vereficarLogin() != false){
   var ps =  <?php echo $arrayGeral[14] ?>;
   var pm =  <?php echo $arrayGeral[15] ?>;
 
+
   <?php $arrayHorarios = $busca-> retornarHorário($conn,$idAnuncio) ?>
 
   var seg_max_h = <?php $auxExp = explode(':',$arrayHorarios[8]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
@@ -375,36 +376,36 @@ if($session->vereficarLogin() != false){
   var ter_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
 
-  var qua_max_h = <?php $auxExp = explode(':',$arrayHorarios[10]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;  
+  var qua_max_h = <?php $auxExp = explode(':',$arrayHorarios[10]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var qua_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qua_min_h = <?php $auxExp = explode(':',$arrayHorarios[3]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var qua_min_h = <?php $auxExp = explode(':',$arrayHorarios[3]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var qua_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qui_max_h = <?php $auxExp = explode(':',$arrayHorarios[11]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var qui_max_h = <?php $auxExp = explode(':',$arrayHorarios[11]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var qui_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qui_min_h = <?php $auxExp = explode(':',$arrayHorarios[4]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var qui_min_h = <?php $auxExp = explode(':',$arrayHorarios[4]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var qui_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sex_max_h = <?php $auxExp = explode(':',$arrayHorarios[12]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var sex_max_h = <?php $auxExp = explode(':',$arrayHorarios[12]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var sex_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sex_min_h = <?php $auxExp = explode(':',$arrayHorarios[5]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var sex_min_h = <?php $auxExp = explode(':',$arrayHorarios[5]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var sex_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sab_max_h = <?php $auxExp = explode(':',$arrayHorarios[13]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var sab_max_h = <?php $auxExp = explode(':',$arrayHorarios[13]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var sab_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sab_min_h = <?php $auxExp = explode(':',$arrayHorarios[6]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var sab_min_h = <?php $auxExp = explode(':',$arrayHorarios[6]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var sab_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var dom_max_h = <?php $auxExp = explode(':',$arrayHorarios[14]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>; 
+  var dom_max_h = <?php $auxExp = explode(':',$arrayHorarios[14]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var dom_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var dom_min_h = <?php $auxExp = explode(':',$arrayHorarios[7]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;  
+  var dom_min_h = <?php $auxExp = explode(':',$arrayHorarios[7]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
   var dom_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
-  
+
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
@@ -1671,17 +1672,17 @@ if($session->vereficarLogin() != false){
       <div class="col-12 mt-4">
         <div class="row px-5 pb-5 text-center justify-content-center">
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
-            <button id="botao-unico" onclick="calUnico()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
+            <button id="botao-unico" onclick="calUnico();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisUnico">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
-            <button id="botao-reincidente" onclick="calReincidente()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
+            <button id="botao-reincidente" onclick="calReincidente();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisReincidente">Clique aqui e saiba mais</span>
           </div>
           <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
-            <button id="botao-direto" onclick="calDireto()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
+            <button id="botao-direto" onclick="calDireto();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span>
           </div>
@@ -1961,6 +1962,7 @@ if($session->vereficarLogin() != false){
                     <script>
                     function calcularPreco()
                     {
+                      console.log("Calculando");
                       var precoTotal = 0;
                       if(document.getElementById('tipoAluguel').value == "unico")
                       {
@@ -2037,8 +2039,10 @@ if($session->vereficarLogin() != false){
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
+                        var totalP = 0;
                         if(document.getElementById('seg-periodo-sel').value == "sim")
                         {
+                          console.log("seg-feira");
                           var seg_hora_inicio = document.getElementById('seg-hora-inicio').value;
                           var seg_hora_inicio_s = seg_hora_inicio.split(":");
                           var seg_hora_inicio_h = seg_hora_inicio_s[0];
@@ -2049,8 +2053,8 @@ if($session->vereficarLogin() != false){
                           var seg_hora_fim_h = seg_hora_fim_s[0];
                           var seg_hora_fim_m = seg_hora_fim_s[1];
 
-                          var seg_hora_aluguel_h = seg_hora_fim_h-hora_inicio_h;
-                          var seg_hora_aluguel_m = seg_hora_fim_m-hora_inicio_m;
+                          var seg_hora_aluguel_h = seg_hora_fim_h-seg_hora_inicio_h;
+                          var seg_hora_aluguel_m = seg_hora_fim_m-seg_hora_inicio_m;
 
                           if(seg_hora_aluguel_m == -30)
                           {
@@ -2097,7 +2101,403 @@ if($session->vereficarLogin() != false){
                               precoTotal = precoTotal + pr/2;
                             }
                           }
+                          totalP = totalP + precoTotal;
+                          console.log(precoTotal);
+                          console.log(seg_hora_aluguel_h+":"+seg_hora_aluguel_m);
                         }
+
+                        if(document.getElementById('ter-periodo-sel').value == "sim")
+                        {
+                          console.log("ter-feira");
+                          var ter_hora_inicio = document.getElementById('ter-hora-inicio').value;
+                          var ter_hora_inicio_s = ter_hora_inicio.split(":");
+                          var ter_hora_inicio_h = ter_hora_inicio_s[0];
+                          var ter_hora_inicio_m = ter_hora_inicio_s[1];
+
+                          var ter_hora_fim = document.getElementById('ter-hora-fim').value;
+                          var ter_hora_fim_s = ter_hora_fim.split(":");
+                          var ter_hora_fim_h = ter_hora_fim_s[0];
+                          var ter_hora_fim_m = ter_hora_fim_s[1];
+
+                          var ter_hora_aluguel_h = ter_hora_fim_h-ter_hora_inicio_h;
+                          var ter_hora_aluguel_m = ter_hora_fim_m-ter_hora_inicio_m;
+
+                          if(ter_hora_aluguel_m == -30)
+                          {
+                            ter_hora_aluguel_h = ter_hora_aluguel_h - 1;
+                            ter_hora_aluguel_m = 30;
+                          }
+                          if(ter_hora_aluguel_m == 0)
+                          {
+                            ter_hora_aluguel_m = "00";
+                          }
+                          if(ter_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = ter_hora_aluguel_h * ph;
+                            if(ter_hora_aluguel_m == 30)
+                            {
+                              ter_precoTotal = ter_precoTotal + ph/2;
+                            }
+                          }
+                          if(ter_hora_aluguel_h < 5 && ter_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = ter_hora_aluguel_h * ph4;
+                            if(ter_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(ter_hora_aluguel_h < 6 && ter_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = ter_hora_aluguel_h * ph5;
+                            if(ter_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(ter_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = ter_hora_aluguel_h * pr;
+                            if(ter_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+
+                          totalP = totalP + precoTotal;
+                        }
+
+                        if(document.getElementById('qua-periodo-sel').value == "sim")
+                        {
+                          console.log("qua-feira");
+                          var qua_hora_inicio = document.getElementById('qua-hora-inicio').value;
+                          var qua_hora_inicio_s = qua_hora_inicio.split(":");
+                          var qua_hora_inicio_h = qua_hora_inicio_s[0];
+                          var qua_hora_inicio_m = qua_hora_inicio_s[1];
+
+                          var qua_hora_fim = document.getElementById('qua-hora-fim').value;
+                          var qua_hora_fim_s = qua_hora_fim.split(":");
+                          var qua_hora_fim_h = qua_hora_fim_s[0];
+                          var qua_hora_fim_m = qua_hora_fim_s[1];
+
+                          var qua_hora_aluguel_h = qua_hora_fim_h-qua_hora_inicio_h;
+                          var qua_hora_aluguel_m = qua_hora_fim_m-qua_hora_inicio_m;
+
+                          if(qua_hora_aluguel_m == -30)
+                          {
+                            qua_hora_aluguel_h = qua_hora_aluguel_h - 1;
+                            qua_hora_aluguel_m = 30;
+                          }
+                          if(qua_hora_aluguel_m == 0)
+                          {
+                            qua_hora_aluguel_m = "00";
+                          }
+                          if(qua_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = qua_hora_aluguel_h * ph;
+                            if(qua_hora_aluguel_m == 30)
+                            {
+                              qua_precoTotal = qua_precoTotal + ph/2;
+                            }
+                          }
+                          if(qua_hora_aluguel_h < 5 && qua_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = qua_hora_aluguel_h * ph4;
+                            if(qua_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(qua_hora_aluguel_h < 6 && qua_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = qua_hora_aluguel_h * ph5;
+                            if(qua_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(qua_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = qua_hora_aluguel_h * pr;
+                            if(qua_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+
+                          totalP = totalP + precoTotal;
+                        }
+
+                        if(document.getElementById('qui-periodo-sel').value == "sim")
+                        {
+                          console.log("qui-feira");
+                          var qui_hora_inicio = document.getElementById('qui-hora-inicio').value;
+                          var qui_hora_inicio_s = qui_hora_inicio.split(":");
+                          var qui_hora_inicio_h = qui_hora_inicio_s[0];
+                          var qui_hora_inicio_m = qui_hora_inicio_s[1];
+
+                          var qui_hora_fim = document.getElementById('qui-hora-fim').value;
+                          var qui_hora_fim_s = qui_hora_fim.split(":");
+                          var qui_hora_fim_h = qui_hora_fim_s[0];
+                          var qui_hora_fim_m = qui_hora_fim_s[1];
+
+                          var qui_hora_aluguel_h = qui_hora_fim_h-qui_hora_inicio_h;
+                          var qui_hora_aluguel_m = qui_hora_fim_m-qui_hora_inicio_m;
+
+                          if(qui_hora_aluguel_m == -30)
+                          {
+                            qui_hora_aluguel_h = qui_hora_aluguel_h - 1;
+                            qui_hora_aluguel_m = 30;
+                          }
+                          if(qui_hora_aluguel_m == 0)
+                          {
+                            qui_hora_aluguel_m = "00";
+                          }
+                          if(qui_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = qui_hora_aluguel_h * ph;
+                            if(qui_hora_aluguel_m == 30)
+                            {
+                              qui_precoTotal = qui_precoTotal + ph/2;
+                            }
+                          }
+                          if(qui_hora_aluguel_h < 5 && qui_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = qui_hora_aluguel_h * ph4;
+                            if(qui_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(qui_hora_aluguel_h < 6 && qui_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = qui_hora_aluguel_h * ph5;
+                            if(qui_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(qui_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = qui_hora_aluguel_h * pr;
+                            if(qui_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+
+                          totalP = totalP + precoTotal;
+                        }
+
+                        if(document.getElementById('sex-periodo-sel').value == "sim")
+                        {
+                          console.log("sex-feira");
+                          var sex_hora_inicio = document.getElementById('sex-hora-inicio').value;
+                          var sex_hora_inicio_s = sex_hora_inicio.split(":");
+                          var sex_hora_inicio_h = sex_hora_inicio_s[0];
+                          var sex_hora_inicio_m = sex_hora_inicio_s[1];
+
+                          var sex_hora_fim = document.getElementById('sex-hora-fim').value;
+                          var sex_hora_fim_s = sex_hora_fim.split(":");
+                          var sex_hora_fim_h = sex_hora_fim_s[0];
+                          var sex_hora_fim_m = sex_hora_fim_s[1];
+
+                          var sex_hora_aluguel_h = sex_hora_fim_h-sex_hora_inicio_h;
+                          var sex_hora_aluguel_m = sex_hora_fim_m-sex_hora_inicio_m;
+
+                          if(sex_hora_aluguel_m == -30)
+                          {
+                            sex_hora_aluguel_h = sex_hora_aluguel_h - 1;
+                            sex_hora_aluguel_m = 30;
+                          }
+                          if(sex_hora_aluguel_m == 0)
+                          {
+                            sex_hora_aluguel_m = "00";
+                          }
+                          if(sex_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = sex_hora_aluguel_h * ph;
+                            if(sex_hora_aluguel_m == 30)
+                            {
+                              sex_precoTotal = sex_precoTotal + ph/2;
+                            }
+                          }
+                          if(sex_hora_aluguel_h < 5 && sex_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = sex_hora_aluguel_h * ph4;
+                            if(sex_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(sex_hora_aluguel_h < 6 && sex_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = sex_hora_aluguel_h * ph5;
+                            if(sex_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(sex_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = sex_hora_aluguel_h * pr;
+                            if(sex_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+
+                          totalP = totalP + precoTotal;
+                        }
+
+                        if(document.getElementById('sab-periodo-sel').value == "sim")
+                        {
+                          console.log("sab-feira");
+                          var sab_hora_inicio = document.getElementById('sab-hora-inicio').value;
+                          var sab_hora_inicio_s = sab_hora_inicio.split(":");
+                          var sab_hora_inicio_h = sab_hora_inicio_s[0];
+                          var sab_hora_inicio_m = sab_hora_inicio_s[1];
+
+                          var sab_hora_fim = document.getElementById('sab-hora-fim').value;
+                          var sab_hora_fim_s = sab_hora_fim.split(":");
+                          var sab_hora_fim_h = sab_hora_fim_s[0];
+                          var sab_hora_fim_m = sab_hora_fim_s[1];
+
+                          var sab_hora_aluguel_h = sab_hora_fim_h-sab_hora_inicio_h;
+                          var sab_hora_aluguel_m = sab_hora_fim_m-sab_hora_inicio_m;
+
+                          if(sab_hora_aluguel_m == -30)
+                          {
+                            sab_hora_aluguel_h = sab_hora_aluguel_h - 1;
+                            sab_hora_aluguel_m = 30;
+                          }
+                          if(sab_hora_aluguel_m == 0)
+                          {
+                            sab_hora_aluguel_m = "00";
+                          }
+                          if(sab_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = sab_hora_aluguel_h * ph;
+                            if(sab_hora_aluguel_m == 30)
+                            {
+                              sab_precoTotal = sab_precoTotal + ph/2;
+                            }
+                          }
+                          if(sab_hora_aluguel_h < 5 && sab_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = sab_hora_aluguel_h * ph4;
+                            if(sab_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(sab_hora_aluguel_h < 6 && sab_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = sab_hora_aluguel_h * ph5;
+                            if(sab_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(sab_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = sab_hora_aluguel_h * pr;
+                            if(sab_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+
+                          totalP = totalP + precoTotal;
+                        }
+
+                        if(document.getElementById('dom-periodo-sel').value == "sim")
+                        {
+                          console.log("dom-feira");
+                          var dom_hora_inicio = document.getElementById('dom-hora-inicio').value;
+                          var dom_hora_inicio_s = dom_hora_inicio.split(":");
+                          var dom_hora_inicio_h = dom_hora_inicio_s[0];
+                          var dom_hora_inicio_m = dom_hora_inicio_s[1];
+
+                          var dom_hora_fim = document.getElementById('dom-hora-fim').value;
+                          var dom_hora_fim_s = dom_hora_fim.split(":");
+                          var dom_hora_fim_h = dom_hora_fim_s[0];
+                          var dom_hora_fim_m = dom_hora_fim_s[1];
+
+                          var dom_hora_aluguel_h = dom_hora_fim_h-dom_hora_inicio_h;
+                          var dom_hora_aluguel_m = dom_hora_fim_m-dom_hora_inicio_m;
+
+                          if(dom_hora_aluguel_m == -30)
+                          {
+                            dom_hora_aluguel_h = dom_hora_aluguel_h - 1;
+                            dom_hora_aluguel_m = 30;
+                          }
+                          if(dom_hora_aluguel_m == 0)
+                          {
+                            dom_hora_aluguel_m = "00";
+                          }
+                          if(dom_hora_aluguel_h < 4)
+                          {
+                            console.log("Menor que 4 horas");
+                            precoTotal = dom_hora_aluguel_h * ph;
+                            if(dom_hora_aluguel_m == 30)
+                            {
+                              dom_precoTotal = dom_precoTotal + ph/2;
+                            }
+                          }
+                          if(dom_hora_aluguel_h < 5 && dom_hora_aluguel_h >= 4)
+                          {
+                            console.log("4 horas");
+                            precoTotal = dom_hora_aluguel_h * ph4;
+                            if(dom_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph4/2;
+                            }
+                          }
+                          if(dom_hora_aluguel_h < 6 && dom_hora_aluguel_h >= 5)
+                          {
+                            console.log("5 horas");
+                            precoTotal = dom_hora_aluguel_h * ph5;
+                            if(dom_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + ph5/2;
+                            }
+                          }
+                          if(dom_hora_aluguel_h >= 6)
+                          {
+                            console.log("Dia inteiro");
+                            precoTotal = dom_hora_aluguel_h * pr;
+                            if(dom_hora_aluguel_m == 30)
+                            {
+                              precoTotal = precoTotal + pr/2;
+                            }
+                          }
+
+                          totalP = totalP + precoTotal;
+                        }
+
+                        totalP = totalP * document.getElementById('semanas-seguidas').value;
+                        document.getElementById('preco-total').innerHTML = "R$ "+totalP;
                       }
                     }
                     </script>
@@ -2693,7 +3093,7 @@ if($session->vereficarLogin() != false){
               <input type="text" id="dom-periodo-sel" name="dom-periodo-sel" value="nao" readonly style="display: none">
 
               <div class="row pb-4 justify-content-center p-3">
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br><span style="color: white" id="segunda-aviso">Dia bloqueado</span><br><br>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo();calcularPreco()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br><span style="color: white" id="segunda-aviso">Dia bloqueado</span><br><br>
 
                   <div id="segunda-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
                     <div class="row px-2">
@@ -2866,8 +3266,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="seg_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="seg_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="seg_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="seg_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <script>
@@ -3164,14 +3564,14 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="seg_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="seg_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="seg_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="seg_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="terca_botao_periodo()" id="terca-bot-periodo" class="btn btn-outline-warning"><h6>Ter</h6></span>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="terca_botao_periodo();calcularPreco()" id="terca-bot-periodo" class="btn btn-outline-warning"><h6>Ter</h6></span>
                   <br><br><span style="color: white" id="terca-aviso">Dia bloqueado</span><br><br>
 
                   <div id="terca-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
@@ -3187,8 +3587,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="ter_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="ter_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="ter_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="ter_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <script>
@@ -3485,14 +3885,14 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="ter_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="ter_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="ter_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="ter_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quarta_botao_periodo()" id="quarta-bot-periodo" class="btn btn-outline-warning"><h6>Qua</h6></span>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quarta_botao_periodo();calcularPreco()" id="quarta-bot-periodo" class="btn btn-outline-warning"><h6>Qua</h6></span>
                   <br><br><span style="color: white" id="quarta-aviso">Dia bloqueado</span><br><br>
 
                   <div id="quarta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
@@ -3508,8 +3908,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="qua_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qua_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="qua_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="qua_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <script>
@@ -3806,14 +4206,14 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="qua_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qua_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="qua_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="qua_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quinta_botao_periodo()" id="quinta-bot-periodo" class="btn btn-outline-warning"><h6>Qui</h6></span>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quinta_botao_periodo();calcularPreco()" id="quinta-bot-periodo" class="btn btn-outline-warning"><h6>Qui</h6></span>
                   <br><br><span style="color: white" id="quinta-aviso">Dia bloqueado</span><br><br>
 
                   <div id="quinta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
@@ -3829,8 +4229,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="qui_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qui_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="qui_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="qui_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <br>
@@ -4127,14 +4527,14 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="qui_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qui_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="qui_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="qui_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sexta_botao_periodo()" id="sexta-bot-periodo" class="btn btn-outline-warning"><h6>Sex</h6></span>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sexta_botao_periodo();calcularPreco()" id="sexta-bot-periodo" class="btn btn-outline-warning"><h6>Sex</h6></span>
                   <br><br><span style="color: white" id="sexta-aviso">Dia bloqueado</span><br><br>
 
                   <div id="sexta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
@@ -4150,8 +4550,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="sex_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sex_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="sex_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="sex_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <script>
@@ -4448,14 +4848,14 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="sex_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sex_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="sex_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="sex_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sabado_botao_periodo()" id="sabado-bot-periodo" class="btn btn-outline-warning"><h6>Sab</h6></span>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sabado_botao_periodo();calcularPreco()" id="sabado-bot-periodo" class="btn btn-outline-warning"><h6>Sab</h6></span>
                   <br><br><span style="color: white" id="sabado-aviso">Dia bloqueado</span><br><br>
 
                   <div id="sabado-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
@@ -4471,8 +4871,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="sab_hora_inicio_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sab_hora_inicio_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="sab_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="sab_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <br>
@@ -4769,14 +5169,14 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="sab_hora_fim_aluguel_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sab_hora_fim_aluguel_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="sab_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="sab_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="domingo_botao_periodo()" id="domingo-bot-periodo" class="btn btn-outline-warning"><h6>Dom</h6></span>
+                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="domingo_botao_periodo();calcularPreco()" id="domingo-bot-periodo" class="btn btn-outline-warning"><h6>Dom</h6></span>
                   <br><br><span style="color: white" id="domingo-aviso">Dia bloqueado</span><br><br>
 
                   <div id="domingo-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
@@ -4792,8 +5192,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="dom_hora_inicio_aluguel_mais()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="dom_hora_inicio_aluguel_menos()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="dom_hora_inicio_aluguel_mais();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="dom_hora_inicio_aluguel_menos();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                     <br>
@@ -5090,8 +5490,8 @@ if($session->vereficarLogin() != false){
                         <br>
                       </div>
                       <div class="col-12">
-                        <span onclick="dom_hora_fim_aluguel_mais()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="dom_hora_fim_aluguel_menos()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                        <span onclick="dom_hora_fim_aluguel_mais();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                        <span onclick="dom_hora_fim_aluguel_menos();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                       </div>
                     </div>
                   </div>
@@ -5137,8 +5537,8 @@ if($session->vereficarLogin() != false){
                           </script>
                         </div>
                         <div class="col-12">
-                          <span onclick="semana_reincidente_mais()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                          <span onclick="semana_reincidente_menos()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+                          <span onclick="semana_reincidente_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+                          <span onclick="semana_reincidente_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
                         </div>
                       </div>
                       <br>
