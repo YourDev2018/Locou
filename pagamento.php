@@ -3,7 +3,7 @@
 <?php error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'FunctionsDB.php';
 require_once 'Pedidos.php';
-require_once 'Functions.php';
+require_once 'functions.php';
 require_once 'BuscarEspacos.php';
 require_once 'FunctionsSession.php';?>
 
@@ -36,7 +36,7 @@ require_once 'FunctionsSession.php';?>
         $idPedido = $array[3];
         $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
 
-        $func = new Functions();
+        $func = new functions();
         print $resposta = $func->getClienteMoip($idClientMoip);
         $obj = json_decode($resposta);
         $nomeCompleto = $obj->{'fullname'};
