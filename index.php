@@ -831,7 +831,7 @@ function daysInMonth(month, year) {
                 <br><br>
                 <a href="resultado.php" style="color: white">Procure um espaço</a>
                 <br><br>
-                <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co  </a>
+                <a href="mailto:contato@locou.co" target="_top" style="color: white">contato@locou.co  </a>
               </h6>
               <br><br>
             </div>

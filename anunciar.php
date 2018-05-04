@@ -127,8 +127,8 @@
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
     <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
-      <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-      <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+      <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+      <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
       <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
       <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -161,8 +161,8 @@
       </div>
       <div class="col-12">
         <span class="menu-navbar" style="color:white">
-          <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-          <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+          <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+          <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
           <a href="<?php echo "resultado.php?t=todos&q=" ?>" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -3793,7 +3793,7 @@
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="number" class="form-control" name="hora" id="hora" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" name="hora" id="hora" placeholder="Ex: 50 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3803,12 +3803,12 @@
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por turno de 4 horas<span style="color: red"> *</span>
+    Preço por hora em um turno de 4 horas<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="number" class="form-control" name="4hora" id="4hora" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" name="4hora" id="4hora" placeholder="Ex: 45 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3818,12 +3818,12 @@
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por turno de 5 horas<span style="color: red"> *</span>
+    Preço por hora em um turno de 5 horas<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="number" class="form-control" id="5hora" name="5hora" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="5hora" name="5hora" placeholder="Ex: 42.5 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3833,12 +3833,12 @@
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço reincidente por dia/turno<span style="color: red"> *</span>
+    Preço por hora em um turno de 8 horas<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="number" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="dia-turno" name="dia-turno" placeholder="Ex: 40 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3848,12 +3848,12 @@
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por semana<span style="color: red"> *</span>
+    Preço do pacote por semana<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="number" class="form-control" id="semana" name="semana" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="semana" name="semana" placeholder="Ex: 300 (números inteiros apenas)">
     </div>
   </div>
 </div>
@@ -3863,12 +3863,12 @@
 
 <div class="row">
   <div class="col-4 text-right">
-    Preço por mês<span style="color: red"> *</span>
+    Preço do pacote por mês<span style="color: red"> *</span>
   </div>
   <div class="col-5 text-left">
     <div class="input-group-prepend">
       <div class="input-group-text">R$</div>
-      <input type="number" class="form-control" id="mes" name="mes" placeholder="Ex: 55 (números inteiros apenas)">
+      <input type="number" class="form-control" id="mes" name="mes" placeholder="Ex: 1190 (números inteiros apenas)">
     </div>
   </div>
 </div>
