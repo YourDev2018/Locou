@@ -65,6 +65,7 @@ if ($buscaPedidoTemporario == false) {
     // Vamos excluir o pedido temporário e criar uma linha em Pedido, com idAnuncio, idUsuarioInquilino, idOrder (este gerado DA CRIAÇÃO DE ORDER DO MOIP)
     
     // Esses dados vamos enviar para pagamento, através do id da linha na tabela, critografado em MD5 }
+    
 }
 
 ?>
