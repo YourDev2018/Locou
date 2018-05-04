@@ -214,6 +214,30 @@ class Pedidos
         }
        
     }
+
+    function consultarPedido($idPedido){
+
+
+       $url = "https://sandbox.moip.com.br/v2/orders/$idPedido";
+       // $token_Acess = getToken();
+
+        curl_setopt_array($curl,array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: OAuth 45d63a3538ff47ccb2c0f0c3c09eabd9_v2",
+                
+            ),
+            ));
+
+        $resposta = curl_exec($curl);
+        return $resposta;
+    }
 }
 ?>
 

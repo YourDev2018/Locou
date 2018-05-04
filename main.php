@@ -85,8 +85,9 @@ var_dump($arrayUser);
 function criarNotificacao(){
 
     $func = new functions();
-    $func->criarPreferenciaNotificacaoApp();
-  //$func->listarPreferenciaNotificacao();
+  //  $func->criarPreferenciaNotificacaoApp();
+  // $func->listarPreferenciaNotificacao();
+   $func->consultarChamada();
 
 }
 

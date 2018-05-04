@@ -1,57 +1,83 @@
 
 <?php
-
+    error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
     require_once 'EnviarEmail.php';
     require_once 'FunctionsDB.php';
+    require_once 'Pedidos.php';
 
     $json = file_get_contents('php://input');
+
     $obj = json_decode($json);
     $tipoEvento = $obj->{'event'};
-
+    
     $db = new FunctionsDB();
     $conn = $db->conectDB();
-
-    $sql = "INSERT INTO OutrosEstados(nome, cidade, estado, email, celular, tipo, outraInformacao) VALUES ('$json','$obj','','','','','$tipoEvento')";
-    if ($conn->query($sql)===true) {
-        
-    }else{
-        $db->closeDB($conn);
-    }
- 
+    $email = new EnviarEmail();
    
-    
-    print 'teste';
+    $pedidos = new Pedidos();
 
-     /*
-    $json2  = $_POST['ORDER.CREATED'];
-    $obj2 = json_decode($json2, true);
-    $tipoEventoDois = $obj2->{'event'};
-    
-    $json3 = $_POST['PAYMENT.WAITING'];
-    $obj3 = json_decode($json2, true);
-    $tipoEventoTres = $obj2->{'event'};
+    // 1° - Primeiro tratamento / envio de email
+       
+    // Quando seu pagamento esta sendo analisado
+        // Quando pedido foi aprovado / Ou não foi aprovado
+
+    // 2° - Segundo tratamento / envio de email
+        //
+
+    if ($tipoEvento == 'PAYMENT.WAITING') {
+        // Quando seu pagamento esta sendo analisado
+        $resource = $obj->{'resource'};
+        $payment = $resource->{'payment'};
+        $links = $payment->{'_links'};
+        $order = $links->{'order'};
+        $idOrder = $order->{'title'};
+         
+        $jsonIdOrder = $pedidos->consultarPedido($idOrder);
+        $custumer = $jsonIdOrder->{'customer'};
+        $name = $custumer->{'fullName'};
+        $emailCustomer = $custumer->{'items'};
+
+        $items = $jsonIdOrder->{'items'};
+        $item = $items ->{'0'};
+        $detail = $item->{'detail'};
+        
+        $corpo .= "Olá $name, boa tarde <br>";
+        $corpo .= "Estamos esperando a confirmação do pagamento. <br> Pedido: $detail  <br >";
+
+        $email->enviar($emailCustomer,'Pedido em análise',$corpo);
+
+    }
+
+    if ($tipoEvento == 'PAYMENT.AUTHORIZED') {
+        
+        $resource = $obj->{'resource'};
+        $payment = $resource->{'payment'};
+        $links = $payment->{'_links'};
+        $order = $links->{'order'};
+        $idOrder = $order->{'title'};
+
+        $jsonIdOrder = $pedidos->consultarPedido($idOrder);
+        $custumer = $jsonIdOrder->{'customer'};
+        $name = $custumer->{'fullName'};
+        $emailCustomer = $custumer->{'items'};
+
+        $items = $jsonIdOrder->{'items'};
+        $item = $items ->{'0'};
+        $detail = $item->{'detail'};
+
+        $corpo .= "Olá $name, boa tarde <br>";
+        $corpo .= "Seu pagamento foi aprvado. <br> Pedido: $detail  <br >";
+
+        $email->enviar($emailCustomer,'Pagamento aprovado',$corpo);
+
+    }
+
+    http_response_code(200);
+    http_response_code();
+
 
    
-    if ($tipoEvento != null || $tipoEvento != '') {
-        
-        $enviarEmail = new EnviarEmail();
-        $enviarEmail->enviar('morg.guilherme@gmail.com','Teste WeebHook',"Tipo do evento do weebhook é: $tipoEvento");
 
-    }
 
-    if ($tipoEventoDois != null || $tipoEventoDois != '') {
-        
-        $enviarEmail = new EnviarEmail();
-        $enviarEmail->enviar('morg.guilherme@gmail.com','Teste WeebHook',"Tipo do evento do weebhook é: $tipoEventoDois");
-
-    }
-    
-     if ($tipoEventoTres != null || $tipoEventoTres != '') {
-        
-        $enviarEmail = new EnviarEmail();
-        $enviarEmail->enviar('morg.guilherme@gmail.com','Teste WeebHook',"Tipo do evento do weebhook é: $tipoEventoTres");
-
-    }
-    */
 
 ?>

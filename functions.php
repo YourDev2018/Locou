@@ -295,7 +295,7 @@ $ano = $_POST['year'];
                 \"PAYMENT.*\",
                 \"ORDER.*\"
             ],
-            \"target\": \"http://requestbin.fullcontact.com/11a8c8x1\",
+            \"target\": \"http://requestbin.fullcontact.com/11659v81\",
             \"media\": \"WEBHOOK\"
             } 
             
@@ -338,6 +338,30 @@ $ano = $_POST['year'];
 
     }
 
+    function consultarChamada(){
+       // https://sandbox.moip.com.br/v2/webhooks?resourceId=payment_id
+    
+         $curl = curl_init();
+        $url = "https://sandbox.moip.com.br/v2/webhooks?resourceId=ORD-BQ05MQ9DVZXJ";
+       // $token_Acess = getToken();
+
+        curl_setopt_array($curl,array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: OAuth 45d63a3538ff47ccb2c0f0c3c09eabd9_v2",
+                
+            ),
+            ));
+
+        $resposta = curl_exec($curl);
+        print $resposta;
+    }
    
     function dadosConta(){
         $this->cURLGet("https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623","50625d8d09b2484a8111fcc4d2a643c9_v2");
@@ -364,6 +388,9 @@ $ano = $_POST['year'];
             {  
                 \"installmentCount\":1,
                 \"statementDescriptor\":\"Locou.co\",
+                \"escrow\":{        
+                    \"description\" : \"Custódia de pagamento\"
+                },
                 \"fundingInstrument\":{  
                 \"method\":\"CREDIT_CARD\", 
                 \"creditCard\":{  
