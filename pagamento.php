@@ -96,7 +96,7 @@ require_once 'FunctionsSession.php';?>
     if (version_compare($decimal,'0.3') == 0) {
         $horaInicioUnico = ($horaInicioUnico - 0.3)+0.5;
     }
-
+ 
     $inteiro = floor($horaFimUnico);
     $decimal = $horaFimUnico - $inteiro;
 
@@ -149,7 +149,7 @@ require_once 'FunctionsSession.php';?>
       if($calculoHora / 4 == 1){
          // retornar preço na descrição geral de 4 horas
          $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
-         $resultado = $preco ;
+         $resultado = $preco * $calculoHora;
 
          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
 
@@ -301,12 +301,11 @@ require_once 'FunctionsSession.php';?>
         $periodo  = $_POST['periodo-sel'];
 
         $segSel = $_POST['seg-periodo-sel'];
+        $arrayPeriodos = [];
         if($segSel=='sim'){
 
           $segInicioPeriodo = str_replace(':','',$_POST['seg-inicio-periodo']);
           $segFimPeriodo = str_replace(':','',$_POST['seg-fim-periodo']);
-
-
 
           if (version_compare($decimal,'0.3') == 0) {
               $segInicioPeriodo = ($segInicioPeriodo - 0.3)+0.5;
@@ -321,6 +320,8 @@ require_once 'FunctionsSession.php';?>
 
 
           $periodoSeg = ($segFimPeriodo - $segInicioPeriodo) / 100;
+          $arrayPeriodos[1] = $periodoSeg;
+
 
         }
 
@@ -334,6 +335,7 @@ require_once 'FunctionsSession.php';?>
           $terFimPeriodo = verificarDecimal($terFimPeriodo);
 
           $periodoTer = ($terFimPeriodo - $terInicioPeriodo) /100;
+          $arrayPeriodos[2]= $periodoTer;
 
         }
 
@@ -347,6 +349,7 @@ require_once 'FunctionsSession.php';?>
           $quaFimPeriodo = verificarDecimal($quaFimPeriodo);
 
           $periodoQua = ($quaFimPeriodo - $quaInicioPeriodo)/100;
+          $arrayPeriodos[3] = $periodoQua;
 
         }
 
@@ -360,6 +363,7 @@ require_once 'FunctionsSession.php';?>
           $quiFimPeriodo = verificarDecimal($quiFimPeriodo);
 
           $periodoQui = ($quiFimPeriodo - $quiInicioPeriodo)/100;
+          $arrayPeriodos[4] = $periodoQui; 
 
         }
 
@@ -373,7 +377,7 @@ require_once 'FunctionsSession.php';?>
           $segFimPeriodo = verificarDecimal($segFimPeriodo);
 
           $periodoSex = ($segFimPeriodo - $segInicioPeriodo)/100;
-
+          $arrayPeriodos[5]=$periodoSex;
 
         }
 
@@ -384,7 +388,9 @@ require_once 'FunctionsSession.php';?>
           $sabFimPeriodo  =  verificarDecimal( str_replace(':','',  $_POST['sab-fim-periodo']));
 
           $periodoSab = ($sabFimPeriodo - $sabInicioPeriodo)/100;
+          $arrayPeriodos[6]=$periodoSab;
 
+          
         }
 
         $domSel = $_POST['dom-periodo-sel'];
@@ -394,8 +400,38 @@ require_once 'FunctionsSession.php';?>
           $domFimPeriodo =  verificarDecimal( str_replace(':','',  $_POST['dom-fim-periodo']));
 
           $periodoDom = ($domFimPeriodo - $domInicioPeriodo)/100;
+          $arrayPeriodos[7] = $periodoDom;
 
         }
+
+        $somaPrecos = 0;
+        for($i=1;$i<=count($arrayPeriodos);$i++){
+          
+          if($arrayPeriodos[$i] / 4 < 1){
+            $preco = $db->retornarPreco($conn,$idAnuncio);
+            $resultado = $preco *$calculoHora;
+            $somaPrecos = $somaPrecos + $resultado ;
+
+          }
+
+          if($arrayPeriodos[$i] / 4 == 1){
+
+            $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
+            $resultado = $preco *$calculoHora;
+            $somaPrecos = $somaPrecos + $resultado;
+
+          }
+
+          if($arrayPeriodos[$i] / 4 > 1){
+
+            $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincooHora');
+            $resultado = $preco *$calculoHora;
+            $somaPrecos = $somaPrecos + $resultado;
+
+          }         
+        }
+        
+        $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $somaPrecos,$arrayDados,$getAutorizado);
 
 
 

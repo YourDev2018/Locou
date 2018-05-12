@@ -10,6 +10,7 @@ class EnviarEmail
 
         $assunto = "Alguem quer alugar ".$titulo;
 
+        // alterar link em produção
         $link = "http://www.yourdev.com.br/clientes/locou/redirecionamento.php?id=$md5";
 
 
@@ -57,16 +58,31 @@ class EnviarEmail
     }
 
     function enviarEmailPagamento($emailCliente, $nomeCliente, $titulo, $hashId){
+
+      //$destino = $emailCliente;
+        $destino = 'morg.guilherme@gmail.com';  
         
+        $link = "http://www.yourdev.com.br/clientes/locou/pagamento.php?id=$hashId";
+
         $assunto = "Aluguel $titulo foi aprovado";
         $corpo = "Olá $nomeCliente. <br>";
-        $corpo .= "Tenho uma ótima o pedido de aluguel de $titulo foi aprovado pelo proprietário <br> ";
+        $corpo .= "Tenho uma ótima notícia, o pedido de aluguel de $titulo foi aprovado pelo proprietário <br> ";
         $corpo .= "Clique $link aqui para para efetuar o pagamento e finalizar o aluguel";
 
-        $link = "http://www.yourdev.com.br/clientes/locou/pagamento.php?id=$md5";
+        
 
-        $this->enviar($destino,$assunto,$corpo);
+        if($this->enviar($destino,$assunto,$corpo)){
+            return true;
+        }else{
+            return false;
+        }
 
+    }
+
+    function enviarEmailClaudia(){
+
+
+        $this->enviar('contato@locou.co','Novo Pedido Locou',$corpo);
     }
 
 

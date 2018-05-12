@@ -1174,7 +1174,7 @@ class BuscarEspacos
                     } 
 
                     
-                    if ($row['horaSaida'] > $maiorEntradaDomingo){
+                    if ($row['horaSaida'] > $maiorEntradaSegunda){
 
                         $maiorEntradaSegunda = $row['horaSaida'];
 

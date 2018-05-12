@@ -8,12 +8,11 @@ require_once 'EnviarEmail.php';
 
 
 $hashId = $_GET['id'];
-$hashId; //conferido
-
 
 if ($hashId == null || $hashId == '') {
     echo "ID igual a NULL";
     header('location:index.php');
+    exit();
 }
 
 
@@ -31,7 +30,6 @@ if ($buscaPedidoTemporario == false) {
     $idUsuario = $buscaPedidoTemporario[1];
 
     $pedidos = new Pedidos();
-
 
     $id = $db->getUltimoIDs($conn,'Pedidos');
     $id = $id+1; // CONFERIDO
@@ -56,15 +54,10 @@ if ($buscaPedidoTemporario == false) {
     
     $enviarEmail = new EnviarEmail();
     $enviarEmail->enviarEmailPagamento($emailCliente,$nomeCliente,$titulo,$hashId); 
-       
-    // falta finalizar o email de envio de pagamento, não temos os dados emailCliente e nomeCliente e testar esse emvio caso seja aprovado
-
-    // Criar Pedido e salvar em Pedido
-    // Enviar link para o usuário com a tela de pagamento
     
-    // Vamos excluir o pedido temporário e criar uma linha em Pedido, com idAnuncio, idUsuarioInquilino, idOrder (este gerado DA CRIAÇÃO DE ORDER DO MOIP)
+    // mostrar a tela visual, ou como vai ocorrer quando chegar em redirecionamento
+    // Enviar email para a cláudia 
     
-    // Esses dados vamos enviar para pagamento, através do id da linha na tabela, critografado em MD5 }
     
 }
 

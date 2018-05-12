@@ -150,7 +150,7 @@ class Pedidos
         }else{
 
             // teoricamente, não está entrando aqui dentro, quando se repete o ciclo de pagamento
-
+            /*
             if ($autorizado == 'sim') {
                $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
                 $idClient = $db->getIdClientMoip($conn,$idUsuario);
@@ -163,20 +163,27 @@ class Pedidos
                 $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
                 return "$idClient / $idOrder";
             }
-
+            */
 
             if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
 
-                $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
-                $idClient = $db->getIdClientMoip($conn,$idUsuario);
+                echo "Anuncio do tipo instantaneo, esse tipo foi desabilitado";
+                exit();
+                /*
+                    Linha de codigo logica para Anuncio instantaneo, esse tipo foi desabilitado pela claudia
 
-                $id= $db->getUltimoIDs($conn,'Pedidos');
-                $id = $id+1;
-                
-                $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
-                
-                $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
-                return $idOrder;
+                    $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+                    $idClient = $db->getIdClientMoip($conn,$idUsuario);
+
+                    $id= $db->getUltimoIDs($conn,'Pedidos');
+                    $id = $id+1;
+                    
+                    $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
+                    
+                    $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
+                    return $idOrder;
+
+                */
 
                 // retorna 
 
@@ -207,10 +214,7 @@ class Pedidos
                 
 
             }
-
-            
-
-            
+        
         }
        
     }
