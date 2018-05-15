@@ -1118,7 +1118,7 @@ class BuscarEspacos
                         $cont++;         
 
             }
-            print_r($array);
+            
             return $array;        
         }
 

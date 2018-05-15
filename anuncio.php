@@ -29,6 +29,10 @@ $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
 $status = $_GET['status'];
 $funcao= $_GET['funcao'];
 
+
+//  print_r ($session->vereficarLogin());
+//print_r ($array) ;
+
 $busca = new BuscarEspacos();
 $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
 
@@ -308,7 +312,7 @@ if($session->vereficarLogin() != false){
   //set de variaveis
   <?php
 
-  $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio);
+  $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio); 
 
   for ($i =0; $i<count($arrayHorarios); $i ++) {
 
