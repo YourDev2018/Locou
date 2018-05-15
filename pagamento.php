@@ -329,6 +329,11 @@ require_once 'FunctionsSession.php';?>
           $arrayPeriodos[1] = $periodoSeg;
 
           $nextDay = date('Ymd', strtotime("next Monday",strtotime($dataInicioReincidente)));
+          
+          //data inicio reincidente inteiro
+          $aux = str_replace('/','',$dataInicioReincidente);
+          $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$aux,$segInicioPeriodo,$segFimPeriodo);
+
 
           if ($semanasDireto >= 1) {
          //     $arrayX1[1] =  $nextDay ;
