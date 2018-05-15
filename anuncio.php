@@ -29,10 +29,6 @@ $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
 $status = $_GET['status'];
 $funcao= $_GET['funcao'];
 
-
-//  print_r ($session->vereficarLogin());
-//print_r ($array) ;
-
 $busca = new BuscarEspacos();
 $arrayGeral = $busca->retornarDescGeral($conn, $idAnuncio);
 

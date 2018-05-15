@@ -247,8 +247,9 @@ class BuscarEspacos
             $array = [];
             $cont=0;
             while ($row=$result->fetch_assoc()) {
+
                 $array[$cont] = $row['metragem']; //0
-                $cont++;
+                $cont = $cont + 1;
 
                 $array[$cont] = $row['recepcao'];//1
                 $cont++;
@@ -1117,7 +1118,7 @@ class BuscarEspacos
                         $cont++;         
 
             }
-                // print_r($array);
+            print_r($array);
             return $array;        
         }
 
