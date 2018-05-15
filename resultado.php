@@ -517,33 +517,64 @@ if (!($tipo == "" || $tipo == null) ) {
             <a style="text-decoration: none;color: black" href="#" id="href-consultorio">Consultórios</a>
           </div>
           <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-workshop-d">Workshop</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-palestras-d">Salas para Palestras</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-aula-d">Salas de Aula</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-ensaio-d">Salas de Ensaio</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-artes-d">Ateliê de Artes</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-fotografico-d">Estúdio Fotografico</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-produtora-d">Produtora</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-costura-d">Ateliê de Costura</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-academia-d">Estúdio ou Academia</a>
+          </div>
+          <div class="col-12 py-2 px-5">
+            <a style="text-decoration: none;color: grey" href="#" id="href-cozinhas-d">Cozinhas Profissionais</a>
+          </div>
+
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-workshop">Workshop</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-palestras">Salas para Palestras</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-aula">Salas de Aula</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-ensaio">Salas de Ensaio</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-artes">Ateliê de Artes</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-fotografico">Estúdio Fotografico</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-produtora">Produtora</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-costura">Ateliê de Costura</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-academia">Estúdio ou Academia</a>
           </div>
-          <div class="col-12 py-2 px-5">
+          <div style="display:none" class="col-12 py-2 px-5">
             <a style="text-decoration: none;color: black" href="#" id="href-cozinhas">Cozinhas Profissionais</a>
           </div>
         </div>
