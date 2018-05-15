@@ -141,7 +141,7 @@
       <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
         <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-        <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
+        <a style="display:none" class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
       <?php } ?>
     </span>
@@ -172,7 +172,7 @@
           <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-            <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+            <a style="display:none" class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
             <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
           <?php } ?>
           <br><br>
@@ -703,7 +703,7 @@
 
           <div class="row">
             <div class="col-4 text-right">
-              Complemento:<span style="color: red"> *</span>
+              Complemento:
             </div>
             <div class="col-5 text-left">
               <input type="text" name="complemento" class="form-control" id="complemento-a" placeholder="Ex: Ap 220 Bloco 3">
@@ -1315,7 +1315,7 @@
       <div id="calendario-direto" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
         <div class="row">
           <div class="col-12">
-            <h6 style="color: white">Selecione a quantidade de meses seguidos em que o espaço pode ser disponibilizado</h6>
+            <h6 style="color: white">Selecione a quantidade de meses seguidos em que o espaço pode ser alugado</h6>
             <br>
             <div class="row text-center justify-content-center">
               <div class="col-6">
@@ -3722,7 +3722,7 @@
 
     </div>
     <div class="col-12 py-4">
-      <h6 style="color: white">Selecione por quantas semanas seguidas o espaço será alugado</h6>
+      <h6 style="color: white">Selecione até quantas semanas seguidas o espaço poderá ser alugado</h6>
       <br>
       <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -3786,7 +3786,7 @@
 <!-- Preço Hora-->
 <br><br>
 
-<div class="row">
+<div class="row" id="ph" style="display:none">
   <div class="col-4 text-right">
     Preço por hora<span style="color: red"> *</span>
   </div>
@@ -3801,7 +3801,7 @@
 <!-- Preço 4 horas-->
 <br><br>
 
-<div class="row">
+<div class="row" id="p4" style="display:none">
   <div class="col-4 text-right">
     Preço por hora em um turno de 4 horas<span style="color: red"> *</span>
   </div>
@@ -3816,7 +3816,7 @@
 <!-- Preço 5 horas-->
 <br><br>
 
-<div class="row">
+<div class="row" id="p5" style="display:none">
   <div class="col-4 text-right">
     Preço por hora em um turno de 5 horas<span style="color: red"> *</span>
   </div>
@@ -3831,7 +3831,7 @@
 <!-- Preço reincidente dia/turno-->
 <br><br>
 
-<div class="row">
+<div class="row" id="p8" style="display:none">
   <div class="col-4 text-right">
     Preço por hora em um turno de 8 horas<span style="color: red"> *</span>
   </div>
@@ -3846,7 +3846,7 @@
 <!-- Preço semana-->
 <br><br>
 
-<div class="row">
+<div class="row" id="ps" style="display:none">
   <div class="col-4 text-right">
     Preço do pacote por semana<span style="color: red"> *</span>
   </div>
@@ -3861,7 +3861,7 @@
 <!-- Preço mês-->
 <br><br>
 
-<div class="row">
+<div class="row" id="pm" style="display:none">
   <div class="col-4 text-right">
     Preço do pacote por mês<span style="color: red"> *</span>
   </div>
@@ -4878,6 +4878,12 @@
       var radio = document.getElementById('tempoAluguel-direto').checked;
       if(radio == true)
       {
+        document.getElementById('ph').style.display = "none";
+        document.getElementById('p4').style.display = "none";
+        document.getElementById('p5').style.display = "none";
+        document.getElementById('p8').style.display = "none";
+        document.getElementById('ps').style.display = "";
+        document.getElementById('pm').style.display = "";
         document.getElementById('calendario-direto').style.display = "";
       }
       else
@@ -4891,6 +4897,12 @@
       var radio = document.getElementById('tempoAluguel-reincidente').checked;
       if(radio == true)
       {
+        document.getElementById('ph').style.display = "";
+        document.getElementById('p4').style.display = "";
+        document.getElementById('p5').style.display = "";
+        document.getElementById('p8').style.display = "";
+        document.getElementById('ps').style.display = "none";
+        document.getElementById('pm').style.display = "none";
         document.getElementById('calendario-reincidente').style.display = "";
         document.getElementById('calendario-reincidente').style.backgroundColor = "black";
       }
@@ -6345,6 +6357,13 @@
       <input type="file" class="custom-file-input" id="pano2" name="pano2">
       <label class="custom-file-label text-left" id="pano2-label" for="pano2">Escolha uma foto panorâmica</label>
     </div>
+    <br><br>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        Ao cadastrar este anúncio você está de acordo com esses <a href="http://locou.co/termos-de-compromisso">Termos de uso</a>
+      </div>
+    </div>
 
     <br><br>
 
@@ -6462,6 +6481,15 @@ function proximo()
   var fotos = document.getElementById("fotos");
   var foraRJ = document.getElementById("fora_do_rj");
 
+  var consultorioD = document.getElementById("descricao_aberta_consultorio");
+  var workshopD = document.getElementById("descricao_aberta_workshop");
+  var cozinhaD = document.getElementById("descricao_aberta_cozinha");
+  var ensaioD = document.getElementById("descricao_aberta_ensaio");
+  var fotograficoD = document.getElementById("descricao_aberta_fotografico");
+  var costuraD = document.getElementById("descricao_geral_costura");
+  var academiaD = document.getElementById("descricao_geral_academia");
+  var artesD = document.getElementById("descricao_geral_artes");
+
   var Bproximo = document.getElementById("proximo");
   var Bvoltar = document.getElementById("voltar");
 
@@ -6496,7 +6524,7 @@ function proximo()
 
   if(pagina == 1)
   {
-    if(document.getElementById("titulo").value.trim() != "" && document.getElementById("bairro").value.trim() != "" && document.getElementById("rua-a").value.trim() != "" && document.getElementById("numero").value.trim() != "" && document.getElementById("complemento-a").value.trim() != "")
+    if(document.getElementById("titulo").value.trim() != "" && document.getElementById("bairro").value.trim() != "" && document.getElementById("rua-a").value.trim() != "" && document.getElementById("numero").value.trim() != "")
     {
       if(cidade == "outro" || estado == "outro")
       {
@@ -6542,14 +6570,23 @@ function proximo()
 
   if(pagina == 3)
   {
-    if((document.getElementById("tempoAluguel-direto").checked == true || document.getElementById("tempoAluguel-reincidente").checked == true) && document.getElementById("hora").value.trim() != "" && document.getElementById("4hora").value.trim() != "" && document.getElementById("5hora").value.trim() != "" && document.getElementById("dia-turno").value.trim() != "" && document.getElementById("semana").value.trim() != "" && document.getElementById("mes").value.trim() != "" && document.getElementById("mes").value.trim() != "")
+    if(((document.getElementById("tempoAluguel-direto").checked == true && document.getElementById("semana").value.trim() != "" && document.getElementById("mes").value.trim() != "" && document.getElementById("mes").value.trim() != "") || (document.getElementById("tempoAluguel-reincidente").checked == true) && document.getElementById("hora").value.trim() != "" && document.getElementById("4hora").value.trim() != "" && document.getElementById("5hora").value.trim() != "" && document.getElementById("dia-turno").value.trim() != "" ))
     {
       document.getElementById('proximo').style.display = '';
       document.getElementById('periodo').style.display = "none";
       document.getElementById('anunciar').style.display = 'none';
       fotos.style.display = "none";
 
-      if(categoria == "consultorio")
+      var consultorioD = document.getElementById("descricao_aberta_consultorio");
+      var workshopD = document.getElementById("descricao_aberta_workshop");
+      var cozinhaD = document.getElementById("descricao_aberta_cozinha");
+      var ensaioD = document.getElementById("descricao_aberta_ensaio");
+      var fotograficoD = document.getElementById("descricao_aberta_fotografico");
+      var costuraD = document.getElementById("descricao_geral_costura");
+      var academiaD = document.getElementById("descricao_geral_academia");
+      var artesD = document.getElementById("descricao_geral_artes");
+
+      if(categoria == "consultorio" || )
       {
         consultorio.style.display = "";
       }
