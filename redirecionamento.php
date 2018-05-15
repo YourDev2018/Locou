@@ -31,8 +31,8 @@ if ($buscaPedidoTemporario == false) {
 
     $pedidos = new Pedidos();
 
-    $id = $db->getUltimoIDs($conn,'Pedidos');
-    $id = $id+1; // CONFERIDO
+ //   $id = $db->getUltimoIDs($conn,'Pedidos');
+ //   $id = $id+1; // CONFERIDO
 
     $idMoipCliente = $db->getIdClientMoip($conn,$idUsuario); // conferido
 
@@ -41,11 +41,10 @@ if ($buscaPedidoTemporario == false) {
     $titulo = $buscaPedidoTemporario[3]; // conferido
     $preco = $buscaPedidoTemporario[4]; // conferido
 
-    $hashId = md5($id);
     
-    print " idOrder ".$idOrder = $pedidos->criarPedidoComClientMOIP($id,$idMoipCliente,$idMoipProprietario,$titulo,$preco);
+    $idOrder = $pedidos->criarPedidoComClientMOIP($id,$idMoipCliente,$idMoipProprietario,$titulo,$preco);
 
-    print " salvar pedido: ".$db->salvarPedido($conn,$idAnuncio,$hashId,$idUsuario,$idOrder);
+    $db->salvarPedido($conn,$idAnuncio,$hashId,$idUsuario,$idOrder);
 
     $arrayUsuario = $db->getUsuarioBasico($conn,$idUsuario);
 
@@ -53,7 +52,7 @@ if ($buscaPedidoTemporario == false) {
     $nomeCliente = $arrayUsuario[0];
     
     $enviarEmail = new EnviarEmail();
-    $enviarEmail->enviarEmailPagamento($emailCliente,$nomeCliente,$titulo,$hashId); 
+    print $enviarEmail->enviarEmailPagamento($emailCliente,$nomeCliente,$titulo,$hashId); 
     
     // mostrar a tela visual, ou como vai ocorrer quando chegar em redirecionamento
     // Enviar email para a cláudia 

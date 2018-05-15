@@ -332,12 +332,12 @@ require_once 'FunctionsSession.php';?>
           
           //data inicio reincidente inteiro
           $aux = str_replace('/','',$dataInicioReincidente);
-          $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$aux,$segInicioPeriodo,$segFimPeriodo);
+          $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$aux,$segInicioPeriodo,$segFimPeriodo);
 
 
           if ($semanasDireto >= 1) {
          //     $arrayX1[1] =  $nextDay ;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$segInicioPeriodo,$segFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$segInicioPeriodo,$segFimPeriodo);
               
           }
 
@@ -349,7 +349,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
             //  $arrayX2[1] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$segInicioPeriodo,$segFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$segInicioPeriodo,$segFimPeriodo);
 
           }
 
@@ -361,7 +361,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
             //  $arrayX3[1] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$segInicioPeriodo,$segFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$segInicioPeriodo,$segFimPeriodo);
 
           }
 
@@ -383,7 +383,7 @@ require_once 'FunctionsSession.php';?>
 
           if ($semanasDireto == 1) {
           //    $arrayX1[2] =  $nextDay;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$terInicioPeriodo,$terFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$terInicioPeriodo,$terFimPeriodo);
               
           }
 
@@ -395,7 +395,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
           //    $arrayX2[2] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$terInicioPeriodo,$terFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$terInicioPeriodo,$terFimPeriodo);
 
           }
 
@@ -407,7 +407,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
            //   $arrayX3[2] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$terInicioPeriodo,$terFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$terInicioPeriodo,$terFimPeriodo);
 
           }
 
@@ -428,7 +428,7 @@ require_once 'FunctionsSession.php';?>
 
           if ($semanasDireto == 1) {
            //   $arrayX1[3] =  $nextDay;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$quaInicioPeriodo,$quaFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$quaInicioPeriodo,$quaFimPeriodo);
 
               
           }
@@ -441,7 +441,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
            //   $arrayX2[3] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quaInicioPeriodo,$quaFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$quaInicioPeriodo,$quaFimPeriodo);
 
 
           }
@@ -454,7 +454,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
          //     $arrayX3[3] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quaInicioPeriodo,$quaFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$quaInicioPeriodo,$quaFimPeriodo);
 
           }
 
@@ -476,7 +476,7 @@ require_once 'FunctionsSession.php';?>
 
           if ($semanasDireto == 1) {
            //   $arrayX1[4] =  $nextDay;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$quiInicioPeriodo,$quiFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$quiInicioPeriodo,$quiFimPeriodo);
 
               
           }
@@ -489,7 +489,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
           //    $arrayX2[4] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quiInicioPeriodo,$quiFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$quiInicioPeriodo,$quiFimPeriodo);
 
 
           }
@@ -502,7 +502,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
            //   $arrayX3[4] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quiInicioPeriodo,$quiFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$quiInicioPeriodo,$quiFimPeriodo);
 
 
           }
@@ -526,7 +526,7 @@ require_once 'FunctionsSession.php';?>
 
           if ($semanasDireto == 1) {
           //    $arrayX1[5] =  $nextDay;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$sexInicioPeriodo,$sexFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$sexInicioPeriodo,$sexFimPeriodo);
 
               
           }
@@ -539,7 +539,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
           //    $arrayX2[5] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sexInicioPeriodo,$sexFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$sexInicioPeriodo,$sexFimPeriodo);
 
 
           }
@@ -552,7 +552,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
          //     $arrayX3[5] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sexInicioPeriodo,$sexFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$sexInicioPeriodo,$sexFimPeriodo);
 
           }
 
@@ -571,7 +571,7 @@ require_once 'FunctionsSession.php';?>
 
           if ($semanasDireto == 1) {
           //    $arrayX1[6] =  $nextDay;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$sabInicioPeriodo,$sabFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$sabInicioPeriodo,$sabFimPeriodo);
 
               
           }
@@ -584,7 +584,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
             //  $arrayX2[6] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sabInicioPeriodo,$sabFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$sabInicioPeriodo,$sabFimPeriodo);
 
 
           }
@@ -597,7 +597,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
           //    $arrayX3[6] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sabInicioPeriodo,$sabFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$sabInicioPeriodo,$sabFimPeriodo);
 
           }
 
@@ -617,7 +617,7 @@ require_once 'FunctionsSession.php';?>
 
           if ($semanasDireto == 1) {
           //    $arrayX1[7] =  $nextDay;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$domInicioPeriodo,$domFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$nextDay,$domInicioPeriodo,$domFimPeriodo);
     
               
           }
@@ -630,7 +630,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
              // $arrayX2[7] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$domInicioPeriodo,$domFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$domInicioPeriodo,$domFimPeriodo);
 
           }
 
@@ -642,7 +642,7 @@ require_once 'FunctionsSession.php';?>
               $date->add(new DateInterval('P'.$dias.'D'));
               $data = $date->format('Ymd');
              // $arrayX3[7] = $data;
-              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$domInicioPeriodo,$domFimPeriodo);
+              $db->setDetalhesPedido('PedidosTemporariosReincidente',$conn,$idPedidosTemporarios ,$data,$domInicioPeriodo,$domFimPeriodo);
 
           }
 

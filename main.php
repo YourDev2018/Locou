@@ -87,6 +87,7 @@ function retornarDiasCadastrados(){
     $db = new FunctionsDB();
     $conn = $db->conectDB();
     $busca = new BuscarEspacos();
+    $db->setDetalhesPedido('PedidosTemporariosUnico',$conn,1,1,1,1);
     //$nextMonday = date('Ymd', strtotime("next Monday"));
    // print_r($array = $busca->retornarHorário($conn,'161'));
 }

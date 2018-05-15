@@ -198,7 +198,16 @@ class Pedidos
                 $id = $id  +1;
                 $id = md5($id);
 
-                $db->cadastrarPedidosTemporarios($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$preco);
+                $idPedidosTemporarios = $db->cadastrarPedidosTemporarios($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$preco,$tipo);
+                
+                $dataAluguel =  str_replace('/','-',$arrayDadosPedido['data']);
+                $dataAluguel = date("Ymd", strtotime($dataAluguel));
+
+                $horaEntrada =  str_replace(':','',$arrayDadosPedido['inicioUnico']);
+                $horaSaida =  str_replace(':','',$arrayDadosPedido['fimUnico']);
+                
+                
+                $db->setDetalhesPedido('PedidosTemporariosUnico',$conn,$idPedidosTemporarios ,$dataAluguel, $horaEntrada,$horaSaida);
 
                 $emailProprietario = $arrayUser[2];
                 $tituloEspaco = $array[4];
