@@ -115,7 +115,7 @@ require_once 'FunctionsSession.php';?>
       $resultado = $preco *$calculoHora;
 
       $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
-
+/*
         $explode = explode('/',$idPedido);
         $resposta = $explode[0];
 
@@ -145,6 +145,8 @@ require_once 'FunctionsSession.php';?>
         $estado = $address->{'state'};
         $pais = $address->{'country'};
 
+*/
+
     }else{
       if($calculoHora / 4 == 1){
          // retornar preço na descrição geral de 4 horas
@@ -152,6 +154,8 @@ require_once 'FunctionsSession.php';?>
          $resultado = $preco * $calculoHora;
 
          $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
+
+         /*
 
             $explode = explode('/',$idPedido);
             $resposta = $explode[0];
@@ -181,6 +185,8 @@ require_once 'FunctionsSession.php';?>
             $bairro = $address->{'district'};
             $estado = $address->{'state'};
             $pais = $address->{'country'};
+
+          */
 
 
       }else{
@@ -193,34 +199,38 @@ require_once 'FunctionsSession.php';?>
           // criando pedido e retornando dados do usuário
             $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $resultado,$arrayDados,$getAutorizado);
 
-            $explode = explode('/',$idPedido);
-            $resposta = $explode[0];
+            /*
 
-            $obj = json_decode($resposta);
-            $nomeCompleto = $obj->{'fullname'};
+              $explode = explode('/',$idPedido);
+              $resposta = $explode[0];
 
-            $nascimento = $obj->{'birthDate'};
-            $data = explode('-',$nascimento);
-            $dia = $data[2];
-            $mes = $data[1];
-            $ano = $data[0];
+              $obj = json_decode($resposta);
+              $nomeCompleto = $obj->{'fullname'};
 
-            $phone = $obj->{'phone'};
-            $ddd = $phone->{'areaCode'};
-            $number = $phone->{'number'};
+              $nascimento = $obj->{'birthDate'};
+              $data = explode('-',$nascimento);
+              $dia = $data[2];
+              $mes = $data[1];
+              $ano = $data[0];
 
-            $taxDocument = $obj->{'taxDocument'};
-            $cpf = $taxDocument->{'number'};
+              $phone = $obj->{'phone'};
+              $ddd = $phone->{'areaCode'};
+              $number = $phone->{'number'};
 
-            $address = $obj->{'shippingAddress'};
-            $rua = $address->{'street'};
-            $cep = $address->{'zipCode'};
-            $ruaNumber = $address->{'streetNumber'};
-            $complemento = $address->{'complement'};
-            $cidade = $address->{'city'};
-            $bairro = $address->{'district'};
-            $estado = $address->{'state'};
-            $pais = $address->{'country'};
+              $taxDocument = $obj->{'taxDocument'};
+              $cpf = $taxDocument->{'number'};
+
+              $address = $obj->{'shippingAddress'};
+              $rua = $address->{'street'};
+              $cep = $address->{'zipCode'};
+              $ruaNumber = $address->{'streetNumber'};
+              $complemento = $address->{'complement'};
+              $cidade = $address->{'city'};
+              $bairro = $address->{'district'};
+              $estado = $address->{'state'};
+              $pais = $address->{'country'};
+
+            */
 
         }
       }
@@ -264,7 +274,7 @@ require_once 'FunctionsSession.php';?>
           $arrayDados[1] = $dataFinalDireto;
              $arrayDados[2] = $semanasDireto;
 
-        print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
+          print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
           
        }else{
 
@@ -294,34 +304,61 @@ require_once 'FunctionsSession.php';?>
 
   }
       // falta fazer a multiplicação das semanas em reincidente
+      
   if($_POST['tipoAluguel']=='reincidente'){
 
         $semanasDireto = $_POST['semanas-unico'];
         $dataInicioReincidente = $_POST['data-reincidente-pick'];
-        $periodo  = $_POST['periodo-sel'];
+        $dataInicioReincidente = str_replace('/','-',$dataInicioReincidente);
+       // $periodo  = $_POST['periodo-sel'];
+
+       // $arrayX1= [];
+       // $arrayX2 = [];
+       // $arrayX3 = [];
+        $arrayPeriodos = [];
+
+        $idPedidosTemporarios = $db->cadastrarPedidosTemporarios($conn,'','','',0,'',0);
 
         $segSel = $_POST['seg-periodo-sel'];
-        $arrayPeriodos = [];
         if($segSel=='sim'){
 
-          $segInicioPeriodo = str_replace(':','',$_POST['seg-inicio-periodo']);
-          $segFimPeriodo = str_replace(':','',$_POST['seg-fim-periodo']);
+          $segInicioPeriodo= verificarDecimal( str_replace(':','',$_POST['seg-inicio-periodo']));
+          $segFimPeriodo =  verificarDecimal( str_replace(':','',  $_POST['seg-fim-periodo']));
 
-          if (version_compare($decimal,'0.3') == 0) {
-              $segInicioPeriodo = ($segInicioPeriodo - 0.3)+0.5;
-          }
-
-          $inteiro = floor($segFimPeriodo);
-          $decimal = $segFimPeriodo - $inteiro;
-
-          if (version_compare($decimal,'0.3') == 0) {
-              $segFimPeriodo = ($segFimPeriodo - 0.3)+0.5;
-          }
-
-
-          $periodoSeg = ($segFimPeriodo - $segInicioPeriodo) / 100;
+          $periodoSeg = ($segFimPeriodo - $segInicioPeriodo)/100;
           $arrayPeriodos[1] = $periodoSeg;
 
+          $nextDay = date('Ymd', strtotime("next Monday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto >= 1) {
+         //     $arrayX1[1] =  $nextDay ;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$segInicioPeriodo,$segFimPeriodo);
+              
+          }
+
+          if ($semanasDireto >= 2) {
+    
+              $data = (string)$nextMonday;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+            //  $arrayX2[1] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$segInicioPeriodo,$segFimPeriodo);
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextMonday;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+            //  $arrayX3[1] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$segInicioPeriodo,$segFimPeriodo);
+
+          }
 
         }
 
@@ -336,20 +373,85 @@ require_once 'FunctionsSession.php';?>
 
           $periodoTer = ($terFimPeriodo - $terInicioPeriodo) /100;
           $arrayPeriodos[2]= $periodoTer;
+          
+          $nextDay= date('Ymd', strtotime("next Tuesday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto == 1) {
+          //    $arrayX1[2] =  $nextDay;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$terInicioPeriodo,$terFimPeriodo);
+              
+          }
+
+          if ($semanasDireto == 2) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+          //    $arrayX2[2] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$terInicioPeriodo,$terFimPeriodo);
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+           //   $arrayX3[2] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$terInicioPeriodo,$terFimPeriodo);
+
+          }
+
+          
 
         }
 
-        $quaSel = $_POST['sex-periodo-sel'];
+        $quaSel = $_POST['qua-periodo-sel'];
         if ($quaSel=='sim') {
 
-          $quaInicioPeriodo=  str_replace(':','',$_POST['qua-inicio-periodo']);
-          $quaFimPeriodo =    str_replace(':','', $_POST['qua-fim-periodo']);
-
-          $quaInicioPeriodo = verificarDecimal($quaInicioPeriodo);
-          $quaFimPeriodo = verificarDecimal($quaFimPeriodo);
+          $quaInicioPeriodo= verificarDecimal( str_replace(':','',$_POST['qua-inicio-periodo']));
+          $quaFimPeriodo =  verificarDecimal( str_replace(':','',  $_POST['qua-fim-periodo']));
 
           $periodoQua = ($quaFimPeriodo - $quaInicioPeriodo)/100;
           $arrayPeriodos[3] = $periodoQua;
+
+          $nextDay= date('Ymd', strtotime("next Wednesday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto == 1) {
+           //   $arrayX1[3] =  $nextDay;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$quaInicioPeriodo,$quaFimPeriodo);
+
+              
+          }
+
+          if ($semanasDireto == 2) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+           //   $arrayX2[3] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quaInicioPeriodo,$quaFimPeriodo);
+
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+         //     $arrayX3[3] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quaInicioPeriodo,$quaFimPeriodo);
+
+          }
 
         }
 
@@ -365,9 +467,44 @@ require_once 'FunctionsSession.php';?>
           $periodoQui = ($quiFimPeriodo - $quiInicioPeriodo)/100;
           $arrayPeriodos[4] = $periodoQui; 
 
+          $nextDay= date('Ymd', strtotime("next Thursday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto == 1) {
+           //   $arrayX1[4] =  $nextDay;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$quiInicioPeriodo,$quiFimPeriodo);
+
+              
+          }
+
+          if ($semanasDireto == 2) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+          //    $arrayX2[4] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quiInicioPeriodo,$quiFimPeriodo);
+
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+           //   $arrayX3[4] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$quiInicioPeriodo,$quiFimPeriodo);
+
+
+          }
+
         }
 
-        $sexSel = $_POST['qua-periodo-sel'];
+        $sexSel = $_POST['sex-periodo-sel'];
         if ($sexSel=='sim') {
 
           $sexInicioPeriodo=  str_replace(':','',$_POST['sex-inicio-periodo']);
@@ -379,9 +516,44 @@ require_once 'FunctionsSession.php';?>
           $periodoSex = ($segFimPeriodo - $segInicioPeriodo)/100;
           $arrayPeriodos[5]=$periodoSex;
 
+          
+          $nextDay= date('Ymd', strtotime("next Friday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto == 1) {
+          //    $arrayX1[5] =  $nextDay;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$sexInicioPeriodo,$sexFimPeriodo);
+
+              
+          }
+
+          if ($semanasDireto == 2) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+          //    $arrayX2[5] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sexInicioPeriodo,$sexFimPeriodo);
+
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+         //     $arrayX3[5] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sexInicioPeriodo,$sexFimPeriodo);
+
+          }
+
         }
 
-        $sabSel = $_POST['ter-periodo-sel'];
+        $sabSel = $_POST['sab-periodo-sel'];
         if ($sabSel =='sim') {
 
           $sabInicioPeriodo= verificarDecimal( str_replace(':','',$_POST['sab-inicio-periodo']));
@@ -389,6 +561,40 @@ require_once 'FunctionsSession.php';?>
 
           $periodoSab = ($sabFimPeriodo - $sabInicioPeriodo)/100;
           $arrayPeriodos[6]=$periodoSab;
+
+          $nextDay= date('Ymd', strtotime("next Saturday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto == 1) {
+          //    $arrayX1[6] =  $nextDay;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$sabInicioPeriodo,$sabFimPeriodo);
+
+              
+          }
+
+          if ($semanasDireto == 2) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+            //  $arrayX2[6] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sabInicioPeriodo,$sabFimPeriodo);
+
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+          //    $arrayX3[6] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$sabInicioPeriodo,$sabFimPeriodo);
+
+          }
 
           
         }
@@ -402,57 +608,96 @@ require_once 'FunctionsSession.php';?>
           $periodoDom = ($domFimPeriodo - $domInicioPeriodo)/100;
           $arrayPeriodos[7] = $periodoDom;
 
+          $nextDay= date('Ymd', strtotime("next Sunday",strtotime($dataInicioReincidente)));
+
+          if ($semanasDireto == 1) {
+          //    $arrayX1[7] =  $nextDay;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$nextDay,$domInicioPeriodo,$domFimPeriodo);
+    
+              
+          }
+
+          if ($semanasDireto == 2) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 7;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+             // $arrayX2[7] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$domInicioPeriodo,$domFimPeriodo);
+
+          }
+
+          if ($semanasDireto == 3) {
+    
+              $data = (string)$nextDay;
+              $date = new DateTime($data);
+              $dias = 14;
+              $date->add(new DateInterval('P'.$dias.'D'));
+              $data = $date->format('Ymd');
+             // $arrayX3[7] = $data;
+              $db->setDetalhesPedidoReincidente($conn,$idPedidosTemporarios ,$data,$domInicioPeriodo,$domFimPeriodo);
+
+          }
+
         }
 
         $somaPrecos = 0;
-        for($i=1;$i<=count($arrayPeriodos);$i++){
+        for($i=1;$i<=7;$i++){
+
           
+          if($arrayPeriodos[$i] == null || $arrayPeriodos[$i] == ''){
+            continue;
+          }
+
+        //  print "Pedido dia $i - ". $arrayPeriodos[$i].' ';
+
           if($arrayPeriodos[$i] / 4 < 1){
+
             $preco = $db->retornarPreco($conn,$idAnuncio);
-            $resultado = $preco *$calculoHora;
+            $resultado = $preco *$arrayPeriodos[$i];
             $somaPrecos = $somaPrecos + $resultado ;
+          //  echo "soma preços".$somaPrecos; 
 
           }
 
           if($arrayPeriodos[$i] / 4 == 1){
 
             $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'quatroHora');
-            $resultado = $preco *$calculoHora;
+            $resultado = $preco *$arrayPeriodos[$i];
             $somaPrecos = $somaPrecos + $resultado;
+          //  echo "soma preços".$somaPrecos; 
 
           }
 
           if($arrayPeriodos[$i] / 4 > 1){
 
-            $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincooHora');
-            $resultado = $preco *$calculoHora;
+            $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'cincoHora');
+            $resultado = $preco * $arrayPeriodos[$i];
             $somaPrecos = $somaPrecos + $resultado;
+         //   echo "soma preços".$somaPrecos; 
 
-          }         
+          }      
+
         }
         
-        $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $somaPrecos,$arrayDados,$getAutorizado);
-
-
+        //  print $idAnuncio;
+        $idPedido = $pedido->criarPedidoReincidente($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'],$somaPrecos,$dataInicioReincidente,$semanasDireto,$arrayX1,$arrayX2,$arrayX3,$idPedidosTemporarios);
+        
 
       }
 
-
-
-
-
-
-
       function verificarDecimal($dia){
-       $inteiro = floor($dia);
-       $decimal = $segInicioPeriodo - $inteiro;
-       if (version_compare($decimal,'0.3') == 0) {
-          $dia = ($dia - 0.3)+0.5;
-          return $dia;
-       }else{
-          return $dia;
-       }
-  }
+        $inteiro = floor($dia);
+        $decimal = $segInicioPeriodo - $inteiro;
+        if (version_compare($decimal,'0.3') == 0) {
+            $dia = ($dia - 0.3)+0.5;
+            return $dia;
+        }else{
+            return $dia;
+        }
+      }
 
 
 
@@ -541,6 +786,7 @@ function daysInMonth(month, year) {
     }
     </style>
   <body style="font-family: 'Muli'">
+
 
     <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
       <a class="navbar-brand ml-5" href="index.php" >

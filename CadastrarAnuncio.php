@@ -168,13 +168,14 @@ $session = new FunctionsSession();
                    
                    // $data = date('Ymd');
 
-                    $nextSunday = date('Ymd', strtotime("next Sunday"));
+                    
                     $nextMonday = date('Ymd', strtotime("next Monday"));
                     $nextTuesday = date('Ymd', strtotime("next Tuesday"));
                     $nextWednesday = date('Ymd', strtotime("next Wednesday"));
                     $nextThursday = date('Ymd', strtotime("next Thursday"));
                     $nextFriday = date('Ymd', strtotime("next Friday"));
                     $nextSaturday= date('Ymd', strtotime("next Saturday"));
+                    $nextSunday = date('Ymd', strtotime("next Sunday"));
 
                     $domI = $_POST['dom-inicio-periodo'];
                     $domF = $_POST['dom-fim-periodo'];

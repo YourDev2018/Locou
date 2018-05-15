@@ -43,7 +43,8 @@ if($array[9] == 'consultorio'){
   $anuncio->wifi = true;
   $con = 0;
   $anuncio->numMesa =  $arrayEspecifico[$con++];
-  $anuncio->numCadeira = $arrayEspecifico[$con++];
+  $anuncio->numCadeira = $arrayEspecifico[1];
+
   $anuncio->numLuminaria = $arrayEspecifico[$con++];
   $anuncio->climatizado = $arrayEspecifico[$con++];
   $anuncio->modeloAr = $arrayEspecifico[$con++];
@@ -362,48 +363,48 @@ if($session->vereficarLogin() != false){
 
   <?php $arrayHorarios = $busca-> retornarHorário($conn,$idAnuncio) ?>
 
-  var seg_max_h = <?php $auxExp = explode(':',$arrayHorarios[8]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var seg_max_h = <?php $auxExp = explode(':',$arrayHorarios[8]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var seg_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var seg_min_h = <?php  $auxExp = explode(':',$arrayHorarios[1]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var seg_min_h = <?php  $auxExp = explode(':',$arrayHorarios[1]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var seg_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
 
-  var ter_max_h = <?php $auxExp = explode(':',$arrayHorarios[9]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var ter_max_h = <?php $auxExp = explode(':',$arrayHorarios[9]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var ter_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var ter_min_h = <?php $auxExp = explode(':',$arrayHorarios[2]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var ter_min_h = <?php $auxExp = explode(':',$arrayHorarios[2]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var ter_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
 
-  var qua_max_h = <?php $auxExp = explode(':',$arrayHorarios[10]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var qua_max_h = <?php $auxExp = explode(':',$arrayHorarios[10]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var qua_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qua_min_h = <?php $auxExp = explode(':',$arrayHorarios[3]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var qua_min_h = <?php $auxExp = explode(':',$arrayHorarios[3]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var qua_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qui_max_h = <?php $auxExp = explode(':',$arrayHorarios[11]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var qui_max_h = <?php $auxExp = explode(':',$arrayHorarios[11]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var qui_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var qui_min_h = <?php $auxExp = explode(':',$arrayHorarios[4]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var qui_min_h = <?php $auxExp = explode(':',$arrayHorarios[4]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var qui_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sex_max_h = <?php $auxExp = explode(':',$arrayHorarios[12]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var sex_max_h = <?php $auxExp = explode(':',$arrayHorarios[12]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var sex_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sex_min_h = <?php $auxExp = explode(':',$arrayHorarios[5]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var sex_min_h = <?php $auxExp = explode(':',$arrayHorarios[5]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var sex_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sab_max_h = <?php $auxExp = explode(':',$arrayHorarios[13]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var sab_max_h = <?php $auxExp = explode(':',$arrayHorarios[13]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var sab_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var sab_min_h = <?php $auxExp = explode(':',$arrayHorarios[6]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var sab_min_h = <?php $auxExp = explode(':',$arrayHorarios[6]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var sab_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var dom_max_h = <?php $auxExp = explode(':',$arrayHorarios[14]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var dom_max_h = <?php $auxExp = explode(':',$arrayHorarios[14]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var dom_max_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
-  var dom_min_h = <?php $auxExp = explode(':',$arrayHorarios[7]); if($arrayExp[0] == ''){echo '0';}else{echo $arrayExp[0]; } ?>;
+  var dom_min_h = <?php $auxExp = explode(':',$arrayHorarios[7]); if($auxExp[0] == ''){echo '0';}else{echo $auxExp[0]; } ?>;
   var dom_min_m = <?php if ($auxExp[1]!='00'){ if($auxExp[1] == '' ){echo '0';}else{echo $auxExp[1];} }else{echo '0';}?>;
 
   var today = new Date();
@@ -1038,22 +1039,22 @@ if($session->vereficarLogin() != false){
                         //mobilia  - consultorio
                         if("<?php if($anuncio->numMesa < '0'){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa ?></span> Mesa(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa; ?></span> Mesa(s)</h5></div>";
                         }
                         //mobilia  - consultorio
                         if("<?php if($anuncio->numCadeira < '0'){echo '0';}else{echo "$anuncio->numCadeira";}?>" >'0') //mobilia  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numCadeira?></span> Cadeira(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numCadeira;?></span> Cadeira(s)</h5></div>";
                         }
                         //mobilia  - consultorio
                         if("<?php if($anuncio->numLuminaria <'0'){echo '0';}else{echo "$anuncio->numLuminaria";}?>" >'0') //mobilia  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/lamp.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numLuminaria?></span> Luminária(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/lamp.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numLuminaria; ?></span> Luminária(s)</h5></div>";
                         }
                         //mobilia  - consultorio
                         if("<?php if($anuncio->numMaca <'0'){echo '0';}else{echo "$anuncio->numMaca";}?>" >'0') //mobilia  - consultorio
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numMaca?></span> Maca(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMaca?></span> Maca(s)</h5></div>";
                         }
                         if("<?php if($anuncio->balanca !='sim'){echo 'nao';}else{echo "$anuncio->balanca";}?>" == "sim") //balanca  - consultorio
                         {
@@ -1074,32 +1075,32 @@ if($session->vereficarLogin() != false){
                         //mobilia  - workshop / palestra
                         if("<?php if($anuncio->numMesa <= 0 ){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa ?></span> Mesa(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa; ?></span> Mesa(s)</h5></div>";
                         }
                         //mobilia  - workshop / palestra
                         if("<?php if($anuncio->numCadeira<= 0){echo '0';}else{echo "$anuncio->numCadeira";}?>" > '0') //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numCadeira?></span> Cadeira(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numCadeira;?></span> Cadeira(s)</h5></div>";
                         }
                         //mobilia  - workshop / palestra
                         if("<?php if($anuncio->numQuadro <= 0){echo '0';}else{echo "$anuncio->numQuadro";}?>" > '0') //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/quadro.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numQuadro?></span> Quadro(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/quadro.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numQuadro;?></span> Quadro(s)</h5></div>";
                         }
                         //mobilia  - workshop / palestra
                         if("<?php if($anuncio->numLousa <= 0){echo '0';}else{echo "$anuncio->numLousa";}?>" > '0') //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/vidrojateado.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numLousa?></span> Lousa de vidro jateada(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/vidrojateado.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numLousa;?></span> Lousa de vidro jateada(s)</h5></div>";
                         }
                         //mobilia  - workshop / palestra
                         if("<?php if($anuncio->numTelao <= 0){echo '0';}else{echo "$anuncio->numTelao";}?>" > '0') //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/telao.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numTelao?></span> Telões</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/telao.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numTelao?></span> Telões</h5></div>";
                         }
                         //mobilia  - workshop / palestra
                         if("<?php if($anuncio->numTv <= 0){echo '0';}else{echo "$anuncio->numTv";}?>" > '0') //mobilia  - workshop / palestra
                         {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> <span style=\"color: #FFCE00\"><?echo $anuncio->numTv?></span> TV(s)</h5></div>";
+                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numTv?></span> TV(s)</h5></div>";
                         }
                         if("<?php if($anuncio->projetor !='sim'){echo 'nao';}else{echo "$anuncio->projetor";}?>" == "sim") //datashow  - workshop / palestra
                         {
@@ -1498,7 +1499,7 @@ if($session->vereficarLogin() != false){
                     <br>
                     <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato <br class="mobile"> com o anunciante</button>
                     <br>
-                    <a href="#alugarEspaco"><button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning mt-4">Alugue agora!</button></a>
+                    <a href="#alugarEspaco"><button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning mt-4">Faça o pedido de aluguel agora!</button></a>
                   </p>
                 </div>
                 <div class="col-12 pt-2">
@@ -5559,7 +5560,7 @@ if($session->vereficarLogin() != false){
       <div class="col-12 text-center justify-content-center">
         <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php //echo $array['7']?></span> </h5>
         <br>
-        <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Alugue Agora</span>
+        <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Faça o pedido de aluguel agora</span>
       </div>
     </div>
   </div>

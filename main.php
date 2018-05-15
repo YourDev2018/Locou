@@ -27,7 +27,8 @@ require_once 'BuscarEspacos.php';
 //anuncioAdd();
 // usuarioCliente();
 //testarLogin();
-criarNotificacao();
+//criarNotificacao();
+retornarDiasCadastrados();
 
   //  print  $data = date('Y-m-d')."\n  ";
 /*
@@ -81,6 +82,14 @@ var_dump($arrayUser);
   $busca = new BuscarEspacos();
 // $array = $busca -> retornarMenorHorário($conn,174);
  // print $array[1];
+
+function retornarDiasCadastrados(){
+    $db = new FunctionsDB();
+    $conn = $db->conectDB();
+    $busca = new BuscarEspacos();
+    //$nextMonday = date('Ymd', strtotime("next Monday"));
+   // print_r($array = $busca->retornarHorário($conn,'161'));
+}
  
 function criarNotificacao(){
 

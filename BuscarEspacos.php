@@ -317,13 +317,13 @@ class BuscarEspacos
 
 
                 
-                $array[$cont] = $row['numMesa'];
-                $cont++;
+                $array[$cont] = $row['numMesa']; //0
+                $cont = $cont + 1;
 
-                $array[$cont] = $row['numCadeira'];
-                $cont++;
+                $array[$cont] = $row['nunCadeira']; // 1
+                $cont++; 
 
-                $array[$cont] = $row['numLuminaria'];
+                $array[$cont] = $row['numLuminaria']; // 2  
                 $cont++;
 
                 $array[$cont] = $row['climatizado'];
@@ -366,11 +366,11 @@ class BuscarEspacos
                 $array[$cont] = $row['descricao'];
                 $cont++;
 
-             
+                return $array;   
 
             }
-                // print_r($array);
-            return $array;        
+            //    print_r($array);
+                 
         }
 
     }
@@ -390,7 +390,7 @@ class BuscarEspacos
             
 
                 $array[$cont] = $row['numMesa'];
-                $cont++;
+                $cont = $cont + 1;
                 $array[$cont] = $row['numCadeira'];
                 $cont++;
 
@@ -458,11 +458,11 @@ class BuscarEspacos
 
 
 
-             
+               return $array;  
 
             }
                 // print_r($array);
-            return $array;        
+                
         }
 
     }
@@ -481,7 +481,7 @@ class BuscarEspacos
             
 
                 $array[$cont] = $row['numMesa'];
-                $cont++;
+                $cont = $cont + 1;
                 $array[$cont] = $row['numCadeira'];
                 $cont++;
 
@@ -550,9 +550,11 @@ class BuscarEspacos
                  $array[$cont] = $row['descricaoAberta'];
                 $cont++;
 
+                return $array;    
+
             }
                 // print_r($array);
-            return $array;        
+                
         }
 
     }
@@ -570,7 +572,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
                 
                 $array[$cont] = $row['tatame'];
-                $cont++;
+                $cont = $cont + 1;
                 
                 $array[$cont] = $row['armarios'];
                 $cont++;
@@ -615,7 +617,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
             
                 $array[$cont] = $row['forno'];
-                $cont++;
+                $cont = $cont + 1;
                 
                 $array[$cont] = $row['macarico'];
                 $cont++;
@@ -650,7 +652,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
                 
                 $array[$cont] = $row['camarim'];
-                $cont++;
+                $cont = $cont + 1;
                 
                 $array[$cont] = $row['apoio'];
                 $cont++;
@@ -683,7 +685,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
             
                 $array[$cont] = $row['recepcao'];
-                $cont++;
+                $cont = $cont + 1;
                 
                 $array[$cont] = $row['maquina'];
                 $cont++;
@@ -719,7 +721,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
             
                 $array[$cont] = $row['camarim'];
-                $cont++;
+                $cont = $cont + 1;
                 
                 $array[$cont] = $row['apoio'];
                 $cont++;
@@ -753,7 +755,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
             
                 $array[$cont] = $row['climatizado'];
-                $cont++;
+                $cont = $cont + 1;
                 
                 $array[$cont] = $row['modeloAr'];
                 $cont++;
@@ -813,7 +815,7 @@ class BuscarEspacos
             while ($row=$result->fetch_assoc()) {
             
                 $array[$cont] = $row['numMesa'];
-                $cont++;
+                $cont = $cont + 1;
                 $array[$cont] = $row['numCadeira'];
                 $cont++;
 
@@ -901,7 +903,7 @@ class BuscarEspacos
              while ($row=$result->fetch_assoc()) {
 
                 $array[$cont] = $row['climatizado'];
-                $cont++;
+                $cont = $cont + 1;
 
                 $array[$cont] = $row['modeloAr'];
                 $cont++;
@@ -1159,7 +1161,7 @@ class BuscarEspacos
                 $dateEntrada = $row['dataEntrada'];
                 $newDate = date("d-m-Y", strtotime($dateEntrada));
                 $day = date('N',strtotime($newDate));
-              //  print $day;
+               // print $day;
                 if($day == 1){
 
                     if ($menorEntradaSegunda == 0){
@@ -1187,11 +1189,11 @@ class BuscarEspacos
 
                      if ($$menorEntradaTerca == 0){
 
-                        $$menorEntradaTerca = $row['horaEntrada'];
+                        $menorEntradaTerca = $row['horaEntrada'];
 
                     }else{
                         if ($$menorEntradaTerca < $row['horaEntrada'] ) {
-                            $$menorEntradaTerca = $row['horaEntrada'] ;
+                            $menorEntradaTerca = $row['horaEntrada'] ;
                         }
 
                     } 
@@ -1286,7 +1288,7 @@ class BuscarEspacos
 
                     } 
                     
-                     if ($row['horaSaida'] > $maiorEntradaDomingo){
+                     if ($row['horaSaida'] > $maiorEntradaSabado){
 
                         $maiorEntradaSabado = $row['horaSaida'];
 
@@ -1419,6 +1421,33 @@ class BuscarEspacos
             
 
             }
+        }
+
+    }
+
+    public function getPedidosTemporariosReincidentes($db,$idPedido){
+
+        $result =  $db->query("SELECT * FROM PedidosTemporariosReincidente WHERE idPedidoTemporario	 = '$idPedido' ") ; // 
+        $aux = mysqli_num_rows($result);
+    
+        $array = [];
+        $cont = 0;
+
+        if ($aux <=0) {
+
+            return false;
+
+        }else{
+            /*
+            while ($row=$result->fetch_assoc()) {
+                
+                $array[$cont++] = $row['dataAnuncio'];  // 0
+                $array[$cont++] = $row['horaEntrada']; // 1
+                $array[$cont++] = $row['horaSaida']; // 2
+                        
+            }
+            */
+            return $result ;
         }
 
     }

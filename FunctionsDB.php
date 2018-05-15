@@ -645,6 +645,23 @@ require_once 'functions.php';
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;
+                    print $id = mysqli_insert_id($db); 
+                    return $id;
+
+                }else{
+                    print 'failed';
+                    return "Insert failed";
+                }
+
+        }
+
+        function setDetalhesPedidoReincidente($conn,$idAnuncio, $dataEntrada, $horaEntrada, $horaSaida){
+
+                $sql = "INSERT INTO PedidosTemporariosReincidente (idPedidoTemporario, dataAnuncio, horaEntrada	,horaSaida)
+                                    VALUES ('$idAnuncio','$dataEntrada', '$horaEntrada', '$horaSaida')";
+
+                if ($conn->query($sql)===true) {  
+                   // print $db->error_log;
                     return true;
 
                 }else{
@@ -653,5 +670,22 @@ require_once 'functions.php';
                 }
 
         }
+
+        function atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$somaPrecos,$idPedidosTemporarios){
+
+            $sql = "UPDATE PedidosTemporarios SET hashId = '$id', idCliente = '$idUsuario', idMoipProprietario = '$idMoipProprietario', idAnuncio = '$idAnuncio', tituloAnuncio = '$tituloAnuncio', preco = '$somaPrecos' WHERE id = $idPedidosTemporarios"; 
+            
+             if ($conn->query($sql)===true) {  
+                   // print $db->error_log;
+                    return true;
+
+            }else{
+                //  print 'failed';
+                return "Insert failed";
+            }
+
+
+        }
+
     }
 ?>

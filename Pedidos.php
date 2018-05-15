@@ -219,6 +219,90 @@ class Pedidos
        
     }
 
+    function criarPedidoReincidente($conn,$idUsuario,$idAnuncio,$tipo,$somaPrecos,$dataInicioReincidente,$semanadasDireto,$arrayX1,$arrayX2,$arrayX3,$idPedidosTemporarios){
+
+        $db = new FunctionsDB();
+
+        $busca= new BuscarEspacos();
+        
+        // pode ser mais otimizado, recendo por parametro, na classe pagamento o id do dono do anuncio
+        $idProprietario = $busca->retornarIdUserAnuncio($conn,$idAnuncio); // conferido
+        $idMoipProprietario = $db->getUsuarioProprietario($conn,$idProprietario); // conferido
+      
+        if ($idMoipProprietario == null || $idMoipProprietario == '') {
+
+            print 'Esse anuncio não está vinculado a um proprietário';
+            exit();            
+
+        }else{
+
+            if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
+
+                echo "Anuncio do tipo instantaneo, esse tipo foi desabilitado";
+                exit();
+                /*
+                    Linha de codigo logica para Anuncio instantaneo, esse tipo foi desabilitado pela claudia
+
+                    $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+                    $idClient = $db->getIdClientMoip($conn,$idUsuario);
+
+                    $id= $db->getUltimoIDs($conn,'Pedidos');
+                    $id = $id+1;
+                    
+                    $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
+                    
+                    $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
+                    return $idOrder;
+
+                */
+
+                // retorna 
+
+            }else{
+                //print ' enviar email autorizando o aluguel ';
+
+                if ($dataInicioReincidente == null || $dataInicioReincidente == "") {
+                    print 'Data Inicicio reincidente nulo ou vazio';
+                    exit();
+                }
+                /*
+                if ($arrayX1 == null || $arrayX1 == "") {
+                    print 'Sem datas selecionadas';
+                    exit();
+                }
+                */
+
+                
+                $enviarEmail = new EnviarEmail();
+                $arrayUser = $db->getUsuarioBasico($conn,$idUsuario); 
+                $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+                $idClient = $db->getIdClientMoip($conn,$idUsuario);
+                $id = $db->getUltimoIDs($conn,'PedidosTemporarios');
+                $id = $id  +1;
+                $id = md5($id);
+
+                $db->atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$somaPrecos,$idPedidosTemporarios);
+
+                $emailProprietario = $arrayUser[2];
+                $tituloEspaco = $array[4];
+
+                $arrayProprietario = $db->getInfoUserProprietario($conn,$idAnuncio);
+                $arrayInquilino = $db->getUsuarioBasico($conn,$idUsuario);
+
+                $nameProprietario = $arrayProprietario[0];
+                $nameInquilino = $arrayInquilino[0];    
+                $titulo = $array[4];
+
+                $enviarEmail->enviarConfirmacaoReincidente($emailProprietario,$titulo,$nameProprietario,$nameInquilino,$id,$idAnuncio,$dataInicioReincidente,$semanadasDireto,$arrayX1,$arrayX2,$arrayX3, $idPedidosTemporarios);
+
+            }
+        
+        }
+       
+    }
+
+    
+
     function consultarPedido($idPedido){
 
 
