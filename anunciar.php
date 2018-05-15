@@ -3875,7 +3875,7 @@
 
 <br><br>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="display:none">
   <div class="col-12 text-center">
     Clique aqui para ativar a opção de "reserva instantânea". <input type="checkbox" name="reservaInsta" class="ml-3 form-check-input" id="reservaInsta">
   </div>
@@ -4188,7 +4188,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -4769,7 +4769,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe em geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe em geral? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -5358,7 +5358,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe sobre equipamentos ou algo de maneira geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe sobre equipamentos ou algo de maneira geral? Utilize esse campo aberto de descrição.  (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -5484,7 +5484,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe sobre infraestrutura ou algo de maneira geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe sobre infraestrutura ou algo de maneira geral? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -5752,7 +5752,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -5893,7 +5893,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -6093,7 +6093,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -6237,7 +6237,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição.
+        Quer adicionar mais algum detalhe de maneira geral? Utilize esse campo aberto de descrição. (Mínimo de 100 caractéres)
       </div>
     </div>
     <div class="row">
@@ -6577,14 +6577,6 @@ function proximo()
       document.getElementById('anunciar').style.display = 'none';
       fotos.style.display = "none";
 
-      var consultorioD = document.getElementById("descricao_aberta_consultorio");
-      var workshopD = document.getElementById("descricao_aberta_workshop");
-      var cozinhaD = document.getElementById("descricao_aberta_cozinha");
-      var ensaioD = document.getElementById("descricao_aberta_ensaio");
-      var fotograficoD = document.getElementById("descricao_aberta_fotografico");
-      var costuraD = document.getElementById("descricao_geral_costura");
-      var academiaD = document.getElementById("descricao_geral_academia");
-      var artesD = document.getElementById("descricao_geral_artes");
 
       if(categoria == "consultorio" || )
       {
@@ -6628,6 +6620,16 @@ function proximo()
 
   if(pagina == 4)
   {
+    var consultorioD = document.getElementById("descricao_aberta_consultorio");
+    var workshopD = document.getElementById("descricao_aberta_workshop");
+    var cozinhaD = document.getElementById("descricao_aberta_cozinha");
+    var ensaioD = document.getElementById("descricao_aberta_ensaio");
+    var fotograficoD = document.getElementById("descricao_aberta_fotografico");
+    var costuraD = document.getElementById("descricao_geral_costura");
+    var academiaD = document.getElementById("descricao_geral_academia");
+    var artesD = document.getElementById("descricao_geral_artes");
+    if(consultorioD.length>=100 || workshopD.length>=100 || cozinhaD.length>=100 || ensaioD.length>=100 || fotograficoD.length>=100 || costuraD.length>=100 || academiaD.length>=100 || artesD.length>=100)
+
     fotos.style.display = "";
     consultorio.style.display = "none";
     workshop.style.display = "none";

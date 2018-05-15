@@ -564,7 +564,7 @@ if (!($tipo == "" || $tipo == null) ) {
         </div>
         <div class="row text-left">
           <div class="col-12 py-3 px-4">
-            <h5>Busca por Query do usuário <span class="h6" style="color: grey"> -  <?php  if($array!= "" || $array !=null ){ echo count($array)/6;} ?> resultado(s)</span> </h5>
+            <h5>A pesquisa retornou um total de <span class="h6" style="color: grey"> -  <?php  if($array!= "" || $array !=null ){ echo count($array)/6;} ?> resultado(s)</span> </h5>
           </div>
           <div class="col-12 pt-3 px-4">
             <select class="" name="ordemPesquisa">
