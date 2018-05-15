@@ -435,7 +435,7 @@ if($session->vereficarLogin() != false){
   // $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
 
   $( function() {
-    $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] });
+    $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [<?php if($seg == false){echo 1;} ?>,<?php if($ter == false){echo 2;} ?>,<?php if($qua == false){echo 3;} ?>,<?php if($qui == false){echo 4;} ?>,<?php if($sex == false){echo 5;} ?>,<?php if($sab == false){echo 6;} ?>,<?php if($dom == false){echo 0;} ?>], daysOfWeekHighlighted: [<?php if($seg == true){echo 1;} ?>,<?php if($ter == true){echo 2;} ?>,<?php if($qua == true){echo 3;} ?>,<?php if($qui == true){echo 4;} ?>,<?php if($sex == true){echo 5;} ?>,<?php if($sab == true){echo 6;} ?>,<?php if($dom == true){echo 0;} ?>], datesDisabled: [] });
   } );
 
   $( function() {
@@ -546,7 +546,7 @@ if($session->vereficarLogin() != false){
       <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
         <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-        <a class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
+        <a style="display:none" class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
         <a href="<?php echo "logout.php?pag=anuncio&id=".$idAnuncio ?>" style="color:white" class="mx-2">Logout</a>
       <?php } ?>
     </span>
@@ -577,7 +577,7 @@ if($session->vereficarLogin() != false){
           <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
-            <a class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
+            <a style="display:none" class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
 
 
             <a href="<?php echo "logout.php?pag=anuncio&id=".$idAnuncio ?>" style="color:white" class="mx-2">Logout</a>
