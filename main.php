@@ -27,8 +27,9 @@ require_once 'BuscarEspacos.php';
 //anuncioAdd();
 // usuarioCliente();
 //testarLogin();
-//criarNotificacao();
-retornarDiasCadastrados();
+criarNotificacao();
+//retornarDiasCadastrados();
+//aprovar();
 
   //  print  $data = date('Y-m-d')."\n  ";
 /*
@@ -80,8 +81,14 @@ var_dump($arrayUser);
   $conn = $db->conectDB();
 
   $busca = new BuscarEspacos();
+ 
 // $array = $busca -> retornarMenorHorário($conn,174);
  // print $array[1];
+
+ function aprovar(){
+    $func = new Functions();
+    $func->aprovarCompra('PAY-LCBDMRCORIYY','38400');
+ }
 
 function retornarDiasCadastrados(){
     $db = new FunctionsDB();
@@ -95,10 +102,11 @@ function retornarDiasCadastrados(){
 function criarNotificacao(){
 
     $func = new functions();
-  //  $func->criarPreferenciaNotificacaoApp();
-  // $func->listarPreferenciaNotificacao();
-   $func->consultarChamada();
-
+   //$func->criarPreferenciaNotificacaoApp();
+    // $func->excluirPreferenciaNotificacaoApp();
+  //$func->listarPreferenciaNotificacao();
+   //$func->consultarChamada();
+   
 }
 
 function testarLogin(){

@@ -10,13 +10,22 @@
 
     $obj = json_decode($json);
     $tipoEvento = $obj->{'event'};
+
     
     $db = new FunctionsDB();
     $conn = $db->conectDB();
-    $email = new EnviarEmail();
-   
-    $pedidos = new Pedidos();
 
+    $sql = "INSERT INTO OutrosEstados(nome, cidade, estado, email, celular, tipo, outraInformacao) VALUES ('$json','$obj','','','','','$tipoEvento')";
+    if ($conn->query($sql)===true) {
+        
+    }else{
+        $db->closeDB($conn);
+    }
+    
+    http_response_code(200);
+    http_response_code();
+
+    /*
     // 1° - Primeiro tratamento / envio de email
        
     // Quando seu pagamento esta sendo analisado
@@ -182,9 +191,9 @@
 
     }
 
-    http_response_code(200);
-    http_response_code();
 
+ 
+*/
 
    
 

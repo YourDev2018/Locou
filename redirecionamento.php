@@ -31,8 +31,8 @@ if ($buscaPedidoTemporario == false) {
 
     $pedidos = new Pedidos();
 
- //   $id = $db->getUltimoIDs($conn,'Pedidos');
- //   $id = $id+1; // CONFERIDO
+    $idPedido = $db->getUltimoIDs($conn,'Pedidos');
+    $idPedido = $idPedido+1; // CONFERIDO
 
     $idMoipCliente = $db->getIdClientMoip($conn,$idUsuario); // conferido
 
@@ -41,8 +41,8 @@ if ($buscaPedidoTemporario == false) {
     $titulo = $buscaPedidoTemporario[3]; // conferido
     $preco = $buscaPedidoTemporario[4]; // conferido
 
-    
-    $idOrder = $pedidos->criarPedidoComClientMOIP($id,$idMoipCliente,$idMoipProprietario,$titulo,$preco);
+ 
+    $idOrder = $pedidos->criarPedidoComClientMOIP($idPedido,$idMoipCliente,$idMoipProprietario,$titulo,$preco);
 
     $db->salvarPedido($conn,$idAnuncio,$hashId,$idUsuario,$idOrder);
 
@@ -52,7 +52,7 @@ if ($buscaPedidoTemporario == false) {
     $nomeCliente = $arrayUsuario[0];
     
     $enviarEmail = new EnviarEmail();
-    print $enviarEmail->enviarEmailPagamento($emailCliente,$nomeCliente,$titulo,$hashId); 
+    $enviarEmail->enviarEmailPagamento($emailCliente,$nomeCliente,$titulo,$hashId); 
     
     // mostrar a tela visual, ou como vai ocorrer quando chegar em redirecionamento
     // Enviar email para a cláudia 
