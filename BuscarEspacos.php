@@ -1388,7 +1388,8 @@ class BuscarEspacos
                 $array[$cont++] = $row['idMoipProprietario']; // 2
                 $array[$cont++] = $row['tituloAnuncio']; // 3
                 $array[$cont++] = $row['preco']; // 4
-                
+                $array[$cont++] = $row['id']; // 5
+                $array[$cont++] = $row['tipo']; // 6
 
                 return $array;
 
@@ -1426,6 +1427,35 @@ class BuscarEspacos
 
     }
 
+        public function getPedidosDBPorOrder($db, $idOrder){
+
+        $result =  $db->query("SELECT * FROM Pedidos WHERE idHash = '$idOrder' ") ; // 
+        $aux = mysqli_num_rows($result);
+    
+        $array = [];
+        $cont = 0;
+
+        if ($aux <=0) {
+
+            return false;
+
+        }else{
+            
+            while ($row=$result->fetch_assoc()) {
+                
+                $array[$cont++] = $row['idHash'];  // 0
+                $array[$cont++] = $row['idAnuncio']; // 1
+                $array[$cont++] = $row['idUsuario']; // 2
+              //  $array[$cont++] = $row['idOrder']; // 
+
+                return $array;
+            
+
+            }
+        }
+
+    }
+
     public function getPedidosTemporariosReincidentes($db,$idPedido){
 
         $result =  $db->query("SELECT * FROM PedidosTemporariosReincidente WHERE idPedidoTemporario	 = '$idPedido' ") ; // 
@@ -1452,6 +1482,35 @@ class BuscarEspacos
         }
 
     }
+
+    public function getPedidosTemporariosUnico($db,$idPedido){
+
+        $result =  $db->query("SELECT * FROM PedidosTemporariosUnico WHERE idPedidoTemporario = '$idPedido' ") ; // 
+        $aux = mysqli_num_rows($result);
+    
+        $array = [];
+        $cont = 0;
+
+        if ($aux <=0) {
+
+            return false;
+
+        }else{
+            
+            while ($row=$result->fetch_assoc()) {
+                
+                $array[$cont++] = $row['dataAnuncio'];  // 0
+                $array[$cont++] = $row['horaEntrada']; // 1
+                $array[$cont++] = $row['horaSaida']; // 2
+                return $array ;     
+            }
+           
+            
+        }
+
+    }
+
+
 }
 
 

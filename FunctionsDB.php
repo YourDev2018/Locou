@@ -638,10 +638,10 @@ require_once 'functions.php';
         }
 
 
-        function cadastrarPedidosTemporarios($db,$hashId,$idCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco){
+        function cadastrarPedidosTemporarios($db,$hashId,$idCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco,$tipo){
 
-             $sql = "INSERT INTO PedidosTemporarios(hashId, idCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco)
-                                    VALUES ('$hashId','$idCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco')";
+             $sql = "INSERT INTO PedidosTemporarios(hashId, idCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco,tipo)
+                                    VALUES ('$hashId','$idCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco','$tipo')";
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;
@@ -655,9 +655,9 @@ require_once 'functions.php';
 
         }
 
-        function setDetalhesPedidoReincidente($conn,$idAnuncio, $dataEntrada, $horaEntrada, $horaSaida){
+        function setDetalhesPedido($tabela,$conn,$idAnuncio, $dataEntrada, $horaEntrada, $horaSaida){
 
-                $sql = "INSERT INTO PedidosTemporariosReincidente (idPedidoTemporario, dataAnuncio, horaEntrada	,horaSaida)
+                $sql = "INSERT INTO $tabela (idPedidoTemporario, dataAnuncio, horaEntrada	,horaSaida)
                                     VALUES ('$idAnuncio','$dataEntrada', '$horaEntrada', '$horaSaida')";
 
                 if ($conn->query($sql)===true) {  
@@ -670,6 +670,8 @@ require_once 'functions.php';
                 }
 
         }
+
+        
 
         function atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$somaPrecos,$idPedidosTemporarios){
 
@@ -684,6 +686,10 @@ require_once 'functions.php';
                 return "Insert failed";
             }
 
+
+        }
+
+        function atualizarPedidosTemporarios($idOrder){
 
         }
 

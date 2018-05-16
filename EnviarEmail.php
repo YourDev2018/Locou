@@ -125,7 +125,7 @@ class EnviarEmail
                                 $corpo .= "Data : ". $row['dataAnuncio']. "<br>";  // 0
                                 $corpo .= "Entrada : ". $row['horaEntrada']. "<br>"; // 1
                                 $corpo .= "Saida : ". $row['horaSaida']. "<p>"; // 2
-
+                                 $corpo .= "</body></html>";
                         }
 
                         echo $corpo;
@@ -150,24 +150,28 @@ class EnviarEmail
         $link = "http://www.yourdev.com.br/clientes/locou/pagamento.php?id=$hashId";
 
         $assunto = "Aluguel $titulo foi aprovado";
-        $corpo = "Olá $nomeCliente. <br>";
+         $corpo = '<html><body>';
+        $corpo .= "Olá $nomeCliente. <br>";
         $corpo .= "Tenho uma ótima notícia, o pedido de aluguel de $titulo foi aprovado pelo proprietário <br> ";
-        $corpo .= "Clique $link aqui para para efetuar o pagamento e finalizar o aluguel";
+        $corpo .= "Clique <a href=$link> aqui para para efetuar o pagamento e finalizar o aluguel </a> ";
+        $corpo .= "</body></html>";
 
         
 
         if($this->enviar($destino,$assunto,$corpo)){
+            print "Email para pagamento enviado com suceso";
             return true;
         }else{
+            print "Erro ao enviar email ";
             return false;
         }
 
     }
 
-    function enviarEmailClaudia(){
+    function enviarEmailClaudia($assunto,$corpo){
 
-
-        $this->enviar('contato@locou.co','Novo Pedido Locou',$corpo);
+        $this->enviar('morg.guilherme@gmail.com',$assunto,$corpo);
+       // $this->enviar('contato@locou.co',$assunto',$corpo);
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 require_once 'Seguranca.php';
-require_once 'Functions.php';
+require_once 'functions.php';
 
 $seg = new Seguranca();
 $name = $seg->filtro($_POST['nomeC']);
@@ -25,7 +25,7 @@ $orderId = $seg->filtro($_GET['orderID']);
 
 $hash = $_POST['hash'];
 
-$func = new Functions();
+$func = new functions();
 //print $func->pagamentoCartaoCredito($hash,$orderId,$nomePortador,$nascimentoPortador,$cpfPortador,$ddd,$numero,$cidade,$bairro,$rua,$estado,$cep);
 $func->pagamentoCartaoCredito($hash,$orderId,$name,$nascimento,$cpf,$ddd,$numero,$cidade,$bairro,$rua,$estado,$cep);
 
