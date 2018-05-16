@@ -275,7 +275,8 @@ $ano = $_POST['year'];
   
     function criarPreferenciaNotificacaoApp(){
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
+    //    $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
+        $url = "https://sandbox.moip.com.br/v2/preferences/APP-VM93MVN9XDFA/notifications";
         $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
       //  $aux = "ORDER.*";
 
@@ -292,10 +293,11 @@ $ano = $_POST['year'];
             "
             {
             \"events\": [
-                \"PAYMENT.*\",
-                \"ORDER.*\"
+                \"ORDER.*\",
+                \"PAYMENT.*\"
+                
             ],
-            \"target\": \"http://knivet.com.br/ReceberNotificacoes.php\",
+            \"target\": \"http://www.yourdev.com.br/clientes/locou/ReceberNotificacoes.php\",
             \"media\": \"WEBHOOK\"
             } 
             
@@ -314,7 +316,7 @@ $ano = $_POST['year'];
     }
 
     function excluirPreferenciaNotificacaoApp(){
-        $url = "https://sandbox.moip.com.br/v2/preferences/notifications/NPR-TP6BECOXE7OP";
+        $url = "https://sandbox.moip.com.br/v2/preferences/notifications/NPR-IPCR3GILSWGP";
         $curl = curl_init();
 
          curl_setopt_array($curl,array(
@@ -364,7 +366,7 @@ $ano = $_POST['year'];
        // https://sandbox.moip.com.br/v2/webhooks?resourceId=payment_id
     
          $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/webhooks?resourceId=ORD-VD4NC5SESE4K";
+         $url = "https://sandbox.moip.com.br/v2/webhooks?resourceId=ORD-SX7NPDM9W2DD";
        // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(

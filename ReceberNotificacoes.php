@@ -3,8 +3,8 @@
     error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
     require_once 'EnviarEmail.php';
     require_once 'FunctionsDB.php';
-    require_once 'Pedidos.php';
-    require_once 'BuscarEspacos.php';
+ //   require_once 'Pedidos.php';
+ //   require_once 'BuscarEspacos.php';
 
     $json = file_get_contents('php://input');
 
@@ -15,7 +15,7 @@
     $db = new FunctionsDB();
     $conn = $db->conectDB();
 
-    $sql = "INSERT INTO OutrosEstados(nome, cidade, estado, email, celular, tipo, outraInformacao) VALUES ('$json','$obj','','','','','$tipoEvento')";
+    $sql = "INSERT INTO OutrosEstados(nome, cidade, estado, email, celular, tipo, outraInformacao) VALUES ('$tipoEvento','$tipoEvento','','','','','$tipoEvento')";
     if ($conn->query($sql)===true) {
         
     }else{
