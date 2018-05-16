@@ -378,7 +378,7 @@ if (!($tipo == "" || $tipo == null) ) {
     </span>
   </nav>
 
-  <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+  <nav class="navbar mobile" style="background-color: rgba(0,0,0,1)">
     <div class="row justify-content-center text-center">
       <div class="col-12">
         <a href="index.php">
@@ -394,6 +394,7 @@ if (!($tipo == "" || $tipo == null) ) {
         <span class="menu-navbar" style="color:white">
           <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
           <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+          <br>
           <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -404,7 +405,12 @@ if (!($tipo == "" || $tipo == null) ) {
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
             <a style="display:none" class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
-            <a href="<?php echo "logout.php?pag=resultado"?>" style="color:white" class="mx-2">Logout</a>
+
+
+            <a href="<?php echo "logout.php?pag=anuncio&id=".$idAnuncio ?>" style="color:white" class="mx-2">Logout</a>
+
+
+
           <?php } ?>
           <br><br>
 
@@ -597,13 +603,13 @@ if (!($tipo == "" || $tipo == null) ) {
           <div class="col-12 py-3 px-4">
             <h5>A pesquisa retornou um total de <span class="h6" style="color: grey"> -  <?php  if($array!= "" || $array !=null ){ echo count($array)/6;} ?> resultado(s)</span> </h5>
           </div>
-          <div class="col-12 pt-3 px-4">
+          <!-- <div class="col-12 pt-3 px-4">
             <select class="" name="ordemPesquisa">
               <option value="aleatorio">Aleatório</option>
               <option value="popular">Mais Popular</option>
               <option value="diaria">Menor valor de diária</option>
             </select>
-          </div>
+          </div> -->
         </div>
         <div class="row text-center">
           <div class="col-12 px-4">
