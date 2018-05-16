@@ -227,7 +227,7 @@ function daysInMonth(month, year) {
       </span>
     </nav>
 
-    <nav class="navbar mobile " style="background-color: rgba(0,0,0,1)">
+    <nav class="navbar mobile" style="background-color: rgba(0,0,0,1)">
       <div class="row justify-content-center text-center">
         <div class="col-12">
           <a href="index.php">
@@ -241,8 +241,9 @@ function daysInMonth(month, year) {
         </div>
         <div class="col-12">
           <span class="menu-navbar" style="color:white">
-            <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-            <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
+            <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+            <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+            <br>
             <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
             <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -255,8 +256,7 @@ function daysInMonth(month, year) {
               <a style="display:none" class="mx-3"><i style="font-size: 120%" class="far fa-bell"></i></a>
 
 
-
-                <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
+              <a href="<?php echo "logout.php?pag=anuncio&id=".$idAnuncio ?>" style="color:white" class="mx-2">Logout</a>
 
 
 

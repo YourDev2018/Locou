@@ -89,7 +89,7 @@ if($array[9] == 'cozinha'){
   $anuncio->tipoFogao = $arrayEspecifico[$con++];
   $anuncio->descricaoExaustor = $arrayEspecifico[$con++];
   $anuncio->descricao = $arrayEspecifico[$con++];
- // $anuncio-> = $arrayEspecifico[$con++];
+  // $anuncio-> = $arrayEspecifico[$con++];
 
 }
 
@@ -117,7 +117,7 @@ if($array == 'artes'){
   $anuncio->armario = $arrayEspecifico[$con++];
   $anuncio->descricao= $arrayEspecifico[$con++];
 
- // $anuncio-> = $arrayEspecifico[$con++];
+  // $anuncio-> = $arrayEspecifico[$con++];
 
 
 }
@@ -201,8 +201,8 @@ if($array == 'palestra'){
   $anuncio->buffetExtra = $arrayEspecifico[$con++];
   $anuncio->descricaoEquipamento = $arrayEspecifico[$con++];
   $anuncio->descricao = $arrayEspecifico[$con++];
- // $anuncio-> = $arrayEspecifico[$con++];
- // $anuncio-> = $arrayEspecifico[$con++];
+  // $anuncio-> = $arrayEspecifico[$con++];
+  // $anuncio-> = $arrayEspecifico[$con++];
 
 
 
@@ -211,7 +211,7 @@ if($array == 'palestra'){
 
 if($array == 'produtora'){
   $arrayEspecifico = $busca -> retornarAnuncioProdutoraDetalhado($conn,$idAnuncio);
-   $con = 0;
+  $con = 0;
   $anuncio->climatizado = $arrayEspecifico[$con++];
   $anuncio->modeloAr = $arrayEspecifico[$con++];
   $anuncio->altura = $arrayEspecifico[$con++];
@@ -312,36 +312,36 @@ if($session->vereficarLogin() != false){
   //set de variaveis
   <?php
 
-  $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio); 
+  $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio);
 
   for ($i =0; $i<count($arrayHorarios); $i ++) {
 
     $originalDate = $arrayHorarios[$i];
     $newDate = date("d-m-Y", strtotime($originalDate));
- //   print $newDate. " / " ;
+    //   print $newDate. " / " ;
 
     $day = date('N',strtotime($newDate));
 
     if($day == 1)
-      $seg =  json_encode(true);
+    $seg =  json_encode(true);
 
     if($day == 2)
-      $ter=  json_encode(true);
+    $ter=  json_encode(true);
 
     if($day == 3)
-      $qua =  json_encode(true);
+    $qua =  json_encode(true);
 
     if($day == 4)
-      $qui = json_encode(true);
+    $qui = json_encode(true);
 
     if($day == 5)
-      $sex =  json_encode(true);
+    $sex =  json_encode(true);
 
     if($day == 6)
-      $sab =  json_encode(true);
+    $sab =  json_encode(true);
 
     if($day == 7)
-      $dom = json_encode(true);
+    $dom = json_encode(true);
   }
 
   ?>
@@ -484,6 +484,9 @@ if($session->vereficarLogin() != false){
 #map {
   height: 100%;
 }
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
 @media (min-width: 768.1px)
 {
   .desktop
@@ -568,6 +571,7 @@ if($session->vereficarLogin() != false){
         <span class="menu-navbar" style="color:white">
           <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
           <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+          <br>
           <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
@@ -668,6 +672,8 @@ if($session->vereficarLogin() != false){
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" id="senha-login" name="senha">
               </div>
+              <!-- <br>
+              <span>Ainda não é cadastrado? <span data-toggle="modal" data-target="#cadastroPop" data-dismiss="modal" style="color:blue">Clique aqui</span> </span> -->
               <br>
               <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
               <br>
@@ -787,7 +793,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <p>
-             Você irá alugar dias da semana específicos e horários únicos para cada dia  Ex: Terças e Quintas das 13 as 18 hrs.
+            Você irá alugar dias da semana específicos e horários únicos para cada dia  Ex: Terças e Quintas das 13 as 18 hrs.
             <br>
             E isso se repete semanalmente por um período  de até 3 meses.
           </p>
@@ -1005,285 +1011,285 @@ if($session->vereficarLogin() != false){
                       </div>
                     </div>
                     <script>
-                      function comodidadesLocal()
+                    function comodidadesLocal()
+                    {
+                      var str = document.getElementById('comodidades-local').innerHTML;
+                      if( "<?php if($anuncio->climatizado!='sim'){echo 'nao';}else{echo "$anuncio->climatizado";} ?>" == "sim") //climatizado - aula - ensaio
                       {
-                        var str = document.getElementById('comodidades-local').innerHTML;
-                        if( "<?php if($anuncio->climatizado!='sim'){echo 'nao';}else{echo "$anuncio->climatizado";} ?>" == "sim") //climatizado - aula - ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/air-conditioner.svg\"><br> Ar-Condicionado</h5></div>";
-                        }
-                        if(  "<?php if($anuncio->wifi !='sim'){echo 'nao';}else{echo "$anuncio->wifi";}?>" == "sim") //wifi - aula - ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Tem<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/wifi.svg\"> <br> Wi-Fi</h5></div>";
-                        }
-                        if("<?php if($anuncio->monitoramento !='sim'){echo 'nao';}else{echo "$anuncio->monitoramento";}?>" == "sim") //monitoramento - aula - ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/cctv.svg\"> <br> Monitoramento ou vigilância por câmera</h5></div>";
-                        }
-                        if("<?php if($anuncio->armario !='sim'){echo 'nao';}else{echo "$anuncio->armario";}?>" == "sim") //armarios - consultorio / workshop / palestra / cozinha / costura / academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/locker.svg\"> <br> Armários para pertences</h5></div>";
-                        }
-                        if("<?php if($anuncio->secretaria !='sim'){echo 'nao';}else{echo "$anuncio->secretaria";}?>" == "sim") //secretaria - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/secretaria.svg\"> <br> Secretária compartilhada</h5></div>";
-                        }
-                        if("<?php if($anuncio->limpeza !='sim'){echo 'nao';}else{echo "$anuncio->limpeza";}?>" == "sim") //limpeza  - consultorio / workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/spray.svg\"> <br> Serviço de limpeza e conservação</h5></div>";
-                        }
-                        if("<?php if($anuncio->copa !='sim'){echo 'nao';}else{echo "$anuncio->copa";}?>" == "sim") //copa  - consultorio/ workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/restaurant.svg\"> <br> Serviço de copa</h5></div>";
-                        }
-                        //mobilia  - consultorio
-                        if("<?php if($anuncio->numMesa < '0'){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa; ?></span> Mesa(s)</h5></div>";
-                        }
-                        //mobilia  - consultorio
-                        if("<?php if($anuncio->numCadeira < '0'){echo '0';}else{echo "$anuncio->numCadeira";}?>" >'0') //mobilia  - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numCadeira;?></span> Cadeira(s)</h5></div>";
-                        }
-                        //mobilia  - consultorio
-                        if("<?php if($anuncio->numLuminaria <'0'){echo '0';}else{echo "$anuncio->numLuminaria";}?>" >'0') //mobilia  - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/lamp.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numLuminaria; ?></span> Luminária(s)</h5></div>";
-                        }
-                        //mobilia  - consultorio
-                        if("<?php if($anuncio->numMaca <'0'){echo '0';}else{echo "$anuncio->numMaca";}?>" >'0') //mobilia  - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMaca?></span> Maca(s)</h5></div>";
-                        }
-                        if("<?php if($anuncio->balanca !='sim'){echo 'nao';}else{echo "$anuncio->balanca";}?>" == "sim") //balanca  - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/scale.svg\"> <br> Balança</h5></div>";
-                        }
-                        if("<?php if($anuncio->cafe !='sim'){echo 'nao';}else{echo "$anuncio->cafe";}?>" == "sim") //cafe  - consultorio/ workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/coffee.svg\"> <br> café</h5></div>";
-                        }
-                        if("<?php if($anuncio->agua !='sim'){echo 'nao';}else{echo "$anuncio->agua";}?>" == "sim") //água  - consultorio/ workshop / palestra / cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/water-tank.svg\"> <br> água filtrada</h5></div>";
-                        }
-                        if("<?php if($anuncio->tv !='sim'){echo 'nao';}else{echo "$anuncio->tv";}?>" == "sim") //tv  - consultorio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> TV na recepção</h5></div>";
-                        }
-                        //mobilia  - workshop / palestra
-                        if("<?php if($anuncio->numMesa <= 0 ){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa; ?></span> Mesa(s)</h5></div>";
-                        }
-                        //mobilia  - workshop / palestra
-                        if("<?php if($anuncio->numCadeira<= 0){echo '0';}else{echo "$anuncio->numCadeira";}?>" > '0') //mobilia  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numCadeira;?></span> Cadeira(s)</h5></div>";
-                        }
-                        //mobilia  - workshop / palestra
-                        if("<?php if($anuncio->numQuadro <= 0){echo '0';}else{echo "$anuncio->numQuadro";}?>" > '0') //mobilia  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/quadro.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numQuadro;?></span> Quadro(s)</h5></div>";
-                        }
-                        //mobilia  - workshop / palestra
-                        if("<?php if($anuncio->numLousa <= 0){echo '0';}else{echo "$anuncio->numLousa";}?>" > '0') //mobilia  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/vidrojateado.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numLousa;?></span> Lousa de vidro jateada(s)</h5></div>";
-                        }
-                        //mobilia  - workshop / palestra
-                        if("<?php if($anuncio->numTelao <= 0){echo '0';}else{echo "$anuncio->numTelao";}?>" > '0') //mobilia  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/telao.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numTelao?></span> Telões</h5></div>";
-                        }
-                        //mobilia  - workshop / palestra
-                        if("<?php if($anuncio->numTv <= 0){echo '0';}else{echo "$anuncio->numTv";}?>" > '0') //mobilia  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numTv?></span> TV(s)</h5></div>";
-                        }
-                        if("<?php if($anuncio->projetor !='sim'){echo 'nao';}else{echo "$anuncio->projetor";}?>" == "sim") //datashow  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/projetor.svg\"> <br> Data Show</h5></div>";
-                        }
-                        if("<?php if($anuncio->som !='sim'){echo 'nao';}else{echo "$anuncio->som";}?>" == "sim") //Caixa de som  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/sound-system.svg\"> <br> Caixa de som</h5></div>";
-                        }
-                        if("<?php if($anuncio->computador !='sim'){echo 'nao';}else{echo "$anuncio->computador";}?>" == "sim") //computador  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/computer.svg\"> <br> Computador com Windows e pacote Microsoft Office</h5></div>";
-                        }
-                        if("<?php if($anuncio->flip !='sim'){echo 'nao';}else{echo "$anuncio->flip";}?>" == "sim") //flipchart  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/whiteboard.svg\"> <br> Flipchart</h5></div>";
-                        }
-                        if("<?php if($anuncio->buffet !='sim'){echo 'nao';}else{echo "$anuncio->buffet";}?>" == "sim") //buffet  - workshop / palestra
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/garcom.svg\"> <br> Serviço de buffet</h5></div>";
-                        }
-                        if("<?php if($anuncio->camarim !='sim'){echo 'nao';}else{echo "$anuncio->camarim";}?>" == "sim") //camarim  - aula / ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/camarim.svg\"> <br> Camarim</h5></div>";
-                        }
-                        if("<?php if($anuncio->apoio !='sim'){echo 'nao';}else{echo "$anuncio->apoio";}?>" == "sim") //produção  - aula / ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/support.svg\"> <br> Sala de apoio para produção</h5></div>";
-                        }
-                        if("<?php if($anuncio->barra !='sim'){echo 'nao';}else{echo "$anuncio->barra";}?>" == "sim") //barra   - aula / ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/dancer-balance-posture-on-one-leg.svg\"> <br> Barra (para alongamento)</h5></div>";
-                        }
-                        // ---
-                        if("<?php if($anuncio->espelho !='sim'){echo 'nao';}else{echo "$anuncio->espelho";}?>" == "sim") //espelho   - aula / ensaio
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mirror.svg\"> <br> Espelho</h5></div>";
-                        }
-                        if("<?php if($anuncio->areaEvento !='sim'){echo 'nao';}else{echo "$anuncio->areaEvento";}?>" == "sim") //evento   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/movie-theater.svg\"> <br> Área para realização de evento</h5></div>";
-                        }
-                        //mobilia  - cozinha
-                        if("<?php if($anuncio->numMesa <= 0 ){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->numMesa"?></span> Mesa(s) de jantar</h5></div>";
-                        }
-                        //mobilia  - cozinha
-                        if("<?php if($anuncio->numCadeira <=0 ){echo '0';}else{echo "$anuncio->numCadeira ";}?>" > '0') //mobilia  - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->numCadeira "?></span> Cadeira(s)</h5></div>";
-                        }
-                        if("<?php if($anuncio->bar !='sim'){echo 'nao';}else{echo "$anuncio->bar";}?>" == "sim") //bar   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/beer.svg\"> <br> Espaço de Bar</h5></div>";
-                        }
-                        if("<?php if($anuncio->buffet !='sim'){echo 'nao';}else{echo "$anuncio->buffet";}?>" == "sim") //buffet   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/catering.svg\"> <br> Espaço de buffet</h5></div>";
-                        }
-                        if("<?php if($anuncio->buffet!='sim'){echo 'nao';}else{echo "false";}?>" == "sim") //chefe    - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chef.svg\"> <br> Espaço para um chefe dar uma aula de culinária</h5></div>";
-                        }
-                        if("<?php if($anuncio->faxina !='sim'){echo 'nao';}else{echo "$anuncio->faxina";}?>" == "sim") //faxina   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/brush.svg\"> <br> Faxina incluida</h5></div>";
-                        }
-                        if("<?php if($anuncio->estante !='sim'){echo 'nao';}else{echo "$anuncio->estante";}?>" == "sim") //seco   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bookshelf\"> <br> Estante para estoque seco</h5></div>";
-                        }
-                        if("<?php if($anuncio->freezer !='sim'){echo 'nao';}else{echo "$anuncio->freezer";}?>" == "sim") //freezer   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/minibar.svg\"> <br> Freezer com espaço disponível para compartilhamento</h5></div>";
-                        }
-                        if("<?php if($anuncio->fogao !='sim'){echo 'nao';}else{echo "$anuncio->fogao";}?>" == "sim") //fogão   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/stove.svg\"> <br> Fogão</h5></div>";
-                        }
-                        if("<?php if($anuncio->forno !='sim'){echo 'nao';}else{echo "$anuncio->forno";}?>" == "sim") //forno   - cozinha
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/oven.svg\"> <br> Forno (printar tipo)</h5></div>";
-                        }
-                        if("<?php if($anuncio->altura <= 0){echo '0';}else{echo "$anuncio->altura";}?>" >'0') //pe   - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Altura de<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/measuring-tape-rolled.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->altura" ?></span> m do pé direito</h5></div>";
-                        }
-                        if("<?php if($anuncio->cozinha !='sim'){echo 'nao';}else{echo "$anuncio->cozinha";}?>" == "sim") //cozinha - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/kitchen.svg\"> <br> Cozinha</h5></div>";
-                        }
-                        //mobilia  - fotografico \ produtora
-                        if("<?php if($anuncio->numBanheiro <= 0){echo '0';}else{echo "$anuncio->numBanheiro";}?>" > '0') //mobilia  - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/wc.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->numBanheiro"?></span> Banheiro(s)</h5></div>";
-                        }
-                        //mobilia  - fotografico \ produtora
-                        if("<?php if($anuncio->chuveiro <= 0){echo 'nao';}else{echo "$anuncio->chuveiro ";}?>"  > '0') //mobilia  - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/shower.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->chuveiro" ?></span> Chuveiro(s)</h5></div>";
-                        }
-                        if("<?php if($anuncio->camarim !='sim'){echo 'nao';}else{echo "$anuncio->camarim";}?>"== "sim") //Camarim - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/camarim.svg\"> <br> Camarim</h5></div>";
-                        }
-                        if("<?php if($anuncio->frigobar !='sim'){echo 'nao';}else{echo "$anuncio->frigobar";}?>" == "sim") //Frigobar - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/minibar.svg\"> <br> Frigobar</h5></div>";
-                        }
-                        if("<?php if($anuncio->fundo !='sim'){echo 'nao';}else{echo "$anuncio->fundo";}?>" == "sim") //fundo  - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/panorama.svg\"> <br> Fundo Infinito</h5></div>";
-                        }
-                        //--
-                        if("<?php if($anuncio->chroma !='sim'){echo 'nao';}else{echo "$anuncio->chroma";}?>" == "sim") //Chroma   - fotografico \ produtora
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/camera.svg\"> <br> Chroma key</h5></div>";
-                        }
-                        if("<?php if($anuncio->recepcao !='sim'){echo 'nao';}else{echo "$anuncio->recepcao";}?>" == "sim") //recepção    - costura
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/secretaria.svg\"> <br> Recepção e atendimento</h5></div>";
-                        }
-                        if("<?php if($anuncio->provador !='sim'){echo 'nao';}else{echo "$anuncio->provador";}?>" == "sim") //provador    - costura
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mirror (1).svg\"> <br> Provador</h5></div>";
-                        }
-                        if("<?php if($anuncio->tatame !='sim'){echo 'nao';}else{echo "$anuncio->tatame";}?>" == "sim") //tatame - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mat.svg\"> <br> Tatame</h5></div>";
-                        }
-                        //--
-                        if("<?php if($anuncio->bosu !='sim'){echo 'nao';}else{echo "$anuncio->bosu";}?>" == "sim") //Bosu - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bosu-ball.svg\"> <br> Bosu</h5></div>";
-                        }
-                        if("<?php if($anuncio->rolo !='sim'){echo 'nao';}else{echo "$anuncio->rolo";}?>" == "sim") //Rolo - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/rolling-pin.svg\"> <br> Rolo</h5></div>";
-                        }
-                        if("<?php if($anuncio->maca !='sim'){echo 'nao';}else{echo "$anuncio->maca";}?>" == "sim") //Maca - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> Maca</h5></div>";
-                        }
-                        if("<?php if($anuncio->trapezio !='sim'){echo 'nao';}else{echo "$anuncio->trapezio";}?>" == "sim") //Trapézio - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/rings.svg\"> <br> Trapézio</h5></div>";
-                        }
-                        if("<?php if($anuncio->baqueta !='sim'){echo 'nao';}else{echo "$anuncio->baqueta";}?>" == "sim") //Baqueta - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bench.svg\"> <br> Baqueta</h5></div>";
-                        }
-                        // --
-                        if("<?php if($anuncio->bosu !='sim'){echo 'nao';}else{echo "$anuncio->bosu";}?>" == "sim") //bola de pilates - academia
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/physio-balls.svg\"> <br> Bola de pilates</h5></div>";
-                        }
-                        if("<?php if($anuncio->forno !='sim'){echo 'nao';}else{echo "$anuncio->forno";}?>" == "sim") //forno - artes
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/oven.svg\"> <br> Forno para cerâmica</h5></div>";
-                        }
-                        if("<?php if($anuncio->macarico !='sim'){echo 'nao';}else{echo "$anuncio->macarico";}?>" == "sim") //maçarico  - artes
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mat.svg\"> <br> Maçarico  para cerâmica</h5></div>";
-                        }
-                        if("<?php if($anuncio->moldes !='sim'){echo 'nao';}else{echo "$anuncio->moldes";}?>" == "sim") //formas   - artes
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/torch.svg\"> <br> Formas e moldes para cerâmica</h5></div>";
-                        }
-                        if("<?php if($anuncio->bancada !='sim'){echo 'nao';}else{echo "$anuncio->bancada";}?>" == "sim") //bancada   - artes
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> Bancada</h5></div>";
-                        }
-                        if("<?php if($anuncio->armario !='sim'){echo 'nao';}else{echo "$anuncio->armario";}?>" == "sim") //armario   - artes
-                        {
-                          str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bookshelf.svg\"> <br> Armário para armazenagem de equipamentos</h5></div>";
-                        }
-                        // <div class="col py-1">
-                        //   <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                        //   <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
-                        // </div>
-                        document.getElementById('comodidades-local').innerHTML = str;
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/air-conditioner.svg\"><br> Ar-Condicionado</h5></div>";
                       }
+                      if(  "<?php if($anuncio->wifi !='sim'){echo 'nao';}else{echo "$anuncio->wifi";}?>" == "sim") //wifi - aula - ensaio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Tem<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/wifi.svg\"> <br> Wi-Fi</h5></div>";
+                      }
+                      if("<?php if($anuncio->monitoramento !='sim'){echo 'nao';}else{echo "$anuncio->monitoramento";}?>" == "sim") //monitoramento - aula - ensaio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/cctv.svg\"> <br> Monitoramento ou vigilância por câmera</h5></div>";
+                      }
+                      if("<?php if($anuncio->armario !='sim'){echo 'nao';}else{echo "$anuncio->armario";}?>" == "sim") //armarios - consultorio / workshop / palestra / cozinha / costura / academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/locker.svg\"> <br> Armários para pertences</h5></div>";
+                      }
+                      if("<?php if($anuncio->secretaria !='sim'){echo 'nao';}else{echo "$anuncio->secretaria";}?>" == "sim") //secretaria - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/secretaria.svg\"> <br> Secretária compartilhada</h5></div>";
+                      }
+                      if("<?php if($anuncio->limpeza !='sim'){echo 'nao';}else{echo "$anuncio->limpeza";}?>" == "sim") //limpeza  - consultorio / workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/spray.svg\"> <br> Serviço de limpeza e conservação</h5></div>";
+                      }
+                      if("<?php if($anuncio->copa !='sim'){echo 'nao';}else{echo "$anuncio->copa";}?>" == "sim") //copa  - consultorio/ workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/restaurant.svg\"> <br> Serviço de copa</h5></div>";
+                      }
+                      //mobilia  - consultorio
+                      if("<?php if($anuncio->numMesa < '0'){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa; ?></span> Mesa(s)</h5></div>";
+                      }
+                      //mobilia  - consultorio
+                      if("<?php if($anuncio->numCadeira < '0'){echo '0';}else{echo "$anuncio->numCadeira";}?>" >'0') //mobilia  - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numCadeira;?></span> Cadeira(s)</h5></div>";
+                      }
+                      //mobilia  - consultorio
+                      if("<?php if($anuncio->numLuminaria <'0'){echo '0';}else{echo "$anuncio->numLuminaria";}?>" >'0') //mobilia  - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/lamp.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numLuminaria; ?></span> Luminária(s)</h5></div>";
+                      }
+                      //mobilia  - consultorio
+                      if("<?php if($anuncio->numMaca <'0'){echo '0';}else{echo "$anuncio->numMaca";}?>" >'0') //mobilia  - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMaca?></span> Maca(s)</h5></div>";
+                      }
+                      if("<?php if($anuncio->balanca !='sim'){echo 'nao';}else{echo "$anuncio->balanca";}?>" == "sim") //balanca  - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/scale.svg\"> <br> Balança</h5></div>";
+                      }
+                      if("<?php if($anuncio->cafe !='sim'){echo 'nao';}else{echo "$anuncio->cafe";}?>" == "sim") //cafe  - consultorio/ workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/coffee.svg\"> <br> café</h5></div>";
+                      }
+                      if("<?php if($anuncio->agua !='sim'){echo 'nao';}else{echo "$anuncio->agua";}?>" == "sim") //água  - consultorio/ workshop / palestra / cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/water-tank.svg\"> <br> água filtrada</h5></div>";
+                      }
+                      if("<?php if($anuncio->tv !='sim'){echo 'nao';}else{echo "$anuncio->tv";}?>" == "sim") //tv  - consultorio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> TV na recepção</h5></div>";
+                      }
+                      //mobilia  - workshop / palestra
+                      if("<?php if($anuncio->numMesa <= 0 ){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numMesa; ?></span> Mesa(s)</h5></div>";
+                      }
+                      //mobilia  - workshop / palestra
+                      if("<?php if($anuncio->numCadeira<= 0){echo '0';}else{echo "$anuncio->numCadeira";}?>" > '0') //mobilia  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numCadeira;?></span> Cadeira(s)</h5></div>";
+                      }
+                      //mobilia  - workshop / palestra
+                      if("<?php if($anuncio->numQuadro <= 0){echo '0';}else{echo "$anuncio->numQuadro";}?>" > '0') //mobilia  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/quadro.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numQuadro;?></span> Quadro(s)</h5></div>";
+                      }
+                      //mobilia  - workshop / palestra
+                      if("<?php if($anuncio->numLousa <= 0){echo '0';}else{echo "$anuncio->numLousa";}?>" > '0') //mobilia  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/vidrojateado.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numLousa;?></span> Lousa de vidro jateada(s)</h5></div>";
+                      }
+                      //mobilia  - workshop / palestra
+                      if("<?php if($anuncio->numTelao <= 0){echo '0';}else{echo "$anuncio->numTelao";}?>" > '0') //mobilia  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/telao.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numTelao?></span> Telões</h5></div>";
+                      }
+                      //mobilia  - workshop / palestra
+                      if("<?php if($anuncio->numTv <= 0){echo '0';}else{echo "$anuncio->numTv";}?>" > '0') //mobilia  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/tv.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo $anuncio->numTv?></span> TV(s)</h5></div>";
+                      }
+                      if("<?php if($anuncio->projetor !='sim'){echo 'nao';}else{echo "$anuncio->projetor";}?>" == "sim") //datashow  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/projetor.svg\"> <br> Data Show</h5></div>";
+                      }
+                      if("<?php if($anuncio->som !='sim'){echo 'nao';}else{echo "$anuncio->som";}?>" == "sim") //Caixa de som  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/sound-system.svg\"> <br> Caixa de som</h5></div>";
+                      }
+                      if("<?php if($anuncio->computador !='sim'){echo 'nao';}else{echo "$anuncio->computador";}?>" == "sim") //computador  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/computer.svg\"> <br> Computador com Windows e pacote Microsoft Office</h5></div>";
+                      }
+                      if("<?php if($anuncio->flip !='sim'){echo 'nao';}else{echo "$anuncio->flip";}?>" == "sim") //flipchart  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/whiteboard.svg\"> <br> Flipchart</h5></div>";
+                      }
+                      if("<?php if($anuncio->buffet !='sim'){echo 'nao';}else{echo "$anuncio->buffet";}?>" == "sim") //buffet  - workshop / palestra
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Oferece<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/garcom.svg\"> <br> Serviço de buffet</h5></div>";
+                      }
+                      if("<?php if($anuncio->camarim !='sim'){echo 'nao';}else{echo "$anuncio->camarim";}?>" == "sim") //camarim  - aula / ensaio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/camarim.svg\"> <br> Camarim</h5></div>";
+                      }
+                      if("<?php if($anuncio->apoio !='sim'){echo 'nao';}else{echo "$anuncio->apoio";}?>" == "sim") //produção  - aula / ensaio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/support.svg\"> <br> Sala de apoio para produção</h5></div>";
+                      }
+                      if("<?php if($anuncio->barra !='sim'){echo 'nao';}else{echo "$anuncio->barra";}?>" == "sim") //barra   - aula / ensaio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/dancer-balance-posture-on-one-leg.svg\"> <br> Barra (para alongamento)</h5></div>";
+                      }
+                      // ---
+                      if("<?php if($anuncio->espelho !='sim'){echo 'nao';}else{echo "$anuncio->espelho";}?>" == "sim") //espelho   - aula / ensaio
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mirror.svg\"> <br> Espelho</h5></div>";
+                      }
+                      if("<?php if($anuncio->areaEvento !='sim'){echo 'nao';}else{echo "$anuncio->areaEvento";}?>" == "sim") //evento   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/movie-theater.svg\"> <br> Área para realização de evento</h5></div>";
+                      }
+                      //mobilia  - cozinha
+                      if("<?php if($anuncio->numMesa <= 0 ){echo '0';}else{echo "$anuncio->numMesa";}?>" > '0') //mobilia  - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->numMesa"?></span> Mesa(s) de jantar</h5></div>";
+                      }
+                      //mobilia  - cozinha
+                      if("<?php if($anuncio->numCadeira <=0 ){echo '0';}else{echo "$anuncio->numCadeira ";}?>" > '0') //mobilia  - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chair.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->numCadeira "?></span> Cadeira(s)</h5></div>";
+                      }
+                      if("<?php if($anuncio->bar !='sim'){echo 'nao';}else{echo "$anuncio->bar";}?>" == "sim") //bar   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/beer.svg\"> <br> Espaço de Bar</h5></div>";
+                      }
+                      if("<?php if($anuncio->buffet !='sim'){echo 'nao';}else{echo "$anuncio->buffet";}?>" == "sim") //buffet   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/catering.svg\"> <br> Espaço de buffet</h5></div>";
+                      }
+                      if("<?php if($anuncio->buffet!='sim'){echo 'nao';}else{echo "false";}?>" == "sim") //chefe    - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/chef.svg\"> <br> Espaço para um chefe dar uma aula de culinária</h5></div>";
+                      }
+                      if("<?php if($anuncio->faxina !='sim'){echo 'nao';}else{echo "$anuncio->faxina";}?>" == "sim") //faxina   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/brush.svg\"> <br> Faxina incluida</h5></div>";
+                      }
+                      if("<?php if($anuncio->estante !='sim'){echo 'nao';}else{echo "$anuncio->estante";}?>" == "sim") //seco   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bookshelf\"> <br> Estante para estoque seco</h5></div>";
+                      }
+                      if("<?php if($anuncio->freezer !='sim'){echo 'nao';}else{echo "$anuncio->freezer";}?>" == "sim") //freezer   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/minibar.svg\"> <br> Freezer com espaço disponível para compartilhamento</h5></div>";
+                      }
+                      if("<?php if($anuncio->fogao !='sim'){echo 'nao';}else{echo "$anuncio->fogao";}?>" == "sim") //fogão   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/stove.svg\"> <br> Fogão</h5></div>";
+                      }
+                      if("<?php if($anuncio->forno !='sim'){echo 'nao';}else{echo "$anuncio->forno";}?>" == "sim") //forno   - cozinha
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/oven.svg\"> <br> Forno (printar tipo)</h5></div>";
+                      }
+                      if("<?php if($anuncio->altura <= 0){echo '0';}else{echo "$anuncio->altura";}?>" >'0') //pe   - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Altura de<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/measuring-tape-rolled.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->altura" ?></span> m do pé direito</h5></div>";
+                      }
+                      if("<?php if($anuncio->cozinha !='sim'){echo 'nao';}else{echo "$anuncio->cozinha";}?>" == "sim") //cozinha - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/kitchen.svg\"> <br> Cozinha</h5></div>";
+                      }
+                      //mobilia  - fotografico \ produtora
+                      if("<?php if($anuncio->numBanheiro <= 0){echo '0';}else{echo "$anuncio->numBanheiro";}?>" > '0') //mobilia  - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/wc.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->numBanheiro"?></span> Banheiro(s)</h5></div>";
+                      }
+                      //mobilia  - fotografico \ produtora
+                      if("<?php if($anuncio->chuveiro <= 0){echo 'nao';}else{echo "$anuncio->chuveiro ";}?>"  > '0') //mobilia  - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/shower.svg\"> <br> <span style=\"color: #FFCE00\"><?php echo "$anuncio->chuveiro" ?></span> Chuveiro(s)</h5></div>";
+                      }
+                      if("<?php if($anuncio->camarim !='sim'){echo 'nao';}else{echo "$anuncio->camarim";}?>"== "sim") //Camarim - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/camarim.svg\"> <br> Camarim</h5></div>";
+                      }
+                      if("<?php if($anuncio->frigobar !='sim'){echo 'nao';}else{echo "$anuncio->frigobar";}?>" == "sim") //Frigobar - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/minibar.svg\"> <br> Frigobar</h5></div>";
+                      }
+                      if("<?php if($anuncio->fundo !='sim'){echo 'nao';}else{echo "$anuncio->fundo";}?>" == "sim") //fundo  - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/panorama.svg\"> <br> Fundo Infinito</h5></div>";
+                      }
+                      //--
+                      if("<?php if($anuncio->chroma !='sim'){echo 'nao';}else{echo "$anuncio->chroma";}?>" == "sim") //Chroma   - fotografico \ produtora
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/camera.svg\"> <br> Chroma key</h5></div>";
+                      }
+                      if("<?php if($anuncio->recepcao !='sim'){echo 'nao';}else{echo "$anuncio->recepcao";}?>" == "sim") //recepção    - costura
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/secretaria.svg\"> <br> Recepção e atendimento</h5></div>";
+                      }
+                      if("<?php if($anuncio->provador !='sim'){echo 'nao';}else{echo "$anuncio->provador";}?>" == "sim") //provador    - costura
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mirror (1).svg\"> <br> Provador</h5></div>";
+                      }
+                      if("<?php if($anuncio->tatame !='sim'){echo 'nao';}else{echo "$anuncio->tatame";}?>" == "sim") //tatame - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mat.svg\"> <br> Tatame</h5></div>";
+                      }
+                      //--
+                      if("<?php if($anuncio->bosu !='sim'){echo 'nao';}else{echo "$anuncio->bosu";}?>" == "sim") //Bosu - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bosu-ball.svg\"> <br> Bosu</h5></div>";
+                      }
+                      if("<?php if($anuncio->rolo !='sim'){echo 'nao';}else{echo "$anuncio->rolo";}?>" == "sim") //Rolo - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/rolling-pin.svg\"> <br> Rolo</h5></div>";
+                      }
+                      if("<?php if($anuncio->maca !='sim'){echo 'nao';}else{echo "$anuncio->maca";}?>" == "sim") //Maca - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/hospital.svg\"> <br> Maca</h5></div>";
+                      }
+                      if("<?php if($anuncio->trapezio !='sim'){echo 'nao';}else{echo "$anuncio->trapezio";}?>" == "sim") //Trapézio - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/rings.svg\"> <br> Trapézio</h5></div>";
+                      }
+                      if("<?php if($anuncio->baqueta !='sim'){echo 'nao';}else{echo "$anuncio->baqueta";}?>" == "sim") //Baqueta - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bench.svg\"> <br> Baqueta</h5></div>";
+                      }
+                      // --
+                      if("<?php if($anuncio->bosu !='sim'){echo 'nao';}else{echo "$anuncio->bosu";}?>" == "sim") //bola de pilates - academia
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/physio-balls.svg\"> <br> Bola de pilates</h5></div>";
+                      }
+                      if("<?php if($anuncio->forno !='sim'){echo 'nao';}else{echo "$anuncio->forno";}?>" == "sim") //forno - artes
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/oven.svg\"> <br> Forno para cerâmica</h5></div>";
+                      }
+                      if("<?php if($anuncio->macarico !='sim'){echo 'nao';}else{echo "$anuncio->macarico";}?>" == "sim") //maçarico  - artes
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/mat.svg\"> <br> Maçarico  para cerâmica</h5></div>";
+                      }
+                      if("<?php if($anuncio->moldes !='sim'){echo 'nao';}else{echo "$anuncio->moldes";}?>" == "sim") //formas   - artes
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/torch.svg\"> <br> Formas e moldes para cerâmica</h5></div>";
+                      }
+                      if("<?php if($anuncio->bancada !='sim'){echo 'nao';}else{echo "$anuncio->bancada";}?>" == "sim") //bancada   - artes
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/table.svg\"> <br> Bancada</h5></div>";
+                      }
+                      if("<?php if($anuncio->armario !='sim'){echo 'nao';}else{echo "$anuncio->armario";}?>" == "sim") //armario   - artes
+                      {
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bookshelf.svg\"> <br> Armário para armazenagem de equipamentos</h5></div>";
+                      }
+                      // <div class="col py-1">
+                      //   <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+                      //   <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
+                      // </div>
+                      document.getElementById('comodidades-local').innerHTML = str;
+                    }
                     </script>
                     <div id="comodidades-local" class="row text-center justify-content-center" style="font-size: 14px">
                       <?php $cont = 0; ?>
@@ -1291,364 +1297,364 @@ if($session->vereficarLogin() != false){
                       <!-- vou pensar um Modo melhor de printar os números -->
 
                       <!-- <?php if($arrayEspecifico[$cont++] == "sim"){ ?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                        </div>
-                      <?php } ?>
-
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                        </div>
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-                      <?php } ?>
-
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
-                        </div>
-                      <?php } ?>
-
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($arrayEspecifico[$cont++] == "sim"){?>
-                        <div class="col py-1">
-                          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
-                          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
-                        </div>
-
-                      <?php } ?> -->
-
+                      <div class="col py-1">
+                      <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+                      <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> </h5>
                     </div>
-                  </div>
-                  <!-- <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
-                  <h2><?php $cont = 4 ; echo $array[$cont]?> </h2>
-                  <h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?></h6>
-                </div> -->
-              </div>
+
+                  <?php } ?>
+
+                  <?php if($arrayEspecifico[$cont++] == "sim"){?>
+                  <div class="col py-1">
+                  <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+                  <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+                </div>
+              <?php } ?>
+
+              <?php if($arrayEspecifico[$cont++] == "sim"){?>
+              <div class="col py-1">
+              <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+              <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
             </div>
-          </div>
-
-          <?php
+          <?php } ?>
 
 
-          $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
+          <?php if($arrayEspecifico[$cont++] == "sim"){?>
 
-          <div class="row" style="background-color: black; border-bottom: solid; border-width: 2px; border-color: #FFC107; border-top: solid; border-width: 2px; border-color: #FFC107;">
-            <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center" >
-              <div class="col-12">
+          <div class="col py-1">
+          <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+          <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+        </div>
 
-                <div class="row">
-                  <div class="col-12 mt-2">
-                    <div class="row text-center justify-content-center">
-                      <span style="color: white; font-size: 35px; font-weight: 300"> <b>Localização:</b> </span>
-                      <div class="my-4" id="map" style="height: 50vh; width: 100%"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
-              <div class="row">
-                <div class="col-12" style="padding-bottom: 2vw">
-                  <p style="margin-top: 1vw; margin-bottom: 1vw">
-                    <h4 style="color:white">A partir de:</h4>
-                    <h1 style="color:#FFCE00;font-weight: 600">R$ <?php  echo $array[7] ;  ?></h1>
-                    <h6 style="color:grey">E as taxas já estão inclusas!</h6>
-                    <br>
-                    <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato <br class="mobile"> com o anunciante</button>
-                    <br>
-                    <a href="#alugarEspaco"><button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning mt-4">Faça o pedido de aluguel agora!</button></a>
-                  </p>
-                </div>
-                <div class="col-12 pt-2">
-                  <a class="align-middle m-3"><img class="rounded-circle" src="<?php echo $prefixo.$arrayUser[1] ?>" style="height: 70px"></a>
-                  <br><br>
-                </div>
-                <div class="col-12 pb-2" style="color: white">
-                  <h6 style="font-weight: 600"><?php echo $arrayUser[0] ?></h6>
-                  <br>
-                  <!-- <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> -4.7 <br>(3 avaliações)</span></h6> -->
-                </div>
+      <?php } ?>
 
-              </div>
-            </div>
+      <?php if($arrayEspecifico[$cont++] == "sim"){?>
+      <div class="col py-1">
+      <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+      <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+    </div>
+  <?php } ?>
 
-          </div>
+  <?php if($arrayEspecifico[$cont++] == "sim"){?>
+  <div class="col py-1">
+  <h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+  <h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+<?php } ?>
 
-          <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
 
-<?php if($arrayGeral[9] == '' || $arrayGeral[10] == '' || $arrayGeral[9] == null || $arrayGeral[10] == null ){ ?>
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-rss"></i> <br> Wi-Fi no local</h5>
+</div>
+<?php } ?>
 
-            <!-- //Printar divisão inteira-->
-            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display:NONE">
-              <br>
-              <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
-              <div class="row p-5">
-                <div class="col-lg-6 col-md-12">
-                  <div class="panorama">
-                    <img src="<?php echo $prefixo.$arrayGeral[9] ?>" alt="" title="" />
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                  <div class="panorama">
-                    <img src="<?php echo $prefixo.$arrayGeral[10] ?>" alt="" title="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-<?php }else{  ?>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display:">
-              <br>
-              <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
-              <div class="row p-5">
-                <div class="col-lg-6 col-md-12">
-                  <div class="panorama">
-                    <img src="<?php echo $prefixo.$arrayGeral[9] ?>" alt="" title="" />
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                  <div class="panorama">
-                    <img src="<?php echo $prefixo.$arrayGeral[10] ?>" alt="" title="" />
-                  </div>
-                </div>
-              </div>
-            </div>
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
 
 <?php } ?>
 
 
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
-              <div class="row text-center justify-content-center py-3">
-                <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">
-                  <!-- <div id="map" style="height: 50vh; width: 100%"></div>                     -->
-                  <script>
-                  var citymap;
-                  var geocoder;
-                  function initMap() {
-                    // Create the map.
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                      zoom: 15,
-                      // center: {lat: -22.91270, lng: -43.22616},
-                      mapTypeId: 'hybrid'
-                    });
-                    geocoder = new google.maps.Geocoder();
-                    geocodeAddress(geocoder, map);
-                  }
+<?php } ?>
 
-                  function geocodeAddress(geocoder, resultsMap) {
-                    // Rio de janeiro,RJ,Avenida frei caneca, 461, estácio
-                    geocoder.geocode({'address': "<?php echo ( $array[6].",".$array[8].",".$array[10].",".$array[11].",".$array[5]);?>"}, function(results, status) {
-                      if (status === 'OK') {
-                        resultsMap.setCenter(results[0].geometry.location);
-                        citymap = {
-                          marcador: {
-                            // center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
-                            center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
-                            multi: 10
-                          }
-                        };
-                        var cityCircle = new google.maps.Circle({
-                          strokeColor: '#FFC307',
-                          strokeOpacity: 0.8,
-                          strokeWeight: 2,
-                          fillColor: '#FFC107',
-                          fillOpacity: 0.35,
-                          map: resultsMap,
-                          center: citymap.marcador.center,
-                          radius: Math.sqrt(citymap.marcador.multi) * 100
-                        });
-                      } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                      }
-                    });
-                  }
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
 
-                  </script>
-                  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDifilitpDCI1EoqZXV8QMnv3F27ui_7S8&callback=initMap">
-                  </script>
-                </div>
-              </div>
-            </div>
+<?php } ?>
 
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?>
+
+<?php if($arrayEspecifico[$cont++] == "sim"){?>
+<div class="col py-1">
+<h6 style="color: black; font-weight: 600;font-size:90%">Possui<br></h6>
+<h5 style="color: grey;font-size:90%;font-weight: 600;"><i class="fas fa-video"></i> <br> Monitoramento ou vigilância por câmera</h5>
+</div>
+
+<?php } ?> -->
+
+</div>
+</div>
+<!-- <div class="col-12" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+<h2><?php $cont = 4 ; echo $array[$cont]?> </h2>
+<h6 style="color: grey"><?php $cont++; $cont++; echo $array[$cont]?> | <?php $cont++; $cont++; echo $array[$cont]?></h6>
+</div> -->
+</div>
+</div>
+</div>
+
+<?php
+
+
+$arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
+
+<div class="row" style="background-color: black; border-bottom: solid; border-width: 2px; border-color: #FFC107; border-top: solid; border-width: 2px; border-color: #FFC107;">
+  <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center" >
+    <div class="col-12">
+
+      <div class="row">
+        <div class="col-12 mt-2">
+          <div class="row text-center justify-content-center">
+            <span style="color: white; font-size: 35px; font-weight: 300"> <b>Localização:</b> </span>
+            <div class="my-4" id="map" style="height: 50vh; width: 100%"></div>
           </div>
-
-          <!-- <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
-          <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
-          <div class="row">
-          <div class="col-12 py-3 px-5">
-          <h3><b>Avaliações</b></h3>
         </div>
-        <div class="col-12 p-5">
-
-        <div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
-        <div class="col-3">
-        <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
-        <br>
-        <span style="font-size: 13px">Nome do usuário</span>
-        <br>
-        <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
       </div>
-      <div class="col-9 p-4 text-left">
-      <span style="font-size: 13px">Nome do item</span>
-      <span class="pl-2" style="font-weight: 300; font-size: 100%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <br>
-      <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tristique ullamcorper. Proin libero urna.</span>
-      <br>
-      <span style="font-size: 12px; color: grey">26/03/2018</span>
     </div>
   </div>
-  <br>
-  <div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
-  <div class="col-3">
-  <a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
-  <br>
-  <span style="font-size: 13px">Nome do usuário</span>
-  <br>
-  <span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
+  <div class="col-lg-6 col-md-6 col-sm-12 text-center justify-content-center">
+    <div class="row">
+      <div class="col-12" style="padding-bottom: 2vw">
+        <p style="margin-top: 1vw; margin-bottom: 1vw">
+          <h4 style="color:white">A partir de:</h4>
+          <h1 style="color:#FFCE00;font-weight: 600">R$ <?php  echo $array[7] ;  ?></h1>
+          <h6 style="color:grey">E as taxas já estão inclusas!</h6>
+          <!-- <br>
+          <button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Entrar em contato <br class="mobile"> com o anunciante</button> -->
+          <br>
+          <a href="#alugarEspaco"><button style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning mt-4">Faça o pedido de aluguel agora!</button></a>
+        </p>
+      </div>
+      <div class="col-12 pt-2">
+        <a class="align-middle m-3"><img class="rounded-circle" src="<?php echo $prefixo.$arrayUser[1] ?>" style="height: 70px"></a>
+        <br><br>
+      </div>
+      <div class="col-12 pb-2" style="color: white">
+        <h6 style="font-weight: 600"><?php echo $arrayUser[0] ?></h6>
+        <br>
+        <!-- <h6 style="font-weight: 300; font-size: 150%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color: grey; font-size: 15px"> -4.7 <br>(3 avaliações)</span></h6> -->
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+
+  <?php if($arrayGeral[9] == '' || $arrayGeral[10] == '' || $arrayGeral[9] == null || $arrayGeral[10] == null ){ ?>
+
+    <!-- //Printar divisão inteira-->
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display:NONE">
+      <br>
+      <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
+      <div class="row p-5">
+        <div class="col-lg-6 col-md-12">
+          <div class="panorama">
+            <img src="<?php echo $prefixo.$arrayGeral[9] ?>" alt="" title="" />
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="panorama">
+            <img src="<?php echo $prefixo.$arrayGeral[10] ?>" alt="" title="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php }else{  ?>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center" style="display:">
+      <br>
+      <h2> <b>Foto(s) Panorâmica(s):</b> </h2>
+      <div class="row p-5">
+        <div class="col-lg-6 col-md-12">
+          <div class="panorama">
+            <img src="<?php echo $prefixo.$arrayGeral[9] ?>" alt="" title="" />
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="panorama">
+            <img src="<?php echo $prefixo.$arrayGeral[10] ?>" alt="" title="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <?php } ?>
+
+
+
+  <div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
+    <div class="row text-center justify-content-center py-3">
+      <div class="col-lg-10 col-md-10 col-sm-12 text-center justify-content-center">
+        <!-- <div id="map" style="height: 50vh; width: 100%"></div>                     -->
+        <script>
+        var citymap;
+        var geocoder;
+        function initMap() {
+          // Create the map.
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            // center: {lat: -22.91270, lng: -43.22616},
+            mapTypeId: 'hybrid'
+          });
+          geocoder = new google.maps.Geocoder();
+          geocodeAddress(geocoder, map);
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+          // Rio de janeiro,RJ,Avenida frei caneca, 461, estácio
+          geocoder.geocode({'address': "<?php echo ( $array[6].",".$array[8].",".$array[10].",".$array[11].",".$array[5]);?>"}, function(results, status) {
+            if (status === 'OK') {
+              resultsMap.setCenter(results[0].geometry.location);
+              citymap = {
+                marcador: {
+                  // center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
+                  center: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
+                  multi: 10
+                }
+              };
+              var cityCircle = new google.maps.Circle({
+                strokeColor: '#FFC307',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FFC107',
+                fillOpacity: 0.35,
+                map: resultsMap,
+                center: citymap.marcador.center,
+                radius: Math.sqrt(citymap.marcador.multi) * 100
+              });
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDifilitpDCI1EoqZXV8QMnv3F27ui_7S8&callback=initMap">
+        </script>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <div class="row" style="border-bottom: solid; border-width: 2px; border-color: #FFC107;">
+<div class="col-lg-12 col-md-12 col-sm-12 text-center justify-content-center">
+<div class="row">
+<div class="col-12 py-3 px-5">
+<h3><b>Avaliações</b></h3>
+</div>
+<div class="col-12 p-5">
+
+<div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
+<div class="col-3">
+<a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
+<br>
+<span style="font-size: 13px">Nome do usuário</span>
+<br>
+<span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
+</div>
+<div class="col-9 p-4 text-left">
+<span style="font-size: 13px">Nome do item</span>
+<span class="pl-2" style="font-weight: 300; font-size: 100%; color: #FFCE00" >&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+<br>
+<span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque tristique ullamcorper. Proin libero urna.</span>
+<br>
+<span style="font-size: 12px; color: grey">26/03/2018</span>
+</div>
+</div>
+<br>
+<div class="row py-1" style="border-bottom: solid; border-width: 2px; border-color: grey; border-top: solid; border-width: 2px; border-color: rgba(0,0,0,0.1);">
+<div class="col-3">
+<a class="align-middle m-3"><img class="rounded-circle" src="img/usuario.jpg" style="height: 50px"></a>
+<br>
+<span style="font-size: 13px">Nome do usuário</span>
+<br>
+<span style="font-size: 11px">Rio de Janeiro <br> RJ</span>
 </div>
 <div class="col-9 p-4 text-left">
 <span style="font-size: 13px">Nome do item</span>
@@ -2026,7 +2032,7 @@ if($session->vereficarLogin() != false){
                           }
                         }
                         console.log("Preço Total: R$" + precoTotal);
-                        document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
+                        document.getElementById('preco-total').innerHTML = +precoTotal;
                       }
                       if(document.getElementById('tipoAluguel').value == "direto")
                       {
@@ -2036,7 +2042,7 @@ if($session->vereficarLogin() != false){
                         {
                           precoTotal = semanas * pm
                         }
-                        document.getElementById('preco-total').innerHTML = "R$ "+precoTotal;
+                        document.getElementById('preco-total').innerHTML = precoTotal;
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
@@ -2498,9 +2504,20 @@ if($session->vereficarLogin() != false){
                         }
 
                         totalP = totalP * document.getElementById('semanas-seguidas').value;
-                        document.getElementById('preco-total').innerHTML = "R$ "+totalP;
+                        document.getElementById('preco-total').innerHTML = totalP;
                       }
+                      var aux = parseFloat(document.getElementById('preco-total').innerHTML);
+                      document.getElementById('preco-total').innerHTML = "R$ "+aux.format(2, 3, '.', ',');
+                      console.log(aux.format(2, 3, '.', ','));
                     }
+                    </script>
+                    <script>
+                    Number.prototype.format = function(n, x, s, c) {
+                      var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+                      num = this.toFixed(Math.max(0, ~~n));
+
+                      return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+                    };
                     </script>
                     <script>
                     var hora_inicio_unico = 12;
@@ -2872,2698 +2889,2698 @@ if($session->vereficarLogin() != false){
                   <!-- <h6 style="color: white">Selecione o período o qual vai ser alguado</h6>
                   <br>
                   <div class="row text-center justify-content-center">
-                    <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
-                      <div class="row px-2">
-                        <div class="col-12" style="color: #FFCE00">
-                          <h6>Hora de início do Aluguel</h6>
-                        </div>
-                        <div class="col-12">
-                          <input type="text" name="hora-inicio-direto" class="form-control" style="text-align: center" readonly value="12:00">
-                          <br>
-                        </div>
-                        <div class="col-12">
-                          <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                          <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row px-2">
-                        <div class="col-12" style="color: #FFCE00">
-                          <h6>Hora de fim do Aluguel</h6>
-                        </div>
-                        <div class="col-12">
-                          <input type="text" name="hora-fim-direto" class="form-control" style="text-align: center" readonly  value="18:00">
-                          <br>
-                        </div>
-                        <div class="col-12">
-                          <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                          <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
+                  <div id="hora-caixa-unico" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107;">
+                  <div class="row px-2">
+                  <div class="col-12" style="color: #FFCE00">
+                  <h6>Hora de início do Aluguel</h6>
                 </div>
+                <div class="col-12">
+                <input type="text" name="hora-inicio-direto" class="form-control" style="text-align: center" readonly value="12:00">
+                <br>
               </div>
+              <div class="col-12">
+              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+              <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
             </div>
+          </div>
+          <br>
+          <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+          <h6>Hora de fim do Aluguel</h6>
+        </div>
+        <div class="col-12">
+        <input type="text" name="hora-fim-direto" class="form-control" style="text-align: center" readonly  value="18:00">
+        <br>
+      </div>
+      <div class="col-12">
+      <span class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+      <span class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+    </div>
+  </div>
+</div>
+</div> -->
+</div>
+</div>
+</div>
 
-            <div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
+<div id="calendario-reincidente" style="display: none" class="col-12 pt-3 text-center" style="background-color: black">
 
-              <script>
+  <script>
 
-              function dias_bloqueados()
+  function dias_bloqueados()
+  {
+    if(seg_ativo == false)
+    {
+      document.getElementById("segunda-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("segunda-aviso").style.display = 'none';
+    }
+    if(ter_ativo == false)
+    {
+      document.getElementById("terca-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("terca-aviso").style.display = 'none';
+    }
+    if(qua_ativo == false)
+    {
+      document.getElementById("quarta-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("quarta-aviso").style.display = 'none';
+    }
+    if(qui_ativo == false)
+    {
+      document.getElementById("quinta-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("quinta-aviso").style.display = 'none';
+    }
+    if(sex_ativo == false)
+    {
+      document.getElementById("sexta-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("sexta-aviso").style.display = 'none';
+    }
+    if(sab_ativo == false)
+    {
+      document.getElementById("sabado-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("sabado-aviso").style.display = 'none';
+    }
+    if(dom_ativo == false)
+    {
+      document.getElementById("domingo-aviso").style.display = '';
+    }
+    else
+    {
+      document.getElementById("domingo-aviso").style.display = 'none';
+    }
+  }
+
+  function segunda_botao_periodo()
+  {
+    if(document.getElementById("segunda-bot-periodo").classList.contains("active") == false && seg_ativo == true)
+    {
+      document.getElementById("segunda-caixa-periodo").style.display = '';
+      document.getElementById("segunda-bot-periodo").classList.add("active");
+      document.getElementById("seg-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("segunda-caixa-periodo").style.display = 'none';
+      document.getElementById("segunda-bot-periodo").classList.remove("active");
+      document.getElementById("seg-periodo-sel").value = "nao";
+    }
+  }
+  function terca_botao_periodo()
+  {
+    if(document.getElementById("terca-bot-periodo").classList.contains("active") == false && ter_ativo == true)
+    {
+      document.getElementById("terca-caixa-periodo").style.display = '';
+      document.getElementById("terca-bot-periodo").classList.add("active");
+      document.getElementById("ter-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("terca-caixa-periodo").style.display = 'none';
+      document.getElementById("terca-bot-periodo").classList.remove("active");
+      document.getElementById("ter-periodo-sel").value = "nao";
+    }
+  }
+  function quarta_botao_periodo()
+  {
+    if(document.getElementById("quarta-bot-periodo").classList.contains("active") == false && qua_ativo == true)
+    {
+      document.getElementById("quarta-caixa-periodo").style.display = '';
+      document.getElementById("quarta-bot-periodo").classList.add("active");
+      document.getElementById("qua-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("quarta-caixa-periodo").style.display = 'none';
+      document.getElementById("quarta-bot-periodo").classList.remove("active");
+      document.getElementById("qua-periodo-sel").value = "nao";
+    }
+  }
+  function quinta_botao_periodo()
+  {
+    if(document.getElementById("quinta-bot-periodo").classList.contains("active") == false && qui_ativo == true)
+    {
+      document.getElementById("quinta-caixa-periodo").style.display = '';
+      document.getElementById("quinta-bot-periodo").classList.add("active");
+      document.getElementById("qui-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("quinta-caixa-periodo").style.display = 'none';
+      document.getElementById("quinta-bot-periodo").classList.remove("active");
+      document.getElementById("qui-periodo-sel").value = "nao";
+    }
+  }
+  function sexta_botao_periodo()
+  {
+    if(document.getElementById("sexta-bot-periodo").classList.contains("active") == false && sex_ativo == true)
+    {
+      document.getElementById("sexta-caixa-periodo").style.display = '';
+      document.getElementById("sexta-bot-periodo").classList.add("active");
+      document.getElementById("sex-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("sexta-caixa-periodo").style.display = 'none';
+      document.getElementById("sexta-bot-periodo").classList.remove("active");
+      document.getElementById("sex-periodo-sel").value = "nao";
+    }
+  }
+  function sabado_botao_periodo()
+  {
+    if(document.getElementById("sabado-bot-periodo").classList.contains("active") == false && sab_ativo == true)
+    {
+      document.getElementById("sabado-caixa-periodo").style.display = '';
+      document.getElementById("sabado-bot-periodo").classList.add("active");
+      document.getElementById("sab-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("sabado-caixa-periodo").style.display = 'none';
+      document.getElementById("sabado-bot-periodo").classList.remove("active");
+      document.getElementById("sab-periodo-sel").value = "nao";
+    }
+  }
+  function domingo_botao_periodo()
+  {
+    if(document.getElementById("domingo-bot-periodo").classList.contains("active") == false && dom_ativo == true)
+    {
+      document.getElementById("domingo-caixa-periodo").style.display = '';
+      document.getElementById("domingo-bot-periodo").classList.add("active");
+      document.getElementById("dom-periodo-sel").value = "sim";
+    }
+    else
+    {
+      document.getElementById("domingo-caixa-periodo").style.display = 'none';
+      document.getElementById("domingo-bot-periodo").classList.remove("active");
+      document.getElementById("dom-periodo-sel").value = "nao";
+    }
+  }
+  </script>
+  <h6 style="color: white">Selecione a data do primeiro dia do aluguel:</h6>
+  <br>
+  <input type="text" readonly name="data-reincidente-pick" id="datepicker-reincidente">
+  <br>
+  <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
+  <br>
+  <h6 style="color: white">Selecione os dias da semana e os horários em que serão disponibilizados para alugar:</h6>
+  <br>
+
+  <input type="text" id="seg-periodo-sel" name="seg-periodo-sel" value="nao" readonly style="display: none">
+  <input type="text" id="ter-periodo-sel" name="ter-periodo-sel" value="nao" readonly style="display: none">
+  <input type="text" id="qua-periodo-sel" name="qua-periodo-sel" value="nao" readonly style="display: none">
+  <input type="text" id="qui-periodo-sel" name="qui-periodo-sel" value="nao" readonly style="display: none">
+  <input type="text" id="sex-periodo-sel" name="sex-periodo-sel" value="nao" readonly style="display: none">
+  <input type="text" id="sab-periodo-sel" name="sab-periodo-sel" value="nao" readonly style="display: none">
+  <input type="text" id="dom-periodo-sel" name="dom-periodo-sel" value="nao" readonly style="display: none">
+
+  <div class="row pb-4 justify-content-center p-3">
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo();calcularPreco()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br><span style="color: white" id="segunda-aviso">Dia bloqueado</span><br><br>
+
+      <div id="segunda-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-seg-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-seg-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <script>
+            function horaDispReincidente()
+            {
+              if(seg_ativo == true)
               {
-                if(seg_ativo == false)
+                document.getElementById('hora-inicio-seg-texto').innerHTML = seg_min_h+":";
+                if(seg_min_m != 30)
                 {
-                  document.getElementById("segunda-aviso").style.display = '';
+                  document.getElementById('hora-inicio-seg-texto').innerHTML = document.getElementById('hora-inicio-seg-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("segunda-aviso").style.display = 'none';
+                  document.getElementById('hora-inicio-seg-texto').innerHTML = document.getElementById('hora-inicio-seg-texto').innerHTML + "30";
                 }
-                if(ter_ativo == false)
+                document.getElementById('hora-fim-seg-texto').innerHTML = seg_max_h+":";
+                if(seg_max_m != 30)
                 {
-                  document.getElementById("terca-aviso").style.display = '';
-                }
-                else
-                {
-                  document.getElementById("terca-aviso").style.display = 'none';
-                }
-                if(qua_ativo == false)
-                {
-                  document.getElementById("quarta-aviso").style.display = '';
+                  document.getElementById('hora-fim-seg-texto').innerHTML = document.getElementById('hora-fim-seg-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("quarta-aviso").style.display = 'none';
-                }
-                if(qui_ativo == false)
-                {
-                  document.getElementById("quinta-aviso").style.display = '';
-                }
-                else
-                {
-                  document.getElementById("quinta-aviso").style.display = 'none';
-                }
-                if(sex_ativo == false)
-                {
-                  document.getElementById("sexta-aviso").style.display = '';
-                }
-                else
-                {
-                  document.getElementById("sexta-aviso").style.display = 'none';
-                }
-                if(sab_ativo == false)
-                {
-                  document.getElementById("sabado-aviso").style.display = '';
-                }
-                else
-                {
-                  document.getElementById("sabado-aviso").style.display = 'none';
-                }
-                if(dom_ativo == false)
-                {
-                  document.getElementById("domingo-aviso").style.display = '';
-                }
-                else
-                {
-                  document.getElementById("domingo-aviso").style.display = 'none';
+                  document.getElementById('hora-fim-seg-texto').innerHTML = document.getElementById('hora-fim-seg-texto').innerHTML + "30";
                 }
               }
 
-              function segunda_botao_periodo()
+              if(ter_ativo == true)
               {
-                if(document.getElementById("segunda-bot-periodo").classList.contains("active") == false && seg_ativo == true)
+                document.getElementById('hora-inicio-ter-texto').innerHTML = ter_min_h+":";
+                if(ter_min_m != 30)
                 {
-                  document.getElementById("segunda-caixa-periodo").style.display = '';
-                  document.getElementById("segunda-bot-periodo").classList.add("active");
-                  document.getElementById("seg-periodo-sel").value = "sim";
+                  document.getElementById('hora-inicio-ter-texto').innerHTML = document.getElementById('hora-inicio-ter-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("segunda-caixa-periodo").style.display = 'none';
-                  document.getElementById("segunda-bot-periodo").classList.remove("active");
-                  document.getElementById("seg-periodo-sel").value = "nao";
+                  document.getElementById('hora-inicio-ter-texto').innerHTML = document.getElementById('hora-inicio-ter-texto').innerHTML + "30";
                 }
-              }
-              function terca_botao_periodo()
-              {
-                if(document.getElementById("terca-bot-periodo").classList.contains("active") == false && ter_ativo == true)
+                document.getElementById('hora-fim-ter-texto').innerHTML = ter_max_h+":";
+                if(ter_max_m != 30)
                 {
-                  document.getElementById("terca-caixa-periodo").style.display = '';
-                  document.getElementById("terca-bot-periodo").classList.add("active");
-                  document.getElementById("ter-periodo-sel").value = "sim";
+                  document.getElementById('hora-fim-ter-texto').innerHTML = document.getElementById('hora-fim-ter-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("terca-caixa-periodo").style.display = 'none';
-                  document.getElementById("terca-bot-periodo").classList.remove("active");
-                  document.getElementById("ter-periodo-sel").value = "nao";
+                  document.getElementById('hora-fim-ter-texto').innerHTML = document.getElementById('hora-fim-ter-texto').innerHTML + "30";
                 }
               }
-              function quarta_botao_periodo()
+
+              if(qua_ativo == true)
               {
-                if(document.getElementById("quarta-bot-periodo").classList.contains("active") == false && qua_ativo == true)
+                document.getElementById('hora-inicio-qua-texto').innerHTML = qua_min_h+":";
+                if(qua_min_m != 30)
                 {
-                  document.getElementById("quarta-caixa-periodo").style.display = '';
-                  document.getElementById("quarta-bot-periodo").classList.add("active");
-                  document.getElementById("qua-periodo-sel").value = "sim";
+                  document.getElementById('hora-inicio-qua-texto').innerHTML = document.getElementById('hora-inicio-qua-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("quarta-caixa-periodo").style.display = 'none';
-                  document.getElementById("quarta-bot-periodo").classList.remove("active");
-                  document.getElementById("qua-periodo-sel").value = "nao";
+                  document.getElementById('hora-inicio-qua-texto').innerHTML = document.getElementById('hora-inicio-qua-texto').innerHTML + "30";
                 }
-              }
-              function quinta_botao_periodo()
-              {
-                if(document.getElementById("quinta-bot-periodo").classList.contains("active") == false && qui_ativo == true)
+                document.getElementById('hora-fim-qua-texto').innerHTML = qua_max_h+":";
+                if(qua_max_m != 30)
                 {
-                  document.getElementById("quinta-caixa-periodo").style.display = '';
-                  document.getElementById("quinta-bot-periodo").classList.add("active");
-                  document.getElementById("qui-periodo-sel").value = "sim";
+                  document.getElementById('hora-fim-qua-texto').innerHTML = document.getElementById('hora-fim-qua-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("quinta-caixa-periodo").style.display = 'none';
-                  document.getElementById("quinta-bot-periodo").classList.remove("active");
-                  document.getElementById("qui-periodo-sel").value = "nao";
+                  document.getElementById('hora-fim-qua-texto').innerHTML = document.getElementById('hora-fim-qua-texto').innerHTML + "30";
                 }
               }
-              function sexta_botao_periodo()
+
+              if(qui_ativo == true)
               {
-                if(document.getElementById("sexta-bot-periodo").classList.contains("active") == false && sex_ativo == true)
+                document.getElementById('hora-inicio-qui-texto').innerHTML = qui_min_h+":";
+                if(qui_min_m != 30)
                 {
-                  document.getElementById("sexta-caixa-periodo").style.display = '';
-                  document.getElementById("sexta-bot-periodo").classList.add("active");
-                  document.getElementById("sex-periodo-sel").value = "sim";
+                  document.getElementById('hora-inicio-qui-texto').innerHTML = document.getElementById('hora-inicio-qui-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("sexta-caixa-periodo").style.display = 'none';
-                  document.getElementById("sexta-bot-periodo").classList.remove("active");
-                  document.getElementById("sex-periodo-sel").value = "nao";
+                  document.getElementById('hora-inicio-qui-texto').innerHTML = document.getElementById('hora-inicio-qui-texto').innerHTML + "30";
                 }
-              }
-              function sabado_botao_periodo()
-              {
-                if(document.getElementById("sabado-bot-periodo").classList.contains("active") == false && sab_ativo == true)
+                document.getElementById('hora-fim-qui-texto').innerHTML = qui_max_h+":";
+                if(qui_max_m != 30)
                 {
-                  document.getElementById("sabado-caixa-periodo").style.display = '';
-                  document.getElementById("sabado-bot-periodo").classList.add("active");
-                  document.getElementById("sab-periodo-sel").value = "sim";
+                  document.getElementById('hora-fim-qui-texto').innerHTML = document.getElementById('hora-fim-qui-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("sabado-caixa-periodo").style.display = 'none';
-                  document.getElementById("sabado-bot-periodo").classList.remove("active");
-                  document.getElementById("sab-periodo-sel").value = "nao";
+                  document.getElementById('hora-fim-qui-texto').innerHTML = document.getElementById('hora-fim-qui-texto').innerHTML + "30";
                 }
               }
-              function domingo_botao_periodo()
+
+              if(sex_ativo == true)
               {
-                if(document.getElementById("domingo-bot-periodo").classList.contains("active") == false && dom_ativo == true)
+                document.getElementById('hora-inicio-sex-texto').innerHTML = sex_min_h+":";
+                if(sex_min_m != 30)
                 {
-                  document.getElementById("domingo-caixa-periodo").style.display = '';
-                  document.getElementById("domingo-bot-periodo").classList.add("active");
-                  document.getElementById("dom-periodo-sel").value = "sim";
+                  document.getElementById('hora-inicio-sex-texto').innerHTML = document.getElementById('hora-inicio-sex-texto').innerHTML + "00";
                 }
                 else
                 {
-                  document.getElementById("domingo-caixa-periodo").style.display = 'none';
-                  document.getElementById("domingo-bot-periodo").classList.remove("active");
-                  document.getElementById("dom-periodo-sel").value = "nao";
+                  document.getElementById('hora-inicio-sex-texto').innerHTML = document.getElementById('hora-inicio-sex-texto').innerHTML + "30";
+                }
+                document.getElementById('hora-fim-sex-texto').innerHTML = sex_max_h+":";
+                if(sex_max_m != 30)
+                {
+                  document.getElementById('hora-fim-sex-texto').innerHTML = document.getElementById('hora-fim-sex-texto').innerHTML + "00";
+                }
+                else
+                {
+                  document.getElementById('hora-fim-sex-texto').innerHTML = document.getElementById('hora-fim-sex-texto').innerHTML + "30";
+                }
+
+                if(sab_ativo == true)
+                {
+                  document.getElementById('hora-inicio-sab-texto').innerHTML = sab_min_h+":";
+                  if(sab_min_m != 30)
+                  {
+                    document.getElementById('hora-inicio-sab-texto').innerHTML = document.getElementById('hora-inicio-sab-texto').innerHTML + "00";
+                  }
+                  else
+                  {
+                    document.getElementById('hora-inicio-sab-texto').innerHTML = document.getElementById('hora-inicio-sab-texto').innerHTML + "30";
+                  }
+                  document.getElementById('hora-fim-sab-texto').innerHTML = sab_max_h+":";
+                  if(sab_max_m != 30)
+                  {
+                    document.getElementById('hora-fim-sab-texto').innerHTML = document.getElementById('hora-fim-sab-texto').innerHTML + "00";
+                  }
+                  else
+                  {
+                    document.getElementById('hora-fim-sab-texto').innerHTML = document.getElementById('hora-fim-sab-texto').innerHTML + "30";
+                  }
+                }
+
+                if(dom_ativo == true)
+                {
+                  document.getElementById('hora-inicio-dom-texto').innerHTML = dom_min_h+":";
+                  if(dom_min_m != 30)
+                  {
+                    document.getElementById('hora-inicio-dom-texto').innerHTML = document.getElementById('hora-inicio-dom-texto').innerHTML + "00";
+                  }
+                  else
+                  {
+                    document.getElementById('hora-inicio-dom-texto').innerHTML = document.getElementById('hora-inicio-dom-texto').innerHTML + "30";
+                  }
+                  document.getElementById('hora-fim-dom-texto').innerHTML = dom_max_h+":";
+                  if(dom_max_m != 30)
+                  {
+                    document.getElementById('hora-fim-dom-texto').innerHTML = document.getElementById('hora-fim-dom-texto').innerHTML + "00";
+                  }
+                  else
+                  {
+                    document.getElementById('hora-fim-dom-texto').innerHTML = document.getElementById('hora-fim-dom-texto').innerHTML + "30";
+                  }
                 }
               }
-              </script>
-              <h6 style="color: white">Selecione a data do primeiro dia do aluguel:</h6>
-              <br>
-              <input type="text" readonly name="data-reincidente-pick" id="datepicker-reincidente">
-              <br>
-              <h3><i style="color: #FFC107" class="mt-3 far fa-calendar-alt"></i></h3>
-              <br>
-              <h6 style="color: white">Selecione os dias da semana e os horários em que serão disponibilizados para alugar:</h6>
-              <br>
-
-              <input type="text" id="seg-periodo-sel" name="seg-periodo-sel" value="nao" readonly style="display: none">
-              <input type="text" id="ter-periodo-sel" name="ter-periodo-sel" value="nao" readonly style="display: none">
-              <input type="text" id="qua-periodo-sel" name="qua-periodo-sel" value="nao" readonly style="display: none">
-              <input type="text" id="qui-periodo-sel" name="qui-periodo-sel" value="nao" readonly style="display: none">
-              <input type="text" id="sex-periodo-sel" name="sex-periodo-sel" value="nao" readonly style="display: none">
-              <input type="text" id="sab-periodo-sel" name="sab-periodo-sel" value="nao" readonly style="display: none">
-              <input type="text" id="dom-periodo-sel" name="dom-periodo-sel" value="nao" readonly style="display: none">
-
-              <div class="row pb-4 justify-content-center p-3">
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="segunda_botao_periodo();calcularPreco()" class="btn btn-outline-warning" id="segunda-bot-periodo"><h6>Seg</h6></span><br><br><span style="color: white" id="segunda-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="segunda-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-seg-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-seg-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <script>
-                        function horaDispReincidente()
-                        {
-                          if(seg_ativo == true)
-                          {
-                            document.getElementById('hora-inicio-seg-texto').innerHTML = seg_min_h+":";
-                            if(seg_min_m != 30)
-                            {
-                              document.getElementById('hora-inicio-seg-texto').innerHTML = document.getElementById('hora-inicio-seg-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-inicio-seg-texto').innerHTML = document.getElementById('hora-inicio-seg-texto').innerHTML + "30";
-                            }
-                            document.getElementById('hora-fim-seg-texto').innerHTML = seg_max_h+":";
-                            if(seg_max_m != 30)
-                            {
-                              document.getElementById('hora-fim-seg-texto').innerHTML = document.getElementById('hora-fim-seg-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-fim-seg-texto').innerHTML = document.getElementById('hora-fim-seg-texto').innerHTML + "30";
-                            }
-                          }
-
-                          if(ter_ativo == true)
-                          {
-                            document.getElementById('hora-inicio-ter-texto').innerHTML = ter_min_h+":";
-                            if(ter_min_m != 30)
-                            {
-                              document.getElementById('hora-inicio-ter-texto').innerHTML = document.getElementById('hora-inicio-ter-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-inicio-ter-texto').innerHTML = document.getElementById('hora-inicio-ter-texto').innerHTML + "30";
-                            }
-                            document.getElementById('hora-fim-ter-texto').innerHTML = ter_max_h+":";
-                            if(ter_max_m != 30)
-                            {
-                              document.getElementById('hora-fim-ter-texto').innerHTML = document.getElementById('hora-fim-ter-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-fim-ter-texto').innerHTML = document.getElementById('hora-fim-ter-texto').innerHTML + "30";
-                            }
-                          }
-
-                          if(qua_ativo == true)
-                          {
-                            document.getElementById('hora-inicio-qua-texto').innerHTML = qua_min_h+":";
-                            if(qua_min_m != 30)
-                            {
-                              document.getElementById('hora-inicio-qua-texto').innerHTML = document.getElementById('hora-inicio-qua-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-inicio-qua-texto').innerHTML = document.getElementById('hora-inicio-qua-texto').innerHTML + "30";
-                            }
-                            document.getElementById('hora-fim-qua-texto').innerHTML = qua_max_h+":";
-                            if(qua_max_m != 30)
-                            {
-                              document.getElementById('hora-fim-qua-texto').innerHTML = document.getElementById('hora-fim-qua-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-fim-qua-texto').innerHTML = document.getElementById('hora-fim-qua-texto').innerHTML + "30";
-                            }
-                          }
-
-                          if(qui_ativo == true)
-                          {
-                            document.getElementById('hora-inicio-qui-texto').innerHTML = qui_min_h+":";
-                            if(qui_min_m != 30)
-                            {
-                              document.getElementById('hora-inicio-qui-texto').innerHTML = document.getElementById('hora-inicio-qui-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-inicio-qui-texto').innerHTML = document.getElementById('hora-inicio-qui-texto').innerHTML + "30";
-                            }
-                            document.getElementById('hora-fim-qui-texto').innerHTML = qui_max_h+":";
-                            if(qui_max_m != 30)
-                            {
-                              document.getElementById('hora-fim-qui-texto').innerHTML = document.getElementById('hora-fim-qui-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-fim-qui-texto').innerHTML = document.getElementById('hora-fim-qui-texto').innerHTML + "30";
-                            }
-                          }
-
-                          if(sex_ativo == true)
-                          {
-                            document.getElementById('hora-inicio-sex-texto').innerHTML = sex_min_h+":";
-                            if(sex_min_m != 30)
-                            {
-                              document.getElementById('hora-inicio-sex-texto').innerHTML = document.getElementById('hora-inicio-sex-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-inicio-sex-texto').innerHTML = document.getElementById('hora-inicio-sex-texto').innerHTML + "30";
-                            }
-                            document.getElementById('hora-fim-sex-texto').innerHTML = sex_max_h+":";
-                            if(sex_max_m != 30)
-                            {
-                              document.getElementById('hora-fim-sex-texto').innerHTML = document.getElementById('hora-fim-sex-texto').innerHTML + "00";
-                            }
-                            else
-                            {
-                              document.getElementById('hora-fim-sex-texto').innerHTML = document.getElementById('hora-fim-sex-texto').innerHTML + "30";
-                            }
-
-                            if(sab_ativo == true)
-                            {
-                              document.getElementById('hora-inicio-sab-texto').innerHTML = sab_min_h+":";
-                              if(sab_min_m != 30)
-                              {
-                                document.getElementById('hora-inicio-sab-texto').innerHTML = document.getElementById('hora-inicio-sab-texto').innerHTML + "00";
-                              }
-                              else
-                              {
-                                document.getElementById('hora-inicio-sab-texto').innerHTML = document.getElementById('hora-inicio-sab-texto').innerHTML + "30";
-                              }
-                              document.getElementById('hora-fim-sab-texto').innerHTML = sab_max_h+":";
-                              if(sab_max_m != 30)
-                              {
-                                document.getElementById('hora-fim-sab-texto').innerHTML = document.getElementById('hora-fim-sab-texto').innerHTML + "00";
-                              }
-                              else
-                              {
-                                document.getElementById('hora-fim-sab-texto').innerHTML = document.getElementById('hora-fim-sab-texto').innerHTML + "30";
-                              }
-                            }
-
-                            if(dom_ativo == true)
-                            {
-                              document.getElementById('hora-inicio-dom-texto').innerHTML = dom_min_h+":";
-                              if(dom_min_m != 30)
-                              {
-                                document.getElementById('hora-inicio-dom-texto').innerHTML = document.getElementById('hora-inicio-dom-texto').innerHTML + "00";
-                              }
-                              else
-                              {
-                                document.getElementById('hora-inicio-dom-texto').innerHTML = document.getElementById('hora-inicio-dom-texto').innerHTML + "30";
-                              }
-                              document.getElementById('hora-fim-dom-texto').innerHTML = dom_max_h+":";
-                              if(dom_max_m != 30)
-                              {
-                                document.getElementById('hora-fim-dom-texto').innerHTML = document.getElementById('hora-fim-dom-texto').innerHTML + "00";
-                              }
-                              else
-                              {
-                                document.getElementById('hora-fim-dom-texto').innerHTML = document.getElementById('hora-fim-dom-texto').innerHTML + "30";
-                              }
-                            }
-                          }
-                        }
-                        </script>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="seg-hora-inicio" type="text" name="seg-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="seg_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="seg_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <script>
-                    var seg_hora_inicio_unico = 12;
-                    var seg_hora_fim_unico = 18;
-                    var seg_min_inicio_unico = 00;
-                    var seg_min_fim_unico = 00;
-                    var seg_hora_inicio_unico_id = document.getElementById("seg-hora-inicio");
-                    var seg_hora_fim_unico_id = document.getElementById("seg-hora-fim");
-                    function seg_hora_fim_aluguel_menos()
-                    {
-                      seg_min_fim_unico = seg_min_fim_unico - 30;
-                      if(seg_min_fim_unico < 0)
-                      {
-                        seg_min_fim_unico = 30;
-                        seg_hora_fim_unico = seg_hora_fim_unico - 1;
-                        if(seg_hora_fim_unico<=0)
-                        {
-                          seg_hora_fim_unico = 23;
-                          seg_min_fim_unico = 30;
-                        }
-                      }
-                      if(seg_hora_inicio_unico<=0)
-                      {
-                        seg_hora_inicio_unico = 23;
-                        seg_min_fim_unico = 30;
-                      }
-                      if((seg_hora_inicio_unico == seg_hora_fim_unico))
-                      {
-                        seg_hora_inicio_unico = seg_hora_inicio_unico - 1;
-                        if(seg_hora_fim_unico<=0)
-                        {
-                          seg_hora_inicio_unico = 23;
-                          seg_min_fim_unico = 00;
-                        }
-                      }
-                      if(seg_hora_inicio_unico <= 9)
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      if(seg_hora_fim_unico <= 9)
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                    }
-                    function seg_hora_fim_aluguel_mais()
-                    {
-                      seg_min_fim_unico = seg_min_fim_unico + 30;
-                      if(seg_min_fim_unico >= 60)
-                      {
-                        seg_min_fim_unico = 00;
-                        seg_hora_fim_unico = seg_hora_fim_unico + 1;
-                        if(seg_hora_fim_unico>=24)
-                        {
-                          seg_hora_fim_unico = 00;
-                        }
-                      }
-                      if(seg_hora_inicio_unico>=24)
-                      {
-                        seg_hora_inicio_unico = 00;
-                      }
-                      if((seg_hora_fim_unico == seg_hora_inicio_unico))
-                      {
-                        seg_hora_inicio_unico = seg_hora_inicio_unico + 1;
-                      }
-                      if(seg_hora_inicio_unico <= 9)
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      if(seg_hora_fim_unico <= 9)
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                    }
-                    function seg_hora_inicio_aluguel_menos()
-                    {
-                      seg_min_inicio_unico = seg_min_inicio_unico - 30;
-                      if(seg_min_inicio_unico < 0)
-                      {
-                        seg_min_inicio_unico = 30;
-                        seg_hora_inicio_unico = seg_hora_inicio_unico - 1;
-                        if(seg_hora_inicio_unico<=0)
-                        {
-                          seg_hora_inicio_unico = 23;
-                          seg_min_inicio_unico = 30;
-                        }
-                      }
-                      if(seg_hora_fim_unico<=0)
-                      {
-                        seg_hora_fim_unico = 23;
-                        seg_min_inicio_unico = 30;
-                      }
-                      if((seg_hora_inicio_unico == seg_hora_fim_unico))
-                      {
-                        seg_hora_fim_unico = seg_hora_fim_unico - 1;
-                        if(seg_hora_fim_unico<=0)
-                        {
-                          seg_hora_fim_unico = 23;
-                          seg_min_inicio_unico = 00;
-                        }
-                      }
-                      if(seg_hora_inicio_unico <= 9)
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      if(seg_hora_fim_unico <= 9)
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                    }
-                    function seg_hora_inicio_aluguel_mais()
-                    {
-                      seg_min_inicio_unico = seg_min_inicio_unico + 30;
-                      if(seg_min_inicio_unico >= 60)
-                      {
-                        seg_min_inicio_unico = 00;
-                        seg_hora_inicio_unico = seg_hora_inicio_unico + 1;
-                        if(seg_hora_inicio_unico>=24)
-                        {
-                          seg_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(seg_hora_fim_unico>=24)
-                      {
-                        seg_hora_fim_unico = 00;
-                      }
-                      if((seg_hora_inicio_unico == seg_hora_fim_unico))
-                      {
-                        seg_hora_fim_unico = seg_hora_fim_unico + 1;
-                      }
-                      if(seg_hora_inicio_unico <= 9)
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_inicio_unico == 0)
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
-                        }
-                      }
-                      if(seg_hora_fim_unico <= 9)
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(seg_min_fim_unico == 0)
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
-                        }
-                      }
-                      console.log(seg_hora_inicio_unico+":"+seg_min_inicio_unico);
-                      console.log(seg_hora_fim_unico+":"+seg_min_fim_unico);
-                    }
-                    </script>
-                    <br>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="seg-hora-fim" type="text" name="seg-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="seg_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="seg_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="terca_botao_periodo();calcularPreco()" id="terca-bot-periodo" class="btn btn-outline-warning"><h6>Ter</h6></span>
-                  <br><br><span style="color: white" id="terca-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="terca-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-ter-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-ter-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="ter-hora-inicio" type="text" name="ter-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="ter_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="ter_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <script>
-                    var ter_hora_inicio_unico = 12;
-                    var ter_hora_fim_unico = 18;
-                    var ter_min_inicio_unico = 00;
-                    var ter_min_fim_unico = 00;
-                    var ter_hora_inicio_unico_id = document.getElementById("ter-hora-inicio");
-                    var ter_hora_fim_unico_id = document.getElementById("ter-hora-fim");
-                    function ter_hora_fim_aluguel_menos()
-                    {
-                      ter_min_fim_unico = ter_min_fim_unico - 30;
-                      if(ter_min_fim_unico < 0)
-                      {
-                        ter_min_fim_unico = 30;
-                        ter_hora_fim_unico = ter_hora_fim_unico - 1;
-                        if(ter_hora_fim_unico<=0)
-                        {
-                          ter_hora_fim_unico = 23;
-                          ter_min_fim_unico = 30;
-                        }
-                      }
-                      if(ter_hora_inicio_unico<=0)
-                      {
-                        ter_hora_inicio_unico = 23;
-                        ter_min_fim_unico = 30;
-                      }
-                      if((ter_hora_inicio_unico == ter_hora_fim_unico))
-                      {
-                        ter_hora_inicio_unico = ter_hora_inicio_unico - 1;
-                        if(ter_hora_fim_unico<=0)
-                        {
-                          ter_hora_inicio_unico = 23;
-                          ter_min_fim_unico = 00;
-                        }
-                      }
-                      if(ter_hora_inicio_unico <= 9)
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      if(ter_hora_fim_unico <= 9)
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                    }
-                    function ter_hora_fim_aluguel_mais()
-                    {
-                      ter_min_fim_unico = ter_min_fim_unico + 30;
-                      if(ter_min_fim_unico >= 60)
-                      {
-                        ter_min_fim_unico = 00;
-                        ter_hora_fim_unico = ter_hora_fim_unico + 1;
-                        if(ter_hora_fim_unico>=24)
-                        {
-                          ter_hora_fim_unico = 00;
-                        }
-                      }
-                      if(ter_hora_inicio_unico>=24)
-                      {
-                        ter_hora_inicio_unico = 00;
-                      }
-                      if((ter_hora_fim_unico == ter_hora_inicio_unico))
-                      {
-                        ter_hora_inicio_unico = ter_hora_inicio_unico + 1;
-                      }
-                      if(ter_hora_inicio_unico <= 9)
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      if(ter_hora_fim_unico <= 9)
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                    }
-                    function ter_hora_inicio_aluguel_menos()
-                    {
-                      ter_min_inicio_unico = ter_min_inicio_unico - 30;
-                      if(ter_min_inicio_unico < 0)
-                      {
-                        ter_min_inicio_unico = 30;
-                        ter_hora_inicio_unico = ter_hora_inicio_unico - 1;
-                        if(ter_hora_inicio_unico<=0)
-                        {
-                          ter_hora_inicio_unico = 23;
-                          ter_min_inicio_unico = 30;
-                        }
-                      }
-                      if(ter_hora_fim_unico<=0)
-                      {
-                        ter_hora_fim_unico = 23;
-                        ter_min_inicio_unico = 30;
-                      }
-                      if((ter_hora_inicio_unico == ter_hora_fim_unico))
-                      {
-                        ter_hora_fim_unico = ter_hora_fim_unico - 1;
-                        if(ter_hora_fim_unico<=0)
-                        {
-                          ter_hora_fim_unico = 23;
-                          ter_min_inicio_unico = 00;
-                        }
-                      }
-                      if(ter_hora_inicio_unico <= 9)
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      if(ter_hora_fim_unico <= 9)
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                    }
-                    function ter_hora_inicio_aluguel_mais()
-                    {
-                      ter_min_inicio_unico = ter_min_inicio_unico + 30;
-                      if(ter_min_inicio_unico >= 60)
-                      {
-                        ter_min_inicio_unico = 00;
-                        ter_hora_inicio_unico = ter_hora_inicio_unico + 1;
-                        if(ter_hora_inicio_unico>=24)
-                        {
-                          ter_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(ter_hora_fim_unico>=24)
-                      {
-                        ter_hora_fim_unico = 00;
-                      }
-                      if((ter_hora_inicio_unico == ter_hora_fim_unico))
-                      {
-                        ter_hora_fim_unico = ter_hora_fim_unico + 1;
-                      }
-                      if(ter_hora_inicio_unico <= 9)
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_inicio_unico == 0)
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
-                        }
-                      }
-                      if(ter_hora_fim_unico <= 9)
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(ter_min_fim_unico == 0)
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
-                        }
-                      }
-                      console.log(ter_hora_inicio_unico+":"+ter_min_inicio_unico);
-                      console.log(ter_hora_fim_unico+":"+ter_min_fim_unico);
-                    }
-                    </script>
-                    <br>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="ter-hora-fim" type="text" name="ter-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="ter_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="ter_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quarta_botao_periodo();calcularPreco()" id="quarta-bot-periodo" class="btn btn-outline-warning"><h6>Qua</h6></span>
-                  <br><br><span style="color: white" id="quarta-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="quarta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-qua-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-qua-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="qua-hora-inicio" type="text" name="qua-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="qua_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qua_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <script>
-                    var qua_hora_inicio_unico = 12;
-                    var qua_hora_fim_unico = 18;
-                    var qua_min_inicio_unico = 00;
-                    var qua_min_fim_unico = 00;
-                    var qua_hora_inicio_unico_id = document.getElementById("qua-hora-inicio");
-                    var qua_hora_fim_unico_id = document.getElementById("qua-hora-fim");
-                    function qua_hora_fim_aluguel_menos()
-                    {
-                      qua_min_fim_unico = qua_min_fim_unico - 30;
-                      if(qua_min_fim_unico < 0)
-                      {
-                        qua_min_fim_unico = 30;
-                        qua_hora_fim_unico = qua_hora_fim_unico - 1;
-                        if(qua_hora_fim_unico<=0)
-                        {
-                          qua_hora_fim_unico = 23;
-                          qua_min_fim_unico = 30;
-                        }
-                      }
-                      if(qua_hora_inicio_unico<=0)
-                      {
-                        qua_hora_inicio_unico = 23;
-                        qua_min_fim_unico = 30;
-                      }
-                      if((qua_hora_inicio_unico == qua_hora_fim_unico))
-                      {
-                        qua_hora_inicio_unico = qua_hora_inicio_unico - 1;
-                        if(qua_hora_fim_unico<=0)
-                        {
-                          qua_hora_inicio_unico = 23;
-                          qua_min_fim_unico = 00;
-                        }
-                      }
-                      if(qua_hora_inicio_unico <= 9)
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      if(qua_hora_fim_unico <= 9)
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                    }
-                    function qua_hora_fim_aluguel_mais()
-                    {
-                      qua_min_fim_unico = qua_min_fim_unico + 30;
-                      if(qua_min_fim_unico >= 60)
-                      {
-                        qua_min_fim_unico = 00;
-                        qua_hora_fim_unico = qua_hora_fim_unico + 1;
-                        if(qua_hora_fim_unico>=24)
-                        {
-                          qua_hora_fim_unico = 00;
-                        }
-                      }
-                      if(qua_hora_inicio_unico>=24)
-                      {
-                        qua_hora_inicio_unico = 00;
-                      }
-                      if((qua_hora_fim_unico == qua_hora_inicio_unico))
-                      {
-                        qua_hora_inicio_unico = qua_hora_inicio_unico + 1;
-                      }
-                      if(qua_hora_inicio_unico <= 9)
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      if(qua_hora_fim_unico <= 9)
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                    }
-                    function qua_hora_inicio_aluguel_menos()
-                    {
-                      qua_min_inicio_unico = qua_min_inicio_unico - 30;
-                      if(qua_min_inicio_unico < 0)
-                      {
-                        qua_min_inicio_unico = 30;
-                        qua_hora_inicio_unico = qua_hora_inicio_unico - 1;
-                        if(qua_hora_inicio_unico<=0)
-                        {
-                          qua_hora_inicio_unico = 23;
-                          qua_min_inicio_unico = 30;
-                        }
-                      }
-                      if(qua_hora_fim_unico<=0)
-                      {
-                        qua_hora_fim_unico = 23;
-                        qua_min_inicio_unico = 30;
-                      }
-                      if((qua_hora_inicio_unico == qua_hora_fim_unico))
-                      {
-                        qua_hora_fim_unico = qua_hora_fim_unico - 1;
-                        if(qua_hora_fim_unico<=0)
-                        {
-                          qua_hora_fim_unico = 23;
-                          qua_min_inicio_unico = 00;
-                        }
-                      }
-                      if(qua_hora_inicio_unico <= 9)
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      if(qua_hora_fim_unico <= 9)
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                    }
-                    function qua_hora_inicio_aluguel_mais()
-                    {
-                      qua_min_inicio_unico = qua_min_inicio_unico + 30;
-                      if(qua_min_inicio_unico >= 60)
-                      {
-                        qua_min_inicio_unico = 00;
-                        qua_hora_inicio_unico = qua_hora_inicio_unico + 1;
-                        if(qua_hora_inicio_unico>=24)
-                        {
-                          qua_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(qua_hora_fim_unico>=24)
-                      {
-                        qua_hora_fim_unico = 00;
-                      }
-                      if((qua_hora_inicio_unico == qua_hora_fim_unico))
-                      {
-                        qua_hora_fim_unico = qua_hora_fim_unico + 1;
-                      }
-                      if(qua_hora_inicio_unico <= 9)
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_inicio_unico == 0)
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
-                        }
-                      }
-                      if(qua_hora_fim_unico <= 9)
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qua_min_fim_unico == 0)
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
-                        }
-                      }
-                      console.log(qua_hora_inicio_unico+":"+qua_min_inicio_unico);
-                      console.log(qua_hora_fim_unico+":"+qua_min_fim_unico);
-                    }
-                    </script>
-                    <br>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="qua-hora-fim" type="text" name="qua-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="qua_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qua_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quinta_botao_periodo();calcularPreco()" id="quinta-bot-periodo" class="btn btn-outline-warning"><h6>Qui</h6></span>
-                  <br><br><span style="color: white" id="quinta-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="quinta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-qui-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-qui-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="qui-hora-inicio" type="text" name="qui-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="qui_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qui_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <br>
-                    <script>
-                    var qui_hora_inicio_unico = 12;
-                    var qui_hora_fim_unico = 18;
-                    var qui_min_inicio_unico = 00;
-                    var qui_min_fim_unico = 00;
-                    var qui_hora_inicio_unico_id = document.getElementById("qui-hora-inicio");
-                    var qui_hora_fim_unico_id = document.getElementById("qui-hora-fim");
-                    function qui_hora_fim_aluguel_menos()
-                    {
-                      qui_min_fim_unico = qui_min_fim_unico - 30;
-                      if(qui_min_fim_unico < 0)
-                      {
-                        qui_min_fim_unico = 30;
-                        qui_hora_fim_unico = qui_hora_fim_unico - 1;
-                        if(qui_hora_fim_unico<=0)
-                        {
-                          qui_hora_fim_unico = 23;
-                          qui_min_fim_unico = 30;
-                        }
-                      }
-                      if(qui_hora_inicio_unico<=0)
-                      {
-                        qui_hora_inicio_unico = 23;
-                        qui_min_fim_unico = 30;
-                      }
-                      if((qui_hora_inicio_unico == qui_hora_fim_unico))
-                      {
-                        qui_hora_inicio_unico = qui_hora_inicio_unico - 1;
-                        if(qui_hora_fim_unico<=0)
-                        {
-                          qui_hora_inicio_unico = 23;
-                          qui_min_fim_unico = 00;
-                        }
-                      }
-                      if(qui_hora_inicio_unico <= 9)
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      if(qui_hora_fim_unico <= 9)
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                    }
-                    function qui_hora_fim_aluguel_mais()
-                    {
-                      qui_min_fim_unico = qui_min_fim_unico + 30;
-                      if(qui_min_fim_unico >= 60)
-                      {
-                        qui_min_fim_unico = 00;
-                        qui_hora_fim_unico = qui_hora_fim_unico + 1;
-                        if(qui_hora_fim_unico>=24)
-                        {
-                          qui_hora_fim_unico = 00;
-                        }
-                      }
-                      if(qui_hora_inicio_unico>=24)
-                      {
-                        qui_hora_inicio_unico = 00;
-                      }
-                      if((qui_hora_fim_unico == qui_hora_inicio_unico))
-                      {
-                        qui_hora_inicio_unico = qui_hora_inicio_unico + 1;
-                      }
-                      if(qui_hora_inicio_unico <= 9)
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      if(qui_hora_fim_unico <= 9)
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                    }
-                    function qui_hora_inicio_aluguel_menos()
-                    {
-                      qui_min_inicio_unico = qui_min_inicio_unico - 30;
-                      if(qui_min_inicio_unico < 0)
-                      {
-                        qui_min_inicio_unico = 30;
-                        qui_hora_inicio_unico = qui_hora_inicio_unico - 1;
-                        if(qui_hora_inicio_unico<=0)
-                        {
-                          qui_hora_inicio_unico = 23;
-                          qui_min_inicio_unico = 30;
-                        }
-                      }
-                      if(qui_hora_fim_unico<=0)
-                      {
-                        qui_hora_fim_unico = 23;
-                        qui_min_inicio_unico = 30;
-                      }
-                      if((qui_hora_inicio_unico == qui_hora_fim_unico))
-                      {
-                        qui_hora_fim_unico = qui_hora_fim_unico - 1;
-                        if(qui_hora_fim_unico<=0)
-                        {
-                          qui_hora_fim_unico = 23;
-                          qui_min_inicio_unico = 00;
-                        }
-                      }
-                      if(qui_hora_inicio_unico <= 9)
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      if(qui_hora_fim_unico <= 9)
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                    }
-                    function qui_hora_inicio_aluguel_mais()
-                    {
-                      qui_min_inicio_unico = qui_min_inicio_unico + 30;
-                      if(qui_min_inicio_unico >= 60)
-                      {
-                        qui_min_inicio_unico = 00;
-                        qui_hora_inicio_unico = qui_hora_inicio_unico + 1;
-                        if(qui_hora_inicio_unico>=24)
-                        {
-                          qui_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(qui_hora_fim_unico>=24)
-                      {
-                        qui_hora_fim_unico = 00;
-                      }
-                      if((qui_hora_inicio_unico == qui_hora_fim_unico))
-                      {
-                        qui_hora_fim_unico = qui_hora_fim_unico + 1;
-                      }
-                      if(qui_hora_inicio_unico <= 9)
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_inicio_unico == 0)
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
-                        }
-                      }
-                      if(qui_hora_fim_unico <= 9)
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(qui_min_fim_unico == 0)
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
-                        }
-                      }
-                      console.log(qui_hora_inicio_unico+":"+qui_min_inicio_unico);
-                      console.log(qui_hora_fim_unico+":"+qui_min_fim_unico);
-                    }
-                    </script>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="qui-hora-fim" type="text" name="qui-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="qui_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="qui_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sexta_botao_periodo();calcularPreco()" id="sexta-bot-periodo" class="btn btn-outline-warning"><h6>Sex</h6></span>
-                  <br><br><span style="color: white" id="sexta-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="sexta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-sex-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-sex-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="sex-hora-inicio" type="text" name="sex-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="sex_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sex_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <script>
-                    var sex_hora_inicio_unico = 12;
-                    var sex_hora_fim_unico = 18;
-                    var sex_min_inicio_unico = 00;
-                    var sex_min_fim_unico = 00;
-                    var sex_hora_inicio_unico_id = document.getElementById("sex-hora-inicio");
-                    var sex_hora_fim_unico_id = document.getElementById("sex-hora-fim");
-                    function sex_hora_fim_aluguel_menos()
-                    {
-                      sex_min_fim_unico = sex_min_fim_unico - 30;
-                      if(sex_min_fim_unico < 0)
-                      {
-                        sex_min_fim_unico = 30;
-                        sex_hora_fim_unico = sex_hora_fim_unico - 1;
-                        if(sex_hora_fim_unico<=0)
-                        {
-                          sex_hora_fim_unico = 23;
-                          sex_min_fim_unico = 30;
-                        }
-                      }
-                      if(sex_hora_inicio_unico<=0)
-                      {
-                        sex_hora_inicio_unico = 23;
-                        sex_min_fim_unico = 30;
-                      }
-                      if((sex_hora_inicio_unico == sex_hora_fim_unico))
-                      {
-                        sex_hora_inicio_unico = sex_hora_inicio_unico - 1;
-                        if(sex_hora_fim_unico<=0)
-                        {
-                          sex_hora_inicio_unico = 23;
-                          sex_min_fim_unico = 00;
-                        }
-                      }
-                      if(sex_hora_inicio_unico <= 9)
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      if(sex_hora_fim_unico <= 9)
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                    }
-                    function sex_hora_fim_aluguel_mais()
-                    {
-                      sex_min_fim_unico = sex_min_fim_unico + 30;
-                      if(sex_min_fim_unico >= 60)
-                      {
-                        sex_min_fim_unico = 00;
-                        sex_hora_fim_unico = sex_hora_fim_unico + 1;
-                        if(sex_hora_fim_unico>=24)
-                        {
-                          sex_hora_fim_unico = 00;
-                        }
-                      }
-                      if(sex_hora_inicio_unico>=24)
-                      {
-                        sex_hora_inicio_unico = 00;
-                      }
-                      if((sex_hora_fim_unico == sex_hora_inicio_unico))
-                      {
-                        sex_hora_inicio_unico = sex_hora_inicio_unico + 1;
-                      }
-                      if(sex_hora_inicio_unico <= 9)
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      if(sex_hora_fim_unico <= 9)
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                    }
-                    function sex_hora_inicio_aluguel_menos()
-                    {
-                      sex_min_inicio_unico = sex_min_inicio_unico - 30;
-                      if(sex_min_inicio_unico < 0)
-                      {
-                        sex_min_inicio_unico = 30;
-                        sex_hora_inicio_unico = sex_hora_inicio_unico - 1;
-                        if(sex_hora_inicio_unico<=0)
-                        {
-                          sex_hora_inicio_unico = 23;
-                          sex_min_inicio_unico = 30;
-                        }
-                      }
-                      if(sex_hora_fim_unico<=0)
-                      {
-                        sex_hora_fim_unico = 23;
-                        sex_min_inicio_unico = 30;
-                      }
-                      if((sex_hora_inicio_unico == sex_hora_fim_unico))
-                      {
-                        sex_hora_fim_unico = sex_hora_fim_unico - 1;
-                        if(sex_hora_fim_unico<=0)
-                        {
-                          sex_hora_fim_unico = 23;
-                          sex_min_inicio_unico = 00;
-                        }
-                      }
-                      if(sex_hora_inicio_unico <= 9)
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      if(sex_hora_fim_unico <= 9)
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                    }
-                    function sex_hora_inicio_aluguel_mais()
-                    {
-                      sex_min_inicio_unico = sex_min_inicio_unico + 30;
-                      if(sex_min_inicio_unico >= 60)
-                      {
-                        sex_min_inicio_unico = 00;
-                        sex_hora_inicio_unico = sex_hora_inicio_unico + 1;
-                        if(sex_hora_inicio_unico>=24)
-                        {
-                          sex_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(sex_hora_fim_unico>=24)
-                      {
-                        sex_hora_fim_unico = 00;
-                      }
-                      if((sex_hora_inicio_unico == sex_hora_fim_unico))
-                      {
-                        sex_hora_fim_unico = sex_hora_fim_unico + 1;
-                      }
-                      if(sex_hora_inicio_unico <= 9)
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_inicio_unico == 0)
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
-                        }
-                      }
-                      if(sex_hora_fim_unico <= 9)
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sex_min_fim_unico == 0)
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
-                        }
-                      }
-                      console.log(sex_hora_inicio_unico+":"+sex_min_inicio_unico);
-                      console.log(sex_hora_fim_unico+":"+sex_min_fim_unico);
-                    }
-                    </script>
-                    <br>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="sex-hora-fim" type="text" name="sex-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="sex_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sex_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sabado_botao_periodo();calcularPreco()" id="sabado-bot-periodo" class="btn btn-outline-warning"><h6>Sab</h6></span>
-                  <br><br><span style="color: white" id="sabado-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="sabado-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-sab-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-sab-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="sab-hora-inicio" type="text" name="sab-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="sab_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sab_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <br>
-                    <script>
-                    var sab_hora_inicio_unico = 12;
-                    var sab_hora_fim_unico = 18;
-                    var sab_min_inicio_unico = 00;
-                    var sab_min_fim_unico = 00;
-                    var sab_hora_inicio_unico_id = document.getElementById("sab-hora-inicio");
-                    var sab_hora_fim_unico_id = document.getElementById("sab-hora-fim");
-                    function sab_hora_fim_aluguel_menos()
-                    {
-                      sab_min_fim_unico = sab_min_fim_unico - 30;
-                      if(sab_min_fim_unico < 0)
-                      {
-                        sab_min_fim_unico = 30;
-                        sab_hora_fim_unico = sab_hora_fim_unico - 1;
-                        if(sab_hora_fim_unico<=0)
-                        {
-                          sab_hora_fim_unico = 23;
-                          sab_min_fim_unico = 30;
-                        }
-                      }
-                      if(sab_hora_inicio_unico<=0)
-                      {
-                        sab_hora_inicio_unico = 23;
-                        sab_min_fim_unico = 30;
-                      }
-                      if((sab_hora_inicio_unico == sab_hora_fim_unico))
-                      {
-                        sab_hora_inicio_unico = sab_hora_inicio_unico - 1;
-                        if(sab_hora_fim_unico<=0)
-                        {
-                          sab_hora_inicio_unico = 23;
-                          sab_min_fim_unico = 00;
-                        }
-                      }
-                      if(sab_hora_inicio_unico <= 9)
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      if(sab_hora_fim_unico <= 9)
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                    }
-                    function sab_hora_fim_aluguel_mais()
-                    {
-                      sab_min_fim_unico = sab_min_fim_unico + 30;
-                      if(sab_min_fim_unico >= 60)
-                      {
-                        sab_min_fim_unico = 00;
-                        sab_hora_fim_unico = sab_hora_fim_unico + 1;
-                        if(sab_hora_fim_unico>=24)
-                        {
-                          sab_hora_fim_unico = 00;
-                        }
-                      }
-                      if(sab_hora_inicio_unico>=24)
-                      {
-                        sab_hora_inicio_unico = 00;
-                      }
-                      if((sab_hora_fim_unico == sab_hora_inicio_unico))
-                      {
-                        sab_hora_inicio_unico = sab_hora_inicio_unico + 1;
-                      }
-                      if(sab_hora_inicio_unico <= 9)
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      if(sab_hora_fim_unico <= 9)
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                    }
-                    function sab_hora_inicio_aluguel_menos()
-                    {
-                      sab_min_inicio_unico = sab_min_inicio_unico - 30;
-                      if(sab_min_inicio_unico < 0)
-                      {
-                        sab_min_inicio_unico = 30;
-                        sab_hora_inicio_unico = sab_hora_inicio_unico - 1;
-                        if(sab_hora_inicio_unico<=0)
-                        {
-                          sab_hora_inicio_unico = 23;
-                          sab_min_inicio_unico = 30;
-                        }
-                      }
-                      if(sab_hora_fim_unico<=0)
-                      {
-                        sab_hora_fim_unico = 23;
-                        sab_min_inicio_unico = 30;
-                      }
-                      if((sab_hora_inicio_unico == sab_hora_fim_unico))
-                      {
-                        sab_hora_fim_unico = sab_hora_fim_unico - 1;
-                        if(sab_hora_fim_unico<=0)
-                        {
-                          sab_hora_fim_unico = 23;
-                          sab_min_inicio_unico = 00;
-                        }
-                      }
-                      if(sab_hora_inicio_unico <= 9)
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      if(sab_hora_fim_unico <= 9)
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                    }
-                    function sab_hora_inicio_aluguel_mais()
-                    {
-                      sab_min_inicio_unico = sab_min_inicio_unico + 30;
-                      if(sab_min_inicio_unico >= 60)
-                      {
-                        sab_min_inicio_unico = 00;
-                        sab_hora_inicio_unico = sab_hora_inicio_unico + 1;
-                        if(sab_hora_inicio_unico>=24)
-                        {
-                          sab_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(sab_hora_fim_unico>=24)
-                      {
-                        sab_hora_fim_unico = 00;
-                      }
-                      if((sab_hora_inicio_unico == sab_hora_fim_unico))
-                      {
-                        sab_hora_fim_unico = sab_hora_fim_unico + 1;
-                      }
-                      if(sab_hora_inicio_unico <= 9)
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_inicio_unico == 0)
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
-                        }
-                      }
-                      if(sab_hora_fim_unico <= 9)
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(sab_min_fim_unico == 0)
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
-                        }
-                      }
-                      console.log(sab_hora_inicio_unico+":"+sab_min_inicio_unico);
-                      console.log(sab_hora_fim_unico+":"+sab_min_fim_unico);
-                    }
-                    </script>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="sab-hora-fim" type="text" name="sab-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="sab_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="sab_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="domingo_botao_periodo();calcularPreco()" id="domingo-bot-periodo" class="btn btn-outline-warning"><h6>Dom</h6></span>
-                  <br><br><span style="color: white" id="domingo-aviso">Dia bloqueado</span><br><br>
-
-                  <div id="domingo-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <br>
-                        <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-dom-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-dom-texto" style="color: #FFCE00">00:00</span>.<br></span>
-                        <br>
-                        <h6>Hora de início do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="dom-hora-inicio" type="text" name="dom-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="dom_hora_inicio_aluguel_mais();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="dom_hora_inicio_aluguel_menos();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                    <br>
-                    <script>
-                    var dom_hora_inicio_unico = 12;
-                    var dom_hora_fim_unico = 18;
-                    var dom_min_inicio_unico = 00;
-                    var dom_min_fim_unico = 00;
-                    var dom_hora_inicio_unico_id = document.getElementById("dom-hora-inicio");
-                    var dom_hora_fim_unico_id = document.getElementById("dom-hora-fim");
-                    function dom_hora_fim_aluguel_menos()
-                    {
-                      dom_min_fim_unico = dom_min_fim_unico - 30;
-                      if(dom_min_fim_unico < 0)
-                      {
-                        dom_min_fim_unico = 30;
-                        dom_hora_fim_unico = dom_hora_fim_unico - 1;
-                        if(dom_hora_fim_unico<=0)
-                        {
-                          dom_hora_fim_unico = 23;
-                          dom_min_fim_unico = 30;
-                        }
-                      }
-                      if(dom_hora_inicio_unico<=0)
-                      {
-                        dom_hora_inicio_unico = 23;
-                        dom_min_fim_unico = 30;
-                      }
-                      if((dom_hora_inicio_unico == dom_hora_fim_unico))
-                      {
-                        dom_hora_inicio_unico = dom_hora_inicio_unico - 1;
-                        if(dom_hora_fim_unico<=0)
-                        {
-                          dom_hora_inicio_unico = 23;
-                          dom_min_fim_unico = 00;
-                        }
-                      }
-                      if(dom_hora_inicio_unico <= 9)
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      if(dom_hora_fim_unico <= 9)
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                    }
-                    function dom_hora_fim_aluguel_mais()
-                    {
-                      dom_min_fim_unico = dom_min_fim_unico + 30;
-                      if(dom_min_fim_unico >= 60)
-                      {
-                        dom_min_fim_unico = 00;
-                        dom_hora_fim_unico = dom_hora_fim_unico + 1;
-                        if(dom_hora_fim_unico>=24)
-                        {
-                          dom_hora_fim_unico = 00;
-                        }
-                      }
-                      if(dom_hora_inicio_unico>=24)
-                      {
-                        dom_hora_inicio_unico = 00;
-                      }
-                      if((dom_hora_fim_unico == dom_hora_inicio_unico))
-                      {
-                        dom_hora_inicio_unico = dom_hora_inicio_unico + 1;
-                      }
-                      if(dom_hora_inicio_unico <= 9)
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      if(dom_hora_fim_unico <= 9)
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                    }
-                    function dom_hora_inicio_aluguel_menos()
-                    {
-                      dom_min_inicio_unico = dom_min_inicio_unico - 30;
-                      if(dom_min_inicio_unico < 0)
-                      {
-                        dom_min_inicio_unico = 30;
-                        dom_hora_inicio_unico = dom_hora_inicio_unico - 1;
-                        if(dom_hora_inicio_unico<=0)
-                        {
-                          dom_hora_inicio_unico = 23;
-                          dom_min_inicio_unico = 30;
-                        }
-                      }
-                      if(dom_hora_fim_unico<=0)
-                      {
-                        dom_hora_fim_unico = 23;
-                        dom_min_inicio_unico = 30;
-                      }
-                      if((dom_hora_inicio_unico == dom_hora_fim_unico))
-                      {
-                        dom_hora_fim_unico = dom_hora_fim_unico - 1;
-                        if(dom_hora_fim_unico<=0)
-                        {
-                          dom_hora_fim_unico = 23;
-                          dom_min_inicio_unico = 00;
-                        }
-                      }
-                      if(dom_hora_inicio_unico <= 9)
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      if(dom_hora_fim_unico <= 9)
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                    }
-                    function dom_hora_inicio_aluguel_mais()
-                    {
-                      dom_min_inicio_unico = dom_min_inicio_unico + 30;
-                      if(dom_min_inicio_unico >= 60)
-                      {
-                        dom_min_inicio_unico = 00;
-                        dom_hora_inicio_unico = dom_hora_inicio_unico + 1;
-                        if(dom_hora_inicio_unico>=24)
-                        {
-                          dom_hora_inicio_unico = 00;
-                        }
-                      }
-                      if(dom_hora_fim_unico>=24)
-                      {
-                        dom_hora_fim_unico = 00;
-                      }
-                      if((dom_hora_inicio_unico == dom_hora_fim_unico))
-                      {
-                        dom_hora_fim_unico = dom_hora_fim_unico + 1;
-                      }
-                      if(dom_hora_inicio_unico <= 9)
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_inicio_unico == 0)
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
-                        }
-                        else
-                        {
-                          dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
-                        }
-                      }
-                      if(dom_hora_fim_unico <= 9)
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                      else
-                      {
-                        if(dom_min_fim_unico == 0)
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
-                        }
-                        else
-                        {
-                          document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
-                        }
-                      }
-                      console.log(dom_hora_inicio_unico+":"+dom_min_inicio_unico);
-                      console.log(dom_hora_fim_unico+":"+dom_min_fim_unico);
-                    }
-                    </script>
-                    <div class="row px-2">
-                      <div class="col-12" style="color: #FFCE00">
-                        <h6>Hora de fim do Aluguel</h6>
-                      </div>
-                      <div class="col-12">
-                        <input id="dom-hora-fim" type="text" name="dom-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
-                        <br>
-                      </div>
-                      <div class="col-12">
-                        <span onclick="dom_hora_fim_aluguel_mais();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                        <span onclick="dom_hora_fim_aluguel_menos();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-12 py-4">
-                  <h6 style="color: white">Selecione quantas semanas seguidas o espaço será alugado</h6>
-                  <br>
-                  <div class="row text-center justify-content-center">
-                    <div class="col-6">
-                      <div class="row justify-content-center px-2">
-                        <div class="col-10">
-                          <input type="text" id="semanas-seguidas" maxlength="2"name="semanas-unico" class="form-control" style="text-align: center" readonly value="1">
-                          <br>
-                          <script>
-                          var semanasSeguidas = 1;
-                          function semana_reincidente_mais()
-                          {
-                            semanasSeguidas = semanasSeguidas + 1;
-                            if(semanasSeguidas >= 12)
-                            {
-                              semanasSeguidas = 12;
-                            }
-                            if(semanasSeguidas <= 0)
-                            {
-                              semanasSeguidas = 1;
-                            }
-                            document.getElementById("semanas-seguidas").value = semanasSeguidas;
-                          }
-                          function semana_reincidente_menos()
-                          {
-                            semanasSeguidas = semanasSeguidas - 1;
-                            if(semanasSeguidas >= 12)
-                            {
-                              semanasSeguidas = 12;
-                            }
-                            if(semanasSeguidas <= 0)
-                            {
-                              semanasSeguidas = 1;
-                            }
-                            document.getElementById("semanas-seguidas").value = semanasSeguidas;
-                          }
-                          </script>
-                        </div>
-                        <div class="col-12">
-                          <span onclick="semana_reincidente_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
-                          <span onclick="semana_reincidente_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
-                        </div>
-                      </div>
-                      <br>
-                      <h6 id="tempoDeAlguel" style="color: #FFC107"></h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            }
+            </script>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="seg-hora-inicio" type="text" name="seg-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="seg_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="seg_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <script>
+        var seg_hora_inicio_unico = 12;
+        var seg_hora_fim_unico = 18;
+        var seg_min_inicio_unico = 00;
+        var seg_min_fim_unico = 00;
+        var seg_hora_inicio_unico_id = document.getElementById("seg-hora-inicio");
+        var seg_hora_fim_unico_id = document.getElementById("seg-hora-fim");
+        function seg_hora_fim_aluguel_menos()
+        {
+          seg_min_fim_unico = seg_min_fim_unico - 30;
+          if(seg_min_fim_unico < 0)
+          {
+            seg_min_fim_unico = 30;
+            seg_hora_fim_unico = seg_hora_fim_unico - 1;
+            if(seg_hora_fim_unico<=0)
+            {
+              seg_hora_fim_unico = 23;
+              seg_min_fim_unico = 30;
+            }
+          }
+          if(seg_hora_inicio_unico<=0)
+          {
+            seg_hora_inicio_unico = 23;
+            seg_min_fim_unico = 30;
+          }
+          if((seg_hora_inicio_unico == seg_hora_fim_unico))
+          {
+            seg_hora_inicio_unico = seg_hora_inicio_unico - 1;
+            if(seg_hora_fim_unico<=0)
+            {
+              seg_hora_inicio_unico = 23;
+              seg_min_fim_unico = 00;
+            }
+          }
+          if(seg_hora_inicio_unico <= 9)
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          if(seg_hora_fim_unico <= 9)
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+        }
+        function seg_hora_fim_aluguel_mais()
+        {
+          seg_min_fim_unico = seg_min_fim_unico + 30;
+          if(seg_min_fim_unico >= 60)
+          {
+            seg_min_fim_unico = 00;
+            seg_hora_fim_unico = seg_hora_fim_unico + 1;
+            if(seg_hora_fim_unico>=24)
+            {
+              seg_hora_fim_unico = 00;
+            }
+          }
+          if(seg_hora_inicio_unico>=24)
+          {
+            seg_hora_inicio_unico = 00;
+          }
+          if((seg_hora_fim_unico == seg_hora_inicio_unico))
+          {
+            seg_hora_inicio_unico = seg_hora_inicio_unico + 1;
+          }
+          if(seg_hora_inicio_unico <= 9)
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          if(seg_hora_fim_unico <= 9)
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+        }
+        function seg_hora_inicio_aluguel_menos()
+        {
+          seg_min_inicio_unico = seg_min_inicio_unico - 30;
+          if(seg_min_inicio_unico < 0)
+          {
+            seg_min_inicio_unico = 30;
+            seg_hora_inicio_unico = seg_hora_inicio_unico - 1;
+            if(seg_hora_inicio_unico<=0)
+            {
+              seg_hora_inicio_unico = 23;
+              seg_min_inicio_unico = 30;
+            }
+          }
+          if(seg_hora_fim_unico<=0)
+          {
+            seg_hora_fim_unico = 23;
+            seg_min_inicio_unico = 30;
+          }
+          if((seg_hora_inicio_unico == seg_hora_fim_unico))
+          {
+            seg_hora_fim_unico = seg_hora_fim_unico - 1;
+            if(seg_hora_fim_unico<=0)
+            {
+              seg_hora_fim_unico = 23;
+              seg_min_inicio_unico = 00;
+            }
+          }
+          if(seg_hora_inicio_unico <= 9)
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          if(seg_hora_fim_unico <= 9)
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+        }
+        function seg_hora_inicio_aluguel_mais()
+        {
+          seg_min_inicio_unico = seg_min_inicio_unico + 30;
+          if(seg_min_inicio_unico >= 60)
+          {
+            seg_min_inicio_unico = 00;
+            seg_hora_inicio_unico = seg_hora_inicio_unico + 1;
+            if(seg_hora_inicio_unico>=24)
+            {
+              seg_hora_inicio_unico = 00;
+            }
+          }
+          if(seg_hora_fim_unico>=24)
+          {
+            seg_hora_fim_unico = 00;
+          }
+          if((seg_hora_inicio_unico == seg_hora_fim_unico))
+          {
+            seg_hora_fim_unico = seg_hora_fim_unico + 1;
+          }
+          if(seg_hora_inicio_unico <= 9)
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = "0"+seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_inicio_unico == 0)
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              seg_hora_inicio_unico_id.value = seg_hora_inicio_unico+":"+seg_min_inicio_unico;
+            }
+          }
+          if(seg_hora_fim_unico <= 9)
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = "0"+seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(seg_min_fim_unico == 0)
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("seg-hora-fim").value = seg_hora_fim_unico+":"+seg_min_fim_unico;
+            }
+          }
+          console.log(seg_hora_inicio_unico+":"+seg_min_inicio_unico);
+          console.log(seg_hora_fim_unico+":"+seg_min_fim_unico);
+        }
+        </script>
+        <br>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="seg-hora-fim" type="text" name="seg-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="seg_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="seg_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
           </div>
         </div>
       </div>
 
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="terca_botao_periodo();calcularPreco()" id="terca-bot-periodo" class="btn btn-outline-warning"><h6>Ter</h6></span>
+      <br><br><span style="color: white" id="terca-aviso">Dia bloqueado</span><br><br>
 
-    <div class="row p-3 text-center justify-content-center" style="border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
-      <div class="col-12 text-center justify-content-center">
-        <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php //echo $array['7']?></span> </h5>
+      <div id="terca-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-ter-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-ter-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="ter-hora-inicio" type="text" name="ter-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="ter_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="ter_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <script>
+        var ter_hora_inicio_unico = 12;
+        var ter_hora_fim_unico = 18;
+        var ter_min_inicio_unico = 00;
+        var ter_min_fim_unico = 00;
+        var ter_hora_inicio_unico_id = document.getElementById("ter-hora-inicio");
+        var ter_hora_fim_unico_id = document.getElementById("ter-hora-fim");
+        function ter_hora_fim_aluguel_menos()
+        {
+          ter_min_fim_unico = ter_min_fim_unico - 30;
+          if(ter_min_fim_unico < 0)
+          {
+            ter_min_fim_unico = 30;
+            ter_hora_fim_unico = ter_hora_fim_unico - 1;
+            if(ter_hora_fim_unico<=0)
+            {
+              ter_hora_fim_unico = 23;
+              ter_min_fim_unico = 30;
+            }
+          }
+          if(ter_hora_inicio_unico<=0)
+          {
+            ter_hora_inicio_unico = 23;
+            ter_min_fim_unico = 30;
+          }
+          if((ter_hora_inicio_unico == ter_hora_fim_unico))
+          {
+            ter_hora_inicio_unico = ter_hora_inicio_unico - 1;
+            if(ter_hora_fim_unico<=0)
+            {
+              ter_hora_inicio_unico = 23;
+              ter_min_fim_unico = 00;
+            }
+          }
+          if(ter_hora_inicio_unico <= 9)
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          if(ter_hora_fim_unico <= 9)
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+        }
+        function ter_hora_fim_aluguel_mais()
+        {
+          ter_min_fim_unico = ter_min_fim_unico + 30;
+          if(ter_min_fim_unico >= 60)
+          {
+            ter_min_fim_unico = 00;
+            ter_hora_fim_unico = ter_hora_fim_unico + 1;
+            if(ter_hora_fim_unico>=24)
+            {
+              ter_hora_fim_unico = 00;
+            }
+          }
+          if(ter_hora_inicio_unico>=24)
+          {
+            ter_hora_inicio_unico = 00;
+          }
+          if((ter_hora_fim_unico == ter_hora_inicio_unico))
+          {
+            ter_hora_inicio_unico = ter_hora_inicio_unico + 1;
+          }
+          if(ter_hora_inicio_unico <= 9)
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          if(ter_hora_fim_unico <= 9)
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+        }
+        function ter_hora_inicio_aluguel_menos()
+        {
+          ter_min_inicio_unico = ter_min_inicio_unico - 30;
+          if(ter_min_inicio_unico < 0)
+          {
+            ter_min_inicio_unico = 30;
+            ter_hora_inicio_unico = ter_hora_inicio_unico - 1;
+            if(ter_hora_inicio_unico<=0)
+            {
+              ter_hora_inicio_unico = 23;
+              ter_min_inicio_unico = 30;
+            }
+          }
+          if(ter_hora_fim_unico<=0)
+          {
+            ter_hora_fim_unico = 23;
+            ter_min_inicio_unico = 30;
+          }
+          if((ter_hora_inicio_unico == ter_hora_fim_unico))
+          {
+            ter_hora_fim_unico = ter_hora_fim_unico - 1;
+            if(ter_hora_fim_unico<=0)
+            {
+              ter_hora_fim_unico = 23;
+              ter_min_inicio_unico = 00;
+            }
+          }
+          if(ter_hora_inicio_unico <= 9)
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          if(ter_hora_fim_unico <= 9)
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+        }
+        function ter_hora_inicio_aluguel_mais()
+        {
+          ter_min_inicio_unico = ter_min_inicio_unico + 30;
+          if(ter_min_inicio_unico >= 60)
+          {
+            ter_min_inicio_unico = 00;
+            ter_hora_inicio_unico = ter_hora_inicio_unico + 1;
+            if(ter_hora_inicio_unico>=24)
+            {
+              ter_hora_inicio_unico = 00;
+            }
+          }
+          if(ter_hora_fim_unico>=24)
+          {
+            ter_hora_fim_unico = 00;
+          }
+          if((ter_hora_inicio_unico == ter_hora_fim_unico))
+          {
+            ter_hora_fim_unico = ter_hora_fim_unico + 1;
+          }
+          if(ter_hora_inicio_unico <= 9)
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = "0"+ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_inicio_unico == 0)
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              ter_hora_inicio_unico_id.value = ter_hora_inicio_unico+":"+ter_min_inicio_unico;
+            }
+          }
+          if(ter_hora_fim_unico <= 9)
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = "0"+ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(ter_min_fim_unico == 0)
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("ter-hora-fim").value = ter_hora_fim_unico+":"+ter_min_fim_unico;
+            }
+          }
+          console.log(ter_hora_inicio_unico+":"+ter_min_inicio_unico);
+          console.log(ter_hora_fim_unico+":"+ter_min_fim_unico);
+        }
+        </script>
         <br>
-        <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Faça o pedido de aluguel agora</span>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="ter-hora-fim" type="text" name="ter-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="ter_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="ter_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quarta_botao_periodo();calcularPreco()" id="quarta-bot-periodo" class="btn btn-outline-warning"><h6>Qua</h6></span>
+      <br><br><span style="color: white" id="quarta-aviso">Dia bloqueado</span><br><br>
+
+      <div id="quarta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-qua-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-qua-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="qua-hora-inicio" type="text" name="qua-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="qua_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="qua_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <script>
+        var qua_hora_inicio_unico = 12;
+        var qua_hora_fim_unico = 18;
+        var qua_min_inicio_unico = 00;
+        var qua_min_fim_unico = 00;
+        var qua_hora_inicio_unico_id = document.getElementById("qua-hora-inicio");
+        var qua_hora_fim_unico_id = document.getElementById("qua-hora-fim");
+        function qua_hora_fim_aluguel_menos()
+        {
+          qua_min_fim_unico = qua_min_fim_unico - 30;
+          if(qua_min_fim_unico < 0)
+          {
+            qua_min_fim_unico = 30;
+            qua_hora_fim_unico = qua_hora_fim_unico - 1;
+            if(qua_hora_fim_unico<=0)
+            {
+              qua_hora_fim_unico = 23;
+              qua_min_fim_unico = 30;
+            }
+          }
+          if(qua_hora_inicio_unico<=0)
+          {
+            qua_hora_inicio_unico = 23;
+            qua_min_fim_unico = 30;
+          }
+          if((qua_hora_inicio_unico == qua_hora_fim_unico))
+          {
+            qua_hora_inicio_unico = qua_hora_inicio_unico - 1;
+            if(qua_hora_fim_unico<=0)
+            {
+              qua_hora_inicio_unico = 23;
+              qua_min_fim_unico = 00;
+            }
+          }
+          if(qua_hora_inicio_unico <= 9)
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          if(qua_hora_fim_unico <= 9)
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+        }
+        function qua_hora_fim_aluguel_mais()
+        {
+          qua_min_fim_unico = qua_min_fim_unico + 30;
+          if(qua_min_fim_unico >= 60)
+          {
+            qua_min_fim_unico = 00;
+            qua_hora_fim_unico = qua_hora_fim_unico + 1;
+            if(qua_hora_fim_unico>=24)
+            {
+              qua_hora_fim_unico = 00;
+            }
+          }
+          if(qua_hora_inicio_unico>=24)
+          {
+            qua_hora_inicio_unico = 00;
+          }
+          if((qua_hora_fim_unico == qua_hora_inicio_unico))
+          {
+            qua_hora_inicio_unico = qua_hora_inicio_unico + 1;
+          }
+          if(qua_hora_inicio_unico <= 9)
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          if(qua_hora_fim_unico <= 9)
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+        }
+        function qua_hora_inicio_aluguel_menos()
+        {
+          qua_min_inicio_unico = qua_min_inicio_unico - 30;
+          if(qua_min_inicio_unico < 0)
+          {
+            qua_min_inicio_unico = 30;
+            qua_hora_inicio_unico = qua_hora_inicio_unico - 1;
+            if(qua_hora_inicio_unico<=0)
+            {
+              qua_hora_inicio_unico = 23;
+              qua_min_inicio_unico = 30;
+            }
+          }
+          if(qua_hora_fim_unico<=0)
+          {
+            qua_hora_fim_unico = 23;
+            qua_min_inicio_unico = 30;
+          }
+          if((qua_hora_inicio_unico == qua_hora_fim_unico))
+          {
+            qua_hora_fim_unico = qua_hora_fim_unico - 1;
+            if(qua_hora_fim_unico<=0)
+            {
+              qua_hora_fim_unico = 23;
+              qua_min_inicio_unico = 00;
+            }
+          }
+          if(qua_hora_inicio_unico <= 9)
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          if(qua_hora_fim_unico <= 9)
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+        }
+        function qua_hora_inicio_aluguel_mais()
+        {
+          qua_min_inicio_unico = qua_min_inicio_unico + 30;
+          if(qua_min_inicio_unico >= 60)
+          {
+            qua_min_inicio_unico = 00;
+            qua_hora_inicio_unico = qua_hora_inicio_unico + 1;
+            if(qua_hora_inicio_unico>=24)
+            {
+              qua_hora_inicio_unico = 00;
+            }
+          }
+          if(qua_hora_fim_unico>=24)
+          {
+            qua_hora_fim_unico = 00;
+          }
+          if((qua_hora_inicio_unico == qua_hora_fim_unico))
+          {
+            qua_hora_fim_unico = qua_hora_fim_unico + 1;
+          }
+          if(qua_hora_inicio_unico <= 9)
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = "0"+qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_inicio_unico == 0)
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qua_hora_inicio_unico_id.value = qua_hora_inicio_unico+":"+qua_min_inicio_unico;
+            }
+          }
+          if(qua_hora_fim_unico <= 9)
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = "0"+qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qua_min_fim_unico == 0)
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qua-hora-fim").value = qua_hora_fim_unico+":"+qua_min_fim_unico;
+            }
+          }
+          console.log(qua_hora_inicio_unico+":"+qua_min_inicio_unico);
+          console.log(qua_hora_fim_unico+":"+qua_min_fim_unico);
+        }
+        </script>
+        <br>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="qua-hora-fim" type="text" name="qua-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="qua_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="qua_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="quinta_botao_periodo();calcularPreco()" id="quinta-bot-periodo" class="btn btn-outline-warning"><h6>Qui</h6></span>
+      <br><br><span style="color: white" id="quinta-aviso">Dia bloqueado</span><br><br>
+
+      <div id="quinta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-qui-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-qui-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="qui-hora-inicio" type="text" name="qui-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="qui_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="qui_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <br>
+        <script>
+        var qui_hora_inicio_unico = 12;
+        var qui_hora_fim_unico = 18;
+        var qui_min_inicio_unico = 00;
+        var qui_min_fim_unico = 00;
+        var qui_hora_inicio_unico_id = document.getElementById("qui-hora-inicio");
+        var qui_hora_fim_unico_id = document.getElementById("qui-hora-fim");
+        function qui_hora_fim_aluguel_menos()
+        {
+          qui_min_fim_unico = qui_min_fim_unico - 30;
+          if(qui_min_fim_unico < 0)
+          {
+            qui_min_fim_unico = 30;
+            qui_hora_fim_unico = qui_hora_fim_unico - 1;
+            if(qui_hora_fim_unico<=0)
+            {
+              qui_hora_fim_unico = 23;
+              qui_min_fim_unico = 30;
+            }
+          }
+          if(qui_hora_inicio_unico<=0)
+          {
+            qui_hora_inicio_unico = 23;
+            qui_min_fim_unico = 30;
+          }
+          if((qui_hora_inicio_unico == qui_hora_fim_unico))
+          {
+            qui_hora_inicio_unico = qui_hora_inicio_unico - 1;
+            if(qui_hora_fim_unico<=0)
+            {
+              qui_hora_inicio_unico = 23;
+              qui_min_fim_unico = 00;
+            }
+          }
+          if(qui_hora_inicio_unico <= 9)
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          if(qui_hora_fim_unico <= 9)
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+        }
+        function qui_hora_fim_aluguel_mais()
+        {
+          qui_min_fim_unico = qui_min_fim_unico + 30;
+          if(qui_min_fim_unico >= 60)
+          {
+            qui_min_fim_unico = 00;
+            qui_hora_fim_unico = qui_hora_fim_unico + 1;
+            if(qui_hora_fim_unico>=24)
+            {
+              qui_hora_fim_unico = 00;
+            }
+          }
+          if(qui_hora_inicio_unico>=24)
+          {
+            qui_hora_inicio_unico = 00;
+          }
+          if((qui_hora_fim_unico == qui_hora_inicio_unico))
+          {
+            qui_hora_inicio_unico = qui_hora_inicio_unico + 1;
+          }
+          if(qui_hora_inicio_unico <= 9)
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          if(qui_hora_fim_unico <= 9)
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+        }
+        function qui_hora_inicio_aluguel_menos()
+        {
+          qui_min_inicio_unico = qui_min_inicio_unico - 30;
+          if(qui_min_inicio_unico < 0)
+          {
+            qui_min_inicio_unico = 30;
+            qui_hora_inicio_unico = qui_hora_inicio_unico - 1;
+            if(qui_hora_inicio_unico<=0)
+            {
+              qui_hora_inicio_unico = 23;
+              qui_min_inicio_unico = 30;
+            }
+          }
+          if(qui_hora_fim_unico<=0)
+          {
+            qui_hora_fim_unico = 23;
+            qui_min_inicio_unico = 30;
+          }
+          if((qui_hora_inicio_unico == qui_hora_fim_unico))
+          {
+            qui_hora_fim_unico = qui_hora_fim_unico - 1;
+            if(qui_hora_fim_unico<=0)
+            {
+              qui_hora_fim_unico = 23;
+              qui_min_inicio_unico = 00;
+            }
+          }
+          if(qui_hora_inicio_unico <= 9)
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          if(qui_hora_fim_unico <= 9)
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+        }
+        function qui_hora_inicio_aluguel_mais()
+        {
+          qui_min_inicio_unico = qui_min_inicio_unico + 30;
+          if(qui_min_inicio_unico >= 60)
+          {
+            qui_min_inicio_unico = 00;
+            qui_hora_inicio_unico = qui_hora_inicio_unico + 1;
+            if(qui_hora_inicio_unico>=24)
+            {
+              qui_hora_inicio_unico = 00;
+            }
+          }
+          if(qui_hora_fim_unico>=24)
+          {
+            qui_hora_fim_unico = 00;
+          }
+          if((qui_hora_inicio_unico == qui_hora_fim_unico))
+          {
+            qui_hora_fim_unico = qui_hora_fim_unico + 1;
+          }
+          if(qui_hora_inicio_unico <= 9)
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = "0"+qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_inicio_unico == 0)
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              qui_hora_inicio_unico_id.value = qui_hora_inicio_unico+":"+qui_min_inicio_unico;
+            }
+          }
+          if(qui_hora_fim_unico <= 9)
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = "0"+qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(qui_min_fim_unico == 0)
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("qui-hora-fim").value = qui_hora_fim_unico+":"+qui_min_fim_unico;
+            }
+          }
+          console.log(qui_hora_inicio_unico+":"+qui_min_inicio_unico);
+          console.log(qui_hora_fim_unico+":"+qui_min_fim_unico);
+        }
+        </script>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="qui-hora-fim" type="text" name="qui-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="qui_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="qui_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sexta_botao_periodo();calcularPreco()" id="sexta-bot-periodo" class="btn btn-outline-warning"><h6>Sex</h6></span>
+      <br><br><span style="color: white" id="sexta-aviso">Dia bloqueado</span><br><br>
+
+      <div id="sexta-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-sex-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-sex-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="sex-hora-inicio" type="text" name="sex-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="sex_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="sex_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <script>
+        var sex_hora_inicio_unico = 12;
+        var sex_hora_fim_unico = 18;
+        var sex_min_inicio_unico = 00;
+        var sex_min_fim_unico = 00;
+        var sex_hora_inicio_unico_id = document.getElementById("sex-hora-inicio");
+        var sex_hora_fim_unico_id = document.getElementById("sex-hora-fim");
+        function sex_hora_fim_aluguel_menos()
+        {
+          sex_min_fim_unico = sex_min_fim_unico - 30;
+          if(sex_min_fim_unico < 0)
+          {
+            sex_min_fim_unico = 30;
+            sex_hora_fim_unico = sex_hora_fim_unico - 1;
+            if(sex_hora_fim_unico<=0)
+            {
+              sex_hora_fim_unico = 23;
+              sex_min_fim_unico = 30;
+            }
+          }
+          if(sex_hora_inicio_unico<=0)
+          {
+            sex_hora_inicio_unico = 23;
+            sex_min_fim_unico = 30;
+          }
+          if((sex_hora_inicio_unico == sex_hora_fim_unico))
+          {
+            sex_hora_inicio_unico = sex_hora_inicio_unico - 1;
+            if(sex_hora_fim_unico<=0)
+            {
+              sex_hora_inicio_unico = 23;
+              sex_min_fim_unico = 00;
+            }
+          }
+          if(sex_hora_inicio_unico <= 9)
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          if(sex_hora_fim_unico <= 9)
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+        }
+        function sex_hora_fim_aluguel_mais()
+        {
+          sex_min_fim_unico = sex_min_fim_unico + 30;
+          if(sex_min_fim_unico >= 60)
+          {
+            sex_min_fim_unico = 00;
+            sex_hora_fim_unico = sex_hora_fim_unico + 1;
+            if(sex_hora_fim_unico>=24)
+            {
+              sex_hora_fim_unico = 00;
+            }
+          }
+          if(sex_hora_inicio_unico>=24)
+          {
+            sex_hora_inicio_unico = 00;
+          }
+          if((sex_hora_fim_unico == sex_hora_inicio_unico))
+          {
+            sex_hora_inicio_unico = sex_hora_inicio_unico + 1;
+          }
+          if(sex_hora_inicio_unico <= 9)
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          if(sex_hora_fim_unico <= 9)
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+        }
+        function sex_hora_inicio_aluguel_menos()
+        {
+          sex_min_inicio_unico = sex_min_inicio_unico - 30;
+          if(sex_min_inicio_unico < 0)
+          {
+            sex_min_inicio_unico = 30;
+            sex_hora_inicio_unico = sex_hora_inicio_unico - 1;
+            if(sex_hora_inicio_unico<=0)
+            {
+              sex_hora_inicio_unico = 23;
+              sex_min_inicio_unico = 30;
+            }
+          }
+          if(sex_hora_fim_unico<=0)
+          {
+            sex_hora_fim_unico = 23;
+            sex_min_inicio_unico = 30;
+          }
+          if((sex_hora_inicio_unico == sex_hora_fim_unico))
+          {
+            sex_hora_fim_unico = sex_hora_fim_unico - 1;
+            if(sex_hora_fim_unico<=0)
+            {
+              sex_hora_fim_unico = 23;
+              sex_min_inicio_unico = 00;
+            }
+          }
+          if(sex_hora_inicio_unico <= 9)
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          if(sex_hora_fim_unico <= 9)
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+        }
+        function sex_hora_inicio_aluguel_mais()
+        {
+          sex_min_inicio_unico = sex_min_inicio_unico + 30;
+          if(sex_min_inicio_unico >= 60)
+          {
+            sex_min_inicio_unico = 00;
+            sex_hora_inicio_unico = sex_hora_inicio_unico + 1;
+            if(sex_hora_inicio_unico>=24)
+            {
+              sex_hora_inicio_unico = 00;
+            }
+          }
+          if(sex_hora_fim_unico>=24)
+          {
+            sex_hora_fim_unico = 00;
+          }
+          if((sex_hora_inicio_unico == sex_hora_fim_unico))
+          {
+            sex_hora_fim_unico = sex_hora_fim_unico + 1;
+          }
+          if(sex_hora_inicio_unico <= 9)
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = "0"+sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_inicio_unico == 0)
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sex_hora_inicio_unico_id.value = sex_hora_inicio_unico+":"+sex_min_inicio_unico;
+            }
+          }
+          if(sex_hora_fim_unico <= 9)
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = "0"+sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sex_min_fim_unico == 0)
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sex-hora-fim").value = sex_hora_fim_unico+":"+sex_min_fim_unico;
+            }
+          }
+          console.log(sex_hora_inicio_unico+":"+sex_min_inicio_unico);
+          console.log(sex_hora_fim_unico+":"+sex_min_fim_unico);
+        }
+        </script>
+        <br>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="sex-hora-fim" type="text" name="sex-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="sex_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="sex_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="sabado_botao_periodo();calcularPreco()" id="sabado-bot-periodo" class="btn btn-outline-warning"><h6>Sab</h6></span>
+      <br><br><span style="color: white" id="sabado-aviso">Dia bloqueado</span><br><br>
+
+      <div id="sabado-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-sab-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-sab-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="sab-hora-inicio" type="text" name="sab-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="sab_hora_inicio_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="sab_hora_inicio_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <br>
+        <script>
+        var sab_hora_inicio_unico = 12;
+        var sab_hora_fim_unico = 18;
+        var sab_min_inicio_unico = 00;
+        var sab_min_fim_unico = 00;
+        var sab_hora_inicio_unico_id = document.getElementById("sab-hora-inicio");
+        var sab_hora_fim_unico_id = document.getElementById("sab-hora-fim");
+        function sab_hora_fim_aluguel_menos()
+        {
+          sab_min_fim_unico = sab_min_fim_unico - 30;
+          if(sab_min_fim_unico < 0)
+          {
+            sab_min_fim_unico = 30;
+            sab_hora_fim_unico = sab_hora_fim_unico - 1;
+            if(sab_hora_fim_unico<=0)
+            {
+              sab_hora_fim_unico = 23;
+              sab_min_fim_unico = 30;
+            }
+          }
+          if(sab_hora_inicio_unico<=0)
+          {
+            sab_hora_inicio_unico = 23;
+            sab_min_fim_unico = 30;
+          }
+          if((sab_hora_inicio_unico == sab_hora_fim_unico))
+          {
+            sab_hora_inicio_unico = sab_hora_inicio_unico - 1;
+            if(sab_hora_fim_unico<=0)
+            {
+              sab_hora_inicio_unico = 23;
+              sab_min_fim_unico = 00;
+            }
+          }
+          if(sab_hora_inicio_unico <= 9)
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          if(sab_hora_fim_unico <= 9)
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+        }
+        function sab_hora_fim_aluguel_mais()
+        {
+          sab_min_fim_unico = sab_min_fim_unico + 30;
+          if(sab_min_fim_unico >= 60)
+          {
+            sab_min_fim_unico = 00;
+            sab_hora_fim_unico = sab_hora_fim_unico + 1;
+            if(sab_hora_fim_unico>=24)
+            {
+              sab_hora_fim_unico = 00;
+            }
+          }
+          if(sab_hora_inicio_unico>=24)
+          {
+            sab_hora_inicio_unico = 00;
+          }
+          if((sab_hora_fim_unico == sab_hora_inicio_unico))
+          {
+            sab_hora_inicio_unico = sab_hora_inicio_unico + 1;
+          }
+          if(sab_hora_inicio_unico <= 9)
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          if(sab_hora_fim_unico <= 9)
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+        }
+        function sab_hora_inicio_aluguel_menos()
+        {
+          sab_min_inicio_unico = sab_min_inicio_unico - 30;
+          if(sab_min_inicio_unico < 0)
+          {
+            sab_min_inicio_unico = 30;
+            sab_hora_inicio_unico = sab_hora_inicio_unico - 1;
+            if(sab_hora_inicio_unico<=0)
+            {
+              sab_hora_inicio_unico = 23;
+              sab_min_inicio_unico = 30;
+            }
+          }
+          if(sab_hora_fim_unico<=0)
+          {
+            sab_hora_fim_unico = 23;
+            sab_min_inicio_unico = 30;
+          }
+          if((sab_hora_inicio_unico == sab_hora_fim_unico))
+          {
+            sab_hora_fim_unico = sab_hora_fim_unico - 1;
+            if(sab_hora_fim_unico<=0)
+            {
+              sab_hora_fim_unico = 23;
+              sab_min_inicio_unico = 00;
+            }
+          }
+          if(sab_hora_inicio_unico <= 9)
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          if(sab_hora_fim_unico <= 9)
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+        }
+        function sab_hora_inicio_aluguel_mais()
+        {
+          sab_min_inicio_unico = sab_min_inicio_unico + 30;
+          if(sab_min_inicio_unico >= 60)
+          {
+            sab_min_inicio_unico = 00;
+            sab_hora_inicio_unico = sab_hora_inicio_unico + 1;
+            if(sab_hora_inicio_unico>=24)
+            {
+              sab_hora_inicio_unico = 00;
+            }
+          }
+          if(sab_hora_fim_unico>=24)
+          {
+            sab_hora_fim_unico = 00;
+          }
+          if((sab_hora_inicio_unico == sab_hora_fim_unico))
+          {
+            sab_hora_fim_unico = sab_hora_fim_unico + 1;
+          }
+          if(sab_hora_inicio_unico <= 9)
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = "0"+sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_inicio_unico == 0)
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              sab_hora_inicio_unico_id.value = sab_hora_inicio_unico+":"+sab_min_inicio_unico;
+            }
+          }
+          if(sab_hora_fim_unico <= 9)
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = "0"+sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(sab_min_fim_unico == 0)
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("sab-hora-fim").value = sab_hora_fim_unico+":"+sab_min_fim_unico;
+            }
+          }
+          console.log(sab_hora_inicio_unico+":"+sab_min_inicio_unico);
+          console.log(sab_hora_fim_unico+":"+sab_min_fim_unico);
+        }
+        </script>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="sab-hora-fim" type="text" name="sab-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="sab_hora_fim_aluguel_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="sab_hora_fim_aluguel_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 my-2 p-2"><span onclick="domingo_botao_periodo();calcularPreco()" id="domingo-bot-periodo" class="btn btn-outline-warning"><h6>Dom</h6></span>
+      <br><br><span style="color: white" id="domingo-aviso">Dia bloqueado</span><br><br>
+
+      <div id="domingo-caixa-periodo" class="p-3" style="border-style: solid; border-width: 0.5px; border-radius: 5%; border-color: #FFC107; display: none">
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <br>
+            <span style="color: white; display: ">O horário disponível para esse dia da semana é de <span id="hora-inicio-dom-texto" style="color: #FFCE00">00:00</span> até <span id="hora-fim-dom-texto" style="color: #FFCE00">00:00</span>.<br></span>
+            <br>
+            <h6>Hora de início do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="dom-hora-inicio" type="text" name="dom-inicio-periodo" class="form-control" style="text-align: center" readonly value="12:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="dom_hora_inicio_aluguel_mais();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="dom_hora_inicio_aluguel_menos();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+        <br>
+        <script>
+        var dom_hora_inicio_unico = 12;
+        var dom_hora_fim_unico = 18;
+        var dom_min_inicio_unico = 00;
+        var dom_min_fim_unico = 00;
+        var dom_hora_inicio_unico_id = document.getElementById("dom-hora-inicio");
+        var dom_hora_fim_unico_id = document.getElementById("dom-hora-fim");
+        function dom_hora_fim_aluguel_menos()
+        {
+          dom_min_fim_unico = dom_min_fim_unico - 30;
+          if(dom_min_fim_unico < 0)
+          {
+            dom_min_fim_unico = 30;
+            dom_hora_fim_unico = dom_hora_fim_unico - 1;
+            if(dom_hora_fim_unico<=0)
+            {
+              dom_hora_fim_unico = 23;
+              dom_min_fim_unico = 30;
+            }
+          }
+          if(dom_hora_inicio_unico<=0)
+          {
+            dom_hora_inicio_unico = 23;
+            dom_min_fim_unico = 30;
+          }
+          if((dom_hora_inicio_unico == dom_hora_fim_unico))
+          {
+            dom_hora_inicio_unico = dom_hora_inicio_unico - 1;
+            if(dom_hora_fim_unico<=0)
+            {
+              dom_hora_inicio_unico = 23;
+              dom_min_fim_unico = 00;
+            }
+          }
+          if(dom_hora_inicio_unico <= 9)
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          if(dom_hora_fim_unico <= 9)
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+        }
+        function dom_hora_fim_aluguel_mais()
+        {
+          dom_min_fim_unico = dom_min_fim_unico + 30;
+          if(dom_min_fim_unico >= 60)
+          {
+            dom_min_fim_unico = 00;
+            dom_hora_fim_unico = dom_hora_fim_unico + 1;
+            if(dom_hora_fim_unico>=24)
+            {
+              dom_hora_fim_unico = 00;
+            }
+          }
+          if(dom_hora_inicio_unico>=24)
+          {
+            dom_hora_inicio_unico = 00;
+          }
+          if((dom_hora_fim_unico == dom_hora_inicio_unico))
+          {
+            dom_hora_inicio_unico = dom_hora_inicio_unico + 1;
+          }
+          if(dom_hora_inicio_unico <= 9)
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          if(dom_hora_fim_unico <= 9)
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+        }
+        function dom_hora_inicio_aluguel_menos()
+        {
+          dom_min_inicio_unico = dom_min_inicio_unico - 30;
+          if(dom_min_inicio_unico < 0)
+          {
+            dom_min_inicio_unico = 30;
+            dom_hora_inicio_unico = dom_hora_inicio_unico - 1;
+            if(dom_hora_inicio_unico<=0)
+            {
+              dom_hora_inicio_unico = 23;
+              dom_min_inicio_unico = 30;
+            }
+          }
+          if(dom_hora_fim_unico<=0)
+          {
+            dom_hora_fim_unico = 23;
+            dom_min_inicio_unico = 30;
+          }
+          if((dom_hora_inicio_unico == dom_hora_fim_unico))
+          {
+            dom_hora_fim_unico = dom_hora_fim_unico - 1;
+            if(dom_hora_fim_unico<=0)
+            {
+              dom_hora_fim_unico = 23;
+              dom_min_inicio_unico = 00;
+            }
+          }
+          if(dom_hora_inicio_unico <= 9)
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          if(dom_hora_fim_unico <= 9)
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+        }
+        function dom_hora_inicio_aluguel_mais()
+        {
+          dom_min_inicio_unico = dom_min_inicio_unico + 30;
+          if(dom_min_inicio_unico >= 60)
+          {
+            dom_min_inicio_unico = 00;
+            dom_hora_inicio_unico = dom_hora_inicio_unico + 1;
+            if(dom_hora_inicio_unico>=24)
+            {
+              dom_hora_inicio_unico = 00;
+            }
+          }
+          if(dom_hora_fim_unico>=24)
+          {
+            dom_hora_fim_unico = 00;
+          }
+          if((dom_hora_inicio_unico == dom_hora_fim_unico))
+          {
+            dom_hora_fim_unico = dom_hora_fim_unico + 1;
+          }
+          if(dom_hora_inicio_unico <= 9)
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = "0"+dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_inicio_unico == 0)
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+"00";
+            }
+            else
+            {
+              dom_hora_inicio_unico_id.value = dom_hora_inicio_unico+":"+dom_min_inicio_unico;
+            }
+          }
+          if(dom_hora_fim_unico <= 9)
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = "0"+dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+          else
+          {
+            if(dom_min_fim_unico == 0)
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+"00";
+            }
+            else
+            {
+              document.getElementById("dom-hora-fim").value = dom_hora_fim_unico+":"+dom_min_fim_unico;
+            }
+          }
+          console.log(dom_hora_inicio_unico+":"+dom_min_inicio_unico);
+          console.log(dom_hora_fim_unico+":"+dom_min_fim_unico);
+        }
+        </script>
+        <div class="row px-2">
+          <div class="col-12" style="color: #FFCE00">
+            <h6>Hora de fim do Aluguel</h6>
+          </div>
+          <div class="col-12">
+            <input id="dom-hora-fim" type="text" name="dom-fim-periodo" class="form-control" style="text-align: center" readonly  value="18:00">
+            <br>
+          </div>
+          <div class="col-12">
+            <span onclick="dom_hora_fim_aluguel_mais();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+            <span onclick="dom_hora_fim_aluguel_menos();calcularPreco()" class="btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12 py-4">
+      <h6 style="color: white">Selecione quantas semanas seguidas o espaço será alugado</h6>
+      <br>
+      <div class="row text-center justify-content-center">
+        <div class="col-6">
+          <div class="row justify-content-center px-2">
+            <div class="col-10">
+              <input type="text" id="semanas-seguidas" maxlength="2"name="semanas-unico" class="form-control" style="text-align: center" readonly value="1">
+              <br>
+              <script>
+              var semanasSeguidas = 1;
+              function semana_reincidente_mais()
+              {
+                semanasSeguidas = semanasSeguidas + 1;
+                if(semanasSeguidas >= 12)
+                {
+                  semanasSeguidas = 12;
+                }
+                if(semanasSeguidas <= 0)
+                {
+                  semanasSeguidas = 1;
+                }
+                document.getElementById("semanas-seguidas").value = semanasSeguidas;
+              }
+              function semana_reincidente_menos()
+              {
+                semanasSeguidas = semanasSeguidas - 1;
+                if(semanasSeguidas >= 12)
+                {
+                  semanasSeguidas = 12;
+                }
+                if(semanasSeguidas <= 0)
+                {
+                  semanasSeguidas = 1;
+                }
+                document.getElementById("semanas-seguidas").value = semanasSeguidas;
+              }
+              </script>
+            </div>
+            <div class="col-12">
+              <span onclick="semana_reincidente_mais();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-up"></i></span>
+              <span onclick="semana_reincidente_menos();calcularPreco()" class="my-1 btn btn-warning"><i class="fas fa-arrow-down"></i></span>
+            </div>
+          </div>
+          <br>
+          <h6 id="tempoDeAlguel" style="color: #FFC107"></h6>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="row p-3 text-center justify-content-center" style="border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
+  <div class="col-12 text-center justify-content-center">
+    <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php //echo $array['7']?></span> </h5>
+    <br>
+    <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Faça o pedido de aluguel agora</span>
+  </div>
+</div>
+</div>
 
 </div>
 
@@ -5571,7 +5588,7 @@ if($session->vereficarLogin() != false){
   <div class="col-12">
     <h2 class="mb-5"><b>Anúncios Similares:</b></h2>
     <div class="row">
-        <?php $arrayParecido=$busca->buscarEspacoParecido($conn,$array[9]); $contParecido = 0; ?>
+      <?php $arrayParecido=$busca->buscarEspacoParecido($conn,$array[9]); $contParecido = 0; ?>
 
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
@@ -5595,7 +5612,7 @@ if($session->vereficarLogin() != false){
         <br>
       </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
           <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
@@ -5618,7 +5635,7 @@ if($session->vereficarLogin() != false){
       </div>
 
 
-       <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
           <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
@@ -5640,7 +5657,7 @@ if($session->vereficarLogin() != false){
         <br>
       </div>
 
-       <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="col-lg-3 col-md-6 col-sm-6">
         <div style="background-color: black; height: 480px">
           <a href="<?php echo "http://localhost/yourdev/Locou/anuncio.php?id=".$arrayParecido[$contParecido++]?>" style="text-decoration: none;">
             <div class="row">
@@ -5728,22 +5745,22 @@ $( document ).ready(function() {
   $(function() {
     $('div.panorama').paver();
     $("#encrypt").click(function() {
-          var cc = new Moip.CreditCard({
-            number  : $("#number").val(),
-            cvc     : $("#cvc").val(),
-            expMonth: $("#month").val(),
-            expYear : $("#year").val(),
-            pubKey  : $("#public_key").val()
-          });
-          console.log(cc);
-          if( cc.isValid()){
-            $("#encrypted_value").val(cc.hash());
-          }
-          else{
-            $("#encrypted_value").val('');
-            alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
-          }
-        });
+      var cc = new Moip.CreditCard({
+        number  : $("#number").val(),
+        cvc     : $("#cvc").val(),
+        expMonth: $("#month").val(),
+        expYear : $("#year").val(),
+        pubKey  : $("#public_key").val()
+      });
+      console.log(cc);
+      if( cc.isValid()){
+        $("#encrypted_value").val(cc.hash());
+      }
+      else{
+        $("#encrypted_value").val('');
+        alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+      }
+    });
   });
   calcularPreco();
   dias_bloqueados();
