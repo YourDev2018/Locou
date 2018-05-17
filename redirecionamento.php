@@ -40,9 +40,10 @@ if ($buscaPedidoTemporario == false) {
 
     $titulo = $buscaPedidoTemporario[3]; // conferido
     $preco = $buscaPedidoTemporario[4]; // conferido
+    $idOrder = $buscaPedidoTemporario[7];
 
  
-    $idOrder = $pedidos->criarPedidoComClientMOIP($idPedido,$idMoipCliente,$idMoipProprietario,$titulo,$preco);
+//    $idOrder = $pedidos->criarPedidoComClientMOIP($idPedido,$idMoipCliente,$idMoipProprietario,$titulo,$preco);
 
     $db->salvarPedido($conn,$idAnuncio,$hashId,$idUsuario,$idOrder);
 

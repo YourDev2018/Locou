@@ -1390,6 +1390,7 @@ class BuscarEspacos
                 $array[$cont++] = $row['preco']; // 4
                 $array[$cont++] = $row['id']; // 5
                 $array[$cont++] = $row['tipo']; // 6
+                $array[$cont++] = $row['idOrder']; // 7
 
                 return $array;
 

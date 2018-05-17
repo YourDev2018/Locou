@@ -136,6 +136,7 @@ class Pedidos
         $db = new FunctionsDB();
 
         $busca= new BuscarEspacos();
+       
         
         // pode ser mais otimizado, recendo por parametro, na classe pagamento o id do dono do anuncio
         $idProprietario = $busca->retornarIdUserAnuncio($conn,$idAnuncio); // conferido
@@ -195,10 +196,24 @@ class Pedidos
                 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
                 $idClient = $db->getIdClientMoip($conn,$idUsuario);
                 $id = $db->getUltimoIDs($conn,'PedidosTemporarios');
+                $ultimoId = $id;
                 $id = $id  +1;
                 $id = md5($id);
 
-                $idPedidosTemporarios = $db->cadastrarPedidosTemporarios($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$preco,$tipo);
+                $arrayAnuncioBasicoTitulo = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+
+                $titulo =  $arrayAnuncioBasicoTitulo[4];
+                $preco = $arrayAnuncioBasicoTitulo[7];
+                $preco = str_replace('.','',$preco);
+
+           //     print $ultimoId.' '.$idClient.' '.$idMoipProprietario.' '.$titulo.' '.$preco;
+
+                // CUS-YS5VBTKJBCIZ
+                $idOrder = $this->criarPedidoComClientMOIP($ultimoId,$idClient,$idMoipProprietario,$titulo,$preco);
+               // $this->criarPedidoComClientMOIP($ultimoId,$idClient,$idMoipProprietario,$titulo,$preco);
+
+
+                $idPedidosTemporarios = $db->cadastrarPedidosTemporarios($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$preco,$tipo,$idOrder);
                 
                 $dataAluguel =  str_replace('/','-',$arrayDadosPedido['data']);
                 $dataAluguel = date("Ymd", strtotime($dataAluguel));
@@ -220,7 +235,7 @@ class Pedidos
                 $titulo = $array[4];
 
                 $enviarEmail->enviarConfirmacao($tipo,$emailProprietario,$titulo,$nameProprietario,$nameInquilino,$arrayDadosPedido,$id,$idAnuncio);
-                
+           
 
             }
         

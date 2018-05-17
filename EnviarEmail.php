@@ -10,7 +10,7 @@ class EnviarEmail
         
         // $destino = $emailProprietario;
         $destino = 'morg.guilherme@gmail.com';
-
+        
         $assunto = "Alguem quer alugar ".$titulo;
 
         // alterar link em produção

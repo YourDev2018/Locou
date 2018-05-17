@@ -638,10 +638,10 @@ require_once 'functions.php';
         }
 
 
-        function cadastrarPedidosTemporarios($db,$hashId,$idCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco,$tipo){
+        function cadastrarPedidosTemporarios($db,$hashId,$idCliente,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$preco,$tipo,$idOrder){
 
-             $sql = "INSERT INTO PedidosTemporarios(hashId, idCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco,tipo)
-                                    VALUES ('$hashId','$idCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco','$tipo')";
+             $sql = "INSERT INTO PedidosTemporarios(hashId, idCliente, idMoipProprietario,idAnuncio,tituloAnuncio,preco,tipo,idOrder)
+                                    VALUES ('$hashId','$idCliente', '$idMoipProprietario', '$idAnuncio', '$tituloAnuncio','$preco','$tipo','$idOrder')";
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;
