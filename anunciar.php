@@ -6584,7 +6584,7 @@ function proximo()
       fotos.style.display = "none";
 
 
-      if(categoria == "consultorio" || )
+      if(categoria == "consultorio")
       {
         consultorio.style.display = "";
       }
