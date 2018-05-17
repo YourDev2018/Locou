@@ -275,7 +275,8 @@ $ano = $_POST['year'];
   
     function criarPreferenciaNotificacaoApp(){
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
+    //    $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
+        $url = "https://sandbox.moip.com.br/v2/preferences/APP-VM93MVN9XDFA/notifications";
         $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
       //  $aux = "ORDER.*";
 
@@ -292,10 +293,11 @@ $ano = $_POST['year'];
             "
             {
             \"events\": [
-                \"PAYMENT.*\",
-                \"ORDER.*\"
+                \"ORDER.*\",
+                \"PAYMENT.*\"
+                
             ],
-            \"target\": \"http://requestbin.fullcontact.com/11659v81\",
+            \"target\": \"http://www.yourdev.com.br/clientes/locou/ReceberNotificacoes.php\",
             \"media\": \"WEBHOOK\"
             } 
             
@@ -311,6 +313,28 @@ $ano = $_POST['year'];
             print $resposta;
 
 
+    }
+
+    function excluirPreferenciaNotificacaoApp(){
+        $url = "https://sandbox.moip.com.br/v2/preferences/notifications/NPR-IPCR3GILSWGP";
+        $curl = curl_init();
+
+         curl_setopt_array($curl,array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "DELETE",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: OAuth 45d63a3538ff47ccb2c0f0c3c09eabd9_v2",
+                
+            ),
+            ));
+
+        $resposta = curl_exec($curl);
+        print $resposta;
     }
 
     function listarPreferenciaNotificacao(){
@@ -342,7 +366,7 @@ $ano = $_POST['year'];
        // https://sandbox.moip.com.br/v2/webhooks?resourceId=payment_id
     
          $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/webhooks?resourceId=ORD-BQ05MQ9DVZXJ";
+         $url = "https://sandbox.moip.com.br/v2/webhooks?resourceId=ORD-SX7NPDM9W2DD";
        // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(
@@ -650,8 +674,28 @@ $ano = $_POST['year'];
         return $resposta;
 
     }
+    
+    function aprovarCompra($codigo,$valor){
 
-   
+        $url = "https://sandbox.moip.com.br/simulador/authorize?payment_id=$codigo&amount=$valor";
+        $curl = curl_init();
+         curl_setopt_array($curl,array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: OAuth 45d63a3538ff47ccb2c0f0c3c09eabd9_v2",
+                
+            ),
+            ));
+
+        $resposta = curl_exec($curl);
+        print $resposta;
+    }
 
     /*
            */

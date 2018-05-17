@@ -3,20 +3,29 @@
     error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
     require_once 'EnviarEmail.php';
     require_once 'FunctionsDB.php';
-    require_once 'Pedidos.php';
-    require_once 'BuscarEspacos.php';
+ //   require_once 'Pedidos.php';
+ //   require_once 'BuscarEspacos.php';
 
     $json = file_get_contents('php://input');
 
     $obj = json_decode($json);
     $tipoEvento = $obj->{'event'};
+
     
     $db = new FunctionsDB();
     $conn = $db->conectDB();
-    $email = new EnviarEmail();
-   
-    $pedidos = new Pedidos();
 
+    $sql = "INSERT INTO OutrosEstados(nome, cidade, estado, email, celular, tipo, outraInformacao) VALUES ('$tipoEvento','$tipoEvento','','','','','$tipoEvento')";
+    if ($conn->query($sql)===true) {
+        
+    }else{
+        $db->closeDB($conn);
+    }
+    
+    http_response_code(200);
+    http_response_code();
+
+    /*
     // 1° - Primeiro tratamento / envio de email
        
     // Quando seu pagamento esta sendo analisado
@@ -182,9 +191,9 @@
 
     }
 
-    http_response_code(200);
-    http_response_code();
 
+ 
+*/
 
    
 
