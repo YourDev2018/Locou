@@ -412,6 +412,8 @@ if($session->vereficarLogin() != false){
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
 
+  var tipoAluguel;
+
 
   if(dd<10)
   {
@@ -1969,6 +1971,17 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                     <script>
                     function calcularPreco()
                     {
+                      if(tipoAluguel=='reincidente')
+                      {
+                        document.getElementById('botao-direto').style.display = "none"
+                        document.getElementById('botao-unico').style.display = ""
+                        document.getElementById('botao-reincidente').style.display = ""
+                      } else if(tipoAluguel=='direto')
+                      {
+                        document.getElementById('botao-direto').style.display = ""
+                        document.getElementById('botao-unico').style.display = "none"
+                        document.getElementById('botao-reincidente').style.display = "none"
+                      }
                       console.log("Calculando");
                       var precoTotal = 0;
                       if(document.getElementById('tipoAluguel').value == "unico")
