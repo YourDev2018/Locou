@@ -412,7 +412,7 @@ if($session->vereficarLogin() != false){
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
 
-  var tipoAluguel;
+  var tipoAluguel = '';
 
 
   if(dd<10)
@@ -424,8 +424,11 @@ if($session->vereficarLogin() != false){
     mm = '0'+mm
   }
   $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
+    $( "#datepicker" ).datepicker().on('changeDate',function(e){
+    calcularPreco();
+});
+  });
+
   $.fn.datepicker.defaults.format = "dd/mm/yyyy";
   $.fn.datepicker.defaults.autoclose = true;
   $.fn.datepicker.defaults.maxViewMode = 0;
@@ -437,11 +440,15 @@ if($session->vereficarLogin() != false){
   // $.fn.datepicker.defaults.datesDisabled = ['23/04/2018'];
 
   $( function() {
-    $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [<?php if($seg == false){echo 1;} ?>,<?php if($ter == false){echo 2;} ?>,<?php if($qua == false){echo 3;} ?>,<?php if($qui == false){echo 4;} ?>,<?php if($sex == false){echo 5;} ?>,<?php if($sab == false){echo 6;} ?>,<?php if($dom == false){echo 0;} ?>], daysOfWeekHighlighted: [<?php if($seg == true){echo 1;} ?>,<?php if($ter == true){echo 2;} ?>,<?php if($qua == true){echo 3;} ?>,<?php if($qui == true){echo 4;} ?>,<?php if($sex == true){echo 5;} ?>,<?php if($sab == true){echo 6;} ?>,<?php if($dom == true){echo 0;} ?>], datesDisabled: [] });
+    $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [<?php if($seg == false){echo 1;} ?>,<?php if($ter == false){echo 2;} ?>,<?php if($qua == false){echo 3;} ?>,<?php if($qui == false){echo 4;} ?>,<?php if($sex == false){echo 5;} ?>,<?php if($sab == false){echo 6;} ?>,<?php if($dom == false){echo 0;} ?>], daysOfWeekHighlighted: [<?php if($seg == true){echo 1;} ?>,<?php if($ter == true){echo 2;} ?>,<?php if($qua == true){echo 3;} ?>,<?php if($qui == true){echo 4;} ?>,<?php if($sex == true){echo 5;} ?>,<?php if($sab == true){echo 6;} ?>,<?php if($dom == true){echo 0;} ?>], datesDisabled: [] }).on('changeDate',function(e){
+    calcularPreco();
+});
   } );
 
   $( function() {
-    $( "#datepicker-direto" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] });
+    $( "#datepicker-direto" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] }).on('changeDate',function(e){
+    calcularPreco();
+});
   } );
 
   </script>
@@ -827,6 +834,44 @@ if($session->vereficarLogin() != false){
       </div>
     </div>
   </div>
+
+  <div id="dataNaoSelecionada" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ops...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>A data de início do aluguel não foi selecionada. Selecione uma data no calendário antes de prosseguir com o pedido de alguel.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="diaNaoSelecionado" class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Ops...</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Nenhum dia da semana foi selecionado. Selecione ao menos um dia antes de prosseguir com o pedido de alguel.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+    </div>
+  </div>
+</div>
+</div>
 
 
 
@@ -1680,17 +1725,17 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
 
       <div class="col-12 mt-4">
         <div class="row px-5 pb-5 text-center justify-content-center">
-          <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
+          <div id="div-unico" class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-unico" onclick="calUnico();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisUnico">Clique aqui e saiba mais</span>
           </div>
-          <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
+          <div id="div-reincidente" class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-reincidente" onclick="calReincidente();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisReincidente">Clique aqui e saiba mais</span>
           </div>
-          <div class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
+          <div id="div-direto" class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
             <button id="botao-direto" onclick="calDireto();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span>
@@ -1973,19 +2018,27 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                     {
                       if(tipoAluguel=='reincidente')
                       {
-                        document.getElementById('botao-direto').style.display = "none"
-                        document.getElementById('botao-unico').style.display = ""
-                        document.getElementById('botao-reincidente').style.display = ""
+                        document.getElementById('div-direto').style.display = "none"
+                        document.getElementById('div-unico').style.display = ""
+                        document.getElementById('div-reincidente').style.display = ""
                       } else if(tipoAluguel=='direto')
                       {
-                        document.getElementById('botao-direto').style.display = ""
-                        document.getElementById('botao-unico').style.display = "none"
-                        document.getElementById('botao-reincidente').style.display = "none"
+                        document.getElementById('div-direto').style.display = ""
+                        document.getElementById('div-unico').style.display = "none"
+                        document.getElementById('div-reincidente').style.display = "none"
                       }
                       console.log("Calculando");
                       var precoTotal = 0;
                       if(document.getElementById('tipoAluguel').value == "unico")
                       {
+                        if(document.getElementById('datepicker').value == "")
+                        {
+                          console.log('Sem data inicial selecionada');
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#dataNaoSelecionada').modal('show')" );
+                        } else {
+                          console.log('Data inicial selecionada');
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: completarOUanunciar()" );
+                        }
                         var hora_inicio = document.getElementById('hora-inicio-unico').value;
                         var hora_inicio_s = hora_inicio.split(":");
                         var hora_inicio_h = hora_inicio_s[0];
@@ -2049,6 +2102,14 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                       }
                       if(document.getElementById('tipoAluguel').value == "direto")
                       {
+                        if(document.getElementById('datepicker-direto').value == "")
+                        {
+                          console.log('Sem data inicial selecionada');
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#dataNaoSelecionada').modal('show')" );
+                        } else {
+                          console.log('Data inicial selecionada');
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: completarOUanunciar()" );
+                        }
                         var semanas = document.getElementById('semanas-seguidas-direto').value;
                         precoTotal = semanas * ps
                         if(semanas>=4)
@@ -2059,6 +2120,19 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                       }
                       if(document.getElementById('tipoAluguel').value == "reincidente")
                       {
+                        if(document.getElementById('datepicker-reincidente').value == "")
+                        {
+                          console.log('Sem data inicial selecionada');
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#dataNaoSelecionada').modal('show')" );
+                        } else {
+                          if (document.getElementById("seg-periodo-sel").value == "sim" || document.getElementById("ter-periodo-sel").value == "sim" || document.getElementById("qua-periodo-sel").value == "sim" || document.getElementById("qui-periodo-sel").value == "sim" || document.getElementById("sex-periodo-sel").value == "sim" || document.getElementById("sab-periodo-sel").value == "sim" || document.getElementById("dom-periodo-sel").value == "sim") {
+                            console.log('Data inicial selecionada');
+                            document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: completarOUanunciar()" );
+                          } else {
+                            document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#diaNaoSelecionado').modal('show')" );
+                          }
+
+                        }
                         var totalP = 0;
                         if(document.getElementById('seg-periodo-sel').value == "sim")
                         {
@@ -2834,7 +2908,8 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                 </div>
               </div>
             </div>
-
+<script>
+</script>
             <div id="calendario-direto" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
               <div class="row">
                 <div class="col-12">
@@ -5590,7 +5665,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
   <div class="col-12 text-center justify-content-center">
     <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php //echo $array['7']?></span> </h5>
     <br>
-    <span class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Faça o pedido de aluguel agora</span>
+    <span id="btn-aluguel" class="ml-3 btn btn-outline-warning" onclick="completarOUanunciar()">Faça o pedido de aluguel agora</span>
   </div>
 </div>
 </div>
