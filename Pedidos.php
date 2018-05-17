@@ -314,7 +314,7 @@ class Pedidos
 
     function consultarPedido($idPedido){
 
-
+        $curl = curl_init();
        $url = "https://sandbox.moip.com.br/v2/orders/$idPedido";
        // $token_Acess = getToken();
 

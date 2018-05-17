@@ -104,8 +104,8 @@ function criarNotificacao(){
     $func = new functions();
    //$func->criarPreferenciaNotificacaoApp();
      //  $func->excluirPreferenciaNotificacaoApp();
-    $func->listarPreferenciaNotificacao();
-   //$func->consultarChamada();
+   // $func->listarPreferenciaNotificacao();
+   $func->consultarChamada();
    
 }
 

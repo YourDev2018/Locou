@@ -1429,7 +1429,7 @@ class BuscarEspacos
 
         public function getPedidosDBPorOrder($db, $idOrder){
 
-        $result =  $db->query("SELECT * FROM Pedidos WHERE idHash = '$idOrder' ") ; // 
+        $result =  $db->query("SELECT * FROM Pedidos WHERE idOrder = '$idOrder' ") ; // 
         $aux = mysqli_num_rows($result);
     
         $array = [];
