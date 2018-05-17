@@ -1224,7 +1224,7 @@ if($session->vereficarLogin() != false){
                       }
                       if("<?php if($anuncio->estante !='sim'){echo 'nao';}else{echo "$anuncio->estante";}?>" == "sim") //seco   - cozinha
                       {
-                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bookshelf\"> <br> Estante para estoque seco</h5></div>";
+                        str = str + "<div class=\"col py-1\"><h6 style=\"color: black; font-weight: 600;font-size:90%\">Possui<br></h6><h5 style=\"color: grey;font-size:90%;font-weight: 600;\"><img height=\"23px\" src=\"img/icones/bookshelf.svg\"> <br> Estante para estoque seco</h5></div>";
                       }
                       if("<?php if($anuncio->freezer !='sim'){echo 'nao';}else{echo "$anuncio->freezer";}?>" == "sim") //freezer   - cozinha
                       {

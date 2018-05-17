@@ -874,7 +874,7 @@ function verificarDecimal($dia){
   <div class="container-fluid justify-content-center text-left justify-content-center">
 
     <div class="row py-5 px-4 justify-content-center">
-      <div class="col-lg-10 col-md-11 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
+      <div class="col-lg-5 col-md-11 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
         <div class="row px-5" style="background-color: black">
           <div class="col-12 px-3 py-3 text-center" style="color: white">
             <span class="h5">Adicione os dados para o método de pagamento</span>
@@ -985,13 +985,13 @@ function verificarDecimal($dia){
                 <input readonly type="number" class="form-control" id="pais" name="pais" value="BRA" placeholder="Brasil">
               </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 px-3 py-1">
+            <div class="col-lg-12 col-md-12 col-sm-12 px-3 py-1">
               <div class="form-group">
                 <label for="cartaoNum">Número do Cartão</label>
                 <input type="number" class="form-control" id="number" >
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 px-3 py-1">
+            <div class="col-lg-6 col-md-6 col-sm-6 px-3 py-1">
               <div class="row">
                 <div class="col-12 text-center">
                   Data de Vencimento do cartão
@@ -1033,7 +1033,7 @@ function verificarDecimal($dia){
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 px-3 py-1">
+            <div class="col-lg-6 col-md-6 col-sm-6 px-3 py-1">
               <div class="form-group">
                 <label for="cartaoVer">Código Verificador</label>
                 <input type="number" class="form-control" id="cvc">
@@ -1047,6 +1047,43 @@ function verificarDecimal($dia){
             </div>
           </div>
         </form>
+      </div>
+      <div class="col-1">
+
+      </div>
+      <div class="col-lg-5 col-md-11 col-sm-12" style="background-color: white;">
+        <div class="row px-5 pb-3" style="background-color: black;border-style: solid; border-width: 2px; border-color: #FFC107">
+          <div class="col-12 px-3 py-3 text-center" style="color: white">
+            <span style="color:#FFC107" class="h4"><b>Checkout</b></span>
+          </div>
+          <br><br>
+          <div class="my-2" style="border-style: solid; border-width: 2px; border-color: #FFC107;width:100%">
+            <div class="col-12 px-3 py-3 text-center" style="color: white;">
+              <span class="h5">Tipo de aluguel selecionado:</span>
+            </div>
+            <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
+              <span class="h6">(TIPO DO ALUGUEL)</span>
+            </div>
+          </div>
+          <br><br>
+          <div class="my-2" style="border-style: solid; border-width: 2px; border-color: #FFC107;width:100%">
+            <div class="col-12 px-3 py-3 text-center" style="color: white;">
+              <span class="h5">Dias Selecionados:</span>
+            </div>
+            <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
+              <span class="h6">(DIAS DO ALUGUEL)</span>
+            </div>
+          </div>
+          <br><br>
+          <div class="my-2" style="border-style: solid; border-width: 2px; border-color: #FFC107;width:100%">
+            <div class="col-12 px-3 py-3 text-center" style="color: white;">
+              <span class="h5">Preço Total (Com Taxas):</span>
+            </div>
+            <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
+              <span class="h6">(PREÇO TOTAL)</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
