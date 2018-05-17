@@ -781,7 +781,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <p>
-            Você irá alugar todos os dias da semana de 9 as 18hrs um período igual ou menor que 3 meses.
+            Você irá alugar todos os dias da semana de 9h as 18h um período igual ou menor que 3 meses.
           </p>
         </div>
         <div class="modal-footer">
