@@ -1,4 +1,40 @@
 
+<?php
+
+    require_once 'BuscarEspacos.php';
+    require_once 'FunctionsDB.php';
+
+    $db = new FunctionsDB();
+    $conn = $db->conectDB();
+
+    $hashId = $_GET['id'];
+//    $hashId = 'c9e1074f5b3f9fc8ea15d152add07294';
+
+    $busca= new BuscarEspacos();
+    $array = $busca->getHashId($conn,$hashId);
+
+    $idPedido = $array[5];
+    $idOrder = $array[7];
+
+    $arrayPedidosDB = $busca->getPedidosDB($conn,$hashId);
+    if ($arrayPedidosDB != false) {
+        echo 'Pedido já autorizado';
+        exit();
+    }
+
+
+    $idUsuario = $array[1];
+
+    $arrayUserBasico =  $db->getUsuarioBasico($conn,$idUsuario);
+    $nome = $arrayUserBasico[0];
+
+    $arrayDetalhes = $busca -> getPedidosTemporariosUnico($conn,$idPedido);
+    $entrada = $arrayDetalhes[0];
+    $entrada = date('d/m/Y', strtotime($entrada));
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,13 +186,13 @@
               </script>
               <div style="display: none" id="unico" class="row justify-content-center">
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Número do Pedido: </b>(NUMERO DO PEDIDO)</span>
+                  <span class="h5"><b>Número do Pedido: </b><?php echo $idOrder  ?></span>
                 </div>
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Nome do locatário: </b> (NOME DO CLIENTE)</span>
+                  <span class="h5"><b>Nome do locatário: </b> <?php echo $nome ?></span>
                 </div>
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Dia selecionado: </b> (DIA SELECIONADO)</span>
+                  <span class="h5"><b>Dia selecionado: </b> <?php echo $entrada ?></span>
                 </div>
               </div>
               <div style="display: none" id="reincidente" class="row justify-content-center">
@@ -205,7 +241,7 @@
               <br><br><br>
               <form action="index.html" method="post">
                 <input type="text" name="hash" style="display:none" value="">
-                <a href="aprovar.php"><span class="btn btn-warning" style="font-size: 1.3em">Aprovar pedido</span></a>
+                <a href="<?php echo "redirecionamento.php?id=$hashId"?>"<span class="btn btn-warning" style="font-size: 1.3em">Aprovar pedido</span></a>
               </form>
               <br><br>
             </div>

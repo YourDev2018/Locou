@@ -10,11 +10,11 @@ class EnviarEmail
         
         // $destino = $emailProprietario;
         $destino = 'morg.guilherme@gmail.com';
-        
+
         $assunto = "Alguem quer alugar ".$titulo;
 
         // alterar link em produção
-        $link = "http://www.yourdev.com.br/clientes/locou/redirecionamento.php?id=$md5";
+        $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$md5";
 
 
 
@@ -91,7 +91,7 @@ class EnviarEmail
         $assunto = "Alguem quer alugar ".$titulo;
 
         // alterar link em produção
-        $link = "http://www.yourdev.com.br/clientes/locou/redirecionamento.php?id=$md5";
+          $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$md5";
 
         $busca = new BuscarEspacos();
         $db = new FunctionsDB();
@@ -147,7 +147,7 @@ class EnviarEmail
       //$destino = $emailCliente;
         $destino = 'morg.guilherme@gmail.com';  
         
-        $link = "http://www.yourdev.com.br/clientes/locou/pagamento.php?id=$hashId";
+        $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$hashId";
 
         $assunto = "Aluguel $titulo foi aprovado";
          $corpo = '<html><body>';
@@ -159,10 +159,12 @@ class EnviarEmail
         
 
         if($this->enviar($destino,$assunto,$corpo)){
+            header('location: index.php');
             print "Email para pagamento enviado com suceso";
             return true;
         }else{
             print "Erro ao enviar email ";
+        //    header('location: index.php');
             return false;
         }
 

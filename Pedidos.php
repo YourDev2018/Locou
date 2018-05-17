@@ -203,7 +203,7 @@ class Pedidos
                 $arrayAnuncioBasicoTitulo = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
 
                 $titulo =  $arrayAnuncioBasicoTitulo[4];
-                $preco = $arrayAnuncioBasicoTitulo[7];
+               // $preco = $arrayAnuncioBasicoTitulo[7];
                 $preco = str_replace('.','',$preco);
 
            //     print $ultimoId.' '.$idClient.' '.$idMoipProprietario.' '.$titulo.' '.$preco;
