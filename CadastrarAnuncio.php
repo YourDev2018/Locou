@@ -24,6 +24,7 @@ $complemento = $seg->filtro($_POST['complemento']);
 $uf = $seg->filtro($_POST['uf']);
 $precoHora =  $seg->filtro($_POST['hora']);
 $precoHora = number_format($precoHora + $precoHora*0.10,2,'.','' );
+//print $precoHora;
 
 // descrição geral
 $metragem = $seg->filtro($_POST['metragem']);
@@ -66,6 +67,7 @@ $conn = $db->conectDB();
 //$db->loginEmailSenha($conn,"morgado@yourdev.com.br",md5("123"));
 
 $session = new FunctionsSession();
+$session->iniciarSession(); 
 
     if ($session->vereficarLogin()) {
             $aux = basico($ftp, $db, $conn, $_SESSION['id'], $titulo, $categoria, $bairro, $cidade, $uf, $precoHora, $rua, $num, $complemento );
@@ -153,7 +155,7 @@ $session = new FunctionsSession();
                     print (" ( $aux ) ");
 
                     $db->closeDB($conn);
-                    $session ->logout();
+                    //$session ->logout();
                         
                     header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
                 }
@@ -313,7 +315,7 @@ $session = new FunctionsSession();
                     $auxIdFinal = $db->retornarUltimoAnuncioBasico($conn);
 
                     $db->closeDB($conn);
-                    $session ->logout();
+                //    $session ->logout();
                         
                     header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
                 }

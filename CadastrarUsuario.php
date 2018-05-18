@@ -16,7 +16,7 @@ $id = $_GET['id'];
 
 $session->logout();
 
-if ($session->vereficarLogin() == 'false') {
+if ($session->vereficarLogin() != 'false') {
 
   $seg = new Seguranca();
 
@@ -29,19 +29,19 @@ if ($session->vereficarLogin() == 'false') {
   $dia = $seg->filtro($_POST['dia'],$pag,$id );
   $mes = $seg->filtro($_POST['mes'],$pag,$id );
   $ano = $seg->filtro($_POST['ano'],$pag,$id );
-
+  
   $nascimento = $ano."-".$mes."-".$dia;
   // $seg->filtro4($_FILES['foto']['name'], $pag);
 
   //  $_FILES
-  $temp  = $_FILES['foto1']['tmp_name'];
+ // $temp  = $_FILES['foto1']['tmp_name'];
   //var_dump ( $_FILES['foto']) ;
   print $ext = strtolower(substr($_FILES['foto']['name'],-4));
   print $temp = $_FILES['foto']['tmp_name'] ;
-  print  $novo_nome = md5(time().$temp).$ext ;
+  print $novo_nome = md5(time().$temp).$ext ;
+}
 
-  if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == "")
-  {
+  if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == ""){
 
     $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, 'imagespadraopersona.jpg',$tel);
     header("Location: ".$pag."?status=true&id=$id");
