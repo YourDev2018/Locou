@@ -109,25 +109,25 @@ function getRandomInt(min, max) {
 $(document).ready(function(){
   var n = getRandomInt(1,7);
   if(n==1) {
-    document.getElementById('fundo').style.background = 'url(\'img/consultório_pediatria.jpeg\');'
+    document.getElementById('fundo').style = "background: url('img/consultório_pediatria.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==2) {
-    document.getElementById('fundo').style.background = 'url(\'img/divã.jpeg\');'
+    document.getElementById('fundo').style = "background: url('img/divã.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==3) {
-    document.getElementById('fundo').style.background = 'url(\'img/maca.jpeg\');'
+    document.getElementById('fundo').style = "background: url('img/maca.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==4) {
-    document.getElementById('fundo').style.background = 'url(\'img/recepção3.jpg\');'
+    document.getElementById('fundo').style = "background: url('img/recepção3.jpg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==5) {
-    document.getElementById('fundo').style.background = 'url(\'img/salaespera1.jpeg\');'
+    document.getElementById('fundo').style = "background: url('img/salaespera1.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==6) {
-    document.getElementById('fundo').style.background = 'url(\'img/salaespera2.jpeg\');'
+    document.getElementById('fundo').style = "background: url('img/salaespera2.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==7) {
-    document.getElementById('fundo').style.background = 'url(\'img/salaespera3.jpeg\');'
+    document.getElementById('fundo').style = "background: url('img/salaespera3.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   // document.getElementById('days');
   // document.getElementById('months');
@@ -425,7 +425,7 @@ function daysInMonth(month, year) {
 
     <!-- Seção 1 - Pesquisa -->
 
-    <div id="fundo" class="img-responsive img-center imagem" style="background: url('img/fundo_1.jpg');">
+    <div id="fundo" class="img-responsive img-center imagem" style="background-size: cover;">
       <div class="container-fluid text-center justify-content-center imagem-escura">
 
         <!-- Texto principal + pesquisa -->
