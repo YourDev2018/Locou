@@ -893,7 +893,7 @@ function daysInMonth(month, year) {
                 <br><br>
                 <a href="#" style="color: white">Política de Privacidade</a>
                 <br><br>
-                <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
+                <a id="anunciarF" href="anunciar.php" style="color: white">Anuncie Aqui</a>
                 <br><br>
                 <a href="resultado.php" style="color: white">Procure um espaço</a>
                 <br><br>
