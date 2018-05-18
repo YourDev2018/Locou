@@ -108,13 +108,19 @@ $(document).ready(function(){
   // document.getElementById('months');
   // document.getElementById('years');
   for (var i = 1; i < 32; i++) {
-    document.getElementById('days').add(i);
+    var option = document.createElement("option");
+    option.text = i;
+    document.getElementById('days').add(option);
   }
   for (var i = 1; i < 13; i++) {
-    document.getElementById('months').add(i);
+    var option = document.createElement("option");
+    option.text = i;
+    document.getElementById('months').add(option);
   }
-  for (var i = 1900; i < 2019; i++) {
-    document.getElementById('years').add(i);
+  for (var i = 2018; i > 1899; i--) {
+    var option = document.createElement("option");
+    option.text = i;
+    document.getElementById('years').add(option);
   }
 });
 
