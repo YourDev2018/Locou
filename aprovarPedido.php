@@ -197,10 +197,10 @@
               </div>
               <div style="display: none" id="reincidente" class="row justify-content-center">
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Número do Pedido: </b>(NUMERO DO PEDIDO)</span>
+                  <span class="h5"><b>Número do Pedido: </b><?php echo $idOrder  ?></span>
                 </div>
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Nome do locatário: </b> (NOME DO CLIENTE)</span>
+                  <span class="h5"><b>Nome do locatário: </b><?php echo $nome ?></span>
                 </div>
                 <div id="seg" style="display: none" class="col-10 py-2 text-left">
                   <span class="h5"><b>Segunda-Feira: </b> (00:00 até 00:00)</span>

@@ -553,7 +553,7 @@ if($session->vereficarLogin() != false){
 
   <!-- Navbar -->
 
-  <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1);">
+  <nav class="navbar desktop" style="background-color: rgba(0,0,0,1);">
     <a class="navbar-brand ml-5" href="index.php" >
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
@@ -5898,7 +5898,7 @@ function completarOUanunciar(){
     $("#loginPop").modal(); // Não logado
 
   }else{
-
+    console.log(clienteCadastrado);
     if (clienteCadastrado == "false") {
 
       $("#completarCadastro").modal(); // Não logado

@@ -367,7 +367,7 @@ if (!($tipo == "" || $tipo == null) ) {
 </style>
 <body style="font-family: 'Muli'">
 
-  <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1);">
+  <nav class="navbar desktop" style="background-color: rgba(0,0,0,1);">
     <a class="navbar-brand ml-5" href="index.php" >
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
