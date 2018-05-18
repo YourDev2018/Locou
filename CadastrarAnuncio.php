@@ -27,6 +27,7 @@ $precoSemana = $seg->filtro($_POST['semana']);
 
 if(($precoHora =='' || $precoHora ==null) && ($_POST['semana'] !='' || $_POST['hora'] != null)){
     $precoHora = ($precoSemana / 7) / 24;
+    $precoHora = number_format($precoHora + $precoHora*0.10,2,'.','' );
 }else{
     $precoHora = number_format($precoHora + $precoHora*0.10,2,'.','' );
 }
