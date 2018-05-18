@@ -40,10 +40,8 @@ if ($session->vereficarLogin() == 'false') {
   print $temp = $_FILES['foto']['tmp_name'] ;
   print  $novo_nome = md5(time().$temp).$ext ;
 
-  if (true)
+  if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == "")
   {
-    // if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == "")
-    // {
 
     $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, 'imagespadraopersona.jpg',$tel);
     header("Location: ".$pag."?status=true&id=$id");
