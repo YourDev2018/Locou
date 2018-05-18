@@ -269,6 +269,8 @@
                 <input type="password" class="form-control" id="senha-login" name="senha">
               </div>
               <br>
+              <br>
+              <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
               <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
               <br>
             </div>

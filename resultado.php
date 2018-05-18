@@ -489,7 +489,7 @@ if (!($tipo == "" || $tipo == null) ) {
         </div>
         <div class="modal-body">
           <div class="pt-2" id="logar-div" style="background-color:white">
-            <form action="logar.php?pag=resultado" method="post">
+            <form action="logar.php?pag=index" method="post">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
@@ -499,6 +499,8 @@ if (!($tipo == "" || $tipo == null) ) {
                 <input type="password" class="form-control" id="senha-login" name="senha">
               </div>
               <br>
+              <br>
+              <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
               <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
               <br>
             </div>

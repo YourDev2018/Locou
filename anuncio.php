@@ -676,7 +676,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <div class="pt-2" id="logar-div" style="background-color:white">
-            <form action="<?php echo "logar.php?pag=anuncio&id=".$idAnuncio ?> " method="post">
+            <form action="logar.php?pag=index" method="post">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
@@ -685,9 +685,9 @@ if($session->vereficarLogin() != false){
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" id="senha-login" name="senha">
               </div>
-              <!-- <br>
-              <span>Ainda não é cadastrado? <span data-toggle="modal" data-target="#cadastroPop" data-dismiss="modal" style="color:blue">Clique aqui</span> </span> -->
               <br>
+              <br>
+              <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
               <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
               <br>
             </div>
