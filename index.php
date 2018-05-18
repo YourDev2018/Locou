@@ -120,6 +120,20 @@ function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
 }
   </script>
+  <script type='text/javascript'>
+            $(document).ready(function(){
+              var logado = "nao";
+            if(logado=="sim")
+            {
+              document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+              document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+            }
+            else {
+              document.getElementById('anunciarSM').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+              document.getElementById('anunciarSD').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+            }
+            });
+        </script>
   </head>
   <style>
   .thumbnail
@@ -213,7 +227,7 @@ function daysInMonth(month, year) {
             <span style="cursor: pointer;" class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
          <?php } ?>
 
-        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <span id="anunciarSD"></span>
 
         <?php if($_SESSION['id']!=null || $_SESSION['id'] != "" ){ ?>
 
@@ -236,7 +250,7 @@ function daysInMonth(month, year) {
           </a>
         </div>
         <div class="col-12">
-          <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+          <span id="anunciarSM"></span>
           <br><br>
         </div>
         <div class="col-12">
