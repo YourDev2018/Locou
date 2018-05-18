@@ -1511,6 +1511,31 @@ class BuscarEspacos
 
     }
 
+    function getTipoDisponiveis($db,$idAnuncio){
+
+        $result =  $db->query("SELECT tipo
+                                FROM RegistroAnunciosDisponiveis 
+                                WHERE idAnuncio = '$idAnuncio' LIMIT 1 ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+
+                               
+                                
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+          //  print "erro buscar espaço Bairro Tipo";
+        }else{
+
+            while ($row=$result->fetch_assoc()) {
+                
+                return $row['tipo'];  // 0
+
+                    
+            }
+
+        }
+
+    }
+
 
 }
 
