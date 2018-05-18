@@ -146,6 +146,7 @@ class Pedidos
         if ($idMoipProprietario == null || $idMoipProprietario == '') {
             print "erro, idMoipProprietario é nullo";
             print 'Enviar email para o proprietário';
+            exit();
             // "Alguem quer alugar seu anuncio, termine de preencher seus dados para receber o valor"
 
         }else{

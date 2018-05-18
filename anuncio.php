@@ -5891,7 +5891,7 @@ function completarOUanunciar(){
 
   var logado = "<?php  echo $session -> vereficarLogin(); ?>" //false caso nao logado, id caso logado
   var clienteCadastrado = "<?php $sessionAux = new FunctionsSession();
-  echo $sessionAux->verificarUsuarioCliente($conn,5); ?>"
+  echo $sessionAux->verificarUsuarioCliente($conn,$_SESSION['id']); ?>"
 
   if(logado == "false"){
 
@@ -5953,8 +5953,5 @@ if ($status == null || $status == "") {
   }
 }
 ?>
-
-<?php echo "ashas". $session->vereficarLogin() ?>
-<?php echo $session -> verificarUsuarioCliente($conn,$_SESSION['id']); ?>
 
 </body>

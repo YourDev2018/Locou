@@ -763,7 +763,7 @@ function verificarDecimal($dia){
   }
 
   $(document).ready(function(){
-    var possuiInfos = "true"
+    var possuiInfos = "true";
     if (possuiInfos!="false") {
       var ddd = "";
       var telefone = "";
