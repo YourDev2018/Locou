@@ -24,7 +24,7 @@ if ($session->vereficarLogin() != 'false') {
   print $senha = $seg->filtro4($_POST['senha'],$pag,$id );
   print $first = $seg->filtro4($_POST['nome'],$pag,$id );
   print $last = $seg->filtro4($_POST['sobrenome'],$pag,$id );
-  //print  $tel = $seg->filtro4($_POST['telefone'],$pag,$id );
+  print  $tel = $seg->filtro4($_POST['telefone'],$pag,$id );
 
   $dia = $seg->filtro($_POST['dia'],$pag,$id );
   $mes = $seg->filtro($_POST['mes'],$pag,$id );
