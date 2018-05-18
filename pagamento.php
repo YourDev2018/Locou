@@ -763,7 +763,7 @@ function verificarDecimal($dia){
   }
 
   $(document).ready(function(){
-    var possuiInfos = "false"
+    var possuiInfos = "true"
     if (possuiInfos!="false") {
       var ddd = "";
       var telefone = "";
@@ -779,6 +779,8 @@ function verificarDecimal($dia){
       document.getElementById('nRua').readOnly = true;
       document.getElementById('complemento').readOnly = true;
       document.getElementById('cep').readOnly = true;
+      document.getElementById('telefone').readOnly = true;
+      document.getElementById('ddd').readOnly = true;
     }
   });
   </script>
