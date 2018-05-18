@@ -763,7 +763,11 @@ function verificarDecimal($dia){
   }
 
   $(document).ready(function(){
+<<<<<<< HEAD
     var possuiInfos = "true";
+=======
+    var possuiInfos = "false"
+>>>>>>> 83d162b33941fae74ead3b7b7574738372211d81
     if (possuiInfos!="false") {
       var ddd = "";
       var telefone = "";
@@ -1073,6 +1077,56 @@ function verificarDecimal($dia){
       <div class="col-1">
 
       </div>
+
+
+      <script>
+      $( document ).ready(function() {
+        var tipo = "unico";
+        if(tipo == "unico")
+        {
+          document.getElementById('unico').style.display = "";
+        } else if (tipo == "reincidente") {
+          // document.getElementById('reincidente').style.display = "";
+          var segunda = false;
+          var terca = false;
+          var quarta = false;
+          var quinta = false;
+          var sexta = false;
+          var sabado = false;
+          var domingo = false;
+          if(segunda)
+          {
+            document.getElementById('seg').style.display = '';
+          }
+          if(terca)
+          {
+            document.getElementById('ter').style.display = '';
+          }
+          if(quarta)
+          {
+            document.getElementById('qua').style.display = '';
+          }
+          if(quinta)
+          {
+            document.getElementById('qui').style.display = '';
+          }
+          if(sexta)
+          {
+            document.getElementById('sex').style.display = '';
+          }
+          if(sabado)
+          {
+            document.getElementById('sab').style.display = '';
+          }
+          if(domingo)
+          {
+            document.getElementById('dom').style.display = '';
+          }
+        } else if (tipo == "direto") {
+          document.getElementById('direto').style.display = "";
+        }
+      });
+      </script>
       <div class="col-lg-5 col-md-11 col-sm-12" style="background-color: white;">
         <div class="row px-5 pb-3" style="background-color: black;border-style: solid; border-width: 2px; border-color: #FFC107">
           <div class="col-12 px-3 py-3 text-center" style="color: white">
@@ -1088,12 +1142,38 @@ function verificarDecimal($dia){
             </div>
           </div>
           <br><br>
-          <div class="my-2" style="border-style: solid; border-width: 2px; border-color: #FFC107;width:100%">
-            <div class="col-12 px-3 py-3 text-center" style="color: white;">
-              <span class="h5">Dias Selecionados:</span>
-            </div>
-            <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
-              <span class="h6">(DIAS DO ALUGUEL)</span>
+          <div class="my-2" style="color: white;border-style: solid; border-width: 2px; border-color: #FFC107;width:100%">
+            <div class="row px-5">
+              <div class="col-12 px-3 py-3 text-center" style="color: white;">
+                <span class="h5">Dias Selecionados:</span>
+              </div>
+              <div id="unico" style="display:none" class="col-10 py-2 text-left">
+                <span class="h5">Dia selecionado:  (DIA SELECIONADO UNICO)</span>
+              </div>
+              <div id="seg" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Segunda-Feira:  (00:00 até 00:00)</span>
+              </div>
+              <div id="ter" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Terca-Feira:  (00:00 até 00:00)</span>
+              </div>
+              <div id="qua" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Quarta-Feira:  (00:00 até 00:00)</span>
+              </div>
+              <div id="qui" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Quinta-Feira:  (00:00 até 00:00)</span>
+              </div>
+              <div id="sex" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Sexta-Feira:  (00:00 até 00:00)</span>
+              </div>
+              <div id="sab" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Sábado:  (00:00 até 00:00)</span>
+              </div>
+              <div id="dom" style="display: none" class="col-10 py-2 text-left">
+                <span class="h5">Domingo:  (00:00 até 00:00)</span>
+              </div>
+              <div id="direto" style="display:none" class="col-10 py-2 text-left">
+                <span class="h5">Período selecionado:  (00/00 até 00/00) - 9h as 18h</span>
+              </div>
             </div>
           </div>
           <br><br>

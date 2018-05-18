@@ -85,36 +85,51 @@ function returnEnsaio($conn){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
-    $(function () {
-
-    for (i = new Date().getFullYear() ; i > 1900; i--) {
-        $('#years').append($('<option />').val(i).html(i));
-    }
-
-    for (i = 1; i < 13; i++) {
-        $('#months').append($('<option />').val(i).html(i));
-    }
-    updateNumberOfDays();
-
-    $('#years, #months').change(function () {
-
-        updateNumberOfDays();
-
-    });
-
+//     $(function () {
+//
+//     for (i = new Date().getFullYear() ; i > 1900; i--) {
+//         $('#years').append($('<option />').val(i).html(i));
+//     }
+//
+//     for (i = 1; i < 13; i++) {
+//         $('#months').append($('<option />').val(i).html(i));
+//     }
+//     updateNumberOfDays();
+//
+//     $('#years, #months').change(function () {
+//
+//         updateNumberOfDays();
+//
+//     });
+//
+// });
+$(document).ready(function(){
+  // document.getElementById('days');
+  // document.getElementById('months');
+  // document.getElementById('years');
+  for (var i = 1; i < 32; i++) {
+    document.getElementById('days').add(i);
+  }
+  for (var i = 1; i < 13; i++) {
+    document.getElementById('months').add(i);
+  }
+  for (var i = 1900; i < 2019; i++) {
+    document.getElementById('years').add(i);
+  }
 });
 
-function updateNumberOfDays() {
-    $('#days').html('');
-    month = $('#months').val();
-    year = $('#years').val();
-    days = daysInMonth(month, year);
 
-    for (i = 1; i < days + 1 ; i++) {
-        $('#days').append($('<option />').val(i).html(i));
-    }
-
-}
+// function updateNumberOfDays() {
+//     $('#days').html('');
+//     month = $('#months').val();
+//     year = $('#years').val();
+//     days = daysInMonth(month, year);
+//
+//     for (i = 1; i < days + 1 ; i++) {
+//         $('#days').append($('<option />').val(i).html(i));
+//     }
+//
+// }
 
 function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
@@ -261,8 +276,8 @@ function daysInMonth(month, year) {
             <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
             <br><br>
             <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-              <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-              <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+              <span style="cursor: pointer;" class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+              <span style="cursor: pointer;" class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
             <?php } ?>
             <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
               <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>

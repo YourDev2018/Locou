@@ -136,7 +136,7 @@
 </style>
 <body style="font-family: 'Muli'">
 
-  <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1);">
+  <nav class="navbar desktop" style="background-color: rgba(0,0,0,1);">
     <a class="navbar-brand ml-5" href="index.php" >
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
@@ -184,8 +184,8 @@
           <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-            <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+            <span style="cursor: pointer;" class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span style="cursor: pointer;" class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
           <?php } ?>
           <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
