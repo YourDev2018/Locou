@@ -256,9 +256,9 @@ if($_POST['tipoAluguel']=='direto'){
     $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'semana');
     $preco = $preco * $semanasDireto;
 
-    $arrayDados[0] = $dataInicioDireto;
-    $arrayDados[1] = $dataFinalDireto;
-    $arrayDados[2] = $semanasDireto;
+    $arrayDados['data'] = $dataInicioDireto;
+    $arrayDados['inicioUnico'] = $dataFinalDireto;
+    $arrayDados['fimUnico'] = $semanasDireto;
 
     print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
 
@@ -270,9 +270,9 @@ if($_POST['tipoAluguel']=='direto'){
       $preco = $db-> retornarPrecoHoraGeral($conn,$idAnuncio,'mes');
       $preco = $preco * $numMes;
 
-      $arrayDados[0] = $dataInicioDireto;
-      $arrayDados[1] = $dataFinalDireto;
-      $arrayDados[2] = $semanasDireto;
+    $arrayDados['data'] = $dataInicioDireto;
+    $arrayDados['inicioUnico'] = $dataFinalDireto;
+    $arrayDados['fimUnico'] = $semanasDireto;
 
       print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
 
@@ -286,9 +286,9 @@ if($_POST['tipoAluguel']=='direto'){
 
       $preco = ($numMes * $precoMes)+($numSemanas * $precoSemana);
 
-      $arrayDados[0] = $dataInicioDireto;
-      $arrayDados[1] = $dataFinalDireto;
-      $arrayDados[2] = $semanasDireto;
+    $arrayDados['data'] = $dataInicioDireto;
+    $arrayDados['inicioUnico'] = $dataFinalDireto;
+    $arrayDados['fimUnico'] = $semanasDireto;
 
       print $idPedido = $pedido->criarPedido($conn,$_SESSION['id'],$idAnuncio,$_POST['tipoAluguel'], $preco,$arrayDados,$getAutorizado);
 

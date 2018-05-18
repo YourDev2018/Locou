@@ -68,7 +68,7 @@
         $titulo = $array[3];
         $id = $array[5];
 
-        if ($array[6]=='unico') {
+    #    if ($array[6]=='unico') {
             
             $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
             $data = $detalhe[0];
@@ -93,7 +93,7 @@
             print $corpo.'<br></br>';
 
             $email->enviar($emailCustomer,'Pedido em análise',$corpo);
-        }
+     #   }
     } 
 //    $tipoEvento = 'PAYMENT.AUTHORIZED';
 
@@ -128,7 +128,7 @@
         $titulo = $array[3];
         $id = $array[5];
 
-        if ($array[6]=='unico') {
+  #      if ($array[6]=='unico') {
             
             $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
             $data = $detalhe[0];
@@ -151,9 +151,9 @@
             $emailCustomer = 'morg.guilherme@gmail.com';
 
             $email->enviar($emailCustomer,'Pagamento aprovado',$corpo);
-        }
+ #       }
 
-    }
+   }
    
 
 // usuário proprietário notificado    
@@ -183,7 +183,7 @@
         $titulo = $array[3];
         $id = $array[5];
 
-        if ($array[6]=='unico') {
+//        if ($array[6]=='unico') {
 
             $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
             $data = $detalhe[0];
@@ -205,7 +205,7 @@
             print $corpo.'<br></br>';
 
             $email->enviar($emailCustomer,'Pagamento aprovado',$corpo);
-        }
+   //     }
     }   
 
 
@@ -239,7 +239,7 @@
         $id = $array[5];
 
 
-        if ($array[6]=='unico') {
+ //       if ($array[6]=='unico') {
 
             
             
@@ -262,7 +262,7 @@
 
             $email->enviarEmailClaudia('Pagamento de um pedido',$corpo);
 
-        }
+ //       }
 
     }
 
@@ -289,7 +289,7 @@
         $titulo = $array[3];
         $id = $array[5];
 
-        if ($array[6]=='unico') {
+//        if ($array[6]=='unico') {
             
             $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
             $data = $detalhe[0];
@@ -305,7 +305,7 @@
             
             $email->enviarEmailClaudia('Pedido de aluguel criado',$corpo);
 
-        }
+//        }
         
 
     }

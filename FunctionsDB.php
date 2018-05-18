@@ -443,10 +443,10 @@ require_once 'functions.php';
 
         }
 
-        function cadastrarHorariosDisponiveis($db, $idAnuncio, $dataInicio, $dataFim, $horaInicio, $horaFim ){
+        function cadastrarHorariosDisponiveis($db, $idAnuncio, $dataInicio, $dataFim, $horaInicio, $horaFim,$tipo,$semanas ){
             
-                $sql = "INSERT INTO RegistroAnunciosDisponiveis(idAnuncio, dataEntrada, horaEntrada, dataSaida, horaSaida)
-                                    VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim')";
+                $sql = "INSERT INTO RegistroAnunciosDisponiveis(idAnuncio, dataEntrada, horaEntrada, dataSaida, horaSaida, tipo, semanas)
+                                    VALUES ('$idAnuncio', '$dataInicio', '$horaInicio', '$dataFim', '$horaFim', '$tipo','$semanas')";
 
                 if ($db->query($sql)===true) {  
                    // print $db->error_log;
