@@ -154,9 +154,8 @@ $session = new FunctionsSession();
 
                     $db->closeDB($conn);
                     $session ->logout();
-                      //  print $URL_ATUAL;
-                    header('location:'.$_POST['header']);
-
+                        
+                    header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
                 }
                 
 
@@ -310,12 +309,13 @@ $session = new FunctionsSession();
                     }
 
                     $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
-                    print (" ( $aux ) ");
+                    
+                    $auxIdFinal = $db->retornarUltimoAnuncioBasico($conn);
 
                     $db->closeDB($conn);
                     $session ->logout();
                         
-                    header('location:'.$_POST['header']);
+                    header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
                 }
 
             }else {

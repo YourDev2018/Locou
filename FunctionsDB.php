@@ -693,6 +693,19 @@ require_once 'functions.php';
 
         }
 
+        function retornarUltimoAnuncioBasico($conn){
+
+            $result = "SELECT idAnuncio FROM AnuncioBasico ORDER BY idAnuncio DESC LIMIT 1";
+            $result = $db->query($result);
+
+            $aux = mysqli_num_rows($result);
+            while ($row=$result->fetch_assoc()) {
+                    
+                return $row['id'];
+            }
+
+        }
+
         
 
     }
