@@ -88,10 +88,12 @@
               var logado = "<?php echo $session->vereficarLogin()?>";
             if(logado!="false")
             {
+              document.getElementById('anunciarF').innerHTML = '<a href="anunciar.php" style="color: white">Anuncie Aqui</a>';
               document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
             }
             else {
+              document.getElementById('anunciarF').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');" style="cursor:pointer;color: white">Anuncie Aqui</a>';
               document.getElementById('anunciarSM').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
             }
@@ -6397,7 +6399,9 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        Ao cadastrar este anúncio você está de acordo com esses <a href="http://locou.co/termos-de-compromisso">Termos de uso</a>
+        Ao cadastrar este anúncio você está de acordo com esses <a href="#" onclick="window.open('TermoUso.pdf', '_blank', 'fullscreen=yes');">Termos de uso</a>
+        <br>
+        e com a nossa <a href="#" onclick="window.open('Privacidade.pdf', '_blank', 'fullscreen=yes');">Política de Privacidade</a>
       </div>
     </div>
 
@@ -6448,15 +6452,15 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="border-right: 2px solid grey;">
         <h6>
-          <a href="#" style="color: white">Termo de Uso</a>
+          <a href="#" onclick="window.open('TermoUso.pdf', '_blank', 'fullscreen=yes');" style="color: white">Termo de Uso</a>
           <br><br>
-          <a href="#" style="color: white">Política de Privacidade</a>
+          <a href="#" onclick="window.open('Privacidade.pdf', '_blank', 'fullscreen=yes');" style="color: white">Política de Privacidade</a>
           <br><br>
-          <a href="anunciar.php" style="color: white">Anuncie Aqui</a>
+          <span id="anunciarF"></span>
           <br><br>
           <a href="resultado.php" style="color: white">Procure um espaço</a>
           <br><br>
-          <a href="mailto:someone@contato@locou.co" target="_top" style="color: white">contato@locou.co  </a>
+          <a href="mailto:contato@locou.co" target="_top" style="color: white">contato@locou.co  </a>
         </h6>
         <br><br>
       </div>
