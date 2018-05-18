@@ -471,6 +471,25 @@
     </div>
   </div>
 
+  <div id="descricaoFaltante" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ops...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>A descrição precisa de pelo menos 100 caracteres.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Seção Titulo -->
 
@@ -6626,27 +6645,32 @@ function proximo()
 
   if(pagina == 4)
   {
-    var consultorioD = document.getElementById("descricao-aberta-consultorio");
-    var workshopD = document.getElementById("descricao-aberta-workshop");
-    var cozinhaD = document.getElementById("descricao-aberta-cozinha");
-    var ensaioD = document.getElementById("descricao-aberta-ensaio");
-    var fotograficoD = document.getElementById("descricao-aberta-fotografico");
-    var costuraD = document.getElementById("descricao-geral-costura");
-    var academiaD = document.getElementById("descricao-geral-academia");
-    var artesD = document.getElementById("descricao-geral-artes");
+    var consultorioD = document.getElementById("descricao-aberta-consultorio").value;
+    var workshopD = document.getElementById("descricao-aberta-workshop").value;
+    var cozinhaD = document.getElementById("descricao-aberta-cozinha").value;
+    var ensaioD = document.getElementById("descricao-aberta-ensaio").value;
+    var fotograficoD = document.getElementById("descricao-aberta-fotografico").value;
+    var costuraD = document.getElementById("descricao-geral-costura").value;
+    var academiaD = document.getElementById("descricao-geral-academia").value;
+    var artesD = document.getElementById("descricao-geral-artes").value;
     if(consultorioD.length>=100 || workshopD.length>=100 || cozinhaD.length>=100 || ensaioD.length>=100 || fotograficoD.length>=100 || costuraD.length>=100 || academiaD.length>=100 || artesD.length>=100)
-
-    fotos.style.display = "";
-    consultorio.style.display = "none";
-    workshop.style.display = "none";
-    cozinha.style.display = "none";
-    ensaio.style.display = "none";
-    fotografico.style.display = "none";
-    costura.style.display = "none";
-    academia.style.display = "none";
-    artes.style.display = "none";
-    document.getElementById('anunciar').style.display = 'none';
-    document.getElementById('proximo').style.display = 'none';
+    {
+      fotos.style.display = "";
+      consultorio.style.display = "none";
+      workshop.style.display = "none";
+      cozinha.style.display = "none";
+      ensaio.style.display = "none";
+      fotografico.style.display = "none";
+      costura.style.display = "none";
+      academia.style.display = "none";
+      artes.style.display = "none";
+      document.getElementById('anunciar').style.display = 'none';
+      document.getElementById('proximo').style.display = 'none';
+    }
+    else {
+      $("#descricaoFaltante").modal();
+      voltar();
+    }
   }
 
   window.scrollTo(0, 0);
@@ -6655,6 +6679,10 @@ function proximo()
 
 function voltar()
 {
+  if(pagina!=4)
+  {
+    document.getElementById('anunciar').style.display = 'none';
+  }
   pagina = pagina - 1;
   var dbasicos = document.getElementById("dados_basicos");
   var dgeral = document.getElementById("descricao_geral");
