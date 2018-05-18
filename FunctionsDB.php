@@ -693,7 +693,7 @@ require_once 'functions.php';
 
         }
 
-        function retornarUltimoAnuncioBasico($conn){
+        function retornarUltimoAnuncioBasico($db){
 
             $result = "SELECT idAnuncio FROM AnuncioBasico ORDER BY idAnuncio DESC LIMIT 1";
             $result = $db->query($result);
@@ -701,7 +701,7 @@ require_once 'functions.php';
             $aux = mysqli_num_rows($result);
             while ($row=$result->fetch_assoc()) {
                     
-                return $row['id'];
+                return $row['idAnuncio'];
             }
 
         }
