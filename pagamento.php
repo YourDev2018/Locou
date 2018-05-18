@@ -761,6 +761,14 @@ function verificarDecimal($dia){
   function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
   }
+
+  $(document).ready(function(){
+    var ddd = "";
+    var telefone = "";
+    //nascimento
+    var cep = "";
+    
+  });
   </script>
 </head>
 <style>
