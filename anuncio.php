@@ -452,6 +452,20 @@ if($session->vereficarLogin() != false){
   } );
 
   </script>
+  <script type='text/javascript'>
+            $(document).ready(function(){
+              var logado = "nao";
+            if(logado=="sim")
+            {
+              document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+              document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+            }
+            else {
+              document.getElementById('anunciarSM').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+              document.getElementById('anunciarSD').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+            }
+            });
+        </script>
   <script>
   $(function () {
 
@@ -539,28 +553,31 @@ if($session->vereficarLogin() != false){
 
   <!-- Navbar -->
 
-  <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
+  <nav class="navbar fixed-top desktop" style="background-color: rgba(0,0,0,1);">
     <a class="navbar-brand ml-5" href="index.php" >
       <img  class="logo-navbar" src="img/locou_logo.png">
     </a>
     <span style="float:right;" class="navbar-brand menu-navbar mr-2 ml-auto">
-      <a href="index.php#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
-      <a href="index.php#sobre" style="color: white;" class="mx-2">Sobre</a>
+      <a href="#comoFunciona" style="color: white;" class="mx-2">Como Funciona</a>
+      <a href="#sobre" style="color: white;" class="mx-2">Sobre</a>
       <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
 
       <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-        <span style="cursor: pointer;" class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-        <span style="cursor: pointer;" class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
-      <?php } ?>
+          <span style="cursor: pointer;" class="ml-2 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+          <span style="cursor: pointer;" class="mx-2 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+       <?php } ?>
 
-      <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+      <span id="anunciarSD"></span>
 
-      <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
+      <?php if($_SESSION['id']!=null || $_SESSION['id'] != "" ){ ?>
+
         <a class="ml-3"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
 
         <a style="display:none" class="mx-2"><i style="font-size: 120%" class="far fa-bell"></i></a>
-        <a href="<?php echo "logout.php?pag=anuncio&id=".$idAnuncio ?>" style="color:white" class="mx-2">Logout</a>
+
+        <a href="<?php echo "logout.php?pag=index"?>" style="color:white" class="mx-2">Logout</a>
       <?php } ?>
+
     </span>
   </nav>
 
@@ -573,7 +590,7 @@ if($session->vereficarLogin() != false){
         </a>
       </div>
       <div class="col-12">
-        <a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>
+        <span id="anunciarSM"></span>
         <br><br>
       </div>
       <div class="col-12">
