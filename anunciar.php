@@ -212,6 +212,10 @@
                   <input type="text" class="form-control" id="sobrenome" name="sobrenome">
                 </div>
                 <div class="col-12 pb-3">
+                  <label for="telefone">Telefone (apenas número)</label>
+                  <input type="text" class="form-control" id="telefone" name="telefone" placeholder="21 912345678">
+                </div>
+                <div class="col-12 pb-3">
                   <label>Data de nascimento</label>
                   <br>
                   <select id="days" name="dia"></select>
@@ -265,6 +269,8 @@
                 <input type="password" class="form-control" id="senha-login" name="senha">
               </div>
               <br>
+              <br>
+              <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
               <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
               <br>
             </div>

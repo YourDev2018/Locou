@@ -328,7 +328,7 @@ function daysInMonth(month, year) {
       </div>
     </div>
 
-    <div class="modal fade" id="loginPop" tabindex="-1" role="dialog">
+    <div class="modal" id="loginPop" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -349,6 +349,8 @@ function daysInMonth(month, year) {
                   <input type="password" class="form-control" id="senha-login" name="senha">
                 </div>
                 <br>
+                <br>
+                <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
                 <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
                 <br>
               </div>

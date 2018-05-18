@@ -149,7 +149,7 @@ if($status == 'true' && ($_SESSION['id'] != null || $_SESSION['id'] != '' )){
           </div>
           <div class="col-12">
             <div class="pt-4" style="background-color:white; color: black">
-              <form action="CadastrarUsuario.php?pag=cadastro" enctype="multipart/form-data" method="post">
+              <form action="CadastrarUsuario.php?pag=index" enctype="multipart/form-data" method="post">
                 <div class="col-12 pb-3">
                   <label for="nome">Nome</label>
                   <input type="text" class="form-control" id="nome" name="nome">
