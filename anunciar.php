@@ -184,8 +184,8 @@
           <a href="resultado.php?t=todos&q=" style="color:white" class="mx-2">Procurar Espaços</a>
           <br><br>
           <?php if($_SESSION['id']==null && $_SESSION['id'] == "" ){ ?>
-            <span class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
-            <span class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
+            <span style="cursor: pointer;" class="ml-3 " data-toggle="modal" data-target="#cadastroPop">Não é cadastrado?</span>
+            <span style="cursor: pointer;" class="ml-3 " data-toggle="modal" data-target="#loginPop">Já sou cadastrado</span>
           <?php } ?>
           <?php if($_SESSION['id']!=null && $_SESSION['id'] != "" ){ ?>
             <a class="ml-5"><img class="rounded-circle" src="<?php echo $prefixo.$_SESSION['foto'] ?>" style="height: 40px"></a>
