@@ -109,7 +109,7 @@ $session = new FunctionsSession();
                     $horaInicio = $_POST['hora-inicio-unico'];
                     $horaFim = $_POST['hora-fim-unico'];
 
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$horaInicio,$horaFim);
+                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$horaInicio,$horaFim,$tipoAluguel);
 
                     if ($result == true) {
 
@@ -147,16 +147,15 @@ $session = new FunctionsSession();
                     $date->add(new DateInterval('P'.$dias.'D'));
                     $dataFinal = $date->format('Ymd');
 
-                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$dataFinal,'9','18');
+                    $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,'','9','18',$tipoAluguel,$mes);
 
                     $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
                     print (" ( $aux ) ");
 
                     $db->closeDB($conn);
                     $session ->logout();
-                      //  print $URL_ATUAL;
-                    header('location:'.$_POST['header']);
-
+                        
+                    header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
                 }
                 
 
@@ -199,7 +198,7 @@ $session = new FunctionsSession();
                     $sabF = $_POST['sab-fim-periodo'];
 
 
-// ----------------------------------------------------------------------------------
+                    // ----------------------------------------------------------------------------------
 
                     $domS = $_POST['dom-periodo-sel'];
                     $segS = $_POST['seg-periodo-sel'];
@@ -222,7 +221,7 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$domI,$domF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$domI,$domF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
 
@@ -235,7 +234,7 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$segI,$segF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$segI,$segF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
 
@@ -250,7 +249,7 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$terI,$terF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$terI,$terF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
 
@@ -263,7 +262,7 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quaI,$quaF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quaI,$quaF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
 
@@ -278,7 +277,7 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quiI,$quiF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quiI,$quiF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
 
@@ -291,7 +290,7 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sexI,$sexF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sexI,$sexF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
 
@@ -304,18 +303,19 @@ $session = new FunctionsSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sabI,$sabF);
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sabI,$sabF,$tipoAluguel,$sem);
                             print (" ( $result ) ");
                         }
                     }
 
                     $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
-                    print (" ( $aux ) ");
+                    
+                    $auxIdFinal = $db->retornarUltimoAnuncioBasico($conn);
 
                     $db->closeDB($conn);
                     $session ->logout();
                         
-                    header('location:'.$_POST['header']);
+                    header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
                 }
 
             }else {
