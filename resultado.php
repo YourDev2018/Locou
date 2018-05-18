@@ -442,6 +442,10 @@ if (!($tipo == "" || $tipo == null) ) {
                   <input type="text" class="form-control" id="sobrenome" name="sobrenome">
                 </div>
                 <div class="col-12 pb-3">
+                  <label for="telefone">Telefone (apenas número)</label>
+                  <input type="text" class="form-control" id="telefone" name="telefone" placeholder="21 912345678">
+                </div>
+                <div class="col-12 pb-3">
                   <label>Data de nascimento</label>
                   <br>
                   <select id="days" name="dia"></select>

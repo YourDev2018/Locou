@@ -618,7 +618,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <div class="pt-2" style="background-color:white">
-            <form action="CadastrarUsuario.php?pag=F" enctype="multipart/form-data" method="post">
+            <form action="CadastrarUsuario.php?pag=index" enctype="multipart/form-data" method="post">
               <div class="row text-center justify-content-center">
                 <div class="col-12 pb-3">
                   <label for="nome">Nome</label>
@@ -627,6 +627,10 @@ if($session->vereficarLogin() != false){
                 <div class="col-12 pb-3">
                   <label for="sobrenome">Sobrenome</label>
                   <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+                </div>
+                <div class="col-12 pb-3">
+                  <label for="telefone">Telefone (apenas número)</label>
+                  <input type="text" class="form-control" id="telefone" name="telefone" placeholder="21 912345678">
                 </div>
                 <div class="col-12 pb-3">
                   <label>Data de nascimento</label>
