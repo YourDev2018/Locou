@@ -763,15 +763,11 @@ function verificarDecimal($dia){
   }
 
   $(document).ready(function(){
-<<<<<<< HEAD
-    var possuiInfos = "true";
-=======
-    var possuiInfos = "false"
->>>>>>> 83d162b33941fae74ead3b7b7574738372211d81
+    var possuiInfos = "<?php echo $db->getIdClientMoip($conn,$idUsuario)?>"
     if (possuiInfos!="false") {
-      var ddd = "";
-      var telefone = "";
-      var cep = "";
+      var ddd = "<?php echo $ddd?>";
+      var telefone = "<?php echo $number ?>";
+      var cep = "<?php echo $cep?>";
       document.getElementById('ddd').value = ddd;
       document.getElementById('telefone').value = telefone;
       document.getElementById('cep').value = cep;
@@ -1081,7 +1077,7 @@ function verificarDecimal($dia){
 
       <script>
       $( document ).ready(function() {
-        var tipo = "unico";
+        var tipo = "<?php echo $tipo = $busca->getTipoDisponiveis($conn,$idAnuncio); ?>";
         if(tipo == "unico")
         {
           document.getElementById('unico').style.display = "";
@@ -1138,7 +1134,7 @@ function verificarDecimal($dia){
               <span class="h5">Tipo de aluguel selecionado:</span>
             </div>
             <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
-              <span class="h6">(TIPO DO ALUGUEL)</span>
+              <span class="h6"><?php echo $tipo ?></span>
             </div>
           </div>
           <br><br>
@@ -1148,7 +1144,17 @@ function verificarDecimal($dia){
                 <span class="h5">Dias Selecionados:</span>
               </div>
               <div id="unico" style="display:none" class="col-10 py-2 text-left">
-                <span class="h5">Dia selecionado:  (DIA SELECIONADO UNICO)</span>
+                <span class="h5">Dia selecionado:  <?php 
+                    $array = $buscar -> getHashId($conn,$idGetHash);
+                    $titulo = $array[3];
+                    $id = $array[5];
+
+                    $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
+                    $data = $detalhe[0];
+                    $entrada = $detalhe[1];
+                    $saida = $detalhe[2];
+
+                    echo $data.':'."  ".$entrada.' até '.$saida;?></span>
               </div>
               <div id="seg" style="display: none" class="col-10 py-2 text-left">
                 <span class="h5">Segunda-Feira:  (00:00 até 00:00)</span>
