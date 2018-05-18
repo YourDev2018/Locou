@@ -412,7 +412,7 @@ if($session->vereficarLogin() != false){
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
 
-  var tipoAluguel = '';
+  var tipoAluguel = '<?php echo ($busca->getTipoDisponiveis($conn,$idAnuncio)); ?>';
 
 
   if(dd<10)
