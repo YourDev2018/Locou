@@ -618,7 +618,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <div class="pt-2" style="background-color:white">
-            <form action="CadastrarUsuario.php?pag=index" enctype="multipart/form-data" method="post">
+            <form action="CadastrarUsuario.php?pag=F" enctype="multipart/form-data" method="post">
               <div class="row text-center justify-content-center">
                 <div class="col-12 pb-3">
                   <label for="nome">Nome</label>
