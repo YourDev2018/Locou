@@ -761,6 +761,28 @@ function verificarDecimal($dia){
   function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
   }
+
+  $(document).ready(function(){
+    var possuiInfos = "true"
+    if (possuiInfos!="false") {
+      var ddd = "";
+      var telefone = "";
+      var cep = "";
+      document.getElementById('ddd').value = ddd;
+      document.getElementById('telefone').value = telefone;
+      document.getElementById('cep').value = cep;
+      document.getElementById('nomeC').readOnly = true;
+      document.getElementById('cpf').readOnly = true;
+      document.getElementById('cidade').readOnly = true;
+      document.getElementById('bairro').readOnly = true;
+      document.getElementById('rua').readOnly = true;
+      document.getElementById('nRua').readOnly = true;
+      document.getElementById('complemento').readOnly = true;
+      document.getElementById('cep').readOnly = true;
+      document.getElementById('telefone').readOnly = true;
+      document.getElementById('ddd').readOnly = true;
+    }
+  });
   </script>
 </head>
 <style>
