@@ -123,7 +123,11 @@ function daysInMonth(month, year) {
   <script type='text/javascript'>
             $(document).ready(function(){
               var logado = "<?php echo $session->vereficarLogin()?>";
+<<<<<<< HEAD
             if(logado=="false")
+=======
+            if(logado!="false")
+>>>>>>> 86f77d5356f12a958220c1f0875244ab5558ce41
             {
               document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
