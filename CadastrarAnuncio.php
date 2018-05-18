@@ -22,8 +22,17 @@ $rua = $seg->filtro($_POST['rua']);
 $num = $seg->filtro($_POST['numero']);
 $complemento = $seg->filtro($_POST['complemento']);
 $uf = $seg->filtro($_POST['uf']);
-$precoHora =  $seg->filtro($_POST['hora']);
-$precoHora = number_format($precoHora + $precoHora*0.10,2,'.','' );
+$precoHora = $seg->filtro($_POST['hora']);
+$precoSemana = $seg->filtro($_POST['semana']);
+
+if(($precoHora =='' || $precoHora ==null) && ($_POST['semana'] !='' || $_POST['hora'] != null)){
+    $precoHora = ($precoSemana / 7) / 24;
+}else{
+    $precoHora = number_format($precoHora + $precoHora*0.10,2,'.','' );
+}
+
+
+
 //print $precoHora;
 
 // descrição geral
@@ -51,7 +60,7 @@ print_r($fotoPanoramica2 = $_FILES['pano2']['tmp_name']);
 $preco4Hora = $seg->filtro($_POST['4hora']);
 $preco5Hora = $seg->filtro($_POST['5hora']);
 $precoTurno = $seg->filtro($_POST['dia-turno']);
-$precoSemana = $seg->filtro($_POST['semana']);
+
 $precoMes = $seg->filtro($_POST['mes']);
 $reservaInsta = $seg->filtro($_POST['reservaInsta']);// consutório //Perguntar ao proprietario ou direto
 
@@ -124,6 +133,7 @@ $session->iniciarSession();
                     }
                 }
                 */
+                
 
                 if($tipoAluguel != 'direto' && $tipoAluguel != 'reincidente'){
 
