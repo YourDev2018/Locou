@@ -103,7 +103,32 @@ function returnEnsaio($conn){
 //     });
 //
 // });
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 $(document).ready(function(){
+  var n = getRandomInt(1,7);
+  if(n==1) {
+    document.getElementById('fundo').style.background = 'url(\'img/consultório_pediatria.jpeg\');'
+  }
+  if(n==2) {
+    document.getElementById('fundo').style.background = 'url(\'img/divã.jpeg\');'
+  }
+  if(n==3) {
+    document.getElementById('fundo').style.background = 'url(\'img/maca.jpeg\');'
+  }
+  if(n==4) {
+    document.getElementById('fundo').style.background = 'url(\'img/recepção3.jpg\');'
+  }
+  if(n==5) {
+    document.getElementById('fundo').style.background = 'url(\'img/salaespera1.jpeg\');'
+  }
+  if(n==6) {
+    document.getElementById('fundo').style.background = 'url(\'img/salaespera2.jpeg\');'
+  }
+  if(n==7) {
+    document.getElementById('fundo').style.background = 'url(\'img/salaespera3.jpeg\');'
+  }
   // document.getElementById('days');
   // document.getElementById('months');
   // document.getElementById('years');
@@ -400,7 +425,7 @@ function daysInMonth(month, year) {
 
     <!-- Seção 1 - Pesquisa -->
 
-    <div class="img-responsive img-center imagem" style="background: url('img/fundo_1.jpg');">
+    <div id="fundo" class="img-responsive img-center imagem" style="background: url('img/fundo_1.jpg');">
       <div class="container-fluid text-center justify-content-center imagem-escura">
 
         <!-- Texto principal + pesquisa -->
