@@ -6626,14 +6626,14 @@ function proximo()
 
   if(pagina == 4)
   {
-    var consultorioD = document.getElementById("descricao_aberta_consultorio");
-    var workshopD = document.getElementById("descricao_aberta_workshop");
-    var cozinhaD = document.getElementById("descricao_aberta_cozinha");
-    var ensaioD = document.getElementById("descricao_aberta_ensaio");
-    var fotograficoD = document.getElementById("descricao_aberta_fotografico");
-    var costuraD = document.getElementById("descricao_geral_costura");
-    var academiaD = document.getElementById("descricao_geral_academia");
-    var artesD = document.getElementById("descricao_geral_artes");
+    var consultorioD = document.getElementById("descricao-aberta-consultorio");
+    var workshopD = document.getElementById("descricao-aberta-workshop");
+    var cozinhaD = document.getElementById("descricao-aberta-cozinha");
+    var ensaioD = document.getElementById("descricao-aberta-ensaio");
+    var fotograficoD = document.getElementById("descricao-aberta-fotografico");
+    var costuraD = document.getElementById("descricao-geral-costura");
+    var academiaD = document.getElementById("descricao-geral-academia");
+    var artesD = document.getElementById("descricao-geral-artes");
     if(consultorioD.length>=100 || workshopD.length>=100 || cozinhaD.length>=100 || ensaioD.length>=100 || fotograficoD.length>=100 || costuraD.length>=100 || academiaD.length>=100 || artesD.length>=100)
 
     fotos.style.display = "";
