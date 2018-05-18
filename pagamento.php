@@ -763,11 +763,23 @@ function verificarDecimal($dia){
   }
 
   $(document).ready(function(){
-    var ddd = "";
-    var telefone = "";
-    //nascimento
-    var cep = "";
-    
+    var possuiInfos = "false"
+    if (possuiInfos!="false") {
+      var ddd = "";
+      var telefone = "";
+      var cep = "";
+      document.getElementById('ddd').value = ddd;
+      document.getElementById('telefone').value = telefone;
+      document.getElementById('cep').value = cep;
+      document.getElementById('nomeC').readOnly = true;
+      document.getElementById('cpf').readOnly = true;
+      document.getElementById('cidade').readOnly = true;
+      document.getElementById('bairro').readOnly = true;
+      document.getElementById('rua').readOnly = true;
+      document.getElementById('nRua').readOnly = true;
+      document.getElementById('complemento').readOnly = true;
+      document.getElementById('cep').readOnly = true;
+    }
   });
   </script>
 </head>
