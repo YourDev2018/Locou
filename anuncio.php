@@ -455,7 +455,7 @@ if($session->vereficarLogin() != false){
   <script type='text/javascript'>
             $(document).ready(function(){
               var logado = "nao";
-            if(logado=="false")
+            if(logado!="false")
             {
               document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
