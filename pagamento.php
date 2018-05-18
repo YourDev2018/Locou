@@ -763,11 +763,7 @@ function verificarDecimal($dia){
   }
 
   $(document).ready(function(){
-<<<<<<< HEAD
     var possuiInfos = "<?php echo $db->getIdClientMoip($conn,$idUsuario)?>"
-=======
-    var possuiInfos = "false";
->>>>>>> 0208c9fe12866b47fe2b1b5ee130da8c0efc9f84
     if (possuiInfos!="false") {
       var ddd = "<?php echo $ddd?>";
       var telefone = "<?php echo $number ?>";
@@ -1148,7 +1144,6 @@ function verificarDecimal($dia){
                 <span class="h5">Dias Selecionados:</span>
               </div>
               <div id="unico" style="display:none" class="col-10 py-2 text-left">
-<<<<<<< HEAD
                 <span class="h5">Dia selecionado:  <?php 
                     $array = $buscar -> getHashId($conn,$idGetHash);
                     $titulo = $array[3];
@@ -1160,9 +1155,6 @@ function verificarDecimal($dia){
                     $saida = $detalhe[2];
 
                     echo $data.':'."  ".$entrada.' até '.$saida;?></span>
-=======
-                <span class="h5">Data selecionada:  (DIA SELECIONADO UNICO)</span>
->>>>>>> 0208c9fe12866b47fe2b1b5ee130da8c0efc9f84
               </div>
               <div id="seg" style="display: none" class="col-10 py-2 text-left">
                 <span class="h5">Segunda-Feira:  (00:00 até 00:00)</span>
