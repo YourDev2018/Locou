@@ -97,7 +97,7 @@
   </script>
   <script type='text/javascript'>
             $(document).ready(function(){
-              var logado = "nao";
+              var logado = "<?php echo $session->vereficarLogin()?>";
             if(logado!="false")
             {
               document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
