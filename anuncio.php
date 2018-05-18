@@ -5844,12 +5844,12 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
 
 </div>
 
-
-<script>
 <?php if($_GET['emailEnviado'] == true || $_GET['emailEnviado'] == 'true')
 {
   echo ('<script type=\'text/javascript\'>$(document).ready(function(){$(\'#emailEnviado\').modal(\'show\');});</script>');
 } ?>
+
+<script>
 $( document ).ready(function() {
   $(function() {
     $('div.panorama').paver();
