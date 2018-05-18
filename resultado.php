@@ -326,7 +326,7 @@ if (!($tipo == "" || $tipo == null) ) {
   <script type='text/javascript'>
             $(document).ready(function(){
               var logado = "nao";
-            if(logado=="sim")
+            if(logado=="false")
             {
               document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
