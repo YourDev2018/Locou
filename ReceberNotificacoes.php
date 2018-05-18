@@ -89,7 +89,7 @@
 
             $corpo .= "</body></html>";
 
-            $emailCustomer = 'morg.guilherme@gmail.com';
+            $emailCustomer = 'contatoyourdev@gmail.com';
             print $corpo.'<br></br>';
 
             $email->enviar($emailCustomer,'Pedido em análise',$corpo);
@@ -148,7 +148,7 @@
 
             print $corpo.'<br></br>';
 
-            $emailCustomer = 'morg.guilherme@gmail.com';
+            $emailCustomer = 'contatoyourdev@gmail.com';
 
             $email->enviar($emailCustomer,'Pagamento aprovado',$corpo);
  #       }
@@ -201,7 +201,7 @@
             $corpo .= "Data: $data <br> Entrada: $entrada <br> Saida: $saida";
             $corpo .= "</body></html>";
 
-            $emailCustomer = 'morg.guilherme@gmail.com';
+            $emailCustomer = 'contatoyourdev@gmail.com';
             print $corpo.'<br></br>';
 
             $email->enviar($emailCustomer,'Pagamento aprovado',$corpo);

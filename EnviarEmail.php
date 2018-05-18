@@ -145,7 +145,7 @@ class EnviarEmail
     function enviarEmailPagamento($emailCliente, $nomeCliente, $titulo, $hashId){
 
       //$destino = $emailCliente;
-        $destino = 'morg.guilherme@gmail.com';  
+        $destino = 'contatoyourdev@gmail.com';  
         
         $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$hashId";
 
@@ -172,7 +172,7 @@ class EnviarEmail
 
     function enviarEmailClaudia($assunto,$corpo){
 
-        $this->enviar('morg.guilherme@gmail.com',$assunto,$corpo);
+        $this->enviar('contatoyourdev@gmail.com',$assunto,$corpo);
        // $this->enviar('contato@locou.co',$assunto',$corpo);
     }
 
