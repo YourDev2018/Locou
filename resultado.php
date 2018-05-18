@@ -64,40 +64,27 @@ if (!($tipo == "" || $tipo == null) ) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
 
-  $(function () {
-
-    for (i = new Date().getFullYear() ; i > 1900; i--) {
-      $('#years').append($('<option />').val(i).html(i));
+  $(document).ready(function(){
+    // document.getElementById('days');
+    // document.getElementById('months');
+    // document.getElementById('years');
+    for (var i = 1; i < 32; i++) {
+      var option = document.createElement("option");
+      option.text = i;
+      document.getElementById('days').add(option);
     }
-
-    for (i = 1; i < 13; i++) {
-      $('#months').append($('<option />').val(i).html(i));
+    for (var i = 1; i < 13; i++) {
+      var option = document.createElement("option");
+      option.text = i;
+      document.getElementById('months').add(option);
     }
-    updateNumberOfDays();
-
-    $('#years, #months').change(function () {
-
-      updateNumberOfDays();
-
-    });
-
+    for (var i = 2018; i > 1899; i--) {
+      var option = document.createElement("option");
+      option.text = i;
+      document.getElementById('years').add(option);
+    }
   });
 
-  function updateNumberOfDays() {
-    $('#days').html('');
-    month = $('#months').val();
-    year = $('#years').val();
-    days = daysInMonth(month, year);
-
-    for (i = 1; i < days + 1 ; i++) {
-      $('#days').append($('<option />').val(i).html(i));
-    }
-
-  }
-
-  function daysInMonth(month, year) {
-    return new Date(year, month, 0).getDate();
-  }
   </script>
   <script>
   var today = new Date();
