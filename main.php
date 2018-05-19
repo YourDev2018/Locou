@@ -94,7 +94,11 @@ function retornarDiasCadastrados(){
     $db = new FunctionsDB();
     $conn = $db->conectDB();
     $busca = new BuscarEspacos();
-    print $db-> retornarUltimoAnuncioBasico($conn);
+
+  //  print_r($arrayHorarios = $busca->getDiasHabilitadosAnuncioReincidente($conn,193));
+    print_r($arrayHorario = $busca->retornarHorário($conn,193) );
+    
+  //  print $db-> retornarUltimoAnuncioBasico($conn);
     //$db->setDetalhesPedido('PedidosTemporariosUnico',$conn,1,1,1,1);
     //$nextMonday = date('Ymd', strtotime("next Monday"));
    // print_r($array = $busca->retornarHorário($conn,'161'));

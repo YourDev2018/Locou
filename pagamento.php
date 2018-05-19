@@ -317,7 +317,7 @@ if($_POST['tipoAluguel']=='reincidente'){
   // $arrayX3 = [];
   $arrayPeriodos = [];
 
-  $idPedidosTemporarios = $db->cadastrarPedidosTemporarios($conn,'','','',0,'',0);
+  $idPedidosTemporarios = $db->cadastrarPedidosTemporarios($conn,'','','',0,'',0,'','');
 
   $segSel = $_POST['seg-periodo-sel'];
   if($segSel=='sim'){

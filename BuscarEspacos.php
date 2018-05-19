@@ -1158,11 +1158,13 @@ class BuscarEspacos
             $maiorEntradaDomingo= 0;
 
             while ($row=$result->fetch_assoc()) {
-                        
-                $dateEntrada = $row['dataEntrada'];
-                $newDate = date("d-m-Y", strtotime($dateEntrada));
-                $day = date('N',strtotime($newDate));
-               // print $day;
+                /*       
+                    $dateEntrada = $row['dataEntrada'];
+                    $newDate = date("d-m-Y", strtotime($dateEntrada));
+                    $day = date('N',strtotime($newDate));
+                */
+                $day = $row['dataEntrada'];
+                
                 if($day == 1){
 
                     if ($menorEntradaSegunda == 0){
@@ -1536,8 +1538,36 @@ class BuscarEspacos
 
     }
 
+    function getDiasHabilitadosAnuncioReincidente($db, $idAnuncio){
+
+        $result =  $db->query("SELECT dataEntrada
+                                FROM RegistroAnunciosDisponiveis 
+                                WHERE idAnuncio = '$idAnuncio' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+
+                   
+        $cont = mysqli_num_rows($result);
+
+       
+    
+        if ($cont <=0) {
+            print "erro buscar espaço Bairro Tipo";
+        }else{
+            $array = [];
+            $cont = 0;
+            while ($row=$result->fetch_assoc()) {
+
+                $array[$cont] = $row['dataEntrada'];
+                $cont = $cont + 1;
+
+            }
+            
+            return $array;
+
+        }
+
+    }
+
 
 }
-
 
 ?>
