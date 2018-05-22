@@ -729,6 +729,25 @@ function verificarDecimal($dia){
   <link rel="stylesheet" type="text/css"  href="css/bootstrap-datepicker3.css">
   <script src="js/bootstrap-datepicker.min.js" ></script>
   <script type="text/javascript" src="//assets.moip.com.br/v2/moip.min.js"></script>
+  <script type="text/javascript">
+  function encriptJSCartao() {
+    var cc = new Moip.CreditCard({
+      number  : $("#number").val(),
+      cvc     : $("#cvc").val(),
+      expMonth: $("#month").val(),
+      expYear : $("#year").val(),
+      pubKey  : $("#public_key").val()
+    });
+    console.log(cc);
+    if( cc.isValid()){
+      $("#encrypted_value").val(cc.hash());
+    }
+    else{
+      $("#encrypted_value").val('');
+      alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+    }
+  }
+  </script>
   <script>
   $(function () {
 
@@ -1067,9 +1086,20 @@ function verificarDecimal($dia){
           </div>
           <div class="row justify-content-center text-center">
             <div class="col-12 py-2">
-              <textarea name="hash" id="encrypted_value" style="display: "></textarea>
-              <button onclick="encriptJSCartao()" type="button" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
+              <textarea name="hash" id="encrypted_value" style="display: none"></textarea>
+              <button onclick="encriptJSCartao()" type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
             </div>
+            <textarea id="public_key" style="display:none;">
+              -----BEGIN PUBLIC KEY-----
+              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh1v8sntcpO3B884rSbHC
+              CLLXW9TYOZeyI8Y23AYfYdyzahN41ej17bqpm8aEa8314lRiFJHvRHu5v+5BHzhX
+              941Xu20mtDEneGI9l277kRSQfKKM7ELR7AYh45XNNzT3fHQTXc8FjGoS2D/b+Dly
+              EowCMhopItX5Wi0LtAeOdfKk7sy5Yy9invq/z0v1qAdB7+JBGQJADBsBxbUNVyT7
+              Ptorqfl5Nafs8ZuWw0Mq63Ya5/lFKa3mwPgod6/ZZoNDfbeaIardR4U35N5BkLhQ
+              Ad/zJrd9QFOBt2HS7/3s03/CDR7utkrRjsWP87rJ0okZhdqr4E7ZTNIPZHEsaClT
+              7wIDAQAB
+              -----END PUBLIC KEY-----
+            </textarea>
           </div>
         </form>
       </div>
@@ -1205,35 +1235,7 @@ function verificarDecimal($dia){
 
   </div>
 
-  <textarea id="public_key" style="display:none;">
-    -----BEGIN PUBLIC KEY-----
-    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh1v8sntcpO3B884rSbHC
-    CLLXW9TYOZeyI8Y23AYfYdyzahN41ej17bqpm8aEa8314lRiFJHvRHu5v+5BHzhX
-    941Xu20mtDEneGI9l277kRSQfKKM7ELR7AYh45XNNzT3fHQTXc8FjGoS2D/b+Dly
-    EowCMhopItX5Wi0LtAeOdfKk7sy5Yy9invq/z0v1qAdB7+JBGQJADBsBxbUNVyT7
-    Ptorqfl5Nafs8ZuWw0Mq63Ya5/lFKa3mwPgod6/ZZoNDfbeaIardR4U35N5BkLhQ
-    Ad/zJrd9QFOBt2HS7/3s03/CDR7utkrRjsWP87rJ0okZhdqr4E7ZTNIPZHEsaClT
-    7wIDAQAB
-    -----END PUBLIC KEY-----
-  </textarea>
-  <script type="text/javascript">
-  function encriptJSCartao() {
-    var cc = new Moip.CreditCard({
-      number  : $("#number").val(),
-      cvc     : $("#cvc").val(),
-      expMonth: $("#month").val(),
-      expYear : $("#year").val(),
-      pubKey  : $("#public_key").val()
-    });
-    console.log(cc);
-    if( cc.isValid()){
-      $("#encrypted_value").val(cc.hash());
-    }
-    else{
-      $("#encrypted_value").val('');
-      alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
-    }
-  }
-  </script>
+
+
 
 </body>
