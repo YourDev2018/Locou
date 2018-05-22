@@ -74,7 +74,7 @@ require_once 'functions.php';
         }
 
         function cadastrarUsuarioInquilino($db, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
-            $moip = new functions();
+            $moip = new Functions();
             $session = new FunctionsSession();
             $aux = $moip->criarCliente($cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado);
 

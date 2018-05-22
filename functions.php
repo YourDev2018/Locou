@@ -274,11 +274,11 @@ $ano = $_POST['year'];
 
   
     function criarPreferenciaNotificacaoApp(){
-        $curl = curl_init();
-    //    $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
+            $curl = curl_init();
+        //    $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
         $url = "https://sandbox.moip.com.br/v2/preferences/APP-VM93MVN9XDFA/notifications";
         $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
-      //  $aux = "ORDER.*";
+        //  $aux = "ORDER.*";
 
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
