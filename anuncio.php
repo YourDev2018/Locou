@@ -793,7 +793,7 @@ if($session->vereficarLogin() != false){
             <span style="color: grey;font-size: 80%">Nunca vamos divulgar nenhuma informação sua!</span>
           </div>
           <div class="modal-footer">
-            <button type="button" class="ml-3 btn btn-warning">Atualizar</button>
+            <button type="submit" class="ml-3 btn btn-warning">Atualizar</button>
           </div>
 
         </form>
