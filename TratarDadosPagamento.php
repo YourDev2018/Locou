@@ -30,6 +30,6 @@ $func = new functions();
 $func->pagamentoCartaoCredito($hash,$orderId,$name,$nascimento,$cpf,$ddd,$numero,$cidade,$bairro,$rua,$estado,$cep);
 
 // pedido foi pago, enviar um email dizendo que o pedido foi pago, esperando aprovação.
-
+    
 
 ?>

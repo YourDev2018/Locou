@@ -497,6 +497,7 @@ $ano = $_POST['year'];
         $curl = curl_init();
         $url = "https://sandbox.moip.com.br/v2/balances";
 
+        $token = $token_Acess;
 
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
@@ -507,26 +508,28 @@ $ano = $_POST['year'];
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "Authorization: OAuth $token_Acess",
+                "Authorization: OAuth $token",
                 "Content-Type: application/json"
             ),
         ));
-        $resposta = curl_exec($curl);
+        print $resposta = curl_exec($curl);
         $obj = json_decode($resposta);
         
+        return $obj[0]->{'current'};
+/*
+        
+        // $soma= 0;
 
+       // for($i=0;$i<count($obj);$i++){
 
         
-        $soma= 0;
 
-        for($i=0;$i<count($obj);$i++){
-
-                $soma = $soma + $obj[0]->{'current'};
-
-        }
+         //}
        
      // print $soma;  
         return $soma;
+   
+        */
         
     }
 

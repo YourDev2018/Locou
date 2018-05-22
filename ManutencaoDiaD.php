@@ -25,13 +25,13 @@
     
     if($array != false || $array != null){
 
-        for($id=0;$id<=count($array);$id++){
+        for($id=0;$id<count($array);$id++){
 
             $idOrder  = $array[$id];
 
             $arrayPedidos = $busca->getPedidosDBPorOrder($conn,$idOrder);
             $idAnuncio = $arrayPedidos[1];
-            $idProprietario = $db->getInfoUserProprietario($conn,$idAnuncio);
+            $idProprietario = $busca->getIdUsuarioProprietarioAnuncio($conn,$idAnuncio);
             $arrayUserProprietario = $db->getUsuarioProprietarioCompleto($conn,$idProprietario);
 
             $idMoipAccount = $arrayUserProprietario[0];
@@ -41,7 +41,7 @@
             
             $saldo = $functions->consultarSaldo($token);
 
-            print $functions->criarTranferenciaMoipTransparentToBank($token,$idBankAccount,$saldo);
+            $functions->criarTranferenciaMoipTransparentToBank($token,$idBankAccount,$saldo);
 
         }
 

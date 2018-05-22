@@ -722,7 +722,7 @@ require_once 'functions.php';
 
         }
 
-        function setPedidosPagos($db,$idOrder,$idPayment,$dataInicio,$dataFim){
+        function setPedidosPagos($conn,$idOrder,$idPayment,$dataInicio,$dataFim){
 
               $sql = "INSERT INTO PedidosPagos (idOrder, idPayment, dataInicio	,dataFim)
                                     VALUES ('$idOrder','$idPayment', '$dataInicio', '$dataFim')";

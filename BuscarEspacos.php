@@ -1594,6 +1594,28 @@ class BuscarEspacos
         }
 
     }
+
+    function getIdUsuarioProprietarioAnuncio($db,$idAnuncio){
+        
+        $result =  $db->query(" SELECT idProprietario
+                                FROM AnuncioBasico
+                                WHERE idAnuncio = '$idAnuncio' LIMIT 1 ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+        //     print "erro buscar proprietario";
+        }else{
+            
+            while ($row=$result->fetch_assoc()) {
+                
+                return $idProprietario = $row['idProprietario'];   
+            }  
+
+            //  print $idProprietario;
+            //  return $this->getUsuarioBasico($db,$idProprietario);
+        
+        }
+    }
 }
 
 ?>
