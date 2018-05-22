@@ -325,16 +325,16 @@ if($session->vereficarLogin() != false){
 
   if($tipo == 'reincidente'){
 
-   
+
     $arrayHorarios = $busca->getDiasHabilitadosAnuncioReincidente($conn,$idAnuncio);
 
-    for ($i =0; $i<=7; $i++) { 
-      
+    for ($i =0; $i<=7; $i++) {
+
         $day =  $arrayHorarios[$i];
 
         if($day == '' || $day == null)
          continue;
-          
+
         if($day == 1)
         $seg =  json_encode(true);
 
@@ -357,12 +357,12 @@ if($session->vereficarLogin() != false){
         $dom = json_encode(true);
 
     }
- 
+
   }
 
   if($tipo == 'direto'){
 
-      
+
 
   }
 
@@ -6348,7 +6348,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
           <br><br>
           <span id="anunciarF"></span>
           <br><br>
-          <a href="resultado.php" style="color: white">Procure um espaço</a>
+          <a href="resultado.php?t=todos&q=" style="color: white">Procure um espaço</a>
           <br><br>
           <a href="mailto:contato@locou.co" target="_top" style="color: white">contato@locou.co  </a>
         </h6>
