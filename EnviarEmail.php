@@ -147,7 +147,7 @@ class EnviarEmail
       //$destino = $emailCliente;
         $destino = 'contatoyourdev@gmail.com';  
         
-        $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$hashId";
+        $link = "http://www.yourdev.com.br/clientes/locou/pagamento.php?id=$hashId";
 
         $assunto = "Aluguel $titulo foi aprovado";
          $corpo = '<html><body>';

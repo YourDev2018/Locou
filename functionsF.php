@@ -20,16 +20,16 @@ $ano = $_POST['year'];
 */
 
 //verificarContaExists($document,$token_Acess);
-// pagamentoCartaoCredito("https://sandbox.moip.com.br/v2/orders/".$orderID."/payments",$hash,$token_Acess);
+// pagamentoCartaoCredito("https://api.moip.com.br/v2/orders/".$orderID."/payments",$hash,$token_Acess);
 //criarPedidoComClientMOIP(,$token_Acess);
-//criarContaMoipTransparente("https://sandbox.moip.com.br/v2/accounts",$token_Acess);
+//criarContaMoipTransparente("https://api.moip.com.br/v2/accounts",$token_Acess);
 //dadosConta();
 
-//criarContaBancaria("https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623/bankaccounts","50625d8d09b2484a8111fcc4d2a643c9_v2");
-//criarTranferenciaMoipTransparentToBank("https://sandbox.moip.com.br/v2/transfers","50625d8d09b2484a8111fcc4d2a643c9_v2");
-//criarTranferenciaMoipToMoip("https://sandbox.moip.com.br/v2/transfers",$token_Acess);
-//criarPreferenciaNotificacaoApp("https://sandbox.moip.com.br/v2/preferences/".$appId."/notifications",$token_Acess);
-// criarPagamentoBoleto("https://sandbox.moip.com.br/v2/orders/".$orderID2."/payments",$token_Acess);
+//criarContaBancaria("https://api.moip.com.br/v2/accounts/MPA-5FD4FE9CC623/bankaccounts","50625d8d09b2484a8111fcc4d2a643c9_v2");
+//criarTranferenciaMoipTransparentToBank("https://api.moip.com.br/v2/transfers","50625d8d09b2484a8111fcc4d2a643c9_v2");
+//criarTranferenciaMoipToMoip("https://api.moip.com.br/v2/transfers",$token_Acess);
+//criarPreferenciaNotificacaoApp("https://api.moip.com.br/v2/preferences/".$appId."/notifications",$token_Acess);
+// criarPagamentoBoleto("https://api.moip.com.br/v2/orders/".$orderID2."/payments",$token_Acess);
 // criarCliente();
 
 
@@ -44,7 +44,7 @@ $ano = $_POST['year'];
         $session->iniciarSession();
         
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/customers";
+        $url = "https://api.moip.com.br/v2/customers";
         $id = $_SESSION['id'];
         $name = $_SESSION['firstName']." ".$_SESSION['lastName'];
         $email = $_SESSION['email'];
@@ -111,7 +111,7 @@ $ano = $_POST['year'];
         $curl = curl_init();
         //    print $_SESSION['email']." ".$_SESSION['firstName']." ".$_SESSION['lastName']." ".$_SESSION['dataNascimento']. " ".$cpf. " ".$rgNumero." ".$rgOrgao." ".$rgData." ".$telDDD." ".$telNumero." ".$rua." ".$ruaNumero." ".$bairro." ".$cep." ".$cidade." ".$estado;
 
-        $url = "https://sandbox.moip.com.br/v2/accounts";
+        $url = "https://api.moip.com.br/v2/accounts";
         $email = $_SESSION['email'];
         $first = $_SESSION['firstName'];
         $last = $_SESSION['lastName'];
@@ -184,7 +184,7 @@ $ano = $_POST['year'];
     function criarContaBancaria($id, $token_Acess,$type,$bankNumber,$agencyNumber,$agencyCheckNumber,$accountNumber,$accountCheckNumber,$fullName,$cpf){
         $curl = curl_init();
         
-        $url = "https://sandbox.moip.com.br/v2/accounts/".$id."/bankaccounts";
+        $url = "https://api.moip.com.br/v2/accounts/".$id."/bankaccounts";
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -230,7 +230,7 @@ $ano = $_POST['year'];
 
 
     function consultarCliente(){
-        cURLGet("https://sandbox.moip.com.br/v2/customers/","45d63a3538ff47ccb2c0f0c3c09eabd9_v2");
+        cURLGet("https://api.moip.com.br/v2/customers/","45d63a3538ff47ccb2c0f0c3c09eabd9_v2");
     }
 
     function criarPagamentoBoleto($url,$token_Acess){
@@ -275,8 +275,8 @@ $ano = $_POST['year'];
   
     function criarPreferenciaNotificacaoApp(){
         $curl = curl_init();
-    //    $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
-        $url = "https://sandbox.moip.com.br/v2/preferences/APP-VM93MVN9XDFA/notifications";
+    //    $url = "https://api.moip.com.br/v2/preferences/notifications";
+        $url = "https://api.moip.com.br/v2/preferences/APP-VM93MVN9XDFA/notifications";
         $token_Acess = "45d63a3538ff47ccb2c0f0c3c09eabd9_v2";
       //  $aux = "ORDER.*";
 
@@ -316,7 +316,7 @@ $ano = $_POST['year'];
     }
 
     function excluirPreferenciaNotificacaoApp(){
-        $url = "https://sandbox.moip.com.br/v2/preferences/notifications/NPR-IPCR3GILSWGP";
+        $url = "https://api.moip.com.br/v2/preferences/notifications/NPR-IPCR3GILSWGP";
         $curl = curl_init();
 
          curl_setopt_array($curl,array(
@@ -340,7 +340,7 @@ $ano = $_POST['year'];
     function listarPreferenciaNotificacao(){
 
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/preferences/notifications";
+        $url = "https://api.moip.com.br/v2/preferences/notifications";
        // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(
@@ -363,10 +363,10 @@ $ano = $_POST['year'];
     }
 
     function consultarChamada(){
-       // https://sandbox.moip.com.br/v2/webhooks?resourceId=payment_id
+       // https://api.moip.com.br/v2/webhooks?resourceId=payment_id
     
          $curl = curl_init();
-         $url = "https://sandbox.moip.com.br/v2/webhooks?resourceId=ORD-CZXQEBT68AQN";
+         $url = "https://api.moip.com.br/v2/webhooks?resourceId=ORD-CZXQEBT68AQN";
        // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(
@@ -388,13 +388,13 @@ $ano = $_POST['year'];
     }
    
     function dadosConta(){
-        $this->cURLGet("https://sandbox.moip.com.br/v2/accounts/MPA-5FD4FE9CC623","50625d8d09b2484a8111fcc4d2a643c9_v2");
+        $this->cURLGet("https://api.moip.com.br/v2/accounts/MPA-5FD4FE9CC623","50625d8d09b2484a8111fcc4d2a643c9_v2");
     }
 
     function pagamentoCartaoCredito($hash,$orderID,$nomePortador,$nascimentoPortador, $cpfPortador,$ddd,$numero,$cidade,$bairro,
      $rua,$estado,$cep){
 
-        $url = "https://sandbox.moip.com.br/v2/orders/".$orderID."/payments";
+        $url = "https://api.moip.com.br/v2/orders/".$orderID."/payments";
 
         $token_Acess = $this->token_Acess;
         $curl = curl_init();
@@ -458,9 +458,9 @@ $ano = $_POST['year'];
     }
 
     function verificarContaExists($document,$token_Acess){
-        // $url = "https://sandbox.moip.com.br/v2/accounts/exists?tax_document=887.758.527-72";
-        //$url = "https://sandbox.moip.com.br/v2/accounts/exists?tax_document=887.755.537-72";
-        $url = "https://sandbox.moip.com.br/v2/accounts/exists?tax_document=".$document;//27.908.205/0001-26";
+        // $url = "https://api.moip.com.br/v2/accounts/exists?tax_document=887.758.527-72";
+        //$url = "https://api.moip.com.br/v2/accounts/exists?tax_document=887.755.537-72";
+        $url = "https://api.moip.com.br/v2/accounts/exists?tax_document=".$document;//27.908.205/0001-26";
 
         cURLGet($url,$token_Acess);
         
@@ -471,7 +471,7 @@ $ano = $_POST['year'];
     function cURLGet(){
 
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/customers/";
+        $url = "https://api.moip.com.br/v2/customers/";
        // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(
@@ -495,7 +495,7 @@ $ano = $_POST['year'];
     public function consultarSaldo($token_Acess){
 
         $curl = curl_init();
-        $url = "https://sandbox.moip.com.br/v2/balances";
+        $url = "https://api.moip.com.br/v2/balances";
 
 
         curl_setopt_array($curl,array(
@@ -532,7 +532,7 @@ $ano = $_POST['year'];
 
     function criarTranferenciaMoipToMoip(){
         $curl = curl_init();
-        $url = 'https://sandbox.moip.com.br/v2/transfers';
+        $url = 'https://api.moip.com.br/v2/transfers';
 
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
@@ -577,7 +577,7 @@ $ano = $_POST['year'];
         $curl = curl_init();
 
         curl_setopt_array($curl,array(
-            CURLOPT_URL => "https://sandbox.moip.com.br/v2/transfers",
+            CURLOPT_URL => "https://api.moip.com.br/v2/transfers",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -674,7 +674,7 @@ $ano = $_POST['year'];
     function getClienteMoip($idCliente){
 
          $curl = curl_init();
-         $url = "https://sandbox.moip.com.br/v2/customers/$idCliente";
+         $url = "https://api.moip.com.br/v2/customers/$idCliente";
          
         curl_setopt_array($curl,array(
             CURLOPT_URL => $url,
@@ -697,7 +697,7 @@ $ano = $_POST['year'];
     
     function aprovarCompra($codigo,$valor){
 
-        $url = "https://sandbox.moip.com.br/simulador/authorize?payment_id=$codigo&amount=$valor";
+        $url = "https://api.moip.com.br/simulador/authorize?payment_id=$codigo&amount=$valor";
         $curl = curl_init();
          curl_setopt_array($curl,array(
             CURLOPT_URL => $url,

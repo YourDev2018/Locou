@@ -222,67 +222,74 @@ $session->iniciarSession();
                     $quiS = $_POST['qui-periodo-sel'];
                     $sexS = $_POST['sex-periodo-sel'];
 
-                    $sabS = $_POST['qua-inicio-periodo'];
+                    $sabS = $_POST['sab-periodo-sel'];
                  
 
-                    for( $i=0;$i<$sem;$i++){
+             //       for( $i=0;$i<$sem;$i++){
 
                          if($domS == 'sim'){
-                            print " Domingo";
-                            $data = (string)$nextSunday;
-                            $date = new DateTime($data);
-                            $dias = $i*7;
-                            $date->add(new DateInterval('P'.$dias.'D'));
-                            $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$domI,$domF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                            /*  
+                                print " Domingo";
+                                $data = (string)$nextSunday;
+                                $date = new DateTime($data);
+                                $dias = $i*7;
+                                $date->add(new DateInterval('P'.$dias.'D'));
+                                $data = $date->format('Ymd');
+                                $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$domI,$domF,$tipoAluguel,$sem);
+                                print (" ( $result ) ");
+                            */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'7','',$domI,$domF,$tipoAluguel,$sem);
+                            
                         }
 
                         if($segS == 'sim'){
 
-                            print " segunda ";
-
-                            $data = (string)$nextMonday;
-                            $date = new DateTime($data);
-                            $dias = $i*7;
-                            $date->add(new DateInterval('P'.$dias.'D'));
-                            $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$segI,$segF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                          //  print " segunda ";
+                            /*
+                                $data = (string)$nextMonday;
+                                $date = new DateTime($data);
+                                $dias = $i*7;
+                                $date->add(new DateInterval('P'.$dias.'D'));
+                                $data = $date->format('Ymd');
+                            */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'1','',$segI,$segF,$tipoAluguel,$sem);
+                           // print (" ( $result ) ");
                         }
 
 
 
                        if($terS == 'sim'){
-
+                            /*
                             print " terca ";
 
-                            $data = (string)$nextTuesday;
-                            $date = new DateTime($data);
-                            $dias = $i*7;
-                            $date->add(new DateInterval('P'.$dias.'D'));
-                            $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$terI,$terF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                                $data = (string)$nextTuesday;
+                                $date = new DateTime($data);
+                                $dias = $i*7;
+                                $date->add(new DateInterval('P'.$dias.'D'));
+                                $data = $date->format('Ymd');
+                            */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'2','',$terI,$terF,$tipoAluguel,$sem);
+                        //   print (" ( $result ) ");
                         }
 
                          if($quaS == 'sim'){
+                            /*
+                                print " quarta ";
 
-                            print " quarta ";
-
-                            $data = (string)$nextWednesday;
-                            $date = new DateTime($data);
-                            $dias = $i*7;
-                            $date->add(new DateInterval('P'.$dias.'D'));
-                            $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quaI,$quaF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                                $data = (string)$nextWednesday;
+                                $date = new DateTime($data);
+                                $dias = $i*7;
+                                $date->add(new DateInterval('P'.$dias.'D'));
+                                $data = $date->format('Ymd');
+                            */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'3','',$quaI,$quaF,$tipoAluguel,$sem);
+                            //print (" ( $result ) ");
                         }
 
 
                       if($quiS == 'sim'){
 
-
+                        /*
                             print " quinta "; 
 
                             $data = (string)$nextThursday;
@@ -290,36 +297,39 @@ $session->iniciarSession();
                             $dias = $i*7;
                             $date->add(new DateInterval('P'.$dias.'D'));
                             $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$quiI,$quiF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                        */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'4','',$quiI,$quiF,$tipoAluguel,$sem);
+ //                           print (" ( $result ) ");
                         }
 
                       if($sexS == 'sim'){
+                            /*
+                                print " sexta ";
 
-                            print " sexta ";
-
-                            $data = (string)$nextFriday;
-                            $date = new DateTime($data);
-                            $dias = $i*7;
-                            $date->add(new DateInterval('P'.$dias.'D'));
-                            $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sexI,$sexF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                                $data = (string)$nextFriday;
+                                $date = new DateTime($data);
+                                $dias = $i*7;
+                                $date->add(new DateInterval('P'.$dias.'D'));
+                                $data = $date->format('Ymd');
+                            */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'5','',$sexI,$sexF,$tipoAluguel,$sem);
+                         //   print (" ( $result ) ");
                         }
 
                         if($sabS == 'sim'){
-
+                            /*
                             print " sabado ";
 
-                            $data = (string)$nextSaturday;
-                            $date = new DateTime($data);
-                            $dias = $i*7;
-                            $date->add(new DateInterval('P'.$dias.'D'));
-                            $data = $date->format('Ymd');
-                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,$data,$data,$sabI,$sabF,$tipoAluguel,$sem);
-                            print (" ( $result ) ");
+                                $data = (string)$nextSaturday;
+                                $date = new DateTime($data);
+                                $dias = $i*7;
+                                $date->add(new DateInterval('P'.$dias.'D'));
+                                $data = $date->format('Ymd');
+                            */
+                            $result = $db-> cadastrarHorariosDisponiveis($conn,$idAnuncioAux,'6','',$sabI,$sabF,$tipoAluguel,$sem);
+                           // print (" ( $result ) ");
                         }
-                    }
+                 //   }
 
                     $aux = cadastrarEspacoEspecifico($db,$conn,$categoria,$idAnuncioAux);
                     

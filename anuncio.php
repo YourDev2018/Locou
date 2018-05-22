@@ -310,42 +310,64 @@ if($session->vereficarLogin() != false){
 
   <script>
   //set de variaveis
+
+
   <?php
 
-  $arrayHorarios = $busca->retornarDiasCadastrados($conn,$idAnuncio);
+  $tipo = $busca->getTipoDisponiveis($conn,$idAnuncio);
+  $seg = '';
+  $ter = '';
+  $qua = '';
+  $qui = '';
+  $sex = '';
+  $sab = '';
+  $dom = '';
 
-  for ($i =0; $i<count($arrayHorarios); $i ++) {
+  if($tipo == 'reincidente'){
 
-    $originalDate = $arrayHorarios[$i];
-    $newDate = date("d-m-Y", strtotime($originalDate));
-    //   print $newDate. " / " ;
+   
+    $arrayHorarios = $busca->getDiasHabilitadosAnuncioReincidente($conn,$idAnuncio);
 
-    $day = date('N',strtotime($newDate));
+    for ($i =0; $i<=7; $i++) { 
+      
+        $day =  $arrayHorarios[$i];
 
-    if($day == 1)
-    $seg =  json_encode(true);
+        if($day == '' || $day == null)
+         continue;
+          
+        if($day == 1)
+        $seg =  json_encode(true);
 
-    if($day == 2)
-    $ter=  json_encode(true);
+        if($day == 2)
+        $ter=  json_encode(true);
 
-    if($day == 3)
-    $qua =  json_encode(true);
+        if($day == 3)
+        $qua =  json_encode(true);
 
-    if($day == 4)
-    $qui = json_encode(true);
+        if($day == 4)
+        $qui = json_encode(true);
 
-    if($day == 5)
-    $sex =  json_encode(true);
+        if($day == 5)
+        $sex =  json_encode(true);
 
-    if($day == 6)
-    $sab =  json_encode(true);
+        if($day == 6)
+        $sab =  json_encode(true);
 
-    if($day == 7)
-    $dom = json_encode(true);
+        if($day == 7)
+        $dom = json_encode(true);
+
+    }
+ 
+  }
+
+  if($tipo == 'direto'){
+
+      
+
   }
 
   ?>
-  var seg_ativo = <?php if($ter != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
+  var seg_ativo = <?php if($seg != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
   var ter_ativo = <?php if($ter != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
   var qua_ativo = <?php if($qua != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
   var qui_ativo = <?php if($qui != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
