@@ -49,7 +49,7 @@ if ($session->vereficarLogin() == 'false') {
 
   }else{
 
-    $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome);
+    $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome,$tel);
 
     if ($aux) {
 
