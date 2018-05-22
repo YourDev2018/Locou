@@ -611,6 +611,22 @@ require_once 'functions.php';
 
         }
 
+        function getUsuarioProprietarioCompleto($db,$idUsuario){
+
+            $result = "SELECT * FROM UsuarioProprietario WHERE id = '$idUsuario'";
+            $result = $db->query($result);
+
+            $aux = mysqli_num_rows($result);
+            $array = [];
+            while ($row=$result->fetch_assoc()) {
+
+                $array[0] = $row['idMoipAccount'];    
+                $array[1] =  $row['idBankAccount'];
+                $array[2] = $row['token'];
+            }
+            return $array;
+        }
+
         function getAnuncioInstantaneo($db, $idAnuncio)
         {
             $result = "SELECT reservaInsta FROM AnuncioDescricaoGeral WHERE idAnuncio = '$idAnuncio'";
@@ -704,6 +720,21 @@ require_once 'functions.php';
                 return $row['idAnuncio'];
             }
 
+        }
+
+        function setPedidosPagos($db,$idOrder,$idPayment,$dataInicio,$dataFim){
+
+              $sql = "INSERT INTO PedidosPagos (idOrder, idPayment, dataInicio	,dataFim)
+                                    VALUES ('$idOrder','$idPayment', '$dataInicio', '$dataFim')";
+            
+            if ($conn->query($sql)===true) {  
+                // print $db->error_log;
+                return true;
+
+            }else{
+                //  print 'failed';
+                return "Insert failed";
+            }
         }
 
         

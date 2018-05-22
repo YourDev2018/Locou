@@ -15,7 +15,7 @@
 
     $idPedido = $array[5];
     $idOrder = $array[7];
-
+ 
     $arrayPedidosDB = $busca->getPedidosDB($conn,$hashId);
     if ($arrayPedidosDB != false) {
         echo 'Pedido já autorizado';

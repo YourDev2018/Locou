@@ -168,6 +168,7 @@
         $order = $links->{'order'};
         $idOrder = $order->{'title'};
 
+        $idPayment = $payment->{'id'};
       //     $idOrder = 'ORD-SY29LYBG6DCC';
         
         $buscar = new BuscarEspacos();
@@ -183,16 +184,26 @@
         $titulo = $array[3];
         $id = $array[5];
 
-//        if ($array[6]=='unico') {
+        if ($array[6]=='unico') {
 
             $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
             $data = $detalhe[0];
             $entrada = $detalhe[1];
             $saida = $detalhe[2];
+            
+            // registrando pedido pago
+            $dataEntrada = $data;
+            $dataSaida = $data;
+            $db->setPedidosPagos($conn,$idOrder,$idPayment,$dataEntrada,$dataSaida);
+
+            
+            // enviando notificação de pedido pago
 
             $data = date('d/m/Y', strtotime($data));
             $entrada = substr_replace($entrada,':',-2,-2);
             $saida = substr_replace($saida,':',-2,-2);
+
+
 
             $corpo = '<html><body>';
             $corpo .= "Olá $name, boa tarde <br>";
@@ -205,8 +216,18 @@
             print $corpo.'<br></br>';
 
             $email->enviar($emailCustomer,'Pagamento aprovado',$corpo);
-   //     }
+        }
     }   
+
+    
+    // criar Pedido Pago, no banco de dados
+
+    // idOrder
+    // idPayment - > resource - payment - id 
+    // DataInicio
+    // DataFim
+
+    
 
 
 // Enviar Pagamento Locou

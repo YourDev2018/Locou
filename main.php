@@ -28,8 +28,9 @@ require_once 'BuscarEspacos.php';
 // usuarioCliente();
 //testarLogin();
 //criarNotificacao();
-retornarDiasCadastrados();
+//retornarDiasCadastrados();
 //aprovar();
+consultarSaldo();
 
   //  print  $data = date('Y-m-d')."\n  ";
 /*
@@ -84,6 +85,14 @@ var_dump($arrayUser);
  
 // $array = $busca -> retornarMenorHorário($conn,174);
  // print $array[1];
+
+ function consultarSaldo(){
+
+    $func = new Functions();
+    //$func->consultarSaldo('9ac332eb93da464eb2366b242433386c_v2');
+    //$func->criarTranferenciaMoipToMoip();
+
+ }
 
  function aprovar(){
     $func = new Functions();
@@ -172,6 +181,8 @@ function Pedido(){
 
 
 }
+
+
 
 function DBMoip(){
     $db = new FunctionsDB();

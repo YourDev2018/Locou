@@ -1567,7 +1567,33 @@ class BuscarEspacos
 
     }
 
+    function getPedidosPagosDayD($db, $data){    
 
+        $result =  $db->query("SELECT idOrder
+                                FROM PedidosPagos 
+                                WHERE dataFim = '$data' ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+
+                              
+        $cont = mysqli_num_rows($result);
+
+        if ($cont <=0) {
+             return false;
+        }else{
+            $array = [];
+            $cont = 0;
+            while ($row=$result->fetch_assoc()) {
+
+                $array[$cont] = $row['idOrder'];
+                $cont = $cont + 1;
+
+
+            }                  
+
+            return $array;
+
+        }
+
+    }
 }
 
 ?>

@@ -9,7 +9,7 @@ require_once 'FunctionsSession.php';?>
 
 <?php
 
-$nome = "Morg";
+//$nome = "Morg";
 
 $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
 
@@ -19,17 +19,19 @@ $session -> iniciarSession();
 
 $idGetHash = $_GET['id'];
 
+$busca = new BuscarEspacos();
+ $db = new FunctionsDB();
+
+    $conn = $db->conectDB();
 
 if ($idAnuncio == null || $idAnuncio == '') {
   if ($idGetHash != null || $idGetHash != '') {
 
     // resgatar dados de anuncio autorizado
-    $db = new FunctionsDB();
-
-    $conn = $db->conectDB();
+   
     $pedido = new Pedidos();
 
-    $busca = new BuscarEspacos();
+    
     $array = $busca->getPedidosDB($conn,$idGetHash); // verificado
 
     $idUsuario = $array[2]; // verificado
@@ -37,7 +39,7 @@ if ($idAnuncio == null || $idAnuncio == '') {
     $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
 
     $func = new functions();
-    $resposta = $func->getClienteMoip($idClientMoip);
+    print $resposta = $func->getClienteMoip($idClientMoip);
     $obj = json_decode($resposta);
     $nomeCompleto = $obj->{'fullname'};
 
@@ -57,6 +59,7 @@ if ($idAnuncio == null || $idAnuncio == '') {
     $address = $obj->{'shippingAddress'};
     $rua = $address->{'street'};
     $cep = $address->{'zipCode'};
+    $cep = str_replace('-','',$cep);
     $ruaNumber = $address->{'streetNumber'};
     $complemento = $address->{'complement'};
     $cidade = $address->{'city'};
@@ -906,7 +909,7 @@ function verificarDecimal($dia){
           <div class="row px-2 py-4">
             <div class="col-12 px-3 py-3">
               <div class="form-group">
-                <label for="nomeC">Nome Completo</label>
+                <label for="nomeC">Nome Completo</label>  
                 <input type="text" value="<?php echo $nomeCompleto ?>" class="form-control" id="nomeC" name="nomeC">
               </div>
               <br>
@@ -1077,7 +1080,7 @@ function verificarDecimal($dia){
 
       <script>
       $( document ).ready(function() {
-        var tipo = "<?php echo $tipo = $busca->getTipoDisponiveis($conn,$idAnuncio); ?>";
+        var tipo = "<?php $tipo = $busca->getHashId($conn,$idGetHash); echo $tipo[6]; ?>";
         if(tipo == "unico")
         {
           document.getElementById('unico').style.display = "";
@@ -1134,7 +1137,7 @@ function verificarDecimal($dia){
               <span class="h5">Tipo de aluguel selecionado:</span>
             </div>
             <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
-              <span class="h6"><?php echo $tipo ?></span>
+              <span class="h6"><?php $tipo = $busca->getHashId($conn,$idGetHash); echo $tipo[6] ?></span>
             </div>
           </div>
           <br><br>
@@ -1145,20 +1148,25 @@ function verificarDecimal($dia){
               </div>
               <div id="unico" style="display:none" class="col-10 py-2 text-left">
                 <span class="h5">Dia selecionado:  <?php 
-                    $array = $buscar -> getHashId($conn,$idGetHash);
+                    $array = $busca -> getHashId($conn,$idGetHash);
                     $titulo = $array[3];
                     $id = $array[5];
 
-                    $detalhe = $buscar->getPedidosTemporariosUnico($conn,$id);
+                    $detalhe = $busca->getPedidosTemporariosUnico($conn,$id);
                     $data = $detalhe[0];
                     $entrada = $detalhe[1];
                     $saida = $detalhe[2];
-
-                    echo $data.':'."  ".$entrada.' até '.$saida;?></span>
+                    $data = date('d/m/Y', strtotime($data));
+                    $aux = date('N',$data);
+                    $aux= 1;
+                  //  echo $data.':'."  ".$entrada.' até '.$saida;?></span>
               </div>
+              <?php if($aux == 1){?>
               <div id="seg" style="display: none" class="col-10 py-2 text-left">
-                <span class="h5">Segunda-Feira:  (00:00 até 00:00)</span>
-              </div>
+                
+                <span class="h5">Segunda-Feira:  (<?php /*echo $entrada.'até'.$saida */?>)</span>
+              </div>  
+              <?php } ?>
               <div id="ter" style="display: none" class="col-10 py-2 text-left">
                 <span class="h5">Terca-Feira:  (00:00 até 00:00)</span>
               </div>
