@@ -1,10 +1,10 @@
 <?php
 
-    require_once 'Functions.php';
+    require_once 'FunctionsDB.php';
      require_once 'Seguranca.php';
     
-    $func = new FunctionsDB();
-    $conn = $func ->conectDB();
+    $db = new FunctionsDB();
+    $conn = $db ->conectDB();
 
     $seg = new Seguranca();
 
@@ -19,6 +19,6 @@
     $cidade = $seg->filtro($_POST['cidade']); 
     $estado = $seg->filtro($_POST['estado']);
 
-    $func -> cadastrarUsuarioInquilino($conn, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado);
+    $db -> cadastrarUsuarioInquilino($conn, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado);
 
 ?>

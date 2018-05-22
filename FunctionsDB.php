@@ -85,7 +85,9 @@ require_once 'functions.php';
                     $id = $session->vereficarLogin();
                     $sql = "INSERT INTO UsuarioClient(id,idClient) VALUES ('$id','$aux')";
                     if ($db->query($sql)===true) {
+
                         return true;
+                    
                     }else{
                         return "Insert failed";
                     }
