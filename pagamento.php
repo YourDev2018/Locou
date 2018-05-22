@@ -1064,8 +1064,8 @@ function verificarDecimal($dia){
           </div>
           <div class="row justify-content-center text-center">
             <div class="col-12 py-2">
-              <textarea name="hash" id="encrypted_value" style="display: none"></textarea>
-              <button onclick="encriptJSCartao()" type="submit" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
+              <textarea name="hash" id="encrypted_value" style="display: "></textarea>
+              <button onclick="encriptJSCartao()" type="button" class="btn btn-warning m-3"><h4 style="font-weight: 300">Finalizar Reserva</h4></button>
             </div>
           </div>
         </form>
@@ -1144,7 +1144,7 @@ function verificarDecimal($dia){
                 <span class="h5">Dias Selecionados:</span>
               </div>
               <div id="unico" style="display:none" class="col-10 py-2 text-left">
-                <span class="h5">Dia selecionado:  <?php 
+                <span class="h5">Dia selecionado:  <?php
                     $array = $buscar -> getHashId($conn,$idGetHash);
                     $titulo = $array[3];
                     $id = $array[5];
@@ -1216,7 +1216,7 @@ function verificarDecimal($dia){
       expMonth: $("#month").val(),
       expYear : $("#year").val(),
       pubKey  : $("#public_key").val()
-    });
+    });    
     console.log(cc);
     if( cc.isValid()){
       $("#encrypted_value").val(cc.hash());
