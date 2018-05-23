@@ -713,7 +713,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <div class="pt-2" id="logar-div" style="background-color:white">
-            <form action="logar.php?pag=index" method="post">
+            <form action="logar.php?pag=anuncio" method="post">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
