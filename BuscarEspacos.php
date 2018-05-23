@@ -1469,7 +1469,9 @@ class BuscarEspacos
 
         if ($aux <=0) {
 
+            print 'false getPedidosTemporarios';
             return false;
+
 
         }else{
             /*

@@ -15,6 +15,7 @@
 
     $idPedido = $array[5];
     $idOrder = $array[7];
+    $tipo = $array[6];
  
     $arrayPedidosDB = $busca->getPedidosDB($conn,$hashId);
     if ($arrayPedidosDB != false) {
@@ -22,16 +23,145 @@
         exit();
     }
 
+      $idUsuario = $array[1];
 
-    $idUsuario = $array[1];
+      $arrayUserBasico =  $db->getUsuarioBasico($conn,$idUsuario);
+      $nome = $arrayUserBasico[0];
 
-    $arrayUserBasico =  $db->getUsuarioBasico($conn,$idUsuario);
-    $nome = $arrayUserBasico[0];
 
-    $arrayDetalhes = $busca -> getPedidosTemporariosUnico($conn,$idPedido);
-    $entrada = $arrayDetalhes[0];
-    $entrada = date('d/m/Y', strtotime($entrada));
+    if ($tipo == 'unico') {
+          
 
+        $arrayDetalhes = $busca -> getPedidosTemporariosUnico($conn,$idPedido);
+        $entrada = $arrayDetalhes[0];
+        $entrada = date('d/m/Y', strtotime($entrada));
+    }
+
+    
+    if ($tipo == 'direto') {
+
+        $arrayDetalhes = $busca -> getPedidosTemporariosUnico($conn,$idPedido);
+
+       $entrada = $arrayDetalhes[0];
+       $entrada = date('d/m/Y', strtotime($entrada));
+
+       $saida = date('d/m/Y', strtotime( $arrayDetalhes[1]));
+       $semana = $arrayDetalhes[2];
+    }
+
+    if ($tipo == 'reincidente') {
+
+    $result = $busca->getPedidosTemporariosReincidentes($conn,$idPedido);
+    
+    // resgatar os valores de e colocar no email 
+    if ($result == false) {
+        print 'erro';
+    }else{
+
+        $seg = json_encode(false);
+        $ter = json_encode(false);
+        $qua = json_encode(false);
+        $qui = json_encode(false);
+        $sex = json_encode(false);
+        $sab = json_encode(false);
+        $dom = json_encode(false);
+
+        $segC = 0;
+        $terC = 0;
+        $quaC = 0;
+        $quiC = 0;
+        $sexC = 0;
+        $sabC = 0;
+        $domC = 0;
+      
+        $maiorNumero = 0;
+
+      while ($row=$result->fetch_assoc()) {
+              
+        $day = date("N", strtotime($row['dataAnuncio']));
+
+        if($day == 1){
+        $seg =  json_encode(true);
+        $segC = $segC + 1;
+         $entradaSeg = $row['horaEntrada'];
+         $saidaSeg = $row['horaSaida'];
+        }
+        if($day == 2){
+        $ter=  json_encode(true);
+        $terC= $terC + 1;
+         $entradaTer = $row['horaEntrada'];
+         $saidaTer = $row['horaSaida'];
+        }
+        if($day == 3){
+        $qua =  json_encode(true);
+        $quaC = $quaC + 1;
+         $entradaQua = $row['horaEntrada'];
+         $saidaQua = $row['horaSaida'];
+        }
+        if($day == 4){
+        $qui = json_encode(true);
+        $quiC = $quiC + 1;
+         $entradaQui = $row['horaEntrada'];
+         $saidaQui = $row['horaSaida'];
+        }
+        if($day == 5){
+        $sex =  json_encode(true);
+        $sexC = $sexC +1;
+         $entradaSex = $row['horaEntrada'];
+         $saidaSex = $row['horaSaida'];
+        }
+        if($day == 6){
+        $sab =  json_encode(true);
+        $sabC = $sabC + 1;
+         $entradaSab = $row['horaEntrada'];
+         $saidaSab = $row['horaSaida'];
+        }
+        if($day == 7){
+        $dom = json_encode(true);
+        $domC = $domC + 1;
+         $entradaDom = $row['horaEntrada'];
+         $saidaDom = $row['horaSaida'];
+        }
+
+        if ($segC > $maiorNumero) {
+            $maiorNumero = $segC;
+           
+        }
+
+        if ($terC > $maiorNumero) {
+            $maiorNumero = $terC;
+        }
+
+        if ($quaC > $maiorNumero) {
+            $maiorNumero = $quaC;
+        }
+
+        if ($quiC > $maiorNumero) {
+            $maiorNumero = $quiC;
+        }
+
+        if ($sexC > $maiorNumero) {
+            $maiorNumero = $sexC;
+        }
+
+        if ($sabC > $maiorNumero) {
+            $maiorNumero = $sabC;
+        }
+
+        if ($domC > $maiorNumero) {
+            $maiorNumero = $domC;
+        }
+
+        $corpo .= "Data : ". date("d/m/Y ", strtotime( $row['dataAnuncio'])). "<br>";  // 0
+        $corpo .= "Entrada : ". $row['horaEntrada']. "<br>"; // 1
+        $corpo .= "Saida : ". $row['horaSaida']. "<p>"; // 2
+
+
+        //$corpo .= "</body></html>";
+      }
+    }    
+  }
+    
 ?>
 
 
@@ -138,19 +268,19 @@
               <br><br><br>
               <script>
               $( document ).ready(function() {
-                var tipo = "unico";
+                var tipo = "<?php echo $tipo ?>";
                 if(tipo == "unico")
                 {
                   document.getElementById('unico').style.display = "";
                 } else if (tipo == "reincidente") {
                   document.getElementById('reincidente').style.display = "";
-                  var segunda = false;
-                  var terca = false;
-                  var quarta = false;
-                  var quinta = false;
-                  var sexta = false;
-                  var sabado = false;
-                  var domingo = false;
+                  var segunda = <?php echo $seg?>;
+                  var terca = <?php echo $ter?>;
+                  var quarta = <?php echo $qua?>;
+                  var quinta = <?php echo $qui?>;
+                  var sexta = <?php echo $sex?>;
+                  var sabado = <?php echo $sab?>;
+                  var domingo = <?php echo $dom?>;
                   if(segunda)
                   {
                     document.getElementById('seg').style.display = '';
@@ -203,39 +333,39 @@
                   <span class="h5"><b>Nome do locatário: </b><?php echo $nome ?></span>
                 </div>
                 <div id="seg" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Segunda-Feira: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Segunda-Feira: </b> <?php echo $entradaSeg.' até '.$saidaSeg ?></span>
                 </div>
                 <div id="ter" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Terca-Feira: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Terca-Feira: </b> <?php echo $entradaTer.' até '.$saidaTer ?></span>
                 </div>
                 <div id="qua" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Quarta-Feira: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Quarta-Feira: </b> <?php echo $entradaQua.' até '.$saidaQua ?></span>
                 </div>
                 <div id="qui" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Quinta-Feira: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Quinta-Feira: </b> <?php echo $entradaQui.' até '.$saidaQui ?></span>
                 </div>
                 <div id="sex" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Sexta-Feira: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Sexta-Feira: </b> <?php echo $entradaSex.' até '.$saidaSex ?></span>
                 </div>
                 <div id="sab" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Sábado: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Sábado: </b> <?php echo $entradaSab.' até '.$saidaSab ?>)</span>
                 </div>
                 <div id="dom" style="display: none" class="col-10 py-2 text-left">
-                  <span class="h5"><b>Domingo: </b> (00:00 até 00:00)</span>
+                  <span class="h5"><b>Domingo: </b> <?php echo $entradaDom.' até '.$saidaDom ?></span>
                 </div>
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Número de semanas seguidas: </b> (NOME DO CLIENTE)</span>
+                  <span class="h5"><b>Número de semanas seguidas: </b> <?php echo $maiorNumero; ?></span>
                 </div>
               </div>
               <div style="display: none" id="direto" class="row justify-content-center">
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Número do Pedido: </b>(NUMERO DO PEDIDO)</span>
+                  <span class="h5"><b>Número do Pedido: </b><?php echo $idOrder; ?></span>
                 </div>
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Nome do locatário: </b> (NOME DO CLIENTE)</span>
+                  <span class="h5"><b>Nome do locatário: </b> <?php echo $nome; ?></span>
                 </div>
                 <div class="col-10 py-2 text-left">
-                  <span class="h5"><b>Período selecionado: </b> (00/00 até 00/00) - 9h as 18h</span>
+                  <span class="h5"><b>Período selecionado: </b> <?php echo $entrada.' até '.$saida.' - 9h as 18h' ?></span>
                 </div>
               </div>
               <br><br><br>

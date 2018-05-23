@@ -151,22 +151,6 @@ class Pedidos
 
         }else{
 
-            // teoricamente, não está entrando aqui dentro, quando se repete o ciclo de pagamento
-            /*
-            if ($autorizado == 'sim') {
-               $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
-                $idClient = $db->getIdClientMoip($conn,$idUsuario);
-
-                $id= $db->getUltimoIDs($conn,'Pedidos');
-                $id = $id+1;
-                
-                $idOrder = $this->criarPedidoComClientMOIP($id,$idClient,$idMoipProprietario,$array[4],$preco);
-                
-                $db->salvarPedido($conn,$idAnuncio,md5($id),$idUsuario,$idOrder);
-                return "$idClient / $idOrder";
-            }
-            */
-
             if($db->getAnuncioInstantaneo($conn,$idAnuncio) == 'sim'){
 
                 echo "Anuncio do tipo instantaneo, esse tipo foi desabilitado";
@@ -244,7 +228,7 @@ class Pedidos
        
     }
 
-    function criarPedidoReincidente($conn,$idUsuario,$idAnuncio,$tipo,$somaPrecos,$dataInicioReincidente,$semanadasDireto,$arrayX1,$arrayX2,$arrayX3,$idPedidosTemporarios){
+    function criarPedidoReincidente($conn,$idUsuario,$idAnuncio,$tipo,$somaPrecos,$dataInicioReincidente,$semanadasDireto,$idPedidosTemporarios){
 
         $db = new FunctionsDB();
 
@@ -296,17 +280,29 @@ class Pedidos
                     exit();
                 }
                 */
+                                                
 
-                
                 $enviarEmail = new EnviarEmail();
                 $arrayUser = $db->getUsuarioBasico($conn,$idUsuario); 
                 $array = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
                 $idClient = $db->getIdClientMoip($conn,$idUsuario);
                 $id = $db->getUltimoIDs($conn,'PedidosTemporarios');
+                $ultimoId = $id;
                 $id = $id  +1;
                 $id = md5($id);
 
-                $db->atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$somaPrecos,$idPedidosTemporarios);
+                $arrayAnuncioBasicoTitulo = $busca->retornarAnuncioBasicoId($conn,$idAnuncio);
+
+                $titulo =  $arrayAnuncioBasicoTitulo[4];
+               // $preco = $arrayAnuncioBasicoTitulo[7];
+                $preco = $somaPrecos * 100;
+
+           //     print $ultimoId.' '.$idClient.' '.$idMoipProprietario.' '.$titulo.' '.$preco;
+
+                // CUS-YS5VBTKJBCIZ
+                $idOrder = $this->criarPedidoComClientMOIP($ultimoId,$idClient,$idMoipProprietario,$titulo,$preco);
+
+                $db->atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$array[4],$somaPrecos,$idPedidosTemporarios,'reincidente',$idOrder);
 
                 $emailProprietario = $arrayUser[2];
                 $tituloEspaco = $array[4];

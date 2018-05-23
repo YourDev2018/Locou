@@ -362,7 +362,13 @@ if($session->vereficarLogin() != false){
 
   if($tipo == 'direto'){
 
-
+    $seg = json_encode(true);
+    $ter = json_encode(true);
+    $qua = json_encode(true);
+    $qui = json_encode(true);
+    $sex = json_encode(true);
+    $sab = json_encode(true);
+    $dom = json_encode(true);
 
   }
 
