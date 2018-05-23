@@ -367,6 +367,12 @@ if($session->vereficarLogin() != false){
   }
 
   ?>
+
+  var hora_inicio_unico = 12;
+  var hora_fim_unico = 18;
+  var min_inicio_unico = 00;
+  var min_fim_unico = 00;
+
   var seg_ativo = <?php if($seg != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
   var ter_ativo = <?php if($ter != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
   var qua_ativo = <?php if($qua != true){ echo json_encode(false);} else{echo json_encode(true);} ?>;
@@ -2350,18 +2356,26 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                         if(dom_min_m == 0)
                         {
                           document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":00";
+                          hora_inicio_unico = dom_min_h;
+                          min_inicio_unico = 0;
                         }
                         else
                         {
                           document.getElementById('hora-inicio-texto').innerHTML = dom_min_h+":"+dom_min_m;
+                          hora_inicio_unico = dom_min_h;
+                          min_inicio_unico = dom_min_m;
                         }
                         if(dom_max_m == 0)
                         {
                           document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":00";
+                          hora_fim_unico = dom_max_h;
+                          min_fim_unico = 0;
                         }
                         else
                         {
                           document.getElementById('hora-fim-texto').innerHTML = dom_max_h+":"+dom_max_m;
+                          hora_fim_unico = dom_max_h;
+                          min_fim_unico = dom_max_m;
                         }
                         var temAlugado = false;
                         if(temAlugado == true)
@@ -2588,7 +2602,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                           document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#dataNaoSelecionada').modal('show')" );
                         } else {
                           console.log('Data inicial selecionada');
-                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: completarOUanunciar()" );
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: verificarHora()" );
                         }
                         var hora_inicio = document.getElementById('hora-inicio-unico').value;
                         var hora_inicio_s = hora_inicio.split(":");
@@ -2659,7 +2673,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                           document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#dataNaoSelecionada').modal('show')" );
                         } else {
                           console.log('Data inicial selecionada');
-                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: completarOUanunciar()" );
+                          document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: verificarHora()" );
                         }
                         var semanas = document.getElementById('semanas-seguidas-direto').value;
                         precoTotal = semanas * ps
@@ -2678,7 +2692,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                         } else {
                           if (document.getElementById("seg-periodo-sel").value == "sim" || document.getElementById("ter-periodo-sel").value == "sim" || document.getElementById("qua-periodo-sel").value == "sim" || document.getElementById("qui-periodo-sel").value == "sim" || document.getElementById("sex-periodo-sel").value == "sim" || document.getElementById("sab-periodo-sel").value == "sim" || document.getElementById("dom-periodo-sel").value == "sim") {
                             console.log('Data inicial selecionada');
-                            document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: completarOUanunciar()" );
+                            document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: verificarHora()" );
                           } else {
                             document.getElementById('btn-aluguel').setAttribute( "onclick", "javascript: $('#diaNaoSelecionado').modal('show')" );
                           }
@@ -3158,10 +3172,6 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                     };
                     </script>
                     <script>
-                    var hora_inicio_unico = 12;
-                    var hora_fim_unico = 18;
-                    var min_inicio_unico = 00;
-                    var min_fim_unico = 00;
                     var hora_inicio_unico_id = document.getElementById("hora-inicio-unico");
                     var hora_fim_unico_id = document.getElementById("hora-fim-unico");
                     function hora_fim_aluguel_menos()
@@ -6444,6 +6454,136 @@ function completarOUanunciar(){
 
 }
 </script>
+<script>
+  function verificarHora() {
+    var tipo = document.getElementById("tipoAluguel").value;
+    if(tipo == 'reincidente') {
+      var segSel = document.getElementById('seg-periodo-sel').value;
+      var terSel = document.getElementById('ter-periodo-sel').value;
+      var quaSel = document.getElementById('qua-periodo-sel').value;
+      var quiSel = document.getElementById('qui-periodo-sel').value;
+      var sexSel = document.getElementById('sex-periodo-sel').value;
+      var sabSel = document.getElementById('sab-periodo-sel').value;
+      var domSel = document.getElementById('dom-periodo-sel').value;
+      if(segSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-seg-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-seg-texto').innerHTML;
+        var hora_ini = document.getElementById('seg-hora-inicio').value;
+        var hora_fim = document.getElementById('seg-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+      if(terSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-ter-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-ter-texto').innerHTML;
+        var hora_ini = document.getElementById('ter-hora-inicio').value;
+        var hora_fim = document.getElementById('ter-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+      if(quaSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-qua-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-qua-texto').innerHTML;
+        var hora_ini = document.getElementById('qua-hora-inicio').value;
+        var hora_fim = document.getElementById('qua-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+      if(quiSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-qui-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-qui-texto').innerHTML;
+        var hora_ini = document.getElementById('qui-hora-inicio').value;
+        var hora_fim = document.getElementById('qui-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+      if(sexSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-sex-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-sex-texto').innerHTML;
+        var hora_ini = document.getElementById('sex-hora-inicio').value;
+        var hora_fim = document.getElementById('sex-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+      if(sabSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-sab-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-sab-texto').innerHTML;
+        var hora_ini = document.getElementById('sab-hora-inicio').value;
+        var hora_fim = document.getElementById('sab-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+      if(domSel == 'sim')
+      {
+        var inicio = document.getElementById('hora-inicio-dom-texto').innerHTML;
+        var fim = document.getElementById('hora-fim-dom-texto').innerHTML;
+        var hora_ini = document.getElementById('dom-hora-inicio').value;
+        var hora_fim = document.getElementById('dom-hora-fim').value;
+        if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+          completarOUanunciar()
+        } else {
+          $('#horaFora').modal('show');
+        }
+      }
+
+    } else if (tipo == 'direto') {
+
+    } else if (tipo == 'unico') {
+      var inicio = document.getElementById('hora-inicio-texto').innerHTML;
+      var fim = document.getElementById('hora-fim-texto').innerHTML;
+      var hora_ini = document.getElementById('hora-inicio-unico').value;
+      var hora_fim = document.getElementById('hora-fim-unico').value;
+      if (hora_ini.split(":")[0] >= inicio.split(":")[0] && hora_fim.split(":")[0] <= fim.split(":")[0]) {
+        completarOUanunciar()
+      } else {
+        $('#horaFora').modal('show');
+      }
+    }
+  }
+</script>
+
+<div id="horaFora" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ops...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Verifique a hora selecionada e os horários limites da(s) data(s) escolhida(s)</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Entendi!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </form>
 
