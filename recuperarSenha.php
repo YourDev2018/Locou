@@ -1,3 +1,41 @@
+<?php
+require_once 'Seguranca.php';
+require_once 'FunctionsDB.php';
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
+
+$db = new FunctionsDB();
+$conn = $db->conectDB();
+$seg = new Seguranca();
+$novaSenha = md5($seg->filtro($_POST['senha']));
+$hashRecover = $seg->filtro($_GET['r']);
+
+  if ($hashRecover == null || $hashRecover == '') {
+      echo 'erro';
+      exit();
+  }
+
+  if(!$db->getHashRecoverPassword($conn,$hashRecover)){
+
+    echo 'Senha já atualizada';
+    $db->closeDB($conn);
+    exit();
+
+  }
+
+  if ($novaSenha != '' || $novaSenha ==  null) {
+
+      if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
+        echo 'senha atualizada';
+
+      }else{
+        echo 'erro ao atualizar senha';
+      }
+      
+  }
+
+  $db->closeDB($conn);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

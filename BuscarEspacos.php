@@ -984,6 +984,7 @@ class BuscarEspacos
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
+            return false;
          //    print "erro buscar espaço bairro";
         }else{
             
@@ -1027,6 +1028,7 @@ class BuscarEspacos
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
+            return false;
         //    print "erro buscar espaço Bairro Tipo";
         }else{
             
