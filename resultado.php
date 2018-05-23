@@ -644,6 +644,8 @@ if (!($tipo == "" || $tipo == null) ) {
           </div>
         </div>
 
+        <!-- //Printar aqui texto de sem resultados-->
+
         <div class="row px-4 py-4 text-left text-center">
           <?php if($array!= "" || $array !=null ){ $aux = count($array)/6;} for ($i=0; $i < $aux ; $i++) { ?>
 
