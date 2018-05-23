@@ -1,4 +1,5 @@
 <?php
+
 require_once 'Seguranca.php';
 require_once 'FunctionsDB.php';
 error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
@@ -6,33 +7,46 @@ error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 $db = new FunctionsDB();
 $conn = $db->conectDB();
 $seg = new Seguranca();
-$novaSenha = md5($seg->filtro($_POST['senha']));
+$novaSenha = $_POST['senha'];
+
 $hashRecover = $seg->filtro($_GET['r']);
 
-  if ($hashRecover == null || $hashRecover == '') {
+  if (($hashRecover == null || $hashRecover == '') && ($novaSenha == '' || $novaSenha == null)) {
       echo 'erro';
       exit();
-  }
+  }else{
 
-  if(!$db->getHashRecoverPassword($conn,$hashRecover)){
-
-    echo 'Senha já atualizada';
-    $db->closeDB($conn);
-    exit();
-
-  }
-
-  if ($novaSenha != '' || $novaSenha !=  null) {
-
-    if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
-      echo 'senha atualizada';
-
-    }else{
-      echo 'erro ao atualizar senha';
-      exit();
-    }
+    if ($novaSenha != '' || $novaSenha !=  null) {
       
+      if($db->getHashRecoverPassword($conn,$hashRecover) == 'false'){
+
+        echo 'Senha já atualizada';
+        $db->closeDB($conn);
+        exit();
+
+      }else{
+
+        $novaSenha = md5($seg->filtro($_POST['senha']));
+
+        if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
+
+          header('location: index.php');
+          exit();
+
+        }else{
+
+          echo 'erro ao atualizar senha';
+          exit();
+
+        }
+            
+      }
+
+    }
+
   }
+
+
 
   $db->closeDB($conn);
 
@@ -139,7 +153,7 @@ $hashRecover = $seg->filtro($_GET['r']);
               </span>
               <br><br><br>
 
-              <form class="" action="recuperarSenha.php" method="post">
+              <form class="" action=<?php echo "recuperarSenha.php?r=$hashRecover" ?> method="post">
                 <input required type="password" name="senha" value="" size="30" placeholder="Digite aqui sua nova senha" id="senha">
                 <br><br><br>
                 <button type="submit" class="btn btn-warning" name="button">Atualizar Senha</button>

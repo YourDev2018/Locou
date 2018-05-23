@@ -75,7 +75,7 @@ require_once 'functions.php';
 
         function atualizarUsuarioBasico($db,$hashRecoverPassword,$novaSenha){
 
-            $sql = "UPDATE UsuarioBasico SET senha = '$novaSenha', hashRecoverPassword = null  WHERE hashRecoverPassword = $hashRecoverPassword";
+            $sql = "UPDATE UsuarioBasico SET senha = '$novaSenha', hashRecoverPassword = null  WHERE hashRecoverPassword = '$hashRecoverPassword'";
             if ($db->query($sql)===true) {  
                    // print $db->error_log;
                 return true;
@@ -106,11 +106,11 @@ require_once 'functions.php';
 
         function getHashRecoverPassword($db, $hashRecoverPassword){
 
-            $result =  $db->query("SELECT hashRecoverPassword FROM UsuarioBasico WHERE hashRecoverPassword = '$hashRecoverPassword' LIMIT 1") ;
+            $result = $db->query("SELECT hashRecoverPassword FROM UsuarioBasico WHERE hashRecoverPassword = '$hashRecoverPassword' ") ;
             $cont = mysqli_num_rows($result);
     
             if ($cont <=0) {
-                return false;
+                return 'false';
             //    print "erro buscar espaço bairro";
             }else{
                 $row=$result->fetch_assoc();

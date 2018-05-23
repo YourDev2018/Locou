@@ -9,7 +9,7 @@ $email = $seg->filtro($_POST['email']);
 
 if ($email != '' || $email != null) {
 
-  $hashEmail = md5($email);
+  $hashEmail = md5(time().$email);
   $db = new FunctionsDB();
   $conn = $db->conectDB();
   if($db->atualizarHashRecoverPassword($conn,$email,$hashEmail)){
