@@ -719,7 +719,7 @@ if($session->vereficarLogin() != false){
         </div>
         <div class="modal-body">
           <div class="pt-2" id="logar-div" style="background-color:white">
-            <form action="logar.php?pag=anuncio" method="post">
+            <form action=" <?php echo "logar.php?pag=anuncio&id=$idAnuncio&local=alugarEspaco" ?>" method="post">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email-login" name="email" placeholder="exemplo@exemplo.com">
