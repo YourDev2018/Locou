@@ -227,8 +227,8 @@ class EnviarEmail
               return true;
                 
             } else {
-                
-                 header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+                    
+                header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
                //  echo "Erro ao enviar email";
             }
 

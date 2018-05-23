@@ -4,6 +4,7 @@ error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'Seguranca.php';
 require_once 'FunctionsSession.php';
 require_once 'FunctionsDB.php';
+require_once 'EnviarEmail.php';
 
 $servidor = 'yourdev-com-br.umbler.net'; // Endereço
 $usuario = 'yourdev-com-br'; // Usuário
@@ -336,6 +337,17 @@ $session->iniciarSession();
                     $auxIdFinal = $db->retornarUltimoAnuncioBasico($conn);
 
                     $db->closeDB($conn);
+                    $enviar = new EnviarEmail();
+                        
+                    $link = "https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal";
+
+                    $corpo = '<html><body>';
+                    $corpo .= 'Olá Locou.co, um novo anuncio foi adicionado na plataforma <p>';
+                    $corpo .= "Acesse aqui: <a href=$link> $titulo </a>";
+                    $corpo .= "</body></html>";
+                        
+                    $enviar->enviarEmailClaudia('Novo anuncio na Locou.co',$corpo);
+
                 //    $session ->logout();
                         
                     header("location: https://www.yourdev.com.br/clientes/locou/anuncio.php?id=$auxIdFinal" );
