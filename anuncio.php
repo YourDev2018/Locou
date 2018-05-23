@@ -2337,7 +2337,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
             }
             </script>
 
-            <div id="calendario-unico" style="display: ; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
+            <div id="calendario-unico" style="display: none; background-color: black" class="p-3 input-group date col-12 text-center justify-content-center">
               <div class="row">
                 <div class="col-12">
                   <h6 style="color: white">Selecione a data e o horário em que será alugado</h6>
