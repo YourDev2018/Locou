@@ -22,14 +22,15 @@ $hashRecover = $seg->filtro($_GET['r']);
 
   }
 
-  if ($novaSenha != '' || $novaSenha ==  null) {
+  if ($novaSenha != '' || $novaSenha !=  null) {
 
-      if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
-        echo 'senha atualizada';
+    if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
+      echo 'senha atualizada';
 
-      }else{
-        echo 'erro ao atualizar senha';
-      }
+    }else{
+      echo 'erro ao atualizar senha';
+      exit();
+    }
       
   }
 
@@ -138,7 +139,7 @@ $hashRecover = $seg->filtro($_GET['r']);
               </span>
               <br><br><br>
 
-              <form class="" action="index.php" method="post">
+              <form class="" action="recuperarSenha.php" method="post">
                 <input required type="password" name="senha" value="" size="30" placeholder="Digite aqui sua nova senha" id="senha">
                 <br><br><br>
                 <button type="submit" class="btn btn-warning" name="button">Atualizar Senha</button>

@@ -1,3 +1,47 @@
+<?php
+
+require_once 'EnviarEmail.php';
+require_once 'FunctionsDB.php';
+require_once 'Seguranca.php';
+
+$seg = new Seguranca();
+$email = $seg->filtro($_POST['email']);
+
+if ($email != '' || $email != null) {
+
+  $hashEmail = md5($email);
+  $db = new FunctionsDB();
+  $conn = $db->conectDB();
+  if($db->atualizarHashRecoverPassword($conn,$email,$hashEmail)){
+    $email = new EnviarEmail();
+    //$email->enviar($email,'Redefinição de senha Locou',$corpo);
+
+     $link = "https://www.yourdev.com.br/clientes/locou/recuperarSenha.php?r=$hashEmail";
+
+     $corpo = '<html><body>';
+     $corpo .= "Olá $email, recebemos um pedido de redefinição de sua senha. <p>";
+     $corpo .= "Para altera-la, <a href=$link> clique aqui </a> ";
+     $corpo .= "</body></html>";
+
+     //$email->enviar($email,'Redefinição de senha Locou',$corpo);
+      if($email->enviar('morg.guilherme@gmail.com','Redefinição de senha Locou',$corpo)){
+
+        echo 'email enviado';
+        exit();
+
+      }else{
+        
+      }
+
+  }else{
+      echo 'erro ao atualizar hash';
+  }
+  
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +144,7 @@
               </span>
               <br><br><br>
 
-              <form class="" action="index.php" method="post">
+              <form class="" action="alterarSenha.php" method="post">
                 <input required type="email" name="email" value="" size="30" placeholder="Digite aqui o email da sua conta" id="senha">
                 <br><br><br>
                 <button type="submit" class="btn btn-warning" name="button">Enviar link de recuperação</button>

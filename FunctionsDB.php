@@ -88,6 +88,22 @@ require_once 'functions.php';
 
         }
 
+        
+        function atualizarHashRecoverPassword($db,$email,$hashRecoverPassword){
+
+            $sql = "UPDATE UsuarioBasico SET hashRecoverPassword = '$hashRecoverPassword' WHERE email = $email";
+            if ($conn->query($sql)===true) {  
+                   // print $db->error_log;
+                return true;
+
+            }else{
+                //  print 'failed';
+                return false;
+            }
+
+
+        }
+
         function getHashRecoverPassword($db, $hashRecoverPassword){
 
             $result =  $db->query("SELECT hashRecoverPassword FROM UsuarioBasico WHERE hashRecoverPassword = '$hashRecoverPassword' LIMIT 1") ;
