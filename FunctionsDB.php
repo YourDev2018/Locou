@@ -76,7 +76,7 @@ require_once 'functions.php';
         function atualizarUsuarioBasico($db,$hashRecoverPassword,$novaSenha){
 
             $sql = "UPDATE UsuarioBasico SET senha = '$novaSenha', hashRecoverPassword = null  WHERE hashRecoverPassword = $hashRecoverPassword";
-            if ($conn->query($sql)===true) {  
+            if ($db->query($sql)===true) {  
                    // print $db->error_log;
                 return true;
 
@@ -91,8 +91,8 @@ require_once 'functions.php';
         
         function atualizarHashRecoverPassword($db,$email,$hashRecoverPassword){
 
-            $sql = "UPDATE UsuarioBasico SET hashRecoverPassword = '$hashRecoverPassword' WHERE email = $email";
-            if ($conn->query($sql)===true) {  
+            $sql = "UPDATE UsuarioBasico SET hashRecoverPassword = '$hashRecoverPassword' WHERE email = '$email' ";
+            if ($db->query($sql)===true) {  
                    // print $db->error_log;
                 return true;
 

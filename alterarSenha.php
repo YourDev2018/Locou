@@ -13,27 +13,32 @@ if ($email != '' || $email != null) {
   $db = new FunctionsDB();
   $conn = $db->conectDB();
   if($db->atualizarHashRecoverPassword($conn,$email,$hashEmail)){
+
+    $aux = $email;
+    $link = "https://www.yourdev.com.br/clientes/locou/recuperarSenha.php?r=$hashEmail";
+
+    $corpo = '<html><body>';
+    $corpo .= "Olá $email, recebemos um pedido de redefinição de sua senha. <p>";
+    $corpo .= "Para altera-la, <a href=$link> clique aqui </a> ";
+    $corpo .= "</body></html>";
+
     $email = new EnviarEmail();
-    //$email->enviar($email,'Redefinição de senha Locou',$corpo);
 
-     $link = "https://www.yourdev.com.br/clientes/locou/recuperarSenha.php?r=$hashEmail";
+      //$email->enviar($aux,'Redefinição de senha Locou',$corpo);
+    if($email->enviar('morg.guilherme@gmail.com','Redefinição de senha Locou',$corpo)){
 
-     $corpo = '<html><body>';
-     $corpo .= "Olá $email, recebemos um pedido de redefinição de sua senha. <p>";
-     $corpo .= "Para altera-la, <a href=$link> clique aqui </a> ";
-     $corpo .= "</body></html>";
+      echo 'email enviado';
+      exit();
 
-     //$email->enviar($email,'Redefinição de senha Locou',$corpo);
-      if($email->enviar('morg.guilherme@gmail.com','Redefinição de senha Locou',$corpo)){
+    }else{
 
-        echo 'email enviado';
-        exit();
+      echo 'falha ao enviar email';
+      exit();
 
-      }else{
-        
-      }
+    }
 
   }else{
+
       echo 'erro ao atualizar hash';
   }
   
