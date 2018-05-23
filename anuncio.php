@@ -3501,7 +3501,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                           function semana_direto_mais()
                           {
                             semanasSeguidasD = semanasSeguidasD + 1;
-                            var semanasMax = 12; //max
+                            var semanasMax = <?php  echo $busca->getSemanasAnuncioDisponiveis($conn,$idAnuncio) ?>; //max
                             if(semanasSeguidasD >= semanasMax)
                             {
                               semanasSeguidasD = semanasMax;
@@ -6184,7 +6184,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
               <br>
               <script>
               var semanasSeguidas = 1;
-              var semanasMax = 12; //max
+              var semanasMax = <?php  echo $busca->getSemanasAnuncioDisponiveis($conn,$idAnuncio) ?>; //max
               function semana_reincidente_mais()
               {
                 semanasSeguidas = semanasSeguidas + 1;
