@@ -39,7 +39,7 @@ if ($idAnuncio == null || $idAnuncio == '') {
     $idClientMoip = $db->getIdClientMoip($conn,$idUsuario); // verificado
 
     $func = new functions();
-    print $resposta = $func->getClienteMoip($idClientMoip);
+    $resposta = $func->getClienteMoip($idClientMoip);
     $obj = json_decode($resposta);
     $nomeCompleto = $obj->{'fullname'};
 

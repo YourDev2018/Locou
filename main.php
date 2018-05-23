@@ -89,8 +89,8 @@ var_dump($arrayUser);
  function consultarSaldo(){
 
     $func = new Functions();
-    //$func->consultarSaldo('9ac332eb93da464eb2366b242433386c_v2');
-    //$func->criarTranferenciaMoipToMoip();
+    $func->consultarSaldo('9ac332eb93da464eb2366b242433386c_v2');
+   // $func->criarTranferenciaMoipToMoip();
 
  }
 

@@ -85,7 +85,9 @@ require_once 'functions.php';
                     $id = $session->vereficarLogin();
                     $sql = "INSERT INTO UsuarioClient(id,idClient) VALUES ('$id','$aux')";
                     if ($db->query($sql)===true) {
+
                         return true;
+                    
                     }else{
                         return "Insert failed";
                     }
@@ -722,7 +724,7 @@ require_once 'functions.php';
 
         }
 
-        function setPedidosPagos($db,$idOrder,$idPayment,$dataInicio,$dataFim){
+        function setPedidosPagos($conn,$idOrder,$idPayment,$dataInicio,$dataFim){
 
               $sql = "INSERT INTO PedidosPagos (idOrder, idPayment, dataInicio	,dataFim)
                                     VALUES ('$idOrder','$idPayment', '$dataInicio', '$dataFim')";

@@ -39,7 +39,7 @@ if ($session->vereficarLogin() == 'false') {
   print $ext = strtolower(substr($_FILES['foto']['name'],-4));
   print $temp = $_FILES['foto']['tmp_name'] ;
   print $novo_nome = md5(time().$temp).$ext ;
-
+  
 
   if ($_FILES['foto']['name'] == null || $_FILES['foto']['name'] == ""){
 
@@ -49,7 +49,7 @@ if ($session->vereficarLogin() == 'false') {
 
   }else{
 
-    $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome);
+    $aux = $db -> cadastrarUsuarioBasico($conn, $email,$senha, $first, $last, $nascimento, $novo_nome,$tel);
 
     if ($aux) {
 
