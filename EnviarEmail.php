@@ -91,7 +91,7 @@ class EnviarEmail
         $assunto = "Alguem quer alugar ".$titulo;
 
         // alterar link em produção
-          $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$md5";
+        $link = "http://www.yourdev.com.br/clientes/locou/aprovarPedido.php?id=$md5";
 
         $busca = new BuscarEspacos();
         $db = new FunctionsDB();
@@ -99,45 +99,60 @@ class EnviarEmail
         $corpo = '<html><body>';
         $corpo .= "Olá $nomeProprietario, tudo bem?  Gostaria de informa-lo(a) que $nomeCliente quer alugar seu espaço $titulo. <br>";
 
-        if ($semanasDireto == 1) {
+       # if ($semanasDireto == 1) {
             $corpo .= "Primeiro dia de aluguel : $dataInicioReincidente <br>";
             $corpo .= "E nos dias... <br>";
             
-            for($i=1;$i<=7;$i++){
+            //for($i=1;$i<=7;$i++){
 
-                if ($arrayX1[$i]=='' || $arrayX1[$i]==null) {
-                    continue;
-                }else{
-                    $date = date("Y/m/d ", $arrayX1[$i]);
+               
+                    // $date = date("Y/m/d ", $arrayX1[$i]);
                     
                     $conn = $db->conectDB();
 
-                    print $idPedidoTemporario;
+                    $idPedidoTemporario;
                     $result = $busca->getPedidosTemporariosReincidentes($conn,$idPedidoTemporario);
                     
                     // resgatar os valores de e colocar no email 
                     if ($result == false) {
                         print 'erro';
                     }else{
-                   
+                        $cont = 0;
                         while ($row=$result->fetch_assoc()) {
                                 
-                                $corpo .= "Data : ". $row['dataAnuncio']. "<br>";  // 0
+                                $corpo .= "Data : ". date("d/m/Y ", strtotime( $row['dataAnuncio'])). "<br>";  // 0
                                 $corpo .= "Entrada : ". $row['horaEntrada']. "<br>"; // 1
                                 $corpo .= "Saida : ". $row['horaSaida']. "<p>"; // 2
-                                 $corpo .= "</body></html>";
+
+                                $cont++;
+                                if ($cont == $semanasDireto) {
+                                    break;
+                                }
+                                //$corpo .= "</body></html>";
                         }
 
+                        $corpo .= "Clique <a href=$link> Aqui para aprovar </a> ";
+                        $corpo .= "</body></html>";
+
                         echo $corpo;
+                        
+                        if($this->enviar($destino,$assunto,$corpo)){
+                            header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+                            exit();
+                        }else{
+                            header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+                            exit();
+
+                        }
 
                     }
                      
   
-                }
+                
 
-            }
+           // }
 
-        }
+       # }
 
 
     }

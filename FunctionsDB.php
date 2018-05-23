@@ -691,9 +691,9 @@ require_once 'functions.php';
 
         
 
-        function atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$somaPrecos,$idPedidosTemporarios){
+        function atualizarCadastroTemporario($conn,$id,$idUsuario,$idMoipProprietario,$idAnuncio,$tituloAnuncio,$somaPrecos,$idPedidosTemporarios,$tipo,$idOrder){
 
-            $sql = "UPDATE PedidosTemporarios SET hashId = '$id', idCliente = '$idUsuario', idMoipProprietario = '$idMoipProprietario', idAnuncio = '$idAnuncio', tituloAnuncio = '$tituloAnuncio', preco = '$somaPrecos' WHERE id = $idPedidosTemporarios"; 
+            $sql = "UPDATE PedidosTemporarios SET hashId = '$id', idCliente = '$idUsuario', idMoipProprietario = '$idMoipProprietario', idAnuncio = '$idAnuncio', tituloAnuncio = '$tituloAnuncio', preco = '$somaPrecos', tipo = '$tipo', idOrder = '$idOrder' WHERE id = $idPedidosTemporarios"; 
             
              if ($conn->query($sql)===true) {  
                    // print $db->error_log;
