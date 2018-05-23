@@ -174,11 +174,13 @@ function daysInMonth(month, year) {
               document.getElementById('anunciarF').innerHTML = '<a href="anunciar.php" style="color: white">Anuncie Aqui</a>';
               document.getElementById('anunciarSM').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+              document.getElementById('anunciarSobre').innerHTML = '<a href="anunciar.php"><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. <br class="mobile"> É grátis</h2></button></a>';
             }
             else {
               document.getElementById('anunciarF').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');" style="cursor:pointer;color: white">Anuncie Aqui</a>';
               document.getElementById('anunciarSM').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
               document.getElementById('anunciarSD').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');"><button type="button" class="btn btn-outline-warning">Anuncie Grátis</button></a>';
+              document.getElementById('anunciarSobre').innerHTML = '<a onclick="$(\'#cadastroPop\').modal(\'show\');" ><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. <br class="mobile"> É grátis</h2></button></a>';
             }
             });
         </script>
@@ -829,7 +831,7 @@ function daysInMonth(month, year) {
           <div class="row">
 
             <div class="col-12">
-              <a href="resultado.php"><button type="button" class="btn btn-outline-warning"><h2>Procure <br class="mobile"> espaços</h2></button></a>
+              <a href="resultado.php?t=todos&q="><button type="button" class="btn btn-outline-warning"><h2>Procure <br class="mobile"> espaços</h2></button></a>
               <br><br>
             </div>
 
@@ -862,7 +864,7 @@ function daysInMonth(month, year) {
           </div>
           <div class="row text-center">
             <div class="col-12">
-              <a href="anunciar.php"><button type="button" class="btn btn-outline-dark"><h2>Anuncie Agora. <br class="mobile"> É grátis</h2></button></a>
+              <div id="anunciarSobre"></div>
               <br><br>
             </div>
           </div>
