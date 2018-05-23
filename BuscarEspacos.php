@@ -984,6 +984,7 @@ class BuscarEspacos
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
+            return false;
          //    print "erro buscar espaço bairro";
         }else{
             
@@ -1027,6 +1028,7 @@ class BuscarEspacos
         $cont = mysqli_num_rows($result);
     
         if ($cont <=0) {
+            return false;
         //    print "erro buscar espaço Bairro Tipo";
         }else{
             
@@ -1617,6 +1619,29 @@ class BuscarEspacos
             //  return $this->getUsuarioBasico($db,$idProprietario);
         
         }
+    }
+
+    function getSemanasAnuncioDisponiveis($db,$idAnuncio){
+
+        $result =  $db->query(" SELECT semanas
+                                FROM RegistroAnunciosDisponiveis
+                                WHERE idAnuncio = '$idAnuncio' LIMIT 1 ") ; // OR titulo = '$busca' OR cidade = '$busca' 
+        $cont = mysqli_num_rows($result);
+    
+        if ($cont <=0) {
+        //     print "erro buscar proprietario";
+        }else{
+            
+            while ($row=$result->fetch_assoc()) {
+                
+                return $row['semanas'];   
+            }  
+
+            //  print $idProprietario;
+            //  return $this->getUsuarioBasico($db,$idProprietario);
+        
+        }
+
     }
 }
 

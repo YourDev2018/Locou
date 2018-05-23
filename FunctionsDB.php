@@ -73,6 +73,36 @@ require_once 'functions.php';
            
         }
 
+        function atualizarUsuarioBasico($db,$hashRecoverPassword,$novaSenha){
+
+            $sql = "UPDATE UsuarioBasico SET senha = '$novaSenha', hashRecoverPassword = null  WHERE hashRecoverPassword = $hashRecoverPassword";
+            if ($conn->query($sql)===true) {  
+                   // print $db->error_log;
+                return true;
+
+            }else{
+                //  print 'failed';
+                return false;
+            }
+
+
+        }
+
+        function getHashRecoverPassword($db, $hashRecoverPassword){
+
+            $result =  $db->query("SELECT hashRecoverPassword FROM UsuarioBasico WHERE hashRecoverPassword = '$hashRecoverPassword' LIMIT 1") ;
+            $cont = mysqli_num_rows($result);
+    
+            if ($cont <=0) {
+                return false;
+            //    print "erro buscar espaço bairro";
+            }else{
+                $row=$result->fetch_assoc();
+                return $row[' hashRecoverPassword'];
+
+            }
+        }
+
         function cadastrarUsuarioInquilino($db, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
             $moip = new Functions();
             $session = new FunctionsSession();

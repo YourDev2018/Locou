@@ -11,8 +11,9 @@
     $session = new FunctionsSession();
 
 
-    $pag = $_GET['pag'].".php";
-    $id = $_GET['id'];
+     $pag = $_GET['pag'].".php";
+     $id = $_GET['id'];
+     $local = '#'.$_GET['local'];
 
 
     if ($session->vereficarLogin() == 'false') {
@@ -31,7 +32,20 @@
          $result = $db -> loginEmailSenha($conn,$email,$senha);
          
          if ($result == true) {
-             header('Location:'.$pag."?status=true&id=$id");
+            
+          #  echo $pag."?status=true&id=$id$local";
+          #  exit();
+
+            if($pag == 'anuncio.php'){
+
+
+                header('Location:'.$pag."?status=true&id=$id"."$local");
+
+            }else{
+
+                header('Location:'.$pag."?status=true&id=$id");
+            }
+
              //print "sucesso";
         }else{
          //    header("Location: http://localhost/YourDev/locou/'.$pag.?status=false&email=".$_POST['email']); setando email
@@ -44,7 +58,7 @@
         // print "ja logado";
     }
 
-   
+
     
 
 ?>

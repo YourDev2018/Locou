@@ -14,20 +14,32 @@ $seg  = new Seguranca();
 $tipo = $seg->filtro($_GET['t']);
 $editText = $seg->filtro($_GET['q']);
 
-
-if (!($tipo == "" || $tipo == null) ) {
   $db = new FunctionsDB();
   $conn = $db->conectDB();
 
   $busca = new BuscarEspacos();
+
+  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+
+if (!($tipo == "" || $tipo == null) ) {
+
 
 
   $cont=0;
 
   if ($tipo == "todos") {
     $array = $busca -> buscarEspacoBairro($conn, $editText);
+    if ($array == false) {
+        $array = $busca -> buscarEspacoBairro($conn, '');
+    }
+
   }else{
     $array = $busca -> buscarEspacoBairroTipo($conn, $tipo, $editText);
+    if ($array == false) {
+        $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, '');
+    }
+
+
   }
   //  print_r ($array);
 
@@ -36,7 +48,10 @@ if (!($tipo == "" || $tipo == null) ) {
 
   // }
 
-  $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
+
+}else{
+
+    $array = $busca -> buscarEspacoBairro($conn, $editText);
 
 }
 
