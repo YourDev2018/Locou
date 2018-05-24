@@ -41,7 +41,7 @@ if ($email != '' || $email != null) {
 
       echo 'erro ao atualizar hash';
   }
-  
+
 
 }
 
@@ -135,6 +135,24 @@ if ($email != '' || $email != null) {
       </div>
     </div>
 
+    <div id="sucesso" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sucesso!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>O email de redefinição de senha foi enviado com sucesso. Verifique na caixa de span caso não encontre na caixa principal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Entendi!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="row justify-content-center text-center py-5" id="dados_basicos">
       <div class="col-lg-8 col-md-10 col-sm-12" style="border-style: solid; border-width: 2px; border-color: #FFC107">
