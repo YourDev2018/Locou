@@ -113,16 +113,16 @@ function getRandomInt(min, max) {
 $(document).ready(function(){
   var n = getRandomInt(1,7);
   if(n==1) {
-    document.getElementById('fundo').style = "background: url('img/consultório_pediatria.jpeg') no-repeat;background-size: cover;background-position: center";
+    document.getElementById('fundo').style = "background: url('img/consultorio_pediatria.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==2) {
-    document.getElementById('fundo').style = "background: url('img/divã.jpeg') no-repeat;background-size: cover;background-position: center";
+    document.getElementById('fundo').style = "background: url('img/diva.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==3) {
     document.getElementById('fundo').style = "background: url('img/maca.jpeg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==4) {
-    document.getElementById('fundo').style = "background: url('img/recepção3.jpg') no-repeat;background-size: cover;background-position: center";
+    document.getElementById('fundo').style = "background: url('img/recepcao3.jpg') no-repeat;background-size: cover;background-position: center";
   }
   if(n==5) {
     document.getElementById('fundo').style = "background: url('img/salaespera1.jpeg') no-repeat;background-size: cover;background-position: center";
