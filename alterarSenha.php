@@ -16,18 +16,18 @@ if ($email != '' || $email != null) {
   $conn = $db->conectDB();
   if($db->atualizarHashRecoverPassword($conn,$email,$hashEmail)){
 
-    $aux = $email;
+    $auxEmail = $email;
     $link = "https://www.yourdev.com.br/clientes/locou/recuperarSenha.php?r=$hashEmail";
 
     $corpo = '<html><body>';
-    $corpo .= "Olá $email, recebemos um pedido de redefinição de sua senha. <p>";
+    $corpo .= "Olá $auxEmail, recebemos um pedido de redefinição de sua senha. <p>";
     $corpo .= "Para altera-la, <a href=$link> clique aqui </a> ";
     $corpo .= "</body></html>";
 
     $email = new EnviarEmail();
 
       //$email->enviar($aux,'Redefinição de senha Locou',$corpo);
-    if($email->enviar('morg.guilherme@gmail.com','Redefinição de senha Locou',$corpo)){
+    if($email->enviar($auxEmail,'Redefinição de senha Locou',$corpo)){
       $aux = true;
     //  echo 'email enviado';
       exit();
