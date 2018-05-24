@@ -190,6 +190,7 @@ class Pedidos
                 $titulo =  $arrayAnuncioBasicoTitulo[4];
                // $preco = $arrayAnuncioBasicoTitulo[7];
                 $preco = str_replace('.','',$preco);
+                $preco * 0.10 * 5.49;
 
            //     print $ultimoId.' '.$idClient.' '.$idMoipProprietario.' '.$titulo.' '.$preco;
 
@@ -296,6 +297,7 @@ class Pedidos
                 $titulo =  $arrayAnuncioBasicoTitulo[4];
                // $preco = $arrayAnuncioBasicoTitulo[7];
                 $preco = $somaPrecos * 100;
+                $preco * 0.10 * 5.49;
 
            //     print $ultimoId.' '.$idClient.' '.$idMoipProprietario.' '.$titulo.' '.$preco;
 

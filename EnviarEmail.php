@@ -9,7 +9,7 @@ class EnviarEmail
     function enviarConfirmacao($tipo,$emailProprietario,$titulo,$nomeProprietario,$nomeCliente,$arrayDadosPedido,$md5,$idAnuncio){
         
         // $destino = $emailProprietario;
-        $destino = 'morg.guilherme@gmail.com';
+        $destino = 'contatoyourdev@gmail.com';
 
         $assunto = "Alguem quer alugar ".$titulo;
 

@@ -7,6 +7,8 @@ require_once 'Seguranca.php';
 $seg = new Seguranca();
 $email = $seg->filtro($_POST['email']);
 
+$aux = false;
+
 if ($email != '' || $email != null) {
 
   $hashEmail = md5(time().$email);
@@ -26,8 +28,8 @@ if ($email != '' || $email != null) {
 
       //$email->enviar($aux,'Redefinição de senha Locou',$corpo);
     if($email->enviar('morg.guilherme@gmail.com','Redefinição de senha Locou',$corpo)){
-
-      echo 'email enviado';
+      $aux = true;
+    //  echo 'email enviado';
       exit();
 
     }else{
@@ -50,6 +52,7 @@ if ($email != '' || $email != null) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -66,6 +69,9 @@ if ($email != '' || $email != null) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
+
+
+
 #map {
   height: 100%;
 }
@@ -100,6 +106,18 @@ if ($email != '' || $email != null) {
   }
 }
 </style>
+
+  <?php 
+
+    if ($aux == true) {
+      # code...
+    
+  echo ("<script>
+$( document ).ready(function() {
+$('#sucesso').modal('show')
+});
+</script>");} ?>
+
 <body style="font-family: 'Muli'">
 
   <nav class="navbar desktop" style="background-color: rgba(0,0,0,1)">
@@ -118,6 +136,7 @@ if ($email != '' || $email != null) {
       </div>
     </div>
   </nav>
+
 
   <div class="container-fluid justify-content-center text-center">
 

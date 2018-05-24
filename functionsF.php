@@ -297,7 +297,7 @@ $ano = $_POST['year'];
                 \"PAYMENT.*\"
                 
             ],
-            \"target\": \"http://www.yourdev.com.br/clientes/locou/ReceberNotificacoes.php\",
+            \"target\": \"http://locou-co.umbler.net/ReceberNotificacoes.php\",
             \"media\": \"WEBHOOK\"
             } 
             
@@ -366,7 +366,7 @@ $ano = $_POST['year'];
        // https://api.moip.com.br/v2/webhooks?resourceId=payment_id
     
          $curl = curl_init();
-         $url = "https://api.moip.com.br/v2/webhooks?resourceId=ORD-CZXQEBT68AQN";
+         $url = "https://api.moip.com.br/v2/webhooks?resourceId=ORD-SY29LYBG6DCC";
        // $token_Acess = getToken();
 
         curl_setopt_array($curl,array(

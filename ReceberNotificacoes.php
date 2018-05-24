@@ -158,7 +158,7 @@
 
 // usuário proprietário notificado    
 
-    $tipoEvento = 'PAYMENT.AUTHORIZED';
+  //  $tipoEvento = 'PAYMENT.AUTHORIZED';
 
     if ($tipoEvento == 'PAYMENT.AUTHORIZED') {
         
@@ -169,7 +169,7 @@
         $idOrder = $order->{'title'};
 
         $idPayment = $payment->{'id'};
-           $idOrder = 'ORD-SY29LYBG6DCC';
+      //     $idOrder = 'ORD-SY29LYBG6DCC';
         
         $buscar = new BuscarEspacos();
         $array = $buscar->getPedidosDBPorOrder($conn,$idOrder);
