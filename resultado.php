@@ -20,7 +20,7 @@ $editText = $seg->filtro($_GET['q']);
   $busca = new BuscarEspacos();
 
   $prefixo = "http://www.yourdev.com.br/clientes/locou/img/anuncio/";
-  
+
 
 
 
@@ -35,12 +35,12 @@ if (!($tipo == "" || $tipo == null) ) {
         $auxBusca = true;
       }
     $array = $busca -> buscarEspacoBairro($conn, $editText);
-    
+
     if ($array == false) {
         $auxBusca = true;
         $array = $busca -> buscarEspacoBairro($conn, '');
     }
-   
+
 
   }else{
 
@@ -50,12 +50,12 @@ if (!($tipo == "" || $tipo == null) ) {
     }
 
     $array = $busca -> buscarEspacoBairroTipo($conn, $tipo, $editText);
-        
+
     if ($array == false) {
         $auxBusca = true;
         $array = $busca -> buscarEspacoBairroTipo($conn,$tipo, '');
     }
-    
+
   }
   //  print_r ($array);
 
@@ -536,8 +536,10 @@ if (!($tipo == "" || $tipo == null) ) {
                 <input type="password" class="form-control" id="senha-login" name="senha">
               </div>
               <br>
-              <br>
               <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
+              <br>
+              <span>Esqueceu a senha? <a href="alterarSenha.php"><span style="color:blue">Clique aqui</span></a> </span>
+              <br>
               <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
               <br>
             </div>
@@ -659,7 +661,7 @@ if (!($tipo == "" || $tipo == null) ) {
             <hr>
           </div>
         </div>
-        
+
         <?php
           //<!-- //Printar aqui texto de sem resultados-->
           if ($auxBusca == true) {
