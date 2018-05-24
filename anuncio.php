@@ -463,6 +463,13 @@ if($session->vereficarLogin() != false){
     });
   });
 
+  function minMax() {
+    if(document.getElementById("tipoAluguel").value == "unico") {
+      document.getElementById('hora-inicio-unico').value = document.getElementById('hora-inicio-texto').innerHTML;
+      document.getElementById('hora-fim-unico').value = document.getElementById('hora-fim-texto').innerHTML;
+    }
+  }
+
   $.fn.datepicker.defaults.format = "dd/mm/yyyy";
   $.fn.datepicker.defaults.autoclose = true;
   $.fn.datepicker.defaults.maxViewMode = 0;
@@ -476,12 +483,14 @@ if($session->vereficarLogin() != false){
   $( function() {
     $( "#datepicker-reincidente" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [<?php if($seg == false){echo 1;} ?>,<?php if($ter == false){echo 2;} ?>,<?php if($qua == false){echo 3;} ?>,<?php if($qui == false){echo 4;} ?>,<?php if($sex == false){echo 5;} ?>,<?php if($sab == false){echo 6;} ?>,<?php if($dom == false){echo 0;} ?>], daysOfWeekHighlighted: [<?php if($seg == true){echo 1;} ?>,<?php if($ter == true){echo 2;} ?>,<?php if($qua == true){echo 3;} ?>,<?php if($qui == true){echo 4;} ?>,<?php if($sex == true){echo 5;} ?>,<?php if($sab == true){echo 6;} ?>,<?php if($dom == true){echo 0;} ?>], datesDisabled: [] }).on('changeDate',function(e){
       calcularPreco();
+      minMax();
     });
   } );
 
   $( function() {
     $( "#datepicker-direto" ).datepicker({startDate: '+3d',daysOfWeekDisabled: [], daysOfWeekHighlighted: [], datesDisabled: [] }).on('changeDate',function(e){
       calcularPreco();
+      minMax();
     });
   } );
 
@@ -2291,21 +2300,26 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
       <div class="col-12 mt-4">
         <div class="row px-5 pb-5 text-center justify-content-center">
           <div id="div-unico" class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
-            <button id="botao-unico" onclick="calUnico();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning active">Aluguel Único</button>
+            <button id="botao-unico" onclick="calUnico();calcularPreco();desbloquearAluguelRow()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Único</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisUnico">Clique aqui e saiba mais</span>
           </div>
           <div id="div-reincidente" class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
-            <button id="botao-reincidente" onclick="calReincidente();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
+            <button id="botao-reincidente" onclick="calReincidente();calcularPreco();desbloquearAluguelRow()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Reincidente</button>
             <br><br>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisReincidente">Clique aqui e saiba mais</span>
           </div>
           <div id="div-direto" class="col-lg-4 col-md-10 col-sm-12 text-center py-2">
-            <button id="botao-direto" onclick="calDireto();calcularPreco()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
+            <button id="botao-direto" onclick="calDireto();calcularPreco();desbloquearAluguelRow()" style="font-weight: 300" type="button" name="button" class="btn btn-outline-warning">Aluguel Direto</button>
             <br><br>
+            <script>
+              function desbloquearAluguelRow() {
+                document.getElementById('precoTotal_row').style.display = "";
+              }
+            </script>
             <span style="color: grey" class="ml-3" data-toggle="modal" data-target="#saibaMaisDireto">Clique aqui e saiba mais</span>
           </div>
-          <input style="display: none" type="text" name="tipoAluguel" value="unico" id="tipoAluguel">
+          <input style="display: none" type="text" name="tipoAluguel" value="" id="tipoAluguel">
         </div>
       </div>
       <div class="col-12 px-5 text-center justify-content-center" style="background-color: black">
@@ -3169,6 +3183,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                       var aux = parseFloat(document.getElementById('preco-total').innerHTML);
                       document.getElementById('preco-total').innerHTML = "R$ "+aux.format(2, 3, '.', ',');
                       console.log(aux.format(2, 3, '.', ','));
+                      minMax();
                     }
                     </script>
                     <script>
@@ -6232,7 +6247,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
 
 </div>
 
-<div class="row p-3 text-center justify-content-center" style="border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
+<div id="precoTotal_row" class="row p-3 text-center justify-content-center" style="display: none;border-top: solid; border-width: 2px; border-color: #FFC107; border-bottom: solid; border-width: 2px; border-color: #FFC107;background-color: black">
   <div class="col-12 text-center justify-content-center">
     <h5 style="color: white">Preço total: <br class="mobile"> <span style="color: #FFCE00" class="h4" id="preco-total">R$ <?php //echo $array['7']?></span> </h5>
     <br>
