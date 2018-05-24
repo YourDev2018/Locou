@@ -428,6 +428,9 @@ $('#loginPop').modal('show')
                 <br>
                 <br>
                 <span>Ainda não é cadastrado? <a href="cadastro.php"><span style="color:blue">Clique aqui</span></a> </span>
+                <br>
+                <span>Esqueceu a senha? <a href="alterarSenha.php"><span style="color:blue">Clique aqui</span></a> </span>
+                <br>
                 <span style="font-size: 90%; color:red; display: <?php if($funcao != 'login' && $status != 'false'){ echo "none";}?>">Login e/ou senha incorreto(s)</span>
                 <br>
               </div>

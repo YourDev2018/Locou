@@ -460,13 +460,16 @@ if($session->vereficarLogin() != false){
   $( function() {
     $( "#datepicker" ).datepicker().on('changeDate',function(e){
       calcularPreco();
-    });    
+    });
   });
 
   function minMax() {
     if(document.getElementById("tipoAluguel").value == "unico") {
       document.getElementById('hora-inicio-unico').value = document.getElementById('hora-inicio-texto').innerHTML;
       document.getElementById('hora-fim-unico').value = document.getElementById('hora-fim-texto').innerHTML;
+    }
+    if(document.getElementById("tipoAluguel").value == "reincidente") {
+
     }
   }
 
@@ -2577,6 +2580,7 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
 
                         }
                       }
+                      minMax();
                     }
                   }
                   </script>
