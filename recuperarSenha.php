@@ -30,7 +30,7 @@ $hashRecover = $seg->filtro($_GET['r']);
 
         if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
 
-          header('location: index.php');
+          header('location: index.php?funcao=recuperar');
           exit();
 
         }else{

@@ -8,13 +8,17 @@
   $session = new FunctionsSession();
   $session->iniciarSession();
 
-
+$auxRecuperarSenha= false;
 
 $db = new FunctionsDB();
 $conn = $db->conectDB();
 
 $status = $_GET['status'];
 $funcao= $_GET['funcao'];
+
+if ($funcao == 'recuperar') {
+    $auxRecuperarSenha= true;
+}
 
 $array = returnEspaco($conn);
 $arrayConsultorio = returnConsultorio($conn);
@@ -259,6 +263,15 @@ function daysInMonth(month, year) {
   }
 
   </style>
+
+  <?php if ($auxRecuperarSenha == true) {
+      echo ("<script>
+$( document ).ready(function() {
+$('#loginPop').modal('show')
+});
+</script>");
+  }?>
+
   <body style="font-family: 'Muli'">
 
     <!-- Navbar -->
