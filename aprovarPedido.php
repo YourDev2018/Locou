@@ -16,6 +16,14 @@
     $idPedido = $array[5];
     $idOrder = $array[7];
     $tipo = $array[6];
+
+    $seg = json_encode(false);
+    $ter = json_encode(false);
+    $qua = json_encode(false);
+    $qui = json_encode(false);
+    $sex = json_encode(false);
+    $sab = json_encode(false);
+    $dom = json_encode(false);
  
     $arrayPedidosDB = $busca->getPedidosDB($conn,$hashId);
     if ($arrayPedidosDB != false) {
@@ -58,13 +66,7 @@
         print 'erro';
     }else{
 
-        $seg = json_encode(false);
-        $ter = json_encode(false);
-        $qua = json_encode(false);
-        $qui = json_encode(false);
-        $sex = json_encode(false);
-        $sab = json_encode(false);
-        $dom = json_encode(false);
+
 
         $segC = 0;
         $terC = 0;

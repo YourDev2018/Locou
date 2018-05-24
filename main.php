@@ -27,10 +27,10 @@ require_once 'BuscarEspacos.php';
 //anuncioAdd();
 // usuarioCliente();
 //testarLogin();
-//criarNotificacao();
+criarNotificacao();
 //retornarDiasCadastrados();
 //aprovar();
-consultarSaldo();
+//consultarSaldo();
 
   //  print  $data = date('Y-m-d')."\n  ";
 /*
@@ -115,11 +115,11 @@ function retornarDiasCadastrados(){
  
 function criarNotificacao(){
 
-    $func = new functions();
+    $func = new Functions();
    //$func->criarPreferenciaNotificacaoApp();
-     //  $func->excluirPreferenciaNotificacaoApp();
-   // $func->listarPreferenciaNotificacao();
-   $func->consultarChamada();
+//       $func->excluirPreferenciaNotificacaoApp('NPR-8DX0Q8FFCTNS');
+   $func->listarPreferenciaNotificacao();
+   //$func->consultarChamada();
    
 }
 

@@ -991,9 +991,10 @@ function verificarDecimal($dia){
               </div>
               <div id="unico" style="display:none" class="col-10 py-2 text-left">
                 <span class="h5">Dia selecionado:  <?php
-                    $array = $buscar -> getHashId($conn,$idGetHash);
+                    $array = $busca -> getHashId($conn,$idGetHash);
                     $titulo = $array[3];
                     $id = $array[5];
+                    $preco =$array[4];
 
                     $detalhe = $busca->getPedidosTemporariosUnico($conn,$id);
                     $data = $detalhe[0];
@@ -1002,7 +1003,7 @@ function verificarDecimal($dia){
                     $data = date('d/m/Y', strtotime($data));
                     $aux = date('N',$data);
                     $aux= 1;
-                  //  echo $data.':'."  ".$entrada.' até '.$saida;?></span>
+                    echo $data.':'."  ".$entrada.' até '.$saida;?></span>
               </div>
               <?php if($aux == 1){?>
               <div id="seg" style="display: none" class="col-10 py-2 text-left">
@@ -1039,7 +1040,7 @@ function verificarDecimal($dia){
               <span class="h5">Preço Total (Com Taxas):</span>
             </div>
             <div class="col-12 px-3 py-1 pb-3 text-center" style="color: white;">
-              <span class="h6">(PREÇO TOTAL)</span>
+              <span class="h6"><?php echo $preco?></span>
             </div>
           </div>
         </div>

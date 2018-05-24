@@ -297,7 +297,7 @@ $ano = $_POST['year'];
                 \"PAYMENT.*\"
                 
             ],
-            \"target\": \"http://www.yourdev.com.br/clientes/locou/ReceberNotificacoes.php\",
+            \"target\": \"http://locou-co.umbler.net/ReceberNotificacoes.php\",
             \"media\": \"WEBHOOK\"
             } 
             
@@ -315,8 +315,8 @@ $ano = $_POST['year'];
 
     }
 
-    function excluirPreferenciaNotificacaoApp(){
-        $url = "https://sandbox.moip.com.br/v2/preferences/notifications/NPR-IPCR3GILSWGP";
+    function excluirPreferenciaNotificacaoApp($aux){
+        $url = "https://sandbox.moip.com.br/v2/preferences/notifications/$aux";
         $curl = curl_init();
 
          curl_setopt_array($curl,array(
