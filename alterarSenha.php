@@ -1,5 +1,5 @@
 <?php
-
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'EnviarEmail.php';
 require_once 'FunctionsDB.php';
 require_once 'Seguranca.php';
@@ -14,34 +14,49 @@ if ($email != '' || $email != null) {
   $hashEmail = md5(time().$email);
   $db = new FunctionsDB();
   $conn = $db->conectDB();
-  if($db->atualizarHashRecoverPassword($conn,$email,$hashEmail)){
 
-    $auxEmail = $email;
-    $link = "https://www.yourdev.com.br/clientes/locou/recuperarSenha.php?r=$hashEmail";
+  if($db->emailExist($conn,$email)){
 
-    $corpo = '<html><body>';
-    $corpo .= "Olá $auxEmail, recebemos um pedido de redefinição de sua senha. <p>";
-    $corpo .= "Para altera-la, <a href=$link> clique aqui </a> ";
-    $corpo .= "</body></html>";
+    if($db->atualizarHashRecoverPassword($conn,$email,$hashEmail)){
 
-    $email = new EnviarEmail();
+      $auxEmail = $email;
+      $link = "https://www.yourdev.com.br/clientes/locou/recuperarSenha.php?r=$hashEmail";
 
-      //$email->enviar($aux,'Redefinição de senha Locou',$corpo);
-    if($email->enviar($auxEmail,'Redefinição de senha Locou',$corpo)){
-      $aux = true;
-    //  echo 'email enviado';
-      exit();
+      $corpo = '<html><body>';
+      $corpo .= "Olá $auxEmail, recebemos um pedido de redefinição de sua senha. <p>";
+      $corpo .= "Para altera-la, <a href=$link> clique aqui </a> ";
+      $corpo .= "</body></html>";
+
+      $email = new EnviarEmail();
+
+      if($db->getHashRecoverPasswordEmail($conn, $auxEmail)){
+       // print 'aaaa'.$db->getHashRecoverPasswordEmail($conn, $auxEmail) ;
+        if($email->enviar($auxEmail,'Redefinição de senha Locou.co',$corpo)){
+          $aux = true;
+        //  echo 'email enviado';
+          //exit();  
+        }else{
+  
+          $aux = true;
+  
+        }
+          
+      }else{
+        $email->enviar($auxEmail,'Redefinição de senha Locou.co',$corpo);
+        $aux = true;
+      }
+
+        //$email->enviar($aux,'Redefinição de senha Locou',$corpo);
+    
 
     }else{
 
-      echo 'falha ao enviar email';
-      exit();
-
+        echo 'erro ao atualizar hash';
     }
-
   }else{
-
-      echo 'erro ao atualizar hash';
+    echo 'email não cadastrado';
+    exit();
+    
   }
 
 

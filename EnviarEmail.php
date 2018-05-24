@@ -1,5 +1,5 @@
 <?php
-
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 require_once 'BuscarEspacos.php';
 require_once 'FunctionsDB.php';
 
@@ -227,8 +227,8 @@ class EnviarEmail
               return true;
                 
             } else {
-                    
-                header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
+                return false;
+               // header('location: anuncio.php?id='.$idAnuncio.'&emailEnviado=true');
                //  echo "Erro ao enviar email";
             }
 

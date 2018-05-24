@@ -119,6 +119,27 @@ require_once 'functions.php';
             }
         }
 
+        function getHashRecoverPasswordEmail($db, $email){
+
+            $result = $db->query("SELECT hashRecoverPassword FROM UsuarioBasico WHERE email = '$email' ") ;
+            $cont = mysqli_num_rows($result);
+    
+            if ($cont <=0) {
+                return false;
+            //    print "erro buscar espaço bairro";
+            }else{
+                $row=$result->fetch_assoc();
+                //$row['hashRecoverPassword'] ;
+                if($row[' hashRecoverPassword'] == null)
+                    return false;   
+                else
+                    return true;
+
+            }
+        }
+
+
+
         function cadastrarUsuarioInquilino($db, $cpf,$telDDD, $telNumero,$rua, $ruaNumero, $complemento, $bairro, $cep, $cidade, $estado){
             $moip = new Functions();
             $session = new FunctionsSession();
@@ -521,7 +542,7 @@ require_once 'functions.php';
                 }
         }
       
-        private function emailExist($db, $email){
+        function emailExist($db, $email){
 
             $result =  $db->query("SELECT * FROM UsuarioBasico WHERE email = '$email' ") ;
             $cont = mysqli_num_rows($result);

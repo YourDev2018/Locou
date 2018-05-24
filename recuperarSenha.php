@@ -16,7 +16,7 @@ $hashRecover = $seg->filtro($_GET['r']);
       exit();
   }else{
 
-    if ($novaSenha != '' || $novaSenha !=  null) {
+    #
       
       if($db->getHashRecoverPassword($conn,$hashRecover) == 'false'){
 
@@ -25,24 +25,24 @@ $hashRecover = $seg->filtro($_GET['r']);
         exit();
 
       }else{
+        if ($novaSenha != '' || $novaSenha !=  null) {
+          $novaSenha = md5($seg->filtro($_POST['senha']));
 
-        $novaSenha = md5($seg->filtro($_POST['senha']));
+          if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
 
-        if($db->atualizarUsuarioBasico($conn,$hashRecover,$novaSenha)){
+            header('location: index.php?funcao=recuperar');
+            exit();
 
-          header('location: index.php?funcao=recuperar');
-          exit();
+          }else{
 
-        }else{
+            echo 'erro ao atualizar senha';
+            exit();
 
-          echo 'erro ao atualizar senha';
-          exit();
-
-        }
-            
+          }
+        }  
       }
 
-    }
+    
 
   }
 
