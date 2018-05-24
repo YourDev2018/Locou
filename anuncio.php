@@ -460,7 +460,7 @@ if($session->vereficarLogin() != false){
   $( function() {
     $( "#datepicker" ).datepicker().on('changeDate',function(e){
       calcularPreco();
-    });
+    });    
   });
 
   function minMax() {
@@ -3183,7 +3183,6 @@ $arrayUser = $db->getInfoUserProprietario($conn,$_GET['id']);  ?>
                       var aux = parseFloat(document.getElementById('preco-total').innerHTML);
                       document.getElementById('preco-total').innerHTML = "R$ "+aux.format(2, 3, '.', ',');
                       console.log(aux.format(2, 3, '.', ','));
-                      minMax();
                     }
                     </script>
                     <script>
